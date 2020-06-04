@@ -4,7 +4,6 @@ import 'package:commercio_ui/ui/commercio_text.dart';
 import 'package:commercio_ui/ui/commercio_text_field.dart';
 import 'package:commercio_ui/ui/docs/bloc/commercio_docs_bloc.dart';
 import 'package:commercio_ui/ui/event_flat_button.dart';
-import 'package:commercio_ui/ui/id/bloc/commercio_id_bloc.dart';
 import 'package:commerciosdk/export.dart' as sdk;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

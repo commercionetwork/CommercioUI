@@ -8,11 +8,13 @@ addons:
             - ubuntu-toolchain-r-test # if we don't specify this, the libstdc++6 we get is the wrong version
         packages:
             - libstdc++6
-            - fonts-droid
 before_script:
     - git clone https://github.com/flutter/flutter.git -b stable --depth 1
     - ./flutter/bin/flutter doctor
 script:
+    - ./flutter/bin/flutter pub get
+    - ./flutter/bin/cache/dart-sdk/bin/dartanalyzer --fatal-warnings lib/
+    - ./flutter/bin/cache/dart-sdk/bin/dartfmt -n --set-exit-if-changed lib/
     - ./flutter/bin/flutter test
 cache:
     directories:
