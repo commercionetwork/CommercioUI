@@ -73,18 +73,18 @@ class StatefulCommercioAccount {
     return wallet;
   }
 
-  /// Generate a new [Wallet] associated with the given works and the optional [networkInfo].
-  ///
+  /// Generate a new [Wallet] associated with the given works and the 
+  /// optional [networkInfo].
   Future<Wallet> generateNewWallet({
     String mnemonic,
     String lastDerivationPathSegment,
   }) async {
-    mnemonic ??= await generateMnemonic();
+    this.mnemonic = mnemonic ?? await generateMnemonic();
     await storeMnemonic(mnemonic: mnemonic);
 
     final wallet = await StatelessCommercioAccount.deriveWallet(
         networkInfo: networkInfo,
-        mnemonic: mnemonic,
+        mnemonic: this.mnemonic,
         lastDerivationPathSegment: lastDerivationPathSegment);
     final walletAddress = await _preCalculateAddress(wallet);
 
