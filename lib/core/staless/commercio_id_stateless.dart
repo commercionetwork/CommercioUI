@@ -1,8 +1,7 @@
 import 'dart:convert';
 
+import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commercio_ui/core/utils/export.dart';
-import 'package:commercio_ui/entities/commercio_id_keys.dart';
-import 'package:commercio_ui/export.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
@@ -98,17 +97,3 @@ class StatelessCommercioId {
         senderWallet, pairwiseAddress, amount, rsaSignaturePrivateKey);
   }
 }
-
-/*class _ComputeKeysData {
-  const _ComputeKeysData();
-}
-
-CommercioIdKeys _computeMnemonic(_ComputeKeysData data) {
-   final rsaVerificationPair = await KeysHelper.generateRsaKeyPair();
-    final rsaSignatureKeyPair =
-        await KeysHelper.generateRsaKeyPair(type: 'RsaSignatureKey2018');
-
-    return CommercioIdKeys(
-        rsaVerificationPair: rsaVerificationPair,
-        rsaSignatureKeyPair: rsaSignatureKeyPair);
-}*/

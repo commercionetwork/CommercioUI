@@ -1,4 +1,6 @@
-part of 'commercio_id_bloc.dart';
+import 'package:commerciosdk/export.dart';
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 
 abstract class CommercioIdEvent extends Equatable {
   const CommercioIdEvent();

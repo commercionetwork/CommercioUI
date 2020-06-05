@@ -1,4 +1,4 @@
-part of 'commercio_mint_bloc.dart';
+import 'package:commercio_ui/commercio_ui.dart';
 
 class CommercioMintError extends CommercioMintState implements CommercioError {
   @override

@@ -1,4 +1,6 @@
-part of 'commercio_mint_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
+import 'package:sacco/sacco.dart';
 
 abstract class CommercioMintEvent extends Equatable {
   const CommercioMintEvent();

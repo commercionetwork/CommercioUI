@@ -1,4 +1,7 @@
-part of 'commercio_docs_bloc.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commerciosdk/export.dart';
+import 'package:meta/meta.dart';
+import 'package:sacco/sacco.dart';
 
 abstract class CommercioDocsState extends CommercioState {
   const CommercioDocsState();

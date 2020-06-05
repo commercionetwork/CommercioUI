@@ -1,4 +1,4 @@
-import 'package:commercio_ui/export.dart';
+import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';

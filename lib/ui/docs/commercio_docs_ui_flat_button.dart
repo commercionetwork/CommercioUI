@@ -1,4 +1,6 @@
-part of 'commercio_docs_ui.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commerciosdk/export.dart' as sdk;
+import 'package:flutter/material.dart';
 
 class ShareDocumentFlatButton extends EventFlatButton<
     CommercioDocsBloc,

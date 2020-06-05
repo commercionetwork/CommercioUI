@@ -1,4 +1,4 @@
-part of 'commercio_docs_bloc.dart';
+import 'package:commercio_ui/commercio_ui.dart';
 
 class CommercioDocsError extends CommercioDocsState implements CommercioError {
   @override

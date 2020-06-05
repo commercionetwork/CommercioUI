@@ -2,15 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/ui/bloc/commercio_state.dart';
-import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:sacco/sacco.dart';
-
-part 'commercio_account_event.dart';
-part 'commercio_account_state.dart';
-part 'commercio_account_state_loading.dart';
-part 'commercio_account_state_error.dart';
 
 class CommercioAccountBloc
     extends Bloc<CommercioAccountEvent, CommercioAccountState> {

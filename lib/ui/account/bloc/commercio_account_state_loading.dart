@@ -1,4 +1,4 @@
-part of 'commercio_account_bloc.dart';
+import 'package:commercio_ui/commercio_ui.dart';
 
 class CommercioAccountLoading extends CommercioAccountState
     implements CommercioLoading {

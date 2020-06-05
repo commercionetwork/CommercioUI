@@ -2,16 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/ui/bloc/commercio_state.dart';
-import 'package:commerciosdk/entities/id/export.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-
-part 'commercio_id_event.dart';
-part 'commercio_id_state.dart';
-part 'commercio_id_state_loading.dart';
-part 'commercio_id_state_error.dart';
 
 class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
   final StatefulCommercioId commercioId;

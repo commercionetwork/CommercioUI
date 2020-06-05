@@ -1,4 +1,7 @@
-part of 'commercio_id_ui.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commerciosdk/export.dart' as sdk;
+import 'package:flutter/material.dart';
+import 'package:sacco/sacco.dart';
 
 class GenerateKeysFlatButton extends EventFlatButton<
     CommercioIdBloc,
@@ -374,7 +377,7 @@ class RequestDidPowerUpFlatButton extends EventFlatButton<
     void Function(String errorMessage) errorCallback,
     @required String pairwiseAddress,
     @required List<StdCoin> amount,
-    RSAPrivateKey rsaSignaturePrivateKey,
+    sdk.RSAPrivateKey rsaSignaturePrivateKey,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,

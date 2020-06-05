@@ -1,4 +1,6 @@
-part of 'commercio_account_ui.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/material.dart';
+import 'package:sacco/sacco.dart';
 
 class GenerateWalletFlatButton extends EventFlatButton<
     CommercioAccountBloc,

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commercio_ui/core/utils/export.dart';
-import 'package:commercio_ui/entities/export.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';

@@ -1,4 +1,9 @@
-part of 'commercio_membership_ui.dart';
+import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
+
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RequestFaucetInviteTextField extends CommercioTextField<
     CommercioMembershipBloc,
