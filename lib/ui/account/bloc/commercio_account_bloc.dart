@@ -30,7 +30,7 @@ class CommercioAccountBloc
         yield const CommercioAccountLoadingGenerateWallet();
 
         yield await _mapCommercioAccountGenerateNewWalletEventToState(event);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioAccountGenerateWalletError(e.toString());
       }
     }
@@ -40,7 +40,7 @@ class CommercioAccountBloc
         yield const CommercioAccountLoadingRestoreWallet();
 
         yield await _mapCommercioAccountRestoreWalletEventToState(event);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioAccountRestoreWalletError(e.toString());
       }
     }
@@ -50,7 +50,7 @@ class CommercioAccountBloc
         yield const CommercioAccountLoadingRequestFreeTokensWallet();
 
         yield await _mapCommercioAccountRequestFreeTokensEventToState(event);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioAccountRequestFreeTokensError(e.toString());
       }
     }
@@ -60,7 +60,7 @@ class CommercioAccountBloc
         yield const CommercioAccountLoadingCheckBalance();
 
         yield await _mapCommercioAccountCheckBalanceEventToState(event);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioAccountCheckBalanceError(e.toString());
       }
     }
@@ -70,7 +70,7 @@ class CommercioAccountBloc
         yield const CommercioAccountLoadingSendTokens();
 
         yield await _mapCommercioAccountSendTokensEventToState(event);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioAccountSendTokensError(e.toString());
       }
     }
@@ -80,7 +80,7 @@ class CommercioAccountBloc
         yield const CommercioAccountLoadingGenerateQr();
 
         yield await _mapCommercioAccountGenerateQrEventToState(event);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioAccountGenerateQrError(e.toString());
       }
     }
@@ -90,7 +90,7 @@ class CommercioAccountBloc
         yield const CommercioAccountLoadingGeneratePairwiseWallet();
 
         yield await _mapCommercioAccountGeneratePairwiseWalletToState(event);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioAccountGeneratePairwiseWalletError(e.toString());
       }
     }

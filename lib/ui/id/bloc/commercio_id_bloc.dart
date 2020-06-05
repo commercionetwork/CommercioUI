@@ -34,7 +34,7 @@ class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
         await commercioId.generateKeys();
 
         yield CommercioIdWithGeneratedKeys(commercioId: commercioId);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioIdGeneratingKeysError(e.toString());
       }
     }
@@ -46,7 +46,7 @@ class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
         await commercioId.restoreKeys();
 
         yield CommercioIdWithRestoredKeys(commercioId: commercioId);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioIdRestoringKeysError(e.toString());
       }
     }
@@ -58,7 +58,7 @@ class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
         await commercioId.deleteKeys();
 
         yield CommercioIdWithDeletedKeys(commercioId: commercioId);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioIdDeletingKeysError(e.toString());
       }
     }
@@ -71,7 +71,7 @@ class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
 
         yield CommercioIdWithDerivedDidDocument(
             commercioId: commercioId, didDocument: didDocument);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioIdDerivingDidDocumentError(e.toString());
       }
     }
@@ -91,7 +91,7 @@ class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
 
         yield CommercioIdSetDidDocument(
             commercioId: commercioId, transactionResult: transactionResult);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioIdSettingDidDocumentError(e.toString());
       }
     }
@@ -114,7 +114,7 @@ class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
 
         yield CommercioIdRechargedGovernment(
             commercioId: commercioId, transactionResult: transactionResult);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioIdRechargingGovernmentError(e.toString());
       }
     }
@@ -130,7 +130,7 @@ class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
 
         yield CommercioIdRequestedDidPowerUp(
             commercioId: commercioId, transactionResult: transactionResult);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioIdRequestingDidPowerUpError(e.toString());
       }
     }

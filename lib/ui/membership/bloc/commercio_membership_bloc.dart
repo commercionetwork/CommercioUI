@@ -40,7 +40,7 @@ class CommercioMembershipBloc
           commercioMembership: commercioMembership,
           result: result,
         );
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioMembershipRequestFaucetInviteError(e.toString());
       }
     }
@@ -56,7 +56,7 @@ class CommercioMembershipBloc
           commercioMembership: commercioMembership,
           transactionResult: txResult,
         );
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioMembershipBuyMembershipError(e.toString());
       }
     }
@@ -72,7 +72,7 @@ class CommercioMembershipBloc
           commercioMembership: commercioMembership,
           transactionResult: txResult,
         );
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioMembershipInviteMemberError(e.toString());
       }
     }

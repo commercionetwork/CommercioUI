@@ -45,7 +45,7 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
 
         yield CommercioDocsSharedDocument(
             commercioDocs: commercioDocs, transactionResult: txResult);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioDocsShareDocumentError(e.toString());
       }
     }
@@ -68,7 +68,7 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
 
         yield CommercioDocsSharedEncryptedDocument(
             commercioDocs: commercioDocs, transactionResult: txResult);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioDocsShareEncryptedDocumentError(e.toString());
       }
     }
@@ -84,7 +84,7 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
 
         yield CommercioDocsSentReceipt(
             commercioDocs: commercioDocs, transactionResult: txResult);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioDocsSendReceiptError(e.toString());
       }
     }
@@ -97,7 +97,7 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
 
         yield CommercioDocsSentDocuments(
             commercioDocs: commercioDocs, sentDocuments: sentDocuments);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioDocsSentDocumentsError(e.toString());
       }
     }
@@ -110,7 +110,7 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
 
         yield CommercioDocsReceivedDocuments(
             commercioDocs: commercioDocs, receivedDocuments: receivedDocuments);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioDocsReceivedDocumentsError(e.toString());
       }
     }

@@ -34,7 +34,7 @@ class CommercioMintBloc extends Bloc<CommercioMintEvent, CommercioMintState> {
 
         yield CommercioMintOpenedCdp(
             commercioMint: commercioMint, transactionResult: txResult);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioMintOpenCdpError(e.toString());
       }
     }
@@ -48,7 +48,7 @@ class CommercioMintBloc extends Bloc<CommercioMintEvent, CommercioMintState> {
 
         yield CommercioMintClosedCdp(
             commercioMint: commercioMint, transactionResult: txResult);
-      } on Exception catch (e) {
+      } catch (e) {
         yield CommercioMintCloseCdpError(e.toString());
       }
     }
