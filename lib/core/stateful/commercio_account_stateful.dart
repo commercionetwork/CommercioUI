@@ -73,7 +73,7 @@ class StatefulCommercioAccount {
     return wallet;
   }
 
-  /// Generate a new [Wallet] associated with the given works and the 
+  /// Generate a new [Wallet] associated with the given works and the
   /// optional [networkInfo].
   Future<Wallet> generateNewWallet({
     String mnemonic,

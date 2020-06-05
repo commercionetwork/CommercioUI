@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // The layer provides a set of pre-built widgets around the BLoC components
 // to build applications at maximun speed.
 //
-// The supported widgets automatically send events and elaborate the response 
+// The supported widgets automatically send events and elaborate the response
 // states.
 // - Custom widgets that eliminate BLoC boilerplate
 // - Default error handling
