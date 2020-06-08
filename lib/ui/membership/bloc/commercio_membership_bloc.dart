@@ -23,9 +23,7 @@ class CommercioMembershipBloc
       try {
         yield const CommercioMembershipRequestFaucetInviteLoading();
 
-        final result = await commercioMembership.requestFaucetInvite(
-          faucetDomain: event.faucetDomain,
-        );
+        final result = await commercioMembership.requestFaucetInvite();
 
         yield CommercioMembershipRequestedFaucetInvite(
           commercioMembership: commercioMembership,

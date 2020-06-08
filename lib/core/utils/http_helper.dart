@@ -32,7 +32,6 @@ extension HttpActionExtension on HttpPath {
 }
 
 extension HttpEndpointExtension on HttpEndpoint {
-  // TODO: Improve using pre-calculated address
   String value({@required String walletAddress, @required String lcdUrl}) {
     switch (this) {
       case HttpEndpoint.balance:
@@ -53,39 +52,58 @@ extension HttpEndpointExtension on HttpEndpoint {
   }
 }
 
+/// Http helper class to send HTTP request to the chain.
 class HttpHelper {
-  static Client httpClient = Client();
-  static String defaultFaucetDomain = 'faucet-devnet.commercio.network';
+  final Client httpClient;
+  final String faucetDomain;
+  final String lcdUrl;
 
-  static Future<Response> faucetRequest({
+  /// Creates a new [HttpHelper] with optional [httpClient], [faucetDomain] and
+  /// [lcdUrl].
+  HttpHelper({
+    Client httpClient,
+    String faucetDomain,
+    String lcdUrl,
+  })  : httpClient = httpClient ?? Client(),
+        faucetDomain = faucetDomain ?? 'faucet-devnet.localhost',
+        lcdUrl = lcdUrl ?? 'http://localhost:1317';
+
+  /// Send a faucet request to the given [path] with [data]. Optionally [https]
+  /// [faucetDomain] can be specified.
+  ///
+  /// Returns the HTTP [Response].
+  Future<Response> faucetRequest({
     @required HttpPath path,
     @required Map<String, String> data,
-    String faucetDomain,
     bool https = true,
+    String faucetDomain,
   }) async {
-    faucetDomain ??= defaultFaucetDomain;
-
     final uri = https
-        ? Uri.https(faucetDomain, path.value, data)
-        : Uri.http(faucetDomain, path.value, data);
+        ? Uri.https(faucetDomain ?? this.faucetDomain, path.value, data)
+        : Uri.http(faucetDomain ?? this.faucetDomain, path.value, data);
 
     return httpClient.get(uri);
   }
 
-  static Future<Response> getRequest({
+  /// Send a HTTP GET request to the [endpoint] at the specified
+  /// [walletAddress]. An optional [lcdUrl] can be specified.
+  ///
+  /// Returns the [Response].
+  Future<Response> getRequest({
     @required HttpEndpoint endpoint,
     @required String walletAddress,
-    @required String lcdUrl,
+    String lcdUrl,
   }) {
-    return httpClient
-        .get(endpoint.value(walletAddress: walletAddress, lcdUrl: lcdUrl));
+    return httpClient.get(endpoint.value(
+        walletAddress: walletAddress, lcdUrl: lcdUrl ?? this.lcdUrl));
   }
 
-  static Future<String> getGovernmentAddress({@required String lcdUrl}) async {
+  /// Returns the tumbler Tk government address with optional [lcdUrl].
+  Future<String> getGovernmentAddress({String lcdUrl}) async {
     final response = await getRequest(
         endpoint: HttpEndpoint.getGovernment,
         walletAddress: null,
-        lcdUrl: lcdUrl);
+        lcdUrl: lcdUrl ?? this.lcdUrl);
     final tumbler = TumblerResponse.fromJson(
         jsonDecode(response.body) as Map<String, dynamic>);
 

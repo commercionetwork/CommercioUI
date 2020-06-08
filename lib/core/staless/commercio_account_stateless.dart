@@ -11,10 +11,13 @@ import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
 class StatelessCommercioAccount {
+  /// Generates a new String of 24 space-separated mnemonic words.
   static Future<String> generateMnemonic() {
     return compute(computeMnemonic, const ComputeMnemonicData(256));
   }
 
+  /// Save [mnemonic] inside the [secureStorage] identified by the key
+  /// [secureStorageKey].
   static Future<void> storeMnemonic({
     @required FlutterSecureStorage secureStorage,
     @required String secureStorageKey,
@@ -23,6 +26,8 @@ class StatelessCommercioAccount {
     return secureStorage.write(key: secureStorageKey, value: mnemonic);
   }
 
+  /// Get the mnemonic from the [secureStorage] identified by the key
+  /// [secureStorageKey].
   static Future<String> fetchMnemonic({
     @required FlutterSecureStorage secureStorage,
     @required String secureStorageKey,
@@ -30,6 +35,8 @@ class StatelessCommercioAccount {
     return secureStorage.read(key: secureStorageKey);
   }
 
+  /// Deletes the mnemonic inside the [secureStorage] identified by the key
+  /// [secureStorageKey].
   static Future<void> deleteMnemonic({
     @required FlutterSecureStorage secureStorage,
     @required String secureStorageKey,
@@ -37,6 +44,9 @@ class StatelessCommercioAccount {
     return secureStorage.delete(key: secureStorageKey);
   }
 
+  /// Restores the mnemonic words from the [secureStorage] identified by the
+  /// key [secureStorageKey]. The words and the [networkInfo] are used to
+  /// derive the [Wallet].
   static Future<Wallet> restoreWallet({
     @required FlutterSecureStorage secureStorage,
     @required String secureStorageKey,
@@ -52,8 +62,14 @@ class StatelessCommercioAccount {
     return deriveWallet(networkInfo: networkInfo, mnemonic: mnemonic);
   }
 
-  /// Generate a new [Wallet] associated with the given works and the optional [networkInfo].
+  /// Generate a new [Wallet] associated with the given optional [mnemonic]
+  /// and the [networkInfo].
   ///
+  /// If no [mnemonic] are specified then new mnemonic are generated
+  /// automatically.
+  ///
+  /// An optional [lastDerivationPathSegment] can be specified to derive a
+  /// different [Wallet].
   static Future<Wallet> generateNewWallet({
     @required NetworkInfo networkInfo,
     String mnemonic,
@@ -67,6 +83,10 @@ class StatelessCommercioAccount {
         lastDerivationPathSegment: lastDerivationPathSegment);
   }
 
+  /// Derive the [Wallet] from the given [networkInfo] and [mnemonic].
+  ///
+  /// An optional [lastDerivationPathSegment] can be specified to derive a
+  /// different [Wallet].
   static Future<Wallet> deriveWallet({
     @required NetworkInfo networkInfo,
     @required String mnemonic,
@@ -80,6 +100,9 @@ class StatelessCommercioAccount {
             lastDerivationPathSegment: lastDerivationPathSegment));
   }
 
+  /// Generate a pairwise [Wallet] from the given [networkInfo] and the
+  /// optional [newMnemonic]. The [lastDerivationPathSegment] parameter is
+  /// not required but should be used.
   static Future<Wallet> generatePairwiseWallet({
     @required NetworkInfo networkInfo,
     String lastDerivationPathSegment,
@@ -93,24 +116,28 @@ class StatelessCommercioAccount {
         lastDerivationPathSegment: lastDerivationPathSegment);
   }
 
+  /// Request an [amount] of free tokens with optional [httpHelper] for the
+  /// [walletAddress].
+  ///
+  /// A [AccountRequestResponse] is returned with the success or failure of
+  /// the request.
   static Future<AccountRequestResponse> requestFreeTokens({
     @required String walletAddress,
-    String faucetDomain,
     String amount = '100000000',
+    HttpHelper httpHelper,
   }) async {
     if (int.tryParse(amount) == null) {
       return const AccountRequestError('Amount is not a valid integer');
     }
 
+    httpHelper ??= HttpHelper();
+
     Response response;
     try {
-      response = await HttpHelper.faucetRequest(
-          path: HttpPath.give,
-          faucetDomain: faucetDomain,
-          data: {
-            'addr': walletAddress,
-            'amount': amount,
-          });
+      response = await httpHelper.faucetRequest(path: HttpPath.give, data: {
+        'addr': walletAddress,
+        'amount': amount,
+      });
     } catch (e) {
       return AccountRequestError(e.toString());
     }
@@ -120,16 +147,20 @@ class StatelessCommercioAccount {
     return AccountRequestSuccess(response.body);
   }
 
+  /// Get the account balance of the wallet [walletAddress] using the optional
+  /// [httpHelper].
+  ///
+  /// Returns a list of [StdCoin] or an [AccountRequestError] is thrown.
   static Future<List<StdCoin>> checkAccountBalance({
     @required String walletAddress,
-    @required String lcdUrl,
+    HttpHelper httpHelper,
   }) async {
+    httpHelper ??= HttpHelper();
+
     Response response;
     try {
-      response = await HttpHelper.getRequest(
-          endpoint: HttpEndpoint.balance,
-          walletAddress: walletAddress,
-          lcdUrl: lcdUrl);
+      response = await httpHelper.getRequest(
+          endpoint: HttpEndpoint.balance, walletAddress: walletAddress);
     } catch (e) {
       throw AccountRequestError(e.toString());
     }
@@ -140,6 +171,12 @@ class StatelessCommercioAccount {
     return balanceFullResult.stdCoins;
   }
 
+  /// Send the [amount] of tokens from the [senderWallet] and [senderAddress]
+  /// to a [recipientAddress] list.
+  ///
+  /// An optional [feeAmount] and [gas] can be specified.
+  ///
+  /// Returns the [TransactionResult].
   static Future<TransactionResult> sendTokens({
     @required String senderAddress,
     @required Wallet senderWallet,
@@ -175,6 +212,7 @@ class StatelessCommercioAccount {
   }
 }
 
+/// Represent a balance response
 class BalanceFullResult {
   final String height;
   final List<StdCoin> stdCoins;
@@ -188,6 +226,7 @@ class BalanceFullResult {
             .toList();
 }
 
+/// Helper plain data object to send data to [compute()] function.
 class ComputeWalletData {
   final String mnemonic;
   final NetworkInfo networkInfo;
@@ -200,16 +239,19 @@ class ComputeWalletData {
   });
 }
 
+/// Helper plain data object to send data to [compute()] function.
 class ComputeMnemonicData {
   final int strength;
 
   const ComputeMnemonicData(this.strength);
 }
 
+/// Generate new mnemonic from the [data].
 String computeMnemonic(ComputeMnemonicData data) {
   return bip39.generateMnemonic(strength: data.strength);
 }
 
+/// Derive a walllet from the [data].
 Wallet computeWallet(ComputeWalletData data) {
   if (data.lastDerivationPathSegment == null) {
     return Wallet.derive(data.mnemonic.split(' '), data.networkInfo);

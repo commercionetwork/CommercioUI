@@ -110,8 +110,8 @@ class CommercioAccountBloc
   Future<CommercioAccountState>
       _mapCommercioAccountRequestFreeTokensEventToState(
           CommercioAccountRequestFreeTokensEvent event) async {
-    final response = await commercioAccount.requestFreeTokens(
-        amount: event.amount, faucetDomain: event.faucetDomain);
+    final response =
+        await commercioAccount.requestFreeTokens(amount: event.amount);
 
     return CommercioAccountWithWalletFreeTokens(
         commercioAccount: commercioAccount, accountRequestResponse: response);
