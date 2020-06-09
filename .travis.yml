@@ -15,9 +15,10 @@ before_script:
     - export PATH="$PATH:./flutter/bin/cache/dart-sdk/bin"
     - flutter doctor
 script:
-    - flutter analyze --no-pub
-    - flutter format -n --set-exit-if-changed lib/
+    - cd CommercioUI
     - flutter pub get
+    - flutter analyze --no-pub
+    - flutter format -n --set-exit-if-changed .
     - flutter test
 cache:
     directories:
