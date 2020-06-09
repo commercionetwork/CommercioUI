@@ -116,9 +116,9 @@ packages:
   commercio_ui:
     dependency: "direct main"
     description:
-      name: commercio_ui
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: ".."
+      relative: true
+    source: path
     version: "0.0.1"
   commerciosdk:
     dependency: transitive

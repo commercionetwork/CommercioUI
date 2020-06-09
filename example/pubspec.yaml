@@ -23,7 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  commercio_ui: ^0.0.1
+  #commercio_ui: ^0.0.1
+  commercio_ui:
+    path: ../
   sacco: ^0.1.4
 
   # The following adds the Cupertino Icons font to your application.
