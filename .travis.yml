@@ -10,12 +10,15 @@ addons:
             - libstdc++6
 before_script:
     - git clone https://github.com/flutter/flutter.git -b stable --depth 1
-    - ./flutter/bin/flutter doctor
+    - export FLUTTER_ROOT=./flutter
+    - export PATH="$PATH:`pwd`./flutter/bin"
+    - export PATH="$PATH:`pwd`./flutter/bin/cache/dart-sdk/bin"
+    - flutter doctor
 script:
-    - ./flutter/bin/flutter pub get
-    - ./flutter/bin/cache/dart-sdk/bin/dartanalyzer --fatal-warnings lib/
-    - ./flutter/bin/cache/dart-sdk/bin/dartfmt -n --set-exit-if-changed lib/
-    - ./flutter/bin/flutter test
+    - flutter pub get
+    - flutter analyze --no-pub lib/
+    - flutter format -n --set-exit-if-changed lib/
+    - flutter test
 cache:
     directories:
         - $HOME/.pub-cache
