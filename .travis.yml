@@ -9,13 +9,14 @@ addons:
         packages:
             - libstdc++6
 before_script:
+    - cd ../..
     - git clone https://github.com/flutter/flutter.git -b stable --depth 1
     - export FLUTTER_ROOT=./flutter
     - export PATH="$PATH:./flutter/bin"
     - export PATH="$PATH:./flutter/bin/cache/dart-sdk/bin"
     - flutter doctor
 script:
-    - cd CommercioUI
+    - cd commercionetwork/CommercioUI
     - flutter pub get
     - flutter analyze --no-pub
     - flutter format -n --set-exit-if-changed .
