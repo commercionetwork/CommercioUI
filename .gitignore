@@ -30,6 +30,7 @@
 .pub/
 build/
 coverage/
+pana.json
 
 # Android related
 **/android/**/gradle-wrapper.jar
