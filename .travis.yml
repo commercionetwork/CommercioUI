@@ -15,9 +15,9 @@ before_script:
     - export PATH="$PATH:./flutter/bin/cache/dart-sdk/bin"
     - flutter doctor
 script:
-    - flutter pub get
     - flutter analyze --no-pub
     - flutter format -n --set-exit-if-changed lib/
+    - flutter pub get
     - flutter test
 cache:
     directories:
