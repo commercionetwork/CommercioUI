@@ -3,11 +3,11 @@
 The library is built on 4 layers so the examples are stored in their subfolder:
 
 * **Core**
-  + [Stateless](core/stateless/example.dart)
-  + [Stateful](core/stateful/example.dart)
+  + [Stateless](lib/stateless.dart)
+  + [Stateful](lib/stateful.dart)
 * **UI**
-  + [BLoC](ui/bloc/example.dart)
-  + [Widgets](ui/widgets/example.dart)
+  + [BLoC](lib/bloc.dart)
+  + [Widgets](lib/widgets.dart)
 
 To give a brief idea of the differences, for example in generating a new wallet:
 
