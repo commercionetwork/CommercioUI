@@ -9,15 +9,15 @@ addons:
         packages:
             - libstdc++6
 before_script:
-    - cd $TRAVIS_BUILD_DIR
+    - cd $HOME
     - git clone https://github.com/flutter/flutter.git -b stable --depth 1
     - cd flutter/bin
-    - export FLUTTER_ROOT=$TRAVIS_BUILD_DIR/flutter
-    - export PATH="$PATH:$TRAVIS_BUILD_DIR/flutter/bin"
+    - export FLUTTER_ROOT=$HOME/flutter
+    - export PATH="$PATH:$HOME/flutter/bin"
     - flutter doctor
-    - export PATH="$PATH:$TRAVIS_BUILD_DIR/flutter/bin/cache/dart-sdk/bin"
+    - export PATH="$PATH:$HOME/flutter/bin/cache/dart-sdk/bin"
 script:
-    - cd $TRAVIS_BUILD_DIR/commercionetwork/CommercioUI
+    - cd $TRAVIS_BUILD_DIR
     - flutter pub get
     - flutter analyze --no-pub
     - flutter format -n --set-exit-if-changed .
