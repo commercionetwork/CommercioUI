@@ -84,7 +84,7 @@ class ExamplePage extends StatelessWidget {
 
           // Custom TextField that receives a wallet-generation state
           // that the user can intercept in the callback
-          GenerateWalletCommercioAccountTextField(
+          GenerateWalletTextField(
             readOnly: true,
             loadingTextCallback: () => 'Generating...',
             textCallback: (state) => state.commercioAccount.walletAddress,
