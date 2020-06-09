@@ -1,11 +1,13 @@
 import 'package:commerciosdk/export.dart';
 import 'package:meta/meta.dart';
 
-/// The StatelessCommercioMint module is the one that allows you to create
+/// The [StatelessCommercioMint] module is the one that allows you to create
 /// Collateralized Debt Positions (CDPs) using your Commercio.network tokens
 /// (ucommercio) in order to get the half Commercio Cash Credits (uccc) in
 /// return.
 class StatelessCommercioMint {
+  StatelessCommercioMint._();
+
   /// Open a new CDP for the [wallet] with the [amount] of ucommercio to
   /// get in returns the half of the [amount] in uccc.
   /// An optional [fee] can specified.

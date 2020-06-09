@@ -6,6 +6,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
+/// The [StatefulCommercioAccount] module allows to generate mnemonics, derive
+/// wallets, send and request tokens.
 class StatefulCommercioAccount {
   final String secureStorageKey;
   final FlutterSecureStorage secureStorage;

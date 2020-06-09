@@ -3,6 +3,8 @@ import 'package:commerciosdk/export.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 
+/// The [StatefulCommercioId] module allows to create a new identity and
+/// associate to it a Did Document.
 class StatefulCommercioId {
   final StatefulCommercioAccount commercioAccount;
   final FlutterSecureStorage secureStorage;

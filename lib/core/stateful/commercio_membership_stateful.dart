@@ -2,6 +2,9 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:meta/meta.dart';
 
+/// The [StatefulCommercioMembership] module allows you to buy memberships
+/// to display to everyone that you've been invited by an already verified
+/// members to join the network and invite other members.
 class StatefulCommercioMembership {
   final StatefulCommercioAccount commercioAccount;
 

@@ -10,7 +10,11 @@ import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
+/// The [StatelessCommercioAccount] module allows to generate mnemonics, derive
+/// wallets, send and request tokens.
 class StatelessCommercioAccount {
+  StatelessCommercioAccount._();
+
   /// Generates a new String of 24 space-separated mnemonic words.
   static Future<String> generateMnemonic() {
     return compute(computeMnemonic, const ComputeMnemonicData(256));

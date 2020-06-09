@@ -2,6 +2,8 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:meta/meta.dart';
 
+/// The [StatefulCommercioDocs] allows you to send a document to another user,
+/// and retrieve the list of documents that you have received.
 class StatefulCommercioDocs {
   final StatefulCommercioAccount commercioAccount;
 
