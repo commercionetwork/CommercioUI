@@ -16,7 +16,7 @@ before_script:
     - flutter doctor
 script:
     - flutter pub get
-    - flutter analyze --no-pub lib/
+    - flutter analyze --no-pub
     - flutter format -n --set-exit-if-changed lib/
     - flutter test
 cache:
