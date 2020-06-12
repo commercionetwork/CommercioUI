@@ -30,7 +30,7 @@ class StatefulCommercioAccount {
               bech32Hrp: 'did:com:',
               lcdUrl: 'http://localhost:1317',
             ),
-        httpHelper = httpHelper ?? HttpHelper();
+        httpHelper = httpHelper ?? HttpHelper(lcdUrl: networkInfo.lcdUrl);
 
   /// Returns the [Wallet] of this account.
   Wallet get wallet => walletWithAddress?.wallet;
@@ -135,10 +135,13 @@ class StatefulCommercioAccount {
   ///
   /// If the account does not have a wallet then [WalletNotFoundException] is
   /// thrown.
-  Future<AccountRequestResponse> requestFreeTokens(
-      {String amount = '100000000'}) {
+  Future<AccountRequestResponse> requestFreeTokens({String amount}) {
     if (walletAddress == null) {
       throw const WalletNotFoundException();
+    }
+
+    if (amount == null) {
+      amount = '100000000';
     }
 
     return StatelessCommercioAccount.requestFreeTokens(
