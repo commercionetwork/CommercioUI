@@ -95,3 +95,20 @@ class CommercioDocsReceivedDocumentsEvent extends CommercioDocsEvent {
   @override
   List<Object> get props => [];
 }
+
+abstract class CommercioDocsEncDataEvent extends Equatable {
+  const CommercioDocsEncDataEvent();
+}
+
+class CommercioDocsChangeEncryptedData extends CommercioDocsEncDataEvent {
+  final EncryptedData encryptedDataKey;
+  final bool newValue;
+
+  const CommercioDocsChangeEncryptedData({
+    @required this.encryptedDataKey,
+    @required this.newValue,
+  });
+
+  @override
+  List<Object> get props => [encryptedDataKey, newValue];
+}

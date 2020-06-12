@@ -78,3 +78,24 @@ class CommercioDocsReceivedDocuments extends CommercioDocsState {
   @override
   List<Object> get props => [commercioDocs, receivedDocuments];
 }
+
+abstract class CommercioDocsEncDataState extends CommercioState {
+  final Map<EncryptedData, bool> encryptedData;
+
+  const CommercioDocsEncDataState({@required this.encryptedData});
+
+  @override
+  List<Object> get props => [encryptedData];
+}
+
+class CommercioDocsEncDataInitial extends CommercioDocsEncDataState {
+  const CommercioDocsEncDataInitial({
+    @required Map<EncryptedData, bool> encryptedData,
+  }) : super(encryptedData: encryptedData);
+}
+
+class CommercioDocsEncDataChanged extends CommercioDocsEncDataState {
+  const CommercioDocsEncDataChanged({
+    @required Map<EncryptedData, bool> encryptedData,
+  }) : super(encryptedData: encryptedData);
+}

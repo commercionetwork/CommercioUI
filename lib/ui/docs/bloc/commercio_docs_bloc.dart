@@ -1,4 +1,5 @@
 import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commerciosdk/docs/export.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -103,6 +104,45 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
       } catch (e) {
         yield CommercioDocsReceivedDocumentsError(e.toString());
       }
+    }
+  }
+}
+
+/// Handle changes in a list of [EncryptedData] fields. Every field has a
+/// [bool] value that indicates if the [EncryptedData] should be encrypted
+/// in a [CommercioDocsShareEncryptedDocumentEvent].
+class CommercioDocsEncDataBloc
+    extends Bloc<CommercioDocsEncDataEvent, CommercioDocsEncDataState> {
+  final Map<EncryptedData, bool> encryptedData;
+
+  CommercioDocsEncDataBloc({
+    Map<EncryptedData, bool> encryptedData,
+  }) : encryptedData =
+            encryptedData ?? {for (var k in EncryptedData.values) k: false};
+
+  /// Returns a list with the [EncryptedData] that have a [true] value,
+  /// that is, chosen be the user to be encrypted.
+  /// Commonly used as parameter for
+  /// [CommercioDocsShareEncryptedDocumentEvent].
+  List<EncryptedData> get encryptedDataList => encryptedData.entries
+      .where((element) => element.value)
+      .map((e) => e.key)
+      .toList();
+
+  @override
+  CommercioDocsEncDataState get initialState => CommercioDocsEncDataInitial(
+        encryptedData: encryptedData,
+      );
+
+  @override
+  Stream<CommercioDocsEncDataState> mapEventToState(
+    CommercioDocsEncDataEvent event,
+  ) async* {
+    if (event is CommercioDocsChangeEncryptedData) {
+      encryptedData[event.encryptedDataKey] = event.newValue;
+      final newEncryptedData = Map<EncryptedData, bool>.from(encryptedData);
+
+      yield CommercioDocsEncDataChanged(encryptedData: newEncryptedData);
     }
   }
 }
