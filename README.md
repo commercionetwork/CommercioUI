@@ -1,6 +1,7 @@
 # CommercioUI
 
 [![Build Status](https://travis-ci.com/commercionetwork/CommercioUI.svg?branch=fix/add-docs)](https://travis-ci.com/commercionetwork/CommercioUI)
+[![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
 CommercioUI reduces your overall  blockchain app development time by 90% because of its pre-build clean Core+UI widgets that you can use in any flutter app development. We have spent  one year to build this library to make to make your life easier.
 
