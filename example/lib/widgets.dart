@@ -48,6 +48,8 @@ class ExamplePage extends StatelessWidget {
           // Custom FlatButton that when is pressed sends an event
           // to generate new mnemonic and derive the wallet
           GenerateWalletFlatButton(
+            accountEventCallback: () =>
+                const CommercioAccountGenerateNewWalletEvent(),
             disabledTextColor: Colors.brown,
             color: Colors.orangeAccent,
             child: () => const Text('Generate new wallet'),
