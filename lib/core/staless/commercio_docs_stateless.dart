@@ -46,7 +46,8 @@ class StatelessCommercioDocs {
   /// Share the document associated with the given [metadata] and having the
   /// optional [contentUri], [doSign] and [checksum] from the [senderWallet] to
   /// the [recipients] list of addresses.
-  /// The [encryptedData] are encrypted with the AES-256 [aesKey].
+  /// The [encryptedData] are encrypted with an optional [aesKey].
+  /// If no [aesKey] is provided a new one is generated.
   ///
   /// The [docId] should be a valid UUID v5, if it's not specified a new one
   /// is generated.
@@ -57,8 +58,8 @@ class StatelessCommercioDocs {
     @required Wallet wallet,
     @required CommercioDocMetadata metadata,
     @required List<String> recipients,
-    @required Key aesKey,
     @required List<EncryptedData> encryptedData,
+    Key aesKey,
     String docId,
     CommercioDoSign doSign,
     CommercioDocChecksum checksum,
