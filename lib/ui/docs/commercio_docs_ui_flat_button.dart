@@ -1,5 +1,4 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commerciosdk/export.dart' as sdk;
 import 'package:flutter/material.dart';
 
 class ShareDocumentFlatButton extends EventFlatButton<
@@ -31,13 +30,7 @@ class ShareDocumentFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required sdk.CommercioDocMetadata metadata,
-    @required List<String> recipients,
-    String docId,
-    sdk.CommercioDoSign doSign,
-    sdk.CommercioDocChecksum checksum,
-    String contentUri,
-    sdk.StdFee fee,
+    @required CommercioDocsShareDocumentEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -60,15 +53,7 @@ class ShareDocumentFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioDocsShareDocumentEvent(
-            metadata: metadata,
-            recipients: recipients,
-            docId: docId,
-            doSign: doSign,
-            checksum: checksum,
-            contentUri: contentUri,
-            fee: fee,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -102,15 +87,9 @@ class ShareEncryptedDocumentFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required sdk.CommercioDocMetadata metadata,
-    @required List<String> recipients,
-    @required sdk.Key aesKey,
-    @required List<sdk.EncryptedData> Function() encryptedData,
-    String docId,
-    sdk.CommercioDoSign doSign,
-    sdk.CommercioDocChecksum checksum,
-    String contentUri,
-    sdk.StdFee fee,
+    @required
+        CommercioDocsShareEncryptedDocumentEvent Function()
+            accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -133,17 +112,7 @@ class ShareEncryptedDocumentFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioDocsShareEncryptedDocumentEvent(
-            metadata: metadata,
-            recipients: recipients,
-            aesKey: aesKey,
-            encryptedData: encryptedData(),
-            docId: docId,
-            doSign: doSign,
-            checksum: checksum,
-            contentUri: contentUri,
-            fee: fee,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -177,9 +146,7 @@ class SendReceiptFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required String recipient,
-    @required String txHash,
-    @required String docId,
+    @required CommercioDocsSendReceiptEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -202,11 +169,7 @@ class SendReceiptFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioDocsSendReceiptEvent(
-            recipient: recipient,
-            txHash: txHash,
-            docId: docId,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -240,6 +203,7 @@ class SentDocumentsFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required CommercioDocsSentDocumentsEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -262,7 +226,7 @@ class SentDocumentsFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => const CommercioDocsSentDocumentsEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -296,6 +260,8 @@ class ReceivedDocumentsFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required
+        CommercioDocsReceivedDocumentsEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -318,8 +284,7 @@ class ReceivedDocumentsFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () =>
-              const CommercioDocsReceivedDocumentsEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }

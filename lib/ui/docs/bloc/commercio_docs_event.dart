@@ -44,8 +44,8 @@ class CommercioDocsShareEncryptedDocumentEvent extends CommercioDocsEvent {
   const CommercioDocsShareEncryptedDocumentEvent({
     @required this.metadata,
     @required this.recipients,
-    @required this.aesKey,
     @required this.encryptedData,
+    this.aesKey,
     this.docId,
     this.doSign,
     this.checksum,
@@ -57,8 +57,8 @@ class CommercioDocsShareEncryptedDocumentEvent extends CommercioDocsEvent {
   List<Object> get props => [
         metadata,
         recipients,
-        aesKey,
         encryptedData,
+        aesKey,
         docId,
         doSign,
         checksum,
