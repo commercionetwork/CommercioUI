@@ -268,6 +268,8 @@ class ExamplePage extends StatelessWidget {
         //
         // Errors are handled automatically but the callback can be customized
         GenerateWalletFlatButton(
+          accountEventCallback: () =>
+                const CommercioAccountGenerateNewWalletEvent(),
           disabledTextColor: Colors.brown,
           color: Colors.orangeAccent,
           child: () => const Text('Generate new wallet'),
