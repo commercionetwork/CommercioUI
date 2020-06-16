@@ -105,6 +105,32 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
         yield CommercioDocsReceivedDocumentsError(e.toString());
       }
     }
+
+    if (event is CommercioDocsSentReceiptsEvent) {
+      try {
+        yield const CommercioDocsSentReceiptsLoading();
+
+        final sentReceipts = await commercioDocs.sentReceipts();
+
+        yield CommercioDocsSentReceipts(
+            commercioDocs: commercioDocs, sentReceipts: sentReceipts);
+      } catch (e) {
+        yield CommercioDocsSentReceiptsError(e.toString());
+      }
+    }
+
+    if (event is CommercioDocsReceivedReceiptsEvent) {
+      try {
+        yield const CommercioDocsReceivedReceiptsLoading();
+
+        final receivedReceipts = await commercioDocs.receivedReceipts();
+
+        yield CommercioDocsReceivedReceipts(
+            commercioDocs: commercioDocs, receivedReceipts: receivedReceipts);
+      } catch (e) {
+        yield CommercioDocsReceivedReceiptsError(e.toString());
+      }
+    }
   }
 }
 

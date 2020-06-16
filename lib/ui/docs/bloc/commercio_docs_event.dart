@@ -96,6 +96,20 @@ class CommercioDocsReceivedDocumentsEvent extends CommercioDocsEvent {
   List<Object> get props => [];
 }
 
+class CommercioDocsSentReceiptsEvent extends CommercioDocsEvent {
+  const CommercioDocsSentReceiptsEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class CommercioDocsReceivedReceiptsEvent extends CommercioDocsEvent {
+  const CommercioDocsReceivedReceiptsEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
 abstract class CommercioDocsEncDataEvent extends Equatable {
   const CommercioDocsEncDataEvent();
 }

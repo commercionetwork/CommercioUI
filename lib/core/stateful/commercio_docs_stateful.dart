@@ -112,7 +112,7 @@ class StatefulCommercioDocs {
         fee: fee);
   }
 
-  /// Returns the list of [CommercioDoc] sent from the [commercioAccount].
+  /// Returns the list of [CommercioDoc] sent from [walletWithAddress].
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<List<CommercioDoc>> sentDocuments() async {
@@ -125,15 +125,38 @@ class StatefulCommercioDocs {
         httpHelper: commercioAccount.httpHelper);
   }
 
-  /// Returns the list of [CommercioDoc] received from the [commercioAccount].
+  /// Returns the list of [CommercioDoc] received by [walletWithAddress].
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<List<CommercioDoc>> receivedDocuments() async {
-    if (commercioAccount.wallet == null) {
+    if (commercioAccount.walletWithAddress == null) {
       throw const WalletNotFoundException();
     }
 
     return StatelessCommercioDocs.receivedDocuments(
+        walletWithAddress: commercioAccount.walletWithAddress,
+        httpHelper: commercioAccount.httpHelper);
+  }
+
+  /// Returns the list of [CommercioDocReceipt] sent from [walletWithAddress].
+  Future<List<CommercioDocReceipt>> sentReceipts() async {
+    if (commercioAccount.walletWithAddress == null) {
+      throw const WalletNotFoundException();
+    }
+
+    return StatelessCommercioDocs.sentReceipts(
+        walletWithAddress: commercioAccount.walletWithAddress,
+        httpHelper: commercioAccount.httpHelper);
+  }
+
+  /// Returns the list of [CommercioDocReceipt] received by
+  /// [walletWithAddress].
+  Future<List<CommercioDocReceipt>> receivedReceipts() async {
+    if (commercioAccount.walletWithAddress == null) {
+      throw const WalletNotFoundException();
+    }
+
+    return StatelessCommercioDocs.sentReceipts(
         walletWithAddress: commercioAccount.walletWithAddress,
         httpHelper: commercioAccount.httpHelper);
   }

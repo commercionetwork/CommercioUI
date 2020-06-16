@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commercio_ui/core/utils/export.dart';
 import 'package:commerciosdk/export.dart';
@@ -106,7 +104,7 @@ class StatelessCommercioDocs {
     );
   }
 
-  /// Returns the list of [CommercioDoc] sent from the [walletWithAddress].
+  /// Returns the list of [CommercioDoc] sent from [walletWithAddress].
   /// An optional [httpHelper] can be specified.
   static Future<List<CommercioDoc>> sentDocuments({
     @required WalletWithAddress walletWithAddress,
@@ -114,28 +112,13 @@ class StatelessCommercioDocs {
   }) async {
     httpHelper ??= HttpHelper();
 
-    final response = await httpHelper.getRequest(
-        endpoint: HttpEndpoint.sentDocs,
-        walletAddress: walletWithAddress.address);
-
-    if (response.statusCode != 200) {
-      throw Exception(
-          'Network error: { code: ${response.statusCode}, reason: ${response.reasonPhrase} }');
-    }
-
-    if (response.body.isEmpty) {
-      return [];
-    }
-
-    final documentsRaw = jsonDecode(response.body) as Map<String, dynamic>;
-    final documentsRawResult = documentsRaw['result'] as List;
-
-    return documentsRawResult
-        .map((json) => CommercioDoc.fromJson(json as Map<String, dynamic>))
-        .toList();
+    return DocsHelper.getSendDocuments(
+      walletWithAddress.address,
+      walletWithAddress.wallet,
+    );
   }
 
-  /// Returns the list of [CommercioDoc] received from the [walletWithAddress].
+  /// Returns the list of [CommercioDoc] received by [walletWithAddress].
   /// An optional [httpHelper] can be specified.
   static Future<List<CommercioDoc>> receivedDocuments({
     @required WalletWithAddress walletWithAddress,
@@ -143,24 +126,38 @@ class StatelessCommercioDocs {
   }) async {
     httpHelper ??= HttpHelper();
 
-    final response = await httpHelper.getRequest(
-        endpoint: HttpEndpoint.receivedDocs,
-        walletAddress: walletWithAddress.address);
+    return DocsHelper.getReceivedDocuments(
+      walletWithAddress.address,
+      walletWithAddress.wallet,
+    );
+  }
 
-    if (response.statusCode != 200) {
-      throw Exception(
-          'Network error: { code: ${response.statusCode}, reason: ${response.reasonPhrase} }');
-    }
+  /// Returns the list of [CommercioDocReceipt] sent from [walletWithAddress].
+  /// An optional [httpHelper] can be specified.
+  static Future<List<CommercioDocReceipt>> sentReceipts({
+    @required WalletWithAddress walletWithAddress,
+    HttpHelper httpHelper,
+  }) async {
+    httpHelper ??= HttpHelper();
 
-    if (response.body.isEmpty) {
-      return [];
-    }
+    return DocsHelper().getSentReceipts(
+      walletWithAddress.address,
+      walletWithAddress.wallet,
+    );
+  }
 
-    final documentsRaw = jsonDecode(response.body) as Map<String, dynamic>;
-    final documentsRawResult = documentsRaw['result'] as List;
+  /// Returns the list of [CommercioDocReceipt] received by
+  /// [walletWithAddress].
+  /// An optional [httpHelper] can be specified.
+  static Future<List<CommercioDocReceipt>> receivedReceipts({
+    @required WalletWithAddress walletWithAddress,
+    HttpHelper httpHelper,
+  }) async {
+    httpHelper ??= HttpHelper();
 
-    return documentsRawResult
-        .map((json) => CommercioDoc.fromJson(json as Map<String, dynamic>))
-        .toList();
+    return DocsHelper().getReceivedReceipts(
+      walletWithAddress.address,
+      walletWithAddress.wallet,
+    );
   }
 }

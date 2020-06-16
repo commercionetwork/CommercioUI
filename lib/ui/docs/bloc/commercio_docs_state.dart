@@ -79,6 +79,32 @@ class CommercioDocsReceivedDocuments extends CommercioDocsState {
   List<Object> get props => [commercioDocs, receivedDocuments];
 }
 
+class CommercioDocsSentReceipts extends CommercioDocsState {
+  final StatefulCommercioDocs commercioDocs;
+  final List<CommercioDocReceipt> sentReceipts;
+
+  const CommercioDocsSentReceipts({
+    @required this.commercioDocs,
+    @required this.sentReceipts,
+  });
+
+  @override
+  List<Object> get props => [commercioDocs, sentReceipts];
+}
+
+class CommercioDocsReceivedReceipts extends CommercioDocsState {
+  final StatefulCommercioDocs commercioDocs;
+  final List<CommercioDocReceipt> receivedReceipts;
+
+  const CommercioDocsReceivedReceipts({
+    @required this.commercioDocs,
+    @required this.receivedReceipts,
+  });
+
+  @override
+  List<Object> get props => [commercioDocs, receivedReceipts];
+}
+
 abstract class CommercioDocsEncDataState extends CommercioState {
   final Map<EncryptedData, bool> encryptedData;
 

@@ -30,3 +30,11 @@ class CommercioDocsSentDocumentsError extends CommercioDocsError {
 class CommercioDocsReceivedDocumentsError extends CommercioDocsError {
   const CommercioDocsReceivedDocumentsError(String message) : super(message);
 }
+
+class CommercioDocsSentReceiptsError extends CommercioDocsError {
+  const CommercioDocsSentReceiptsError(String message) : super(message);
+}
+
+class CommercioDocsReceivedReceiptsError extends CommercioDocsError {
+  const CommercioDocsReceivedReceiptsError(String message) : super(message);
+}

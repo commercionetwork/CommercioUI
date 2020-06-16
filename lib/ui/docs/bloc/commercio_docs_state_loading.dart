@@ -27,3 +27,11 @@ class CommercioDocsSentDocumentsLoading extends CommercioDocsLoading {
 class CommercioDocsReceivedDocumentsLoading extends CommercioDocsLoading {
   const CommercioDocsReceivedDocumentsLoading();
 }
+
+class CommercioDocsSentReceiptsLoading extends CommercioDocsLoading {
+  const CommercioDocsSentReceiptsLoading();
+}
+
+class CommercioDocsReceivedReceiptsLoading extends CommercioDocsLoading {
+  const CommercioDocsReceivedReceiptsLoading();
+}
