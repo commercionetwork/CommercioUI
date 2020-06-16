@@ -9,17 +9,17 @@ environment:
 dependencies:
     flutter:
         sdk: flutter
-    basic_utils: ^2.5.3
+    basic_utils: ^2.5.4
     bip39: ^1.0.3
     bloc: ^4.0.0
     commerciosdk: ^2.1.0
     equatable: ^1.2.0
-    flutter_bloc: ^4.0.0
+    flutter_bloc: ^4.0.1
     flutter_secure_storage: ^3.3.3
     http: ^0.12.1
     meta: ^1.1.8
     sacco: ^0.1.4
-    uuid: ^2.0.4
+    uuid: ^2.1.0
 
 dev_dependencies:
     flutter_test:
