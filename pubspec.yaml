@@ -14,7 +14,7 @@ dependencies:
   bloc: ^4.0.0
   commerciosdk:
     git:
-      url: git@github.com:commercionetwork/commercio-sdk.dart.git
+      url: https://github.com/commercionetwork/commercio-sdk.dart.git
       ref: master
   equatable: ^1.2.0
   flutter_bloc: ^4.0.1

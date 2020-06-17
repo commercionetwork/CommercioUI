@@ -126,7 +126,7 @@ packages:
       path: "."
       ref: master
       resolved-ref: "51542cc83e1af81f0651d2fc287c2dc9389cb5dc"
-      url: "git@github.com:commercionetwork/commercio-sdk.dart.git"
+      url: "https://github.com/commercionetwork/commercio-sdk.dart.git"
     source: git
     version: "2.1.0"
   convert:
