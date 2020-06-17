@@ -30,7 +30,7 @@ class StatefulCommercioAccount {
               bech32Hrp: 'did:com:',
               lcdUrl: 'http://localhost:1317',
             ),
-        httpHelper = httpHelper ?? HttpHelper(lcdUrl: networkInfo.lcdUrl);
+        httpHelper = httpHelper ?? HttpHelper();
 
   /// Returns the [Wallet] of this account.
   Wallet get wallet => walletWithAddress?.wallet;
