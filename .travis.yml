@@ -1,6 +1,5 @@
-os:
-    - linux
-sudo: false
+dist: xenial
+language: minimal
 addons:
     apt:
         # Flutter depends on /usr/lib/x86_64-linux-gnu/libstdc++.so.6 version GLIBCXX_3.4.18
