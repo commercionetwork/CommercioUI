@@ -140,7 +140,7 @@ class StatelessCommercioDocs {
   }) async {
     httpHelper ??= HttpHelper();
 
-    return DocsHelper().getSentReceipts(
+    return DocsHelper.getSentReceipts(
       walletWithAddress.address,
       walletWithAddress.wallet,
     );
@@ -155,7 +155,7 @@ class StatelessCommercioDocs {
   }) async {
     httpHelper ??= HttpHelper();
 
-    return DocsHelper().getReceivedReceipts(
+    return DocsHelper.getReceivedReceipts(
       walletWithAddress.address,
       walletWithAddress.wallet,
     );
