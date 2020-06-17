@@ -169,6 +169,11 @@ class StatelessCommercioAccount {
       throw AccountRequestError(e.toString());
     }
 
+    if (response.statusCode != 200) {
+      throw Exception(
+          'Error: ${response.reasonPhrase}(${response.statusCode}): ${response.body}');
+    }
+
     final balanceFullResult = BalanceFullResult.fromJson(
         jsonDecode(response.body) as Map<String, dynamic>);
 
