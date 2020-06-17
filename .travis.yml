@@ -21,6 +21,3 @@ script:
     - flutter analyze --no-pub
     - flutter format -n --set-exit-if-changed .
     - flutter test
-cache:
-    directories:
-        - $HOME/.pub-cache
