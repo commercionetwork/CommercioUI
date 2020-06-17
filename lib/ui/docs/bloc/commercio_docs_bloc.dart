@@ -8,10 +8,9 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
   final StatefulCommercioId commercioId;
 
   CommercioDocsBloc({
-    @required StatefulCommercioAccount commercioAccount,
-  })  : commercioId = StatefulCommercioId(commercioAccount: commercioAccount),
-        commercioDocs =
-            StatefulCommercioDocs(commercioAccount: commercioAccount);
+    @required this.commercioDocs,
+    @required this.commercioId,
+  });
 
   @override
   CommercioDocsState get initialState => const CommercioDocsInitial();
@@ -21,115 +20,156 @@ class CommercioDocsBloc extends Bloc<CommercioDocsEvent, CommercioDocsState> {
     CommercioDocsEvent event,
   ) async* {
     if (event is CommercioDocsShareDocumentEvent) {
-      try {
-        yield const CommercioDocsShareDocumentLoading();
-
-        final txResult = await commercioDocs.shareDocument(
-          metadata: event.metadata,
-          recipients: event.recipients,
-          docId: event.docId,
-          doSign: event.doSign,
-          checksum: event.checksum,
-          contentUri: event.contentUri,
-          fee: event.fee,
-        );
-
-        yield CommercioDocsSharedDocument(
-            commercioDocs: commercioDocs, transactionResult: txResult);
-      } catch (e) {
-        yield CommercioDocsShareDocumentError(e.toString());
-      }
+      yield* _mapCommercioDocsShareDocumentEventToState(event);
     }
 
     if (event is CommercioDocsShareEncryptedDocumentEvent) {
-      try {
-        yield const CommercioDocsShareEncryptedDocumentLoading();
-
-        final txResult = await commercioDocs.shareEncryptedDocument(
-          metadata: event.metadata,
-          recipients: event.recipients,
-          aesKey: event.aesKey,
-          encryptedData: event.encryptedData,
-          docId: event.docId,
-          doSign: event.doSign,
-          checksum: event.checksum,
-          contentUri: event.contentUri,
-          fee: event.fee,
-        );
-
-        yield CommercioDocsSharedEncryptedDocument(
-            commercioDocs: commercioDocs, transactionResult: txResult);
-      } catch (e) {
-        yield CommercioDocsShareEncryptedDocumentError(e.toString());
-      }
+      yield* _mapCommercioDocsShareEncryptedDocumentLoadingToState(event);
     }
 
     if (event is CommercioDocsSendReceiptEvent) {
-      try {
-        yield const CommercioDocsSendReceiptLoading();
-
-        final txResult = await commercioDocs.sendReceipt(
-            recipient: event.recipient,
-            txHash: event.txHash,
-            docId: event.docId);
-
-        yield CommercioDocsSentReceipt(
-            commercioDocs: commercioDocs, transactionResult: txResult);
-      } catch (e) {
-        yield CommercioDocsSendReceiptError(e.toString());
-      }
+      yield* _mapCommercioDocsSendReceiptEventToState(event);
     }
 
     if (event is CommercioDocsSentDocumentsEvent) {
-      try {
-        yield const CommercioDocsSentDocumentsLoading();
-
-        final sentDocuments = await commercioDocs.sentDocuments();
-
-        yield CommercioDocsSentDocuments(
-            commercioDocs: commercioDocs, sentDocuments: sentDocuments);
-      } catch (e) {
-        yield CommercioDocsSentDocumentsError(e.toString());
-      }
+      yield* _mapCommercioDocsSentDocumentsEventToState(event);
     }
 
     if (event is CommercioDocsReceivedDocumentsEvent) {
-      try {
-        yield const CommercioDocsReceivedDocumentsLoading();
-
-        final receivedDocuments = await commercioDocs.receivedDocuments();
-
-        yield CommercioDocsReceivedDocuments(
-            commercioDocs: commercioDocs, receivedDocuments: receivedDocuments);
-      } catch (e) {
-        yield CommercioDocsReceivedDocumentsError(e.toString());
-      }
+      yield* _mapCommercioDocsReceivedDocumentsEventToState(event);
     }
 
     if (event is CommercioDocsSentReceiptsEvent) {
-      try {
-        yield const CommercioDocsSentReceiptsLoading();
-
-        final sentReceipts = await commercioDocs.sentReceipts();
-
-        yield CommercioDocsSentReceipts(
-            commercioDocs: commercioDocs, sentReceipts: sentReceipts);
-      } catch (e) {
-        yield CommercioDocsSentReceiptsError(e.toString());
-      }
+      yield* _mapCommercioDocsSentReceiptsEventToState(event);
     }
 
     if (event is CommercioDocsReceivedReceiptsEvent) {
-      try {
-        yield const CommercioDocsReceivedReceiptsLoading();
+      yield* _mapCommercioDocsReceivedReceiptsEventToState(event);
+    }
+  }
 
-        final receivedReceipts = await commercioDocs.receivedReceipts();
+  Stream<CommercioDocsState> _mapCommercioDocsShareDocumentEventToState(
+    CommercioDocsShareDocumentEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsShareDocumentLoading();
 
-        yield CommercioDocsReceivedReceipts(
-            commercioDocs: commercioDocs, receivedReceipts: receivedReceipts);
-      } catch (e) {
-        yield CommercioDocsReceivedReceiptsError(e.toString());
-      }
+      final txResult = await commercioDocs.shareDocument(
+        metadata: event.metadata,
+        recipients: event.recipients,
+        docId: event.docId,
+        doSign: event.doSign,
+        checksum: event.checksum,
+        contentUri: event.contentUri,
+        fee: event.fee,
+      );
+
+      yield CommercioDocsSharedDocument(
+          commercioDocs: commercioDocs, transactionResult: txResult);
+    } catch (e) {
+      yield CommercioDocsShareDocumentError(e.toString());
+    }
+  }
+
+  Stream<CommercioDocsState>
+      _mapCommercioDocsShareEncryptedDocumentLoadingToState(
+    CommercioDocsShareEncryptedDocumentEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsShareEncryptedDocumentLoading();
+
+      final txResult = await commercioDocs.shareEncryptedDocument(
+        metadata: event.metadata,
+        recipients: event.recipients,
+        aesKey: event.aesKey,
+        encryptedData: event.encryptedData,
+        docId: event.docId,
+        doSign: event.doSign,
+        checksum: event.checksum,
+        contentUri: event.contentUri,
+        fee: event.fee,
+      );
+
+      yield CommercioDocsSharedEncryptedDocument(
+          commercioDocs: commercioDocs, transactionResult: txResult);
+    } catch (e) {
+      yield CommercioDocsShareEncryptedDocumentError(e.toString());
+    }
+  }
+
+  Stream<CommercioDocsState> _mapCommercioDocsSendReceiptEventToState(
+    CommercioDocsSendReceiptEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsSendReceiptLoading();
+
+      final txResult = await commercioDocs.sendReceipt(
+          recipient: event.recipient, txHash: event.txHash, docId: event.docId);
+
+      yield CommercioDocsSentReceipt(
+          commercioDocs: commercioDocs, transactionResult: txResult);
+    } catch (e) {
+      yield CommercioDocsSendReceiptError(e.toString());
+    }
+  }
+
+  Stream<CommercioDocsState> _mapCommercioDocsSentDocumentsEventToState(
+    CommercioDocsSentDocumentsEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsSentDocumentsLoading();
+
+      final sentDocuments = await commercioDocs.sentDocuments();
+
+      yield CommercioDocsSentDocuments(
+          commercioDocs: commercioDocs, sentDocuments: sentDocuments);
+    } catch (e) {
+      yield CommercioDocsSentDocumentsError(e.toString());
+    }
+  }
+
+  Stream<CommercioDocsState> _mapCommercioDocsReceivedDocumentsEventToState(
+    CommercioDocsReceivedDocumentsEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsReceivedDocumentsLoading();
+
+      final receivedDocuments = await commercioDocs.receivedDocuments();
+
+      yield CommercioDocsReceivedDocuments(
+          commercioDocs: commercioDocs, receivedDocuments: receivedDocuments);
+    } catch (e) {
+      yield CommercioDocsReceivedDocumentsError(e.toString());
+    }
+  }
+
+  Stream<CommercioDocsState> _mapCommercioDocsSentReceiptsEventToState(
+    CommercioDocsSentReceiptsEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsSentReceiptsLoading();
+
+      final sentReceipts = await commercioDocs.sentReceipts();
+
+      yield CommercioDocsSentReceipts(
+          commercioDocs: commercioDocs, sentReceipts: sentReceipts);
+    } catch (e) {
+      yield CommercioDocsSentReceiptsError(e.toString());
+    }
+  }
+
+  Stream<CommercioDocsState> _mapCommercioDocsReceivedReceiptsEventToState(
+    CommercioDocsReceivedReceiptsEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsReceivedReceiptsLoading();
+
+      final receivedReceipts = await commercioDocs.receivedReceipts();
+
+      yield CommercioDocsReceivedReceipts(
+          commercioDocs: commercioDocs, receivedReceipts: receivedReceipts);
+    } catch (e) {
+      yield CommercioDocsReceivedReceiptsError(e.toString());
     }
   }
 }

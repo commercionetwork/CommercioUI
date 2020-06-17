@@ -18,138 +18,144 @@ class CommercioAccountBloc
     CommercioAccountEvent event,
   ) async* {
     if (event is CommercioAccountGenerateNewWalletEvent) {
-      try {
-        yield const CommercioAccountLoadingGenerateWallet();
-
-        yield await _mapCommercioAccountGenerateNewWalletEventToState(event);
-      } catch (e) {
-        yield CommercioAccountGenerateWalletError(e.toString());
-      }
+      yield* _mapCommercioAccountGenerateNewWalletEventToState(event);
     }
 
     if (event is CommercioAccountRestoreWalletEvent) {
-      try {
-        yield const CommercioAccountLoadingRestoreWallet();
-
-        yield await _mapCommercioAccountRestoreWalletEventToState(event);
-      } catch (e) {
-        yield CommercioAccountRestoreWalletError(e.toString());
-      }
+      yield* _mapCommercioAccountRestoreWalletEventToState(event);
     }
 
     if (event is CommercioAccountRequestFreeTokensEvent) {
-      try {
-        yield const CommercioAccountLoadingRequestFreeTokensWallet();
-
-        yield await _mapCommercioAccountRequestFreeTokensEventToState(event);
-      } catch (e) {
-        yield CommercioAccountRequestFreeTokensError(e.toString());
-      }
+      yield* _mapCommercioAccountRequestFreeTokensEventToState(event);
     }
 
     if (event is CommercioAccountCheckBalanceEvent) {
-      try {
-        yield const CommercioAccountLoadingCheckBalance();
-
-        yield await _mapCommercioAccountCheckBalanceEventToState(event);
-      } catch (e) {
-        yield CommercioAccountCheckBalanceError(e.toString());
-      }
+      yield* _mapCommercioAccountCheckBalanceEventToState(event);
     }
 
     if (event is CommercioAccountSendTokensEvent) {
-      try {
-        yield const CommercioAccountLoadingSendTokens();
-
-        yield await _mapCommercioAccountSendTokensEventToState(event);
-      } catch (e) {
-        yield CommercioAccountSendTokensError(e.toString());
-      }
+      yield* _mapCommercioAccountSendTokensEventToState(event);
     }
 
     if (event is CommercioAccountGenerateQrEvent) {
-      try {
-        yield const CommercioAccountLoadingGenerateQr();
-
-        yield await _mapCommercioAccountGenerateQrEventToState(event);
-      } catch (e) {
-        yield CommercioAccountGenerateQrError(e.toString());
-      }
+      yield* _mapCommercioAccountGenerateQrEventToState(event);
     }
 
     if (event is CommercioAccountGeneratePairwiseWalletEvent) {
-      try {
-        yield const CommercioAccountLoadingGeneratePairwiseWallet();
-
-        yield await _mapCommercioAccountGeneratePairwiseWalletToState(event);
-      } catch (e) {
-        yield CommercioAccountGeneratePairwiseWalletError(e.toString());
-      }
+      yield* _mapCommercioAccountGeneratePairwiseWalletToState(event);
     }
   }
 
-  Future<CommercioAccountState> _mapCommercioAccountRestoreWalletEventToState(
-      CommercioAccountRestoreWalletEvent event) async {
-    await commercioAccount.restoreWallet();
+  Stream<CommercioAccountState> _mapCommercioAccountRestoreWalletEventToState(
+    CommercioAccountRestoreWalletEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountLoadingRestoreWallet();
 
-    return CommercioAccountRestoredWithWallet(
-        commercioAccount: commercioAccount);
+      await commercioAccount.restoreWallet();
+
+      yield CommercioAccountRestoredWithWallet(
+          commercioAccount: commercioAccount);
+    } catch (e) {
+      yield CommercioAccountRestoreWalletError(e.toString());
+    }
   }
 
-  Future<CommercioAccountState>
+  Stream<CommercioAccountState>
       _mapCommercioAccountGenerateNewWalletEventToState(
-          CommercioAccountGenerateNewWalletEvent event) async {
-    await commercioAccount.generateNewWallet(
-        mnemonic: event.mnemonic,
-        lastDerivationPathSegment: event.lastDerivationPathSegment);
+    CommercioAccountGenerateNewWalletEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountLoadingGenerateWallet();
 
-    return CommercioAccountGeneratedWithWallet(
-        commercioAccount: commercioAccount);
+      await commercioAccount.generateNewWallet(
+          mnemonic: event.mnemonic,
+          lastDerivationPathSegment: event.lastDerivationPathSegment);
+
+      yield CommercioAccountGeneratedWithWallet(
+          commercioAccount: commercioAccount);
+    } catch (e) {
+      yield CommercioAccountGenerateWalletError(e.toString());
+    }
   }
 
-  Future<CommercioAccountState>
+  Stream<CommercioAccountState>
       _mapCommercioAccountRequestFreeTokensEventToState(
-          CommercioAccountRequestFreeTokensEvent event) async {
-    final response =
-        await commercioAccount.requestFreeTokens(amount: event.amount);
+    CommercioAccountRequestFreeTokensEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountLoadingRequestFreeTokensWallet();
+      final response =
+          await commercioAccount.requestFreeTokens(amount: event.amount);
 
-    return CommercioAccountWithWalletFreeTokens(
-        commercioAccount: commercioAccount, accountRequestResponse: response);
+      yield CommercioAccountWithWalletFreeTokens(
+          commercioAccount: commercioAccount, accountRequestResponse: response);
+    } catch (e) {
+      yield CommercioAccountRequestFreeTokensError(e.toString());
+    }
   }
 
-  Future<CommercioAccountState> _mapCommercioAccountCheckBalanceEventToState(
-      CommercioAccountCheckBalanceEvent event) async {
-    final balance = await commercioAccount.checkAccountBalance();
+  Stream<CommercioAccountState> _mapCommercioAccountCheckBalanceEventToState(
+    CommercioAccountCheckBalanceEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountLoadingCheckBalance();
 
-    return CommercioAccountBalance(
-        commercioAccount: commercioAccount, balance: balance);
+      final balance = await commercioAccount.checkAccountBalance();
+
+      yield CommercioAccountBalance(
+          commercioAccount: commercioAccount, balance: balance);
+    } catch (e) {
+      yield CommercioAccountCheckBalanceError(e.toString());
+    }
   }
 
-  Future<CommercioAccountState> _mapCommercioAccountSendTokensEventToState(
-      CommercioAccountSendTokensEvent event) async {
-    final result = await commercioAccount.sendTokens(
-        recipientAddress: event.recipientAddress,
-        amount: event.amount,
-        feeAmount: event.feeAmount,
-        gas: event.gas);
+  Stream<CommercioAccountState> _mapCommercioAccountSendTokensEventToState(
+    CommercioAccountSendTokensEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountLoadingSendTokens();
 
-    return CommercioAccountSentTokens(
-        commercioAccount: commercioAccount, result: result);
+      final result = await commercioAccount.sendTokens(
+          recipientAddress: event.recipientAddress,
+          amount: event.amount,
+          feeAmount: event.feeAmount,
+          gas: event.gas);
+
+      yield CommercioAccountSentTokens(
+          commercioAccount: commercioAccount, result: result);
+    } catch (e) {
+      yield CommercioAccountSendTokensError(e.toString());
+    }
   }
 
-  Future<CommercioAccountState> _mapCommercioAccountGenerateQrEventToState(
-      CommercioAccountGenerateQrEvent event) async {
-    return CommercioAccountQrWithWallet(commercioAccount: commercioAccount);
+  Stream<CommercioAccountState> _mapCommercioAccountGenerateQrEventToState(
+    CommercioAccountGenerateQrEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountLoadingGenerateQr();
+
+      yield CommercioAccountQrWithWallet(commercioAccount: commercioAccount);
+    } catch (e) {
+      yield CommercioAccountGenerateQrError(e.toString());
+    }
   }
 
-  Future<CommercioAccountState>
+  Stream<CommercioAccountState>
       _mapCommercioAccountGeneratePairwiseWalletToState(
-          CommercioAccountGeneratePairwiseWalletEvent event) async {
-    final pairwiseWallet = await commercioAccount.generatePairwiseWallet(
-      newMnemonic: event.newMnemonic,
-      lastDerivationPathSegment: event.lastDerivationPath,
-    );
+    CommercioAccountGeneratePairwiseWalletEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountLoadingGeneratePairwiseWallet();
 
-    return CommercioAccountGeneratedPaiwiseWallet(wallet: pairwiseWallet);
+      final pairwiseWallet = await commercioAccount.generatePairwiseWallet(
+        newMnemonic: event.newMnemonic,
+        lastDerivationPathSegment: event.lastDerivationPath,
+      );
+
+      yield CommercioAccountGeneratedPaiwiseWallet(wallet: pairwiseWallet);
+    } catch (e) {
+      yield CommercioAccountGeneratePairwiseWalletError(e.toString());
+    }
   }
 }

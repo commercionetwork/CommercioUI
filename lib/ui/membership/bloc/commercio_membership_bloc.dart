@@ -7,9 +7,8 @@ class CommercioMembershipBloc
   final StatefulCommercioMembership commercioMembership;
 
   CommercioMembershipBloc({
-    @required StatefulCommercioAccount commercioAccount,
-  }) : commercioMembership =
-            StatefulCommercioMembership(commercioAccount: commercioAccount);
+    @required this.commercioMembership,
+  });
 
   @override
   CommercioMembershipState get initialState =>
@@ -20,50 +19,71 @@ class CommercioMembershipBloc
     CommercioMembershipEvent event,
   ) async* {
     if (event is CommercioMembershipRequestFaucetInviteEvent) {
-      try {
-        yield const CommercioMembershipRequestFaucetInviteLoading();
-
-        final result = await commercioMembership.requestFaucetInvite();
-
-        yield CommercioMembershipRequestedFaucetInvite(
-          commercioMembership: commercioMembership,
-          result: result,
-        );
-      } catch (e) {
-        yield CommercioMembershipRequestFaucetInviteError(e.toString());
-      }
+      yield* _mapCommercioMembershipRequestFaucetInviteEventToState(event);
     }
 
     if (event is CommercioMembershipBuyMembershipEvent) {
-      try {
-        yield const CommercioMembershipBuyMembershipLoading();
-
-        final txResult = await commercioMembership.buyMembership(
-            membershipType: event.membershipType, fee: event.fee);
-
-        yield CommercioMembershipBuyMembership(
-          commercioMembership: commercioMembership,
-          transactionResult: txResult,
-        );
-      } catch (e) {
-        yield CommercioMembershipBuyMembershipError(e.toString());
-      }
+      yield* _mapCommercioMembershipBuyMembershipEventToState(event);
     }
 
     if (event is CommercioMembershipInviteMemberEvent) {
-      try {
-        yield const CommercioMembershipInviteMemberLoading();
+      yield* _mapCommercioMembershipInviteMemberEventToState(event);
+    }
+  }
 
-        final txResult = await commercioMembership.inviteMember(
-            invitedAddress: event.invitedAddress, fee: event.fee);
+  Stream<CommercioMembershipState>
+      _mapCommercioMembershipRequestFaucetInviteEventToState(
+    CommercioMembershipRequestFaucetInviteEvent event,
+  ) async* {
+    try {
+      yield const CommercioMembershipRequestFaucetInviteLoading();
 
-        yield CommercioMembershipInviteMember(
-          commercioMembership: commercioMembership,
-          transactionResult: txResult,
-        );
-      } catch (e) {
-        yield CommercioMembershipInviteMemberError(e.toString());
-      }
+      final result = await commercioMembership.requestFaucetInvite();
+
+      yield CommercioMembershipRequestedFaucetInvite(
+        commercioMembership: commercioMembership,
+        result: result,
+      );
+    } catch (e) {
+      yield CommercioMembershipRequestFaucetInviteError(e.toString());
+    }
+  }
+
+  Stream<CommercioMembershipState>
+      _mapCommercioMembershipBuyMembershipEventToState(
+    CommercioMembershipBuyMembershipEvent event,
+  ) async* {
+    try {
+      yield const CommercioMembershipBuyMembershipLoading();
+
+      final txResult = await commercioMembership.buyMembership(
+          membershipType: event.membershipType, fee: event.fee);
+
+      yield CommercioMembershipBuyMembership(
+        commercioMembership: commercioMembership,
+        transactionResult: txResult,
+      );
+    } catch (e) {
+      yield CommercioMembershipBuyMembershipError(e.toString());
+    }
+  }
+
+  Stream<CommercioMembershipState>
+      _mapCommercioMembershipInviteMemberEventToState(
+    CommercioMembershipInviteMemberEvent event,
+  ) async* {
+    try {
+      yield const CommercioMembershipInviteMemberLoading();
+
+      final txResult = await commercioMembership.inviteMember(
+          invitedAddress: event.invitedAddress, fee: event.fee);
+
+      yield CommercioMembershipInviteMember(
+        commercioMembership: commercioMembership,
+        transactionResult: txResult,
+      );
+    } catch (e) {
+      yield CommercioMembershipInviteMemberError(e.toString());
     }
   }
 }

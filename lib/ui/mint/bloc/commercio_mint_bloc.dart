@@ -6,9 +6,8 @@ class CommercioMintBloc extends Bloc<CommercioMintEvent, CommercioMintState> {
   final StatefulCommercioMint commercioMint;
 
   CommercioMintBloc({
-    @required StatefulCommercioAccount commercioAccount,
-  }) : commercioMint =
-            StatefulCommercioMint(commercioAccount: commercioAccount);
+    @required this.commercioMint,
+  });
 
   @override
   CommercioMintState get initialState => const CommercioMintInitial();
@@ -18,31 +17,43 @@ class CommercioMintBloc extends Bloc<CommercioMintEvent, CommercioMintState> {
     CommercioMintEvent event,
   ) async* {
     if (event is CommercioMintOpenCdpEvent) {
-      try {
-        yield const CommercioMintOpenCdpLoading();
-
-        final txResult =
-            await commercioMint.openCdp(amount: event.amount, fee: event.fee);
-
-        yield CommercioMintOpenedCdp(
-            commercioMint: commercioMint, transactionResult: txResult);
-      } catch (e) {
-        yield CommercioMintOpenCdpError(e.toString());
-      }
+      yield* _mapCommercioMintOpenCdpEventToState(event);
     }
 
     if (event is CommercioMintCloseCdpEvent) {
-      try {
-        yield const CommercioMintCloseCdpLoading();
+      yield* _mapCommercioMintCloseCdpEventToState(event);
+    }
+  }
 
-        final txResult = await commercioMint.closeCdp(
-            blockHeight: event.blockHeight, fee: event.fee);
+  Stream<CommercioMintState> _mapCommercioMintOpenCdpEventToState(
+    CommercioMintOpenCdpEvent event,
+  ) async* {
+    try {
+      yield const CommercioMintOpenCdpLoading();
 
-        yield CommercioMintClosedCdp(
-            commercioMint: commercioMint, transactionResult: txResult);
-      } catch (e) {
-        yield CommercioMintCloseCdpError(e.toString());
-      }
+      final txResult =
+          await commercioMint.openCdp(amount: event.amount, fee: event.fee);
+
+      yield CommercioMintOpenedCdp(
+          commercioMint: commercioMint, transactionResult: txResult);
+    } catch (e) {
+      yield CommercioMintOpenCdpError(e.toString());
+    }
+  }
+
+  Stream<CommercioMintState> _mapCommercioMintCloseCdpEventToState(
+    CommercioMintCloseCdpEvent event,
+  ) async* {
+    try {
+      yield const CommercioMintCloseCdpLoading();
+
+      final txResult = await commercioMint.closeCdp(
+          blockHeight: event.blockHeight, fee: event.fee);
+
+      yield CommercioMintClosedCdp(
+          commercioMint: commercioMint, transactionResult: txResult);
+    } catch (e) {
+      yield CommercioMintCloseCdpError(e.toString());
     }
   }
 }
