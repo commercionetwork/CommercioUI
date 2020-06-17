@@ -11,8 +11,8 @@ import 'package:sacco/sacco.dart';
 class StatefulCommercioAccount {
   final String secureStorageKey;
   final FlutterSecureStorage secureStorage;
-  final NetworkInfo networkInfo;
-  final HttpHelper httpHelper;
+  NetworkInfo _networkInfo;
+  HttpHelper httpHelper;
   WalletWithAddress walletWithAddress;
   String mnemonic;
 
@@ -25,7 +25,7 @@ class StatefulCommercioAccount {
     HttpHelper httpHelper,
   })  : secureStorageKey = storageKey ?? 'commercio-account-mnemonic',
         secureStorage = storage ?? const FlutterSecureStorage(),
-        networkInfo = networkInfo ??
+        _networkInfo = networkInfo ??
             NetworkInfo(
               bech32Hrp: 'did:com:',
               lcdUrl: 'http://localhost:1317',
@@ -46,6 +46,17 @@ class StatefulCommercioAccount {
 
   /// Returns [true] if the account has the mnemonic in memory.
   bool get hasMnemonic => mnemonic != null;
+
+  /// Set a new [networkInfo], invalidating current [walletWithAddress] and
+  /// [mnemonic].
+  void set networkInfo(NetworkInfo networkInfo) {
+    _networkInfo = networkInfo;
+    walletWithAddress = null;
+    mnemonic = null;
+  }
+
+  /// Get the current [networkInfo].
+  NetworkInfo get networkInfo => _networkInfo;
 
   /// Generates a new String of 24 space-separated mnemonic words.
   Future<String> generateMnemonic() {
