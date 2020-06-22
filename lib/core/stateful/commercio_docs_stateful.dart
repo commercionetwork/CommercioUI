@@ -121,8 +121,8 @@ class StatefulCommercioDocs {
     }
 
     return StatelessCommercioDocs.sentDocuments(
-        walletWithAddress: commercioAccount.walletWithAddress,
-        httpHelper: commercioAccount.httpHelper);
+      walletWithAddress: commercioAccount.walletWithAddress,
+    );
   }
 
   /// Returns the list of [CommercioDoc] received by [walletWithAddress].
@@ -134,8 +134,8 @@ class StatefulCommercioDocs {
     }
 
     return StatelessCommercioDocs.receivedDocuments(
-        walletWithAddress: commercioAccount.walletWithAddress,
-        httpHelper: commercioAccount.httpHelper);
+      walletWithAddress: commercioAccount.walletWithAddress,
+    );
   }
 
   /// Returns the list of [CommercioDocReceipt] sent from [walletWithAddress].
@@ -145,8 +145,8 @@ class StatefulCommercioDocs {
     }
 
     return StatelessCommercioDocs.sentReceipts(
-        walletWithAddress: commercioAccount.walletWithAddress,
-        httpHelper: commercioAccount.httpHelper);
+      walletWithAddress: commercioAccount.walletWithAddress,
+    );
   }
 
   /// Returns the list of [CommercioDocReceipt] received by
@@ -157,7 +157,7 @@ class StatefulCommercioDocs {
     }
 
     return StatelessCommercioDocs.sentReceipts(
-        walletWithAddress: commercioAccount.walletWithAddress,
-        httpHelper: commercioAccount.httpHelper);
+      walletWithAddress: commercioAccount.walletWithAddress,
+    );
   }
 }

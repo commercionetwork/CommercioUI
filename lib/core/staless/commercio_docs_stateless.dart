@@ -1,5 +1,4 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/core/utils/export.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
@@ -105,13 +104,9 @@ class StatelessCommercioDocs {
   }
 
   /// Returns the list of [CommercioDoc] sent from [walletWithAddress].
-  /// An optional [httpHelper] can be specified.
   static Future<List<CommercioDoc>> sentDocuments({
     @required WalletWithAddress walletWithAddress,
-    HttpHelper httpHelper,
   }) async {
-    httpHelper ??= HttpHelper();
-
     return DocsHelper.getSendDocuments(
       walletWithAddress.address,
       walletWithAddress.wallet,
@@ -119,13 +114,9 @@ class StatelessCommercioDocs {
   }
 
   /// Returns the list of [CommercioDoc] received by [walletWithAddress].
-  /// An optional [httpHelper] can be specified.
   static Future<List<CommercioDoc>> receivedDocuments({
     @required WalletWithAddress walletWithAddress,
-    HttpHelper httpHelper,
   }) async {
-    httpHelper ??= HttpHelper();
-
     return DocsHelper.getReceivedDocuments(
       walletWithAddress.address,
       walletWithAddress.wallet,
@@ -133,13 +124,9 @@ class StatelessCommercioDocs {
   }
 
   /// Returns the list of [CommercioDocReceipt] sent from [walletWithAddress].
-  /// An optional [httpHelper] can be specified.
   static Future<List<CommercioDocReceipt>> sentReceipts({
     @required WalletWithAddress walletWithAddress,
-    HttpHelper httpHelper,
   }) async {
-    httpHelper ??= HttpHelper();
-
     return DocsHelper.getSentReceipts(
       walletWithAddress.address,
       walletWithAddress.wallet,
@@ -148,13 +135,9 @@ class StatelessCommercioDocs {
 
   /// Returns the list of [CommercioDocReceipt] received by
   /// [walletWithAddress].
-  /// An optional [httpHelper] can be specified.
   static Future<List<CommercioDocReceipt>> receivedReceipts({
     @required WalletWithAddress walletWithAddress,
-    HttpHelper httpHelper,
   }) async {
-    httpHelper ??= HttpHelper();
-
     return DocsHelper.getReceivedReceipts(
       walletWithAddress.address,
       walletWithAddress.wallet,
