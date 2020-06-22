@@ -1,3 +1,4 @@
+/// Exception thrown when there are no wallet avaiable.
 class WalletNotFoundException implements Exception {
   static const String message =
       'No active wallet found. Have you tried to generate one or restoring it?';

@@ -1,4 +1,6 @@
-part of 'commercio_account_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
+import 'package:sacco/sacco.dart';
 
 abstract class CommercioAccountEvent extends Equatable {
   const CommercioAccountEvent();
@@ -70,14 +72,12 @@ class CommercioAccountGenerateQrEvent extends CommercioAccountEvent {
 
 class CommercioAccountGeneratePairwiseWalletEvent
     extends CommercioAccountEvent {
-  final String newMnemonic;
   final String lastDerivationPath;
 
   const CommercioAccountGeneratePairwiseWalletEvent({
-    this.newMnemonic,
-    this.lastDerivationPath = '1',
+    @required this.lastDerivationPath,
   });
 
   @override
-  List<Object> get props => [newMnemonic, lastDerivationPath];
+  List<Object> get props => [lastDerivationPath];
 }

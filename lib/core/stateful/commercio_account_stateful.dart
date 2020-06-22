@@ -1,61 +1,94 @@
-import 'package:commercio_ui/export.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commercio_ui/core/utils/export.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
+/// The [StatefulCommercioAccount] module allows to generate mnemonics, derive
+/// wallets, send and request tokens.
 class StatefulCommercioAccount {
   final String secureStorageKey;
   final FlutterSecureStorage secureStorage;
-  final NetworkInfo networkInfo;
+  NetworkInfo _networkInfo;
+  HttpHelper httpHelper;
   WalletWithAddress walletWithAddress;
   String mnemonic;
 
+  /// Creates a [StatefulCommercioAccount] with the optional [storageKey],
+  /// [storage] and [networkInfo].
   StatefulCommercioAccount({
     String storageKey,
     FlutterSecureStorage storage,
     NetworkInfo networkInfo,
+    HttpHelper httpHelper,
   })  : secureStorageKey = storageKey ?? 'commercio-account-mnemonic',
         secureStorage = storage ?? const FlutterSecureStorage(),
-        networkInfo = networkInfo ??
+        _networkInfo = networkInfo ??
             NetworkInfo(
               bech32Hrp: 'did:com:',
               lcdUrl: 'http://localhost:1317',
-            );
+            ),
+        httpHelper = httpHelper ?? HttpHelper();
 
+  /// Returns the [Wallet] of this account.
   Wallet get wallet => walletWithAddress?.wallet;
 
+  /// Returns the [Wallet] address of this account.
   String get walletAddress => walletWithAddress?.address;
 
+  /// Returns [true] if the account has the [Wallet] in memory.
   bool get hasWallet => wallet != null;
 
+  /// Returns [true] if the account has the [Wallet] address in memory.
   bool get hasWalletAddress => walletAddress != null;
 
+  /// Returns [true] if the account has the mnemonic in memory.
   bool get hasMnemonic => mnemonic != null;
 
+  /// Set a new [networkInfo], invalidating current [walletWithAddress] and
+  /// [mnemonic].
+  void set networkInfo(NetworkInfo networkInfo) {
+    _networkInfo = networkInfo;
+    walletWithAddress = null;
+    mnemonic = null;
+  }
+
+  /// Get the current [networkInfo].
+  NetworkInfo get networkInfo => _networkInfo;
+
+  /// Generates a new String of 24 space-separated mnemonic words.
   Future<String> generateMnemonic() {
     return StatelessCommercioAccount.generateMnemonic()
         .then((value) => mnemonic = value);
   }
 
+  /// Save the [mnemonic] in the secure storage.
   Future<void> storeMnemonic({@required String mnemonic}) {
     return StatelessCommercioAccount.storeMnemonic(
         secureStorage: secureStorage,
         secureStorageKey: secureStorageKey,
-        mnemonic: mnemonic);
+        mnemonic: mnemonic ?? this.mnemonic);
   }
 
+  /// Restore and return the mnemonic from the secure storage.
   Future<String> fetchMnemonic() {
     return StatelessCommercioAccount.fetchMnemonic(
         secureStorage: secureStorage, secureStorageKey: secureStorageKey);
   }
 
+  /// Delete the mnemonic inside the secure storage.
   Future<void> deleteMnemonic() {
     return StatelessCommercioAccount.deleteMnemonic(
         secureStorage: secureStorage, secureStorageKey: secureStorageKey);
   }
 
+  /// Restore and return the [Wallet] with the mnemonic stored inside the
+  /// secure storage.
+  ///
+  /// If there are not mnemonic stored then a [MnemonicNotStoredException] is
+  /// thrown.
   Future<Wallet> restoreWallet() async {
     mnemonic ??= await fetchMnemonic();
 
@@ -65,66 +98,98 @@ class StatefulCommercioAccount {
 
     final wallet = await StatelessCommercioAccount.deriveWallet(
         networkInfo: networkInfo, mnemonic: mnemonic);
-    final walletAddress = await _preCalculateAddress(wallet);
 
     walletWithAddress =
-        WalletWithAddress(wallet: wallet, address: walletAddress);
+        WalletWithAddress(wallet: wallet, address: wallet.bech32Address);
 
     return wallet;
   }
 
-  /// Generate a new [Wallet] associated with the given works and the optional [networkInfo].
+  /// Generate a new [Wallet] associated with the optional [mnemonic],
+  /// [networkInfo] and [lastDerivationPathSegment].
   ///
+  /// If no [mnemonic] are specified then new words are generated and stored
+  /// in the account.
   Future<Wallet> generateNewWallet({
     String mnemonic,
     String lastDerivationPathSegment,
   }) async {
-    mnemonic ??= await generateMnemonic();
+    this.mnemonic = mnemonic ?? await generateMnemonic();
     await storeMnemonic(mnemonic: mnemonic);
 
     final wallet = await StatelessCommercioAccount.deriveWallet(
         networkInfo: networkInfo,
-        mnemonic: mnemonic,
+        mnemonic: this.mnemonic,
         lastDerivationPathSegment: lastDerivationPathSegment);
-    final walletAddress = await _preCalculateAddress(wallet);
 
     walletWithAddress =
-        WalletWithAddress(wallet: wallet, address: walletAddress);
+        WalletWithAddress(wallet: wallet, address: wallet.bech32Address);
 
     return wallet;
   }
 
+  /// Generate a pairwise [Wallet] from the given [lastDerivationPathSegment].
+  /// If no [NetworkInfo] is setted an [Exception] is thrown.
+  /// If no [mnemonic] is already loaded an [WalletNotFoundException] is
+  /// thrown.
   Future<Wallet> generatePairwiseWallet({
-    String lastDerivationPathSegment,
-    String newMnemonic,
+    @required String lastDerivationPathSegment,
   }) {
+    if (networkInfo == null) {
+      throw Exception('No network info');
+    }
+
+    if (mnemonic == null) {
+      throw WalletNotFoundException();
+    }
+
     return StatelessCommercioAccount.generatePairwiseWallet(
-        networkInfo: networkInfo, newMnemonic: newMnemonic);
+      networkInfo: networkInfo,
+      mnemonic: mnemonic,
+      lastDerivationPathSegment: lastDerivationPathSegment,
+    );
   }
 
-  Future<AccountRequestResponse> requestFreeTokens({
-    String faucetDomain,
-    String amount = '100000000',
-  }) {
+  /// Request an [amount] of free tokens.
+  ///
+  /// A [AccountRequestResponse] is returned with the success or failure of
+  /// the request.
+  ///
+  /// If the account does not have a wallet then [WalletNotFoundException] is
+  /// thrown.
+  Future<AccountRequestResponse> requestFreeTokens({String amount}) {
     if (walletAddress == null) {
       throw const WalletNotFoundException();
     }
 
+    if (amount == null) {
+      amount = '100000000';
+    }
+
     return StatelessCommercioAccount.requestFreeTokens(
-        walletAddress: walletAddress);
+        walletAddress: walletAddress, amount: amount, httpHelper: httpHelper);
   }
 
+  /// Get the account balance of this account as a list of [StdCoin].
+  ///
+  /// If the wallet does not exists then [WalletNotFoundException] is thrown.
+  /// If an error happens in the request [AccountRequestError] is thrown.
   Future<List<StdCoin>> checkAccountBalance() async {
     if (wallet == null || walletAddress == null) {
       throw const WalletNotFoundException();
     }
 
-    // TODO: Check networkInfo
-
     return StatelessCommercioAccount.checkAccountBalance(
-        walletAddress: walletAddress, lcdUrl: networkInfo.lcdUrl);
+        walletAddress: walletAddress, httpHelper: httpHelper);
   }
 
+  /// Send the [amount] of tokens from the accoun to a [recipientAddress] list.
+  ///
+  /// An optional [feeAmount] and [gas] can be specified.
+  ///
+  /// Returns the [TransactionResult].
+  ///
+  /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<TransactionResult> sendTokens({
     @required String recipientAddress,
     @required List<StdCoin> amount,
@@ -143,18 +208,4 @@ class StatefulCommercioAccount {
         feeAmount: feeAmount,
         gas: gas);
   }
-
-  Future<String> _preCalculateAddress(Wallet wallet) async {
-    return _computeWalletAddress(_ComputeWalletAddressData(wallet));
-  }
-}
-
-class _ComputeWalletAddressData {
-  final Wallet wallet;
-
-  const _ComputeWalletAddressData(this.wallet);
-}
-
-String _computeWalletAddress(_ComputeWalletAddressData data) {
-  return data.wallet.bech32Address;
 }

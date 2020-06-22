@@ -1,4 +1,6 @@
-part of 'commercio_mint_bloc.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:meta/meta.dart';
+import 'package:sacco/sacco.dart';
 
 abstract class CommercioMintState extends CommercioState {
   const CommercioMintState();

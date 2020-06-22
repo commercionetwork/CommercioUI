@@ -1,4 +1,6 @@
-part of 'commercio_docs_bloc.dart';
+import 'package:commerciosdk/export.dart';
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 
 abstract class CommercioDocsEvent extends Equatable {
   const CommercioDocsEvent();
@@ -42,8 +44,8 @@ class CommercioDocsShareEncryptedDocumentEvent extends CommercioDocsEvent {
   const CommercioDocsShareEncryptedDocumentEvent({
     @required this.metadata,
     @required this.recipients,
-    @required this.aesKey,
     @required this.encryptedData,
+    this.aesKey,
     this.docId,
     this.doSign,
     this.checksum,
@@ -55,8 +57,8 @@ class CommercioDocsShareEncryptedDocumentEvent extends CommercioDocsEvent {
   List<Object> get props => [
         metadata,
         recipients,
-        aesKey,
         encryptedData,
+        aesKey,
         docId,
         doSign,
         checksum,
@@ -92,4 +94,35 @@ class CommercioDocsReceivedDocumentsEvent extends CommercioDocsEvent {
 
   @override
   List<Object> get props => [];
+}
+
+class CommercioDocsSentReceiptsEvent extends CommercioDocsEvent {
+  const CommercioDocsSentReceiptsEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class CommercioDocsReceivedReceiptsEvent extends CommercioDocsEvent {
+  const CommercioDocsReceivedReceiptsEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+abstract class CommercioDocsEncDataEvent extends Equatable {
+  const CommercioDocsEncDataEvent();
+}
+
+class CommercioDocsChangeEncryptedData extends CommercioDocsEncDataEvent {
+  final EncryptedData encryptedDataKey;
+  final bool newValue;
+
+  const CommercioDocsChangeEncryptedData({
+    @required this.encryptedDataKey,
+    @required this.newValue,
+  });
+
+  @override
+  List<Object> get props => [encryptedDataKey, newValue];
 }

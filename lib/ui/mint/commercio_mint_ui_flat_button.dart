@@ -1,4 +1,5 @@
-part of 'commercio_mint_ui.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/material.dart';
 
 class OpenCdpFlatButton extends EventFlatButton<
     CommercioMintBloc,
@@ -29,8 +30,7 @@ class OpenCdpFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required int amount,
-    sdk.StdFee fee,
+    @required CommercioMintOpenCdpEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -53,10 +53,7 @@ class OpenCdpFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioMintOpenCdpEvent(
-            amount: amount,
-            fee: fee,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -90,8 +87,7 @@ class CloseCdpFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required int blockHeight,
-    sdk.StdFee fee,
+    @required CommercioMintCloseCdpEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -114,10 +110,7 @@ class CloseCdpFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioMintCloseCdpEvent(
-            blockHeight: blockHeight,
-            fee: fee,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }

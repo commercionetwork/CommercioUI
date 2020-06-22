@@ -1,4 +1,5 @@
-part of 'commercio_id_ui.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/material.dart';
 
 class GenerateKeysFlatButton extends EventFlatButton<
     CommercioIdBloc,
@@ -29,6 +30,7 @@ class GenerateKeysFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required CommercioIdGenerateKeysEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -51,7 +53,7 @@ class GenerateKeysFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => const CommercioIdGenerateKeysEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -85,6 +87,7 @@ class RestoreKeysFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required CommercioIdRestoreKeysEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -107,7 +110,7 @@ class RestoreKeysFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => const CommercioIdRestoreKeysEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -141,6 +144,7 @@ class DeleteKeysFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required CommercioIdDeleteKeysEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -163,7 +167,7 @@ class DeleteKeysFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => const CommercioIdDeleteKeysEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -197,6 +201,7 @@ class DeriveDidDocumentFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required CommercioIdDeriveDidDocumentEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -219,7 +224,7 @@ class DeriveDidDocumentFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => const CommercioIdDeriveDidDocumentEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -253,6 +258,7 @@ class SetDidDocumentFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required CommercioIdSetDidDocumentEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -275,7 +281,7 @@ class SetDidDocumentFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => const CommercioIdSetDidDocumentEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -309,9 +315,8 @@ class RechargeGovernmentFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required List<StdCoin> rechargeAmount,
-    List<StdCoin> rechargeFee,
-    String rechargeGas,
+    @required
+        CommercioIdRechargeGovernmentEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -334,11 +339,7 @@ class RechargeGovernmentFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioIdRechargeGovernmentEvent(
-            rechargeAmount: rechargeAmount,
-            rechargeFee: rechargeFee,
-            rechargeGas: rechargeGas,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -372,9 +373,7 @@ class RequestDidPowerUpFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required String pairwiseAddress,
-    @required List<StdCoin> amount,
-    RSAPrivateKey rsaSignaturePrivateKey,
+    @required CommercioIdRequestDidPowerUpEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -397,11 +396,7 @@ class RequestDidPowerUpFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioIdRequestDidPowerUpEvent(
-            pairwiseAddress: pairwiseAddress,
-            amount: amount,
-            rsaSignaturePrivateKey: rsaSignaturePrivateKey,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }

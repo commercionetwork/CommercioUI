@@ -3,21 +3,28 @@ import 'package:commerciosdk/export.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 
+/// The [StatelessCommercioMembership] module allows you to buy memberships
+/// to display to everyone that you've been invited by an already verified
+/// members to join the network and invite other members.
 class StatelessCommercioMembership {
-  const StatelessCommercioMembership();
+  StatelessCommercioMembership._();
 
+  /// Request an member invitation for the [walletAddress] with optional
+  /// [httpHelper]. The [walletAddress] must be not already on the chain.
+  ///
+  /// Returns the response text.
   static Future<String> requestFaucetInvite({
     @required String walletAddress,
     String faucetDomain,
+    HttpHelper httpHelper,
   }) async {
+    httpHelper ??= HttpHelper();
+
     Response response;
     try {
-      response = await HttpHelper.faucetRequest(
-          path: HttpPath.invite,
-          faucetDomain: faucetDomain,
-          data: {
-            'addr': walletAddress,
-          });
+      response = await httpHelper.faucetRequest(path: HttpPath.invite, data: {
+        'addr': walletAddress,
+      });
     } catch (e) {
       rethrow;
     }
@@ -25,6 +32,14 @@ class StatelessCommercioMembership {
     return response.body;
   }
 
+  /// Buy a [membershipType] for the [wallet] with optional [fee].
+  ///
+  /// To buy a membership the [wallet] must be:
+  /// 1. Invited by another member with at least bronze membership
+  /// 2. Have at least the required Commercio Cash Credits (CCC)
+  ///    required for the [membershipType] (see [StatelessCommercioMint]).
+  ///
+  /// Returns the [TransactionResult].
   static Future<TransactionResult> buyMembership({
     @required Wallet wallet,
     @required MembershipType membershipType,
@@ -33,6 +48,10 @@ class StatelessCommercioMembership {
     return MembershipHelper.buyMembership(membershipType, wallet, fee: fee);
   }
 
+  /// Invite a new [invitedAddress] to the chain. To send an invite the
+  /// [wallet] must have bought a membership (see [buyMembership()]).
+  ///
+  /// Returns the [TransactionResult].
   static Future<TransactionResult> inviteMember({
     @required Wallet wallet,
     @required String invitedAddress,

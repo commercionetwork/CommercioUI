@@ -1,4 +1,7 @@
-part of 'commercio_mint_ui.dart';
+import 'dart:ui' as ui show TextHeightBehavior;
+
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/material.dart';
 
 class OpenCdpText extends CommercioTextWidget<
     CommercioMintBloc,

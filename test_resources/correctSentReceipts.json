@@ -1,0 +1,13 @@
+{
+    "height": "0",
+    "result": [
+        {
+            "uuid": "682d14f3-4b6d-48f3-90d1-613fadb5deae",
+            "sender": "did:com:1htpr8tse94xhhjtrjued7klj82nlaclpukz33r",
+            "recipient": "did:com:1qge6t5qvjm8d4f6xlqv69j6vezvwx9vd3xzzmt",
+            "tx_hash": "C024FC03DDFD1E0C8C02EFFD9E9D35989DAC571976FCAF2CA860493447E67D11",
+            "document_uuid": "f5ffe0fa-8678-4c59-8ad8-0c1c3e6c64c6",
+            "proof": ""
+        }
+    ]
+}

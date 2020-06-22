@@ -1,6 +1,11 @@
-part of 'commercio_account_ui.dart';
+import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 
-class RestoreWalletCommercioAccountTextField extends CommercioTextField<
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class RestoreWalletTextField extends CommercioTextField<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
@@ -8,7 +13,7 @@ class RestoreWalletCommercioAccountTextField extends CommercioTextField<
     CommercioAccountRestoredWithWallet,
     CommercioAccountInitial,
     CommercioAccountGenerateWalletError> {
-  RestoreWalletCommercioAccountTextField({
+  RestoreWalletTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -109,7 +114,7 @@ class RestoreWalletCommercioAccountTextField extends CommercioTextField<
         );
 }
 
-class GenerateWalletCommercioAccountTextField extends CommercioTextField<
+class GenerateWalletTextField extends CommercioTextField<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
@@ -117,7 +122,7 @@ class GenerateWalletCommercioAccountTextField extends CommercioTextField<
     CommercioAccountGeneratedWithWallet,
     CommercioAccountInitial,
     CommercioAccountRestoreWalletError> {
-  GenerateWalletCommercioAccountTextField({
+  GenerateWalletTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -218,7 +223,7 @@ class GenerateWalletCommercioAccountTextField extends CommercioTextField<
         );
 }
 
-class RequestFreeTokensCommercioAccountTextField extends CommercioTextField<
+class RequestFreeTokensTextField extends CommercioTextField<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
@@ -226,7 +231,7 @@ class RequestFreeTokensCommercioAccountTextField extends CommercioTextField<
     CommercioAccountWithWalletFreeTokens,
     CommercioAccountInitial,
     CommercioAccountRequestFreeTokensError> {
-  RequestFreeTokensCommercioAccountTextField({
+  RequestFreeTokensTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -329,7 +334,7 @@ class RequestFreeTokensCommercioAccountTextField extends CommercioTextField<
         );
 }
 
-class CheckBalanceCommercioAccountTextField extends CommercioTextField<
+class CheckBalanceTextField extends CommercioTextField<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
@@ -337,7 +342,7 @@ class CheckBalanceCommercioAccountTextField extends CommercioTextField<
     CommercioAccountBalance,
     CommercioAccountInitial,
     CommercioAccountCheckBalanceError> {
-  CheckBalanceCommercioAccountTextField({
+  CheckBalanceTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -438,7 +443,7 @@ class CheckBalanceCommercioAccountTextField extends CommercioTextField<
         );
 }
 
-class SendTokensCommercioAccountTextField extends CommercioTextField<
+class SendTokensTextField extends CommercioTextField<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
@@ -446,7 +451,7 @@ class SendTokensCommercioAccountTextField extends CommercioTextField<
     CommercioAccountSentTokens,
     CommercioAccountInitial,
     CommercioAccountSendTokensError> {
-  SendTokensCommercioAccountTextField({
+  SendTokensTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -547,16 +552,15 @@ class SendTokensCommercioAccountTextField extends CommercioTextField<
         );
 }
 
-class GeneratePairwiseWalletCommercioAccountTextField
-    extends CommercioTextField<
-        CommercioAccountBloc,
-        CommercioAccountEvent,
-        CommercioAccountState,
-        CommercioAccountLoadingGeneratePairwiseWallet,
-        CommercioAccountGeneratedPaiwiseWallet,
-        CommercioAccountInitial,
-        CommercioAccountSendTokensError> {
-  GeneratePairwiseWalletCommercioAccountTextField({
+class GeneratePairwiseWalletTextField extends CommercioTextField<
+    CommercioAccountBloc,
+    CommercioAccountEvent,
+    CommercioAccountState,
+    CommercioAccountLoadingGeneratePairwiseWallet,
+    CommercioAccountGeneratedPaiwiseWallet,
+    CommercioAccountInitial,
+    CommercioAccountSendTokensError> {
+  GeneratePairwiseWalletTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,

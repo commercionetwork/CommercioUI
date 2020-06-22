@@ -1,3 +1,4 @@
+/// Exception thrown when there are no keys avaiable.
 class NoKeysFoundException implements Exception {
   static const String message =
       'No keys associated to the account. Have you generated or restored them?';

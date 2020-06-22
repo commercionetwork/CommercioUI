@@ -1,2 +1,2 @@
-export 'bloc/commercio_id_bloc.dart';
+export 'bloc/export.dart';
 export 'commercio_id_ui.dart';

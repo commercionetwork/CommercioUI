@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "4.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.39.8"
+    version: "0.39.10"
   archive:
     dependency: transitive
     description:
@@ -49,7 +49,7 @@ packages:
       name: basic_utils
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.3"
+    version: "2.5.4"
   bech32:
     dependency: transitive
     description:
@@ -130,10 +130,12 @@ packages:
   commerciosdk:
     dependency: "direct main"
     description:
-      name: commerciosdk
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
+      path: "."
+      ref: master
+      resolved-ref: "5dd3d4a31e53a6404c4dc767b8aca45b14e39ad1"
+      url: "https://github.com/pasqenr/commercio-sdk.dart.git"
+    source: git
+    version: "2.1.2"
   convert:
     dependency: transitive
     description:
@@ -147,7 +149,7 @@ packages:
       name: coverage
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.9"
+    version: "0.13.11"
   crypto:
     dependency: transitive
     description:
@@ -182,7 +184,7 @@ packages:
       name: equatable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.0"
   fixnum:
     dependency: transitive
     description:
@@ -201,7 +203,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "4.0.1"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -283,7 +285,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.1+1"
+    version: "0.6.2"
   json_annotation:
     dependency: transitive
     description:
@@ -374,7 +376,7 @@ packages:
       name: node_preamble
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.9"
+    version: "1.4.10"
   package_config:
     dependency: transitive
     description:
@@ -423,7 +425,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.2"
+    version: "4.1.3"
   pub_semver:
     dependency: transitive
     description:
@@ -441,9 +443,11 @@ packages:
   sacco:
     dependency: "direct main"
     description:
-      name: sacco
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: master
+      resolved-ref: "97a6633e6b1b9831e5e558ac5e90513bddba5b34"
+      url: "https://github.com/pasqenr/sacco.dart"
+    source: git
     version: "0.1.4"
   shelf:
     dependency: transitive
@@ -582,7 +586,7 @@ packages:
       name: uuid
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.4"
+    version: "2.1.0"
   vector_math:
     dependency: transitive
     description:
@@ -617,7 +621,7 @@ packages:
       name: webkit_inspection_protocol
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.2"
+    version: "0.7.3"
   xml:
     dependency: transitive
     description:

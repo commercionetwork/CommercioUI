@@ -1,4 +1,5 @@
-part of 'commercio_membership_ui.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/material.dart';
 
 class RequestFaucetInviteFlatButton extends EventFlatButton<
     CommercioMembershipBloc,
@@ -29,6 +30,9 @@ class RequestFaucetInviteFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required
+        CommercioMembershipRequestFaucetInviteEvent Function()
+            accountEventCallback,
     String faucetDomain,
   }) : super(
           key: key,
@@ -52,10 +56,7 @@ class RequestFaucetInviteFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () =>
-              CommercioMembershipRequestFaucetInviteEvent(
-            faucetDomain: faucetDomain,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -89,8 +90,8 @@ class BuyMembershipFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required sdk.MembershipType membershipType,
-    sdk.StdFee fee,
+    @required
+        CommercioMembershipBuyMembershipEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -113,10 +114,7 @@ class BuyMembershipFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioMembershipBuyMembershipEvent(
-            membershipType: membershipType,
-            fee: fee,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -150,8 +148,8 @@ class InviteMemberFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required String invitedAddress,
-    sdk.StdFee fee,
+    @required
+        CommercioMembershipInviteMemberEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -174,10 +172,7 @@ class InviteMemberFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioMembershipInviteMemberEvent(
-            invitedAddress: invitedAddress,
-            fee: fee,
-          ),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }

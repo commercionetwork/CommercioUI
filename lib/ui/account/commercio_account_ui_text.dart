@@ -1,13 +1,16 @@
-part of 'commercio_account_ui.dart';
+import 'dart:ui' as ui show TextHeightBehavior;
 
-class RestoreWalletCommercioAccountText extends CommercioTextWidget<
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/material.dart';
+
+class RestoreWalletText extends CommercioTextWidget<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
     CommercioAccountLoadingRestoreWallet,
     CommercioAccountRestoredWithWallet,
     CommercioAccountInitial> {
-  const RestoreWalletCommercioAccountText({
+  const RestoreWalletText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -45,14 +48,14 @@ class RestoreWalletCommercioAccountText extends CommercioTextWidget<
         );
 }
 
-class GenerateWalletCommercioAccountText extends CommercioTextWidget<
+class GenerateWalletText extends CommercioTextWidget<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
     CommercioAccountLoadingGenerateWallet,
     CommercioAccountGeneratedWithWallet,
     CommercioAccountInitial> {
-  const GenerateWalletCommercioAccountText({
+  const GenerateWalletText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -90,14 +93,14 @@ class GenerateWalletCommercioAccountText extends CommercioTextWidget<
         );
 }
 
-class RequestFreeTokensCommercioAccountText extends CommercioTextWidget<
+class RequestFreeTokensText extends CommercioTextWidget<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
     CommercioAccountLoadingRequestFreeTokensWallet,
     CommercioAccountWithWalletFreeTokens,
     CommercioAccountInitial> {
-  const RequestFreeTokensCommercioAccountText({
+  const RequestFreeTokensText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -136,14 +139,14 @@ class RequestFreeTokensCommercioAccountText extends CommercioTextWidget<
         );
 }
 
-class CheckBalanceCommercioAccountText extends CommercioTextWidget<
+class CheckBalanceText extends CommercioTextWidget<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
     CommercioAccountLoadingCheckBalance,
     CommercioAccountBalance,
     CommercioAccountInitial> {
-  const CheckBalanceCommercioAccountText({
+  const CheckBalanceText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -180,14 +183,14 @@ class CheckBalanceCommercioAccountText extends CommercioTextWidget<
         );
 }
 
-class SendTokensCommercioAccountText extends CommercioTextWidget<
+class SendTokensText extends CommercioTextWidget<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
     CommercioAccountLoadingSendTokens,
     CommercioAccountSentTokens,
     CommercioAccountInitial> {
-  const SendTokensCommercioAccountText({
+  const SendTokensText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -224,14 +227,14 @@ class SendTokensCommercioAccountText extends CommercioTextWidget<
         );
 }
 
-class GeneratePairwiseWalletCommercioAccountText extends CommercioTextWidget<
+class GeneratePairwiseWalletText extends CommercioTextWidget<
     CommercioAccountBloc,
     CommercioAccountEvent,
     CommercioAccountState,
     CommercioAccountLoadingGeneratePairwiseWallet,
     CommercioAccountGeneratedPaiwiseWallet,
     CommercioAccountInitial> {
-  const GeneratePairwiseWalletCommercioAccountText({
+  const GeneratePairwiseWalletText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,

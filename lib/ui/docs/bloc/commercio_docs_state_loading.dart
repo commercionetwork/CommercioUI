@@ -1,4 +1,4 @@
-part of 'commercio_docs_bloc.dart';
+import 'package:commercio_ui/commercio_ui.dart';
 
 class CommercioDocsLoading extends CommercioDocsState
     implements CommercioLoading {
@@ -26,4 +26,12 @@ class CommercioDocsSentDocumentsLoading extends CommercioDocsLoading {
 
 class CommercioDocsReceivedDocumentsLoading extends CommercioDocsLoading {
   const CommercioDocsReceivedDocumentsLoading();
+}
+
+class CommercioDocsSentReceiptsLoading extends CommercioDocsLoading {
+  const CommercioDocsSentReceiptsLoading();
+}
+
+class CommercioDocsReceivedReceiptsLoading extends CommercioDocsLoading {
+  const CommercioDocsReceivedReceiptsLoading();
 }

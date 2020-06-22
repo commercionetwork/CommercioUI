@@ -1,4 +1,5 @@
-part of 'commercio_account_ui.dart';
+import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/material.dart';
 
 class GenerateWalletFlatButton extends EventFlatButton<
     CommercioAccountBloc,
@@ -29,6 +30,8 @@ class GenerateWalletFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required
+        CommercioAccountGenerateNewWalletEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -51,8 +54,7 @@ class GenerateWalletFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () =>
-              const CommercioAccountGenerateNewWalletEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -86,6 +88,8 @@ class RestoreWalletFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required
+        CommercioAccountRestoreWalletEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -108,8 +112,7 @@ class RestoreWalletFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () =>
-              const CommercioAccountRestoreWalletEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -143,6 +146,8 @@ class RequestFreeTokensFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required
+        CommercioAccountRequestFreeTokensEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -165,8 +170,7 @@ class RequestFreeTokensFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () =>
-              const CommercioAccountRequestFreeTokensEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -200,6 +204,7 @@ class CheckBalanceFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    @required CommercioAccountCheckBalanceEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -222,7 +227,7 @@ class CheckBalanceFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => const CommercioAccountCheckBalanceEvent(),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -255,11 +260,8 @@ class SendTokensFlatButton extends EventFlatButton<
     MaterialTapTargetSize materialTapTargetSize,
     Widget Function() loadingChild,
     Widget Function() child,
-    @required String recipientAddress,
-    @required List<StdCoin> amount,
-    List<StdCoin> feeAmount,
-    String gas,
     void Function(String errorMessage) errorCallback,
+    @required CommercioAccountSendTokensEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -282,11 +284,7 @@ class SendTokensFlatButton extends EventFlatButton<
           materialTapTargetSize: materialTapTargetSize,
           loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => CommercioAccountSendTokensEvent(
-              recipientAddress: recipientAddress,
-              amount: amount,
-              feeAmount: feeAmount,
-              gas: gas),
+          accountEventCallback: accountEventCallback,
           errorCallback: errorCallback,
         );
 }
@@ -376,6 +374,8 @@ class GeneratePairwiseWalletFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
+    String newMnemonic,
+    String lastDerivationPath = '1',
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -399,7 +399,9 @@ class GeneratePairwiseWalletFlatButton extends EventFlatButton<
           loadingChild: loadingChild,
           child: child,
           accountEventCallback: () =>
-              const CommercioAccountGeneratePairwiseWalletEvent(),
+              CommercioAccountGeneratePairwiseWalletEvent(
+            lastDerivationPath: lastDerivationPath,
+          ),
           errorCallback: errorCallback,
         );
 }

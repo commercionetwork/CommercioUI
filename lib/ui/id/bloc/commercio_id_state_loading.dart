@@ -1,4 +1,4 @@
-part of 'commercio_id_bloc.dart';
+import 'package:commercio_ui/commercio_ui.dart';
 
 class CommercioIdLoading extends CommercioIdState implements CommercioLoading {
   const CommercioIdLoading();

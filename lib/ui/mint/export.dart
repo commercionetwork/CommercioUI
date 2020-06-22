@@ -1,2 +1,2 @@
-export 'bloc/commercio_mint_bloc.dart';
+export 'bloc/export.dart';
 export 'commercio_mint_ui.dart';
