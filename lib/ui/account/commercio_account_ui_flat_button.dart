@@ -400,7 +400,6 @@ class GeneratePairwiseWalletFlatButton extends EventFlatButton<
           child: child,
           accountEventCallback: () =>
               CommercioAccountGeneratePairwiseWalletEvent(
-            newMnemonic: newMnemonic,
             lastDerivationPath: lastDerivationPath,
           ),
           errorCallback: errorCallback,

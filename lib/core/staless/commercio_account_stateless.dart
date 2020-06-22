@@ -104,20 +104,19 @@ class StatelessCommercioAccount {
             lastDerivationPathSegment: lastDerivationPathSegment));
   }
 
-  /// Generate a pairwise [Wallet] from the given [networkInfo] and the
-  /// optional [newMnemonic]. The [lastDerivationPathSegment] parameter is
-  /// not required but should be used.
+  /// Generate a pairwise [Wallet] from the given [networkInfo] and [mnemonic].
+  /// The [lastDerivationPathSegment] parameter determines the wallet
+  /// generated.
   static Future<Wallet> generatePairwiseWallet({
     @required NetworkInfo networkInfo,
-    String lastDerivationPathSegment,
-    String newMnemonic,
+    @required String mnemonic,
+    @required String lastDerivationPathSegment,
   }) async {
-    newMnemonic ??= await generateMnemonic();
-
     return generateNewWallet(
-        networkInfo: networkInfo,
-        mnemonic: newMnemonic,
-        lastDerivationPathSegment: lastDerivationPathSegment);
+      networkInfo: networkInfo,
+      mnemonic: mnemonic,
+      lastDerivationPathSegment: lastDerivationPathSegment,
+    );
   }
 
   /// Request an [amount] of free tokens with optional [httpHelper] for the

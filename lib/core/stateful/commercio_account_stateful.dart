@@ -128,15 +128,26 @@ class StatefulCommercioAccount {
     return wallet;
   }
 
-  /// Generate a pairwise [Wallet] from the optinal but suggested
-  /// [lastDerivationPathSegment] and [newMnemonic]. If no [newMnemonic]
-  /// are specified then they are generated.
+  /// Generate a pairwise [Wallet] from the given [lastDerivationPathSegment].
+  /// If no [NetworkInfo] is setted an [Exception] is thrown.
+  /// If no [mnemonic] is already loaded an [WalletNotFoundException] is
+  /// thrown.
   Future<Wallet> generatePairwiseWallet({
-    String lastDerivationPathSegment,
-    String newMnemonic,
+    @required String lastDerivationPathSegment,
   }) {
+    if (networkInfo == null) {
+      throw Exception('No network info');
+    }
+
+    if (mnemonic == null) {
+      throw WalletNotFoundException();
+    }
+
     return StatelessCommercioAccount.generatePairwiseWallet(
-        networkInfo: networkInfo, newMnemonic: newMnemonic);
+      networkInfo: networkInfo,
+      mnemonic: mnemonic,
+      lastDerivationPathSegment: lastDerivationPathSegment,
+    );
   }
 
   /// Request an [amount] of free tokens.

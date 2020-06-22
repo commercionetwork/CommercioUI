@@ -149,7 +149,6 @@ class CommercioAccountBloc
       yield const CommercioAccountLoadingGeneratePairwiseWallet();
 
       final pairwiseWallet = await commercioAccount.generatePairwiseWallet(
-        newMnemonic: event.newMnemonic,
         lastDerivationPathSegment: event.lastDerivationPath,
       );
 

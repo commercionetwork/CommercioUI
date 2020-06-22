@@ -72,14 +72,12 @@ class CommercioAccountGenerateQrEvent extends CommercioAccountEvent {
 
 class CommercioAccountGeneratePairwiseWalletEvent
     extends CommercioAccountEvent {
-  final String newMnemonic;
   final String lastDerivationPath;
 
   const CommercioAccountGeneratePairwiseWalletEvent({
-    this.newMnemonic,
-    this.lastDerivationPath = '1',
+    @required this.lastDerivationPath,
   });
 
   @override
-  List<Object> get props => [newMnemonic, lastDerivationPath];
+  List<Object> get props => [lastDerivationPath];
 }
