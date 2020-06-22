@@ -170,7 +170,7 @@ class StatelessCommercioAccount {
 
     if (response.statusCode != 200) {
       throw Exception(
-          'Error: ${response.reasonPhrase}(${response.statusCode}): ${response.body}');
+          'Error: ${response.reasonPhrase} (${response.statusCode}): ${response.body}');
     }
 
     final balanceFullResult = BalanceFullResult.fromJson(
