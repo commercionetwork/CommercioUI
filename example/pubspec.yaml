@@ -23,10 +23,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  #commercio_ui: ^0.0.1
   commercio_ui:
     path: ../
-  sacco: ^0.1.4
+  sacco:
+    git:
+      url: https://github.com/pasqenr/sacco.dart
+      ref: master
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

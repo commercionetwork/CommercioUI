@@ -125,10 +125,10 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "51542cc83e1af81f0651d2fc287c2dc9389cb5dc"
-      url: "https://github.com/commercionetwork/commercio-sdk.dart.git"
+      resolved-ref: "5dd3d4a31e53a6404c4dc767b8aca45b14e39ad1"
+      url: "https://github.com/pasqenr/commercio-sdk.dart.git"
     source: git
-    version: "2.1.0"
+    version: "2.1.2"
   convert:
     dependency: transitive
     description:
@@ -317,9 +317,11 @@ packages:
   sacco:
     dependency: "direct main"
     description:
-      name: sacco
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: master
+      resolved-ref: "97a6633e6b1b9831e5e558ac5e90513bddba5b34"
+      url: "https://github.com/pasqenr/sacco.dart"
+    source: git
     version: "0.1.4"
   sky_engine:
     dependency: transitive
