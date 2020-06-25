@@ -1,6 +1,6 @@
 name: commercio_ui
 description: CommercioUI pre-build clean Core+UI widgets intended to reduce significantly the overall blockchain app development time
-version: 0.0.1
+version: 0.2.0
 homepage: https://github.com/commercionetwork/CommercioUI
 
 environment:
@@ -19,6 +19,7 @@ dependencies:
   equatable: ^1.2.0
   flutter_bloc: ^4.0.1
   flutter_secure_storage: ^3.3.3
+  freezed_annotation: ^0.11.0
   http: ^0.12.1
   meta: ^1.1.8
   sacco:
@@ -30,9 +31,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  freezed: ^0.11.2
   lint: ^1.2.0
   mockito: ^4.1.1
   test: ^1.14.4
-  test_coverage: ^0.4.1
+  test_coverage: ^0.4.3
 
 flutter:
