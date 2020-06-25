@@ -2,10 +2,10 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
 class GenerateWalletFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingGenerateWallet,
+    CommercioAccountGenerateWalletBloc,
+    CommercioAccountGenerateWalletEvent,
+    CommercioAccountGenerateWalletState,
+    CommercioAccountGenerateWalletLoading,
     CommercioAccountGenerateWalletError> {
   GenerateWalletFlatButton({
     Key key,
@@ -31,7 +31,7 @@ class GenerateWalletFlatButton extends EventFlatButton<
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
     @required
-        CommercioAccountGenerateNewWalletEvent Function() accountEventCallback,
+        CommercioAccountGenerateWalletEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -60,11 +60,11 @@ class GenerateWalletFlatButton extends EventFlatButton<
 }
 
 class RestoreWalletFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingRestoreWallet,
-    CommercioAccountRestoreWalletError> {
+    CommercioRestoreWalletBloc,
+    CommercioAccountRestoreWalletEvent,
+    CommercioAccountRestoredWalletState,
+    CommercioAccountRestoredWalletStateLoading,
+    CommercioAccountRestoredWalletStateError> {
   RestoreWalletFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -118,11 +118,11 @@ class RestoreWalletFlatButton extends EventFlatButton<
 }
 
 class RequestFreeTokensFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingRequestFreeTokensWallet,
-    CommercioAccountRequestFreeTokensError> {
+    CommercioAccountRequestFreeTokensBloc,
+    CommercioAccountRequestFreeTokensEvent,
+    CommercioAccountFreeTokensState,
+    CommercioAccountFreeTokensStateLoading,
+    CommercioAccountFreeTokensStateError> {
   RequestFreeTokensFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -176,11 +176,11 @@ class RequestFreeTokensFlatButton extends EventFlatButton<
 }
 
 class CheckBalanceFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingCheckBalance,
-    CommercioAccountCheckBalanceError> {
+    CommercioAccountCheckBalanceBloc,
+    CommercioAccountCheckBalanceEvent,
+    CommercioAccountBalanceState,
+    CommercioAccountBalanceStateLoading,
+    CommercioAccountBalanceStateError> {
   CheckBalanceFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -233,11 +233,11 @@ class CheckBalanceFlatButton extends EventFlatButton<
 }
 
 class SendTokensFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingSendTokens,
-    CommercioAccountSendTokensError> {
+    CommercioAccountSendTokensBloc,
+    CommercioAccountSendTokensEvent,
+    CommercioAccountSentTokensState,
+    CommercioAccountSentTokensStateLoading,
+    CommercioAccountSentTokensStateError> {
   SendTokensFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -290,11 +290,11 @@ class SendTokensFlatButton extends EventFlatButton<
 }
 
 class GenerateQrFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingGenerateQr,
-    CommercioAccountGenerateQrError> {
+    CommercioAccountGenerateQrBloc,
+    CommercioAccountGenerateQrEvent,
+    CommercioAccountQrState,
+    CommercioAccountQrStateLoading,
+    CommercioAccountQrStateError> {
   GenerateQrFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -346,11 +346,11 @@ class GenerateQrFlatButton extends EventFlatButton<
 }
 
 class GeneratePairwiseWalletFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingGeneratePairwiseWallet,
-    CommercioAccountGeneratePairwiseWalletError> {
+    CommercioAccountGeneratePairwiseWalletBloc,
+    CommercioAccountGeneratePairwiseWalletEvent,
+    CommercioAccountPaiwiseWalletState,
+    CommercioAccountPaiwiseWalletStateLoading,
+    CommercioAccountPaiwiseWalletStateError> {
   GeneratePairwiseWalletFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,

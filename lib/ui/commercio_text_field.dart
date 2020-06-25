@@ -1,19 +1,13 @@
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 
-import 'package:commercio_ui/ui/bloc/commercio_state.dart';
+import 'package:commercio_ui/core/utils/type_helper.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CommercioTextField<
-    B extends Bloc<E, T>,
-    E,
-    T,
-    L extends CommercioLoading,
-    S extends CommercioState,
-    I extends CommercioState,
-    ERR extends CommercioError> extends StatefulWidget {
+class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
+    L extends T, ERR extends T> extends StatefulWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
   final InputDecoration decoration;
@@ -57,7 +51,7 @@ class CommercioTextField<
   final InputCounterWidgetBuilder buildCounter;
   final ScrollPhysics scrollPhysics;
   final ScrollController scrollController;
-  final String Function(S state) textCallback;
+  final String Function(D state) textCallback;
   final String Function() loadingTextCallback;
   final void Function(String errorMessage) errorCallback;
   final TextStyle loadingStyle;
@@ -133,82 +127,86 @@ class CommercioTextField<
         super(key: key);
 
   @override
-  _CommercioTextFieldState<B, E, T, L, S, I, ERR> createState() =>
-      _CommercioTextFieldState<B, E, T, L, S, I, ERR>();
+  _CommercioTextFieldState<B, E, T, I, D, L, ERR> createState() =>
+      _CommercioTextFieldState<B, E, T, I, D, L, ERR>();
 }
 
 class _CommercioTextFieldState<
-        B extends Bloc<E, T>,
-        E,
-        T,
-        L extends CommercioLoading,
-        S extends CommercioState,
-        I extends CommercioState,
-        ERR extends CommercioError>
-    extends State<CommercioTextField<B, E, T, L, S, I, ERR>> {
+    B extends Bloc<E, T>,
+    E,
+    T,
+    I extends T,
+    D extends T,
+    L extends T,
+    ERR extends T> extends State<CommercioTextField<B, E, T, I, D, L, ERR>> {
   String previousText = '';
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<B, T>(builder: (context, state) {
-      if (state is I) {
-        widget.controller.text = '';
-      }
+    return BlocBuilder<B, T>(
+      builder: (context, state) {
+        if (TypeHelper.freezedEquals(state, I)) {
+          widget.controller.text = '';
+        }
 
-      if (state.runtimeType == S) {
-        widget.controller.text = previousText = widget.textCallback(state as S);
-      }
+        if (TypeHelper.freezedEquals(state, D)) {
+          widget.controller.text =
+              previousText = widget.textCallback(state as D);
+        }
 
-      if (state.runtimeType == L) {
-        widget.controller.text = widget.loadingTextCallback();
-      }
+        if (TypeHelper.freezedEquals(state, L)) {
+          widget.controller.text = widget.loadingTextCallback();
+        }
 
-      return TextField(
-        controller: widget.controller,
-        focusNode: widget.focusNode,
-        decoration: widget.decoration,
-        keyboardType: widget.keyboardType,
-        textInputAction: widget.textInputAction,
-        textCapitalization: widget.textCapitalization,
-        style: (state.runtimeType == L) ? widget.loadingStyle : widget.style,
-        strutStyle: widget.strutStyle,
-        textAlign: widget.textAlign,
-        textAlignVertical: widget.textAlignVertical,
-        textDirection: widget.textDirection,
-        readOnly: widget.readOnly,
-        toolbarOptions: widget.toolbarOptions,
-        showCursor: widget.showCursor,
-        autofocus: widget.autofocus,
-        obscureText: widget.obscureText,
-        autocorrect: widget.autocorrect,
-        smartDashesType: widget.smartDashesType,
-        smartQuotesType: widget.smartQuotesType,
-        enableSuggestions: widget.enableSuggestions,
-        maxLines: widget.maxLines,
-        minLines: widget.minLines,
-        expands: widget.expands,
-        maxLength: widget.maxLength,
-        maxLengthEnforced: widget.maxLengthEnforced,
-        onChanged: widget.onChanged,
-        onEditingComplete: widget.onEditingComplete,
-        onSubmitted: widget.onSubmitted,
-        inputFormatters: widget.inputFormatters,
-        enabled: widget.enabled,
-        cursorWidth: widget.cursorWidth,
-        cursorRadius: widget.cursorRadius,
-        cursorColor: widget.cursorColor,
-        selectionHeightStyle: widget.selectionHeightStyle,
-        selectionWidthStyle: widget.selectionWidthStyle,
-        keyboardAppearance: widget.keyboardAppearance,
-        scrollPadding: widget.scrollPadding,
-        enableInteractiveSelection: widget.enableInteractiveSelection,
-        dragStartBehavior: widget.dragStartBehavior,
-        onTap: widget.onTap,
-        buildCounter: widget.buildCounter,
-        scrollPhysics: widget.scrollPhysics,
-        scrollController: widget.scrollController,
-      );
-    });
+        return TextField(
+          controller: widget.controller,
+          focusNode: widget.focusNode,
+          decoration: widget.decoration,
+          keyboardType: widget.keyboardType,
+          textInputAction: widget.textInputAction,
+          textCapitalization: widget.textCapitalization,
+          style: TypeHelper.freezedEquals(state, L)
+              ? widget.loadingStyle
+              : widget.style,
+          strutStyle: widget.strutStyle,
+          textAlign: widget.textAlign,
+          textAlignVertical: widget.textAlignVertical,
+          textDirection: widget.textDirection,
+          readOnly: widget.readOnly,
+          toolbarOptions: widget.toolbarOptions,
+          showCursor: widget.showCursor,
+          autofocus: widget.autofocus,
+          obscureText: widget.obscureText,
+          autocorrect: widget.autocorrect,
+          smartDashesType: widget.smartDashesType,
+          smartQuotesType: widget.smartQuotesType,
+          enableSuggestions: widget.enableSuggestions,
+          maxLines: widget.maxLines,
+          minLines: widget.minLines,
+          expands: widget.expands,
+          maxLength: widget.maxLength,
+          maxLengthEnforced: widget.maxLengthEnforced,
+          onChanged: widget.onChanged,
+          onEditingComplete: widget.onEditingComplete,
+          onSubmitted: widget.onSubmitted,
+          inputFormatters: widget.inputFormatters,
+          enabled: widget.enabled,
+          cursorWidth: widget.cursorWidth,
+          cursorRadius: widget.cursorRadius,
+          cursorColor: widget.cursorColor,
+          selectionHeightStyle: widget.selectionHeightStyle,
+          selectionWidthStyle: widget.selectionWidthStyle,
+          keyboardAppearance: widget.keyboardAppearance,
+          scrollPadding: widget.scrollPadding,
+          enableInteractiveSelection: widget.enableInteractiveSelection,
+          dragStartBehavior: widget.dragStartBehavior,
+          onTap: widget.onTap,
+          buildCounter: widget.buildCounter,
+          scrollPhysics: widget.scrollPhysics,
+          scrollController: widget.scrollController,
+        );
+      },
+    );
   }
 
   @override

@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class RequestFaucetInviteTextField extends CommercioTextField<
-    CommercioMembershipBloc,
-    CommercioMembershipEvent,
-    CommercioMembershipState,
-    CommercioMembershipRequestFaucetInviteLoading,
-    CommercioMembershipRequestedFaucetInvite,
-    CommercioMembershipInitial,
-    CommercioMembershipRequestFaucetInviteError> {
+    CommercioKycRequestFaucetInviteBloc,
+    CommercioKycRequestFaucetInviteEvent,
+    CommercioKycRequestedFaucetInviteState,
+    CommercioKycRequestedFaucetInviteStateInitial,
+    CommercioKycRequestedFaucetInviteStateData,
+    CommercioKycRequestedFaucetInviteStateLoading,
+    CommercioKycRequestedFaucetInviteStateError> {
   RequestFaucetInviteTextField({
     Key key,
     TextEditingController controller,
@@ -59,7 +59,7 @@ class RequestFaucetInviteTextField extends CommercioTextField<
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
     @required
-        String Function(CommercioMembershipRequestedFaucetInvite state)
+        String Function(CommercioKycRequestedFaucetInviteStateData state)
             textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
@@ -117,13 +117,13 @@ class RequestFaucetInviteTextField extends CommercioTextField<
 }
 
 class BuyMembershipTextField extends CommercioTextField<
-    CommercioMembershipBloc,
-    CommercioMembershipEvent,
-    CommercioMembershipState,
-    CommercioMembershipBuyMembershipLoading,
-    CommercioMembershipBuyMembership,
-    CommercioMembershipInitial,
-    CommercioMembershipBuyMembershipError> {
+    CommercioKycBuyMembershipBloc,
+    CommercioKycBuyMembershipEvent,
+    CommercioKycBuyMembershipState,
+    CommercioKycBuyMembershipStateInitial,
+    CommercioKycBuyMembershipStateData,
+    CommercioKycBuyMembershipStateLoading,
+    CommercioKycBuyMembershipStateError> {
   BuyMembershipTextField({
     Key key,
     TextEditingController controller,
@@ -170,7 +170,7 @@ class BuyMembershipTextField extends CommercioTextField<
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
     @required
-        String Function(CommercioMembershipBuyMembership state) textCallback,
+        String Function(CommercioKycBuyMembershipStateData state) textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,
@@ -227,13 +227,13 @@ class BuyMembershipTextField extends CommercioTextField<
 }
 
 class InviteMemberTextField extends CommercioTextField<
-    CommercioMembershipBloc,
-    CommercioMembershipEvent,
-    CommercioMembershipState,
-    CommercioMembershipInviteMemberLoading,
-    CommercioMembershipInviteMember,
-    CommercioMembershipInitial,
-    CommercioMembershipInviteMemberError> {
+    CommercioKycInviteMemberBloc,
+    CommercioKycInviteMemberEvent,
+    CommercioKycInviteMemberState,
+    CommercioKycInviteMemberStateInitial,
+    CommercioKycInviteMemberStateData,
+    CommercioKycInviteMemberStateLoading,
+    CommercioKycInviteMemberStateError> {
   InviteMemberTextField({
     Key key,
     TextEditingController controller,
@@ -280,7 +280,7 @@ class InviteMemberTextField extends CommercioTextField<
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
     @required
-        String Function(CommercioMembershipInviteMember state) textCallback,
+        String Function(CommercioKycInviteMemberStateData state) textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,

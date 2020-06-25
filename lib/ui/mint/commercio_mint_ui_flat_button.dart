@@ -2,11 +2,11 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
 class OpenCdpFlatButton extends EventFlatButton<
-    CommercioMintBloc,
-    CommercioMintEvent,
-    CommercioMintState,
-    CommercioMintOpenCdpLoading,
-    CommercioMintOpenCdpError> {
+    CommercioMintOpenCdpBloc,
+    CommercioMintOpenCdpEvent,
+    CommercioMintOpenedCdpState,
+    CommercioMintOpenedCdpStateLoading,
+    CommercioMintOpenedCdpStateError> {
   OpenCdpFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -59,11 +59,11 @@ class OpenCdpFlatButton extends EventFlatButton<
 }
 
 class CloseCdpFlatButton extends EventFlatButton<
-    CommercioMintBloc,
-    CommercioMintEvent,
-    CommercioMintState,
-    CommercioMintCloseCdpLoading,
-    CommercioMintCloseCdpError> {
+    CommercioMintCloseCdpBloc,
+    CommercioMintCloseCdpEvent,
+    CommercioMintClosedCdpState,
+    CommercioMintClosedCdpStateLoading,
+    CommercioMintClosedCdpStateError> {
   CloseCdpFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,

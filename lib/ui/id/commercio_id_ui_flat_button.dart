@@ -2,11 +2,11 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
 class GenerateKeysFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdGeneratingKeysLoading,
-    CommercioIdGeneratingKeysError> {
+    CommercioIdGenerateKeysBloc,
+    CommercioIdGenerateKeysEvent,
+    CommercioIdGeneratedKeysState,
+    CommercioIdGeneratedKeysStateLoading,
+    CommercioIdGeneratedKeysStateError> {
   GenerateKeysFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -59,11 +59,11 @@ class GenerateKeysFlatButton extends EventFlatButton<
 }
 
 class RestoreKeysFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRestoringKeysLoading,
-    CommercioIdRestoringKeysError> {
+    CommercioIdRestoreKeysBloc,
+    CommercioIdRestoreKeysEvent,
+    CommercioIdRestoredKeysState,
+    CommercioIdRestoredKeysStateLoading,
+    CommercioIdRestoredKeysStateError> {
   RestoreKeysFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -116,11 +116,11 @@ class RestoreKeysFlatButton extends EventFlatButton<
 }
 
 class DeleteKeysFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdDeletingKeysLoading,
-    CommercioIdDeletingKeysError> {
+    CommercioIdDeleteKeysBloc,
+    CommercioIdDeleteKeysEvent,
+    CommercioIdDeletedKeysState,
+    CommercioIdDeletedKeysStateLoading,
+    CommercioIdDeletedKeysStateError> {
   DeleteKeysFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -173,11 +173,11 @@ class DeleteKeysFlatButton extends EventFlatButton<
 }
 
 class DeriveDidDocumentFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdDerivingDidDocumentLoading,
-    CommercioIdDerivingDidDocumentError> {
+    CommercioIdDeriveDidDocumentBloc,
+    CommercioIdDeriveDidDocumentEvent,
+    CommercioIdDerivedDidDocumentState,
+    CommercioIdDerivedDidDocumentStateLoading,
+    CommercioIdDerivedDidDocumentStateError> {
   DeriveDidDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -230,11 +230,11 @@ class DeriveDidDocumentFlatButton extends EventFlatButton<
 }
 
 class SetDidDocumentFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdSettingDidDocumentLoading,
-    CommercioIdSettingDidDocumentError> {
+    CommercioIdSetDidDocumentBloc,
+    CommercioIdSetDidDocumentEvent,
+    CommercioIdSetDidDocumentState,
+    CommercioIdSetDidDocumentStateLoading,
+    CommercioIdSetDidDocumentStateError> {
   SetDidDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -286,13 +286,13 @@ class SetDidDocumentFlatButton extends EventFlatButton<
         );
 }
 
-class RechargeGovernmentFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRechargingGovernmentLoading,
-    CommercioIdRechargingGovernmentError> {
-  RechargeGovernmentFlatButton({
+class RechargeTumblerFlatButton extends EventFlatButton<
+    CommercioIdRechargeTumblerBloc,
+    CommercioIdRechargeTumblerEvent,
+    CommercioIdRechargedTumblerState,
+    CommercioIdRechargedTumblerStateLoading,
+    CommercioIdRechargedTumblerStateError> {
+  RechargeTumblerFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -315,8 +315,7 @@ class RechargeGovernmentFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required
-        CommercioIdRechargeGovernmentEvent Function() accountEventCallback,
+    @required CommercioIdRechargeTumblerEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -345,11 +344,11 @@ class RechargeGovernmentFlatButton extends EventFlatButton<
 }
 
 class RequestDidPowerUpFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRequestingDidPowerUpLoading,
-    CommercioIdRequestingDidPowerUpError> {
+    CommercioIdRequestDidPowerUpBloc,
+    CommercioIdRequestDidPowerUpEvent,
+    CommercioIdRequestedDidPowerUpState,
+    CommercioIdRequestedDidPowerUpStateLoading,
+    CommercioIdRequestedDidPowerUpStateError> {
   RequestDidPowerUpFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,

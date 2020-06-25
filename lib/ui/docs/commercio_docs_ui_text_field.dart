@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ShareDocumentTextField extends CommercioTextField<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsShareDocumentLoading,
-    CommercioDocsSharedDocument,
-    CommercioDocsInitial,
-    CommercioDocsShareDocumentError> {
+    CommercioDocsShareDocumentBloc,
+    CommercioDocsShareDocumentEvent,
+    CommercioDocsSharedDocumentState,
+    CommercioDocsSharedDocumentStateInitial,
+    CommercioDocsSharedDocumentStateData,
+    CommercioDocsSharedDocumentStateLoading,
+    CommercioDocsSharedDocumentStateError> {
   ShareDocumentTextField({
     Key key,
     TextEditingController controller,
@@ -58,7 +58,9 @@ class ShareDocumentTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
-    @required String Function(CommercioDocsSharedDocument state) textCallback,
+    @required
+        String Function(CommercioDocsSharedDocumentStateData state)
+            textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,
@@ -115,13 +117,13 @@ class ShareDocumentTextField extends CommercioTextField<
 }
 
 class ShareEncryptedDocumentTextField extends CommercioTextField<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsShareEncryptedDocumentLoading,
-    CommercioDocsSharedEncryptedDocument,
-    CommercioDocsInitial,
-    CommercioDocsShareEncryptedDocumentError> {
+    CommercioDocsShareEncryptedDocumentBloc,
+    CommercioDocsShareEncryptedDocumentEvent,
+    CommercioDocsSharedEncryptedDocumentState,
+    CommercioDocsSharedEncryptedDocumentStateInitial,
+    CommercioDocsSharedEncryptedDocumentStateData,
+    CommercioDocsSharedEncryptedDocumentStateLoading,
+    CommercioDocsSharedEncryptedDocumentStateError> {
   ShareEncryptedDocumentTextField({
     Key key,
     TextEditingController controller,
@@ -168,7 +170,7 @@ class ShareEncryptedDocumentTextField extends CommercioTextField<
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
     @required
-        String Function(CommercioDocsSharedEncryptedDocument state)
+        String Function(CommercioDocsSharedEncryptedDocumentStateData state)
             textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
@@ -226,13 +228,13 @@ class ShareEncryptedDocumentTextField extends CommercioTextField<
 }
 
 class SendReceiptTextField extends CommercioTextField<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSendReceiptLoading,
-    CommercioDocsSentReceipt,
-    CommercioDocsInitial,
-    CommercioDocsSendReceiptError> {
+    CommercioDocsSendReceiptBloc,
+    CommercioDocsSendReceiptEvent,
+    CommercioDocsSentReceiptState,
+    CommercioDocsSentReceiptStateInitial,
+    CommercioDocsSentReceiptStateData,
+    CommercioDocsSentReceiptStateLoading,
+    CommercioDocsSentReceiptStateError> {
   SendReceiptTextField({
     Key key,
     TextEditingController controller,
@@ -278,7 +280,8 @@ class SendReceiptTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
-    @required String Function(CommercioDocsSentReceipt state) textCallback,
+    @required
+        String Function(CommercioDocsSentReceiptStateData state) textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,
@@ -335,13 +338,13 @@ class SendReceiptTextField extends CommercioTextField<
 }
 
 class SentDocumentsTextField extends CommercioTextField<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSentDocumentsLoading,
-    CommercioDocsSentDocuments,
-    CommercioDocsInitial,
-    CommercioDocsSentDocumentsError> {
+    CommercioDocsSentDocumentsBloc,
+    CommercioDocsSentDocumentsEvent,
+    CommercioDocsSentDocumentsState,
+    CommercioDocsSentDocumentsStateInitial,
+    CommercioDocsSentDocumentsStateData,
+    CommercioDocsSentDocumentsStateLoading,
+    CommercioDocsSentDocumentsStateError> {
   SentDocumentsTextField({
     Key key,
     TextEditingController controller,
@@ -387,7 +390,8 @@ class SentDocumentsTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
-    @required String Function(CommercioDocsSentDocuments state) textCallback,
+    @required
+        String Function(CommercioDocsSentDocumentsStateData state) textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,
@@ -444,13 +448,13 @@ class SentDocumentsTextField extends CommercioTextField<
 }
 
 class ReceivedDocumentsTextField extends CommercioTextField<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsReceivedDocumentsLoading,
-    CommercioDocsReceivedDocuments,
-    CommercioDocsInitial,
-    CommercioDocsReceivedDocumentsError> {
+    CommercioDocsReceivedDocumentsBloc,
+    CommercioDocsReceivedDocumentsEvent,
+    CommercioDocsReceivedDocumentsState,
+    CommercioDocsReceivedDocumentsStateInitial,
+    CommercioDocsReceivedDocumentsStateData,
+    CommercioDocsReceivedDocumentsStateLoading,
+    CommercioDocsReceivedDocumentsStateError> {
   ReceivedDocumentsTextField({
     Key key,
     TextEditingController controller,
@@ -497,7 +501,8 @@ class ReceivedDocumentsTextField extends CommercioTextField<
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
     @required
-        String Function(CommercioDocsReceivedDocuments state) textCallback,
+        String Function(CommercioDocsReceivedDocumentsStateData state)
+            textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,
@@ -554,13 +559,13 @@ class ReceivedDocumentsTextField extends CommercioTextField<
 }
 
 class SentReceiptsTextField extends CommercioTextField<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSentReceiptsLoading,
-    CommercioDocsSentReceipts,
-    CommercioDocsInitial,
-    CommercioDocsSentReceiptsError> {
+    CommercioDocsSentReceiptsBloc,
+    CommercioDocsSentReceiptsEvent,
+    CommercioDocsSentReceiptsState,
+    CommercioDocsSentReceiptsStateInitial,
+    CommercioDocsSentReceiptsStateData,
+    CommercioDocsSentReceiptsStateLoading,
+    CommercioDocsSentReceiptsStateError> {
   SentReceiptsTextField({
     Key key,
     TextEditingController controller,
@@ -606,7 +611,8 @@ class SentReceiptsTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
-    @required String Function(CommercioDocsSentReceipts state) textCallback,
+    @required
+        String Function(CommercioDocsSentReceiptsStateData state) textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,
@@ -663,13 +669,13 @@ class SentReceiptsTextField extends CommercioTextField<
 }
 
 class ReceivedReceiptsTextField extends CommercioTextField<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsReceivedReceiptsLoading,
-    CommercioDocsReceivedReceipts,
-    CommercioDocsInitial,
-    CommercioDocsReceivedReceiptsError> {
+    CommercioDocsReceivedReceiptsBloc,
+    CommercioDocsReceivedReceiptsEvent,
+    CommercioDocsReceivedReceiptsState,
+    CommercioDocsReceivedReceiptsStateInitial,
+    CommercioDocsReceivedReceiptsStateData,
+    CommercioDocsReceivedReceiptsStateLoading,
+    CommercioDocsReceivedReceiptsStateError> {
   ReceivedReceiptsTextField({
     Key key,
     TextEditingController controller,
@@ -715,7 +721,9 @@ class ReceivedReceiptsTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
-    @required String Function(CommercioDocsReceivedReceipts state) textCallback,
+    @required
+        String Function(CommercioDocsReceivedReceiptsStateData state)
+            textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,

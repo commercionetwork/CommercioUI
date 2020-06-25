@@ -1,9 +1,9 @@
-import 'package:commercio_ui/ui/bloc/commercio_state.dart';
+import 'package:commercio_ui/core/utils/type_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EventFlatButton<B extends Bloc<E, S>, E, S, L extends CommercioLoading,
-    ERR extends CommercioError> extends StatelessWidget {
+class EventFlatButton<B extends Bloc<E, S>, E, S, L extends S, ERR extends S>
+    extends StatelessWidget {
   final ValueChanged<bool> onHighlightChanged;
   final ButtonTextTheme textTheme;
   final Color textColor;
@@ -55,47 +55,25 @@ class EventFlatButton<B extends Bloc<E, S>, E, S, L extends CommercioLoading,
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<B, S>(
-      builder: (context, state) {
-        if (state.runtimeType == ERR) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (errorCallback == null) {
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text((state as ERR).message),
+    return BlocConsumer<B, S>(
+      listener: (context, state) {
+        if (TypeHelper.freezedEquals(state, ERR)) {
+          if (errorCallback == null) {
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.toString()),
                 backgroundColor: Colors.red,
-              ));
-            } else {
-              errorCallback((state as ERR).message);
-            }
-          });
+              ),
+            );
+          } else {
+            errorCallback(state.toString());
+          }
         }
-
-        if (state.runtimeType == L) {
+      },
+      builder: (context, state) {
+        if (TypeHelper.freezedEquals(state, L)) {
           return FlatButton(
-              onPressed: null,
-              onHighlightChanged: onHighlightChanged,
-              textTheme: textTheme,
-              disabledTextColor: disabledTextColor,
-              color: color,
-              disabledColor: disabledColor,
-              focusColor: focusColor,
-              hoverColor: hoverColor,
-              highlightColor: highlightColor,
-              splashColor: splashColor,
-              colorBrightness: colorBrightness,
-              padding: padding,
-              visualDensity: visualDensity,
-              shape: shape,
-              clipBehavior: clipBehavior ?? Clip.none,
-              focusNode: focusNode,
-              autofocus: autofocus ?? false,
-              materialTapTargetSize: materialTapTargetSize,
-              child: loadingChild());
-        }
-
-        return FlatButton(
-            onPressed: () =>
-                BlocProvider.of<B>(context).add(accountEventCallback()),
+            onPressed: null,
             onHighlightChanged: onHighlightChanged,
             textTheme: textTheme,
             disabledTextColor: disabledTextColor,
@@ -113,7 +91,32 @@ class EventFlatButton<B extends Bloc<E, S>, E, S, L extends CommercioLoading,
             focusNode: focusNode,
             autofocus: autofocus ?? false,
             materialTapTargetSize: materialTapTargetSize,
-            child: child());
+            child: loadingChild(),
+          );
+        }
+
+        return FlatButton(
+          onPressed: () =>
+              BlocProvider.of<B>(context).add(accountEventCallback()),
+          onHighlightChanged: onHighlightChanged,
+          textTheme: textTheme,
+          disabledTextColor: disabledTextColor,
+          color: color,
+          disabledColor: disabledColor,
+          focusColor: focusColor,
+          hoverColor: hoverColor,
+          highlightColor: highlightColor,
+          splashColor: splashColor,
+          colorBrightness: colorBrightness,
+          padding: padding,
+          visualDensity: visualDensity,
+          shape: shape,
+          clipBehavior: clipBehavior ?? Clip.none,
+          focusNode: focusNode,
+          autofocus: autofocus ?? false,
+          materialTapTargetSize: materialTapTargetSize,
+          child: child(),
+        );
       },
     );
   }

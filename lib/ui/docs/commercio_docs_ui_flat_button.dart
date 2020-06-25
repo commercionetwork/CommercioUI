@@ -2,11 +2,11 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
 class ShareDocumentFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsShareDocumentLoading,
-    CommercioDocsShareDocumentError> {
+    CommercioDocsShareDocumentBloc,
+    CommercioDocsShareDocumentEvent,
+    CommercioDocsSharedDocumentState,
+    CommercioDocsSharedDocumentStateLoading,
+    CommercioDocsSharedDocumentStateError> {
   ShareDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -59,11 +59,11 @@ class ShareDocumentFlatButton extends EventFlatButton<
 }
 
 class ShareEncryptedDocumentFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsShareEncryptedDocumentLoading,
-    CommercioDocsShareEncryptedDocumentError> {
+    CommercioDocsShareEncryptedDocumentBloc,
+    CommercioDocsShareEncryptedDocumentEvent,
+    CommercioDocsSharedEncryptedDocumentState,
+    CommercioDocsSharedEncryptedDocumentStateLoading,
+    CommercioDocsSharedEncryptedDocumentStateError> {
   ShareEncryptedDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -118,11 +118,11 @@ class ShareEncryptedDocumentFlatButton extends EventFlatButton<
 }
 
 class SendReceiptFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSendReceiptLoading,
-    CommercioDocsSendReceiptError> {
+    CommercioDocsSendReceiptBloc,
+    CommercioDocsSendReceiptEvent,
+    CommercioDocsSentReceiptState,
+    CommercioDocsSentReceiptStateLoading,
+    CommercioDocsSentReceiptStateError> {
   SendReceiptFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -175,11 +175,11 @@ class SendReceiptFlatButton extends EventFlatButton<
 }
 
 class SentDocumentsFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSentDocumentsLoading,
-    CommercioDocsSentDocumentsError> {
+    CommercioDocsSentDocumentsBloc,
+    CommercioDocsSentDocumentsEvent,
+    CommercioDocsSentDocumentsState,
+    CommercioDocsSentDocumentsStateLoading,
+    CommercioDocsSentDocumentsStateError> {
   SentDocumentsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -232,11 +232,11 @@ class SentDocumentsFlatButton extends EventFlatButton<
 }
 
 class ReceivedDocumentsFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsReceivedDocumentsLoading,
-    CommercioDocsReceivedDocumentsError> {
+    CommercioDocsReceivedDocumentsBloc,
+    CommercioDocsReceivedDocumentsEvent,
+    CommercioDocsReceivedDocumentsState,
+    CommercioDocsReceivedDocumentsStateLoading,
+    CommercioDocsReceivedDocumentsStateError> {
   ReceivedDocumentsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -290,11 +290,11 @@ class ReceivedDocumentsFlatButton extends EventFlatButton<
 }
 
 class SentReceiptsFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSentReceiptsLoading,
-    CommercioDocsSentReceiptsError> {
+    CommercioDocsSentReceiptsBloc,
+    CommercioDocsSentReceiptsEvent,
+    CommercioDocsSentReceiptsState,
+    CommercioDocsSentReceiptsStateLoading,
+    CommercioDocsSentReceiptsStateError> {
   SentReceiptsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -347,11 +347,11 @@ class SentReceiptsFlatButton extends EventFlatButton<
 }
 
 class ReceivedReceiptsFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsReceivedReceiptsLoading,
-    CommercioDocsReceivedReceiptsError> {
+    CommercioDocsReceivedReceiptsBloc,
+    CommercioDocsReceivedReceiptsEvent,
+    CommercioDocsReceivedReceiptsState,
+    CommercioDocsReceivedReceiptsStateLoading,
+    CommercioDocsReceivedReceiptsStateError> {
   ReceivedReceiptsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,

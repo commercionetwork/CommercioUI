@@ -5,5 +5,5 @@ export 'commercio_text.dart';
 export 'commercio_text_field.dart';
 export 'docs/commercio_docs_ui.dart';
 export 'id/export.dart';
-export 'membership/export.dart';
+export 'kyc/export.dart';
 export 'mint/export.dart';

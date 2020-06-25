@@ -4,12 +4,13 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
 class OpenCdpText extends CommercioTextWidget<
-    CommercioMintBloc,
-    CommercioMintEvent,
-    CommercioMintState,
-    CommercioMintOpenCdpLoading,
-    CommercioMintOpenedCdp,
-    CommercioMintInitial> {
+    CommercioMintOpenCdpBloc,
+    CommercioMintOpenCdpEvent,
+    CommercioMintOpenedCdpState,
+    CommercioMintOpenedCdpStateInitial,
+    CommercioMintOpenedCdpStateData,
+    CommercioMintOpenedCdpStateLoading,
+    CommercioMintOpenedCdpStateError> {
   const OpenCdpText({
     Key key,
     TextStyle style,
@@ -25,7 +26,8 @@ class OpenCdpText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioMintOpenedCdp state) textCallback,
+    @required
+        String Function(CommercioMintOpenedCdpStateData state) textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,
@@ -48,12 +50,13 @@ class OpenCdpText extends CommercioTextWidget<
 }
 
 class CloseCdpText extends CommercioTextWidget<
-    CommercioMintBloc,
-    CommercioMintEvent,
-    CommercioMintState,
-    CommercioMintCloseCdpLoading,
-    CommercioMintClosedCdp,
-    CommercioMintInitial> {
+    CommercioMintCloseCdpBloc,
+    CommercioMintCloseCdpEvent,
+    CommercioMintClosedCdpState,
+    CommercioMintClosedCdpStateInitial,
+    CommercioMintClosedCdpStateData,
+    CommercioMintClosedCdpStateLoading,
+    CommercioMintClosedCdpStateError> {
   const CloseCdpText({
     Key key,
     TextStyle style,
@@ -69,7 +72,8 @@ class CloseCdpText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioMintClosedCdp state) textCallback,
+    @required
+        String Function(CommercioMintClosedCdpStateData state) textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,

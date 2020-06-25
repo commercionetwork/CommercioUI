@@ -43,12 +43,12 @@ class CommercioIdSetDidDocumentEvent extends CommercioIdEvent {
   List<Object> get props => [];
 }
 
-class CommercioIdRechargeGovernmentEvent extends CommercioIdEvent {
+class CommercioIdRechargeTumblerEvent extends CommercioIdEvent {
   final List<StdCoin> rechargeAmount;
   final List<StdCoin> rechargeFee;
   final String rechargeGas;
 
-  const CommercioIdRechargeGovernmentEvent({
+  const CommercioIdRechargeTumblerEvent({
     @required this.rechargeAmount,
     this.rechargeFee,
     this.rechargeGas,

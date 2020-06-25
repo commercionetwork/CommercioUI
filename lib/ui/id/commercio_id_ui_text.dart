@@ -3,102 +3,15 @@ import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class GenerateKeysCommercioIdText extends CommercioTextWidget<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdGeneratingKeysLoading,
-    CommercioIdWithGeneratedKeys,
-    CommercioIdInitial> {
-  const GenerateKeysCommercioIdText({
-    Key key,
-    TextStyle style,
-    TextStyle loadingStyle,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    TextOverflow overflow,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextWidthBasis textWidthBasis,
-    ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioIdWithGeneratedKeys state) textCallback,
-    @required String Function() loadingTextCallback,
-  }) : super(
-          key: key,
-          style: style,
-          loadingStyle: loadingStyle,
-          strutStyle: strutStyle,
-          textAlign: textAlign,
-          textDirection: textDirection,
-          locale: locale,
-          softWrap: softWrap,
-          overflow: overflow,
-          textScaleFactor: textScaleFactor,
-          maxLines: maxLines,
-          semanticsLabel: semanticsLabel,
-          textWidthBasis: textWidthBasis,
-          textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
-        );
-}
-
-class RestoreKeysCommercioIdText extends CommercioTextWidget<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRestoringKeysLoading,
-    CommercioIdWithRestoredKeys,
-    CommercioIdInitial> {
-  const RestoreKeysCommercioIdText({
-    Key key,
-    TextStyle style,
-    TextStyle loadingStyle,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    TextOverflow overflow,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextWidthBasis textWidthBasis,
-    ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioIdWithRestoredKeys state) textCallback,
-    @required String Function() loadingTextCallback,
-  }) : super(
-          key: key,
-          style: style,
-          loadingStyle: loadingStyle,
-          strutStyle: strutStyle,
-          textAlign: textAlign,
-          textDirection: textDirection,
-          locale: locale,
-          softWrap: softWrap,
-          overflow: overflow,
-          textScaleFactor: textScaleFactor,
-          maxLines: maxLines,
-          semanticsLabel: semanticsLabel,
-          textWidthBasis: textWidthBasis,
-          textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
-        );
-}
-
-class DeriveDidDocumentCommercioIdText extends CommercioTextWidget<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdDerivingDidDocumentLoading,
-    CommercioIdWithDerivedDidDocument,
-    CommercioIdInitial> {
-  const DeriveDidDocumentCommercioIdText({
+class GenerateKeysText extends CommercioTextWidget<
+    CommercioIdGenerateKeysBloc,
+    CommercioIdGenerateKeysEvent,
+    CommercioIdGeneratedKeysState,
+    CommercioIdGeneratedKeysStateInitial,
+    CommercioIdGeneratedKeysStateData,
+    CommercioIdGeneratedKeysStateLoading,
+    CommercioIdGeneratedKeysStateError> {
+  const GenerateKeysText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -114,7 +27,7 @@ class DeriveDidDocumentCommercioIdText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioIdWithDerivedDidDocument state) textCallback,
+        String Function(CommercioIdGeneratedKeysStateData state) textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,
@@ -136,58 +49,15 @@ class DeriveDidDocumentCommercioIdText extends CommercioTextWidget<
         );
 }
 
-class SetDidDocumentCommercioIdText extends CommercioTextWidget<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdSettingDidDocumentLoading,
-    CommercioIdSetDidDocument,
-    CommercioIdInitial> {
-  const SetDidDocumentCommercioIdText({
-    Key key,
-    TextStyle style,
-    TextStyle loadingStyle,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    TextOverflow overflow,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextWidthBasis textWidthBasis,
-    ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioIdSetDidDocument state) textCallback,
-    @required String Function() loadingTextCallback,
-  }) : super(
-          key: key,
-          style: style,
-          loadingStyle: loadingStyle,
-          strutStyle: strutStyle,
-          textAlign: textAlign,
-          textDirection: textDirection,
-          locale: locale,
-          softWrap: softWrap,
-          overflow: overflow,
-          textScaleFactor: textScaleFactor,
-          maxLines: maxLines,
-          semanticsLabel: semanticsLabel,
-          textWidthBasis: textWidthBasis,
-          textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
-        );
-}
-
-class RechargeGovernmentCommercioIdText extends CommercioTextWidget<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRechargingGovernmentLoading,
-    CommercioIdRechargedGovernment,
-    CommercioIdInitial> {
-  const RechargeGovernmentCommercioIdText({
+class RestoreKeysText extends CommercioTextWidget<
+    CommercioIdRestoreKeysBloc,
+    CommercioIdRestoreKeysEvent,
+    CommercioIdRestoredKeysState,
+    CommercioIdRestoredKeysStateInitial,
+    CommercioIdRestoredKeysStateData,
+    CommercioIdRestoredKeysStateLoading,
+    CommercioIdRestoredKeysStateError> {
+  const RestoreKeysText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -203,7 +73,7 @@ class RechargeGovernmentCommercioIdText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioIdRechargedGovernment state) textCallback,
+        String Function(CommercioIdRestoredKeysStateData state) textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,
@@ -225,14 +95,15 @@ class RechargeGovernmentCommercioIdText extends CommercioTextWidget<
         );
 }
 
-class RequestDidPowerUpCommercioIdText extends CommercioTextWidget<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRequestingDidPowerUpLoading,
-    CommercioIdRequestedDidPowerUp,
-    CommercioIdInitial> {
-  const RequestDidPowerUpCommercioIdText({
+class DeriveDidDocumentText extends CommercioTextWidget<
+    CommercioIdDeleteKeysBloc,
+    CommercioIdDeleteKeysEvent,
+    CommercioIdDeletedKeysState,
+    CommercioIdDeletedKeysStateInitial,
+    CommercioIdDeletedKeysStateData,
+    CommercioIdDeletedKeysStateLoading,
+    CommercioIdDeletedKeysStateError> {
+  const DeriveDidDocumentText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -248,7 +119,147 @@ class RequestDidPowerUpCommercioIdText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioIdRequestedDidPowerUp state) textCallback,
+        String Function(CommercioIdDeletedKeysStateData state) textCallback,
+    @required String Function() loadingTextCallback,
+  }) : super(
+          key: key,
+          style: style,
+          loadingStyle: loadingStyle,
+          strutStyle: strutStyle,
+          textAlign: textAlign,
+          textDirection: textDirection,
+          locale: locale,
+          softWrap: softWrap,
+          overflow: overflow,
+          textScaleFactor: textScaleFactor,
+          maxLines: maxLines,
+          semanticsLabel: semanticsLabel,
+          textWidthBasis: textWidthBasis,
+          textHeightBehavior: textHeightBehavior,
+          textCallback: textCallback,
+          loadingTextCallback: loadingTextCallback,
+        );
+}
+
+class SetDidDocumentText extends CommercioTextWidget<
+    CommercioIdSetDidDocumentBloc,
+    CommercioIdSetDidDocumentEvent,
+    CommercioIdSetDidDocumentState,
+    CommercioIdSetDidDocumentStateInitial,
+    CommercioIdSetDidDocumentStateData,
+    CommercioIdSetDidDocumentStateLoading,
+    CommercioIdSetDidDocumentStateError> {
+  const SetDidDocumentText({
+    Key key,
+    TextStyle style,
+    TextStyle loadingStyle,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    TextOverflow overflow,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextWidthBasis textWidthBasis,
+    ui.TextHeightBehavior textHeightBehavior,
+    @required
+        String Function(CommercioIdSetDidDocumentStateData state) textCallback,
+    @required String Function() loadingTextCallback,
+  }) : super(
+          key: key,
+          style: style,
+          loadingStyle: loadingStyle,
+          strutStyle: strutStyle,
+          textAlign: textAlign,
+          textDirection: textDirection,
+          locale: locale,
+          softWrap: softWrap,
+          overflow: overflow,
+          textScaleFactor: textScaleFactor,
+          maxLines: maxLines,
+          semanticsLabel: semanticsLabel,
+          textWidthBasis: textWidthBasis,
+          textHeightBehavior: textHeightBehavior,
+          textCallback: textCallback,
+          loadingTextCallback: loadingTextCallback,
+        );
+}
+
+class RechargeTumblerText extends CommercioTextWidget<
+    CommercioIdRechargeTumblerBloc,
+    CommercioIdRechargeTumblerEvent,
+    CommercioIdRechargedTumblerState,
+    CommercioIdRechargedTumblerStateInitial,
+    CommercioIdRechargedTumblerStateData,
+    CommercioIdRechargedTumblerStateLoading,
+    CommercioIdRechargedTumblerStateError> {
+  const RechargeTumblerText({
+    Key key,
+    TextStyle style,
+    TextStyle loadingStyle,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    TextOverflow overflow,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextWidthBasis textWidthBasis,
+    ui.TextHeightBehavior textHeightBehavior,
+    @required
+        String Function(CommercioIdRechargedTumblerStateData state)
+            textCallback,
+    @required String Function() loadingTextCallback,
+  }) : super(
+          key: key,
+          style: style,
+          loadingStyle: loadingStyle,
+          strutStyle: strutStyle,
+          textAlign: textAlign,
+          textDirection: textDirection,
+          locale: locale,
+          softWrap: softWrap,
+          overflow: overflow,
+          textScaleFactor: textScaleFactor,
+          maxLines: maxLines,
+          semanticsLabel: semanticsLabel,
+          textWidthBasis: textWidthBasis,
+          textHeightBehavior: textHeightBehavior,
+          textCallback: textCallback,
+          loadingTextCallback: loadingTextCallback,
+        );
+}
+
+class RequestDidPowerUpText extends CommercioTextWidget<
+    CommercioIdRequestDidPowerUpBloc,
+    CommercioIdRequestDidPowerUpEvent,
+    CommercioIdRequestedDidPowerUpState,
+    CommercioIdRequestedDidPowerUpStateInitial,
+    CommercioIdRequestedDidPowerUpStateData,
+    CommercioIdRequestedDidPowerUpStateLoading,
+    CommercioIdRequestedDidPowerUpStateError> {
+  const RequestDidPowerUpText({
+    Key key,
+    TextStyle style,
+    TextStyle loadingStyle,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    TextOverflow overflow,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextWidthBasis textWidthBasis,
+    ui.TextHeightBehavior textHeightBehavior,
+    @required
+        String Function(CommercioIdRequestedDidPowerUpStateData state)
+            textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,

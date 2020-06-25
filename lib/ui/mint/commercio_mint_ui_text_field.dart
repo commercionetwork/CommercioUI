@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class OpenCdpTextField extends CommercioTextField<
-    CommercioMintBloc,
-    CommercioMintEvent,
-    CommercioMintState,
-    CommercioMintOpenCdpLoading,
-    CommercioMintOpenedCdp,
-    CommercioMintInitial,
-    CommercioMintOpenCdpError> {
+    CommercioMintOpenCdpBloc,
+    CommercioMintOpenCdpEvent,
+    CommercioMintOpenedCdpState,
+    CommercioMintOpenedCdpStateInitial,
+    CommercioMintOpenedCdpStateData,
+    CommercioMintOpenedCdpStateLoading,
+    CommercioMintOpenedCdpStateError> {
   OpenCdpTextField({
     Key key,
     TextEditingController controller,
@@ -58,7 +58,8 @@ class OpenCdpTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
-    @required String Function(CommercioMintOpenedCdp state) textCallback,
+    @required
+        String Function(CommercioMintOpenedCdpStateData state) textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,
@@ -115,13 +116,13 @@ class OpenCdpTextField extends CommercioTextField<
 }
 
 class CloseCdpTextField extends CommercioTextField<
-    CommercioMintBloc,
-    CommercioMintEvent,
-    CommercioMintState,
-    CommercioMintCloseCdpLoading,
-    CommercioMintClosedCdp,
-    CommercioMintInitial,
-    CommercioMintCloseCdpError> {
+    CommercioMintCloseCdpBloc,
+    CommercioMintCloseCdpEvent,
+    CommercioMintClosedCdpState,
+    CommercioMintClosedCdpStateInitial,
+    CommercioMintClosedCdpStateData,
+    CommercioMintClosedCdpStateLoading,
+    CommercioMintClosedCdpStateError> {
   CloseCdpTextField({
     Key key,
     TextEditingController controller,
@@ -167,7 +168,8 @@ class CloseCdpTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
-    @required String Function(CommercioMintClosedCdp state) textCallback,
+    @required
+        String Function(CommercioMintClosedCdpStateData state) textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
     void Function(String errorMessage) errorCallback,

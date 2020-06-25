@@ -1,127 +1,155 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
+
+part 'commercio_docs_state.freezed.dart';
 
 abstract class CommercioDocsState extends CommercioState {
   const CommercioDocsState();
 }
 
-class CommercioDocsInitial extends CommercioDocsState {
-  const CommercioDocsInitial();
+@freezed
+@Implements(CommercioDocsState)
+abstract class CommercioDocsSharedDocumentState
+    with _$CommercioDocsSharedDocumentState {
+  const factory CommercioDocsSharedDocumentState({
+    @required TransactionResult result,
+  }) = CommercioDocsSharedDocumentStateData;
 
-  @override
-  List<Object> get props => [];
+  const factory CommercioDocsSharedDocumentState.initial() =
+      CommercioDocsSharedDocumentStateInitial;
+
+  const factory CommercioDocsSharedDocumentState.loading() =
+      CommercioDocsSharedDocumentStateLoading;
+
+  const factory CommercioDocsSharedDocumentState.error([String error]) =
+      CommercioDocsSharedDocumentStateError;
 }
 
-class CommercioDocsSharedDocument extends CommercioDocsState {
-  final StatefulCommercioDocs commercioDocs;
-  final TransactionResult transactionResult;
+@freezed
+@Implements(CommercioDocsState)
+abstract class CommercioDocsSharedEncryptedDocumentState
+    with _$CommercioDocsSharedEncryptedDocumentState {
+  const factory CommercioDocsSharedEncryptedDocumentState({
+    @required TransactionResult result,
+  }) = CommercioDocsSharedEncryptedDocumentStateData;
 
-  const CommercioDocsSharedDocument({
-    @required this.commercioDocs,
-    @required this.transactionResult,
-  });
+  const factory CommercioDocsSharedEncryptedDocumentState.initial() =
+      CommercioDocsSharedEncryptedDocumentStateInitial;
 
-  @override
-  List<Object> get props => [commercioDocs, transactionResult];
+  const factory CommercioDocsSharedEncryptedDocumentState.loading() =
+      CommercioDocsSharedEncryptedDocumentStateLoading;
+
+  const factory CommercioDocsSharedEncryptedDocumentState.error(
+      [String error]) = CommercioDocsSharedEncryptedDocumentStateError;
 }
 
-class CommercioDocsSharedEncryptedDocument extends CommercioDocsState {
-  final StatefulCommercioDocs commercioDocs;
-  final TransactionResult transactionResult;
+@freezed
+@Implements(CommercioDocsState)
+abstract class CommercioDocsSentReceiptState
+    with _$CommercioDocsSentReceiptState {
+  const factory CommercioDocsSentReceiptState({
+    @required TransactionResult result,
+  }) = CommercioDocsSentReceiptStateData;
 
-  const CommercioDocsSharedEncryptedDocument({
-    @required this.commercioDocs,
-    @required this.transactionResult,
-  });
+  const factory CommercioDocsSentReceiptState.initial() =
+      CommercioDocsSentReceiptStateInitial;
 
-  @override
-  List<Object> get props => [commercioDocs, transactionResult];
+  const factory CommercioDocsSentReceiptState.loading() =
+      CommercioDocsSentReceiptStateLoading;
+
+  const factory CommercioDocsSentReceiptState.error([String error]) =
+      CommercioDocsSentReceiptStateError;
 }
 
-class CommercioDocsSentReceipt extends CommercioDocsState {
-  final StatefulCommercioDocs commercioDocs;
-  final TransactionResult transactionResult;
+@freezed
+@Implements(CommercioDocsState)
+abstract class CommercioDocsSentDocumentsState
+    with _$CommercioDocsSentDocumentsState {
+  const factory CommercioDocsSentDocumentsState({
+    @required List<CommercioDoc> sentDocuments,
+  }) = CommercioDocsSentDocumentsStateData;
 
-  const CommercioDocsSentReceipt({
-    @required this.commercioDocs,
-    @required this.transactionResult,
-  });
+  const factory CommercioDocsSentDocumentsState.initial() =
+      CommercioDocsSentDocumentsStateInitial;
 
-  @override
-  List<Object> get props => [commercioDocs, transactionResult];
+  const factory CommercioDocsSentDocumentsState.loading() =
+      CommercioDocsSentDocumentsStateLoading;
+
+  const factory CommercioDocsSentDocumentsState.error([String error]) =
+      CommercioDocsSentDocumentsStateError;
 }
 
-class CommercioDocsSentDocuments extends CommercioDocsState {
-  final StatefulCommercioDocs commercioDocs;
-  final List<CommercioDoc> sentDocuments;
+@freezed
+@Implements(CommercioDocsState)
+abstract class CommercioDocsReceivedDocumentsState
+    with _$CommercioDocsReceivedDocumentsState {
+  const factory CommercioDocsReceivedDocumentsState({
+    @required List<CommercioDoc> receivedDocuments,
+  }) = CommercioDocsReceivedDocumentsStateData;
 
-  const CommercioDocsSentDocuments({
-    @required this.commercioDocs,
-    @required this.sentDocuments,
-  });
+  const factory CommercioDocsReceivedDocumentsState.initial() =
+      CommercioDocsReceivedDocumentsStateInitial;
 
-  @override
-  List<Object> get props => [commercioDocs, sentDocuments];
+  const factory CommercioDocsReceivedDocumentsState.loading() =
+      CommercioDocsReceivedDocumentsStateLoading;
+
+  const factory CommercioDocsReceivedDocumentsState.error([String error]) =
+      CommercioDocsReceivedDocumentsStateError;
 }
 
-class CommercioDocsReceivedDocuments extends CommercioDocsState {
-  final StatefulCommercioDocs commercioDocs;
-  final List<CommercioDoc> receivedDocuments;
+@freezed
+@Implements(CommercioDocsState)
+abstract class CommercioDocsSentReceiptsState
+    with _$CommercioDocsSentReceiptsState {
+  const factory CommercioDocsSentReceiptsState({
+    @required List<CommercioDocReceipt> sentReceipts,
+  }) = CommercioDocsSentReceiptsStateData;
 
-  const CommercioDocsReceivedDocuments({
-    @required this.commercioDocs,
-    @required this.receivedDocuments,
-  });
+  const factory CommercioDocsSentReceiptsState.initial() =
+      CommercioDocsSentReceiptsStateInitial;
 
-  @override
-  List<Object> get props => [commercioDocs, receivedDocuments];
+  const factory CommercioDocsSentReceiptsState.loading() =
+      CommercioDocsSentReceiptsStateLoading;
+
+  const factory CommercioDocsSentReceiptsState.error([String error]) =
+      CommercioDocsSentReceiptsStateError;
 }
 
-class CommercioDocsSentReceipts extends CommercioDocsState {
-  final StatefulCommercioDocs commercioDocs;
-  final List<CommercioDocReceipt> sentReceipts;
+@freezed
+@Implements(CommercioDocsState)
+abstract class CommercioDocsReceivedReceiptsState
+    with _$CommercioDocsReceivedReceiptsState {
+  const factory CommercioDocsReceivedReceiptsState({
+    @required List<CommercioDocReceipt> receivedReceipts,
+  }) = CommercioDocsReceivedReceiptsStateData;
 
-  const CommercioDocsSentReceipts({
-    @required this.commercioDocs,
-    @required this.sentReceipts,
-  });
+  const factory CommercioDocsReceivedReceiptsState.initial() =
+      CommercioDocsReceivedReceiptsStateInitial;
 
-  @override
-  List<Object> get props => [commercioDocs, sentReceipts];
+  const factory CommercioDocsReceivedReceiptsState.loading() =
+      CommercioDocsReceivedReceiptsStateLoading;
+
+  const factory CommercioDocsReceivedReceiptsState.error([String error]) =
+      CommercioDocsReceivedReceiptsStateError;
 }
 
-class CommercioDocsReceivedReceipts extends CommercioDocsState {
-  final StatefulCommercioDocs commercioDocs;
-  final List<CommercioDocReceipt> receivedReceipts;
-
-  const CommercioDocsReceivedReceipts({
-    @required this.commercioDocs,
-    @required this.receivedReceipts,
-  });
-
-  @override
-  List<Object> get props => [commercioDocs, receivedReceipts];
-}
-
-abstract class CommercioDocsEncDataState extends CommercioState {
-  final Map<EncryptedData, bool> encryptedData;
-
-  const CommercioDocsEncDataState({@required this.encryptedData});
-
-  @override
-  List<Object> get props => [encryptedData];
-}
-
-class CommercioDocsEncDataInitial extends CommercioDocsEncDataState {
-  const CommercioDocsEncDataInitial({
+@freezed
+@Implements(CommercioDocsState)
+abstract class CommercioDocsEncDataState with _$CommercioDocsEncDataState {
+  const factory CommercioDocsEncDataState({
     @required Map<EncryptedData, bool> encryptedData,
-  }) : super(encryptedData: encryptedData);
-}
+  }) = CommercioDocsEncDataStateData;
 
-class CommercioDocsEncDataChanged extends CommercioDocsEncDataState {
-  const CommercioDocsEncDataChanged({
+  const factory CommercioDocsEncDataState.initial({
     @required Map<EncryptedData, bool> encryptedData,
-  }) : super(encryptedData: encryptedData);
+  }) = CommercioDocsEncDataStateInitial;
+
+  const factory CommercioDocsEncDataState.loading() =
+      CommercioDocsEncDataStateLoading;
+
+  const factory CommercioDocsEncDataState.error([String error]) =
+      CommercioDocsEncDataStateError;
 }

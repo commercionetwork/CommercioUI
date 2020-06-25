@@ -4,12 +4,13 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
 class ShareDocumentText extends CommercioTextWidget<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsShareDocumentLoading,
-    CommercioDocsSharedDocument,
-    CommercioDocsInitial> {
+    CommercioDocsShareDocumentBloc,
+    CommercioDocsShareDocumentEvent,
+    CommercioDocsSharedDocumentState,
+    CommercioDocsSharedDocumentStateInitial,
+    CommercioDocsSharedDocumentStateData,
+    CommercioDocsSharedDocumentStateLoading,
+    CommercioDocsSharedDocumentStateError> {
   const ShareDocumentText({
     Key key,
     TextStyle style,
@@ -25,7 +26,9 @@ class ShareDocumentText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioDocsSharedDocument state) textCallback,
+    @required
+        String Function(CommercioDocsSharedDocumentStateData state)
+            textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,
@@ -48,12 +51,13 @@ class ShareDocumentText extends CommercioTextWidget<
 }
 
 class ShareEncryptedDocumentText extends CommercioTextWidget<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsShareEncryptedDocumentLoading,
-    CommercioDocsSharedEncryptedDocument,
-    CommercioDocsInitial> {
+    CommercioDocsShareEncryptedDocumentBloc,
+    CommercioDocsShareEncryptedDocumentEvent,
+    CommercioDocsSharedEncryptedDocumentState,
+    CommercioDocsSharedEncryptedDocumentStateInitial,
+    CommercioDocsSharedEncryptedDocumentStateData,
+    CommercioDocsSharedEncryptedDocumentStateLoading,
+    CommercioDocsSharedEncryptedDocumentStateError> {
   const ShareEncryptedDocumentText({
     Key key,
     TextStyle style,
@@ -70,7 +74,7 @@ class ShareEncryptedDocumentText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioDocsSharedEncryptedDocument state)
+        String Function(CommercioDocsSharedEncryptedDocumentStateData state)
             textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
@@ -94,12 +98,13 @@ class ShareEncryptedDocumentText extends CommercioTextWidget<
 }
 
 class SendReceiptText extends CommercioTextWidget<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSendReceiptLoading,
-    CommercioDocsSentReceipt,
-    CommercioDocsInitial> {
+    CommercioDocsSendReceiptBloc,
+    CommercioDocsSendReceiptEvent,
+    CommercioDocsSentReceiptState,
+    CommercioDocsSentReceiptStateInitial,
+    CommercioDocsSentReceiptStateData,
+    CommercioDocsSentReceiptStateLoading,
+    CommercioDocsSentReceiptStateError> {
   const SendReceiptText({
     Key key,
     TextStyle style,
@@ -115,7 +120,8 @@ class SendReceiptText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioDocsSentReceipt state) textCallback,
+    @required
+        String Function(CommercioDocsSentReceiptStateData state) textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,
@@ -138,12 +144,13 @@ class SendReceiptText extends CommercioTextWidget<
 }
 
 class SentDocumentsText extends CommercioTextWidget<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSentDocumentsLoading,
-    CommercioDocsSentDocuments,
-    CommercioDocsInitial> {
+    CommercioDocsSentDocumentsBloc,
+    CommercioDocsSentDocumentsEvent,
+    CommercioDocsSentDocumentsState,
+    CommercioDocsSentDocumentsStateInitial,
+    CommercioDocsSentDocumentsStateData,
+    CommercioDocsSentDocumentsStateLoading,
+    CommercioDocsSentDocumentsStateError> {
   const SentDocumentsText({
     Key key,
     TextStyle style,
@@ -159,7 +166,8 @@ class SentDocumentsText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioDocsSentDocuments state) textCallback,
+    @required
+        String Function(CommercioDocsSentDocumentsStateData state) textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,
@@ -182,12 +190,13 @@ class SentDocumentsText extends CommercioTextWidget<
 }
 
 class ReceivedDocumentsText extends CommercioTextWidget<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsReceivedDocumentsLoading,
-    CommercioDocsReceivedDocuments,
-    CommercioDocsInitial> {
+    CommercioDocsReceivedDocumentsBloc,
+    CommercioDocsReceivedDocumentsEvent,
+    CommercioDocsReceivedDocumentsState,
+    CommercioDocsReceivedDocumentsStateInitial,
+    CommercioDocsReceivedDocumentsStateData,
+    CommercioDocsReceivedDocumentsStateLoading,
+    CommercioDocsReceivedDocumentsStateError> {
   const ReceivedDocumentsText({
     Key key,
     TextStyle style,
@@ -204,7 +213,8 @@ class ReceivedDocumentsText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioDocsReceivedDocuments state) textCallback,
+        String Function(CommercioDocsReceivedDocumentsStateData state)
+            textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,
@@ -227,12 +237,13 @@ class ReceivedDocumentsText extends CommercioTextWidget<
 }
 
 class SentReceiptsText extends CommercioTextWidget<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSentReceiptsLoading,
-    CommercioDocsSentReceipts,
-    CommercioDocsInitial> {
+    CommercioDocsSentReceiptsBloc,
+    CommercioDocsSentReceiptsEvent,
+    CommercioDocsSentReceiptsState,
+    CommercioDocsSentReceiptsStateInitial,
+    CommercioDocsSentReceiptsStateData,
+    CommercioDocsSentReceiptsStateLoading,
+    CommercioDocsSentReceiptsStateError> {
   const SentReceiptsText({
     Key key,
     TextStyle style,
@@ -248,7 +259,8 @@ class SentReceiptsText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioDocsSentReceipts state) textCallback,
+    @required
+        String Function(CommercioDocsSentReceiptsStateData state) textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,
@@ -271,12 +283,13 @@ class SentReceiptsText extends CommercioTextWidget<
 }
 
 class ReceivedReceiptsText extends CommercioTextWidget<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsReceivedReceiptsLoading,
-    CommercioDocsReceivedReceipts,
-    CommercioDocsInitial> {
+    CommercioDocsReceivedReceiptsBloc,
+    CommercioDocsReceivedReceiptsEvent,
+    CommercioDocsReceivedReceiptsState,
+    CommercioDocsReceivedReceiptsStateInitial,
+    CommercioDocsReceivedReceiptsStateData,
+    CommercioDocsReceivedReceiptsStateLoading,
+    CommercioDocsReceivedReceiptsStateError> {
   const ReceivedReceiptsText({
     Key key,
     TextStyle style,
@@ -292,7 +305,9 @@ class ReceivedReceiptsText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
-    @required String Function(CommercioDocsReceivedReceipts state) textCallback,
+    @required
+        String Function(CommercioDocsReceivedReceiptsStateData state)
+            textCallback,
     @required String Function() loadingTextCallback,
   }) : super(
           key: key,

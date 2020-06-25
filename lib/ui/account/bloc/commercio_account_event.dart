@@ -6,11 +6,12 @@ abstract class CommercioAccountEvent extends Equatable {
   const CommercioAccountEvent();
 }
 
-class CommercioAccountGenerateNewWalletEvent extends CommercioAccountEvent {
+class CommercioAccountGenerateWalletEvent extends Equatable
+    implements CommercioAccountEvent {
   final String mnemonic;
   final String lastDerivationPathSegment;
 
-  const CommercioAccountGenerateNewWalletEvent({
+  const CommercioAccountGenerateWalletEvent({
     this.mnemonic,
     this.lastDerivationPathSegment,
   });

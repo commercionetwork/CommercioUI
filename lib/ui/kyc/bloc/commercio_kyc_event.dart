@@ -2,36 +2,35 @@ import 'package:commerciosdk/export.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-abstract class CommercioMembershipEvent extends Equatable {
-  const CommercioMembershipEvent();
+abstract class CommercioKycEvent extends Equatable {
+  const CommercioKycEvent();
 }
 
-class CommercioMembershipRequestFaucetInviteEvent
-    extends CommercioMembershipEvent {
+class CommercioKycRequestFaucetInviteEvent extends CommercioKycEvent {
   final String faucetDomain;
 
-  const CommercioMembershipRequestFaucetInviteEvent({this.faucetDomain});
+  const CommercioKycRequestFaucetInviteEvent({this.faucetDomain});
 
   @override
   List<Object> get props => [faucetDomain];
 }
 
-class CommercioMembershipBuyMembershipEvent extends CommercioMembershipEvent {
+class CommercioKycBuyMembershipEvent extends CommercioKycEvent {
   final MembershipType membershipType;
   final StdFee fee;
 
-  const CommercioMembershipBuyMembershipEvent(
+  const CommercioKycBuyMembershipEvent(
       {@required this.membershipType, this.fee});
 
   @override
   List<Object> get props => [membershipType, fee];
 }
 
-class CommercioMembershipInviteMemberEvent extends CommercioMembershipEvent {
+class CommercioKycInviteMemberEvent extends CommercioKycEvent {
   final String invitedAddress;
   final StdFee fee;
 
-  const CommercioMembershipInviteMemberEvent(
+  const CommercioKycInviteMemberEvent(
       {@required this.invitedAddress, this.fee});
 
   @override

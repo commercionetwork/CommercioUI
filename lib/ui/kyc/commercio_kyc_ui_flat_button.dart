@@ -2,11 +2,11 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
 class RequestFaucetInviteFlatButton extends EventFlatButton<
-    CommercioMembershipBloc,
-    CommercioMembershipEvent,
-    CommercioMembershipState,
-    CommercioMembershipRequestFaucetInviteLoading,
-    CommercioMembershipRequestFaucetInviteError> {
+    CommercioKycRequestFaucetInviteBloc,
+    CommercioKycRequestFaucetInviteEvent,
+    CommercioKycRequestedFaucetInviteState,
+    CommercioKycRequestedFaucetInviteStateLoading,
+    CommercioKycRequestedFaucetInviteStateError> {
   RequestFaucetInviteFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -31,8 +31,7 @@ class RequestFaucetInviteFlatButton extends EventFlatButton<
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
     @required
-        CommercioMembershipRequestFaucetInviteEvent Function()
-            accountEventCallback,
+        CommercioKycRequestFaucetInviteEvent Function() accountEventCallback,
     String faucetDomain,
   }) : super(
           key: key,
@@ -62,11 +61,11 @@ class RequestFaucetInviteFlatButton extends EventFlatButton<
 }
 
 class BuyMembershipFlatButton extends EventFlatButton<
-    CommercioMembershipBloc,
-    CommercioMembershipEvent,
-    CommercioMembershipState,
-    CommercioMembershipBuyMembershipLoading,
-    CommercioMembershipBuyMembershipError> {
+    CommercioKycBuyMembershipBloc,
+    CommercioKycBuyMembershipEvent,
+    CommercioKycBuyMembershipState,
+    CommercioKycBuyMembershipStateLoading,
+    CommercioKycBuyMembershipStateError> {
   BuyMembershipFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -90,8 +89,7 @@ class BuyMembershipFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required
-        CommercioMembershipBuyMembershipEvent Function() accountEventCallback,
+    @required CommercioKycBuyMembershipEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -120,11 +118,11 @@ class BuyMembershipFlatButton extends EventFlatButton<
 }
 
 class InviteMemberFlatButton extends EventFlatButton<
-    CommercioMembershipBloc,
-    CommercioMembershipEvent,
-    CommercioMembershipState,
-    CommercioMembershipInviteMemberLoading,
-    CommercioMembershipInviteMemberError> {
+    CommercioKycInviteMemberBloc,
+    CommercioKycInviteMemberEvent,
+    CommercioKycInviteMemberState,
+    CommercioKycInviteMemberStateLoading,
+    CommercioKycInviteMemberStateError> {
   InviteMemberFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -148,8 +146,7 @@ class InviteMemberFlatButton extends EventFlatButton<
     Widget Function() loadingChild,
     Widget Function() child,
     void Function(String errorMessage) errorCallback,
-    @required
-        CommercioMembershipInviteMemberEvent Function() accountEventCallback,
+    @required CommercioKycInviteMemberEvent Function() accountEventCallback,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
