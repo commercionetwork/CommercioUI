@@ -52,7 +52,9 @@ abstract class CommercioAccountRestoredWalletState
 @freezed
 @Implements(CommercioAccountState)
 abstract class CommercioAccountQrState with _$CommercioAccountQrState {
-  const factory CommercioAccountQrState() = CommercioAccountQrStateData;
+  const factory CommercioAccountQrState({
+    @required String walletAddress,
+  }) = CommercioAccountQrStateData;
 
   const factory CommercioAccountQrState.initial() =
       CommercioAccountQrStateInitial;

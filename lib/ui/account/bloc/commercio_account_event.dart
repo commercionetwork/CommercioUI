@@ -21,10 +21,12 @@ class CommercioAccountGenerateWalletEvent extends Equatable
 }
 
 class CommercioAccountRestoreWalletEvent extends CommercioAccountEvent {
-  const CommercioAccountRestoreWalletEvent();
+  final String mnemonic;
+
+  const CommercioAccountRestoreWalletEvent({this.mnemonic});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [mnemonic];
 }
 
 class CommercioAccountRequestFreeTokensEvent extends CommercioAccountEvent {

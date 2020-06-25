@@ -4,7 +4,7 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
 class RestoreWalletText extends CommercioTextWidget<
-    CommercioRestoreWalletBloc,
+    CommercioAccountRestoreWalletBloc,
     CommercioAccountRestoreWalletEvent,
     CommercioAccountRestoredWalletState,
     CommercioAccountRestoredWalletStateInitial,

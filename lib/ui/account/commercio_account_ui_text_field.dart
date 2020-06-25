@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class RestoreWalletTextField extends CommercioTextField<
-    CommercioRestoreWalletBloc,
+    CommercioAccountRestoreWalletBloc,
     CommercioAccountRestoreWalletEvent,
     CommercioAccountRestoredWalletState,
     CommercioAccountRestoredWalletStateInitial,

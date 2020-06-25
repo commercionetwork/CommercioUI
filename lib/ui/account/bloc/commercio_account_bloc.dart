@@ -48,11 +48,11 @@ class CommercioAccountGenerateWalletBloc extends Bloc<
   }
 }
 
-class CommercioRestoreWalletBloc extends Bloc<
+class CommercioAccountRestoreWalletBloc extends Bloc<
     CommercioAccountRestoreWalletEvent, CommercioAccountRestoredWalletState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioRestoreWalletBloc({@required this.commercioAccount});
+  CommercioAccountRestoreWalletBloc({@required this.commercioAccount});
 
   @override
   CommercioAccountRestoredWalletState get initialState {
@@ -76,7 +76,11 @@ class CommercioRestoreWalletBloc extends Bloc<
     try {
       yield const CommercioAccountRestoredWalletStateLoading();
 
-      await commercioAccount.restoreWallet();
+      if (event.mnemonic != null) {
+        await commercioAccount.generateNewWallet(mnemonic: event.mnemonic);
+      } else {
+        await commercioAccount.restoreWallet();
+      }
 
       yield CommercioAccountRestoredWalletStateData(
         mnemonic: commercioAccount.mnemonic,
@@ -96,8 +100,15 @@ class CommercioAccountGenerateQrBloc
   CommercioAccountGenerateQrBloc({@required this.commercioAccount});
 
   @override
-  CommercioAccountQrState get initialState =>
-      const CommercioAccountQrStateInitial();
+  CommercioAccountQrState get initialState {
+    if (commercioAccount.hasWalletAddress) {
+      return CommercioAccountQrStateData(
+        walletAddress: commercioAccount.walletAddress,
+      );
+    }
+
+    return const CommercioAccountQrStateInitial();
+  }
 
   @override
   Stream<CommercioAccountQrState> mapEventToState(
@@ -106,7 +117,9 @@ class CommercioAccountGenerateQrBloc
     try {
       yield const CommercioAccountQrStateLoading();
 
-      yield CommercioAccountQrStateData();
+      yield CommercioAccountQrStateData(
+        walletAddress: commercioAccount.walletAddress,
+      );
     } catch (e) {
       yield CommercioAccountQrStateError(e.toString());
     }

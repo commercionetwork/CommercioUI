@@ -60,7 +60,7 @@ class GenerateWalletFlatButton extends EventFlatButton<
 }
 
 class RestoreWalletFlatButton extends EventFlatButton<
-    CommercioRestoreWalletBloc,
+    CommercioAccountRestoreWalletBloc,
     CommercioAccountRestoreWalletEvent,
     CommercioAccountRestoredWalletState,
     CommercioAccountRestoredWalletStateLoading,

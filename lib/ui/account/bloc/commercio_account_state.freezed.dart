@@ -1199,8 +1199,10 @@ abstract class CommercioAccountRestoredWalletStateError
 class _$CommercioAccountQrStateTearOff {
   const _$CommercioAccountQrStateTearOff();
 
-  CommercioAccountQrStateData call() {
-    return const CommercioAccountQrStateData();
+  CommercioAccountQrStateData call({@required String walletAddress}) {
+    return CommercioAccountQrStateData(
+      walletAddress: walletAddress,
+    );
   }
 
   CommercioAccountQrStateInitial initial() {
@@ -1224,14 +1226,14 @@ const $CommercioAccountQrState = _$CommercioAccountQrStateTearOff();
 mixin _$CommercioAccountQrState {
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     Result initial(),
     Result loading(),
     Result error(String error),
@@ -1274,6 +1276,7 @@ abstract class $CommercioAccountQrStateDataCopyWith<$Res> {
           CommercioAccountQrStateData value,
           $Res Function(CommercioAccountQrStateData) then) =
       _$CommercioAccountQrStateDataCopyWithImpl<$Res>;
+  $Res call({String walletAddress});
 }
 
 class _$CommercioAccountQrStateDataCopyWithImpl<$Res>
@@ -1286,28 +1289,53 @@ class _$CommercioAccountQrStateDataCopyWithImpl<$Res>
   @override
   CommercioAccountQrStateData get _value =>
       super._value as CommercioAccountQrStateData;
+
+  @override
+  $Res call({
+    Object walletAddress = freezed,
+  }) {
+    return _then(CommercioAccountQrStateData(
+      walletAddress: walletAddress == freezed
+          ? _value.walletAddress
+          : walletAddress as String,
+    ));
+  }
 }
 
 class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
-  const _$CommercioAccountQrStateData();
+  const _$CommercioAccountQrStateData({@required this.walletAddress})
+      : assert(walletAddress != null);
+
+  @override
+  final String walletAddress;
 
   @override
   String toString() {
-    return 'CommercioAccountQrState()';
+    return 'CommercioAccountQrState(walletAddress: $walletAddress)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CommercioAccountQrStateData);
+    return identical(this, other) ||
+        (other is CommercioAccountQrStateData &&
+            (identical(other.walletAddress, walletAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.walletAddress, walletAddress)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(walletAddress);
+
+  @override
+  $CommercioAccountQrStateDataCopyWith<CommercioAccountQrStateData>
+      get copyWith => _$CommercioAccountQrStateDataCopyWithImpl<
+          CommercioAccountQrStateData>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
@@ -1316,13 +1344,13 @@ class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
-    return $default();
+    return $default(walletAddress);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     Result initial(),
     Result loading(),
     Result error(String error),
@@ -1330,7 +1358,7 @@ class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
   }) {
     assert(orElse != null);
     if ($default != null) {
-      return $default();
+      return $default(walletAddress);
     }
     return orElse();
   }
@@ -1368,7 +1396,12 @@ class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
 }
 
 abstract class CommercioAccountQrStateData implements CommercioAccountQrState {
-  const factory CommercioAccountQrStateData() = _$CommercioAccountQrStateData;
+  const factory CommercioAccountQrStateData({@required String walletAddress}) =
+      _$CommercioAccountQrStateData;
+
+  String get walletAddress;
+  $CommercioAccountQrStateDataCopyWith<CommercioAccountQrStateData>
+      get copyWith;
 }
 
 abstract class $CommercioAccountQrStateInitialCopyWith<$Res> {
@@ -1411,7 +1444,7 @@ class _$CommercioAccountQrStateInitial
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
@@ -1426,7 +1459,7 @@ class _$CommercioAccountQrStateInitial
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     Result initial(),
     Result loading(),
     Result error(String error),
@@ -1517,7 +1550,7 @@ class _$CommercioAccountQrStateLoading
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
@@ -1532,7 +1565,7 @@ class _$CommercioAccountQrStateLoading
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     Result initial(),
     Result loading(),
     Result error(String error),
@@ -1644,7 +1677,7 @@ class _$CommercioAccountQrStateError implements CommercioAccountQrStateError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
@@ -1659,7 +1692,7 @@ class _$CommercioAccountQrStateError implements CommercioAccountQrStateError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String walletAddress), {
     Result initial(),
     Result loading(),
     Result error(String error),
