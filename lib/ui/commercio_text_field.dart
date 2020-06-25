@@ -158,6 +158,10 @@ class _CommercioTextFieldState<
           widget.controller.text = widget.loadingTextCallback();
         }
 
+        if (TypeHelper.freezedEquals(state, ERR)) {
+          widget.controller.text = previousText = state.toString();
+        }
+
         return TextField(
           controller: widget.controller,
           focusNode: widget.focusNode,
