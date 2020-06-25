@@ -225,7 +225,7 @@ class RestoreKeysTextField extends CommercioTextField<
         );
 }
 
-class DeriveDidDocumentTextField extends CommercioTextField<
+class DeleteKeysTextField extends CommercioTextField<
     CommercioIdDeleteKeysBloc,
     CommercioIdDeleteKeysEvent,
     CommercioIdDeletedKeysState,
@@ -233,7 +233,7 @@ class DeriveDidDocumentTextField extends CommercioTextField<
     CommercioIdDeletedKeysStateData,
     CommercioIdDeletedKeysStateLoading,
     CommercioIdDeletedKeysStateError> {
-  DeriveDidDocumentTextField({
+  DeleteKeysTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -335,7 +335,7 @@ class DeriveDidDocumentTextField extends CommercioTextField<
         );
 }
 
-class SetDidDocumentTextField extends CommercioTextField<
+class DeriveDidDocumentTextField extends CommercioTextField<
     CommercioIdDeriveDidDocumentBloc,
     CommercioIdDeriveDidDocumentEvent,
     CommercioIdDerivedDidDocumentState,
@@ -343,7 +343,7 @@ class SetDidDocumentTextField extends CommercioTextField<
     CommercioIdDerivedDidDocumentStateData,
     CommercioIdDerivedDidDocumentStateLoading,
     CommercioIdDerivedDidDocumentStateError> {
-  SetDidDocumentTextField({
+  DeriveDidDocumentTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -446,7 +446,7 @@ class SetDidDocumentTextField extends CommercioTextField<
         );
 }
 
-class RechargeGovernmentTextField extends CommercioTextField<
+class SetDidDocumentTextField extends CommercioTextField<
     CommercioIdSetDidDocumentBloc,
     CommercioIdSetDidDocumentEvent,
     CommercioIdSetDidDocumentState,
@@ -454,7 +454,7 @@ class RechargeGovernmentTextField extends CommercioTextField<
     CommercioIdSetDidDocumentStateData,
     CommercioIdSetDidDocumentStateLoading,
     CommercioIdSetDidDocumentStateError> {
-  RechargeGovernmentTextField({
+  SetDidDocumentTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -556,7 +556,7 @@ class RechargeGovernmentTextField extends CommercioTextField<
         );
 }
 
-class RequestDidPowerUpTextField extends CommercioTextField<
+class RechargeTumblerTextField extends CommercioTextField<
     CommercioIdRechargeTumblerBloc,
     CommercioIdRechargeTumblerEvent,
     CommercioIdRechargedTumblerState,
@@ -564,7 +564,7 @@ class RequestDidPowerUpTextField extends CommercioTextField<
     CommercioIdRechargedTumblerStateData,
     CommercioIdRechargedTumblerStateLoading,
     CommercioIdRechargedTumblerStateError> {
-  RequestDidPowerUpTextField({
+  RechargeTumblerTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -611,6 +611,117 @@ class RequestDidPowerUpTextField extends CommercioTextField<
     ScrollController scrollController,
     @required
         String Function(CommercioIdRechargedTumblerStateData state)
+            textCallback,
+    @required String Function() loadingTextCallback,
+    TextStyle loadingStyle,
+    void Function(String errorMessage) errorCallback,
+  }) : super(
+          key: key,
+          controller: controller,
+          focusNode: focusNode,
+          decoration: decoration,
+          keyboardType: keyboardType,
+          textInputAction: textInputAction,
+          textCapitalization: textCapitalization,
+          style: style,
+          strutStyle: strutStyle,
+          textAlign: textAlign,
+          textAlignVertical: textAlignVertical,
+          textDirection: textDirection,
+          readOnly: readOnly,
+          toolbarOptions: toolbarOptions,
+          showCursor: showCursor,
+          autofocus: autofocus,
+          obscureText: obscureText,
+          autocorrect: autocorrect,
+          smartDashesType: smartDashesType,
+          smartQuotesType: smartQuotesType,
+          enableSuggestions: enableSuggestions,
+          maxLines: maxLines,
+          minLines: minLines,
+          expands: expands,
+          maxLength: maxLength,
+          maxLengthEnforced: maxLengthEnforced,
+          onChanged: onChanged,
+          onEditingComplete: onEditingComplete,
+          onSubmitted: onSubmitted,
+          inputFormatters: inputFormatters,
+          enabled: enabled,
+          cursorWidth: cursorWidth,
+          cursorRadius: cursorRadius,
+          cursorColor: cursorColor,
+          selectionHeightStyle: selectionHeightStyle,
+          selectionWidthStyle: selectionWidthStyle,
+          keyboardAppearance: keyboardAppearance,
+          scrollPadding: scrollPadding,
+          enableInteractiveSelection: enableInteractiveSelection,
+          dragStartBehavior: dragStartBehavior,
+          onTap: onTap,
+          buildCounter: buildCounter,
+          scrollPhysics: scrollPhysics,
+          scrollController: scrollController,
+          textCallback: textCallback,
+          loadingTextCallback: loadingTextCallback,
+          loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
+          errorCallback: errorCallback,
+        );
+}
+
+class RequestDidPowerUpTextField extends CommercioTextField<
+    CommercioIdRequestDidPowerUpBloc,
+    CommercioIdRequestDidPowerUpEvent,
+    CommercioIdRequestedDidPowerUpState,
+    CommercioIdRequestedDidPowerUpStateInitial,
+    CommercioIdRequestedDidPowerUpStateData,
+    CommercioIdRequestedDidPowerUpStateLoading,
+    CommercioIdRequestedDidPowerUpStateError> {
+  RequestDidPowerUpTextField({
+    Key key,
+    TextEditingController controller,
+    FocusNode focusNode,
+    InputDecoration decoration = const InputDecoration(),
+    TextInputType keyboardType,
+    TextInputAction textInputAction,
+    TextCapitalization textCapitalization = TextCapitalization.none,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign = TextAlign.start,
+    TextAlignVertical textAlignVertical,
+    TextDirection textDirection,
+    bool readOnly = false,
+    ToolbarOptions toolbarOptions,
+    bool showCursor,
+    bool autofocus = false,
+    bool obscureText = false,
+    bool autocorrect = true,
+    SmartDashesType smartDashesType,
+    SmartQuotesType smartQuotesType,
+    bool enableSuggestions = true,
+    int maxLines = 1,
+    int minLines,
+    bool expands = false,
+    int maxLength,
+    bool maxLengthEnforced = true,
+    ValueChanged<String> onChanged,
+    VoidCallback onEditingComplete,
+    ValueChanged<String> onSubmitted,
+    List<TextInputFormatter> inputFormatters,
+    bool enabled,
+    double cursorWidth = 2.0,
+    Radius cursorRadius,
+    Color cursorColor,
+    ui.BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
+    ui.BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
+    Brightness keyboardAppearance,
+    EdgeInsets scrollPadding = const EdgeInsets.all(20.0),
+    DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+    bool enableInteractiveSelection = true,
+    GestureTapCallback onTap,
+    InputCounterWidgetBuilder buildCounter,
+    ScrollPhysics scrollPhysics,
+    ScrollController scrollController,
+    @required
+        String Function(CommercioIdRequestedDidPowerUpStateData state)
             textCallback,
     @required String Function() loadingTextCallback,
     TextStyle loadingStyle,
