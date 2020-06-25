@@ -2,15 +2,15 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:meta/meta.dart';
 
-/// The [StatefulCommercioMembership] module allows you to buy memberships
+/// The [StatefulCommercioKyc] module allows you to buy memberships
 /// to display to everyone that you've been invited by an already verified
 /// members to join the network and invite other members.
-class StatefulCommercioMembership {
+class StatefulCommercioKyc {
   final StatefulCommercioAccount commercioAccount;
 
-  /// Creates a new [StatefulCommercioMembership] with the given
+  /// Creates a new [StatefulCommercioKyc] with the given
   /// [commercioAccount].
-  const StatefulCommercioMembership({@required this.commercioAccount});
+  const StatefulCommercioKyc({@required this.commercioAccount});
 
   /// Request an member invitation from the faucet.
   /// The [walletAddress] must be not already on the chain.
@@ -23,7 +23,7 @@ class StatefulCommercioMembership {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioMembership.requestFaucetInvite(
+    return StatelessCommercioKyc.requestFaucetInvite(
         walletAddress: commercioAccount.walletAddress,
         httpHelper: commercioAccount.httpHelper);
   }
