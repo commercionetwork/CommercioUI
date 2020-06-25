@@ -12,7 +12,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // - Default error handling
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    RepositoryProvider<StatefulCommercioAccount>(
+      create: (_) => StatefulCommercioAccount(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,11 +26,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Provide the CommercioAccountBloc, still required
-    return BlocProvider<CommercioAccountBloc>(
-      create: (_) =>
-          CommercioAccountBloc(commercioAccount: StatefulCommercioAccount()),
+    return BlocProvider<CommercioAccountGenerateWalletBloc>(
+      create: (_) => CommercioAccountGenerateWalletBloc(
+        commercioAccount:
+            RepositoryProvider.of<StatefulCommercioAccount>(context),
+      ),
       child: MaterialApp(
-        title: 'Example app',
+        title: 'Example App',
         home: ExamplePage(),
       ),
     );
@@ -49,7 +56,7 @@ class ExamplePage extends StatelessWidget {
           // to generate new mnemonic and derive the wallet
           GenerateWalletFlatButton(
             accountEventCallback: () =>
-                const CommercioAccountGenerateNewWalletEvent(),
+                const CommercioAccountGenerateWalletEvent(),
             disabledTextColor: Colors.brown,
             color: Colors.orangeAccent,
             child: () => const Text('Generate new wallet'),
@@ -60,27 +67,26 @@ class ExamplePage extends StatelessWidget {
 
           // We can still use the BLoC components to intercept the states
           // and provide custom logic
-          BlocBuilder<CommercioAccountBloc, CommercioAccountState>(
-              builder: (_, state) {
-            textCtrl.text = '';
+          BlocBuilder<CommercioAccountGenerateWalletBloc,
+              CommercioAccountGenerateWalletState>(
+            builder: (_, state) {
+              state.when(
+                (mnemonic, wallet, walletAddress) => textCtrl.text = mnemonic,
+                initial: () => textCtrl.text = '',
+                loading: () => textCtrl.text = 'Generating...',
+                error: (e) => textCtrl.text = 'Error: $e',
+              );
 
-            if (state is CommercioAccountLoadingGenerateWallet) {
-              textCtrl.text = 'Generating...';
-            }
-
-            if (state is CommercioAccountGeneratedWithWallet) {
-              textCtrl.text = state.commercioAccount.mnemonic;
-            }
-
-            return TextField(
-              controller: textCtrl,
-              readOnly: true,
-              style: TextStyle(
-                  color: (state is CommercioAccountLoadingGenerateWallet)
-                      ? Colors.grey
-                      : Colors.black),
-            );
-          }),
+              return TextField(
+                controller: textCtrl,
+                readOnly: true,
+                style: TextStyle(
+                    color: (state is CommercioAccountGenerateWalletLoading)
+                        ? Colors.grey
+                        : Colors.black),
+              );
+            },
+          ),
 
           const Text('Wallet address:'),
 
@@ -89,7 +95,7 @@ class ExamplePage extends StatelessWidget {
           GenerateWalletTextField(
             readOnly: true,
             loadingTextCallback: () => 'Generating...',
-            textCallback: (state) => state.commercioAccount.walletAddress,
+            textCallback: (state) => state.walletAddress,
           ),
         ],
       ),

@@ -14,7 +14,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // - Relay on stateless widgets instead of stateful ones
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    RepositoryProvider<StatefulCommercioAccount>(
+      create: (_) => StatefulCommercioAccount(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,11 +28,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Provide the needed Commercio BLoC
-    return BlocProvider<CommercioAccountBloc>(
-      create: (_) =>
-          CommercioAccountBloc(commercioAccount: StatefulCommercioAccount()),
+    return BlocProvider<CommercioAccountGenerateWalletBloc>(
+      create: (context) => CommercioAccountGenerateWalletBloc(
+        commercioAccount:
+            RepositoryProvider.of<StatefulCommercioAccount>(context),
+      ),
       child: MaterialApp(
-        title: 'Example app',
+        title: 'Example App',
         home: ExamplePage(),
       ),
     );
@@ -44,7 +51,12 @@ class ExamplePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final commercioAccountBloc = BlocProvider.of<CommercioAccountBloc>(context);
+    final generateWalletBloc =
+        BlocProvider.of<CommercioAccountGenerateWalletBloc>(context);
+    String flatButtonText = 'Generate new wallet';
+    Function() onPressed = () => generateWalletBloc.add(
+          const CommercioAccountGenerateWalletEvent(),
+        );
 
     return Scaffold(
       appBar: AppBar(
@@ -52,74 +64,56 @@ class ExamplePage extends StatelessWidget {
       ),
       body: Center(
         // Use the provided Commercio BLoC to generate a new wallet
-        child: BlocBuilder<CommercioAccountBloc, CommercioAccountState>(
-            builder: (_, state) {
-          // Initial state, all fields empty
-          if (state is CommercioAccountInitial) {
-            mnemonicTextController.text = '';
-            walletTextController.text = '';
-          }
-
-          // Loading state, disable text and buttons
-          if (state is CommercioAccountLoadingGenerateWallet) {
-            walletTextController.text = 'Generating...';
-            mnemonicTextController.text = 'Generating...';
+        child: BlocBuilder<CommercioAccountGenerateWalletBloc,
+            CommercioAccountGenerateWalletState>(
+          builder: (_, state) {
+            state.when(
+              // Wallet and mnemonic have been generated and saved
+              (mnemonic, wallet, walletAddress) {
+                mnemonicTextController.text = mnemonic;
+                walletTextController.text = walletAddress;
+              },
+              // Initial state, all fields empty
+              initial: () {
+                mnemonicTextController.text = '';
+                walletTextController.text = '';
+              },
+              // Loading state, disable text and buttons
+              loading: () {
+                walletTextController.text = 'Generating...';
+                mnemonicTextController.text = 'Generating...';
+                flatButtonText = 'Generating...';
+                onPressed = null;
+              },
+              error: (e) {
+                walletTextController.text = 'Error $e';
+                mnemonicTextController.text = 'Error $e';
+              },
+            );
 
             return Column(
               children: [
-                const FlatButton(
-                  onPressed: null,
+                FlatButton(
+                  // Send a new wallet generation event
+                  onPressed: onPressed,
                   disabledTextColor: Colors.brown,
-                  disabledColor: Colors.orangeAccent,
-                  child: Text(
-                    'Generating...',
-                  ),
+                  color: Colors.orangeAccent,
+                  child: Text(flatButtonText),
                 ),
                 const Text('Mnemonic words:'),
                 TextField(
                   controller: mnemonicTextController,
                   readOnly: true,
-                  style: TextStyle(color: Colors.grey),
                 ),
                 const Text('Wallet address:'),
                 TextField(
                   controller: walletTextController,
                   readOnly: true,
-                  style: TextStyle(color: Colors.grey),
                 ),
               ],
             );
-          }
-
-          // Wallet and mnemonic have been generated and saved
-          if (state is CommercioAccountGeneratedWithWallet) {
-            mnemonicTextController.text = state.commercioAccount.mnemonic;
-            walletTextController.text = state.commercioAccount.walletAddress;
-          }
-
-          return Column(
-            children: [
-              FlatButton(
-                // Send a new wallet generation event
-                onPressed: () => commercioAccountBloc
-                    .add(const CommercioAccountGenerateNewWalletEvent()),
-                disabledTextColor: Colors.brown,
-                color: Colors.orangeAccent,
-                child: const Text('Generate new wallet'),
-              ),
-              const Text('Mnemonic words:'),
-              TextField(
-                controller: mnemonicTextController,
-                readOnly: true,
-              ),
-              const Text('Wallet address:'),
-              TextField(
-                controller: walletTextController,
-                readOnly: true,
-              ),
-            ],
-          );
-        }),
+          },
+        ),
       ),
     );
   }
