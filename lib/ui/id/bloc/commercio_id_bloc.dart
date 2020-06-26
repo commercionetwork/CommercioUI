@@ -177,13 +177,13 @@ class CommercioIdRechargeTumblerBloc extends Bloc<
       TransactionResult result;
 
       if (event.rechargeFee != null && event.rechargeGas != null) {
-        result = await commercioId.rechargeGovernment(
+        result = await commercioId.rechargeTumbler(
           rechargeAmount: event.rechargeAmount,
           rechargeFee: event.rechargeFee,
           rechargeGas: event.rechargeGas,
         );
       } else {
-        result = await commercioId.rechargeGovernment(
+        result = await commercioId.rechargeTumbler(
           rechargeAmount: event.rechargeAmount,
         );
       }

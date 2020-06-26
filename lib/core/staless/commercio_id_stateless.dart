@@ -12,13 +12,17 @@ abstract class StatelessCommercioId {
   /// Returns new generated [CommercioIdKeys] that cointains two RSA keys pair,
   /// one pair for verification and another for signature.
   static Future<CommercioIdKeys> generateKeys() async {
-    final rsaVerificationPair = await KeysHelper.generateRsaKeyPair();
-    final rsaSignatureKeyPair =
-        await KeysHelper.generateRsaKeyPair(type: 'RsaSignatureKey2018');
+    final rsaVerificationPair = await KeysHelper.generateRsaKeyPair(
+      type: 'RsaVerificationKey2018',
+    );
+    final rsaSignatureKeyPair = await KeysHelper.generateRsaKeyPair(
+      type: 'RsaSignatureKey2018',
+    );
 
     return CommercioIdKeys(
-        rsaVerificationPair: rsaVerificationPair,
-        rsaSignatureKeyPair: rsaSignatureKeyPair);
+      rsaVerificationPair: rsaVerificationPair,
+      rsaSignatureKeyPair: rsaSignatureKeyPair,
+    );
   }
 
   /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
@@ -28,7 +32,9 @@ abstract class StatelessCommercioId {
     @required String secureStorageKey,
   }) {
     return fetchKeys(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secureStorage: secureStorage,
+      secureStorageKey: secureStorageKey,
+    );
   }
 
   /// Save [idKeys] inside the [secureStorage] identified by [secureStorageKey].
@@ -38,7 +44,9 @@ abstract class StatelessCommercioId {
     @required CommercioIdKeys idKeys,
   }) {
     return secureStorage.write(
-        key: secureStorageKey, value: jsonEncode(idKeys));
+      key: secureStorageKey,
+      value: jsonEncode(idKeys),
+    );
   }
 
   /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
@@ -50,7 +58,8 @@ abstract class StatelessCommercioId {
     final rawKeys = await secureStorage.read(key: secureStorageKey);
 
     return CommercioIdKeys.fromJson(
-        jsonDecode(rawKeys) as Map<String, dynamic>);
+      jsonDecode(rawKeys) as Map<String, dynamic>,
+    );
   }
 
   /// Delete the [CommercioIdKeys] inside the [secureStorage] identified by
@@ -70,12 +79,13 @@ abstract class StatelessCommercioId {
     List<DidDocumentService> service,
   }) async {
     return DidDocumentHelper.fromWallet(
-        wallet,
-        [
-          idKeys.rsaVerificationPair.publicKey,
-          idKeys.rsaSignatureKeyPair.publicKey,
-        ],
-        service: service);
+      wallet,
+      [
+        idKeys.rsaVerificationPair.publicKey,
+        idKeys.rsaSignatureKeyPair.publicKey,
+      ],
+      service: service,
+    );
   }
 
   /// Associate [didDocument] to your [wallet] identity. An optional [fee]
@@ -97,7 +107,7 @@ abstract class StatelessCommercioId {
   /// be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> rechargeGovernment({
+  static Future<TransactionResult> rechargeTumbler({
     @required WalletWithAddress walletWithAddress,
     @required List<StdCoin> rechargeAmount,
     List<StdCoin> rechargeFee,
@@ -129,6 +139,10 @@ abstract class StatelessCommercioId {
     @required RSAPrivateKey rsaSignaturePrivateKey,
   }) {
     return IdHelper.requestDidPowerUp(
-        senderWallet, pairwiseAddress, amount, rsaSignaturePrivateKey);
+      senderWallet,
+      pairwiseAddress,
+      amount,
+      rsaSignaturePrivateKey,
+    );
   }
 }

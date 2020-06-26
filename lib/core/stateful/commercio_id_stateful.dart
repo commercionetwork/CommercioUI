@@ -112,12 +112,12 @@ class StatefulCommercioId {
   /// An optional amount of [rechargeFee] and [rechargeGas] can be specified.
   ///
   /// Returns the [TransactionResult].
-  Future<TransactionResult> rechargeGovernment({
+  Future<TransactionResult> rechargeTumbler({
     @required List<StdCoin> rechargeAmount,
     List<StdCoin> rechargeFee,
     String rechargeGas,
   }) {
-    return StatelessCommercioId.rechargeGovernment(
+    return StatelessCommercioId.rechargeTumbler(
         walletWithAddress: commercioAccount.walletWithAddress,
         rechargeAmount: rechargeAmount,
         rechargeFee: rechargeFee,
