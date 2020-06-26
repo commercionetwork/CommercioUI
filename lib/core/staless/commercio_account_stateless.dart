@@ -140,7 +140,7 @@ abstract class StatelessCommercioAccount {
         'amount': amount,
       });
     } catch (e) {
-      return AccountRequestError(e.toString());
+      throw AccountRequestError(e.toString());
     }
 
     // TODO: Check response content
