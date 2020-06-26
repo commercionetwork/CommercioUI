@@ -114,6 +114,8 @@ abstract class StatelessCommercioId {
     String rechargeGas,
     HttpHelper httpHelper,
   }) async {
+    httpHelper ??= HttpHelper();
+
     final tumblerAddress = await httpHelper.getGovernmentAddress();
 
     return StatelessCommercioAccount.sendTokens(
