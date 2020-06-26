@@ -243,8 +243,8 @@ class MyApp extends StatelessWidget {
         ),
         // When providing the BLoC (on which the UI layer is built)
         // the Commercio Account can be customized
-        body: BlocProvider<CommercioAccountBloc>(
-            create: (_) => CommercioAccountBloc(
+        body: BlocProvider<CommercioAccountGenerateWalletBloc>(
+            create: (_) => CommercioAccountGenerateWalletBloc(
                 commercioAccount: StatefulCommercioAccount()),
             child: const ExamplePage()),
       ),
@@ -269,7 +269,7 @@ class ExamplePage extends StatelessWidget {
         // Errors are handled automatically but the callback can be customized
         GenerateWalletFlatButton(
           accountEventCallback: () =>
-                const CommercioAccountGenerateNewWalletEvent(),
+                const CommercioAccountGenerateWalletEvent(),
           disabledTextColor: Colors.brown,
           color: Colors.orangeAccent,
           child: () => const Text('Generate new wallet'),
@@ -284,7 +284,7 @@ class ExamplePage extends StatelessWidget {
         GenerateWalletTextField(
           readOnly: true,
           loadingTextCallback: () => 'Generating...',
-          textCallback: (state) => state.commercioAccount.walletAddress,
+          textCallback: (state) => state.walletAddress,
         ),
       ],
     );
