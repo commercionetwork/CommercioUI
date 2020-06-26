@@ -53,10 +53,8 @@ class ExamplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final generateWalletBloc =
         BlocProvider.of<CommercioAccountGenerateWalletBloc>(context);
-    String flatButtonText = 'Generate new wallet';
-    Function() onPressed = () => generateWalletBloc.add(
-          const CommercioAccountGenerateWalletEvent(),
-        );
+    String flatButtonText;
+    Function() onPressed;
 
     return Scaffold(
       appBar: AppBar(
@@ -72,11 +70,17 @@ class ExamplePage extends StatelessWidget {
               (mnemonic, wallet, walletAddress) {
                 mnemonicTextController.text = mnemonic;
                 walletTextController.text = walletAddress;
+                flatButtonText = 'Generate new wallet';
+                onPressed = () => generateWalletBloc
+                    .add(const CommercioAccountGenerateWalletEvent());
               },
               // Initial state, all fields empty
               initial: () {
                 mnemonicTextController.text = '';
                 walletTextController.text = '';
+                flatButtonText = 'Generate new wallet';
+                onPressed = () => generateWalletBloc
+                    .add(const CommercioAccountGenerateWalletEvent());
               },
               // Loading state, disable text and buttons
               loading: () {
@@ -88,6 +92,9 @@ class ExamplePage extends StatelessWidget {
               error: (e) {
                 walletTextController.text = 'Error $e';
                 mnemonicTextController.text = 'Error $e';
+                flatButtonText = 'Generate new wallet';
+                onPressed = () => generateWalletBloc
+                    .add(const CommercioAccountGenerateWalletEvent());
               },
             );
 
