@@ -20,9 +20,12 @@ abstract class StatelessCommercioKyc {
 
     Response response;
     try {
-      response = await httpHelper.faucetRequest(path: HttpPath.invite, data: {
-        'addr': walletAddress,
-      });
+      response = await httpHelper.faucetRequest(
+        path: HttpPath.invite,
+        data: {
+          'addr': walletAddress,
+        },
+      );
     } catch (e) {
       rethrow;
     }
