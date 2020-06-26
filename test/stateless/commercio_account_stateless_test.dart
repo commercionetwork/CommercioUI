@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:commercio_ui/core/staless/commercio_account_stateless.dart';
 import 'package:commercio_ui/core/utils/export.dart';
@@ -17,6 +18,10 @@ class FlutterSecureStorageMock extends Mock implements FlutterSecureStorage {}
 class HttpHelperMock extends Mock implements HttpHelper {}
 
 void main() {
+  if (Directory.current.path.endsWith('/test')) {
+    Directory.current = Directory.current.parent;
+  }
+
   FlutterSecureStorage secureStorageMock;
   final NetworkInfo correctNetworkInfo =
       NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'lcdUrl');
@@ -360,14 +365,24 @@ void main() {
       when(httpHelperMock.faucetRequest(path: HttpPath.give, data: {
         'addr': correctWalletAddress,
         'amount': '100000000',
-      })).thenThrow(Exception(correctWalletAddress));
+      })).thenThrow(Exception());
 
-      final response = await StatelessCommercioAccount.requestFreeTokens(
-        walletAddress: correctWalletAddress,
-        httpHelper: httpHelperMock,
+      expectLater(
+        () => StatelessCommercioAccount.requestFreeTokens(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsA(isA<AccountRequestError>()),
       );
+    });
 
-      expectLater(response, isA<AccountRequestError>());
+    test('Default httpHelper should be throw an exception', () async {
+      expectLater(
+        () => StatelessCommercioAccount.requestFreeTokens(
+          walletAddress: correctWalletAddress,
+        ),
+        throwsA(isA<AccountRequestError>()),
+      );
     });
   });
 
@@ -391,7 +406,7 @@ void main() {
       expect(accountBalance[0].denom, correctAccountBalance[0].denom);
     });
 
-    test('Http error', () async {
+    test('Http 404 response', () async {
       when(
         httpHelperMock.getRequest(
           endpoint: HttpEndpoint.balance,
@@ -400,11 +415,29 @@ void main() {
       ).thenAnswer((_) => Future.value(Response('', 404)));
 
       expectLater(
-          () => StatelessCommercioAccount.checkAccountBalance(
-                walletAddress: correctWalletAddress,
-                httpHelper: httpHelperMock,
-              ),
-          throwsException);
+        () => StatelessCommercioAccount.checkAccountBalance(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
+    });
+
+    test('Http error', () async {
+      when(
+        httpHelperMock.getRequest(
+          endpoint: HttpEndpoint.balance,
+          walletAddress: correctWalletAddress,
+        ),
+      ).thenAnswer((_) => throw Exception());
+
+      expectLater(
+        () => StatelessCommercioAccount.checkAccountBalance(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsA(isA<AccountRequestError>()),
+      );
     });
 
     test('Invalid address', () async {
@@ -417,11 +450,21 @@ void main() {
           (_) => Future.value(Response(wrongAddressAccountBalanceRaw, 500)));
 
       expectLater(
-          () => StatelessCommercioAccount.checkAccountBalance(
-                walletAddress: 'abc',
-                httpHelper: httpHelperMock,
-              ),
-          throwsNoSuchMethodError);
+        () => StatelessCommercioAccount.checkAccountBalance(
+          walletAddress: 'abc',
+          httpHelper: httpHelperMock,
+        ),
+        throwsNoSuchMethodError,
+      );
+    });
+
+    test('Default httpHelper should be throw an exception', () async {
+      expect(
+        () => StatelessCommercioAccount.checkAccountBalance(
+          walletAddress: 'abc',
+        ),
+        throwsA(isA<AccountRequestError>()),
+      );
     });
   });
 
