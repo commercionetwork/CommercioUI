@@ -20,7 +20,7 @@ void main() {
   Wallet correctWallet;
   String correctWalletAddress;
   final NetworkInfo correctNetworkInfo =
-      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'lcdUrl');
+      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'http://lcd-url');
   const String correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
   final correctMetadata = CommercioDocMetadata(
