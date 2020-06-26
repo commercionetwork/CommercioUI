@@ -5,9 +5,7 @@ import 'package:uuid/uuid.dart';
 
 /// The [StatelessCommercioDocs] allows you to send a document to another user,
 /// and retrieve the list of documents that you have received.
-class StatelessCommercioDocs {
-  StatelessCommercioDocs._();
-
+abstract class StatelessCommercioDocs {
   /// Share the document associated with the given [metadata] and having the
   /// optional [contentUri], [doSign] and [checksum] from the [senderWallet] to
   /// the [recipients] list of addresses.

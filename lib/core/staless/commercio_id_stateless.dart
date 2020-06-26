@@ -8,9 +8,7 @@ import 'package:meta/meta.dart';
 
 /// The [StatelessCommercioId] module allows to create a new identity and
 /// associate to it a Did Document.
-class StatelessCommercioId {
-  StatelessCommercioId._();
-
+abstract class StatelessCommercioId {
   /// Returns new generated [CommercioIdKeys] that cointains two RSA keys pair,
   /// one pair for verification and another for signature.
   static Future<CommercioIdKeys> generateKeys() async {

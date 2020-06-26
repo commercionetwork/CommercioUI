@@ -6,9 +6,7 @@ import 'package:meta/meta.dart';
 /// The [StatelessCommercioKyc] module allows you to buy memberships
 /// to display to everyone that you've been invited by an already verified
 /// members to join the network and invite other members.
-class StatelessCommercioKyc {
-  StatelessCommercioKyc._();
-
+abstract class StatelessCommercioKyc {
   /// Request an member invitation for the [walletAddress] with optional
   /// [httpHelper]. The [walletAddress] must be not already on the chain.
   ///
