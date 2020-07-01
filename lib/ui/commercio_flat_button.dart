@@ -2,8 +2,8 @@ import 'package:commercio_ui/core/utils/type_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EventFlatButton<B extends Bloc<E, S>, E, S, L extends S, ERR extends S>
-    extends StatelessWidget {
+class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
+    ERR extends S> extends StatelessWidget {
   final ValueChanged<bool> onHighlightChanged;
   final ButtonTextTheme textTheme;
   final Color textColor;
@@ -22,12 +22,12 @@ class EventFlatButton<B extends Bloc<E, S>, E, S, L extends S, ERR extends S>
   final FocusNode focusNode;
   final bool autofocus;
   final MaterialTapTargetSize materialTapTargetSize;
-  final Widget Function() loadingChild;
-  final Widget Function() child;
-  final E Function() accountEventCallback;
-  final void Function(String errorMessage) errorCallback;
+  final Widget Function(BuildContext context) loading;
+  final Widget Function(BuildContext context) child;
+  final E Function() event;
+  final void Function(BuildContext context, String errorMessage) error;
 
-  const EventFlatButton({
+  const CommercioFlatButton({
     Key key,
     this.onHighlightChanged,
     this.textTheme,
@@ -47,18 +47,18 @@ class EventFlatButton<B extends Bloc<E, S>, E, S, L extends S, ERR extends S>
     this.focusNode,
     this.autofocus,
     this.materialTapTargetSize,
-    @required this.loadingChild,
     @required this.child,
-    @required this.accountEventCallback,
-    this.errorCallback,
+    @required this.event,
+    this.error,
+    this.loading,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<B, S>(
       listener: (context, state) {
-        if (TypeHelper.freezedEquals(state, ERR)) {
-          if (errorCallback == null) {
+        if (TypeHelper.hasType(state, ERR)) {
+          if (error == null) {
             Scaffold.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.toString()),
@@ -66,38 +66,25 @@ class EventFlatButton<B extends Bloc<E, S>, E, S, L extends S, ERR extends S>
               ),
             );
           } else {
-            errorCallback(state.toString());
+            error(context, state.toString());
           }
         }
       },
       builder: (context, state) {
-        if (TypeHelper.freezedEquals(state, L)) {
-          return FlatButton(
-            onPressed: null,
-            onHighlightChanged: onHighlightChanged,
-            textTheme: textTheme,
-            disabledTextColor: disabledTextColor,
-            color: color,
-            disabledColor: disabledColor,
-            focusColor: focusColor,
-            hoverColor: hoverColor,
-            highlightColor: highlightColor,
-            splashColor: splashColor,
-            colorBrightness: colorBrightness,
-            padding: padding,
-            visualDensity: visualDensity,
-            shape: shape,
-            clipBehavior: clipBehavior ?? Clip.none,
-            focusNode: focusNode,
-            autofocus: autofocus ?? false,
-            materialTapTargetSize: materialTapTargetSize,
-            child: loadingChild(),
-          );
+        void Function() onPressed =
+            () => BlocProvider.of<B>(context).add(event());
+        Widget childWidget = child(context);
+
+        if (TypeHelper.hasType(state, L)) {
+          onPressed = null;
+
+          if (loading != null) {
+            childWidget = loading(context);
+          }
         }
 
         return FlatButton(
-          onPressed: () =>
-              BlocProvider.of<B>(context).add(accountEventCallback()),
+          onPressed: onPressed,
           onHighlightChanged: onHighlightChanged,
           textTheme: textTheme,
           disabledTextColor: disabledTextColor,
@@ -115,7 +102,7 @@ class EventFlatButton<B extends Bloc<E, S>, E, S, L extends S, ERR extends S>
           focusNode: focusNode,
           autofocus: autofocus ?? false,
           materialTapTargetSize: materialTapTargetSize,
-          child: child(),
+          child: childWidget,
         );
       },
     );
