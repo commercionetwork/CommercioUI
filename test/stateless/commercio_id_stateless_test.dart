@@ -406,7 +406,7 @@ void main() {
       NodeInfoRetrieval.client = MockClient(
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
-      when(httpHelperMock.getGovernmentAddress()).thenAnswer(
+      when(httpHelperMock.getTumblerAddress()).thenAnswer(
         (_) => Future.value(correctWalletAddress),
       );
 
@@ -429,7 +429,7 @@ void main() {
       NodeInfoRetrieval.client = MockClient(
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
-      when(httpHelperMock.getGovernmentAddress()).thenAnswer(
+      when(httpHelperMock.getTumblerAddress()).thenAnswer(
         (_) => Future.value(correctWalletAddress),
       );
 
@@ -453,7 +453,7 @@ void main() {
       NodeInfoRetrieval.client = MockClient(
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
-      when(httpHelperMock.getGovernmentAddress()).thenAnswer(
+      when(httpHelperMock.getTumblerAddress()).thenAnswer(
         (_) => Future.value(correctWalletAddress),
       );
 
@@ -478,7 +478,7 @@ void main() {
       NodeInfoRetrieval.client = MockClient(
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
-      when(httpHelperMock.getGovernmentAddress()).thenAnswer(
+      when(httpHelperMock.getTumblerAddress()).thenAnswer(
         (_) => Future.value(correctWalletAddress),
       );
 
@@ -502,7 +502,7 @@ void main() {
       NodeInfoRetrieval.client = MockClient(
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
-      when(httpHelperMock.getGovernmentAddress()).thenAnswer(
+      when(httpHelperMock.getTumblerAddress()).thenAnswer(
         (_) => Future.value(correctWalletAddress),
       );
 
@@ -526,7 +526,7 @@ void main() {
       NodeInfoRetrieval.client = MockClient(
         (_) => Future.value(Response('404', 404)),
       );
-      when(httpHelperMock.getGovernmentAddress()).thenAnswer(
+      when(httpHelperMock.getTumblerAddress()).thenAnswer(
         (_) => Future.value(correctWalletAddress),
       );
 
@@ -550,7 +550,7 @@ void main() {
       NodeInfoRetrieval.client = MockClient(
         (_) => Future.value(Response('404', 404)),
       );
-      when(httpHelperMock.getGovernmentAddress()).thenAnswer(
+      when(httpHelperMock.getTumblerAddress()).thenAnswer(
         (_) => Future.value(correctWalletAddress),
       );
 
@@ -588,7 +588,7 @@ void main() {
       NodeInfoRetrieval.client = MockClient(
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
-      when(httpHelperMock.getGovernmentAddress()).thenAnswer(
+      when(httpHelperMock.getTumblerAddress()).thenAnswer(
         (_) => Future.value(correctWalletAddress),
       );
 
