@@ -13,7 +13,7 @@ enum HttpEndpoint {
   balance,
   sentDocs,
   receivedDocs,
-  getGovernment,
+  getTumbler,
 }
 
 extension HttpActionExtension on HttpPath {
@@ -43,7 +43,7 @@ extension HttpEndpointExtension on HttpEndpoint {
       case HttpEndpoint.receivedDocs:
         return '$lcdUrl/docs/$walletAddress/received';
 
-      case HttpEndpoint.getGovernment:
+      case HttpEndpoint.getTumbler:
         return '$lcdUrl/government/tumbler';
 
       default:
@@ -69,14 +69,13 @@ class HttpHelper {
         lcdUrl = lcdUrl ?? 'http://localhost:1317';
 
   /// Send a faucet request to the given [path] with [data]. Optionally [https]
-  /// [faucetDomain] can be specified.
+  /// can be specified to use HTTPS instead of HTTP, enabled by default.
   ///
   /// Returns the HTTP [Response].
   Future<Response> faucetRequest({
     @required HttpPath path,
     @required Map<String, String> data,
     bool https = true,
-    String faucetDomain,
   }) async {
     final uri = https
         ? Uri.https(faucetDomain ?? this.faucetDomain, path.value, data)
@@ -95,17 +94,21 @@ class HttpHelper {
     String lcdUrl,
   }) {
     return httpClient.get(endpoint.value(
-        walletAddress: walletAddress, lcdUrl: lcdUrl ?? this.lcdUrl));
+      walletAddress: walletAddress,
+      lcdUrl: lcdUrl ?? this.lcdUrl,
+    ));
   }
 
   /// Returns the tumbler Tk government address with optional [lcdUrl].
-  Future<String> getGovernmentAddress({String lcdUrl}) async {
+  Future<String> getTumblerAddress({String lcdUrl}) async {
     final response = await getRequest(
-        endpoint: HttpEndpoint.getGovernment,
-        walletAddress: null,
-        lcdUrl: lcdUrl ?? this.lcdUrl);
+      endpoint: HttpEndpoint.getTumbler,
+      walletAddress: null,
+      lcdUrl: lcdUrl ?? this.lcdUrl,
+    );
     final tumbler = TumblerResponse.fromJson(
-        jsonDecode(response.body) as Map<String, dynamic>);
+      jsonDecode(response.body) as Map<String, dynamic>,
+    );
 
     return tumbler.result.tumblerAddress;
   }
