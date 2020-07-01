@@ -57,6 +57,10 @@ abstract class StatelessCommercioId {
   }) async {
     final rawKeys = await secureStorage.read(key: secureStorageKey);
 
+    if (rawKeys == null) {
+      return null;
+    }
+
     return CommercioIdKeys.fromJson(
       jsonDecode(rawKeys) as Map<String, dynamic>,
     );
@@ -116,7 +120,7 @@ abstract class StatelessCommercioId {
   }) async {
     httpHelper ??= HttpHelper();
 
-    final tumblerAddress = await httpHelper.getGovernmentAddress();
+    final tumblerAddress = await httpHelper.getTumblerAddress();
 
     return StatelessCommercioAccount.sendTokens(
       senderAddress: walletWithAddress.address,
