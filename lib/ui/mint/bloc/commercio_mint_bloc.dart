@@ -18,14 +18,18 @@ class CommercioMintOpenCdpBloc
   Stream<CommercioMintOpenedCdpState> mapEventToState(
     CommercioMintOpenCdpEvent event,
   ) async* {
-    yield const CommercioMintOpenedCdpStateLoading();
+    try {
+      yield const CommercioMintOpenedCdpStateLoading();
 
-    final result = await commercioMint.openCdp(
-      amount: event.amount,
-      fee: event.fee,
-    );
+      final result = await commercioMint.openCdp(
+        amount: event.amount,
+        fee: event.fee,
+      );
 
-    yield CommercioMintOpenedCdpStateData(result: result);
+      yield CommercioMintOpenedCdpStateData(result: result);
+    } catch (e) {
+      yield CommercioMintOpenedCdpStateError(e.toString());
+    }
   }
 }
 
@@ -45,13 +49,17 @@ class CommercioMintCloseCdpBloc
   Stream<CommercioMintClosedCdpState> mapEventToState(
     CommercioMintCloseCdpEvent event,
   ) async* {
-    yield const CommercioMintClosedCdpStateLoading();
+    try {
+      yield const CommercioMintClosedCdpStateLoading();
 
-    final result = await commercioMint.closeCdp(
-      blockHeight: event.blockHeight,
-      fee: event.fee,
-    );
+      final result = await commercioMint.closeCdp(
+        blockHeight: event.blockHeight,
+        fee: event.fee,
+      );
 
-    yield CommercioMintClosedCdpStateData(result: result);
+      yield CommercioMintClosedCdpStateData(result: result);
+    } catch (e) {
+      yield CommercioMintClosedCdpStateError(e.toString());
+    }
   }
 }
