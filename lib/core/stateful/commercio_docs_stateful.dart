@@ -13,7 +13,7 @@ class StatefulCommercioDocs {
   /// Share the document associated with the given [metadata] and having the
   /// optional [contentUri], [doSign] and [checksum] from the
   /// [commercioAccount] to the [recipients] list of addresses.
-  /// The [docId] should be a valid UUID v5, if it's not specified a new one
+  /// The [docId] should be a valid UUID v4, if it's not specified a new one
   /// is generated.
   /// An optional [fee] can be specified.
   ///
@@ -96,7 +96,7 @@ class StatefulCommercioDocs {
     @required String recipient,
     @required String txHash,
     @required String docId,
-    String proof = "",
+    String proof = '',
     StdFee fee,
   }) {
     if (commercioAccount.wallet == null) {
@@ -104,12 +104,13 @@ class StatefulCommercioDocs {
     }
 
     return StatelessCommercioDocs.sendReceipt(
-        senderWallet: commercioAccount.wallet,
-        recipient: recipient,
-        txHash: txHash,
-        docId: docId,
-        proof: proof,
-        fee: fee);
+      senderWallet: commercioAccount.wallet,
+      recipient: recipient,
+      txHash: txHash,
+      docId: docId,
+      proof: proof,
+      fee: fee,
+    );
   }
 
   /// Returns the list of [CommercioDoc] sent from [walletWithAddress].
