@@ -1,16 +1,11 @@
-import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commercio_ui/entities/commercio_id_keys.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 
 part 'commercio_id_state.freezed.dart';
 
-abstract class CommercioIdState extends CommercioState {
-  const CommercioIdState();
-}
-
 @freezed
-@Implements(CommercioIdState)
 abstract class CommercioIdGeneratedKeysState
     with _$CommercioIdGeneratedKeysState {
   const factory CommercioIdGeneratedKeysState({
@@ -28,7 +23,6 @@ abstract class CommercioIdGeneratedKeysState
 }
 
 @freezed
-@Implements(CommercioIdState)
 abstract class CommercioIdRestoredKeysState
     with _$CommercioIdRestoredKeysState {
   const factory CommercioIdRestoredKeysState({
@@ -46,7 +40,6 @@ abstract class CommercioIdRestoredKeysState
 }
 
 @freezed
-@Implements(CommercioIdState)
 abstract class CommercioIdDeletedKeysState with _$CommercioIdDeletedKeysState {
   const factory CommercioIdDeletedKeysState() = CommercioIdDeletedKeysStateData;
 
@@ -61,7 +54,6 @@ abstract class CommercioIdDeletedKeysState with _$CommercioIdDeletedKeysState {
 }
 
 @freezed
-@Implements(CommercioIdState)
 abstract class CommercioIdDerivedDidDocumentState
     with _$CommercioIdDerivedDidDocumentState {
   const factory CommercioIdDerivedDidDocumentState({
@@ -79,7 +71,6 @@ abstract class CommercioIdDerivedDidDocumentState
 }
 
 @freezed
-@Implements(CommercioIdState)
 abstract class CommercioIdSetDidDocumentState
     with _$CommercioIdSetDidDocumentState {
   const factory CommercioIdSetDidDocumentState({
@@ -97,7 +88,6 @@ abstract class CommercioIdSetDidDocumentState
 }
 
 @freezed
-@Implements(CommercioIdState)
 abstract class CommercioIdRechargedTumblerState
     with _$CommercioIdRechargedTumblerState {
   const factory CommercioIdRechargedTumblerState({
@@ -115,7 +105,6 @@ abstract class CommercioIdRechargedTumblerState
 }
 
 @freezed
-@Implements(CommercioIdState)
 abstract class CommercioIdRequestedDidPowerUpState
     with _$CommercioIdRequestedDidPowerUpState {
   const factory CommercioIdRequestedDidPowerUpState({

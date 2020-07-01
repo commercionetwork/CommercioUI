@@ -1,4 +1,3 @@
-import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
@@ -6,12 +5,7 @@ import 'package:sacco/sacco.dart';
 
 part 'commercio_docs_state.freezed.dart';
 
-abstract class CommercioDocsState extends CommercioState {
-  const CommercioDocsState();
-}
-
 @freezed
-@Implements(CommercioDocsState)
 abstract class CommercioDocsSharedDocumentState
     with _$CommercioDocsSharedDocumentState {
   const factory CommercioDocsSharedDocumentState({
@@ -29,7 +23,6 @@ abstract class CommercioDocsSharedDocumentState
 }
 
 @freezed
-@Implements(CommercioDocsState)
 abstract class CommercioDocsSharedEncryptedDocumentState
     with _$CommercioDocsSharedEncryptedDocumentState {
   const factory CommercioDocsSharedEncryptedDocumentState({
@@ -47,7 +40,6 @@ abstract class CommercioDocsSharedEncryptedDocumentState
 }
 
 @freezed
-@Implements(CommercioDocsState)
 abstract class CommercioDocsSentReceiptState
     with _$CommercioDocsSentReceiptState {
   const factory CommercioDocsSentReceiptState({
@@ -65,7 +57,6 @@ abstract class CommercioDocsSentReceiptState
 }
 
 @freezed
-@Implements(CommercioDocsState)
 abstract class CommercioDocsSentDocumentsState
     with _$CommercioDocsSentDocumentsState {
   const factory CommercioDocsSentDocumentsState({
@@ -83,7 +74,6 @@ abstract class CommercioDocsSentDocumentsState
 }
 
 @freezed
-@Implements(CommercioDocsState)
 abstract class CommercioDocsReceivedDocumentsState
     with _$CommercioDocsReceivedDocumentsState {
   const factory CommercioDocsReceivedDocumentsState({
@@ -101,7 +91,6 @@ abstract class CommercioDocsReceivedDocumentsState
 }
 
 @freezed
-@Implements(CommercioDocsState)
 abstract class CommercioDocsSentReceiptsState
     with _$CommercioDocsSentReceiptsState {
   const factory CommercioDocsSentReceiptsState({
@@ -119,7 +108,6 @@ abstract class CommercioDocsSentReceiptsState
 }
 
 @freezed
-@Implements(CommercioDocsState)
 abstract class CommercioDocsReceivedReceiptsState
     with _$CommercioDocsReceivedReceiptsState {
   const factory CommercioDocsReceivedReceiptsState({
@@ -137,7 +125,6 @@ abstract class CommercioDocsReceivedReceiptsState
 }
 
 @freezed
-@Implements(CommercioDocsState)
 abstract class CommercioDocsEncDataState with _$CommercioDocsEncDataState {
   const factory CommercioDocsEncDataState({
     @required Map<EncryptedData, bool> encryptedData,

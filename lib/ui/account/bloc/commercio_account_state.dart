@@ -5,12 +5,7 @@ import 'package:sacco/sacco.dart';
 
 part 'commercio_account_state.freezed.dart';
 
-abstract class CommercioAccountState extends CommercioState {
-  const CommercioAccountState();
-}
-
 @freezed
-@Implements(CommercioAccountState)
 abstract class CommercioAccountGenerateWalletState
     with _$CommercioAccountGenerateWalletState {
   const factory CommercioAccountGenerateWalletState({
@@ -30,7 +25,6 @@ abstract class CommercioAccountGenerateWalletState
 }
 
 @freezed
-@Implements(CommercioAccountState)
 abstract class CommercioAccountRestoredWalletState
     with _$CommercioAccountRestoredWalletState {
   const factory CommercioAccountRestoredWalletState({
@@ -50,7 +44,6 @@ abstract class CommercioAccountRestoredWalletState
 }
 
 @freezed
-@Implements(CommercioAccountState)
 abstract class CommercioAccountQrState with _$CommercioAccountQrState {
   const factory CommercioAccountQrState({
     @required String walletAddress,
@@ -67,7 +60,6 @@ abstract class CommercioAccountQrState with _$CommercioAccountQrState {
 }
 
 @freezed
-@Implements(CommercioAccountState)
 abstract class CommercioAccountFreeTokensState
     with _$CommercioAccountFreeTokensState {
   const factory CommercioAccountFreeTokensState({
@@ -85,7 +77,6 @@ abstract class CommercioAccountFreeTokensState
 }
 
 @freezed
-@Implements(CommercioAccountState)
 abstract class CommercioAccountBalanceState
     with _$CommercioAccountBalanceState {
   const factory CommercioAccountBalanceState({
@@ -103,7 +94,6 @@ abstract class CommercioAccountBalanceState
 }
 
 @freezed
-@Implements(CommercioAccountState)
 abstract class CommercioAccountSentTokensState
     with _$CommercioAccountSentTokensState {
   const factory CommercioAccountSentTokensState({
@@ -121,7 +111,6 @@ abstract class CommercioAccountSentTokensState
 }
 
 @freezed
-@Implements(CommercioAccountState)
 abstract class CommercioAccountPaiwiseWalletState
     with _$CommercioAccountPaiwiseWalletState {
   const factory CommercioAccountPaiwiseWalletState({

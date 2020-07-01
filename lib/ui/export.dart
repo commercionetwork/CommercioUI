@@ -1,5 +1,4 @@
 export 'account/commercio_account_ui.dart';
-export 'bloc/commercio_state.dart';
 export 'commercio_flat_button.dart';
 export 'commercio_text.dart';
 export 'commercio_text_field.dart';
