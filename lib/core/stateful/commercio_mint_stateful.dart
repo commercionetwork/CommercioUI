@@ -24,12 +24,15 @@ class StatefulCommercioMint {
       throw ArgumentError('amount must not be negative');
     }
 
-    if (commercioAccount.wallet == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return StatelessCommercioMint.openCdp(
-        wallet: commercioAccount.wallet, amount: amount, fee: fee);
+      wallet: commercioAccount.wallet,
+      amount: amount,
+      fee: fee,
+    );
   }
 
   /// Close a previously opened CDP at [blockHeight] with optional [fee].
@@ -40,7 +43,7 @@ class StatefulCommercioMint {
       throw ArgumentError('blockHeight must not be negative');
     }
 
-    if (commercioAccount.wallet == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 

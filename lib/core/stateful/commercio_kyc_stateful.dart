@@ -19,13 +19,14 @@ class StatefulCommercioKyc {
   ///
   /// Returns the response text.
   Future<String> requestFaucetInvite() async {
-    if (commercioAccount.walletAddress == null) {
+    if (!commercioAccount.hasWalletAddress) {
       throw const WalletNotFoundException();
     }
 
     return StatelessCommercioKyc.requestFaucetInvite(
-        walletAddress: commercioAccount.walletAddress,
-        httpHelper: commercioAccount.httpHelper);
+      walletAddress: commercioAccount.walletAddress,
+      httpHelper: commercioAccount.httpHelper,
+    );
   }
 
   /// Buy a [membershipType] with optional [fee].
@@ -42,13 +43,15 @@ class StatefulCommercioKyc {
     @required MembershipType membershipType,
     StdFee fee,
   }) {
-    if (commercioAccount.wallet == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return MembershipHelper.buyMembership(
-        membershipType, commercioAccount.wallet,
-        fee: fee);
+      membershipType,
+      commercioAccount.wallet,
+      fee: fee,
+    );
   }
 
   /// Invite a new [invitedAddress] to the chain. To send an invite the
@@ -61,11 +64,14 @@ class StatefulCommercioKyc {
     @required String invitedAddress,
     StdFee fee,
   }) {
-    if (commercioAccount.wallet == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return MembershipHelper.inviteUser(invitedAddress, commercioAccount.wallet,
-        fee: fee);
+    return MembershipHelper.inviteUser(
+      invitedAddress,
+      commercioAccount.wallet,
+      fee: fee,
+    );
   }
 }
