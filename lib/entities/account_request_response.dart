@@ -11,7 +11,7 @@ class AccountRequestResponse {
   });
 
   @override
-  String toString() => message;
+  String toString() => '{ message: $message, isSuccess: $isSuccess }';
 }
 
 /// Represents an HTTP response with error.
