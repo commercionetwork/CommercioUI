@@ -5,7 +5,7 @@ import 'package:commercio_ui/core/utils/export.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CommercioTextWidget<B extends Bloc<E, T>, E, T, I extends T, D extends T,
+class CommercioText<B extends Bloc<E, T>, E, T, I extends T, D extends T,
     L extends T, ERR extends T> extends StatefulWidget {
   final TextStyle style;
   final TextStyle loadingStyle;
@@ -20,10 +20,10 @@ class CommercioTextWidget<B extends Bloc<E, T>, E, T, I extends T, D extends T,
   final String semanticsLabel;
   final TextWidthBasis textWidthBasis;
   final ui.TextHeightBehavior textHeightBehavior;
-  final String Function(D state) textCallback;
-  final String Function() loadingTextCallback;
+  final String Function(BuildContext context) loading;
+  final String Function(BuildContext context, D state) text;
 
-  const CommercioTextWidget({
+  const CommercioText({
     Key key,
     this.style,
     this.loadingStyle,
@@ -38,23 +38,23 @@ class CommercioTextWidget<B extends Bloc<E, T>, E, T, I extends T, D extends T,
     this.semanticsLabel,
     this.textWidthBasis,
     this.textHeightBehavior,
-    @required this.textCallback,
-    @required this.loadingTextCallback,
+    @required this.loading,
+    @required this.text,
   }) : super(key: key);
 
   @override
-  _CommercioTextWidgetState<B, E, T, I, D, L, ERR> createState() =>
-      _CommercioTextWidgetState<B, E, T, I, D, L, ERR>();
+  _CommercioTextState<B, E, T, I, D, L, ERR> createState() =>
+      _CommercioTextState<B, E, T, I, D, L, ERR>();
 }
 
-class _CommercioTextWidgetState<
+class _CommercioTextState<
     B extends Bloc<E, T>,
     E,
     T,
     I extends T,
     D extends T,
     L extends T,
-    ERR extends T> extends State<CommercioTextWidget<B, E, T, I, D, L, ERR>> {
+    ERR extends T> extends State<CommercioText<B, E, T, I, D, L, ERR>> {
   String previousText = '';
 
   @override
@@ -63,37 +63,22 @@ class _CommercioTextWidgetState<
 
     return BlocBuilder<B, T>(
       builder: (context, state) {
-        if (TypeHelper.freezedEquals(state, I)) {
-          return Text(
-            text,
-            style: widget.style,
-            strutStyle: widget.strutStyle,
-            textAlign: widget.textAlign,
-            textDirection: widget.textDirection,
-            locale: widget.locale,
-            softWrap: widget.softWrap,
-            overflow: widget.overflow,
-            textScaleFactor: widget.textScaleFactor,
-            maxLines: widget.maxLines,
-            semanticsLabel: widget.semanticsLabel,
-            textWidthBasis: widget.textWidthBasis,
-            textHeightBehavior: widget.textHeightBehavior,
-          );
+        if (TypeHelper.hasType(state, I)) {
+          text = previousText;
         }
 
-        if (TypeHelper.freezedEquals(state, D)) {
-          text = previousText = widget.textCallback(state as D);
+        if (TypeHelper.hasType(state, D)) {
+          text = previousText = widget.text(context, state as D);
         }
 
-        if (TypeHelper.freezedEquals(state, L)) {
-          text = widget.loadingTextCallback();
+        if (TypeHelper.hasType(state, L)) {
+          text = widget.loading(context);
         }
 
         return Text(
           text,
-          style: TypeHelper.freezedEquals(state, L)
-              ? widget.loadingStyle
-              : widget.style,
+          style:
+              TypeHelper.hasType(state, L) ? widget.loadingStyle : widget.style,
           strutStyle: widget.strutStyle,
           textAlign: widget.textAlign,
           textDirection: widget.textDirection,
