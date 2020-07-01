@@ -40,7 +40,7 @@ class CommercioIdSetDidDocumentEvent extends CommercioIdEvent {
   const CommercioIdSetDidDocumentEvent({this.didDocument});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [didDocument];
 }
 
 class CommercioIdRechargeTumblerEvent extends CommercioIdEvent {
