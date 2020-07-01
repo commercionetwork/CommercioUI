@@ -43,7 +43,9 @@ class StatefulCommercioId {
   /// If no keys are found then a [NoKeysFoundException] is thrown.
   Future<CommercioIdKeys> restoreKeys() async {
     commercioIdKeys = await StatelessCommercioId.fetchKeys(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secureStorage: secureStorage,
+      secureStorageKey: secureStorageKey,
+    );
 
     if (commercioIdKeys == null) {
       throw const NoKeysFoundException();
@@ -55,22 +57,19 @@ class StatefulCommercioId {
   /// Save [idKeys] inside the the secure storage.
   Future<void> storeKeys({@required CommercioIdKeys idKeys}) {
     return StatelessCommercioId.storeKeys(
-        secureStorage: secureStorage,
-        secureStorageKey: secureStorageKey,
-        idKeys: idKeys);
-  }
-
-  /// Get the [CommercioIdKeys] stored inside the secure storage.
-  Future<CommercioIdKeys> fetchKeys() {
-    return StatelessCommercioId.fetchKeys(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secureStorage: secureStorage,
+      secureStorageKey: secureStorageKey,
+      idKeys: idKeys,
+    );
   }
 
   /// Delete the [CommercioIdKeys] inside the [secureStorage] identified by
   /// [secureStorageKey].
   Future<void> deleteKeys() {
     return StatelessCommercioId.deleteKeys(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secureStorage: secureStorage,
+      secureStorageKey: secureStorageKey,
+    );
   }
 
   /// Derive and return a [DidDocument] with optional [service].
@@ -98,12 +97,21 @@ class StatefulCommercioId {
   /// If no [didDocument] is specified then its derived from the walle.
   /// An optional [fee] can be specified.
   ///
+  /// If no [commercioAccount] does not have a wallet then a
+  /// [WalletNotFoundException] is thrown.
+  ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> setDidDocument({DidDocument didDocument}) async {
     didDocument ??= await derivateDidDocument();
 
+    if (!commercioAccount.hasWallet) {
+      throw const WalletNotFoundException();
+    }
+
     return StatelessCommercioId.setDidDocument(
-        didDocument: didDocument, wallet: commercioAccount.wallet);
+      didDocument: didDocument,
+      wallet: commercioAccount.wallet,
+    );
   }
 
   /// Sent the [rechargeAmount] to the centralized entity Tk (tumbler).
@@ -117,12 +125,17 @@ class StatefulCommercioId {
     List<StdCoin> rechargeFee,
     String rechargeGas,
   }) {
+    if (!commercioAccount.hasWallet) {
+      throw const WalletNotFoundException();
+    }
+
     return StatelessCommercioId.rechargeTumbler(
-        walletWithAddress: commercioAccount.walletWithAddress,
-        rechargeAmount: rechargeAmount,
-        rechargeFee: rechargeFee,
-        rechargeGas: rechargeGas,
-        httpHelper: commercioAccount.httpHelper);
+      walletWithAddress: commercioAccount.walletWithAddress,
+      rechargeAmount: rechargeAmount,
+      rechargeFee: rechargeFee,
+      rechargeGas: rechargeGas,
+      httpHelper: commercioAccount.httpHelper,
+    );
   }
 
   /// Request a Did Power Up to move the [amount] of tokens from a centralized
@@ -152,9 +165,10 @@ class StatefulCommercioId {
     }
 
     return StatelessCommercioId.requestDidPowerUp(
-        pairwiseAddress: pairwiseAddress,
-        senderWallet: commercioAccount.wallet,
-        amount: amount,
-        rsaSignaturePrivateKey: rsaSignaturePrivateKey);
+      pairwiseAddress: pairwiseAddress,
+      senderWallet: commercioAccount.wallet,
+      amount: amount,
+      rsaSignaturePrivateKey: rsaSignaturePrivateKey,
+    );
   }
 }
