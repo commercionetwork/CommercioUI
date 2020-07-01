@@ -51,9 +51,9 @@ class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
   final InputCounterWidgetBuilder buildCounter;
   final ScrollPhysics scrollPhysics;
   final ScrollController scrollController;
-  final String Function(D state) textCallback;
-  final String Function() loadingTextCallback;
-  final void Function(String errorMessage) errorCallback;
+  final String Function(BuildContext context) loading;
+  final String Function(BuildContext context, D state) text;
+  final void Function(BuildContext context, String errorMessage) error;
   final TextStyle loadingStyle;
 
   CommercioTextField({
@@ -101,9 +101,9 @@ class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
     this.buildCounter,
     this.scrollController,
     this.scrollPhysics,
-    @required this.textCallback,
-    @required this.loadingTextCallback,
-    this.errorCallback,
+    @required this.loading,
+    @required this.text,
+    this.error,
     this.loadingStyle,
   })  : controller = controller ?? TextEditingController(text: ''),
         keyboardType = keyboardType ??
@@ -145,20 +145,20 @@ class _CommercioTextFieldState<
   Widget build(BuildContext context) {
     return BlocBuilder<B, T>(
       builder: (context, state) {
-        if (TypeHelper.freezedEquals(state, I)) {
+        if (TypeHelper.hasType(state, I)) {
           widget.controller.text = '';
         }
 
-        if (TypeHelper.freezedEquals(state, D)) {
+        if (TypeHelper.hasType(state, D)) {
           widget.controller.text =
-              previousText = widget.textCallback(state as D);
+              previousText = widget.text(context, state as D);
         }
 
-        if (TypeHelper.freezedEquals(state, L)) {
-          widget.controller.text = widget.loadingTextCallback();
+        if (TypeHelper.hasType(state, L)) {
+          widget.controller.text = widget.loading(context);
         }
 
-        if (TypeHelper.freezedEquals(state, ERR)) {
+        if (TypeHelper.hasType(state, ERR)) {
           widget.controller.text = previousText = state.toString();
         }
 
@@ -169,9 +169,8 @@ class _CommercioTextFieldState<
           keyboardType: widget.keyboardType,
           textInputAction: widget.textInputAction,
           textCapitalization: widget.textCapitalization,
-          style: TypeHelper.freezedEquals(state, L)
-              ? widget.loadingStyle
-              : widget.style,
+          style:
+              TypeHelper.hasType(state, L) ? widget.loadingStyle : widget.style,
           strutStyle: widget.strutStyle,
           textAlign: widget.textAlign,
           textAlignVertical: widget.textAlignVertical,
