@@ -14,9 +14,11 @@ class CommercioIdKeys {
 
   CommercioIdKeys.fromJson(Map<String, dynamic> json)
       : rsaVerificationPair = KeyPairJsonExtension.fromJson(
-            json['rsaVerificationPair'] as Map<String, dynamic>),
+          json['rsaVerificationPair'] as Map<String, dynamic>,
+        ),
         rsaSignatureKeyPair = KeyPairJsonExtension.fromJson(
-            json['rsaSignatureKeyPair'] as Map<String, dynamic>);
+          json['rsaSignatureKeyPair'] as Map<String, dynamic>,
+        );
 
   Map<String, dynamic> toJson() => {
         'rsaVerificationPair': KeyPairJsonExtension.toJson(rsaVerificationPair),
@@ -26,25 +28,29 @@ class CommercioIdKeys {
 
 extension KeyPairJsonExtension on KeyPair<RSAPublicKey, RSAPrivateKey> {
   static KeyPair<RSAPublicKey, RSAPrivateKey> fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final pubKey = X509Utils.publicKeyFromPem(json['RSAPublicKey'] as String);
     final type = json['type'] as String;
     final rsaPublicKey = RSAPublicKey(pubKey, keyType: type);
 
-    final secretKey =
-        X509Utils.privateKeyFromPem(json['RSAPrivateKey'] as String);
+    final secretKey = X509Utils.privateKeyFromPem(
+      json['RSAPrivateKey'] as String,
+    );
     final rsaPrivateKey = RSAPrivateKey(secretKey);
 
     return KeyPair(rsaPublicKey, rsaPrivateKey);
   }
 
   static Map<String, dynamic> toJson(
-          KeyPair<RSAPublicKey, RSAPrivateKey> keyPair) =>
+    KeyPair<RSAPublicKey, RSAPrivateKey> keyPair,
+  ) =>
       {
         'RSAPublicKey':
-            X509Utils.encodeRSAPublicKeyToPem(keyPair.publicKey.pubKey),
+            X509Utils.encodeRSAPublicKeyToPem(keyPair.publicKey.pubKey).trim(),
         'RSAPrivateKey':
-            X509Utils.encodeRSAPrivateKeyToPem(keyPair.privateKey.secretKey),
-        'type': keyPair.publicKey.getType()
+            X509Utils.encodeRSAPrivateKeyToPem(keyPair.privateKey.secretKey)
+                .trim(),
+        'type': keyPair.publicKey.getType().trim()
       };
 }
