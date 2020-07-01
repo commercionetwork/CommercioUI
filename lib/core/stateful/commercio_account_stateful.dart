@@ -65,23 +65,34 @@ class StatefulCommercioAccount {
   }
 
   /// Save the [mnemonic] in the secure storage.
-  Future<void> storeMnemonic({@required String mnemonic}) {
+  Future<void> storeMnemonic({String mnemonic}) {
+    final mnemonicToStore = mnemonic ?? this.mnemonic;
+
+    if (mnemonicToStore == null) {
+      throw Exception('No mnemonic found in memory');
+    }
+
     return StatelessCommercioAccount.storeMnemonic(
-        secureStorage: secureStorage,
-        secureStorageKey: secureStorageKey,
-        mnemonic: mnemonic ?? this.mnemonic);
+      secureStorage: secureStorage,
+      secureStorageKey: secureStorageKey,
+      mnemonic: mnemonicToStore,
+    );
   }
 
   /// Restore and return the mnemonic from the secure storage.
   Future<String> fetchMnemonic() {
     return StatelessCommercioAccount.fetchMnemonic(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secureStorage: secureStorage,
+      secureStorageKey: secureStorageKey,
+    );
   }
 
   /// Delete the mnemonic inside the secure storage.
   Future<void> deleteMnemonic() {
     return StatelessCommercioAccount.deleteMnemonic(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secureStorage: secureStorage,
+      secureStorageKey: secureStorageKey,
+    );
   }
 
   /// Restore and return the [Wallet] with the mnemonic stored inside the
@@ -97,10 +108,14 @@ class StatefulCommercioAccount {
     }
 
     final wallet = await StatelessCommercioAccount.deriveWallet(
-        networkInfo: networkInfo, mnemonic: mnemonic);
+      networkInfo: networkInfo,
+      mnemonic: mnemonic,
+    );
 
-    walletWithAddress =
-        WalletWithAddress(wallet: wallet, address: wallet.bech32Address);
+    walletWithAddress = WalletWithAddress(
+      wallet: wallet,
+      address: wallet.bech32Address,
+    );
 
     return wallet;
   }
@@ -118,27 +133,25 @@ class StatefulCommercioAccount {
     await storeMnemonic(mnemonic: mnemonic);
 
     final wallet = await StatelessCommercioAccount.deriveWallet(
-        networkInfo: networkInfo,
-        mnemonic: this.mnemonic,
-        lastDerivationPathSegment: lastDerivationPathSegment);
+      networkInfo: networkInfo,
+      mnemonic: this.mnemonic,
+      lastDerivationPathSegment: lastDerivationPathSegment,
+    );
 
-    walletWithAddress =
-        WalletWithAddress(wallet: wallet, address: wallet.bech32Address);
+    walletWithAddress = WalletWithAddress(
+      wallet: wallet,
+      address: wallet.bech32Address,
+    );
 
     return wallet;
   }
 
   /// Generate a pairwise [Wallet] from the given [lastDerivationPathSegment].
-  /// If no [NetworkInfo] is setted an [Exception] is thrown.
   /// If no [mnemonic] is already loaded an [WalletNotFoundException] is
   /// thrown.
   Future<Wallet> generatePairwiseWallet({
     @required String lastDerivationPathSegment,
   }) {
-    if (networkInfo == null) {
-      throw Exception('No network info');
-    }
-
     if (mnemonic == null) {
       throw WalletNotFoundException();
     }
@@ -167,7 +180,10 @@ class StatefulCommercioAccount {
     }
 
     return StatelessCommercioAccount.requestFreeTokens(
-        walletAddress: walletAddress, amount: amount, httpHelper: httpHelper);
+      walletAddress: walletAddress,
+      amount: amount,
+      httpHelper: httpHelper,
+    );
   }
 
   /// Get the account balance of this account as a list of [StdCoin].
@@ -180,7 +196,9 @@ class StatefulCommercioAccount {
     }
 
     return StatelessCommercioAccount.checkAccountBalance(
-        walletAddress: walletAddress, httpHelper: httpHelper);
+      walletAddress: walletAddress,
+      httpHelper: httpHelper,
+    );
   }
 
   /// Send the [amount] of tokens from the accoun to a [recipientAddress] list.
@@ -201,11 +219,12 @@ class StatefulCommercioAccount {
     }
 
     return StatelessCommercioAccount.sendTokens(
-        senderAddress: walletAddress,
-        senderWallet: wallet,
-        recipientAddress: recipientAddress,
-        amount: amount,
-        feeAmount: feeAmount,
-        gas: gas);
+      senderAddress: walletAddress,
+      senderWallet: wallet,
+      recipientAddress: recipientAddress,
+      amount: amount,
+      feeAmount: feeAmount,
+      gas: gas,
+    );
   }
 }
