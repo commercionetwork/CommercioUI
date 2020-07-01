@@ -1,7 +1,7 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class RequestFaucetInviteFlatButton extends EventFlatButton<
+class RequestFaucetInviteFlatButton extends CommercioFlatButton<
     CommercioKycRequestFaucetInviteBloc,
     CommercioKycRequestFaucetInviteEvent,
     CommercioKycRequestedFaucetInviteState,
@@ -27,12 +27,10 @@ class RequestFaucetInviteFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required
-        CommercioKycRequestFaucetInviteEvent Function() accountEventCallback,
-    String faucetDomain,
+    @required CommercioKycRequestFaucetInviteEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -53,14 +51,14 @@ class RequestFaucetInviteFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class BuyMembershipFlatButton extends EventFlatButton<
+class BuyMembershipFlatButton extends CommercioFlatButton<
     CommercioKycBuyMembershipBloc,
     CommercioKycBuyMembershipEvent,
     CommercioKycBuyMembershipState,
@@ -86,10 +84,10 @@ class BuyMembershipFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioKycBuyMembershipEvent Function() accountEventCallback,
+    @required CommercioKycBuyMembershipEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -110,14 +108,14 @@ class BuyMembershipFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class InviteMemberFlatButton extends EventFlatButton<
+class InviteMemberFlatButton extends CommercioFlatButton<
     CommercioKycInviteMemberBloc,
     CommercioKycInviteMemberEvent,
     CommercioKycInviteMemberState,
@@ -143,10 +141,10 @@ class InviteMemberFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioKycInviteMemberEvent Function() accountEventCallback,
+    @required CommercioKycInviteMemberEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -167,9 +165,9 @@ class InviteMemberFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }

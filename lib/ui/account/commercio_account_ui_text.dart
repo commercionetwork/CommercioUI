@@ -3,7 +3,7 @@ import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class RestoreWalletText extends CommercioTextWidget<
+class RestoreWalletText extends CommercioText<
     CommercioAccountRestoreWalletBloc,
     CommercioAccountRestoreWalletEvent,
     CommercioAccountRestoredWalletState,
@@ -27,9 +27,13 @@ class RestoreWalletText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioAccountRestoredWalletStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioAccountRestoredWalletStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -45,12 +49,12 @@ class RestoreWalletText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class GenerateWalletText extends CommercioTextWidget<
+class GenerateWalletText extends CommercioText<
     CommercioAccountGenerateWalletBloc,
     CommercioAccountGenerateWalletEvent,
     CommercioAccountGenerateWalletState,
@@ -74,8 +78,13 @@ class GenerateWalletText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioAccountGenerateWalletData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioAccountGenerateWalletData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -91,12 +100,12 @@ class GenerateWalletText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class RequestFreeTokensText extends CommercioTextWidget<
+class RequestFreeTokensText extends CommercioText<
     CommercioAccountRequestFreeTokensBloc,
     CommercioAccountRequestFreeTokensEvent,
     CommercioAccountFreeTokensState,
@@ -120,8 +129,13 @@ class RequestFreeTokensText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioAccountFreeTokensStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioAccountFreeTokensStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -137,12 +151,12 @@ class RequestFreeTokensText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class CheckBalanceText extends CommercioTextWidget<
+class CheckBalanceText extends CommercioText<
     CommercioAccountCheckBalanceBloc,
     CommercioAccountCheckBalanceEvent,
     CommercioAccountBalanceState,
@@ -166,8 +180,13 @@ class CheckBalanceText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioAccountBalanceStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioAccountBalanceStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -183,12 +202,12 @@ class CheckBalanceText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class SendTokensText extends CommercioTextWidget<
+class SendTokensText extends CommercioText<
     CommercioAccountSendTokensBloc,
     CommercioAccountSendTokensEvent,
     CommercioAccountSentTokensState,
@@ -212,8 +231,13 @@ class SendTokensText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioAccountSentTokensStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioAccountSentTokensStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -229,12 +253,12 @@ class SendTokensText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class GeneratePairwiseWalletText extends CommercioTextWidget<
+class GeneratePairwiseWalletText extends CommercioText<
     CommercioAccountGeneratePairwiseWalletBloc,
     CommercioAccountGeneratePairwiseWalletEvent,
     CommercioAccountPaiwiseWalletState,
@@ -258,9 +282,13 @@ class GeneratePairwiseWalletText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioAccountPaiwiseWalletStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioAccountPaiwiseWalletStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -276,7 +304,7 @@ class GeneratePairwiseWalletText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }

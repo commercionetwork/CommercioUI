@@ -3,7 +3,7 @@ import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class RequestFaucetInviteText extends CommercioTextWidget<
+class RequestFaucetInviteText extends CommercioText<
     CommercioKycRequestFaucetInviteBloc,
     CommercioKycRequestFaucetInviteEvent,
     CommercioKycRequestedFaucetInviteState,
@@ -27,9 +27,13 @@ class RequestFaucetInviteText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioKycRequestedFaucetInviteStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioKycRequestedFaucetInviteStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -45,12 +49,12 @@ class RequestFaucetInviteText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class BuyMembershipText extends CommercioTextWidget<
+class BuyMembershipText extends CommercioText<
     CommercioKycBuyMembershipBloc,
     CommercioKycBuyMembershipEvent,
     CommercioKycBuyMembershipState,
@@ -74,8 +78,13 @@ class BuyMembershipText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioKycBuyMembershipStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioKycBuyMembershipStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -91,12 +100,12 @@ class BuyMembershipText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class InviteMemberText extends CommercioTextWidget<
+class InviteMemberText extends CommercioText<
     CommercioKycInviteMemberBloc,
     CommercioKycInviteMemberEvent,
     CommercioKycInviteMemberState,
@@ -120,8 +129,13 @@ class InviteMemberText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioKycInviteMemberStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioKycInviteMemberStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -137,7 +151,7 @@ class InviteMemberText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }

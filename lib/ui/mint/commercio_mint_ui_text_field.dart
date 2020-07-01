@@ -58,11 +58,13 @@ class OpenCdpTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioMintOpenedCdpStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioMintOpenedCdpStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -108,10 +110,10 @@ class OpenCdpTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -168,11 +170,13 @@ class CloseCdpTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioMintClosedCdpStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioMintClosedCdpStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -218,9 +222,9 @@ class CloseCdpTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }

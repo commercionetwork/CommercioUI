@@ -3,7 +3,7 @@ import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class GenerateKeysText extends CommercioTextWidget<
+class GenerateKeysText extends CommercioText<
     CommercioIdGenerateKeysBloc,
     CommercioIdGenerateKeysEvent,
     CommercioIdGeneratedKeysState,
@@ -27,8 +27,13 @@ class GenerateKeysText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioIdGeneratedKeysStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioIdGeneratedKeysStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -44,12 +49,12 @@ class GenerateKeysText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class RestoreKeysText extends CommercioTextWidget<
+class RestoreKeysText extends CommercioText<
     CommercioIdRestoreKeysBloc,
     CommercioIdRestoreKeysEvent,
     CommercioIdRestoredKeysState,
@@ -73,8 +78,13 @@ class RestoreKeysText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioIdRestoredKeysStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioIdRestoredKeysStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -90,12 +100,12 @@ class RestoreKeysText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class DeleteKeysText extends CommercioTextWidget<
+class DeleteKeysText extends CommercioText<
     CommercioIdDeleteKeysBloc,
     CommercioIdDeleteKeysEvent,
     CommercioIdDeletedKeysState,
@@ -119,8 +129,13 @@ class DeleteKeysText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioIdDeletedKeysStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+      BuildContext context,
+      CommercioIdDeletedKeysStateData state,
+    )
+            text,
+    @required
+        String Function(BuildContext context) loading,
   }) : super(
           key: key,
           style: style,
@@ -136,12 +151,12 @@ class DeleteKeysText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class DeriveDidDocumentText extends CommercioTextWidget<
+class DeriveDidDocumentText extends CommercioText<
     CommercioIdDeriveDidDocumentBloc,
     CommercioIdDeriveDidDocumentEvent,
     CommercioIdDerivedDidDocumentState,
@@ -164,10 +179,11 @@ class DeriveDidDocumentText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdDerivedDidDocumentStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioIdDerivedDidDocumentStateData state)
+            text,
   }) : super(
           key: key,
           style: style,
@@ -183,12 +199,12 @@ class DeriveDidDocumentText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class SetDidDocumentText extends CommercioTextWidget<
+class SetDidDocumentText extends CommercioText<
     CommercioIdSetDidDocumentBloc,
     CommercioIdSetDidDocumentEvent,
     CommercioIdSetDidDocumentState,
@@ -211,9 +227,11 @@ class SetDidDocumentText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdSetDidDocumentStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioIdSetDidDocumentStateData state)
+            text,
   }) : super(
           key: key,
           style: style,
@@ -229,12 +247,12 @@ class SetDidDocumentText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class RechargeTumblerText extends CommercioTextWidget<
+class RechargeTumblerText extends CommercioText<
     CommercioIdRechargeTumblerBloc,
     CommercioIdRechargeTumblerEvent,
     CommercioIdRechargedTumblerState,
@@ -257,10 +275,11 @@ class RechargeTumblerText extends CommercioTextWidget<
     String semanticsLabel,
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdRechargedTumblerStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioIdRechargedTumblerStateData state)
+            text,
   }) : super(
           key: key,
           style: style,
@@ -276,12 +295,12 @@ class RechargeTumblerText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }
 
-class RequestDidPowerUpText extends CommercioTextWidget<
+class RequestDidPowerUpText extends CommercioText<
     CommercioIdRequestDidPowerUpBloc,
     CommercioIdRequestDidPowerUpEvent,
     CommercioIdRequestedDidPowerUpState,
@@ -305,9 +324,13 @@ class RequestDidPowerUpText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioIdRequestedDidPowerUpStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioIdRequestedDidPowerUpStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -323,7 +346,7 @@ class RequestDidPowerUpText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }

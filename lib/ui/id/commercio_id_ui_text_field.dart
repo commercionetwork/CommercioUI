@@ -58,11 +58,13 @@ class GenerateKeysTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdGeneratedKeysStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioIdGeneratedKeysStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -108,10 +110,10 @@ class GenerateKeysTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -168,11 +170,13 @@ class RestoreKeysTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdRestoredKeysStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioIdRestoredKeysStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -218,10 +222,10 @@ class RestoreKeysTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -278,11 +282,13 @@ class DeleteKeysTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdDeletedKeysStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioIdDeletedKeysStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -328,10 +334,10 @@ class DeleteKeysTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -388,12 +394,13 @@ class DeriveDidDocumentTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdDerivedDidDocumentStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioIdDerivedDidDocumentStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -439,10 +446,10 @@ class DeriveDidDocumentTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -499,11 +506,13 @@ class SetDidDocumentTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdSetDidDocumentStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioIdSetDidDocumentStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -549,10 +558,10 @@ class SetDidDocumentTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -609,12 +618,13 @@ class RechargeTumblerTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdRechargedTumblerStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioIdRechargedTumblerStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -660,10 +670,10 @@ class RechargeTumblerTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -720,12 +730,13 @@ class RequestDidPowerUpTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioIdRequestedDidPowerUpStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioIdRequestedDidPowerUpStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -771,9 +782,9 @@ class RequestDidPowerUpTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }

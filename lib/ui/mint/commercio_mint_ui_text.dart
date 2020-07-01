@@ -3,7 +3,7 @@ import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class OpenCdpText extends CommercioTextWidget<
+class OpenCdpText extends CommercioText<
     CommercioMintOpenCdpBloc,
     CommercioMintOpenCdpEvent,
     CommercioMintOpenedCdpState,
@@ -27,8 +27,13 @@ class OpenCdpText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioMintOpenedCdpStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioMintOpenedCdpStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -44,12 +49,12 @@ class OpenCdpText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          loading: loading,
+          text: text,
         );
 }
 
-class CloseCdpText extends CommercioTextWidget<
+class CloseCdpText extends CommercioText<
     CommercioMintCloseCdpBloc,
     CommercioMintCloseCdpEvent,
     CommercioMintClosedCdpState,
@@ -73,8 +78,13 @@ class CloseCdpText extends CommercioTextWidget<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
-        String Function(CommercioMintClosedCdpStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context) loading,
+    @required
+        String Function(
+      BuildContext context,
+      CommercioMintClosedCdpStateData state,
+    )
+            text,
   }) : super(
           key: key,
           style: style,
@@ -90,7 +100,7 @@ class CloseCdpText extends CommercioTextWidget<
           semanticsLabel: semanticsLabel,
           textWidthBasis: textWidthBasis,
           textHeightBehavior: textHeightBehavior,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          text: text,
+          loading: loading,
         );
 }

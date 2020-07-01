@@ -1,7 +1,7 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class OpenCdpFlatButton extends EventFlatButton<
+class OpenCdpFlatButton extends CommercioFlatButton<
     CommercioMintOpenCdpBloc,
     CommercioMintOpenCdpEvent,
     CommercioMintOpenedCdpState,
@@ -27,10 +27,10 @@ class OpenCdpFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioMintOpenCdpEvent Function() accountEventCallback,
+    @required CommercioMintOpenCdpEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -51,14 +51,14 @@ class OpenCdpFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class CloseCdpFlatButton extends EventFlatButton<
+class CloseCdpFlatButton extends CommercioFlatButton<
     CommercioMintCloseCdpBloc,
     CommercioMintCloseCdpEvent,
     CommercioMintClosedCdpState,
@@ -84,10 +84,10 @@ class CloseCdpFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioMintCloseCdpEvent Function() accountEventCallback,
+    @required CommercioMintCloseCdpEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -108,9 +108,9 @@ class CloseCdpFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }

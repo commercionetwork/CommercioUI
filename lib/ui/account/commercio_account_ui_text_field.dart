@@ -58,12 +58,13 @@ class RestoreWalletTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioAccountRestoredWalletStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioAccountRestoredWalletStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -109,10 +110,10 @@ class RestoreWalletTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -169,11 +170,13 @@ class GenerateWalletTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioAccountGenerateWalletData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioAccountGenerateWalletData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -219,10 +222,10 @@ class GenerateWalletTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -279,11 +282,13 @@ class RequestFreeTokensTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioAccountFreeTokensStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioAccountFreeTokensStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -329,10 +334,10 @@ class RequestFreeTokensTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -389,11 +394,13 @@ class CheckBalanceTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioAccountBalanceStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioAccountBalanceStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -439,10 +446,10 @@ class CheckBalanceTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -499,11 +506,13 @@ class SendTokensTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioAccountSentTokensStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioAccountSentTokensStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -549,10 +558,10 @@ class SendTokensTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -609,12 +618,13 @@ class GeneratePairwiseWalletTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioAccountPaiwiseWalletStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioAccountPaiwiseWalletStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -660,9 +670,9 @@ class GeneratePairwiseWalletTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }

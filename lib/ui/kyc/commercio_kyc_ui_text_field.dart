@@ -58,12 +58,13 @@ class RequestFaucetInviteTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioKycRequestedFaucetInviteStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioKycRequestedFaucetInviteStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -109,10 +110,10 @@ class RequestFaucetInviteTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -170,10 +171,12 @@ class BuyMembershipTextField extends CommercioTextField<
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
     @required
-        String Function(CommercioKycBuyMembershipStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioKycBuyMembershipStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
+    @required String Function(BuildContext context) loading,
   }) : super(
           key: key,
           controller: controller,
@@ -219,10 +222,10 @@ class BuyMembershipTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -279,11 +282,13 @@ class InviteMemberTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioKycInviteMemberStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioKycInviteMemberStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -329,9 +334,9 @@ class InviteMemberTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }

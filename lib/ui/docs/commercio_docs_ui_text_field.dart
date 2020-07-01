@@ -58,12 +58,13 @@ class ShareDocumentTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioDocsSharedDocumentStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioDocsSharedDocumentStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -109,10 +110,10 @@ class ShareDocumentTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -169,12 +170,13 @@ class ShareEncryptedDocumentTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioDocsSharedEncryptedDocumentStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioDocsSharedEncryptedDocumentStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -220,10 +222,10 @@ class ShareEncryptedDocumentTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -280,11 +282,13 @@ class SendReceiptTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioDocsSentReceiptStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioDocsSentReceiptStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -330,10 +334,10 @@ class SendReceiptTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -390,11 +394,13 @@ class SentDocumentsTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioDocsSentDocumentsStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioDocsSentDocumentsStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -440,10 +446,10 @@ class SentDocumentsTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -500,12 +506,13 @@ class ReceivedDocumentsTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioDocsReceivedDocumentsStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioDocsReceivedDocumentsStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -551,10 +558,10 @@ class ReceivedDocumentsTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -611,11 +618,13 @@ class SentReceiptsTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioDocsSentReceiptsStateData state) textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(
+                BuildContext context, CommercioDocsSentReceiptsStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -661,10 +670,10 @@ class SentReceiptsTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }
 
@@ -721,12 +730,13 @@ class ReceivedReceiptsTextField extends CommercioTextField<
     InputCounterWidgetBuilder buildCounter,
     ScrollPhysics scrollPhysics,
     ScrollController scrollController,
+    @required String Function(BuildContext context) loading,
     @required
-        String Function(CommercioDocsReceivedReceiptsStateData state)
-            textCallback,
-    @required String Function() loadingTextCallback,
+        String Function(BuildContext context,
+                CommercioDocsReceivedReceiptsStateData state)
+            text,
     TextStyle loadingStyle,
-    void Function(String errorMessage) errorCallback,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -772,9 +782,9 @@ class ReceivedReceiptsTextField extends CommercioTextField<
           buildCounter: buildCounter,
           scrollPhysics: scrollPhysics,
           scrollController: scrollController,
-          textCallback: textCallback,
-          loadingTextCallback: loadingTextCallback,
+          error: error,
+          loading: loading,
           loadingStyle: loadingStyle ?? TextStyle(color: Colors.grey),
-          errorCallback: errorCallback,
+          text: text,
         );
 }

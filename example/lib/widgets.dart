@@ -55,12 +55,10 @@ class ExamplePage extends StatelessWidget {
           // Custom FlatButton that when is pressed sends an event
           // to generate new mnemonic and derive the wallet
           GenerateWalletFlatButton(
-            accountEventCallback: () =>
-                const CommercioAccountGenerateWalletEvent(),
+            event: () => const CommercioAccountGenerateWalletEvent(),
             disabledTextColor: Colors.brown,
             color: Colors.orangeAccent,
-            child: () => const Text('Generate new wallet'),
-            loadingChild: () => const Text('Generating...'),
+            child: (_) => const Text('Generate new wallet'),
           ),
 
           const Text('Mnemonic words:'),
@@ -94,8 +92,8 @@ class ExamplePage extends StatelessWidget {
           // that the user can intercept in the callback
           GenerateWalletTextField(
             readOnly: true,
-            loadingTextCallback: () => 'Generating...',
-            textCallback: (state) => state.walletAddress,
+            loading: (_) => 'Generating...',
+            text: (_, state) => state.walletAddress,
           ),
         ],
       ),
