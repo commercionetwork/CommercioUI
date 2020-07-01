@@ -16,12 +16,17 @@ void main() {
     Directory.current = Directory.current.parent;
   }
 
-  final NetworkInfo correctNetworkInfo =
-      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'http://lcd-url');
+  final NetworkInfo correctNetworkInfo = NetworkInfo(
+    bech32Hrp: 'bech32Hrp',
+    lcdUrl: 'http://lcd-url',
+  );
   const String correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet;
-  String correctWalletAddress;
+  Wallet correctWallet = Wallet.derive(
+    correctMnemonic.split(' '),
+    correctNetworkInfo,
+  );
+  String correctWalletAddress = correctWallet.bech32Address;
   final HttpHelper httpHelperMock = HttpHelperMock();
   const String correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
@@ -35,12 +40,6 @@ void main() {
       '{"tx_hash":"A4888CD3D2FC4C4F860A840604244F65363AB61B424248716101E653B6E2CA30"}';
   final wrongFaucetInviteReponseAlreadyInvited =
       '{"error":"sign/broadcast message error: could not broadcast transaction to the Cosmos network: codespace sdk: unknown request: did:com:1094hqazlk36va0cqha96fg30y6cdrrxmu4j6at has already been invited: failed to execute message; message index: 0, code 6"}';
-
-  setUp(() {
-    correctWallet =
-        Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
-    correctWalletAddress = correctWallet.bech32Address;
-  });
 
   group('Request faucet invite', () {
     test('Correct', () async {

@@ -17,12 +17,19 @@ void main() {
     Directory.current = Directory.current.parent;
   }
 
-  Wallet correctWallet;
-  String correctWalletAddress;
-  final NetworkInfo correctNetworkInfo =
-      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'http://lcd-url');
   const String correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
+  final NetworkInfo correctNetworkInfo = NetworkInfo(
+    bech32Hrp: 'bech32Hrp',
+    lcdUrl: 'http://lcd-url',
+  );
+  Wallet correctWallet = Wallet.derive(
+    correctMnemonic.split(' '),
+    correctNetworkInfo,
+  );
+  ;
+  String correctWalletAddress = correctWallet.bech32Address;
+
   final correctMetadata = CommercioDocMetadata(
     contentUri: 'contentUri',
     schema: CommercioDocMetadataSchema(
@@ -47,12 +54,6 @@ void main() {
       '{"error":"decoding bech32 failed: invalid bech32 string length 3"}';
 
   const String correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
-
-  setUp(() {
-    correctWallet =
-        Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
-    correctWalletAddress = correctWallet.bech32Address;
-  });
 
   group('Share document', () {
     AccountDataRetrieval.client = MockClient(
@@ -350,14 +351,14 @@ void main() {
       Network.client = MockClient(
           (_) => Future.value(Response(correctReceivedReceiptsRaw, 200)));
 
-      final receivedDocuments = await StatelessCommercioDocs.receivedReceipts(
+      final receivedReceipts = await StatelessCommercioDocs.receivedReceipts(
         walletWithAddress: WalletWithAddress(
           wallet: correctWallet,
           address: correctWalletAddress,
         ),
       );
 
-      expect(receivedDocuments, correctReceivedReceipts);
+      expect(receivedReceipts, correctReceivedReceipts);
     });
   });
 }
