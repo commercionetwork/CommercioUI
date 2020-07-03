@@ -11,11 +11,7 @@ class CommercioDocsShareDocumentBloc extends Bloc<
   CommercioDocsShareDocumentBloc({
     @required this.commercioDocs,
     @required this.commercioId,
-  });
-
-  @override
-  CommercioDocsSharedDocumentState get initialState =>
-      const CommercioDocsSharedDocumentStateInitial();
+  }) : super(const CommercioDocsSharedDocumentStateInitial());
 
   @override
   Stream<CommercioDocsSharedDocumentState> mapEventToState(
@@ -50,11 +46,7 @@ class CommercioDocsShareEncryptedDocumentBloc extends Bloc<
   CommercioDocsShareEncryptedDocumentBloc({
     @required this.commercioDocs,
     @required this.commercioId,
-  });
-
-  @override
-  CommercioDocsSharedEncryptedDocumentState get initialState =>
-      const CommercioDocsSharedEncryptedDocumentStateInitial();
+  }) : super(const CommercioDocsSharedEncryptedDocumentStateInitial());
 
   @override
   Stream<CommercioDocsSharedEncryptedDocumentState> mapEventToState(
@@ -90,11 +82,7 @@ class CommercioDocsSendReceiptBloc
   CommercioDocsSendReceiptBloc({
     @required this.commercioDocs,
     @required this.commercioId,
-  });
-
-  @override
-  CommercioDocsSentReceiptState get initialState =>
-      const CommercioDocsSentReceiptStateInitial();
+  }) : super(const CommercioDocsSentReceiptStateInitial());
 
   @override
   Stream<CommercioDocsSentReceiptState> mapEventToState(
@@ -124,11 +112,7 @@ class CommercioDocsSentDocumentsBloc extends Bloc<
   CommercioDocsSentDocumentsBloc({
     @required this.commercioDocs,
     @required this.commercioId,
-  });
-
-  @override
-  CommercioDocsSentDocumentsState get initialState =>
-      const CommercioDocsSentDocumentsStateInitial();
+  }) : super(const CommercioDocsSentDocumentsStateInitial());
 
   @override
   Stream<CommercioDocsSentDocumentsState> mapEventToState(
@@ -154,11 +138,7 @@ class CommercioDocsReceivedDocumentsBloc extends Bloc<
   CommercioDocsReceivedDocumentsBloc({
     @required this.commercioDocs,
     @required this.commercioId,
-  });
-
-  @override
-  CommercioDocsReceivedDocumentsState get initialState =>
-      const CommercioDocsReceivedDocumentsStateInitial();
+  }) : super(const CommercioDocsReceivedDocumentsStateInitial());
 
   @override
   Stream<CommercioDocsReceivedDocumentsState> mapEventToState(
@@ -186,11 +166,7 @@ class CommercioDocsSentReceiptsBloc extends Bloc<CommercioDocsSentReceiptsEvent,
   CommercioDocsSentReceiptsBloc({
     @required this.commercioDocs,
     @required this.commercioId,
-  });
-
-  @override
-  CommercioDocsSentReceiptsState get initialState =>
-      const CommercioDocsSentReceiptsStateInitial();
+  }) : super(const CommercioDocsSentReceiptsStateInitial());
 
   @override
   Stream<CommercioDocsSentReceiptsState> mapEventToState(
@@ -216,11 +192,7 @@ class CommercioDocsReceivedReceiptsBloc extends Bloc<
   CommercioDocsReceivedReceiptsBloc({
     @required this.commercioDocs,
     @required this.commercioId,
-  });
-
-  @override
-  CommercioDocsReceivedReceiptsState get initialState =>
-      const CommercioDocsReceivedReceiptsStateInitial();
+  }) : super(const CommercioDocsReceivedReceiptsStateInitial());
 
   @override
   Stream<CommercioDocsReceivedReceiptsState> mapEventToState(
@@ -245,12 +217,18 @@ class CommercioDocsReceivedReceiptsBloc extends Bloc<
 /// in a [CommercioDocsShareEncryptedDocumentEvent].
 class CommercioDocsEncDataBloc
     extends Bloc<CommercioDocsEncDataEvent, CommercioDocsEncDataState> {
-  final Map<EncryptedData, bool> encryptedData;
+  final Map<EncryptedData, bool> encryptedData = {
+    EncryptedData.CONTENT_URI: false,
+    EncryptedData.METADATA_CONTENT_URI: false,
+    EncryptedData.METADATA_SCHEMA_URI: false,
+  };
 
-  CommercioDocsEncDataBloc({
-    Map<EncryptedData, bool> encryptedData,
-  }) : encryptedData =
-            encryptedData ?? {for (var k in EncryptedData.values) k: false};
+  CommercioDocsEncDataBloc()
+      : super(CommercioDocsEncDataStateInitial(encryptedData: {
+          EncryptedData.CONTENT_URI: false,
+          EncryptedData.METADATA_CONTENT_URI: false,
+          EncryptedData.METADATA_SCHEMA_URI: false,
+        }));
 
   /// Returns a list with the [EncryptedData] that have a [true] value,
   /// that is, chosen be the user to be encrypted.
@@ -260,12 +238,6 @@ class CommercioDocsEncDataBloc
       .where((element) => element.value)
       .map((e) => e.key)
       .toList();
-
-  @override
-  CommercioDocsEncDataState get initialState =>
-      CommercioDocsEncDataStateInitial(
-        encryptedData: encryptedData,
-      );
 
   @override
   Stream<CommercioDocsEncDataState> mapEventToState(

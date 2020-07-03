@@ -9,18 +9,8 @@ class CommercioIdGenerateKeysBloc
     extends Bloc<CommercioIdGenerateKeysEvent, CommercioIdGeneratedKeysState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdGenerateKeysBloc({@required this.commercioId});
-
-  @override
-  CommercioIdGeneratedKeysState get initialState {
-    if (commercioId.hasKeys) {
-      return CommercioIdGeneratedKeysStateData(
-        commercioIdKeys: commercioId.commercioIdKeys,
-      );
-    }
-
-    return const CommercioIdGeneratedKeysStateInitial();
-  }
+  CommercioIdGenerateKeysBloc({@required this.commercioId})
+      : super(const CommercioIdGeneratedKeysStateInitial());
 
   @override
   Stream<CommercioIdGeneratedKeysState> mapEventToState(
@@ -42,18 +32,8 @@ class CommercioIdRestoreKeysBloc
     extends Bloc<CommercioIdRestoreKeysEvent, CommercioIdRestoredKeysState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdRestoreKeysBloc({@required this.commercioId});
-
-  @override
-  CommercioIdRestoredKeysState get initialState {
-    if (commercioId.hasKeys) {
-      return CommercioIdRestoredKeysStateData(
-        commercioIdKeys: commercioId.commercioIdKeys,
-      );
-    }
-
-    return const CommercioIdRestoredKeysStateInitial();
-  }
+  CommercioIdRestoreKeysBloc({@required this.commercioId})
+      : super(const CommercioIdRestoredKeysStateInitial());
 
   @override
   Stream<CommercioIdRestoredKeysState> mapEventToState(
@@ -75,11 +55,8 @@ class CommercioIdDeleteKeysBloc
     extends Bloc<CommercioIdDeleteKeysEvent, CommercioIdDeletedKeysState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdDeleteKeysBloc({@required this.commercioId});
-
-  @override
-  CommercioIdDeletedKeysState get initialState =>
-      const CommercioIdDeletedKeysStateInitial();
+  CommercioIdDeleteKeysBloc({@required this.commercioId})
+      : super(const CommercioIdDeletedKeysStateInitial());
 
   @override
   Stream<CommercioIdDeletedKeysState> mapEventToState(
@@ -101,11 +78,8 @@ class CommercioIdDeriveDidDocumentBloc extends Bloc<
     CommercioIdDeriveDidDocumentEvent, CommercioIdDerivedDidDocumentState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdDeriveDidDocumentBloc({@required this.commercioId});
-
-  @override
-  CommercioIdDerivedDidDocumentState get initialState =>
-      const CommercioIdDerivedDidDocumentStateInitial();
+  CommercioIdDeriveDidDocumentBloc({@required this.commercioId})
+      : super(const CommercioIdDerivedDidDocumentStateInitial());
 
   @override
   Stream<CommercioIdDerivedDidDocumentState> mapEventToState(
@@ -127,11 +101,8 @@ class CommercioIdSetDidDocumentBloc extends Bloc<CommercioIdSetDidDocumentEvent,
     CommercioIdSetDidDocumentState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdSetDidDocumentBloc({@required this.commercioId});
-
-  @override
-  CommercioIdSetDidDocumentState get initialState =>
-      const CommercioIdSetDidDocumentStateInitial();
+  CommercioIdSetDidDocumentBloc({@required this.commercioId})
+      : super(const CommercioIdSetDidDocumentStateInitial());
 
   @override
   Stream<CommercioIdSetDidDocumentState> mapEventToState(
@@ -161,11 +132,8 @@ class CommercioIdRechargeTumblerBloc extends Bloc<
     CommercioIdRechargeTumblerEvent, CommercioIdRechargedTumblerState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdRechargeTumblerBloc({@required this.commercioId});
-
-  @override
-  CommercioIdRechargedTumblerState get initialState =>
-      const CommercioIdRechargedTumblerStateInitial();
+  CommercioIdRechargeTumblerBloc({@required this.commercioId})
+      : super(const CommercioIdRechargedTumblerStateInitial());
 
   @override
   Stream<CommercioIdRechargedTumblerState> mapEventToState(
@@ -199,11 +167,8 @@ class CommercioIdRequestDidPowerUpBloc extends Bloc<
     CommercioIdRequestDidPowerUpEvent, CommercioIdRequestedDidPowerUpState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdRequestDidPowerUpBloc({@required this.commercioId});
-
-  @override
-  CommercioIdRequestedDidPowerUpState get initialState =>
-      const CommercioIdRequestedDidPowerUpStateInitial();
+  CommercioIdRequestDidPowerUpBloc({@required this.commercioId})
+      : super(const CommercioIdRequestedDidPowerUpStateInitial());
 
   @override
   Stream<CommercioIdRequestedDidPowerUpState> mapEventToState(

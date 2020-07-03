@@ -11,13 +11,13 @@ dependencies:
     sdk: flutter
   basic_utils: ^2.5.4
   bip39: ^1.0.3
-  bloc: ^4.0.0
+  bloc: ^5.0.0
   commerciosdk:
     git:
       url: https://github.com/pasqenr/commercio-sdk.dart.git
       ref: master
   equatable: ^1.2.0
-  flutter_bloc: ^4.0.1
+  flutter_bloc: ^5.0.0
   flutter_secure_storage: ^3.3.3
   freezed_annotation: ^0.11.0
   http: ^0.12.1
@@ -28,7 +28,7 @@ dependencies:
       ref: master
   shared_preferences: ^0.5.7+3
   shared_preferences_web: ">=0.1.0 <2.0.0"
-  uuid: ^2.1.0
+  uuid: ^2.2.0
 
 dev_dependencies:
   flutter_test:

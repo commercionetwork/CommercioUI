@@ -92,48 +92,6 @@ void main() {
     ]);
   });
 
-  testWidgets('Submit ShareDocument with initial data', (
-    WidgetTester tester,
-  ) async {
-    when(commercioId.hasKeys).thenReturn(true);
-    when(commercioId.commercioIdKeys).thenReturn(correctIdKeysObj);
-
-    final bloc = CommercioIdGenerateKeysBloc(
-      commercioId: commercioId,
-    );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
-
-    final commFlatButton = GenerateKeysFlatButton(
-      loading: (_) => const Text(loadingText),
-      child: (_) => const Text(childText),
-      event: () => CommercioIdGenerateKeysEvent(),
-      error: (context, err) => Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text(err),
-        ),
-      ),
-    );
-
-    final root = BlocProvider.value(
-      value: bloc,
-      child: MaterialApp(
-        home: Scaffold(
-          body: commFlatButton,
-        ),
-      ),
-    );
-
-    await tester.pumpWidget(root);
-    await tester.pumpAndSettle();
-
-    expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdGeneratedKeysStateData',
-    ]);
-  });
-
   testWidgets('Submit RestoreKeys Event', (
     WidgetTester tester,
   ) async {
@@ -194,48 +152,6 @@ void main() {
       'CommercioIdRestoredKeysStateData',
       'CommercioIdRestoredKeysStateLoading',
       'CommercioIdRestoredKeysStateError',
-    ]);
-  });
-
-  testWidgets('Submit RestoreKeys with initial data', (
-    WidgetTester tester,
-  ) async {
-    when(commercioId.hasKeys).thenReturn(true);
-    when(commercioId.commercioIdKeys).thenReturn(correctIdKeysObj);
-
-    final bloc = CommercioIdRestoreKeysBloc(
-      commercioId: commercioId,
-    );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
-
-    final commFlatButton = RestoreKeysFlatButton(
-      loading: (_) => const Text(loadingText),
-      child: (_) => const Text(childText),
-      event: () => CommercioIdRestoreKeysEvent(),
-      error: (context, err) => Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text(err),
-        ),
-      ),
-    );
-
-    final root = BlocProvider.value(
-      value: bloc,
-      child: MaterialApp(
-        home: Scaffold(
-          body: commFlatButton,
-        ),
-      ),
-    );
-
-    await tester.pumpWidget(root);
-    await tester.pumpAndSettle();
-
-    expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdRestoredKeysStateData',
     ]);
   });
 

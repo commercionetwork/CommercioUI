@@ -8,11 +8,7 @@ class CommercioMintOpenCdpBloc
 
   CommercioMintOpenCdpBloc({
     @required this.commercioMint,
-  });
-
-  @override
-  CommercioMintOpenedCdpState get initialState =>
-      const CommercioMintOpenedCdpStateInitial();
+  }) : super(const CommercioMintOpenedCdpStateInitial());
 
   @override
   Stream<CommercioMintOpenedCdpState> mapEventToState(
@@ -39,11 +35,7 @@ class CommercioMintCloseCdpBloc
 
   CommercioMintCloseCdpBloc({
     @required this.commercioMint,
-  });
-
-  @override
-  CommercioMintClosedCdpState get initialState =>
-      const CommercioMintClosedCdpStateInitial();
+  }) : super(const CommercioMintClosedCdpStateInitial());
 
   @override
   Stream<CommercioMintClosedCdpState> mapEventToState(

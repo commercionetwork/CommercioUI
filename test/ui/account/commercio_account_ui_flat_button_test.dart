@@ -94,53 +94,6 @@ void main() {
     ]);
   });
 
-  testWidgets('Submit GenerateWallet with initial data Event', (
-    WidgetTester tester,
-  ) async {
-    when(commercioAccount.hasWallet).thenReturn(true);
-    when(commercioAccount.hasMnemonic).thenReturn(true);
-    when(commercioAccount.hasWalletAddress).thenReturn(true);
-    when(commercioAccount.wallet).thenReturn(correctWallet);
-    when(commercioAccount.mnemonic).thenReturn(correctMnemonic);
-    when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
-
-    final bloc = CommercioAccountGenerateWalletBloc(
-      commercioAccount: commercioAccount,
-    );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
-
-    final commFlatButton = GenerateWalletFlatButton(
-      loading: (_) => const Text(loadingText),
-      child: (_) => const Text(childText),
-      event: () => CommercioAccountGenerateWalletEvent(),
-      error: (context, err) => Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text(err),
-        ),
-      ),
-    );
-
-    final root = BlocProvider.value(
-      value: bloc,
-      child: MaterialApp(
-        home: Scaffold(
-          body: commFlatButton,
-        ),
-      ),
-    );
-
-    await tester.pumpWidget(root);
-    await tester.pumpAndSettle();
-
-    expect(find.text(childText), findsOneWidget);
-
-    expect(states, [
-      'CommercioAccountGenerateWalletData',
-    ]);
-  });
-
   testWidgets('Submit RestoreWallet Event', (
     WidgetTester tester,
   ) async {
@@ -261,54 +214,6 @@ void main() {
     expect(states, [
       'CommercioAccountRestoredWalletStateInitial',
       'CommercioAccountRestoredWalletStateLoading',
-      'CommercioAccountRestoredWalletStateData',
-    ]);
-  });
-
-  testWidgets('Submit RestoreWallet with initial data', (
-    WidgetTester tester,
-  ) async {
-    when(commercioAccount.restoreWallet())
-        .thenAnswer((_) async => correctWallet);
-    when(commercioAccount.hasWallet).thenReturn(true);
-    when(commercioAccount.hasMnemonic).thenReturn(true);
-    when(commercioAccount.hasWalletAddress).thenReturn(true);
-    when(commercioAccount.wallet).thenReturn(correctWallet);
-    when(commercioAccount.mnemonic).thenReturn(correctMnemonic);
-    when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
-
-    final bloc = CommercioAccountRestoreWalletBloc(
-      commercioAccount: commercioAccount,
-    );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
-
-    final commFlatButton = RestoreWalletFlatButton(
-      loading: (_) => const Text(loadingText),
-      child: (_) => const Text(childText),
-      event: () => CommercioAccountRestoreWalletEvent(),
-      error: (context, err) => Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text(err),
-        ),
-      ),
-    );
-
-    final root = BlocProvider.value(
-      value: bloc,
-      child: MaterialApp(
-        home: Scaffold(
-          body: commFlatButton,
-        ),
-      ),
-    );
-
-    await tester.pumpWidget(root);
-    await tester.pumpAndSettle();
-
-    expect(find.text(childText), findsOneWidget);
-    expect(states, [
       'CommercioAccountRestoredWalletStateData',
     ]);
   });

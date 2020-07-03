@@ -31,8 +31,7 @@ class ErrorEventMock extends EventMock {}
 class LoadingEventMock extends EventMock {}
 
 class BlocMock extends Bloc<EventMock, StateMock> {
-  @override
-  StateMock get initialState => InitialStateMock();
+  BlocMock() : super(InitialStateMock());
 
   @override
   Stream<StateMock> mapEventToState(EventMock event) async* {

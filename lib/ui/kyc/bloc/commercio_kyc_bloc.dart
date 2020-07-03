@@ -7,11 +7,8 @@ class CommercioKycRequestFaucetInviteBloc extends Bloc<
     CommercioKycRequestedFaucetInviteState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycRequestFaucetInviteBloc({@required this.commercioKyc});
-
-  @override
-  CommercioKycRequestedFaucetInviteState get initialState =>
-      const CommercioKycRequestedFaucetInviteStateInitial();
+  CommercioKycRequestFaucetInviteBloc({@required this.commercioKyc})
+      : super(const CommercioKycRequestedFaucetInviteStateInitial());
 
   @override
   Stream<CommercioKycRequestedFaucetInviteState> mapEventToState(
@@ -33,11 +30,8 @@ class CommercioKycBuyMembershipBloc extends Bloc<CommercioKycBuyMembershipEvent,
     CommercioKycBuyMembershipState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycBuyMembershipBloc({@required this.commercioKyc});
-
-  @override
-  CommercioKycBuyMembershipState get initialState =>
-      const CommercioKycBuyMembershipStateInitial();
+  CommercioKycBuyMembershipBloc({@required this.commercioKyc})
+      : super(const CommercioKycBuyMembershipStateInitial());
 
   @override
   Stream<CommercioKycBuyMembershipState> mapEventToState(
@@ -62,11 +56,8 @@ class CommercioKycInviteMemberBloc
     extends Bloc<CommercioKycInviteMemberEvent, CommercioKycInviteMemberState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycInviteMemberBloc({@required this.commercioKyc});
-
-  @override
-  CommercioKycInviteMemberState get initialState =>
-      const CommercioKycInviteMemberStateInitial();
+  CommercioKycInviteMemberBloc({@required this.commercioKyc})
+      : super(const CommercioKycInviteMemberStateInitial());
 
   @override
   Stream<CommercioKycInviteMemberState> mapEventToState(

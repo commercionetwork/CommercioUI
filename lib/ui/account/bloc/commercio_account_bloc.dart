@@ -8,22 +8,8 @@ class CommercioAccountGenerateWalletBloc extends Bloc<
     CommercioAccountGenerateWalletEvent, CommercioAccountGenerateWalletState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountGenerateWalletBloc({@required this.commercioAccount});
-
-  @override
-  CommercioAccountGenerateWalletState get initialState {
-    if (commercioAccount.hasWallet &&
-        commercioAccount.hasMnemonic &&
-        commercioAccount.hasWalletAddress) {
-      return CommercioAccountGenerateWalletData(
-        mnemonic: commercioAccount.mnemonic,
-        wallet: commercioAccount.wallet,
-        walletAddress: commercioAccount.walletAddress,
-      );
-    }
-
-    return const CommercioAccountGenerateWalletInitial();
-  }
+  CommercioAccountGenerateWalletBloc({@required this.commercioAccount})
+      : super(const CommercioAccountGenerateWalletInitial());
 
   @override
   Stream<CommercioAccountGenerateWalletState> mapEventToState(
@@ -52,22 +38,8 @@ class CommercioAccountRestoreWalletBloc extends Bloc<
     CommercioAccountRestoreWalletEvent, CommercioAccountRestoredWalletState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountRestoreWalletBloc({@required this.commercioAccount});
-
-  @override
-  CommercioAccountRestoredWalletState get initialState {
-    if (commercioAccount.hasWallet &&
-        commercioAccount.hasMnemonic &&
-        commercioAccount.hasWalletAddress) {
-      return CommercioAccountRestoredWalletStateData(
-        mnemonic: commercioAccount.mnemonic,
-        wallet: commercioAccount.wallet,
-        walletAddress: commercioAccount.walletAddress,
-      );
-    }
-
-    return const CommercioAccountRestoredWalletStateInitial();
-  }
+  CommercioAccountRestoreWalletBloc({@required this.commercioAccount})
+      : super(const CommercioAccountRestoredWalletStateInitial());
 
   @override
   Stream<CommercioAccountRestoredWalletState> mapEventToState(
@@ -97,11 +69,8 @@ class CommercioAccountGenerateQrBloc
     extends Bloc<CommercioAccountGenerateQrEvent, CommercioAccountQrState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountGenerateQrBloc({@required this.commercioAccount});
-
-  @override
-  CommercioAccountQrState get initialState =>
-      const CommercioAccountQrStateInitial();
+  CommercioAccountGenerateQrBloc({@required this.commercioAccount})
+      : super(const CommercioAccountQrStateInitial());
 
   @override
   Stream<CommercioAccountQrState> mapEventToState(
@@ -123,11 +92,8 @@ class CommercioAccountCheckBalanceBloc extends Bloc<
     CommercioAccountCheckBalanceEvent, CommercioAccountBalanceState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountCheckBalanceBloc({@required this.commercioAccount});
-
-  @override
-  CommercioAccountBalanceState get initialState =>
-      const CommercioAccountBalanceStateInitial();
+  CommercioAccountCheckBalanceBloc({@required this.commercioAccount})
+      : super(const CommercioAccountBalanceStateInitial());
 
   @override
   Stream<CommercioAccountBalanceState> mapEventToState(
@@ -149,11 +115,8 @@ class CommercioAccountSendTokensBloc extends Bloc<
     CommercioAccountSendTokensEvent, CommercioAccountSentTokensState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountSendTokensBloc({@required this.commercioAccount});
-
-  @override
-  CommercioAccountSentTokensState get initialState =>
-      const CommercioAccountSentTokensStateInitial();
+  CommercioAccountSendTokensBloc({@required this.commercioAccount})
+      : super(const CommercioAccountSentTokensStateInitial());
 
   @override
   Stream<CommercioAccountSentTokensState> mapEventToState(
@@ -180,11 +143,8 @@ class CommercioAccountRequestFreeTokensBloc extends Bloc<
     CommercioAccountRequestFreeTokensEvent, CommercioAccountFreeTokensState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountRequestFreeTokensBloc({@required this.commercioAccount});
-
-  @override
-  CommercioAccountFreeTokensState get initialState =>
-      const CommercioAccountFreeTokensStateInitial();
+  CommercioAccountRequestFreeTokensBloc({@required this.commercioAccount})
+      : super(const CommercioAccountFreeTokensStateInitial());
 
   @override
   Stream<CommercioAccountFreeTokensState> mapEventToState(
@@ -210,11 +170,8 @@ class CommercioAccountGeneratePairwiseWalletBloc extends Bloc<
     CommercioAccountPaiwiseWalletState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountGeneratePairwiseWalletBloc({@required this.commercioAccount});
-
-  @override
-  CommercioAccountPaiwiseWalletState get initialState =>
-      const CommercioAccountPaiwiseWalletStateInitial();
+  CommercioAccountGeneratePairwiseWalletBloc({@required this.commercioAccount})
+      : super(const CommercioAccountPaiwiseWalletStateInitial());
 
   @override
   Stream<CommercioAccountPaiwiseWalletState> mapEventToState(
