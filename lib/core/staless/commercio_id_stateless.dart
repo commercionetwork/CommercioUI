@@ -4,6 +4,7 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
+import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
 /// The [StatelessCommercioId] module allows to create a new identity and
@@ -11,18 +12,8 @@ import 'package:meta/meta.dart';
 abstract class StatelessCommercioId {
   /// Returns new generated [CommercioIdKeys] that cointains two RSA keys pair,
   /// one pair for verification and another for signature.
-  static Future<CommercioIdKeys> generateKeys() async {
-    final rsaVerificationPair = await KeysHelper.generateRsaKeyPair(
-      type: 'RsaVerificationKey2018',
-    );
-    final rsaSignatureKeyPair = await KeysHelper.generateRsaKeyPair(
-      type: 'RsaSignatureKey2018',
-    );
-
-    return CommercioIdKeys(
-      rsaVerificationPair: rsaVerificationPair,
-      rsaSignatureKeyPair: rsaSignatureKeyPair,
-    );
+  static Future<CommercioIdKeys> generateKeys() {
+    return compute(computeNewKeyPair, const GenerateKeysData());
   }
 
   /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
@@ -151,4 +142,26 @@ abstract class StatelessCommercioId {
       rsaSignaturePrivateKey,
     );
   }
+}
+
+/// Helper plain data object to send data to [compute()] function.
+class GenerateKeysData {
+  const GenerateKeysData();
+}
+
+/// Returns a new [CommercioIdKeys].
+Future<CommercioIdKeys> computeNewKeyPair(
+  GenerateKeysData data,
+) async {
+  final rsaVerificationPair = await KeysHelper.generateRsaKeyPair(
+    type: 'RsaVerificationKey2018',
+  );
+  final rsaSignatureKeyPair = await KeysHelper.generateRsaKeyPair(
+    type: 'RsaSignatureKey2018',
+  );
+
+  return CommercioIdKeys(
+    rsaVerificationPair: rsaVerificationPair,
+    rsaSignatureKeyPair: rsaSignatureKeyPair,
+  );
 }
