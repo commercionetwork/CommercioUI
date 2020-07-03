@@ -1,7 +1,7 @@
 import 'dart:ui' as ui show TextHeightBehavior;
 
 import 'package:bloc/bloc.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -63,22 +63,23 @@ class _CommercioTextState<
 
     return BlocBuilder<B, T>(
       builder: (context, state) {
-        if (TypeHelper.hasType(state, I)) {
+        if (TypeHelper.hasType(state.runtimeType, I)) {
           text = previousText;
         }
 
-        if (TypeHelper.hasType(state, D)) {
+        if (TypeHelper.hasType(state.runtimeType, D)) {
           text = previousText = widget.text(context, state as D);
         }
 
-        if (TypeHelper.hasType(state, L)) {
+        if (TypeHelper.hasType(state.runtimeType, L)) {
           text = widget.loading(context);
         }
 
         return Text(
           text,
-          style:
-              TypeHelper.hasType(state, L) ? widget.loadingStyle : widget.style,
+          style: TypeHelper.hasType(state.runtimeType, L)
+              ? widget.loadingStyle
+              : widget.style,
           strutStyle: widget.strutStyle,
           textAlign: widget.textAlign,
           textDirection: widget.textDirection,

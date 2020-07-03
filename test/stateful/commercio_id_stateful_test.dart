@@ -2,42 +2,31 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sacco/utils/export.dart';
 
-class FlutterSecureStorageMock extends Mock implements FlutterSecureStorage {}
+class SecretStorageMock extends Mock implements SecretStorage {}
 
-class FlutterSecureStorageMethodsMock extends Mock
-    implements FlutterSecureStorage {
+class SecretStorageMethodsMock extends Mock implements SecretStorage {
   @override
-  Future<void> write({
-    @required String key,
-    @required String value,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) async {
+  Future<void> write({@required String key, @required String value}) async {
     return Future.value();
   }
 
   @override
-  Future<String> read({
-    @required String key,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) async {
+  Future<String> read({@required String key}) async {
     return Future.value();
   }
 
   @override
-  Future<void> delete(
-      {@required String key, IOSOptions iOptions, AndroidOptions aOptions}) {
+  Future<void> delete({@required String key}) {
     return Future.value();
   }
 }
@@ -60,19 +49,18 @@ void main() {
     correctNetworkInfo,
   );
   String correctWalletAddress = correctWallet.bech32Address;
-  FlutterSecureStorage secureStorageMock = FlutterSecureStorageMock();
-  FlutterSecureStorage secureStorageMethodsMock =
-      FlutterSecureStorageMethodsMock();
+  SecretStorage secretStorageMock = SecretStorageMock();
+  SecretStorage secretStorageMethodsMock = SecretStorageMethodsMock();
   const String secureStorageKey = 'secure-storage-key';
   final HttpHelper httpHelperMock = HttpHelperMock();
   final correctCommercioAccount = StatefulCommercioAccount(
-    storage: secureStorageMethodsMock,
+    storage: secretStorageMethodsMock,
     storageKey: secureStorageKey,
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,
   );
   final commercioAccountWithoutWallet = StatefulCommercioAccount(
-    storage: secureStorageMethodsMock,
+    storage: secretStorageMethodsMock,
     storageKey: secureStorageKey,
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,
@@ -113,7 +101,7 @@ void main() {
     test('Correct', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
       );
 
@@ -129,7 +117,7 @@ void main() {
     test('Correct', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
       );
 
@@ -153,13 +141,13 @@ void main() {
 
   group('Restore keys', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey)).thenAnswer(
+      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
         (_) => Future.value(correctIdKeys),
       );
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
       );
 
@@ -181,13 +169,13 @@ void main() {
     });
 
     test('No keys stored should throw an exception', () async {
-      when(secureStorageMock.read(key: secureStorageKey)).thenAnswer(
+      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
         (_) => Future.value(null),
       );
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
       );
 
@@ -200,14 +188,14 @@ void main() {
 
   group('Store keys', () {
     test('Correct', () async {
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
         key: secureStorageKey,
         value: correctIdKeys,
       )).thenAnswer((_) => Future.value());
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
       );
 
@@ -222,13 +210,13 @@ void main() {
 
   group('Delete keys', () {
     test('Correct', () async {
-      when(secureStorageMock.delete(
+      when(secretStorageMock.delete(
         key: secureStorageKey,
       )).thenAnswer((_) => Future.value());
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
       );
 
@@ -243,7 +231,7 @@ void main() {
     test('Correct', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -274,7 +262,7 @@ void main() {
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -309,7 +297,7 @@ void main() {
     test('No keys should throw an exception', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
       );
       await correctCommercioAccount.generateNewWallet(
@@ -325,7 +313,7 @@ void main() {
     test('No wallet should throw an exception', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: commercioAccountWithoutWallet,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -351,7 +339,7 @@ void main() {
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -377,7 +365,7 @@ void main() {
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -395,7 +383,7 @@ void main() {
     test('No keys in memory should throw an exception', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
       );
       await correctCommercioAccount.generateNewWallet();
@@ -409,7 +397,7 @@ void main() {
     test('No wallet in commercioAccount should throw an exception', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: commercioAccountWithoutWallet,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -438,7 +426,7 @@ void main() {
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -454,7 +442,7 @@ void main() {
     test('No wallet in commercioAccount should throw an exception', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: commercioAccountWithoutWallet,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -498,7 +486,7 @@ void main() {
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -515,7 +503,7 @@ void main() {
     test('No wallet in commercioAccount should throw an exception', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: commercioAccountWithoutWallet,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
@@ -532,7 +520,7 @@ void main() {
     test('No keys in memory should throw an exception', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
       );
       await correctCommercioAccount.generateNewWallet();

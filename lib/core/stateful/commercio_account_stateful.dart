@@ -1,8 +1,8 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
@@ -10,7 +10,7 @@ import 'package:sacco/sacco.dart';
 /// wallets, send and request tokens.
 class StatefulCommercioAccount {
   final String secureStorageKey;
-  final FlutterSecureStorage secureStorage;
+  final ISecretStorage storage;
   NetworkInfo _networkInfo;
   HttpHelper httpHelper;
   WalletWithAddress walletWithAddress;
@@ -19,12 +19,12 @@ class StatefulCommercioAccount {
   /// Creates a [StatefulCommercioAccount] with the optional [storageKey],
   /// [storage] and [networkInfo].
   StatefulCommercioAccount({
-    String storageKey,
-    FlutterSecureStorage storage,
-    NetworkInfo networkInfo,
     HttpHelper httpHelper,
+    ISecretStorage storage,
+    NetworkInfo networkInfo,
+    String storageKey,
   })  : secureStorageKey = storageKey ?? 'commercio-account-mnemonic',
-        secureStorage = storage ?? const FlutterSecureStorage(),
+        storage = storage ?? SecretStorage(),
         _networkInfo = networkInfo ??
             NetworkInfo(
               bech32Hrp: 'did:com:',
@@ -73,7 +73,7 @@ class StatefulCommercioAccount {
     }
 
     return StatelessCommercioAccount.storeMnemonic(
-      secureStorage: secureStorage,
+      secretStorage: storage,
       secureStorageKey: secureStorageKey,
       mnemonic: mnemonicToStore,
     );
@@ -82,7 +82,7 @@ class StatefulCommercioAccount {
   /// Restore and return the mnemonic from the secure storage.
   Future<String> fetchMnemonic() {
     return StatelessCommercioAccount.fetchMnemonic(
-      secureStorage: secureStorage,
+      secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
   }
@@ -90,7 +90,7 @@ class StatefulCommercioAccount {
   /// Delete the mnemonic inside the secure storage.
   Future<void> deleteMnemonic() {
     return StatelessCommercioAccount.deleteMnemonic(
-      secureStorage: secureStorage,
+      secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
   }

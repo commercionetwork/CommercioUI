@@ -2,18 +2,18 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:commercio_ui/core/staless/commercio_account_stateless.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commercio_ui/entities/account_request_response.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sacco/utils/export.dart';
 
-class FlutterSecureStorageMock extends Mock implements FlutterSecureStorage {}
+class SecretStorageMock extends Mock implements SecretStorage {}
 
 class HttpHelperMock extends Mock implements HttpHelper {}
 
@@ -22,7 +22,7 @@ void main() {
     Directory.current = Directory.current.parent;
   }
 
-  FlutterSecureStorage secureStorageMock = FlutterSecureStorageMock();
+  SecretStorage secretStorageMock = SecretStorageMock();
   final NetworkInfo correctNetworkInfo = NetworkInfo(
     bech32Hrp: 'bech32Hrp',
     lcdUrl: 'lcdUrl',
@@ -67,13 +67,13 @@ void main() {
 
   group('Store mnemonic', () {
     test('Correct', () {
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
               key: secureStorageKey, value: correctMnemonic))
           .thenAnswer((_) => Future.value());
 
       expectLater(
           () => StatelessCommercioAccount.storeMnemonic(
-                secureStorage: secureStorageMock,
+                secretStorage: secretStorageMock,
                 secureStorageKey: secureStorageKey,
                 mnemonic: correctMnemonic,
               ),
@@ -83,13 +83,13 @@ void main() {
     test('Platform exception', () {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
               key: secureStorageKey, value: correctMnemonic))
           .thenThrow(platformException);
 
       expectLater(
           () => StatelessCommercioAccount.storeMnemonic(
-                secureStorage: secureStorageMock,
+                secretStorage: secretStorageMock,
                 secureStorageKey: secureStorageKey,
                 mnemonic: correctMnemonic,
               ),
@@ -99,11 +99,11 @@ void main() {
 
   group('Fetch mnemonic', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final fetchedMnemonic = await StatelessCommercioAccount.fetchMnemonic(
-        secureStorage: secureStorageMock,
+        secretStorage: secretStorageMock,
         secureStorageKey: secureStorageKey,
       );
 
@@ -111,11 +111,11 @@ void main() {
     });
 
     test('No mnemonic stored', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(null));
 
       final fetchedMnemonic = await StatelessCommercioAccount.fetchMnemonic(
-        secureStorage: secureStorageMock,
+        secretStorage: secretStorageMock,
         secureStorageKey: secureStorageKey,
       );
 
@@ -125,12 +125,12 @@ void main() {
     test('Platform exception', () {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenThrow(platformException);
 
       expectLater(
           () => StatelessCommercioAccount.fetchMnemonic(
-                secureStorage: secureStorageMock,
+                secretStorage: secretStorageMock,
                 secureStorageKey: secureStorageKey,
               ),
           throwsA(platformException));
@@ -139,12 +139,12 @@ void main() {
 
   group('Delete mnemonic', () {
     test('Correct', () async {
-      when(secureStorageMock.delete(key: secureStorageKey))
+      when(secretStorageMock.delete(key: secureStorageKey))
           .thenAnswer((_) => Future.value());
 
       expectLater(
           () => StatelessCommercioAccount.deleteMnemonic(
-                secureStorage: secureStorageMock,
+                secretStorage: secretStorageMock,
                 secureStorageKey: secureStorageKey,
               ),
           returnsNormally);
@@ -153,12 +153,12 @@ void main() {
     test('Platform exception', () {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.delete(key: secureStorageKey))
+      when(secretStorageMock.delete(key: secureStorageKey))
           .thenThrow(platformException);
 
       expectLater(
         () => StatelessCommercioAccount.deleteMnemonic(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
         ),
         throwsA(platformException),
@@ -168,11 +168,11 @@ void main() {
 
   group('Restore wallet', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final fetchedWallet = await StatelessCommercioAccount.restoreWallet(
-        secureStorage: secureStorageMock,
+        secretStorage: secretStorageMock,
         secureStorageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
       );
@@ -181,12 +181,12 @@ void main() {
     });
 
     test('No mnemonic already stored', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(null));
 
       expectLater(
         () => StatelessCommercioAccount.restoreWallet(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
           networkInfo: correctNetworkInfo,
         ),

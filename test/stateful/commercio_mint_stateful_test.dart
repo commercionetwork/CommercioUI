@@ -1,46 +1,30 @@
 import 'dart:io';
 
-import 'package:commercio_ui/core/export.dart';
-import 'package:commercio_ui/core/utils/export.dart';
-import 'package:commercio_ui/entities/exceptions/export.dart';
+import 'package:commercio_ui/core/core.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
+import 'package:commercio_ui/entities/exceptions/exceptions.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sacco/utils/export.dart';
 
-class FlutterSecureStorageMock extends Mock implements FlutterSecureStorage {}
-
-class FlutterSecureStorageMethodsMock extends Mock
-    implements FlutterSecureStorage {
+class SecretStorageMethodsMock extends Mock implements SecretStorage {
   @override
-  Future<void> write({
-    @required String key,
-    @required String value,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) async {
+  Future<void> write({@required String key, @required String value}) async {
     return Future.value();
   }
 
   @override
-  Future<String> read({
-    @required String key,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) async {
+  Future<String> read({@required String key}) async {
     return Future.value();
   }
 
   @override
-  Future<void> delete({
-    @required String key,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) {
+  Future<void> delete({@required String key}) {
     return Future.value();
   }
 }
@@ -57,17 +41,16 @@ void main() {
     lcdUrl: 'http://lcd-url',
   );
   final HttpHelper httpHelperMock = HttpHelperMock();
-  FlutterSecureStorage secureStorageMethodsMock =
-      FlutterSecureStorageMethodsMock();
+  SecretStorage secretStorageMethodsMock = SecretStorageMethodsMock();
   const String secureStorageKey = 'secure-storage-key';
   final correctCommercioAccount = StatefulCommercioAccount(
-    storage: secureStorageMethodsMock,
+    storage: secretStorageMethodsMock,
     storageKey: secureStorageKey,
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,
   );
   final commercioAccountWithoutWallet = StatefulCommercioAccount(
-    storage: secureStorageMethodsMock,
+    storage: secretStorageMethodsMock,
     storageKey: secureStorageKey,
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,

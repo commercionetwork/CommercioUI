@@ -145,20 +145,20 @@ class _CommercioTextFieldState<
   Widget build(BuildContext context) {
     return BlocBuilder<B, T>(
       builder: (context, state) {
-        if (TypeHelper.hasType(state, I)) {
+        if (TypeHelper.hasType(state.runtimeType, I)) {
           widget.controller.text = '';
         }
 
-        if (TypeHelper.hasType(state, D)) {
+        if (TypeHelper.hasType(state.runtimeType, D)) {
           widget.controller.text =
               previousText = widget.text(context, state as D);
         }
 
-        if (TypeHelper.hasType(state, L)) {
+        if (TypeHelper.hasType(state.runtimeType, L)) {
           widget.controller.text = widget.loading(context);
         }
 
-        if (TypeHelper.hasType(state, ERR)) {
+        if (TypeHelper.hasType(state.runtimeType, ERR)) {
           widget.controller.text = previousText = state.toString();
         }
 
@@ -169,8 +169,9 @@ class _CommercioTextFieldState<
           keyboardType: widget.keyboardType,
           textInputAction: widget.textInputAction,
           textCapitalization: widget.textCapitalization,
-          style:
-              TypeHelper.hasType(state, L) ? widget.loadingStyle : widget.style,
+          style: TypeHelper.hasType(state.runtimeType, L)
+              ? widget.loadingStyle
+              : widget.style,
           strutStyle: widget.strutStyle,
           textAlign: widget.textAlign,
           textAlignVertical: widget.textAlignVertical,

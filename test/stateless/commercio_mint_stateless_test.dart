@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:commercio_ui/core/export.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/core.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';

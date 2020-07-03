@@ -1,20 +1,20 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:commercio_ui/core/export.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/core.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commercio_ui/entities/commercio_id_keys.dart';
-import 'package:commercio_ui/entities/export.dart';
+import 'package:commercio_ui/entities/entities.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sacco/utils/export.dart';
 
-class FlutterSecureStorageMock extends Mock implements FlutterSecureStorage {}
+class SecretStorageMock extends Mock implements SecretStorage {}
 
 class HttpHelperMock extends Mock implements HttpHelper {}
 
@@ -23,15 +23,20 @@ void main() {
     Directory.current = Directory.current.parent;
   }
 
-  FlutterSecureStorage secureStorageMock;
+  SecretStorage secretStorageMock = SecretStorageMock();
   final NetworkInfo correctNetworkInfo =
       NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'http://lcd-url');
   const String secureStorageKey = 'secure-storage-key';
   const String correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet;
-  String correctWalletAddress;
-  WalletWithAddress correctWalletWithAddress;
+  Wallet correctWallet =
+      Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
+  ;
+  String correctWalletAddress = correctWallet.bech32Address;
+  WalletWithAddress correctWalletWithAddress = WalletWithAddress(
+    wallet: correctWallet,
+    address: correctWalletAddress,
+  );
   final HttpHelper httpHelperMock = HttpHelperMock();
   const String correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
@@ -51,17 +56,6 @@ void main() {
       File('test_resources/correct_tumbler_response.json').readAsStringSync();
   final correctTumblerDdo =
       File('test_resources/correct_tumbler_ddo.json').readAsStringSync();
-
-  setUp(() {
-    secureStorageMock = FlutterSecureStorageMock();
-    correctWallet =
-        Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
-    correctWalletAddress = correctWallet.bech32Address;
-    correctWalletWithAddress = WalletWithAddress(
-      wallet: correctWallet,
-      address: correctWalletAddress,
-    );
-  });
 
   group('Generate keys', () {
     test('Correct', () async {
@@ -85,12 +79,12 @@ void main() {
 
   group('Restore keys', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey)).thenAnswer(
+      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
         (_) => Future.value(correctIdKeys),
       );
 
       final keys = await StatelessCommercioId.restoreKeys(
-        secureStorage: secureStorageMock,
+        secretStorage: secretStorageMock,
         secureStorageKey: secureStorageKey,
       );
 
@@ -112,12 +106,12 @@ void main() {
     test('Platform exception', () async {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenThrow(platformException);
 
       expectLater(
         () => StatelessCommercioId.restoreKeys(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
         ),
         throwsA(isA<PlatformException>()),
@@ -127,14 +121,14 @@ void main() {
 
   group('Store keys', () {
     test('Correct', () async {
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
         key: secureStorageKey,
         value: correctIdKeys,
       )).thenAnswer((_) => Future.value());
 
       expectLater(
         () => StatelessCommercioId.storeKeys(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
           idKeys: CommercioIdKeys.fromJson(jsonDecode(correctIdKeys)),
         ),
@@ -147,14 +141,14 @@ void main() {
 
       final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
 
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
         key: secureStorageKey,
         value: jsonEncode(keysObj),
       )).thenThrow(platformException);
 
       expectLater(
         () => StatelessCommercioId.storeKeys(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
           idKeys: keysObj,
         ),
@@ -165,12 +159,12 @@ void main() {
 
   group('Fetch keys', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey)).thenAnswer(
+      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
         (_) => Future.value(correctIdKeys),
       );
 
       final keys = await StatelessCommercioId.fetchKeys(
-        secureStorage: secureStorageMock,
+        secretStorage: secretStorageMock,
         secureStorageKey: secureStorageKey,
       );
 
@@ -192,12 +186,12 @@ void main() {
     test('Platform exception', () async {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenThrow(platformException);
 
       expectLater(
         () => StatelessCommercioId.fetchKeys(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
         ),
         throwsA(isA<PlatformException>()),
@@ -207,12 +201,12 @@ void main() {
 
   group('Delete keys', () {
     test('Correct', () async {
-      when(secureStorageMock.delete(key: secureStorageKey))
+      when(secretStorageMock.delete(key: secureStorageKey))
           .thenAnswer((_) => Future.value());
 
       expectLater(
         () => StatelessCommercioId.deleteKeys(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
         ),
         returnsNormally,
@@ -222,13 +216,13 @@ void main() {
     test('Platform exception', () async {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.delete(
+      when(secretStorageMock.delete(
         key: secureStorageKey,
       )).thenThrow(platformException);
 
       expectLater(
         () => StatelessCommercioId.deleteKeys(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
         ),
         throwsA(isA<PlatformException>()),

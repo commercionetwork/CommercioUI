@@ -57,7 +57,7 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
   Widget build(BuildContext context) {
     return BlocConsumer<B, S>(
       listener: (context, state) {
-        if (TypeHelper.hasType(state, ERR)) {
+        if (TypeHelper.hasType(state.runtimeType, ERR)) {
           if (error == null) {
             Scaffold.of(context).showSnackBar(
               SnackBar(
@@ -75,7 +75,7 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
             () => BlocProvider.of<B>(context).add(event());
         Widget childWidget = child(context);
 
-        if (TypeHelper.hasType(state, L)) {
+        if (TypeHelper.hasType(state.runtimeType, L)) {
           onPressed = null;
 
           if (loading != null) {

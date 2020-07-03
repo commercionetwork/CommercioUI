@@ -1,13 +1,13 @@
 import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 
 /// The [StatefulCommercioId] module allows to create a new identity and
 /// associate to it a Did Document.
 class StatefulCommercioId {
   final StatefulCommercioAccount commercioAccount;
-  final FlutterSecureStorage secureStorage;
+  final ISecretStorage storage;
   final String secureStorageKey;
   CommercioIdKeys commercioIdKeys;
 
@@ -16,10 +16,10 @@ class StatefulCommercioId {
   StatefulCommercioId({
     @required this.commercioAccount,
     String storageKey,
-    FlutterSecureStorage storage,
+    ISecretStorage storage,
     CommercioIdKeys idKeys,
   })  : secureStorageKey = storageKey ?? 'commercio-id-rsa-keys',
-        secureStorage = storage ?? const FlutterSecureStorage(),
+        storage = storage ?? SecretStorage(),
         commercioIdKeys = idKeys;
 
   /// Returns [true] if there are [commercioIdKeys] in memory.
@@ -43,7 +43,7 @@ class StatefulCommercioId {
   /// If no keys are found then a [NoKeysFoundException] is thrown.
   Future<CommercioIdKeys> restoreKeys() async {
     commercioIdKeys = await StatelessCommercioId.fetchKeys(
-      secureStorage: secureStorage,
+      secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
 
@@ -57,7 +57,7 @@ class StatefulCommercioId {
   /// Save [idKeys] inside the the secure storage.
   Future<void> storeKeys({@required CommercioIdKeys idKeys}) {
     return StatelessCommercioId.storeKeys(
-      secureStorage: secureStorage,
+      secretStorage: storage,
       secureStorageKey: secureStorageKey,
       idKeys: idKeys,
     );
@@ -67,7 +67,7 @@ class StatefulCommercioId {
   /// [secureStorageKey].
   Future<void> deleteKeys() {
     return StatelessCommercioId.deleteKeys(
-      secureStorage: secureStorage,
+      secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
   }

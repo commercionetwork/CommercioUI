@@ -1,4 +1,4 @@
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';

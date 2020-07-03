@@ -2,40 +2,29 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sacco/utils/export.dart';
 
-class FlutterSecureStorageMethodsMock extends Mock
-    implements FlutterSecureStorage {
+class SecretStorageMethodsMock extends Mock implements SecretStorage {
   @override
-  Future<void> write({
-    @required String key,
-    @required String value,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) async {
+  Future<void> write({@required String key, @required String value}) async {
     return Future.value();
   }
 
   @override
-  Future<String> read({
-    @required String key,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) async {
+  Future<String> read({@required String key}) async {
     return Future.value();
   }
 
   @override
-  Future<void> delete(
-      {@required String key, IOSOptions iOptions, AndroidOptions aOptions}) {
+  Future<void> delete({@required String key}) {
     return Future.value();
   }
 }
@@ -57,8 +46,7 @@ void main() {
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
-  FlutterSecureStorage secureStorageMethodsMock =
-      FlutterSecureStorageMethodsMock();
+  SecretStorage secretStorageMethodsMock = SecretStorageMethodsMock();
   const String secureStorageKey = 'secure-storage-key';
   final HttpHelper httpHelperMock = HttpHelperMock();
   String correctWalletAddress = correctWallet.bech32Address;
@@ -70,13 +58,13 @@ void main() {
     ),
   );
   final correctCommercioAccount = StatefulCommercioAccount(
-    storage: secureStorageMethodsMock,
+    storage: secretStorageMethodsMock,
     storageKey: secureStorageKey,
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,
   );
   final commercioAccountWithoutWallet = StatefulCommercioAccount(
-    storage: secureStorageMethodsMock,
+    storage: secretStorageMethodsMock,
     storageKey: secureStorageKey,
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,

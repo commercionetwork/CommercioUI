@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 
 /// The [StatelessCommercioId] module allows to create a new identity and
@@ -28,22 +28,22 @@ abstract class StatelessCommercioId {
   /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
   /// [secureStorageKey].
   static Future<CommercioIdKeys> restoreKeys({
-    @required FlutterSecureStorage secureStorage,
+    @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) {
     return fetchKeys(
-      secureStorage: secureStorage,
+      secretStorage: secretStorage,
       secureStorageKey: secureStorageKey,
     );
   }
 
   /// Save [idKeys] inside the [secureStorage] identified by [secureStorageKey].
   static Future<void> storeKeys({
-    @required FlutterSecureStorage secureStorage,
+    @required ISecretStorage secretStorage,
     @required String secureStorageKey,
     @required CommercioIdKeys idKeys,
   }) {
-    return secureStorage.write(
+    return secretStorage.write(
       key: secureStorageKey,
       value: jsonEncode(idKeys),
     );
@@ -52,10 +52,10 @@ abstract class StatelessCommercioId {
   /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
   /// [secureStorageKey].
   static Future<CommercioIdKeys> fetchKeys({
-    @required FlutterSecureStorage secureStorage,
+    @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) async {
-    final rawKeys = await secureStorage.read(key: secureStorageKey);
+    final rawKeys = await secretStorage.read(key: secureStorageKey);
 
     if (rawKeys == null) {
       return null;
@@ -69,10 +69,10 @@ abstract class StatelessCommercioId {
   /// Delete the [CommercioIdKeys] inside the [secureStorage] identified by
   /// [secureStorageKey].
   static Future<void> deleteKeys({
-    @required FlutterSecureStorage secureStorage,
+    @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) {
-    return secureStorage.delete(key: secureStorageKey);
+    return secretStorage.delete(key: secureStorageKey);
   }
 
   /// Derive a [DidDocument] from the given [wallet], [idKeys] and optional

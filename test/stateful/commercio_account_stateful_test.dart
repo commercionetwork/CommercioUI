@@ -2,45 +2,34 @@ import 'dart:io';
 
 import 'package:commercio_ui/core/staless/commercio_account_stateless.dart';
 import 'package:commercio_ui/core/stateful/commercio_account_stateful.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commercio_ui/entities/account_request_response.dart';
-import 'package:commercio_ui/entities/exceptions/export.dart';
+import 'package:commercio_ui/entities/exceptions/exceptions.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sacco/utils/export.dart';
 
-class FlutterSecureStorageMock extends Mock implements FlutterSecureStorage {}
+class SecretStorageMock extends Mock implements SecretStorage {}
 
-class FlutterSecureStorageMethodsMock extends Mock
-    implements FlutterSecureStorage {
+class SecretStorageMethodsMock extends Mock implements SecretStorage {
   @override
-  Future<void> write({
-    @required String key,
-    @required String value,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) async {
+  Future<void> write({@required String key, @required String value}) async {
     return Future.value();
   }
 
   @override
-  Future<String> read({
-    @required String key,
-    IOSOptions iOptions,
-    AndroidOptions aOptions,
-  }) async {
+  Future<String> read({@required String key}) async {
     return Future.value();
   }
 
   @override
-  Future<void> delete(
-      {@required String key, IOSOptions iOptions, AndroidOptions aOptions}) {
+  Future<void> delete({@required String key}) {
     return Future.value();
   }
 }
@@ -54,16 +43,19 @@ void main() {
     Directory.current = Directory.current.parent;
   }
 
-  FlutterSecureStorage secureStorageMock = FlutterSecureStorageMock();
-  FlutterSecureStorage secureStorageMethodsMock =
-      FlutterSecureStorageMethodsMock();
-  final NetworkInfo correctNetworkInfo =
-      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'lcdUrl');
+  SecretStorage secretStorageMock = SecretStorageMock();
+  SecretStorage secretStorageMethodsMock = SecretStorageMethodsMock();
+  final NetworkInfo correctNetworkInfo = NetworkInfo(
+    bech32Hrp: 'bech32Hrp',
+    lcdUrl: 'lcdUrl',
+  );
   const String secureStorageKey = 'secure-storage-key';
   const String correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet =
-      Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
+  Wallet correctWallet = Wallet.derive(
+    correctMnemonic.split(' '),
+    correctNetworkInfo,
+  );
   final HttpHelper httpHelperMock = HttpHelperMock();
   String correctWalletAddress = correctWallet.bech32Address;
   final String correctAccountBalanceRaw =
@@ -82,7 +74,7 @@ void main() {
       final commercioAccount = StatefulCommercioAccount();
 
       expect(commercioAccount.secureStorageKey, 'commercio-account-mnemonic');
-      expect(commercioAccount.secureStorage, isA<FlutterSecureStorage>());
+      expect(commercioAccount.storage, isA<SecretStorage>());
       expect(commercioAccount.networkInfo.bech32Hrp, 'did:com:');
       expect(commercioAccount.networkInfo.lcdUrl, 'http://localhost:1317');
     });
@@ -91,7 +83,7 @@ void main() {
   group('Has wallet', () {
     test('Newly created account does not have a wallet in memory', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -102,7 +94,7 @@ void main() {
 
     test('Account have a wallet after generating it', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -114,11 +106,11 @@ void main() {
     });
 
     test('Account have a wallet after successfully restoring it', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -133,7 +125,7 @@ void main() {
   group('Has mnemonic', () {
     test('Newly created account does not have mnemonic in memory', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -144,7 +136,7 @@ void main() {
 
     test('Account have mnemonic after generating it', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -156,11 +148,11 @@ void main() {
     });
 
     test('Account have mnemonic after successfully restoring it', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -176,7 +168,7 @@ void main() {
     test('Newly created account does not have a wallet address in memory',
         () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -187,7 +179,7 @@ void main() {
 
     test('Account have a wallet address after generating it', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -200,11 +192,11 @@ void main() {
 
     test('Account have a wallet address after successfully restoring it',
         () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -219,7 +211,7 @@ void main() {
   group('Network info set & get', () {
     test('Set a new network info reset the wallet and mnemonic', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -244,7 +236,7 @@ void main() {
 
   group('Generate mnemonic', () {
     final commercioAccount = StatefulCommercioAccount(
-      storage: secureStorageMock,
+      storage: secretStorageMock,
       storageKey: secureStorageKey,
       networkInfo: correctNetworkInfo,
       httpHelper: httpHelperMock,
@@ -260,13 +252,13 @@ void main() {
 
   group('Store mnemonic', () {
     test('Correct', () async {
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
         key: secureStorageKey,
         value: correctMnemonic,
       )).thenAnswer((_) => Future.value());
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -279,13 +271,13 @@ void main() {
     });
 
     test('Correct with custom mnemonic', () async {
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
         key: secureStorageKey,
         value: correctMnemonic,
       )).thenAnswer((_) => Future.value());
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -301,13 +293,13 @@ void main() {
     });
 
     test('No mnemonic should throw an exception', () async {
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
         key: secureStorageKey,
         value: correctMnemonic,
       )).thenAnswer((_) => Future.value());
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -321,11 +313,11 @@ void main() {
 
     test('Platform error should throw an exception', () async {
       when(
-        secureStorageMock.write(key: secureStorageKey, value: correctMnemonic),
+        secretStorageMock.write(key: secureStorageKey, value: correctMnemonic),
       ).thenThrow(PlatformException(code: 'code'));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -340,11 +332,11 @@ void main() {
 
   group('Fetch mnemonic', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -356,12 +348,12 @@ void main() {
     });
 
     test('No mnemonic saved should return null', () async {
-      when(secureStorageMock.read(
+      when(secretStorageMock.read(
         key: secureStorageKey,
       )).thenAnswer((_) => Future.value(null));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -374,11 +366,11 @@ void main() {
 
     test('Platform error should throw an exception', () async {
       when(
-        secureStorageMock.read(key: secureStorageKey),
+        secretStorageMock.read(key: secureStorageKey),
       ).thenThrow(PlatformException(code: 'code'));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -393,11 +385,11 @@ void main() {
 
   group('Delete mnemonic', () {
     test('Correct', () async {
-      when(secureStorageMock.delete(key: secureStorageKey))
+      when(secretStorageMock.delete(key: secureStorageKey))
           .thenAnswer((_) => Future.value());
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -411,11 +403,11 @@ void main() {
 
     test('Platform error should throw an exception', () async {
       when(
-        secureStorageMock.delete(key: secureStorageKey),
+        secretStorageMock.delete(key: secureStorageKey),
       ).thenThrow(PlatformException(code: 'code'));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -430,11 +422,11 @@ void main() {
 
   group('Restore wallet', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -446,11 +438,11 @@ void main() {
     });
 
     test('No mnemonic stored should throw an exception', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(null));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -466,7 +458,7 @@ void main() {
   group('Generate new wallet', () {
     test('Correct', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -480,7 +472,7 @@ void main() {
 
     test('Correct + mnemonic', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -496,7 +488,7 @@ void main() {
     test('Correct + mnemonic + lastDerivationPath should be deterministic',
         () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -521,7 +513,7 @@ void main() {
   group('Generate pairwise wallet', () {
     test('Correct', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -545,7 +537,7 @@ void main() {
 
     test('No mnemonic should throw an exception', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: null,
         httpHelper: httpHelperMock,
@@ -571,7 +563,7 @@ void main() {
       )).thenAnswer((_) => Future.value(Response('', 200)));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -596,7 +588,7 @@ void main() {
       )).thenAnswer((_) => Future.value(Response('', 200)));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -621,7 +613,7 @@ void main() {
       )).thenAnswer((_) => Future.value(Response('', 200)));
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -646,7 +638,7 @@ void main() {
       );
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -661,7 +653,7 @@ void main() {
 
     test('No wallet should throw an exception', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -689,7 +681,7 @@ void main() {
       );
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -711,7 +703,7 @@ void main() {
       );
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
@@ -735,7 +727,7 @@ void main() {
       );
 
       final commercioAccount = StatefulCommercioAccount(
-        storage: secureStorageMethodsMock,
+        storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,

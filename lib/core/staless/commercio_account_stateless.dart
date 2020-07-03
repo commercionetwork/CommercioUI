@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:bip39/bip39.dart' as bip39;
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
@@ -21,41 +21,43 @@ abstract class StatelessCommercioAccount {
   /// Save [mnemonic] inside the [secureStorage] identified by the key
   /// [secureStorageKey].
   static Future<void> storeMnemonic({
-    @required FlutterSecureStorage secureStorage,
+    @required ISecretStorage secretStorage,
     @required String secureStorageKey,
     @required String mnemonic,
   }) {
-    return secureStorage.write(key: secureStorageKey, value: mnemonic);
+    return secretStorage.write(key: secureStorageKey, value: mnemonic);
   }
 
   /// Get the mnemonic from the [secureStorage] identified by the key
   /// [secureStorageKey].
   static Future<String> fetchMnemonic({
-    @required FlutterSecureStorage secureStorage,
+    @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) {
-    return secureStorage.read(key: secureStorageKey);
+    return secretStorage.read(key: secureStorageKey);
   }
 
   /// Deletes the mnemonic inside the [secureStorage] identified by the key
   /// [secureStorageKey].
   static Future<void> deleteMnemonic({
-    @required FlutterSecureStorage secureStorage,
+    @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) {
-    return secureStorage.delete(key: secureStorageKey);
+    return secretStorage.delete(key: secureStorageKey);
   }
 
   /// Restores the mnemonic words from the [secureStorage] identified by the
   /// key [secureStorageKey]. The words and the [networkInfo] are used to
   /// derive the [Wallet].
   static Future<Wallet> restoreWallet({
-    @required FlutterSecureStorage secureStorage,
+    @required ISecretStorage secretStorage,
     @required String secureStorageKey,
     @required NetworkInfo networkInfo,
   }) async {
     final mnemonic = await fetchMnemonic(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secretStorage: secretStorage,
+      secureStorageKey: secureStorageKey,
+    );
 
     if (mnemonic == null) {
       throw const MnemonicNotStoredException();
@@ -95,11 +97,13 @@ abstract class StatelessCommercioAccount {
     String lastDerivationPathSegment,
   }) {
     return compute(
-        computeWallet,
-        ComputeWalletData(
-            mnemonic: mnemonic,
-            networkInfo: networkInfo,
-            lastDerivationPathSegment: lastDerivationPathSegment));
+      computeWallet,
+      ComputeWalletData(
+        mnemonic: mnemonic,
+        networkInfo: networkInfo,
+        lastDerivationPathSegment: lastDerivationPathSegment,
+      ),
+    );
   }
 
   /// Generate a pairwise [Wallet] from the given [networkInfo] and [mnemonic].
@@ -260,9 +264,15 @@ String computeMnemonic(ComputeMnemonicData data) {
 /// Derive a walllet from the [data].
 Wallet computeWallet(ComputeWalletData data) {
   if (data.lastDerivationPathSegment == null) {
-    return Wallet.derive(data.mnemonic.split(' '), data.networkInfo);
+    return Wallet.derive(
+      data.mnemonic.split(' '),
+      data.networkInfo,
+    );
   }
 
-  return Wallet.derive(data.mnemonic.split(' '), data.networkInfo,
-      lastDerivationPathSegment: data.lastDerivationPathSegment);
+  return Wallet.derive(
+    data.mnemonic.split(' '),
+    data.networkInfo,
+    lastDerivationPathSegment: data.lastDerivationPathSegment,
+  );
 }

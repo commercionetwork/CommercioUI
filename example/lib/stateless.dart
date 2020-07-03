@@ -1,7 +1,7 @@
 import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sacco/sacco.dart';
 
 // The Stateless layer is just a convenient Flutter wrapper around
@@ -60,7 +60,7 @@ class _ExamplePageState extends State<ExamplePage> {
     // Save the generated mnemonic words inside the device secure storage
     // We skip the error handling code
     await StatelessCommercioAccount.storeMnemonic(
-        secureStorage: const FlutterSecureStorage(),
+        secretStorage: SecretStorage(),
         secureStorageKey: 'commercio-mnemonic',
         mnemonic: mnemonic);
 
