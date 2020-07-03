@@ -100,15 +100,8 @@ class CommercioAccountGenerateQrBloc
   CommercioAccountGenerateQrBloc({@required this.commercioAccount});
 
   @override
-  CommercioAccountQrState get initialState {
-    if (commercioAccount.hasWalletAddress) {
-      return CommercioAccountQrStateData(
-        walletAddress: commercioAccount.walletAddress,
-      );
-    }
-
-    return const CommercioAccountQrStateInitial();
-  }
+  CommercioAccountQrState get initialState =>
+      const CommercioAccountQrStateInitial();
 
   @override
   Stream<CommercioAccountQrState> mapEventToState(

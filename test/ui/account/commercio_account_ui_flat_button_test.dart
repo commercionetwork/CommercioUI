@@ -597,48 +597,6 @@ void main() {
     ]);
   });
 
-  testWidgets('Submit GenerateQr initial data', (
-    WidgetTester tester,
-  ) async {
-    when(commercioAccount.hasWalletAddress).thenReturn(true);
-    when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
-
-    final bloc = CommercioAccountGenerateQrBloc(
-      commercioAccount: commercioAccount,
-    );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
-
-    final commFlatButton = GenerateQrFlatButton(
-      loading: (_) => const Text(loadingText),
-      child: (_) => const Text(childText),
-      event: () => CommercioAccountGenerateQrEvent(),
-      error: (context, err) => Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text(err),
-        ),
-      ),
-    );
-
-    final root = BlocProvider.value(
-      value: bloc,
-      child: MaterialApp(
-        home: Scaffold(
-          body: commFlatButton,
-        ),
-      ),
-    );
-
-    await tester.pumpWidget(root);
-    await tester.pumpAndSettle();
-
-    expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountQrStateData',
-    ]);
-  });
-
   testWidgets('Submit GeneratePairwiseWallet Event', (
     WidgetTester tester,
   ) async {
