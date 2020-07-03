@@ -1,6 +1,6 @@
 name: commercio_ui
 description: CommercioUI pre-build clean Core+UI widgets intended to reduce significantly the overall blockchain app development time
-version: 0.2.0
+version: 0.0.3
 homepage: https://github.com/commercionetwork/CommercioUI
 
 environment:
@@ -26,6 +26,8 @@ dependencies:
     git:
       url: https://github.com/pasqenr/sacco.dart
       ref: master
+  shared_preferences: ^0.5.7+3
+  shared_preferences_web: ">=0.1.0 <2.0.0"
   uuid: ^2.1.0
 
 dev_dependencies:
