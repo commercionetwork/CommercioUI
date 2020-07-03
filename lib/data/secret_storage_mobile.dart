@@ -2,6 +2,8 @@ import 'package:commercio_ui/data/secret_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+/// Mobile implementation of [ISecretStorage] that uses the secure storage
+/// avaiable in Android and iOS.
 class SecretStorage implements ISecretStorage {
   SecretStorage() : _handler = FlutterSecureStorage();
 

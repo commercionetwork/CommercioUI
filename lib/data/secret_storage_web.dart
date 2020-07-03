@@ -2,6 +2,11 @@ import 'package:commercio_ui/data/secret_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences_web/shared_preferences_web.dart';
 
+/// Web implementation of [ISecretStorage] that used the [localStorage] of the
+/// browser to store keys and values.
+///
+/// **WARNING**: this implementation does not encrypt the data stored so
+/// it should not be used to store real data.
 class SecretStorage implements ISecretStorage {
   SecretStorage() : _handler = SharedPreferencesPlugin();
 
