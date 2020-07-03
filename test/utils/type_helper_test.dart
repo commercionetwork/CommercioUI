@@ -15,24 +15,20 @@ class B {}
 
 void main() {
   group('Type helper', () {
-    final a = A();
-
     test('Correct', () {
-      expect(TypeHelper.hasType(a, A), isTrue);
-      expect(TypeHelper.hasType(a, B), isFalse);
+      expect(TypeHelper.hasType(A, A), isTrue);
+      expect(TypeHelper.hasType(A, B), isFalse);
     });
 
     test('Type should have strict equal name for the class', () {
-      expect(TypeHelper.hasType(a, AA), isFalse);
-      expect(TypeHelper.hasType(a, AB), isFalse);
-      expect(TypeHelper.hasType(a, BA), isFalse);
+      expect(TypeHelper.hasType(A, AA), isFalse);
+      expect(TypeHelper.hasType(A, AB), isFalse);
+      expect(TypeHelper.hasType(A, BA), isFalse);
     });
 
     test('Accepts object types starting with "_dollar"', () {
-      final a = _$A();
-
-      expect(TypeHelper.hasType(a, A), isTrue);
-      expect(TypeHelper.hasType(a, B), isFalse);
+      expect(TypeHelper.hasType(_$A, A), isTrue);
+      expect(TypeHelper.hasType(_$A, B), isFalse);
     });
   });
 }
