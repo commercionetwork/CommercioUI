@@ -1,5 +1,5 @@
 library commercio_ui;
 
-export 'core/export.dart';
-export 'entities/export.dart';
+export 'core/core.dart';
+export 'entities/entities.dart';
 export 'ui/export.dart';
