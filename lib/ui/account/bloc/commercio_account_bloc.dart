@@ -79,6 +79,10 @@ class CommercioAccountGenerateQrBloc
     try {
       yield const CommercioAccountQrStateLoading();
 
+      if (!commercioAccount.hasWalletAddress) {
+        throw const WalletNotFoundException();
+      }
+
       yield CommercioAccountQrStateData(
         walletAddress: commercioAccount.walletAddress,
       );
