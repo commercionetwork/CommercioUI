@@ -442,7 +442,7 @@ void main() {
   testWidgets('Submit GenerateQr Event', (
     WidgetTester tester,
   ) async {
-    when(commercioAccount.hasWalletAddress).thenReturn(false);
+    when(commercioAccount.hasWalletAddress).thenReturn(true);
     when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
 
     final bloc = CommercioAccountGenerateQrBloc(

@@ -8,6 +8,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
     L extends T, ERR extends T> extends StatefulWidget {
+  static const _defaultDecoration = InputDecoration();
+  static const _defaultTextCapitalization = TextCapitalization.none;
+  static const _defaultTextAlign = TextAlign.start;
+  static const _defaultReadOnly = true;
+  static const _defaultAutofocus = false;
+  static const _defaultObscureText = false;
+  static const _defaultAutocorrect = false;
+  static const _defaultEnableSuggestions = false;
+  static const int _defaultMaxLines = null;
+  static const _defaultExpands = false;
+  static const _defaultMaxLengthEnforced = true;
+  static const _defaultCursorWidth = 2.0;
+  static const _defaultSelectionHeightStyle = ui.BoxHeightStyle.tight;
+  static const _defaultSelectionWidthStyle = ui.BoxWidthStyle.tight;
+  static const _defaultScrollPadding = const EdgeInsets.all(20.0);
+  static const _defaultDragStartBehavior = DragStartBehavior.start;
+  static const _defaultEnableInteractiveSelection = true;
+
   final TextEditingController controller;
   final FocusNode focusNode;
   final InputDecoration decoration;
@@ -60,56 +78,78 @@ class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
     Key key,
     TextEditingController controller,
     this.focusNode,
-    this.decoration = const InputDecoration(),
+    InputDecoration decoration,
     TextInputType keyboardType,
     this.textInputAction,
-    this.textCapitalization = TextCapitalization.none,
+    TextCapitalization textCapitalization,
     this.style,
     this.strutStyle,
-    this.textAlign = TextAlign.start,
+    TextAlign textAlign,
     this.textAlignVertical,
     this.textDirection,
-    this.readOnly = false,
+    bool readOnly,
     ToolbarOptions toolbarOptions,
     this.showCursor,
-    this.autofocus = false,
-    this.obscureText = false,
-    this.autocorrect = true,
+    bool autofocus,
+    bool obscureText,
+    bool autocorrect,
     SmartDashesType smartDashesType,
     SmartQuotesType smartQuotesType,
-    this.enableSuggestions = true,
-    this.maxLines = 1,
+    bool enableSuggestions,
+    int maxLines,
     this.minLines,
-    this.expands = false,
+    bool expands,
     this.maxLength,
-    this.maxLengthEnforced = true,
+    bool maxLengthEnforced,
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
     this.inputFormatters,
     this.enabled,
-    this.cursorWidth = 2.0,
+    double cursorWidth,
     this.cursorRadius,
     this.cursorColor,
-    this.selectionHeightStyle = ui.BoxHeightStyle.tight,
-    this.selectionWidthStyle = ui.BoxWidthStyle.tight,
+    ui.BoxHeightStyle selectionHeightStyle,
+    ui.BoxWidthStyle selectionWidthStyle,
     this.keyboardAppearance,
-    this.scrollPadding = const EdgeInsets.all(20.0),
-    this.dragStartBehavior = DragStartBehavior.start,
-    this.enableInteractiveSelection = true,
+    EdgeInsets scrollPadding,
+    DragStartBehavior dragStartBehavior,
+    bool enableInteractiveSelection,
     this.onTap,
     this.buildCounter,
     this.scrollController,
     this.scrollPhysics,
-    @required this.loading,
     @required this.text,
+    this.loading,
     this.error,
     this.loadingStyle,
-  })  : controller = controller ?? TextEditingController(text: ''),
+  })  : decoration = decoration ?? _defaultDecoration,
+        textCapitalization = textCapitalization ?? _defaultTextCapitalization,
+        textAlign = textAlign ?? _defaultTextAlign,
+        readOnly = readOnly ?? _defaultReadOnly,
+        autofocus = autofocus ?? _defaultAutofocus,
+        obscureText = obscureText ?? _defaultObscureText,
+        autocorrect = autocorrect ?? _defaultAutocorrect,
+        maxLines = maxLines ?? _defaultMaxLines,
+        expands = expands ?? _defaultExpands,
+        maxLengthEnforced = maxLengthEnforced ?? _defaultMaxLengthEnforced,
+        enableSuggestions = enableSuggestions ?? _defaultEnableSuggestions,
+        cursorWidth = cursorWidth ?? _defaultCursorWidth,
+        selectionHeightStyle =
+            selectionHeightStyle ?? _defaultSelectionHeightStyle,
+        selectionWidthStyle =
+            selectionWidthStyle ?? _defaultSelectionWidthStyle,
+        scrollPadding = scrollPadding ?? _defaultScrollPadding,
+        dragStartBehavior = dragStartBehavior ?? _defaultDragStartBehavior,
+        enableInteractiveSelection =
+            enableInteractiveSelection ?? _defaultEnableInteractiveSelection,
+        controller = controller ?? TextEditingController(text: ''),
         keyboardType = keyboardType ??
-            (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
+            ((maxLines ?? _defaultMaxLines) == 1
+                ? TextInputType.text
+                : TextInputType.multiline),
         toolbarOptions = toolbarOptions ??
-            (obscureText
+            ((obscureText ?? _defaultObscureText)
                 ? const ToolbarOptions(
                     selectAll: true,
                     paste: true,
@@ -121,9 +161,13 @@ class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
                     paste: true,
                   )),
         smartDashesType = smartDashesType ??
-            (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
+            ((obscureText ?? _defaultObscureText)
+                ? SmartDashesType.disabled
+                : SmartDashesType.enabled),
         smartQuotesType = smartQuotesType ??
-            (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
+            ((obscureText ?? _defaultObscureText)
+                ? SmartQuotesType.disabled
+                : SmartQuotesType.enabled),
         super(key: key);
 
   @override
@@ -155,7 +199,8 @@ class _CommercioTextFieldState<
         }
 
         if (TypeHelper.hasType(state.runtimeType, L)) {
-          widget.controller.text = widget.loading(context);
+          widget.controller.text =
+              widget.loading != null ? widget.loading(context) : '';
         }
 
         if (TypeHelper.hasType(state.runtimeType, ERR)) {
