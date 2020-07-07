@@ -17,8 +17,8 @@ class StatefulCommercioKyc {
   ///
   /// Throw [WalletNotFoundException] if no wallet is avaiable.
   ///
-  /// Returns the response text.
-  Future<String> requestFaucetInvite() async {
+  /// Returns the [FaucetInviteResponse].
+  Future<FaucetInviteResponse> requestFaucetInvite() async {
     if (!commercioAccount.hasWalletAddress) {
       throw const WalletNotFoundException();
     }

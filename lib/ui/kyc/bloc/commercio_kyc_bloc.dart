@@ -17,9 +17,9 @@ class CommercioKycRequestFaucetInviteBloc extends Bloc<
     try {
       yield const CommercioKycRequestedFaucetInviteStateLoading();
 
-      final result = await commercioKyc.requestFaucetInvite();
+      final response = await commercioKyc.requestFaucetInvite();
 
-      yield CommercioKycRequestedFaucetInviteStateData(result: result);
+      yield CommercioKycRequestedFaucetInviteStateData(response: response);
     } catch (e) {
       yield CommercioKycRequestedFaucetInviteStateError(e.toString());
     }

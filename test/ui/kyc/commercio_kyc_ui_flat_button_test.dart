@@ -1,4 +1,5 @@
 import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commercio_ui/entities/faucet_invite_response.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -18,7 +19,9 @@ void main() {
   testWidgets('Submit RequestFaucetInvite Event', (
     WidgetTester tester,
   ) async {
-    when(commercioKyc.requestFaucetInvite()).thenAnswer((_) async => '');
+    when(commercioKyc.requestFaucetInvite()).thenAnswer(
+      (_) async => FaucetInviteResponse(txHash: ''),
+    );
 
     final bloc = CommercioKycRequestFaucetInviteBloc(
       commercioKyc: commercioKyc,

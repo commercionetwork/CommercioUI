@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/entities/faucet_invite_response.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:http/http.dart';
 import 'package:meta/meta.dart';
@@ -10,8 +13,8 @@ abstract class StatelessCommercioKyc {
   /// Request an member invitation for the [walletAddress] with optional
   /// [httpHelper]. The [walletAddress] must be not already on the chain.
   ///
-  /// Returns the response text.
-  static Future<String> requestFaucetInvite({
+  /// Returns the [FaucetInviteResponse].
+  static Future<FaucetInviteResponse> requestFaucetInvite({
     @required String walletAddress,
     String faucetDomain,
     HttpHelper httpHelper,
@@ -30,7 +33,7 @@ abstract class StatelessCommercioKyc {
       rethrow;
     }
 
-    return response.body;
+    return FaucetInviteResponse.fromJson(jsonDecode(response.body));
   }
 
   /// Buy a [membershipType] for the [wallet] with optional [fee].

@@ -1,3 +1,4 @@
+import 'package:commercio_ui/entities/faucet_invite_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
@@ -8,7 +9,7 @@ part 'commercio_kyc_state.freezed.dart';
 abstract class CommercioKycRequestedFaucetInviteState
     with _$CommercioKycRequestedFaucetInviteState {
   const factory CommercioKycRequestedFaucetInviteState({
-    @required String result,
+    @required FaucetInviteResponse response,
   }) = CommercioKycRequestedFaucetInviteStateData;
 
   const factory CommercioKycRequestedFaucetInviteState.initial() =

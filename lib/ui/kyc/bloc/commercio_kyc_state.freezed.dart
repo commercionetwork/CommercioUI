@@ -12,9 +12,10 @@ T _$identity<T>(T value) => value;
 class _$CommercioKycRequestedFaucetInviteStateTearOff {
   const _$CommercioKycRequestedFaucetInviteStateTearOff();
 
-  CommercioKycRequestedFaucetInviteStateData call({@required String result}) {
+  CommercioKycRequestedFaucetInviteStateData call(
+      {@required FaucetInviteResponse response}) {
     return CommercioKycRequestedFaucetInviteStateData(
-      result: result,
+      response: response,
     );
   }
 
@@ -40,14 +41,14 @@ const $CommercioKycRequestedFaucetInviteState =
 mixin _$CommercioKycRequestedFaucetInviteState {
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     Result initial(),
     Result loading(),
     Result error(String error),
@@ -93,7 +94,9 @@ abstract class $CommercioKycRequestedFaucetInviteStateDataCopyWith<$Res> {
           CommercioKycRequestedFaucetInviteStateData value,
           $Res Function(CommercioKycRequestedFaucetInviteStateData) then) =
       _$CommercioKycRequestedFaucetInviteStateDataCopyWithImpl<$Res>;
-  $Res call({String result});
+  $Res call({FaucetInviteResponse response});
+
+  $FaucetInviteResponseCopyWith<$Res> get response;
 }
 
 class _$CommercioKycRequestedFaucetInviteStateDataCopyWithImpl<$Res>
@@ -111,38 +114,51 @@ class _$CommercioKycRequestedFaucetInviteStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object result = freezed,
+    Object response = freezed,
   }) {
     return _then(CommercioKycRequestedFaucetInviteStateData(
-      result: result == freezed ? _value.result : result as String,
+      response: response == freezed
+          ? _value.response
+          : response as FaucetInviteResponse,
     ));
+  }
+
+  @override
+  $FaucetInviteResponseCopyWith<$Res> get response {
+    if (_value.response == null) {
+      return null;
+    }
+    return $FaucetInviteResponseCopyWith<$Res>(_value.response, (value) {
+      return _then(_value.copyWith(response: value));
+    });
   }
 }
 
 class _$CommercioKycRequestedFaucetInviteStateData
     implements CommercioKycRequestedFaucetInviteStateData {
-  const _$CommercioKycRequestedFaucetInviteStateData({@required this.result})
-      : assert(result != null);
+  const _$CommercioKycRequestedFaucetInviteStateData({@required this.response})
+      : assert(response != null);
 
   @override
-  final String result;
+  final FaucetInviteResponse response;
 
   @override
   String toString() {
-    return 'CommercioKycRequestedFaucetInviteState(result: $result)';
+    return 'CommercioKycRequestedFaucetInviteState(response: $response)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is CommercioKycRequestedFaucetInviteStateData &&
-            (identical(other.result, result) ||
-                const DeepCollectionEquality().equals(other.result, result)));
+            (identical(other.response, response) ||
+                const DeepCollectionEquality()
+                    .equals(other.response, response)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(response);
 
   @override
   $CommercioKycRequestedFaucetInviteStateDataCopyWith<
@@ -153,7 +169,7 @@ class _$CommercioKycRequestedFaucetInviteStateData
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
@@ -162,13 +178,13 @@ class _$CommercioKycRequestedFaucetInviteStateData
     assert(initial != null);
     assert(loading != null);
     assert(error != null);
-    return $default(result);
+    return $default(response);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     Result initial(),
     Result loading(),
     Result error(String error),
@@ -176,7 +192,7 @@ class _$CommercioKycRequestedFaucetInviteStateData
   }) {
     assert(orElse != null);
     if ($default != null) {
-      return $default(result);
+      return $default(response);
     }
     return orElse();
   }
@@ -218,9 +234,10 @@ class _$CommercioKycRequestedFaucetInviteStateData
 abstract class CommercioKycRequestedFaucetInviteStateData
     implements CommercioKycRequestedFaucetInviteState {
   const factory CommercioKycRequestedFaucetInviteStateData(
-      {@required String result}) = _$CommercioKycRequestedFaucetInviteStateData;
+          {@required FaucetInviteResponse response}) =
+      _$CommercioKycRequestedFaucetInviteStateData;
 
-  String get result;
+  FaucetInviteResponse get response;
   $CommercioKycRequestedFaucetInviteStateDataCopyWith<
       CommercioKycRequestedFaucetInviteStateData> get copyWith;
 }
@@ -267,7 +284,7 @@ class _$CommercioKycRequestedFaucetInviteStateInitial
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
@@ -282,7 +299,7 @@ class _$CommercioKycRequestedFaucetInviteStateInitial
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     Result initial(),
     Result loading(),
     Result error(String error),
@@ -377,7 +394,7 @@ class _$CommercioKycRequestedFaucetInviteStateLoading
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
@@ -392,7 +409,7 @@ class _$CommercioKycRequestedFaucetInviteStateLoading
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     Result initial(),
     Result loading(),
     Result error(String error),
@@ -509,7 +526,7 @@ class _$CommercioKycRequestedFaucetInviteStateError
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     @required Result initial(),
     @required Result loading(),
     @required Result error(String error),
@@ -524,7 +541,7 @@ class _$CommercioKycRequestedFaucetInviteStateError
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String result), {
+    Result $default(FaucetInviteResponse response), {
     Result initial(),
     Result loading(),
     Result error(String error),
