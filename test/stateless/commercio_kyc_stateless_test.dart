@@ -1,9 +1,7 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:commercio_ui/core/core.dart';
 import 'package:commercio_ui/core/utils/utils.dart';
-import 'package:commercio_ui/entities/faucet_invite_response.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
