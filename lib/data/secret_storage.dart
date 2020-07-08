@@ -6,6 +6,8 @@ import 'package:flutter/foundation.dart';
 /// Some examples of informations that can be saved are password and
 /// private keys.
 abstract class ISecretStorage {
+  ISecretStorage({Object handler});
+
   /// Returns [true] if the storage is avaiable.
   bool get started;
 

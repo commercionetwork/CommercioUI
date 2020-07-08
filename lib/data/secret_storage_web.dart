@@ -8,7 +8,8 @@ import 'package:shared_preferences_web/shared_preferences_web.dart';
 /// **WARNING**: this implementation does not encrypt the data stored so
 /// it should not be used to store real data.
 class SecretStorage implements ISecretStorage {
-  SecretStorage() : _handler = SharedPreferencesPlugin();
+  SecretStorage({Object handler})
+      : _handler = handler ?? SharedPreferencesPlugin();
 
   final SharedPreferencesPlugin _handler;
   final String _keyPrefix = 'flutter.';
