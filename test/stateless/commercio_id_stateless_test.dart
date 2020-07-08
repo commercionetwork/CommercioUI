@@ -596,4 +596,28 @@ void main() {
       expect(result.success, isTrue);
     });
   });
+
+  group('Compute new key pair', () {
+    test('Correct', () async {
+      final generateKeysData = GenerateKeysData();
+
+      expect(generateKeysData, isNotNull);
+
+      final keyPair = await computeNewKeyPair(generateKeysData);
+
+      expect(keyPair, isNotNull);
+
+      final signatureKeys = keyPair.rsaSignatureKeyPair;
+
+      expect(signatureKeys.privateKey, isA<RSAPrivateKey>());
+      expect(signatureKeys.publicKey, isA<RSAPublicKey>());
+      expect(signatureKeys.publicKey.getType(), 'RsaSignatureKey2018');
+
+      final verificationKeys = keyPair.rsaVerificationPair;
+
+      expect(verificationKeys.privateKey, isA<RSAPrivateKey>());
+      expect(verificationKeys.publicKey, isA<RSAPublicKey>());
+      expect(verificationKeys.publicKey.getType(), 'RsaVerificationKey2018');
+    });
+  });
 }
