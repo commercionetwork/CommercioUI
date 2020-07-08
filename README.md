@@ -1,7 +1,10 @@
 # CommercioUI
 
 [![Build Status](https://travis-ci.com/commercionetwork/CommercioUI.svg?branch=master)](https://travis-ci.com/commercionetwork/CommercioUI)
+![Coverage](https://img.shields.io/badge/coverage-99%25-success.svg)
+[![Pub version](https://img.shields.io/badge/pub-0.3.0-orange.svg)](https://pub.dev/packages/commercio_ui)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+[![bloc library](https://tinyurl.com/bloc-library)](https://pub.dev/packages/bloc)
 
 CommercioUI reduces your overall  blockchain app development time by 90% because of its pre-build clean Core+UI widgets that you can use in any flutter app development. We have spent  one year to build this library to make to make your life easier.
 
@@ -22,7 +25,8 @@ final networkInfo = NetworkInfo(
 );
 
 final wallet = await StatelessCommercioAccount.generateNewWallet(
-  networkInfo: networkInfo);
+  networkInfo: networkInfo,
+);
 ```
 
 ### Stateful
@@ -41,10 +45,9 @@ If the project already uses or will be created using the BLoC library then **Com
 
 The **Widgets** supports and wraps 3 of the following widgets:
 
-* `FlatButton` 
-* `TextField` 
-* `Text` 
-
+* `FlatButton`
+* `TextField`
+* `Text`
 The provided widgets directly use *BLoC* implementation to send, receive and handle events and states. With these widgets only the BLoC should be provided and then the interface can be built extremely fast.
 
 ## Comparison
@@ -243,10 +246,12 @@ class MyApp extends StatelessWidget {
         ),
         // When providing the BLoC (on which the UI layer is built)
         // the Commercio Account can be customized
-        body: BlocProvider<CommercioAccountGenerateWalletBloc>(
-            create: (_) => CommercioAccountGenerateWalletBloc(
-                commercioAccount: StatefulCommercioAccount()),
-            child: const ExamplePage()),
+        body: BlocProvider(
+          create: (_) => CommercioAccountGenerateWalletBloc(
+            commercioAccount: StatefulCommercioAccount(),
+          ),
+          child: const ExamplePage(),
+        ),
       ),
     );
   }
@@ -263,28 +268,25 @@ class ExamplePage extends StatelessWidget {
         // Custom FlatButton that generate new mnemonic words and derive
         // the wallet.
         // The loading is automatic, all the information is stored inside the
-        // CommercioAccount and the mnemonic are stored inside the secure 
+        // CommercioAccount and the mnemonic are stored inside the secure
         // storage.
         //
         // Errors are handled automatically but the callback can be customized
         GenerateWalletFlatButton(
-          accountEventCallback: () =>
-                const CommercioAccountGenerateWalletEvent(),
+          event: () => const CommercioAccountGenerateWalletEvent(),
           disabledTextColor: Colors.brown,
           color: Colors.orangeAccent,
-          child: () => const Text('Generate new wallet'),
-          loadingChild: () => const Text('Generating...'),
+          child: (_) => const Text('Generate new wallet'),
         ),
         const Text('Wallet address:'),
         // Custom TextField that received the state with the wallet generated.
-        // The callback provide all the flexibility to chose how to elaborate 
+        // The callback provide all the flexibility to chose how to elaborate
         // the result.
         //
         // No problem on calling for the address, it's cached.
         GenerateWalletTextField(
-          readOnly: true,
-          loadingTextCallback: () => 'Generating...',
-          textCallback: (state) => state.walletAddress,
+          text: (_, data) => data.walletAddress,
+          loading: (_) => 'Generating...',
         ),
       ],
     );
