@@ -34,6 +34,7 @@ class OpenCdpText extends CommercioText<
       CommercioMintOpenedCdpStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -51,6 +52,7 @@ class OpenCdpText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           loading: loading,
           text: text,
+          error: error,
         );
 }
 
@@ -85,6 +87,7 @@ class CloseCdpText extends CommercioText<
       CommercioMintClosedCdpStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -102,5 +105,6 @@ class CloseCdpText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }

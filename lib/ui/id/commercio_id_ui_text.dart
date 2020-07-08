@@ -34,6 +34,7 @@ class GenerateKeysText extends CommercioText<
       CommercioIdGeneratedKeysStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -51,6 +52,7 @@ class GenerateKeysText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -85,6 +87,7 @@ class RestoreKeysText extends CommercioText<
       CommercioIdRestoredKeysStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -102,6 +105,7 @@ class RestoreKeysText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -129,13 +133,14 @@ class DeleteKeysText extends CommercioText<
     TextWidthBasis textWidthBasis,
     ui.TextHeightBehavior textHeightBehavior,
     @required
+        String Function(BuildContext context) loading,
+    @required
         String Function(
       BuildContext context,
       CommercioIdDeletedKeysStateData state,
     )
             text,
-    @required
-        String Function(BuildContext context) loading,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -153,6 +158,7 @@ class DeleteKeysText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -184,6 +190,7 @@ class DeriveDidDocumentText extends CommercioText<
         String Function(BuildContext context,
                 CommercioIdDerivedDidDocumentStateData state)
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -201,6 +208,7 @@ class DeriveDidDocumentText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -232,6 +240,7 @@ class SetDidDocumentText extends CommercioText<
         String Function(
                 BuildContext context, CommercioIdSetDidDocumentStateData state)
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -249,6 +258,7 @@ class SetDidDocumentText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -280,6 +290,7 @@ class RechargeTumblerText extends CommercioText<
         String Function(BuildContext context,
                 CommercioIdRechargedTumblerStateData state)
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -297,6 +308,7 @@ class RechargeTumblerText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -331,6 +343,7 @@ class RequestDidPowerUpText extends CommercioText<
       CommercioIdRequestedDidPowerUpStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -348,5 +361,6 @@ class RequestDidPowerUpText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }

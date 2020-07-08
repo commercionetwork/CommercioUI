@@ -34,6 +34,7 @@ class RestoreWalletText extends CommercioText<
       CommercioAccountRestoredWalletStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -51,6 +52,7 @@ class RestoreWalletText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -85,6 +87,7 @@ class GenerateWalletText extends CommercioText<
       CommercioAccountGenerateWalletData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -102,6 +105,7 @@ class GenerateWalletText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -136,6 +140,7 @@ class RequestFreeTokensText extends CommercioText<
       CommercioAccountFreeTokensStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -153,6 +158,7 @@ class RequestFreeTokensText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -187,6 +193,7 @@ class CheckBalanceText extends CommercioText<
       CommercioAccountBalanceStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -204,6 +211,7 @@ class CheckBalanceText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -238,6 +246,7 @@ class SendTokensText extends CommercioText<
       CommercioAccountSentTokensStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -255,6 +264,7 @@ class SendTokensText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -289,6 +299,7 @@ class GeneratePairwiseWalletText extends CommercioText<
       CommercioAccountPaiwiseWalletStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -306,5 +317,6 @@ class GeneratePairwiseWalletText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }

@@ -34,6 +34,7 @@ class RequestFaucetInviteText extends CommercioText<
       CommercioKycRequestedFaucetInviteStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -51,6 +52,7 @@ class RequestFaucetInviteText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -85,6 +87,7 @@ class BuyMembershipText extends CommercioText<
       CommercioKycBuyMembershipStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -102,6 +105,7 @@ class BuyMembershipText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -136,6 +140,7 @@ class InviteMemberText extends CommercioText<
       CommercioKycInviteMemberStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -153,5 +158,6 @@ class InviteMemberText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }

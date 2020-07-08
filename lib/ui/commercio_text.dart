@@ -22,6 +22,7 @@ class CommercioText<B extends Bloc<E, T>, E, T, I extends T, D extends T,
   final ui.TextHeightBehavior textHeightBehavior;
   final String Function(BuildContext context) loading;
   final String Function(BuildContext context, D state) text;
+  final String Function(BuildContext context, String errorMessage) error;
 
   const CommercioText({
     Key key,
@@ -40,6 +41,7 @@ class CommercioText<B extends Bloc<E, T>, E, T, I extends T, D extends T,
     this.textHeightBehavior,
     @required this.loading,
     @required this.text,
+    this.error,
   }) : super(key: key);
 
   @override
@@ -73,6 +75,16 @@ class _CommercioTextState<
 
         if (TypeHelper.hasType(state.runtimeType, L)) {
           text = widget.loading(context);
+        }
+
+        if (TypeHelper.hasType(state.runtimeType, L)) {
+          text = widget.loading(context);
+        }
+
+        if (TypeHelper.hasType(state.runtimeType, ERR)) {
+          text = previousText = widget.error != null
+              ? widget.error(context, state.toString())
+              : previousText;
         }
 
         return Text(

@@ -34,6 +34,7 @@ class ShareDocumentText extends CommercioText<
       CommercioDocsSharedDocumentStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -51,6 +52,7 @@ class ShareDocumentText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -85,6 +87,7 @@ class ShareEncryptedDocumentText extends CommercioText<
       CommercioDocsSharedEncryptedDocumentStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -102,6 +105,7 @@ class ShareEncryptedDocumentText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -136,6 +140,7 @@ class SendReceiptText extends CommercioText<
       CommercioDocsSentReceiptStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -153,6 +158,7 @@ class SendReceiptText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -187,6 +193,7 @@ class SentDocumentsText extends CommercioText<
       CommercioDocsSentDocumentsStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -204,6 +211,7 @@ class SentDocumentsText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -238,6 +246,7 @@ class ReceivedDocumentsText extends CommercioText<
       CommercioDocsReceivedDocumentsStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -255,6 +264,7 @@ class ReceivedDocumentsText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -289,6 +299,7 @@ class SentReceiptsText extends CommercioText<
       CommercioDocsSentReceiptsStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -306,6 +317,7 @@ class SentReceiptsText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
 
@@ -340,6 +352,7 @@ class ReceivedReceiptsText extends CommercioText<
       CommercioDocsReceivedReceiptsStateData state,
     )
             text,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           style: style,
@@ -357,5 +370,6 @@ class ReceivedReceiptsText extends CommercioText<
           textHeightBehavior: textHeightBehavior,
           text: text,
           loading: loading,
+          error: error,
         );
 }
