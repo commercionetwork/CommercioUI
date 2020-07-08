@@ -64,7 +64,7 @@ class OpenCdpTextField extends CommercioTextField<
                 BuildContext context, CommercioMintOpenedCdpStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -176,7 +176,7 @@ class CloseCdpTextField extends CommercioTextField<
                 BuildContext context, CommercioMintClosedCdpStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,

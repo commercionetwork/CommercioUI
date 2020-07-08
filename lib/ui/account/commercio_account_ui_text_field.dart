@@ -64,7 +64,7 @@ class RestoreWalletTextField extends CommercioTextField<
                 CommercioAccountRestoredWalletStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -176,7 +176,7 @@ class GenerateWalletTextField extends CommercioTextField<
                 BuildContext context, CommercioAccountGenerateWalletData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -288,7 +288,7 @@ class RequestFreeTokensTextField extends CommercioTextField<
                 BuildContext context, CommercioAccountFreeTokensStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -400,7 +400,7 @@ class CheckBalanceTextField extends CommercioTextField<
                 BuildContext context, CommercioAccountBalanceStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -512,7 +512,7 @@ class SendTokensTextField extends CommercioTextField<
                 BuildContext context, CommercioAccountSentTokensStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -624,7 +624,7 @@ class GeneratePairwiseWalletTextField extends CommercioTextField<
                 CommercioAccountPaiwiseWalletStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,

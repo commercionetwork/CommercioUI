@@ -64,7 +64,7 @@ class ShareDocumentTextField extends CommercioTextField<
                 CommercioDocsSharedDocumentStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -176,7 +176,7 @@ class ShareEncryptedDocumentTextField extends CommercioTextField<
                 CommercioDocsSharedEncryptedDocumentStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -288,7 +288,7 @@ class SendReceiptTextField extends CommercioTextField<
                 BuildContext context, CommercioDocsSentReceiptStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -400,7 +400,7 @@ class SentDocumentsTextField extends CommercioTextField<
                 BuildContext context, CommercioDocsSentDocumentsStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -512,7 +512,7 @@ class ReceivedDocumentsTextField extends CommercioTextField<
                 CommercioDocsReceivedDocumentsStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -624,7 +624,7 @@ class SentReceiptsTextField extends CommercioTextField<
                 BuildContext context, CommercioDocsSentReceiptsStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -736,7 +736,7 @@ class ReceivedReceiptsTextField extends CommercioTextField<
                 CommercioDocsReceivedReceiptsStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,

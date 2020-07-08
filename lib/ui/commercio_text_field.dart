@@ -71,7 +71,7 @@ class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
   final ScrollController scrollController;
   final String Function(BuildContext context) loading;
   final String Function(BuildContext context, D state) text;
-  final void Function(BuildContext context, String errorMessage) error;
+  final String Function(BuildContext context, String errorMessage) error;
   final TextStyle loadingStyle;
 
   CommercioTextField({
@@ -204,7 +204,9 @@ class _CommercioTextFieldState<
         }
 
         if (TypeHelper.hasType(state.runtimeType, ERR)) {
-          widget.controller.text = previousText = state.toString();
+          widget.controller.text = widget.error != null
+              ? widget.error(context, state.toString())
+              : previousText;
         }
 
         return TextField(

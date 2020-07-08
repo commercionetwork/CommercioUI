@@ -64,7 +64,7 @@ class GenerateKeysTextField extends CommercioTextField<
                 BuildContext context, CommercioIdGeneratedKeysStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -176,7 +176,7 @@ class RestoreKeysTextField extends CommercioTextField<
                 BuildContext context, CommercioIdRestoredKeysStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -288,7 +288,7 @@ class DeleteKeysTextField extends CommercioTextField<
                 BuildContext context, CommercioIdDeletedKeysStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -400,7 +400,7 @@ class DeriveDidDocumentTextField extends CommercioTextField<
                 CommercioIdDerivedDidDocumentStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -512,7 +512,7 @@ class SetDidDocumentTextField extends CommercioTextField<
                 BuildContext context, CommercioIdSetDidDocumentStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -624,7 +624,7 @@ class RechargeTumblerTextField extends CommercioTextField<
                 CommercioIdRechargedTumblerStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -736,7 +736,7 @@ class RequestDidPowerUpTextField extends CommercioTextField<
                 CommercioIdRequestedDidPowerUpStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,

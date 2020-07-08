@@ -131,11 +131,11 @@ void main() {
     await tester.pumpWidget(root);
     await tester.pumpAndSettle();
 
-    await expectLater(find.text(childText), findsOneWidget);
+    await expect(find.text(childText), findsOneWidget);
     expect(states, [InitialStateMock, DataStateMock]);
   });
 
-  testWidgets('Data state', (WidgetTester tester) async {
+  testWidgets('Error state', (WidgetTester tester) async {
     final blocMock = BlocMock();
     final List<Type> states = [];
     blocMock.listen((state) {
@@ -146,11 +146,12 @@ void main() {
         InitialStateMock, DataStateMock, LoadingStateMock, ErrorStateMock>(
       loading: (_) => loadingText,
       text: (_, data) => childText,
+      error: (_, __) => 'error',
     );
 
     final root = BlocProvider.value(
       value: blocMock,
-      child: MaterialApp(home: Scaffold(body: commTextField)),
+      child: MaterialApp(home: Scaffold(body: Center(child: commTextField))),
     );
 
     blocMock.add(ErrorEventMock());
@@ -158,7 +159,7 @@ void main() {
     await tester.pumpWidget(root);
     await tester.pumpAndSettle();
 
-    await expectLater(find.text('error'), findsOneWidget);
+    await expect(find.text('error'), findsOneWidget);
     expect(states, [InitialStateMock, ErrorStateMock]);
   });
 }

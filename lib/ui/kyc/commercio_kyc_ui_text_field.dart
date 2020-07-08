@@ -64,7 +64,7 @@ class RequestFaucetInviteTextField extends CommercioTextField<
                 CommercioKycRequestedFaucetInviteStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
@@ -175,7 +175,7 @@ class BuyMembershipTextField extends CommercioTextField<
                 BuildContext context, CommercioKycBuyMembershipStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
     @required String Function(BuildContext context) loading,
   }) : super(
           key: key,
@@ -288,7 +288,7 @@ class InviteMemberTextField extends CommercioTextField<
                 BuildContext context, CommercioKycInviteMemberStateData state)
             text,
     TextStyle loadingStyle,
-    void Function(BuildContext context, String errorMessage) error,
+    String Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           controller: controller,
