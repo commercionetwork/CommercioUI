@@ -48,6 +48,7 @@ The **Widgets** supports and wraps 3 of the following widgets:
 * `FlatButton`
 * `TextField`
 * `Text`
+
 The provided widgets directly use *BLoC* implementation to send, receive and handle events and states. With these widgets only the BLoC should be provided and then the interface can be built extremely fast.
 
 ## Comparison
