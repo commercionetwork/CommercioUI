@@ -1,6 +1,6 @@
 name: commercio_ui
 description: CommercioUI pre-build clean Core+UI widgets intended to reduce significantly the overall blockchain app development time
-version: 0.0.3
+version: 0.2.0
 homepage: https://github.com/commercionetwork/CommercioUI
 
 environment:
