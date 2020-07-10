@@ -139,10 +139,13 @@ abstract class StatelessCommercioAccount {
 
     Response response;
     try {
-      response = await httpHelper.faucetRequest(path: HttpPath.give, data: {
-        'addr': walletAddress,
-        'amount': amount,
-      });
+      response = await httpHelper.faucetRequest(
+        path: HttpPath.give,
+        data: {
+          'addr': walletAddress,
+          'amount': amount,
+        },
+      );
     } catch (e) {
       throw AccountRequestError(e.toString());
     }
@@ -165,18 +168,22 @@ abstract class StatelessCommercioAccount {
     Response response;
     try {
       response = await httpHelper.getRequest(
-          endpoint: HttpEndpoint.balance, walletAddress: walletAddress);
+        endpoint: HttpEndpoint.balance,
+        walletAddress: walletAddress,
+      );
     } catch (e) {
       throw AccountRequestError(e.toString());
     }
 
     if (response.statusCode != 200) {
       throw Exception(
-          'Error: ${response.reasonPhrase} (${response.statusCode}): ${response.body}');
+        'Error: ${response.reasonPhrase} (${response.statusCode}): ${response.body}',
+      );
     }
 
     final balanceFullResult = BalanceFullResult.fromJson(
-        jsonDecode(response.body) as Map<String, dynamic>);
+      jsonDecode(response.body) as Map<String, dynamic>,
+    );
 
     return balanceFullResult.stdCoins;
   }
