@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.com/commercionetwork/CommercioUI.svg?branch=master)](https://travis-ci.com/commercionetwork/CommercioUI)
 ![Coverage](https://img.shields.io/badge/coverage-99%25-success.svg)
-[![Pub version](https://img.shields.io/badge/pub-0.3.0-orange.svg)](https://pub.dev/packages/commercio_ui)
+[![Pub version](https://img.shields.io/badge/pub-0.2.0-orange.svg)](https://pub.dev/packages/commercio_ui)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 [![bloc library](https://tinyurl.com/bloc-library)](https://pub.dev/packages/bloc)
 
 CommercioUI reduces your overall  blockchain app development time by 90% because of its pre-build clean Core+UI widgets that you can use in any flutter app development. We have spent  one year to build this library to make to make your life easier.
 
-![Commercio UI Infographic](/doc/images/commercio_ui_infographic.png)
+![Commercio UI Infographic](./docs/images/commercio_ui_infographic.png)
 
 ## Core
 
@@ -18,7 +18,7 @@ The **Stateless** part is just a lightweight layer built on top of the [commerci
 
 Example of usage when generating a new wallet:
 
-``` dart
+```dart
 final networkInfo = NetworkInfo(
   bech32Hrp: 'did:com:',
   lcdUrl: 'http://localhost:1317',
@@ -59,7 +59,7 @@ To give an idea of the development speed that the library give you let's look at
 
 This example Flutter app uses directly the commercio-sdk. The SDK is great to have the maximun flexibility with a lot of helper functions but a lot of boilerplate is needed to integrate it to a full Flutter application.
 
-``` dart
+```dart
 import 'package:bip39/bip39.dart' as bip39;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -224,7 +224,7 @@ String computeAddress(Wallet wallet) {
 
 The *CommercioUI* libraries are designed to keep all the commercio-sdk functions but eliminate the majority of the boilerplate.
 
-``` dart
+```dart
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
