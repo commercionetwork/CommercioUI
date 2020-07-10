@@ -1,5 +1,5 @@
 class TypeHelper {
-  /// Returns [true] if the object [a] has type [b].
+  /// Returns [true] if [a] and [b].have the same type.
   ///
   /// [a] should be an instance (e.g. an object) of class [A], whether [b]
   /// should be a [Type].
