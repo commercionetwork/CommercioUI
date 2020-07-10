@@ -5,6 +5,7 @@ import 'package:commercio_ui/core/staless/commercio_account_stateless.dart';
 import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:commercio_ui/data/data.dart';
 import 'package:commercio_ui/entities/account_request_response.dart';
+import 'package:commercio_ui/entities/wallet_with_address.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -480,8 +481,10 @@ void main() {
       );
 
       final response = await StatelessCommercioAccount.sendTokens(
-        senderAddress: correctWalletAddress,
-        senderWallet: correctWallet,
+        senderWallet: WalletWithAddress(
+          wallet: correctWallet,
+          address: correctWalletAddress,
+        ),
         recipientAddress: correctWalletAddress,
         amount: correctAccountBalance,
       );
@@ -496,8 +499,10 @@ void main() {
       );
 
       final response = await StatelessCommercioAccount.sendTokens(
-        senderAddress: correctWalletAddress,
-        senderWallet: correctWallet,
+        senderWallet: WalletWithAddress(
+          wallet: correctWallet,
+          address: correctWalletAddress,
+        ),
         recipientAddress: correctWalletAddress,
         amount: correctAccountBalance,
         feeAmount: correctAccountBalance,
@@ -515,8 +520,10 @@ void main() {
 
       expectLater(
         () => StatelessCommercioAccount.sendTokens(
-          senderAddress: correctWalletAddress,
-          senderWallet: correctWallet,
+          senderWallet: WalletWithAddress(
+            wallet: correctWallet,
+            address: correctWalletAddress,
+          ),
           recipientAddress: '',
           amount: correctAccountBalance,
         ),
@@ -531,8 +538,10 @@ void main() {
 
       expectLater(
         () => StatelessCommercioAccount.sendTokens(
-          senderAddress: '',
-          senderWallet: correctWallet,
+          senderWallet: WalletWithAddress(
+            wallet: correctWallet,
+            address: '',
+          ),
           recipientAddress: correctWalletAddress,
           amount: correctAccountBalance,
         ),
