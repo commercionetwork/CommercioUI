@@ -111,7 +111,7 @@ abstract class StatelessCommercioDocs {
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {
-    httpHelper = httpHelper ?? HttpHelper();
+    httpHelper ??= HttpHelper();
 
     Response response;
     try {
@@ -135,7 +135,7 @@ abstract class StatelessCommercioDocs {
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {
-    httpHelper = httpHelper ?? HttpHelper();
+    httpHelper ??= HttpHelper();
 
     Response response;
     try {
@@ -159,7 +159,7 @@ abstract class StatelessCommercioDocs {
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {
-    httpHelper = httpHelper ?? HttpHelper();
+    httpHelper ??= HttpHelper();
 
     Response response;
     try {
@@ -185,7 +185,7 @@ abstract class StatelessCommercioDocs {
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {
-    httpHelper = httpHelper ?? HttpHelper();
+    httpHelper ??= HttpHelper();
 
     Response response;
     try {
