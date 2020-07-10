@@ -278,7 +278,8 @@ void main() {
   testWidgets('Submit SentDocuments Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.sentDocuments()).thenAnswer((_) async => []);
+    when(commercioDocs.sentDocuments(walletAddress: ''))
+        .thenAnswer((_) async => []);
 
     final bloc = CommercioDocsSentDocumentsBloc(
       commercioDocs: commercioDocs,
@@ -291,7 +292,7 @@ void main() {
     final commFlatButton = SentDocumentsFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioDocsSentDocumentsEvent(),
+      event: () => CommercioDocsSentDocumentsEvent(walletAddress: ''),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text(err),
@@ -323,7 +324,7 @@ void main() {
       'CommercioDocsSentDocumentsStateData',
     ]);
 
-    when(commercioDocs.sentDocuments()).thenThrow(Exception());
+    when(commercioDocs.sentDocuments(walletAddress: '')).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
     await tester.pumpAndSettle();
@@ -341,7 +342,8 @@ void main() {
   testWidgets('Submit ReceivedDocuments Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.receivedDocuments()).thenAnswer((_) async => []);
+    when(commercioDocs.receivedDocuments(walletAddress: ''))
+        .thenAnswer((_) async => []);
 
     final bloc = CommercioDocsReceivedDocumentsBloc(
       commercioDocs: commercioDocs,
@@ -354,7 +356,7 @@ void main() {
     final commFlatButton = ReceivedDocumentsFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioDocsReceivedDocumentsEvent(),
+      event: () => CommercioDocsReceivedDocumentsEvent(walletAddress: ''),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text(err),
@@ -386,7 +388,8 @@ void main() {
       'CommercioDocsReceivedDocumentsStateData',
     ]);
 
-    when(commercioDocs.receivedDocuments()).thenThrow(Exception());
+    when(commercioDocs.receivedDocuments(walletAddress: ''))
+        .thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
     await tester.pumpAndSettle();
@@ -404,7 +407,8 @@ void main() {
   testWidgets('Submit SentReceipts Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.sentReceipts()).thenAnswer((_) async => []);
+    when(commercioDocs.sentReceipts(walletAddress: ''))
+        .thenAnswer((_) async => []);
 
     final bloc = CommercioDocsSentReceiptsBloc(
       commercioDocs: commercioDocs,
@@ -417,7 +421,7 @@ void main() {
     final commFlatButton = SentReceiptsFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioDocsSentReceiptsEvent(),
+      event: () => CommercioDocsSentReceiptsEvent(walletAddress: ''),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text(err),
@@ -449,7 +453,7 @@ void main() {
       'CommercioDocsSentReceiptsStateData',
     ]);
 
-    when(commercioDocs.sentReceipts()).thenThrow(Exception());
+    when(commercioDocs.sentReceipts(walletAddress: '')).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
     await tester.pumpAndSettle();
@@ -467,7 +471,8 @@ void main() {
   testWidgets('Submit ReceivedReceipts Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.receivedReceipts()).thenAnswer((_) async => []);
+    when(commercioDocs.receivedReceipts(walletAddress: ''))
+        .thenAnswer((_) async => []);
 
     final bloc = CommercioDocsReceivedReceiptsBloc(
       commercioDocs: commercioDocs,
@@ -480,7 +485,7 @@ void main() {
     final commFlatButton = ReceivedReceiptsFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioDocsReceivedReceiptsEvent(),
+      event: () => CommercioDocsReceivedReceiptsEvent(walletAddress: ''),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text(err),
@@ -512,7 +517,8 @@ void main() {
       'CommercioDocsReceivedReceiptsStateData',
     ]);
 
-    when(commercioDocs.receivedReceipts()).thenThrow(Exception());
+    when(commercioDocs.receivedReceipts(walletAddress: ''))
+        .thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
     await tester.pumpAndSettle();

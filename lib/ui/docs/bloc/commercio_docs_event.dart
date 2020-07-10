@@ -83,31 +83,47 @@ class CommercioDocsSendReceiptEvent extends CommercioDocsEvent {
 }
 
 class CommercioDocsSentDocumentsEvent extends CommercioDocsEvent {
-  const CommercioDocsSentDocumentsEvent();
+  final String walletAddress;
+
+  const CommercioDocsSentDocumentsEvent({
+    @required this.walletAddress,
+  });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [walletAddress];
 }
 
 class CommercioDocsReceivedDocumentsEvent extends CommercioDocsEvent {
-  const CommercioDocsReceivedDocumentsEvent();
+  final String walletAddress;
+
+  const CommercioDocsReceivedDocumentsEvent({
+    @required this.walletAddress,
+  });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [walletAddress];
 }
 
 class CommercioDocsSentReceiptsEvent extends CommercioDocsEvent {
-  const CommercioDocsSentReceiptsEvent();
+  final String walletAddress;
+
+  const CommercioDocsSentReceiptsEvent({
+    @required this.walletAddress,
+  });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [walletAddress];
 }
 
 class CommercioDocsReceivedReceiptsEvent extends CommercioDocsEvent {
-  const CommercioDocsReceivedReceiptsEvent();
+  final String walletAddress;
+
+  const CommercioDocsReceivedReceiptsEvent({
+    @required this.walletAddress,
+  });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [walletAddress];
 }
 
 abstract class CommercioDocsEncDataEvent extends Equatable {

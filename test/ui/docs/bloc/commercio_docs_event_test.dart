@@ -105,27 +105,40 @@ void main() {
   });
 
   test('CommercioDocsSentDocumentsEvent', () {
-    final event = const CommercioDocsSentDocumentsEvent();
+    const walletAddress = '';
 
-    expect(event.props, []);
+    final event = const CommercioDocsSentDocumentsEvent(
+      walletAddress: walletAddress,
+    );
+
+    expect(event.props, [walletAddress]);
   });
 
   test('CommercioDocsReceivedDocumentsEvent', () {
-    final event = const CommercioDocsReceivedDocumentsEvent();
+    const walletAddress = '';
+    final event = const CommercioDocsReceivedDocumentsEvent(
+      walletAddress: walletAddress,
+    );
 
-    expect(event.props, []);
+    expect(event.props, [walletAddress]);
   });
 
   test('CommercioDocsSentReceiptsEvent', () {
-    final event = const CommercioDocsSentReceiptsEvent();
+    const walletAddress = '';
+    final event = const CommercioDocsSentReceiptsEvent(
+      walletAddress: walletAddress,
+    );
 
-    expect(event.props, []);
+    expect(event.props, [walletAddress]);
   });
 
   test('CommercioDocsReceivedReceiptsEvent', () {
-    final event = const CommercioDocsReceivedReceiptsEvent();
+    const walletAddress = '';
+    final event = const CommercioDocsReceivedReceiptsEvent(
+      walletAddress: walletAddress,
+    );
 
-    expect(event.props, []);
+    expect(event.props, [walletAddress]);
   });
 
   test('CommercioDocsChangeEncryptedData', () {

@@ -121,7 +121,9 @@ class CommercioDocsSentDocumentsBloc extends Bloc<
     try {
       yield const CommercioDocsSentDocumentsStateLoading();
 
-      final sentDocuments = await commercioDocs.sentDocuments();
+      final sentDocuments = await commercioDocs.sentDocuments(
+        walletAddress: event.walletAddress,
+      );
 
       yield CommercioDocsSentDocumentsStateData(sentDocuments: sentDocuments);
     } catch (e) {
@@ -147,7 +149,9 @@ class CommercioDocsReceivedDocumentsBloc extends Bloc<
     try {
       yield const CommercioDocsReceivedDocumentsStateLoading();
 
-      final receivedDocuments = await commercioDocs.receivedDocuments();
+      final receivedDocuments = await commercioDocs.receivedDocuments(
+        walletAddress: event.walletAddress,
+      );
 
       yield CommercioDocsReceivedDocumentsStateData(
         receivedDocuments: receivedDocuments,
@@ -175,7 +179,9 @@ class CommercioDocsSentReceiptsBloc extends Bloc<CommercioDocsSentReceiptsEvent,
     try {
       yield const CommercioDocsSentReceiptsStateLoading();
 
-      final sentReceipts = await commercioDocs.sentReceipts();
+      final sentReceipts = await commercioDocs.sentReceipts(
+        walletAddress: event.walletAddress,
+      );
 
       yield CommercioDocsSentReceiptsStateData(sentReceipts: sentReceipts);
     } catch (e) {
@@ -201,7 +207,9 @@ class CommercioDocsReceivedReceiptsBloc extends Bloc<
     try {
       yield const CommercioDocsReceivedReceiptsStateLoading();
 
-      final receivedReceipts = await commercioDocs.receivedReceipts();
+      final receivedReceipts = await commercioDocs.receivedReceipts(
+        walletAddress: event.walletAddress,
+      );
 
       yield CommercioDocsReceivedReceiptsStateData(
         receivedReceipts: receivedReceipts,

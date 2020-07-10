@@ -251,7 +251,10 @@ void main() {
           (jsonDecode(correctSentDocumentsRaw)['result'] as List)[0],
         )
       ];
-      Network.client = MockClient(
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.sentDocs,
+        walletAddress: correctWalletAddress,
+      )).thenAnswer(
         (_) => Future.value(Response(correctSentDocumentsRaw, 200)),
       );
 
@@ -260,7 +263,9 @@ void main() {
       );
       await correctCommercioAccount.generateNewWallet();
 
-      final sentDocuments = await commercioDocs.sentDocuments();
+      final sentDocuments = await commercioDocs.sentDocuments(
+        walletAddress: correctWalletAddress,
+      );
 
       expect(sentDocuments, correctSentDocuments);
     });
@@ -272,7 +277,9 @@ void main() {
       );
 
       expect(
-        () => commercioDocs.sentDocuments(),
+        () => commercioDocs.sentDocuments(
+          walletAddress: correctWalletAddress,
+        ),
         throwsA(isA<WalletNotFoundException>()),
       );
     });
@@ -288,15 +295,21 @@ void main() {
         CommercioDoc.fromJson(
             (jsonDecode(correctReceivedDocumentsRaw)['result'] as List)[0])
       ];
-      Network.client = MockClient(
-          (_) => Future.value(Response(correctReceivedDocumentsRaw, 200)));
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.receivedDocs,
+        walletAddress: correctWalletAddress,
+      )).thenAnswer(
+        (_) => Future.value(Response(correctReceivedDocumentsRaw, 200)),
+      );
 
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
       );
       await correctCommercioAccount.generateNewWallet();
 
-      final receivedDocuments = await commercioDocs.receivedDocuments();
+      final receivedDocuments = await commercioDocs.receivedDocuments(
+        walletAddress: correctWalletAddress,
+      );
 
       expect(receivedDocuments, correctReceivedDocuments);
     });
@@ -308,7 +321,9 @@ void main() {
       );
 
       expect(
-        () => commercioDocs.receivedDocuments(),
+        () => commercioDocs.receivedDocuments(
+          walletAddress: correctWalletAddress,
+        ),
         throwsA(isA<WalletNotFoundException>()),
       );
     });
@@ -324,16 +339,21 @@ void main() {
         CommercioDocReceipt.fromJson(
             (jsonDecode(correctSentReceiptsRaw)['result'] as List)[0])
       ];
-
-      Network.client = MockClient(
-          (_) => Future.value(Response(correctSentReceiptsRaw, 200)));
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.sentReceipts,
+        walletAddress: correctWalletAddress,
+      )).thenAnswer(
+        (_) => Future.value(Response(correctSentReceiptsRaw, 200)),
+      );
 
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
       );
       await correctCommercioAccount.generateNewWallet();
 
-      final sentReceipts = await commercioDocs.sentReceipts();
+      final sentReceipts = await commercioDocs.sentReceipts(
+        walletAddress: correctWalletAddress,
+      );
 
       expect(sentReceipts, correctSentReceipts);
     });
@@ -345,7 +365,9 @@ void main() {
       );
 
       expect(
-        () => commercioDocs.sentReceipts(),
+        () => commercioDocs.sentReceipts(
+          walletAddress: correctWalletAddress,
+        ),
         throwsA(isA<WalletNotFoundException>()),
       );
     });
@@ -360,15 +382,21 @@ void main() {
         CommercioDocReceipt.fromJson(
             (jsonDecode(correctReceivedReceiptsRaw)['result'] as List)[0])
       ];
-      Network.client = MockClient(
-          (_) => Future.value(Response(correctReceivedReceiptsRaw, 200)));
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.receivedReceipts,
+        walletAddress: correctWalletAddress,
+      )).thenAnswer(
+        (_) => Future.value(Response(correctReceivedReceiptsRaw, 200)),
+      );
 
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
       );
       await correctCommercioAccount.generateNewWallet();
 
-      final receivedReceipts = await commercioDocs.receivedReceipts();
+      final receivedReceipts = await commercioDocs.receivedReceipts(
+        walletAddress: correctWalletAddress,
+      );
 
       expect(receivedReceipts, correctReceivedReceipts);
     });
@@ -380,7 +408,9 @@ void main() {
       );
 
       expect(
-        () => commercioDocs.receivedReceipts(),
+        () => commercioDocs.receivedReceipts(
+          walletAddress: correctWalletAddress,
+        ),
         throwsA(isA<WalletNotFoundException>()),
       );
     });

@@ -274,7 +274,8 @@ void main() {
   testWidgets('Submit SentDocuments Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.sentDocuments()).thenAnswer((_) async => []);
+    when(commercioDocs.sentDocuments(walletAddress: ''))
+        .thenAnswer((_) async => []);
 
     final bloc = CommercioDocsSentDocumentsBloc(
       commercioDocs: commercioDocs,
@@ -304,7 +305,7 @@ void main() {
 
     expect(find.byWidget(commTextField), findsOneWidget);
 
-    bloc.add(const CommercioDocsSentDocumentsEvent());
+    bloc.add(const CommercioDocsSentDocumentsEvent(walletAddress: ''));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
@@ -314,9 +315,9 @@ void main() {
       'CommercioDocsSentDocumentsStateData',
     ]);
 
-    when(commercioDocs.sentDocuments()).thenThrow(Exception());
+    when(commercioDocs.sentDocuments(walletAddress: '')).thenThrow(Exception());
 
-    bloc.add(const CommercioDocsSentDocumentsEvent());
+    bloc.add(const CommercioDocsSentDocumentsEvent(walletAddress: ''));
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
@@ -332,7 +333,8 @@ void main() {
   testWidgets('Submit ReceivedDocuments Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.receivedDocuments()).thenAnswer((_) async => []);
+    when(commercioDocs.receivedDocuments(walletAddress: ''))
+        .thenAnswer((_) async => []);
 
     final bloc = CommercioDocsReceivedDocumentsBloc(
       commercioDocs: commercioDocs,
@@ -362,7 +364,7 @@ void main() {
 
     expect(find.byWidget(commTextField), findsOneWidget);
 
-    bloc.add(const CommercioDocsReceivedDocumentsEvent());
+    bloc.add(const CommercioDocsReceivedDocumentsEvent(walletAddress: ''));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
@@ -372,9 +374,10 @@ void main() {
       'CommercioDocsReceivedDocumentsStateData',
     ]);
 
-    when(commercioDocs.receivedDocuments()).thenThrow(Exception());
+    when(commercioDocs.receivedDocuments(walletAddress: ''))
+        .thenThrow(Exception());
 
-    bloc.add(const CommercioDocsReceivedDocumentsEvent());
+    bloc.add(const CommercioDocsReceivedDocumentsEvent(walletAddress: ''));
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
@@ -390,7 +393,8 @@ void main() {
   testWidgets('Submit SentReceipts Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.sentReceipts()).thenAnswer((_) async => []);
+    when(commercioDocs.sentReceipts(walletAddress: ''))
+        .thenAnswer((_) async => []);
 
     final bloc = CommercioDocsSentReceiptsBloc(
       commercioDocs: commercioDocs,
@@ -420,7 +424,7 @@ void main() {
 
     expect(find.byWidget(commTextField), findsOneWidget);
 
-    bloc.add(const CommercioDocsSentReceiptsEvent());
+    bloc.add(const CommercioDocsSentReceiptsEvent(walletAddress: ''));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
@@ -430,9 +434,9 @@ void main() {
       'CommercioDocsSentReceiptsStateData',
     ]);
 
-    when(commercioDocs.sentReceipts()).thenThrow(Exception());
+    when(commercioDocs.sentReceipts(walletAddress: '')).thenThrow(Exception());
 
-    bloc.add(const CommercioDocsSentReceiptsEvent());
+    bloc.add(const CommercioDocsSentReceiptsEvent(walletAddress: ''));
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
@@ -448,7 +452,8 @@ void main() {
   testWidgets('Submit ReceivedReceipts Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.receivedReceipts()).thenAnswer((_) async => []);
+    when(commercioDocs.receivedReceipts(walletAddress: ''))
+        .thenAnswer((_) async => []);
 
     final bloc = CommercioDocsReceivedReceiptsBloc(
       commercioDocs: commercioDocs,
@@ -478,7 +483,7 @@ void main() {
 
     expect(find.byWidget(commTextField), findsOneWidget);
 
-    bloc.add(const CommercioDocsReceivedReceiptsEvent());
+    bloc.add(const CommercioDocsReceivedReceiptsEvent(walletAddress: ''));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
@@ -488,9 +493,10 @@ void main() {
       'CommercioDocsReceivedReceiptsStateData',
     ]);
 
-    when(commercioDocs.receivedReceipts()).thenThrow(Exception());
+    when(commercioDocs.receivedReceipts(walletAddress: ''))
+        .thenThrow(Exception());
 
-    bloc.add(const CommercioDocsReceivedReceiptsEvent());
+    bloc.add(const CommercioDocsReceivedReceiptsEvent(walletAddress: ''));
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);

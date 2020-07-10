@@ -12,6 +12,8 @@ import 'package:sacco/utils/export.dart';
 
 class FlutterSecureStorageMock extends Mock implements FlutterSecureStorage {}
 
+class HttpHelperMock extends Mock implements HttpHelper {}
+
 void main() {
   if (Directory.current.path.endsWith('/test')) {
     Directory.current = Directory.current.parent;
@@ -54,6 +56,7 @@ void main() {
       '{"error":"decoding bech32 failed: invalid bech32 string length 3"}';
 
   const String correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  final httpHelperMock = HttpHelperMock();
 
   group('Share document', () {
     AccountDataRetrieval.client = MockClient(
@@ -273,14 +276,16 @@ void main() {
             (jsonDecode(correctSentDocumentsRaw)['result'] as List)[0])
       ];
 
-      Network.client = MockClient(
-          (_) => Future.value(Response(correctSentDocumentsRaw, 200)));
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.sentDocs,
+        walletAddress: correctWalletAddress,
+      )).thenAnswer(
+        (_) => Future.value(Response(correctSentDocumentsRaw, 200)),
+      );
 
       final sentDocuments = await StatelessCommercioDocs.sentDocuments(
-        walletWithAddress: WalletWithAddress(
-          wallet: correctWallet,
-          address: correctWalletAddress,
-        ),
+        walletAddress: correctWalletAddress,
+        httpHelper: httpHelperMock,
       );
 
       expect(sentDocuments, correctSentDocuments);
@@ -298,14 +303,16 @@ void main() {
             (jsonDecode(correctReceivedDocumentsRaw)['result'] as List)[0])
       ];
 
-      Network.client = MockClient(
-          (_) => Future.value(Response(correctReceivedDocumentsRaw, 200)));
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.receivedDocs,
+        walletAddress: correctWalletAddress,
+      )).thenAnswer(
+        (_) => Future.value(Response(correctReceivedDocumentsRaw, 200)),
+      );
 
       final receivedDocuments = await StatelessCommercioDocs.receivedDocuments(
-        walletWithAddress: WalletWithAddress(
-          wallet: correctWallet,
-          address: correctWalletAddress,
-        ),
+        walletAddress: correctWalletAddress,
+        httpHelper: httpHelperMock,
       );
 
       expect(receivedDocuments, correctReceivedDocuments);
@@ -323,14 +330,16 @@ void main() {
             (jsonDecode(correctSentReceiptsRaw)['result'] as List)[0])
       ];
 
-      Network.client = MockClient(
-          (_) => Future.value(Response(correctSentReceiptsRaw, 200)));
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.sentReceipts,
+        walletAddress: correctWalletAddress,
+      )).thenAnswer(
+        (_) => Future.value(Response(correctSentReceiptsRaw, 200)),
+      );
 
       final sentReceipts = await StatelessCommercioDocs.sentReceipts(
-        walletWithAddress: WalletWithAddress(
-          wallet: correctWallet,
-          address: correctWalletAddress,
-        ),
+        walletAddress: correctWalletAddress,
+        httpHelper: httpHelperMock,
       );
 
       expect(sentReceipts, correctSentReceipts);
@@ -348,14 +357,16 @@ void main() {
             (jsonDecode(correctReceivedReceiptsRaw)['result'] as List)[0])
       ];
 
-      Network.client = MockClient(
-          (_) => Future.value(Response(correctReceivedReceiptsRaw, 200)));
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.receivedReceipts,
+        walletAddress: correctWalletAddress,
+      )).thenAnswer(
+        (_) => Future.value(Response(correctReceivedReceiptsRaw, 200)),
+      );
 
       final receivedReceipts = await StatelessCommercioDocs.receivedReceipts(
-        walletWithAddress: WalletWithAddress(
-          wallet: correctWallet,
-          address: correctWalletAddress,
-        ),
+        walletAddress: correctWalletAddress,
+        httpHelper: httpHelperMock,
       );
 
       expect(receivedReceipts, correctReceivedReceipts);
