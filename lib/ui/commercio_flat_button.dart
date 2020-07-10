@@ -61,7 +61,8 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
           if (error == null) {
             Scaffold.of(context).showSnackBar(
               SnackBar(
-                content: Text(state.toString()),
+                // [state] must be dynamic to call the [error] getter on it.
+                content: Text((state as dynamic).error as String),
                 backgroundColor: Colors.red,
               ),
             );

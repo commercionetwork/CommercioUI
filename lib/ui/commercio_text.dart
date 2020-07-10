@@ -82,8 +82,9 @@ class _CommercioTextState<
         }
 
         if (TypeHelper.hasType(state.runtimeType, ERR)) {
+          // [state] must be dynamic to call the [error] getter on it.
           text = previousText = widget.error != null
-              ? widget.error(context, state.toString())
+              ? widget.error(context, (state as dynamic).error)
               : previousText;
         }
 
