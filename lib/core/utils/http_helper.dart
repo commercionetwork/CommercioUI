@@ -13,6 +13,8 @@ enum HttpEndpoint {
   balance,
   sentDocs,
   receivedDocs,
+  sentReceipts,
+  receivedReceipts,
   getTumbler,
 }
 
@@ -32,7 +34,10 @@ extension HttpActionExtension on HttpPath {
 }
 
 extension HttpEndpointExtension on HttpEndpoint {
-  String value({@required String walletAddress, @required String lcdUrl}) {
+  String value({
+    @required String walletAddress,
+    @required String lcdUrl,
+  }) {
     switch (this) {
       case HttpEndpoint.balance:
         return '$lcdUrl/bank/balances/$walletAddress';
@@ -42,6 +47,12 @@ extension HttpEndpointExtension on HttpEndpoint {
 
       case HttpEndpoint.receivedDocs:
         return '$lcdUrl/docs/$walletAddress/received';
+
+      case HttpEndpoint.sentReceipts:
+        return '$lcdUrl/receipts/$walletAddress/sent';
+
+      case HttpEndpoint.receivedReceipts:
+        return '$lcdUrl/receipts/$walletAddress/received';
 
       case HttpEndpoint.getTumbler:
         return '$lcdUrl/government/tumbler';
@@ -93,10 +104,12 @@ class HttpHelper {
     @required String walletAddress,
     String lcdUrl,
   }) {
-    return httpClient.get(endpoint.value(
-      walletAddress: walletAddress,
-      lcdUrl: lcdUrl ?? this.lcdUrl,
-    ));
+    return httpClient.get(
+      endpoint.value(
+        walletAddress: walletAddress,
+        lcdUrl: lcdUrl ?? this.lcdUrl,
+      ),
+    );
   }
 
   /// Returns the tumbler Tk government address with optional [lcdUrl].
