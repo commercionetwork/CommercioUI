@@ -16,7 +16,6 @@ abstract class StatelessCommercioKyc {
   /// Returns the [FaucetInviteResponse].
   static Future<FaucetInviteResponse> requestFaucetInvite({
     @required String walletAddress,
-    String faucetDomain,
     HttpHelper httpHelper,
   }) async {
     httpHelper ??= HttpHelper();
