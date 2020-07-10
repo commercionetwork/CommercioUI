@@ -219,8 +219,10 @@ class StatefulCommercioAccount {
     }
 
     return StatelessCommercioAccount.sendTokens(
-      senderAddress: walletAddress,
-      senderWallet: wallet,
+      senderWallet: WalletWithAddress(
+        wallet: wallet,
+        address: walletAddress,
+      ),
       recipientAddress: recipientAddress,
       amount: amount,
       feeAmount: feeAmount,
