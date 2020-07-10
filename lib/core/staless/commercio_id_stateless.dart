@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
 /// The [StatelessCommercioId] module allows to create a new identity and
-/// associate to it a Did Document.
+/// associate it to a Did Document.
 abstract class StatelessCommercioId {
   /// Returns new generated [CommercioIdKeys] that cointains two RSA keys pair,
   /// one pair for verification and another for signature.
@@ -21,10 +21,15 @@ abstract class StatelessCommercioId {
   static Future<CommercioIdKeys> restoreKeys({
     @required ISecretStorage secretStorage,
     @required String secureStorageKey,
-  }) {
-    return fetchKeys(
-      secretStorage: secretStorage,
-      secureStorageKey: secureStorageKey,
+  }) async {
+    final rawKeys = await secretStorage.read(key: secureStorageKey);
+
+    if (rawKeys == null) {
+      return null;
+    }
+
+    return CommercioIdKeys.fromJson(
+      jsonDecode(rawKeys) as Map<String, dynamic>,
     );
   }
 
@@ -37,23 +42,6 @@ abstract class StatelessCommercioId {
     return secretStorage.write(
       key: secureStorageKey,
       value: jsonEncode(idKeys),
-    );
-  }
-
-  /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
-  /// [secureStorageKey].
-  static Future<CommercioIdKeys> fetchKeys({
-    @required ISecretStorage secretStorage,
-    @required String secureStorageKey,
-  }) async {
-    final rawKeys = await secretStorage.read(key: secureStorageKey);
-
-    if (rawKeys == null) {
-      return null;
-    }
-
-    return CommercioIdKeys.fromJson(
-      jsonDecode(rawKeys) as Map<String, dynamic>,
     );
   }
 
@@ -114,8 +102,7 @@ abstract class StatelessCommercioId {
     final tumblerAddress = await httpHelper.getTumblerAddress();
 
     return StatelessCommercioAccount.sendTokens(
-      senderAddress: walletWithAddress.address,
-      senderWallet: walletWithAddress.wallet,
+      senderWallet: walletWithAddress,
       recipientAddress: tumblerAddress,
       amount: rechargeAmount,
       feeAmount: rechargeFee,

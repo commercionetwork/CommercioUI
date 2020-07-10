@@ -157,48 +157,6 @@ void main() {
     });
   });
 
-  group('Fetch keys', () {
-    test('Correct', () async {
-      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
-        (_) => Future.value(correctIdKeys),
-      );
-
-      final keys = await StatelessCommercioId.fetchKeys(
-        secretStorage: secretStorageMock,
-        secureStorageKey: secureStorageKey,
-      );
-
-      expect(keys, isNotNull);
-
-      final signatureKeys = keys.rsaSignatureKeyPair;
-
-      expect(signatureKeys.privateKey, isA<RSAPrivateKey>());
-      expect(signatureKeys.publicKey, isA<RSAPublicKey>());
-      expect(signatureKeys.publicKey.getType(), 'RsaSignatureKey2018');
-
-      final verificationKeys = keys.rsaVerificationPair;
-
-      expect(verificationKeys.privateKey, isA<RSAPrivateKey>());
-      expect(verificationKeys.publicKey, isA<RSAPublicKey>());
-      expect(verificationKeys.publicKey.getType(), 'RsaVerificationKey2018');
-    });
-
-    test('Platform exception', () async {
-      final platformException = PlatformException(code: 'code');
-
-      when(secretStorageMock.read(key: secureStorageKey))
-          .thenThrow(platformException);
-
-      expectLater(
-        () => StatelessCommercioId.fetchKeys(
-          secretStorage: secretStorageMock,
-          secureStorageKey: secureStorageKey,
-        ),
-        throwsA(isA<PlatformException>()),
-      );
-    });
-  });
-
   group('Delete keys', () {
     test('Correct', () async {
       when(secretStorageMock.delete(key: secureStorageKey))
