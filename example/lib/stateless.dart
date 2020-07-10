@@ -60,9 +60,10 @@ class _ExamplePageState extends State<ExamplePage> {
     // Save the generated mnemonic words inside the device secure storage
     // We skip the error handling code
     await StatelessCommercioAccount.storeMnemonic(
-        secretStorage: SecretStorage(),
-        secureStorageKey: 'commercio-mnemonic',
-        mnemonic: mnemonic);
+      secretStorage: SecretStorage(),
+      secureStorageKey: 'my-mnemonic-key',
+      mnemonic: mnemonic,
+    );
 
     setState(() {
       walletTextController.text = wallet.bech32Address;
