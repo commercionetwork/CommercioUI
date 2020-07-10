@@ -109,6 +109,8 @@ abstract class StatelessCommercioAccount {
   /// Generate a pairwise [Wallet] from the given [networkInfo] and [mnemonic].
   /// The [lastDerivationPathSegment] parameter determines the wallet
   /// generated.
+  ///
+  /// Some valid [lastDerivationPathSegment] values are: '1', '2' and so on.
   static Future<Wallet> generatePairwiseWallet({
     @required NetworkInfo networkInfo,
     @required String mnemonic,
@@ -150,8 +152,6 @@ abstract class StatelessCommercioAccount {
       throw AccountRequestError(e.toString());
     }
 
-    // TODO: Check response content
-
     return AccountRequestSuccess(response.body);
   }
 
@@ -188,15 +188,14 @@ abstract class StatelessCommercioAccount {
     return balanceFullResult.stdCoins;
   }
 
-  /// Send the [amount] of tokens from the [senderWallet] and [senderAddress]
-  /// to a [recipientAddress] list.
+  /// Send the [amount] of tokens from the [senderWallet] to a
+  /// [recipientAddress] list.
   ///
   /// An optional [feeAmount] and [gas] can be specified.
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> sendTokens({
-    @required String senderAddress,
-    @required Wallet senderWallet,
+    @required WalletWithAddress senderWallet,
     @required String recipientAddress,
     @required List<StdCoin> amount,
     List<StdCoin> feeAmount,
@@ -219,11 +218,11 @@ abstract class StatelessCommercioAccount {
       [
         MsgSend(
           amount: amount,
-          fromAddress: senderAddress,
+          fromAddress: senderWallet.address,
           toAddress: recipientAddress,
         ),
       ],
-      senderWallet,
+      senderWallet.wallet,
       fee: fee,
     );
   }
