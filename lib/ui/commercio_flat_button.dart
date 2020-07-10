@@ -67,7 +67,7 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
               ),
             );
           } else {
-            error(context, state.toString());
+            error(context, (state as dynamic).error as String);
           }
         }
       },
