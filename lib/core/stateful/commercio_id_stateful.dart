@@ -42,7 +42,7 @@ class StatefulCommercioId {
   ///
   /// If no keys are found then a [NoKeysFoundException] is thrown.
   Future<CommercioIdKeys> restoreKeys() async {
-    commercioIdKeys = await StatelessCommercioId.fetchKeys(
+    commercioIdKeys = await StatelessCommercioId.restoreKeys(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
