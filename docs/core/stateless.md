@@ -16,7 +16,7 @@ The **StatelessCommercioAccount** module allows you to:
 
 !> The mnemonic words are a **very** sensitive user information and must **never** be stored in a not secure enough location. The mnemonic words can be used to restore a user wallet and his private key used to sign transactions on the blockchain. For example, **never** use the [shared_preferences](https://pub.dev/packages/shared_preferences) plugin or a unprotected database to store this type of data.
 
-To represent a generic secure storage the library uses the interface `ISecretStorage`. 
+To represent a generic secure storage the library uses the interface `ISecretStorage`.
 
 > On mobile `FlutterSecureStorage` is internally used to store sensitive informations on [Keychain](https://developer.apple.com/documentation/security/keychain_services#//apple_ref/doc/uid/TP30000897-CH203-TP1) for iOS and [Keystore](https://developer.android.com/training/articles/keystore.html) for Android.
 
@@ -40,6 +40,7 @@ final wallet =  await StatelessCommercioAccount.generateNewWallet(
   ),
 );
 ```
+
 The costructor `SecretStorage()` gives the appropriate secure storage object that can be used directly without specify a custom implementation. This choice permit to use the library on multiple platforms without touch the app code.
 
 The stored mnemonic can be restored on the next app launch with:
@@ -88,6 +89,7 @@ final response = await StatelessCommercioAccount.requestFreeTokens(
   walletAddress: wallet.bech32Address,
 );
 ```
+
 A subclass of `AccountRequestResponse` is returned, that is:
 
 * `AccountRequestSuccess` if the request was sent without errors. A success doesn not indicate a `200` response from the server, check for that is up to the caller.
@@ -173,7 +175,7 @@ final didDocument = await StatelessCommercioId.derivateDidDocument(
 
 // Associate the Did document to the identity
 final transactionResult = await StatelessCommercioId.setDidDocument(
-  didDocument: didDocument, 
+  didDocument: didDocument,
   wallet: wallet,
 );
 ```
@@ -235,7 +237,7 @@ If no `docId` is provided a new one is generated internally. The fields `doSign`
 
 Similar to plain share there is an encrypted form that is similar to the plain version but also takes a list with the fields to need to be encrypted as `EncryptedData`.
 
-For example, to share a document with 
+For example, to share a document with encrypted `content_uri` field:
 
 ```dart
 import 'package:commerciosdk/crypto/keys_helper.dart';
@@ -311,7 +313,6 @@ The **StatelessCommercioKyc** module allows you to:
 * Request an invite from the faucet;
 * Buy memberships to display to everyone that you've been invited by an already verified members to join the network;
 * Invite other members.
-
 
 ### Request an invite from the faucet
 
