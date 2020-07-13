@@ -39,10 +39,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ExamplePage extends StatelessWidget {
+class ExamplePage extends StatefulWidget {
   ExamplePage({Key key}) : super(key: key);
 
+  @override
+  _ExamplePageState createState() => _ExamplePageState();
+}
+
+class _ExamplePageState extends State<ExamplePage> {
   final TextEditingController textCtrl = TextEditingController();
+
+  @override
+  void dispose() {
+    textCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +69,7 @@ class ExamplePage extends StatelessWidget {
             event: () => const CommercioAccountGenerateWalletEvent(),
             disabledTextColor: Colors.brown,
             color: Colors.orangeAccent,
+            disabledColor: Colors.orange[700],
             child: (_) => const Text('Generate new wallet'),
           ),
 
@@ -79,9 +91,11 @@ class ExamplePage extends StatelessWidget {
                 controller: textCtrl,
                 readOnly: true,
                 style: TextStyle(
-                    color: (state is CommercioAccountGenerateWalletLoading)
-                        ? Colors.grey
-                        : Colors.black),
+                  color: (state is CommercioAccountGenerateWalletLoading)
+                      ? Colors.grey
+                      : Colors.black,
+                ),
+                maxLines: null,
               );
             },
           ),
