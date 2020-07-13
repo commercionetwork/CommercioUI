@@ -230,7 +230,7 @@ void main() {
 
       expect(commercioAccount.hasWallet, isFalse);
       expect(commercioAccount.hasWalletAddress, isFalse);
-      expect(commercioAccount.hasMnemonic, isFalse);
+      expect(commercioAccount.hasMnemonic, isTrue);
     });
   });
 
@@ -547,7 +547,7 @@ void main() {
         () => commercioAccount.generatePairwiseWallet(
           lastDerivationPathSegment: '1',
         ),
-        throwsA(isA<WalletNotFoundException>()),
+        throwsA(isA<MnemonicNotStoredException>()),
       );
     });
   });
