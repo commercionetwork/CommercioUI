@@ -192,7 +192,7 @@ void main() {
     final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
 
     test('Correct', () async {
-      final didDoc = await StatelessCommercioId.derivateDidDocument(
+      final didDoc = await StatelessCommercioId.deriveDidDocument(
         wallet: correctWallet,
         idKeys: keysObj,
       );
@@ -216,7 +216,7 @@ void main() {
       final didDocServiceId = 'didDocServiceId';
       final didDocServiceEndpoint = 'didDocServiceEndpoint';
 
-      final didDoc = await StatelessCommercioId.derivateDidDocument(
+      final didDoc = await StatelessCommercioId.deriveDidDocument(
         wallet: correctWallet,
         idKeys: keysObj,
         service: [

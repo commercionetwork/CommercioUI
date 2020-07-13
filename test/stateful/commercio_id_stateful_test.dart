@@ -227,7 +227,7 @@ void main() {
     });
   });
 
-  group('Derivate did document', () {
+  group('Derive did document', () {
     test('Correct', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
@@ -239,7 +239,7 @@ void main() {
         mnemonic: correctMnemonic,
       );
 
-      final didDoc = await commercioId.derivateDidDocument();
+      final didDoc = await commercioId.deriveDidDocument();
 
       expect(didDoc, isNotNull);
       expect(didDoc.context, correctDidDoc.context);
@@ -270,7 +270,7 @@ void main() {
         mnemonic: correctMnemonic,
       );
 
-      final didDoc = await commercioId.derivateDidDocument(
+      final didDoc = await commercioId.deriveDidDocument(
         service: [
           DidDocumentService(
             type: didDocServiceType,
@@ -305,7 +305,7 @@ void main() {
       );
 
       expect(
-        () => commercioId.derivateDidDocument(),
+        () => commercioId.deriveDidDocument(),
         throwsA(isA<NoKeysFoundException>()),
       );
     });
@@ -319,7 +319,7 @@ void main() {
       );
 
       expect(
-        () => commercioId.derivateDidDocument(),
+        () => commercioId.deriveDidDocument(),
         throwsA(isA<WalletNotFoundException>()),
       );
     });

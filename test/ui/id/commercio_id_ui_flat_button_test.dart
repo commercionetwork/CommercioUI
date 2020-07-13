@@ -220,7 +220,7 @@ void main() {
   testWidgets('Submit DeriveDidDocument Event', (
     WidgetTester tester,
   ) async {
-    when(commercioId.derivateDidDocument())
+    when(commercioId.deriveDidDocument())
         .thenAnswer((_) async => correctDidDoc);
 
     final bloc = CommercioIdDeriveDidDocumentBloc(
@@ -265,7 +265,7 @@ void main() {
       'CommercioIdDerivedDidDocumentStateData',
     ]);
 
-    when(commercioId.derivateDidDocument()).thenThrow(Exception());
+    when(commercioId.deriveDidDocument()).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
     await tester.pumpAndSettle();

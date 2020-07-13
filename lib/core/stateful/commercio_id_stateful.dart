@@ -10,6 +10,7 @@ class StatefulCommercioId {
   final ISecretStorage storage;
   final String secureStorageKey;
   CommercioIdKeys commercioIdKeys;
+  DidDocument didDocument;
 
   /// Creates a new [StatefulCommercioId] with a [commercioAccount] and
   /// optional [storageKey], [storage] and [idKeys].
@@ -24,6 +25,9 @@ class StatefulCommercioId {
 
   /// Returns [true] if there are [commercioIdKeys] in memory.
   bool get hasKeys => commercioIdKeys != null;
+
+  /// Returns [true] if there is a [DidDocument] in memory.
+  bool get hasDidDocument => didDocument != null;
 
   /// Returns new generated [CommercioIdKeys] that cointains two RSA keys pair,
   /// one pair for verification and another for signature.
@@ -76,25 +80,30 @@ class StatefulCommercioId {
   ///
   /// If no [commercioIdKeys] are in memory a [NoKeysFoundException] is thrown.
   /// If no [Wallet] exists then a [WalletNotFoundException] is thrown.
-  Future<DidDocument> derivateDidDocument({
+  Future<DidDocument> deriveDidDocument({
     List<DidDocumentService> service,
-  }) {
-    if (commercioIdKeys == null) {
+  }) async {
+    if (!hasKeys) {
       throw const NoKeysFoundException();
     }
 
-    if (commercioAccount.wallet == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioId.derivateDidDocument(
-        wallet: commercioAccount.wallet,
-        idKeys: commercioIdKeys,
-        service: service);
+    didDocument = await StatelessCommercioId.deriveDidDocument(
+      wallet: commercioAccount.wallet,
+      idKeys: commercioIdKeys,
+      service: service,
+    );
+
+    return didDocument;
   }
 
   /// Associate an optional [didDocument].
-  /// If no [didDocument] is specified then its derived from the walle.
+  /// If no [didDocument] is specified then if there is a previously generated
+  /// [DidDocument] (for example by calling `derivateDidDocument()`) that is
+  /// used. If no [DidDocument] is avaible a new one is derived.
   /// An optional [fee] can be specified.
   ///
   /// If no [commercioAccount] does not have a wallet then a
@@ -102,7 +111,7 @@ class StatefulCommercioId {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> setDidDocument({DidDocument didDocument}) async {
-    didDocument ??= await derivateDidDocument();
+    didDocument ??= this.didDocument ?? await deriveDidDocument();
 
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -154,7 +163,7 @@ class StatefulCommercioId {
     @required List<StdCoin> amount,
     RSAPrivateKey rsaSignaturePrivateKey,
   }) {
-    if (commercioAccount.wallet == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 

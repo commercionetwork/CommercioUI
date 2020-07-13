@@ -56,7 +56,7 @@ abstract class StatelessCommercioId {
 
   /// Derive a [DidDocument] from the given [wallet], [idKeys] and optional
   /// [service].
-  static Future<DidDocument> derivateDidDocument({
+  static Future<DidDocument> deriveDidDocument({
     @required Wallet wallet,
     @required CommercioIdKeys idKeys,
     List<DidDocumentService> service,

@@ -88,7 +88,7 @@ class CommercioIdDeriveDidDocumentBloc extends Bloc<
     try {
       yield const CommercioIdDerivedDidDocumentStateLoading();
 
-      final didDocument = await commercioId.derivateDidDocument();
+      final didDocument = await commercioId.deriveDidDocument();
 
       yield CommercioIdDerivedDidDocumentStateData(didDocument: didDocument);
     } catch (e) {
