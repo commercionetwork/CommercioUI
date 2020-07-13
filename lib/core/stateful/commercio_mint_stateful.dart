@@ -21,7 +21,7 @@ class StatefulCommercioMint {
     StdFee fee,
   }) {
     if (amount < 0) {
-      throw ArgumentError('amount must not be negative');
+      throw ArgumentError('The amount must not be negative');
     }
 
     if (!commercioAccount.hasWallet) {
