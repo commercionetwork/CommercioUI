@@ -36,14 +36,14 @@ class _ExamplePageState extends State<ExamplePage> {
   final TextEditingController walletTextController = TextEditingController();
   final TextEditingController mnemonicTextController = TextEditingController();
 
-  // Create a commercio account with default NetworkInfo, FlutterStorage and
+  // Create a commercio account with default NetworkInfo, secret storage and
   // storage key
   final StatefulCommercioAccount commercioAccount = StatefulCommercioAccount();
 
   // We need to manage the state during mnemonic creation and wallet derivation
   bool isGenerating = false;
 
-  // Generate a new wallet using the stateless layer
+  // Generate a new wallet using the stateful layer
   Future<Wallet> _deriveNewWallet() async {
     // Derive a new wallet using auto-generated mnemonic words
     // The resulting words are automatically stored inside the secure storage

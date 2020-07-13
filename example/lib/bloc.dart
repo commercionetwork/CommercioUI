@@ -10,8 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // Just add the only blocs that you need, they will take care of:
 // - Provide logic, states and events
 // - Store state in-memory and via secure storage (the Stateful layer is used)
-// - No need to use setState() and basic state management
-// - Relay on stateless widgets instead of stateful ones
+// - No need to use setState()
 
 void main() {
   runApp(
@@ -43,18 +42,29 @@ class MyApp extends StatelessWidget {
 
 // Differently from the Core layer we don't need to manage the state so
 // we can use a StatelessWidget
-class ExamplePage extends StatelessWidget {
+class ExamplePage extends StatefulWidget {
   ExamplePage({Key key}) : super(key: key);
 
+  @override
+  _ExamplePageState createState() => _ExamplePageState();
+}
+
+class _ExamplePageState extends State<ExamplePage> {
   final TextEditingController walletTextController = TextEditingController();
   final TextEditingController mnemonicTextController = TextEditingController();
 
   @override
+  void dispose() {
+    mnemonicTextController.dispose();
+    walletTextController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final generateWalletBloc =
-        BlocProvider.of<CommercioAccountGenerateWalletBloc>(context);
+        context.bloc<CommercioAccountGenerateWalletBloc>();
     String flatButtonText;
-    Function() onPressed;
 
     return Scaffold(
       appBar: AppBar(
@@ -62,25 +72,34 @@ class ExamplePage extends StatelessWidget {
       ),
       body: Center(
         // Use the provided Commercio BLoC to generate a new wallet
-        child: BlocBuilder<CommercioAccountGenerateWalletBloc,
+        child: BlocConsumer<CommercioAccountGenerateWalletBloc,
             CommercioAccountGenerateWalletState>(
+          listener: (context, state) {
+            state.when(
+              (mnemonic, wallet, walletAddress) => null,
+              initial: () => null,
+              loading: () => null,
+              error: (e) => Scaffold.of(context).showSnackBar(
+                SnackBar(content: Text('Error: $e')),
+              ),
+            );
+          },
           builder: (_, state) {
+            Function() onPressed = () => generateWalletBloc
+                .add(const CommercioAccountGenerateWalletEvent());
+
             state.when(
               // Wallet and mnemonic have been generated and saved
               (mnemonic, wallet, walletAddress) {
                 mnemonicTextController.text = mnemonic;
                 walletTextController.text = walletAddress;
                 flatButtonText = 'Generate new wallet';
-                onPressed = () => generateWalletBloc
-                    .add(const CommercioAccountGenerateWalletEvent());
               },
               // Initial state, all fields empty
               initial: () {
                 mnemonicTextController.text = '';
                 walletTextController.text = '';
                 flatButtonText = 'Generate new wallet';
-                onPressed = () => generateWalletBloc
-                    .add(const CommercioAccountGenerateWalletEvent());
               },
               // Loading state, disable text and buttons
               loading: () {
@@ -93,8 +112,6 @@ class ExamplePage extends StatelessWidget {
                 walletTextController.text = 'Error $e';
                 mnemonicTextController.text = 'Error $e';
                 flatButtonText = 'Generate new wallet';
-                onPressed = () => generateWalletBloc
-                    .add(const CommercioAccountGenerateWalletEvent());
               },
             );
 
@@ -111,11 +128,13 @@ class ExamplePage extends StatelessWidget {
                 TextField(
                   controller: mnemonicTextController,
                   readOnly: true,
+                  maxLines: null,
                 ),
                 const Text('Wallet address:'),
                 TextField(
                   controller: walletTextController,
                   readOnly: true,
+                  maxLines: null,
                 ),
               ],
             );
