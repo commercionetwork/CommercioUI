@@ -66,7 +66,7 @@ class StatefulCommercioDocs {
     String contentUri,
     StdFee fee,
   }) {
-    if (commercioAccount.wallet == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
@@ -99,7 +99,7 @@ class StatefulCommercioDocs {
     String proof = '',
     StdFee fee,
   }) {
-    if (commercioAccount.wallet == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
@@ -121,7 +121,7 @@ class StatefulCommercioDocs {
   Future<List<CommercioDoc>> sentDocuments({
     @required String walletAddress,
   }) async {
-    if (commercioAccount.walletWithAddress == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
@@ -139,7 +139,7 @@ class StatefulCommercioDocs {
   Future<List<CommercioDoc>> receivedDocuments({
     @required String walletAddress,
   }) async {
-    if (commercioAccount.walletWithAddress == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
@@ -175,7 +175,7 @@ class StatefulCommercioDocs {
   Future<List<CommercioDocReceipt>> receivedReceipts({
     @required String walletAddress,
   }) async {
-    if (commercioAccount.walletWithAddress == null) {
+    if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 

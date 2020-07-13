@@ -47,12 +47,10 @@ class StatefulCommercioAccount {
   /// Returns [true] if the account has the mnemonic in memory.
   bool get hasMnemonic => mnemonic != null;
 
-  /// Set a new [networkInfo], invalidating current [walletWithAddress] and
-  /// [mnemonic].
+  /// Set a new [networkInfo], invalidating current [walletWithAddress].
   void set networkInfo(NetworkInfo networkInfo) {
     _networkInfo = networkInfo;
     walletWithAddress = null;
-    mnemonic = null;
   }
 
   /// Get the current [networkInfo].
@@ -103,7 +101,7 @@ class StatefulCommercioAccount {
   Future<Wallet> restoreWallet() async {
     mnemonic ??= await fetchMnemonic();
 
-    if (mnemonic == null) {
+    if (!hasMnemonic) {
       throw const MnemonicNotStoredException();
     }
 
@@ -147,13 +145,13 @@ class StatefulCommercioAccount {
   }
 
   /// Generate a pairwise [Wallet] from the given [lastDerivationPathSegment].
-  /// If no [mnemonic] is already loaded an [WalletNotFoundException] is
+  /// If no [mnemonic] is already loaded an [MnemonicNotStoredException] is
   /// thrown.
   Future<Wallet> generatePairwiseWallet({
     @required String lastDerivationPathSegment,
   }) {
-    if (mnemonic == null) {
-      throw WalletNotFoundException();
+    if (!hasMnemonic) {
+      throw MnemonicNotStoredException();
     }
 
     return StatelessCommercioAccount.generatePairwiseWallet(
@@ -171,7 +169,7 @@ class StatefulCommercioAccount {
   /// If the account does not have a wallet then [WalletNotFoundException] is
   /// thrown.
   Future<AccountRequestResponse> requestFreeTokens({String amount}) {
-    if (walletAddress == null) {
+    if (!hasWallet) {
       throw const WalletNotFoundException();
     }
 
@@ -191,7 +189,7 @@ class StatefulCommercioAccount {
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   /// If an error happens in the request [AccountRequestError] is thrown.
   Future<List<StdCoin>> checkAccountBalance() async {
-    if (wallet == null || walletAddress == null) {
+    if (!hasWallet) {
       throw const WalletNotFoundException();
     }
 
@@ -214,15 +212,12 @@ class StatefulCommercioAccount {
     List<StdCoin> feeAmount,
     String gas,
   }) {
-    if (wallet == null || walletAddress == null) {
+    if (!hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return StatelessCommercioAccount.sendTokens(
-      senderWallet: WalletWithAddress(
-        wallet: wallet,
-        address: walletAddress,
-      ),
+      senderWallet: walletWithAddress,
       recipientAddress: recipientAddress,
       amount: amount,
       feeAmount: feeAmount,
