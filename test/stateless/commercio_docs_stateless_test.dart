@@ -291,6 +291,30 @@ void main() {
       expect(sentDocuments, correctSentDocuments);
     });
 
+    test('Default HttpHelper throws an exception in test env', () async {
+      expect(
+        () => StatelessCommercioDocs.sentDocuments(
+          walletAddress: correctWalletAddress,
+        ),
+        throwsException,
+      );
+    });
+
+    test('Network error should throw an exception', () async {
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.sentDocs,
+        walletAddress: correctWalletAddress,
+      )).thenThrow(Exception());
+
+      expect(
+        () => StatelessCommercioDocs.sentDocuments(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
+    });
+
     test('404 not found should throw an exception', () async {
       when(httpHelperMock.getRequest(
         endpoint: HttpEndpoint.sentDocs,
@@ -333,6 +357,30 @@ void main() {
       );
 
       expect(receivedDocuments, correctReceivedDocuments);
+    });
+
+    test('Default HttpHelper throws an exception in test env', () async {
+      expect(
+        () => StatelessCommercioDocs.receivedDocuments(
+          walletAddress: correctWalletAddress,
+        ),
+        throwsException,
+      );
+    });
+
+    test('Network error should throw an exception', () async {
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.receivedDocs,
+        walletAddress: correctWalletAddress,
+      )).thenThrow(Exception());
+
+      expect(
+        () => StatelessCommercioDocs.receivedDocuments(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
     });
 
     test('404 not found should throw an exception', () async {
@@ -379,6 +427,30 @@ void main() {
       expect(sentReceipts, correctSentReceipts);
     });
 
+    test('Default HttpHelper throws an exception in test env', () async {
+      expect(
+        () => StatelessCommercioDocs.sentReceipts(
+          walletAddress: correctWalletAddress,
+        ),
+        throwsException,
+      );
+    });
+
+    test('Network error should throw an exception', () async {
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.sentReceipts,
+        walletAddress: correctWalletAddress,
+      )).thenThrow(Exception());
+
+      expect(
+        () => StatelessCommercioDocs.sentReceipts(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
+    });
+
     test('404 not found should throw an exception', () async {
       when(httpHelperMock.getRequest(
         endpoint: HttpEndpoint.sentReceipts,
@@ -421,6 +493,30 @@ void main() {
       );
 
       expect(receivedReceipts, correctReceivedReceipts);
+    });
+
+    test('Default HttpHelper throws an exception in test env', () async {
+      expect(
+        () => StatelessCommercioDocs.receivedReceipts(
+          walletAddress: correctWalletAddress,
+        ),
+        throwsException,
+      );
+    });
+
+    test('Network error should throw an exception', () async {
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.receivedReceipts,
+        walletAddress: correctWalletAddress,
+      )).thenThrow(Exception());
+
+      expect(
+        () => StatelessCommercioDocs.receivedReceipts(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
     });
 
     test('404 not found should throw an exception', () async {

@@ -113,6 +113,32 @@ void main() {
     });
   });
 
+  group('Has did document', () {
+    test('Correct', () async {
+      final commercioAccount = StatefulCommercioAccount(
+        storage: secretStorageMethodsMock,
+        storageKey: secureStorageKey,
+        networkInfo: correctNetworkInfo,
+        httpHelper: httpHelperMock,
+      );
+
+      await commercioAccount.generateNewWallet();
+
+      final commercioId = StatefulCommercioId(
+        commercioAccount: commercioAccount,
+        storage: secretStorageMethodsMock,
+        storageKey: secureStorageKey,
+        idKeys: keysObj,
+      );
+
+      expect(commercioId.hasDidDocument, isFalse);
+
+      await commercioId.deriveDidDocument();
+
+      expect(commercioId.hasDidDocument, isTrue);
+    });
+  });
+
   group('Generate keys', () {
     test('Correct', () async {
       final commercioId = StatefulCommercioId(
