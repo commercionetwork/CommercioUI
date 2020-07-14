@@ -32,8 +32,13 @@ class StatefulCommercioId {
   /// Returns new generated [CommercioIdKeys] that cointains two RSA keys pair,
   /// one pair for verification and another for signature.
   ///
+  /// *Warning*: generate new keys will invalidate all did documents currently
+  /// in memory.
+  ///
   /// The generated keys are also stored in the secure storage.
   Future<CommercioIdKeys> generateKeys() async {
+    _invalidateDidDocument();
+
     commercioIdKeys = await StatelessCommercioId.generateKeys();
 
     await storeKeys(idKeys: commercioIdKeys);
@@ -127,6 +132,8 @@ class StatefulCommercioId {
       throw const WalletNotFoundException();
     }
 
+    //didDocument = await deriveDidDocument();
+
     return StatelessCommercioId.setDidDocuments(
       didDocuments: didDocuments,
       wallet: commercioAccount.wallet,
@@ -158,37 +165,59 @@ class StatefulCommercioId {
     );
   }
 
-  /// Request a Did Power Up to move the [amount] of tokens from a centralized
-  /// entity Tk to one of its [pairwiseAddress], using the optional
-  /// [rsaSignaturePrivateKey]. If no key is specified the in-memory one is
-  /// used.
+  /// Request a list of Did Power Up for every element in
+  /// [pairwiseAddresses], [wallets], [amounts] and [rsaSignaturePrivateKeys].
+  ///
+  /// If [wallets] is not specified the user wallet is used.
+  /// If [rsaSignaturePrivateKeys] is not specified the  user keys are used.
+  ///
+  /// A did power up request is required to move the amount of
+  /// tokens from a centralized entity Tk to one of its pairwiseAddress,
+  /// using the rsaSignaturePrivateKey.
   ///
   /// A Did Power Up is required to send documents.
   ///
-  /// Throw [WalletNotFoundException] if not wallet is avaiable, throw
+  /// Throw [WalletNotFoundException] if not wallet is avaiable, throws
   /// [NoKeysFoundException] if no keys are avaiable.
   ///
   /// Returns the [TransactionResult].
-  Future<TransactionResult> requestDidPowerUp({
-    @required String pairwiseAddress,
-    @required List<StdCoin> amount,
-    RSAPrivateKey rsaSignaturePrivateKey,
+  Future<TransactionResult> requestDidPowerUps({
+    @required List<String> pairwiseAddresses,
+    @required List<List<StdCoin>> amounts,
+    List<Wallet> wallets,
+    List<RSAPrivateKey> rsaSignaturePrivateKeys,
+    StdFee fee,
   }) {
-    if (!commercioAccount.hasWallet) {
-      throw const WalletNotFoundException();
+    if (wallets == null || wallets.isEmpty) {
+      if (!commercioAccount.hasWallet) {
+        throw const WalletNotFoundException();
+      }
+
+      wallets = [commercioAccount.wallet];
     }
 
-    rsaSignaturePrivateKey ??= commercioIdKeys?.rsaSignatureKeyPair?.privateKey;
+    if (rsaSignaturePrivateKeys == null || rsaSignaturePrivateKeys.isEmpty) {
+      if (!hasKeys) {
+        throw const NoKeysFoundException();
+      }
 
-    if (rsaSignaturePrivateKey == null) {
-      throw const NoKeysFoundException();
+      rsaSignaturePrivateKeys = [
+        commercioIdKeys?.rsaSignatureKeyPair?.privateKey
+      ];
     }
 
-    return StatelessCommercioId.requestDidPowerUp(
-      pairwiseAddress: pairwiseAddress,
+    return StatelessCommercioId.requestDidPowerUps(
       senderWallet: commercioAccount.wallet,
-      amount: amount,
-      rsaSignaturePrivateKey: rsaSignaturePrivateKey,
+      pairwiseAddresses: pairwiseAddresses,
+      wallets: wallets,
+      amounts: amounts,
+      rsaSignaturePrivateKeys: rsaSignaturePrivateKeys,
+      fee: fee,
     );
+  }
+
+  /// Invalidate the current in-memory [didDocument].
+  void _invalidateDidDocument() {
+    didDocument = null;
   }
 }

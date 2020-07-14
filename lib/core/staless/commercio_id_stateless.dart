@@ -110,23 +110,49 @@ abstract class StatelessCommercioId {
     );
   }
 
-  /// Request a Did Power Up from [senderWallet] to move the [amount] of
-  /// tokens from a centralized entity Tk to one of its [pairwiseAddress],
-  /// using the [rsaSignaturePrivateKey].
+  /// Request a list of Did Power Up from [senderWallet] for every element in
+  /// [pairwiseAddresses], [wallets], [amounts] and [rsaSignaturePrivateKeys].
+  ///
+  /// A did power up request is required to move the amount of
+  /// tokens from a centralized entity Tk to one of its pairwiseAddress,
+  /// using the rsaSignaturePrivateKey.
+  ///
   /// A Did Power Up is required to send documents.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> requestDidPowerUp({
-    @required String pairwiseAddress,
+  static Future<TransactionResult> requestDidPowerUps({
     @required Wallet senderWallet,
-    @required List<StdCoin> amount,
-    @required RSAPrivateKey rsaSignaturePrivateKey,
-  }) {
-    return IdHelper.requestDidPowerUp(
+    @required List<String> pairwiseAddresses,
+    @required List<Wallet> wallets,
+    @required List<List<StdCoin>> amounts,
+    @required List<RSAPrivateKey> rsaSignaturePrivateKeys,
+    StdFee fee,
+  }) async {
+    if (!(pairwiseAddresses.length == wallets.length &&
+        wallets.length == amounts.length &&
+        amounts.length == rsaSignaturePrivateKeys.length)) {
+      throw Exception(
+        'All paramenters should have the same number of elements.',
+      );
+    }
+
+    final List<RequestDidPowerUp> powerUps = [];
+
+    for (var i = 0; i < pairwiseAddresses.length; i++) {
+      final powerUp = await RequestDidPowerUpHelper.fromWallet(
+        wallets[i],
+        pairwiseAddresses[i],
+        amounts[i],
+        rsaSignaturePrivateKeys[i],
+      );
+
+      powerUps.add(powerUp);
+    }
+
+    return IdHelper.requestDidPowerUpsList(
+      powerUps,
       senderWallet,
-      pairwiseAddress,
-      amount,
-      rsaSignaturePrivateKey,
+      fee: fee,
     );
   }
 }

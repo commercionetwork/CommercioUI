@@ -500,31 +500,31 @@ void main() {
     const amount = <StdCoin>[];
     const pairwiseAddress = '';
 
-    when(commercioId.requestDidPowerUp(
-      pairwiseAddress: pairwiseAddress,
-      amount: amount,
+    when(commercioId.requestDidPowerUps(
+      pairwiseAddresses: [pairwiseAddress],
+      amounts: [amount],
     )).thenAnswer((_) async => correctTxResult);
 
-    final bloc = CommercioIdRequestDidPowerUpBloc(
+    final bloc = CommercioIdRequestDidPowerUpsBloc(
       commercioId: commercioId,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioIdRequestedDidPowerUpStateLoading>(),
-        isA<CommercioIdRequestedDidPowerUpStateData>(),
-        isA<CommercioIdRequestedDidPowerUpStateLoading>(),
-        isA<CommercioIdRequestedDidPowerUpStateError>(),
+        isA<CommercioIdRequestedDidPowerUpsStateLoading>(),
+        isA<CommercioIdRequestedDidPowerUpsStateData>(),
+        isA<CommercioIdRequestedDidPowerUpsStateLoading>(),
+        isA<CommercioIdRequestedDidPowerUpsStateError>(),
       ]),
     );
 
     final commFlatButton = RequestDidPowerUpFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioIdRequestDidPowerUpEvent(
-        amount: amount,
-        pairwiseAddress: pairwiseAddress,
+      event: () => CommercioIdRequestDidPowerUpsEvent(
+        amounts: [amount],
+        pairwiseAddresses: [pairwiseAddress],
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
@@ -552,9 +552,9 @@ void main() {
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioId.requestDidPowerUp(
-      pairwiseAddress: pairwiseAddress,
-      amount: amount,
+    when(commercioId.requestDidPowerUps(
+      pairwiseAddresses: [pairwiseAddress],
+      amounts: [amount],
     )).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));

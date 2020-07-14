@@ -105,18 +105,18 @@ abstract class CommercioIdRechargedTumblerState
 }
 
 @freezed
-abstract class CommercioIdRequestedDidPowerUpState
-    with _$CommercioIdRequestedDidPowerUpState {
-  const factory CommercioIdRequestedDidPowerUpState({
+abstract class CommercioIdRequestedDidPowerUpsState
+    with _$CommercioIdRequestedDidPowerUpsState {
+  const factory CommercioIdRequestedDidPowerUpsState({
     @required TransactionResult result,
-  }) = CommercioIdRequestedDidPowerUpStateData;
+  }) = CommercioIdRequestedDidPowerUpsStateData;
 
-  const factory CommercioIdRequestedDidPowerUpState.initial() =
-      CommercioIdRequestedDidPowerUpStateInitial;
+  const factory CommercioIdRequestedDidPowerUpsState.initial() =
+      CommercioIdRequestedDidPowerUpsStateInitial;
 
-  const factory CommercioIdRequestedDidPowerUpState.loading() =
-      CommercioIdRequestedDidPowerUpStateLoading;
+  const factory CommercioIdRequestedDidPowerUpsState.loading() =
+      CommercioIdRequestedDidPowerUpsStateLoading;
 
-  const factory CommercioIdRequestedDidPowerUpState.error([String error]) =
-      CommercioIdRequestedDidPowerUpStateError;
+  const factory CommercioIdRequestedDidPowerUpsState.error([String error]) =
+      CommercioIdRequestedDidPowerUpsStateError;
 }

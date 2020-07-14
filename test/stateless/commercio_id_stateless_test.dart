@@ -516,7 +516,7 @@ void main() {
     });
   });
 
-  group('Request Did PowerUp', () {
+  group('Request Did PowerUps', () {
     final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
 
     test('Correct', () async {
@@ -544,14 +544,30 @@ void main() {
         (_) => Future.value(correctWalletAddress),
       );
 
-      final result = await StatelessCommercioId.requestDidPowerUp(
+      final result = await StatelessCommercioId.requestDidPowerUps(
         senderWallet: correctWallet,
-        pairwiseAddress: correctWalletAddress,
-        amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
-        rsaSignaturePrivateKey: keysObj.rsaSignatureKeyPair.privateKey,
+        pairwiseAddresses: [correctWalletAddress],
+        wallets: [correctWallet],
+        amounts: const [
+          [StdCoin(denom: 'ucommercio', amount: '10')]
+        ],
+        rsaSignaturePrivateKeys: [keysObj.rsaSignatureKeyPair.privateKey],
       );
 
       expect(result.success, isTrue);
+    });
+
+    test('Wrong list lenghts should throw an exception', () async {
+      expect(
+        () => StatelessCommercioId.requestDidPowerUps(
+          senderWallet: correctWallet,
+          pairwiseAddresses: [correctWalletAddress],
+          wallets: [correctWallet],
+          amounts: [],
+          rsaSignaturePrivateKeys: [keysObj.rsaSignatureKeyPair.privateKey],
+        ),
+        throwsException,
+      );
     });
   });
 

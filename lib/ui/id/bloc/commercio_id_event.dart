@@ -59,17 +59,27 @@ class CommercioIdRechargeTumblerEvent extends CommercioIdEvent {
   List<Object> get props => [rechargeAmount, rechargeFee, rechargeGas];
 }
 
-class CommercioIdRequestDidPowerUpEvent extends CommercioIdEvent {
-  final String pairwiseAddress;
-  final List<StdCoin> amount;
-  final RSAPrivateKey rsaSignaturePrivateKey;
+class CommercioIdRequestDidPowerUpsEvent extends CommercioIdEvent {
+  final List<String> pairwiseAddresses;
+  final List<List<StdCoin>> amounts;
+  final List<Wallet> wallets;
+  final List<RSAPrivateKey> rsaSignaturePrivateKeys;
+  final StdFee fee;
 
-  const CommercioIdRequestDidPowerUpEvent({
-    @required this.pairwiseAddress,
-    @required this.amount,
-    this.rsaSignaturePrivateKey,
+  const CommercioIdRequestDidPowerUpsEvent({
+    @required this.pairwiseAddresses,
+    @required this.amounts,
+    this.wallets,
+    this.rsaSignaturePrivateKeys,
+    this.fee,
   });
 
   @override
-  List<Object> get props => [pairwiseAddress, amount, rsaSignaturePrivateKey];
+  List<Object> get props => [
+        pairwiseAddresses,
+        amounts,
+        wallets,
+        rsaSignaturePrivateKeys,
+        fee,
+      ];
 }

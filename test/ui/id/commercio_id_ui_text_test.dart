@@ -360,22 +360,22 @@ void main() {
     const amount = <StdCoin>[];
     const pairwiseAddress = '';
 
-    when(commercioId.requestDidPowerUp(
-      pairwiseAddress: pairwiseAddress,
-      amount: amount,
+    when(commercioId.requestDidPowerUps(
+      pairwiseAddresses: [pairwiseAddress],
+      amounts: [amount],
     )).thenAnswer((_) async => correctTxResult);
 
-    final bloc = CommercioIdRequestDidPowerUpBloc(
+    final bloc = CommercioIdRequestDidPowerUpsBloc(
       commercioId: commercioId,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioIdRequestedDidPowerUpStateLoading>(),
-        isA<CommercioIdRequestedDidPowerUpStateData>(),
-        isA<CommercioIdRequestedDidPowerUpStateLoading>(),
-        isA<CommercioIdRequestedDidPowerUpStateError>(),
+        isA<CommercioIdRequestedDidPowerUpsStateLoading>(),
+        isA<CommercioIdRequestedDidPowerUpsStateData>(),
+        isA<CommercioIdRequestedDidPowerUpsStateLoading>(),
+        isA<CommercioIdRequestedDidPowerUpsStateError>(),
       ]),
     );
 
@@ -399,22 +399,22 @@ void main() {
 
     expect(find.byWidget(commText), findsOneWidget);
 
-    bloc.add(const CommercioIdRequestDidPowerUpEvent(
-      pairwiseAddress: pairwiseAddress,
-      amount: amount,
+    bloc.add(const CommercioIdRequestDidPowerUpsEvent(
+      pairwiseAddresses: [pairwiseAddress],
+      amounts: [amount],
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioId.requestDidPowerUp(
-      pairwiseAddress: pairwiseAddress,
-      amount: amount,
+    when(commercioId.requestDidPowerUps(
+      pairwiseAddresses: [pairwiseAddress],
+      amounts: [amount],
     )).thenThrow(Exception());
 
-    bloc.add(const CommercioIdRequestDidPowerUpEvent(
-      pairwiseAddress: pairwiseAddress,
-      amount: amount,
+    bloc.add(const CommercioIdRequestDidPowerUpsEvent(
+      pairwiseAddresses: [pairwiseAddress],
+      amounts: [amount],
     ));
     await tester.pumpAndSettle();
 

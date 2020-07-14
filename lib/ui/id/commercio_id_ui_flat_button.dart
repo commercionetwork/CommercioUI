@@ -344,11 +344,11 @@ class RechargeTumblerFlatButton extends CommercioFlatButton<
 }
 
 class RequestDidPowerUpFlatButton extends CommercioFlatButton<
-    CommercioIdRequestDidPowerUpBloc,
-    CommercioIdRequestDidPowerUpEvent,
-    CommercioIdRequestedDidPowerUpState,
-    CommercioIdRequestedDidPowerUpStateLoading,
-    CommercioIdRequestedDidPowerUpStateError> {
+    CommercioIdRequestDidPowerUpsBloc,
+    CommercioIdRequestDidPowerUpsEvent,
+    CommercioIdRequestedDidPowerUpsState,
+    CommercioIdRequestedDidPowerUpsStateLoading,
+    CommercioIdRequestedDidPowerUpsStateError> {
   RequestDidPowerUpFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -369,7 +369,7 @@ class RequestDidPowerUpFlatButton extends CommercioFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    @required CommercioIdRequestDidPowerUpEvent Function() event,
+    @required CommercioIdRequestDidPowerUpsEvent Function() event,
     Widget Function(BuildContext context) child,
     Widget Function(BuildContext context) loading,
     void Function(BuildContext context, String errorMessage) error,

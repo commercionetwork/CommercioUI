@@ -678,13 +678,13 @@ class RechargeTumblerTextField extends CommercioTextField<
 }
 
 class RequestDidPowerUpTextField extends CommercioTextField<
-    CommercioIdRequestDidPowerUpBloc,
-    CommercioIdRequestDidPowerUpEvent,
-    CommercioIdRequestedDidPowerUpState,
-    CommercioIdRequestedDidPowerUpStateInitial,
-    CommercioIdRequestedDidPowerUpStateData,
-    CommercioIdRequestedDidPowerUpStateLoading,
-    CommercioIdRequestedDidPowerUpStateError> {
+    CommercioIdRequestDidPowerUpsBloc,
+    CommercioIdRequestDidPowerUpsEvent,
+    CommercioIdRequestedDidPowerUpsState,
+    CommercioIdRequestedDidPowerUpsStateInitial,
+    CommercioIdRequestedDidPowerUpsStateData,
+    CommercioIdRequestedDidPowerUpsStateLoading,
+    CommercioIdRequestedDidPowerUpsStateError> {
   RequestDidPowerUpTextField({
     Key key,
     TextEditingController controller,
@@ -733,7 +733,7 @@ class RequestDidPowerUpTextField extends CommercioTextField<
     @required String Function(BuildContext context) loading,
     @required
         String Function(BuildContext context,
-                CommercioIdRequestedDidPowerUpStateData state)
+                CommercioIdRequestedDidPowerUpsStateData state)
             text,
     TextStyle loadingStyle,
     String Function(BuildContext context, String errorMessage) error,

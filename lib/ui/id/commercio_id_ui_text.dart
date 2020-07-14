@@ -313,13 +313,13 @@ class RechargeTumblerText extends CommercioText<
 }
 
 class RequestDidPowerUpText extends CommercioText<
-    CommercioIdRequestDidPowerUpBloc,
-    CommercioIdRequestDidPowerUpEvent,
-    CommercioIdRequestedDidPowerUpState,
-    CommercioIdRequestedDidPowerUpStateInitial,
-    CommercioIdRequestedDidPowerUpStateData,
-    CommercioIdRequestedDidPowerUpStateLoading,
-    CommercioIdRequestedDidPowerUpStateError> {
+    CommercioIdRequestDidPowerUpsBloc,
+    CommercioIdRequestDidPowerUpsEvent,
+    CommercioIdRequestedDidPowerUpsState,
+    CommercioIdRequestedDidPowerUpsStateInitial,
+    CommercioIdRequestedDidPowerUpsStateData,
+    CommercioIdRequestedDidPowerUpsStateLoading,
+    CommercioIdRequestedDidPowerUpsStateError> {
   const RequestDidPowerUpText({
     Key key,
     TextStyle style,
@@ -340,7 +340,7 @@ class RequestDidPowerUpText extends CommercioText<
     @required
         String Function(
       BuildContext context,
-      CommercioIdRequestedDidPowerUpStateData state,
+      CommercioIdRequestedDidPowerUpsStateData state,
     )
             text,
     String Function(BuildContext context, String errorMessage) error,

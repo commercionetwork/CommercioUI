@@ -163,29 +163,31 @@ class CommercioIdRechargeTumblerBloc extends Bloc<
   }
 }
 
-class CommercioIdRequestDidPowerUpBloc extends Bloc<
-    CommercioIdRequestDidPowerUpEvent, CommercioIdRequestedDidPowerUpState> {
+class CommercioIdRequestDidPowerUpsBloc extends Bloc<
+    CommercioIdRequestDidPowerUpsEvent, CommercioIdRequestedDidPowerUpsState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdRequestDidPowerUpBloc({@required this.commercioId})
-      : super(const CommercioIdRequestedDidPowerUpStateInitial());
+  CommercioIdRequestDidPowerUpsBloc({@required this.commercioId})
+      : super(const CommercioIdRequestedDidPowerUpsStateInitial());
 
   @override
-  Stream<CommercioIdRequestedDidPowerUpState> mapEventToState(
-    CommercioIdRequestDidPowerUpEvent event,
+  Stream<CommercioIdRequestedDidPowerUpsState> mapEventToState(
+    CommercioIdRequestDidPowerUpsEvent event,
   ) async* {
     try {
-      yield const CommercioIdRequestedDidPowerUpStateLoading();
+      yield const CommercioIdRequestedDidPowerUpsStateLoading();
 
-      final result = await commercioId.requestDidPowerUp(
-        pairwiseAddress: event.pairwiseAddress,
-        amount: event.amount,
-        rsaSignaturePrivateKey: event.rsaSignaturePrivateKey,
+      final result = await commercioId.requestDidPowerUps(
+        pairwiseAddresses: event.pairwiseAddresses,
+        wallets: event.wallets,
+        amounts: event.amounts,
+        rsaSignaturePrivateKeys: event.rsaSignaturePrivateKeys,
+        fee: event.fee,
       );
 
-      yield CommercioIdRequestedDidPowerUpStateData(result: result);
+      yield CommercioIdRequestedDidPowerUpsStateData(result: result);
     } catch (e) {
-      yield CommercioIdRequestedDidPowerUpStateError(e.toString());
+      yield CommercioIdRequestedDidPowerUpsStateError(e.toString());
     }
   }
 }
