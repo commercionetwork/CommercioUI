@@ -123,6 +123,10 @@ abstract class StatelessCommercioDocs {
       throw Exception('Network error: $e');
     }
 
+    if (response.statusCode != 200) {
+      throw Exception('${response.statusCode}: ${response.body}');
+    }
+
     final docs = jsonDecode(response.body)['result'] as List;
 
     return docs.map((doc) => CommercioDoc.fromJson(doc)).toList();
@@ -145,6 +149,10 @@ abstract class StatelessCommercioDocs {
       );
     } catch (e) {
       throw Exception('Network error: $e');
+    }
+
+    if (response.statusCode != 200) {
+      throw Exception('${response.statusCode}: ${response.body}');
     }
 
     final docs = jsonDecode(response.body)['result'] as List;
@@ -171,6 +179,10 @@ abstract class StatelessCommercioDocs {
       throw Exception('Network error: $e');
     }
 
+    if (response.statusCode != 200) {
+      throw Exception('${response.statusCode}: ${response.body}');
+    }
+
     final receipts = jsonDecode(response.body)['result'] as List;
 
     return receipts
@@ -195,6 +207,10 @@ abstract class StatelessCommercioDocs {
       );
     } catch (e) {
       throw Exception('Network error: $e');
+    }
+
+    if (response.statusCode != 200) {
+      throw Exception('${response.statusCode}: ${response.body}');
     }
 
     final receipts = jsonDecode(response.body)['result'] as List;

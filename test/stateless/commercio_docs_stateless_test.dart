@@ -290,6 +290,23 @@ void main() {
 
       expect(sentDocuments, correctSentDocuments);
     });
+
+    test('404 not found should throw an exception', () async {
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.sentDocs,
+        walletAddress: '',
+      )).thenAnswer(
+        (_) => Future.value(Response('404 Not Found', 404)),
+      );
+
+      expect(
+        () => StatelessCommercioDocs.sentDocuments(
+          walletAddress: '',
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
+    });
   });
 
   group('Received documents', () {
@@ -316,6 +333,23 @@ void main() {
       );
 
       expect(receivedDocuments, correctReceivedDocuments);
+    });
+
+    test('404 not found should throw an exception', () async {
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.receivedDocs,
+        walletAddress: '',
+      )).thenAnswer(
+        (_) => Future.value(Response('404 Not Found', 404)),
+      );
+
+      expect(
+        () => StatelessCommercioDocs.receivedDocuments(
+          walletAddress: '',
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
     });
   });
 
@@ -344,6 +378,23 @@ void main() {
 
       expect(sentReceipts, correctSentReceipts);
     });
+
+    test('404 not found should throw an exception', () async {
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.sentReceipts,
+        walletAddress: '',
+      )).thenAnswer(
+        (_) => Future.value(Response('404 Not Found', 404)),
+      );
+
+      expect(
+        () => StatelessCommercioDocs.sentReceipts(
+          walletAddress: '',
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
+    });
   });
 
   group('Received receipts', () {
@@ -370,6 +421,23 @@ void main() {
       );
 
       expect(receivedReceipts, correctReceivedReceipts);
+    });
+
+    test('404 not found should throw an exception', () async {
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.receivedReceipts,
+        walletAddress: '',
+      )).thenAnswer(
+        (_) => Future.value(Response('404 Not Found', 404)),
+      );
+
+      expect(
+        () => StatelessCommercioDocs.receivedReceipts(
+          walletAddress: '',
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
     });
   });
 }

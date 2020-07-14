@@ -269,20 +269,6 @@ void main() {
 
       expect(sentDocuments, correctSentDocuments);
     });
-
-    test('A commercioAccount without wallet should throw an exception',
-        () async {
-      final commercioDocs = StatefulCommercioDocs(
-        commercioAccount: commercioAccountWithoutWallet,
-      );
-
-      expect(
-        () => commercioDocs.sentDocuments(
-          walletAddress: correctWalletAddress,
-        ),
-        throwsA(isA<WalletNotFoundException>()),
-      );
-    });
   });
 
   group('Received documents', () {
@@ -312,20 +298,6 @@ void main() {
       );
 
       expect(receivedDocuments, correctReceivedDocuments);
-    });
-
-    test('A commercioAccount without wallet should throw an exception',
-        () async {
-      final commercioDocs = StatefulCommercioDocs(
-        commercioAccount: commercioAccountWithoutWallet,
-      );
-
-      expect(
-        () => commercioDocs.receivedDocuments(
-          walletAddress: correctWalletAddress,
-        ),
-        throwsA(isA<WalletNotFoundException>()),
-      );
     });
   });
 
@@ -357,20 +329,6 @@ void main() {
 
       expect(sentReceipts, correctSentReceipts);
     });
-
-    test('A commercioAccount without wallet should throw an exception',
-        () async {
-      final commercioDocs = StatefulCommercioDocs(
-        commercioAccount: commercioAccountWithoutWallet,
-      );
-
-      expect(
-        () => commercioDocs.sentReceipts(
-          walletAddress: correctWalletAddress,
-        ),
-        throwsA(isA<WalletNotFoundException>()),
-      );
-    });
   });
 
   group('Received receipts', () {
@@ -399,20 +357,6 @@ void main() {
       );
 
       expect(receivedReceipts, correctReceivedReceipts);
-    });
-
-    test('A commercioAccount without wallet should throw an exception',
-        () async {
-      final commercioDocs = StatefulCommercioDocs(
-        commercioAccount: commercioAccountWithoutWallet,
-      );
-
-      expect(
-        () => commercioDocs.receivedReceipts(
-          walletAddress: correctWalletAddress,
-        ),
-        throwsA(isA<WalletNotFoundException>()),
-      );
     });
   });
 }
