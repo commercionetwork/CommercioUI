@@ -100,7 +100,7 @@ class StatefulCommercioId {
     return didDocument;
   }
 
-  /// Associate an optional [didDocument].
+  /// Associate an optional list of [didDocument].
   /// If no [didDocument] is specified then if there is a previously generated
   /// [DidDocument] (for example by calling `derivateDidDocument()`) that is
   /// used. If no [DidDocument] is avaible a new one is derived.
@@ -110,16 +110,27 @@ class StatefulCommercioId {
   /// [WalletNotFoundException] is thrown.
   ///
   /// Returns the [TransactionResult].
-  Future<TransactionResult> setDidDocument({DidDocument didDocument}) async {
-    didDocument ??= this.didDocument ?? await deriveDidDocument();
+  Future<TransactionResult> setDidDocuments({
+    List<DidDocument> didDocuments,
+    StdFee fee,
+  }) async {
+    if (didDocuments == null || didDocuments.isEmpty) {
+      if (hasDidDocument) {
+        didDocuments = [didDocument];
+      } else {
+        didDocument = await deriveDidDocument();
+        didDocuments = [didDocument];
+      }
+    }
 
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioId.setDidDocument(
-      didDocument: didDocument,
+    return StatelessCommercioId.setDidDocuments(
+      didDocuments: didDocuments,
       wallet: commercioAccount.wallet,
+      fee: fee,
     );
   }
 

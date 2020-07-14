@@ -243,19 +243,20 @@ void main() {
   testWidgets('Submit SetDidDocument Event', (
     WidgetTester tester,
   ) async {
-    when(commercioId.setDidDocument()).thenAnswer((_) async => correctTxResult);
+    when(commercioId.setDidDocuments())
+        .thenAnswer((_) async => correctTxResult);
 
-    final bloc = CommercioIdSetDidDocumentBloc(
+    final bloc = CommercioIdSetDidDocumentsBloc(
       commercioId: commercioId,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioIdSetDidDocumentStateLoading>(),
-        isA<CommercioIdSetDidDocumentStateData>(),
-        isA<CommercioIdSetDidDocumentStateLoading>(),
-        isA<CommercioIdSetDidDocumentStateError>(),
+        isA<CommercioIdSetDidDocumentsStateLoading>(),
+        isA<CommercioIdSetDidDocumentsStateData>(),
+        isA<CommercioIdSetDidDocumentsStateLoading>(),
+        isA<CommercioIdSetDidDocumentsStateError>(),
       ]),
     );
 
@@ -279,14 +280,14 @@ void main() {
 
     expect(find.byWidget(commTextField), findsOneWidget);
 
-    bloc.add(const CommercioIdSetDidDocumentEvent());
+    bloc.add(const CommercioIdSetDidDocumentsEvent());
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioId.setDidDocument()).thenThrow(Exception());
+    when(commercioId.setDidDocuments()).thenThrow(Exception());
 
-    bloc.add(const CommercioIdSetDidDocumentEvent());
+    bloc.add(const CommercioIdSetDidDocumentsEvent());
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);

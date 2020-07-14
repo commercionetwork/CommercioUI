@@ -255,8 +255,8 @@ void main() {
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
 
-      final result = await StatelessCommercioId.setDidDocument(
-        didDocument: correctDidDoc,
+      final result = await StatelessCommercioId.setDidDocuments(
+        didDocuments: [correctDidDoc],
         wallet: correctWallet,
       );
 
@@ -274,8 +274,8 @@ void main() {
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
 
-      final result = await StatelessCommercioId.setDidDocument(
-        didDocument: correctDidDoc,
+      final result = await StatelessCommercioId.setDidDocuments(
+        didDocuments: [correctDidDoc],
         wallet: correctWallet,
         fee: const StdFee(
           amount: [StdCoin(amount: '10', denom: 'ucommercio')],
@@ -298,8 +298,8 @@ void main() {
       );
 
       expectLater(
-        () => StatelessCommercioId.setDidDocument(
-          didDocument: correctDidDoc,
+        () => StatelessCommercioId.setDidDocuments(
+          didDocuments: [correctDidDoc],
           wallet: correctWallet,
         ),
         throwsException,
@@ -318,8 +318,8 @@ void main() {
       );
 
       expectLater(
-        () => StatelessCommercioId.setDidDocument(
-          didDocument: correctDidDoc,
+        () => StatelessCommercioId.setDidDocuments(
+          didDocuments: [correctDidDoc],
           wallet: correctWallet,
         ),
         throwsException,
@@ -338,8 +338,8 @@ void main() {
       );
 
       expectLater(
-        () => StatelessCommercioId.setDidDocument(
-          didDocument: correctDidDoc,
+        () => StatelessCommercioId.setDidDocuments(
+          didDocuments: [correctDidDoc],
           wallet: correctWallet,
         ),
         throwsException,

@@ -2225,36 +2225,36 @@ abstract class CommercioIdDerivedDidDocumentStateError
       CommercioIdDerivedDidDocumentStateError> get copyWith;
 }
 
-class _$CommercioIdSetDidDocumentStateTearOff {
-  const _$CommercioIdSetDidDocumentStateTearOff();
+class _$CommercioIdSetDidDocumentsStateTearOff {
+  const _$CommercioIdSetDidDocumentsStateTearOff();
 
-  CommercioIdSetDidDocumentStateData call(
+  CommercioIdSetDidDocumentsStateData call(
       {@required TransactionResult result}) {
-    return CommercioIdSetDidDocumentStateData(
+    return CommercioIdSetDidDocumentsStateData(
       result: result,
     );
   }
 
-  CommercioIdSetDidDocumentStateInitial initial() {
-    return const CommercioIdSetDidDocumentStateInitial();
+  CommercioIdSetDidDocumentsStateInitial initial() {
+    return const CommercioIdSetDidDocumentsStateInitial();
   }
 
-  CommercioIdSetDidDocumentStateLoading loading() {
-    return const CommercioIdSetDidDocumentStateLoading();
+  CommercioIdSetDidDocumentsStateLoading loading() {
+    return const CommercioIdSetDidDocumentsStateLoading();
   }
 
-  CommercioIdSetDidDocumentStateError error([String error]) {
-    return CommercioIdSetDidDocumentStateError(
+  CommercioIdSetDidDocumentsStateError error([String error]) {
+    return CommercioIdSetDidDocumentsStateError(
       error,
     );
   }
 }
 
 // ignore: unused_element
-const $CommercioIdSetDidDocumentState =
-    _$CommercioIdSetDidDocumentStateTearOff();
+const $CommercioIdSetDidDocumentsState =
+    _$CommercioIdSetDidDocumentsStateTearOff();
 
-mixin _$CommercioIdSetDidDocumentState {
+mixin _$CommercioIdSetDidDocumentsState {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(TransactionResult result), {
@@ -2272,70 +2272,70 @@ mixin _$CommercioIdSetDidDocumentState {
   });
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    @required Result error(CommercioIdSetDidDocumentsStateError value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    Result initial(CommercioIdSetDidDocumentStateInitial value),
-    Result loading(CommercioIdSetDidDocumentStateLoading value),
-    Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    Result error(CommercioIdSetDidDocumentsStateError value),
     @required Result orElse(),
   });
 }
 
-abstract class $CommercioIdSetDidDocumentStateCopyWith<$Res> {
-  factory $CommercioIdSetDidDocumentStateCopyWith(
-          CommercioIdSetDidDocumentState value,
-          $Res Function(CommercioIdSetDidDocumentState) then) =
-      _$CommercioIdSetDidDocumentStateCopyWithImpl<$Res>;
+abstract class $CommercioIdSetDidDocumentsStateCopyWith<$Res> {
+  factory $CommercioIdSetDidDocumentsStateCopyWith(
+          CommercioIdSetDidDocumentsState value,
+          $Res Function(CommercioIdSetDidDocumentsState) then) =
+      _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>;
 }
 
-class _$CommercioIdSetDidDocumentStateCopyWithImpl<$Res>
-    implements $CommercioIdSetDidDocumentStateCopyWith<$Res> {
-  _$CommercioIdSetDidDocumentStateCopyWithImpl(this._value, this._then);
+class _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioIdSetDidDocumentsStateCopyWith<$Res> {
+  _$CommercioIdSetDidDocumentsStateCopyWithImpl(this._value, this._then);
 
-  final CommercioIdSetDidDocumentState _value;
+  final CommercioIdSetDidDocumentsState _value;
   // ignore: unused_field
-  final $Res Function(CommercioIdSetDidDocumentState) _then;
+  final $Res Function(CommercioIdSetDidDocumentsState) _then;
 }
 
-abstract class $CommercioIdSetDidDocumentStateDataCopyWith<$Res> {
-  factory $CommercioIdSetDidDocumentStateDataCopyWith(
-          CommercioIdSetDidDocumentStateData value,
-          $Res Function(CommercioIdSetDidDocumentStateData) then) =
-      _$CommercioIdSetDidDocumentStateDataCopyWithImpl<$Res>;
+abstract class $CommercioIdSetDidDocumentsStateDataCopyWith<$Res> {
+  factory $CommercioIdSetDidDocumentsStateDataCopyWith(
+          CommercioIdSetDidDocumentsStateData value,
+          $Res Function(CommercioIdSetDidDocumentsStateData) then) =
+      _$CommercioIdSetDidDocumentsStateDataCopyWithImpl<$Res>;
   $Res call({TransactionResult result});
 }
 
-class _$CommercioIdSetDidDocumentStateDataCopyWithImpl<$Res>
-    extends _$CommercioIdSetDidDocumentStateCopyWithImpl<$Res>
-    implements $CommercioIdSetDidDocumentStateDataCopyWith<$Res> {
-  _$CommercioIdSetDidDocumentStateDataCopyWithImpl(
-      CommercioIdSetDidDocumentStateData _value,
-      $Res Function(CommercioIdSetDidDocumentStateData) _then)
-      : super(_value, (v) => _then(v as CommercioIdSetDidDocumentStateData));
+class _$CommercioIdSetDidDocumentsStateDataCopyWithImpl<$Res>
+    extends _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioIdSetDidDocumentsStateDataCopyWith<$Res> {
+  _$CommercioIdSetDidDocumentsStateDataCopyWithImpl(
+      CommercioIdSetDidDocumentsStateData _value,
+      $Res Function(CommercioIdSetDidDocumentsStateData) _then)
+      : super(_value, (v) => _then(v as CommercioIdSetDidDocumentsStateData));
 
   @override
-  CommercioIdSetDidDocumentStateData get _value =>
-      super._value as CommercioIdSetDidDocumentStateData;
+  CommercioIdSetDidDocumentsStateData get _value =>
+      super._value as CommercioIdSetDidDocumentsStateData;
 
   @override
   $Res call({
     Object result = freezed,
   }) {
-    return _then(CommercioIdSetDidDocumentStateData(
+    return _then(CommercioIdSetDidDocumentsStateData(
       result: result == freezed ? _value.result : result as TransactionResult,
     ));
   }
 }
 
-class _$CommercioIdSetDidDocumentStateData
-    implements CommercioIdSetDidDocumentStateData {
-  const _$CommercioIdSetDidDocumentStateData({@required this.result})
+class _$CommercioIdSetDidDocumentsStateData
+    implements CommercioIdSetDidDocumentsStateData {
+  const _$CommercioIdSetDidDocumentsStateData({@required this.result})
       : assert(result != null);
 
   @override
@@ -2343,13 +2343,13 @@ class _$CommercioIdSetDidDocumentStateData
 
   @override
   String toString() {
-    return 'CommercioIdSetDidDocumentState(result: $result)';
+    return 'CommercioIdSetDidDocumentsState(result: $result)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioIdSetDidDocumentStateData &&
+        (other is CommercioIdSetDidDocumentsStateData &&
             (identical(other.result, result) ||
                 const DeepCollectionEquality().equals(other.result, result)));
   }
@@ -2359,10 +2359,10 @@ class _$CommercioIdSetDidDocumentStateData
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
   @override
-  $CommercioIdSetDidDocumentStateDataCopyWith<
-          CommercioIdSetDidDocumentStateData>
-      get copyWith => _$CommercioIdSetDidDocumentStateDataCopyWithImpl<
-          CommercioIdSetDidDocumentStateData>(this, _$identity);
+  $CommercioIdSetDidDocumentsStateDataCopyWith<
+          CommercioIdSetDidDocumentsStateData>
+      get copyWith => _$CommercioIdSetDidDocumentsStateDataCopyWithImpl<
+          CommercioIdSetDidDocumentsStateData>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2398,10 +2398,10 @@ class _$CommercioIdSetDidDocumentStateData
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    @required Result error(CommercioIdSetDidDocumentsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -2413,10 +2413,10 @@ class _$CommercioIdSetDidDocumentStateData
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    Result initial(CommercioIdSetDidDocumentStateInitial value),
-    Result loading(CommercioIdSetDidDocumentStateLoading value),
-    Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    Result error(CommercioIdSetDidDocumentsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2427,50 +2427,51 @@ class _$CommercioIdSetDidDocumentStateData
   }
 }
 
-abstract class CommercioIdSetDidDocumentStateData
-    implements CommercioIdSetDidDocumentState {
-  const factory CommercioIdSetDidDocumentStateData(
+abstract class CommercioIdSetDidDocumentsStateData
+    implements CommercioIdSetDidDocumentsState {
+  const factory CommercioIdSetDidDocumentsStateData(
           {@required TransactionResult result}) =
-      _$CommercioIdSetDidDocumentStateData;
+      _$CommercioIdSetDidDocumentsStateData;
 
   TransactionResult get result;
-  $CommercioIdSetDidDocumentStateDataCopyWith<
-      CommercioIdSetDidDocumentStateData> get copyWith;
+  $CommercioIdSetDidDocumentsStateDataCopyWith<
+      CommercioIdSetDidDocumentsStateData> get copyWith;
 }
 
-abstract class $CommercioIdSetDidDocumentStateInitialCopyWith<$Res> {
-  factory $CommercioIdSetDidDocumentStateInitialCopyWith(
-          CommercioIdSetDidDocumentStateInitial value,
-          $Res Function(CommercioIdSetDidDocumentStateInitial) then) =
-      _$CommercioIdSetDidDocumentStateInitialCopyWithImpl<$Res>;
+abstract class $CommercioIdSetDidDocumentsStateInitialCopyWith<$Res> {
+  factory $CommercioIdSetDidDocumentsStateInitialCopyWith(
+          CommercioIdSetDidDocumentsStateInitial value,
+          $Res Function(CommercioIdSetDidDocumentsStateInitial) then) =
+      _$CommercioIdSetDidDocumentsStateInitialCopyWithImpl<$Res>;
 }
 
-class _$CommercioIdSetDidDocumentStateInitialCopyWithImpl<$Res>
-    extends _$CommercioIdSetDidDocumentStateCopyWithImpl<$Res>
-    implements $CommercioIdSetDidDocumentStateInitialCopyWith<$Res> {
-  _$CommercioIdSetDidDocumentStateInitialCopyWithImpl(
-      CommercioIdSetDidDocumentStateInitial _value,
-      $Res Function(CommercioIdSetDidDocumentStateInitial) _then)
-      : super(_value, (v) => _then(v as CommercioIdSetDidDocumentStateInitial));
+class _$CommercioIdSetDidDocumentsStateInitialCopyWithImpl<$Res>
+    extends _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioIdSetDidDocumentsStateInitialCopyWith<$Res> {
+  _$CommercioIdSetDidDocumentsStateInitialCopyWithImpl(
+      CommercioIdSetDidDocumentsStateInitial _value,
+      $Res Function(CommercioIdSetDidDocumentsStateInitial) _then)
+      : super(
+            _value, (v) => _then(v as CommercioIdSetDidDocumentsStateInitial));
 
   @override
-  CommercioIdSetDidDocumentStateInitial get _value =>
-      super._value as CommercioIdSetDidDocumentStateInitial;
+  CommercioIdSetDidDocumentsStateInitial get _value =>
+      super._value as CommercioIdSetDidDocumentsStateInitial;
 }
 
-class _$CommercioIdSetDidDocumentStateInitial
-    implements CommercioIdSetDidDocumentStateInitial {
-  const _$CommercioIdSetDidDocumentStateInitial();
+class _$CommercioIdSetDidDocumentsStateInitial
+    implements CommercioIdSetDidDocumentsStateInitial {
+  const _$CommercioIdSetDidDocumentsStateInitial();
 
   @override
   String toString() {
-    return 'CommercioIdSetDidDocumentState.initial()';
+    return 'CommercioIdSetDidDocumentsState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioIdSetDidDocumentStateInitial);
+        (other is CommercioIdSetDidDocumentsStateInitial);
   }
 
   @override
@@ -2510,10 +2511,10 @@ class _$CommercioIdSetDidDocumentStateInitial
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    @required Result error(CommercioIdSetDidDocumentsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -2525,10 +2526,10 @@ class _$CommercioIdSetDidDocumentStateInitial
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    Result initial(CommercioIdSetDidDocumentStateInitial value),
-    Result loading(CommercioIdSetDidDocumentStateLoading value),
-    Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    Result error(CommercioIdSetDidDocumentsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2539,45 +2540,46 @@ class _$CommercioIdSetDidDocumentStateInitial
   }
 }
 
-abstract class CommercioIdSetDidDocumentStateInitial
-    implements CommercioIdSetDidDocumentState {
-  const factory CommercioIdSetDidDocumentStateInitial() =
-      _$CommercioIdSetDidDocumentStateInitial;
+abstract class CommercioIdSetDidDocumentsStateInitial
+    implements CommercioIdSetDidDocumentsState {
+  const factory CommercioIdSetDidDocumentsStateInitial() =
+      _$CommercioIdSetDidDocumentsStateInitial;
 }
 
-abstract class $CommercioIdSetDidDocumentStateLoadingCopyWith<$Res> {
-  factory $CommercioIdSetDidDocumentStateLoadingCopyWith(
-          CommercioIdSetDidDocumentStateLoading value,
-          $Res Function(CommercioIdSetDidDocumentStateLoading) then) =
-      _$CommercioIdSetDidDocumentStateLoadingCopyWithImpl<$Res>;
+abstract class $CommercioIdSetDidDocumentsStateLoadingCopyWith<$Res> {
+  factory $CommercioIdSetDidDocumentsStateLoadingCopyWith(
+          CommercioIdSetDidDocumentsStateLoading value,
+          $Res Function(CommercioIdSetDidDocumentsStateLoading) then) =
+      _$CommercioIdSetDidDocumentsStateLoadingCopyWithImpl<$Res>;
 }
 
-class _$CommercioIdSetDidDocumentStateLoadingCopyWithImpl<$Res>
-    extends _$CommercioIdSetDidDocumentStateCopyWithImpl<$Res>
-    implements $CommercioIdSetDidDocumentStateLoadingCopyWith<$Res> {
-  _$CommercioIdSetDidDocumentStateLoadingCopyWithImpl(
-      CommercioIdSetDidDocumentStateLoading _value,
-      $Res Function(CommercioIdSetDidDocumentStateLoading) _then)
-      : super(_value, (v) => _then(v as CommercioIdSetDidDocumentStateLoading));
+class _$CommercioIdSetDidDocumentsStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioIdSetDidDocumentsStateLoadingCopyWith<$Res> {
+  _$CommercioIdSetDidDocumentsStateLoadingCopyWithImpl(
+      CommercioIdSetDidDocumentsStateLoading _value,
+      $Res Function(CommercioIdSetDidDocumentsStateLoading) _then)
+      : super(
+            _value, (v) => _then(v as CommercioIdSetDidDocumentsStateLoading));
 
   @override
-  CommercioIdSetDidDocumentStateLoading get _value =>
-      super._value as CommercioIdSetDidDocumentStateLoading;
+  CommercioIdSetDidDocumentsStateLoading get _value =>
+      super._value as CommercioIdSetDidDocumentsStateLoading;
 }
 
-class _$CommercioIdSetDidDocumentStateLoading
-    implements CommercioIdSetDidDocumentStateLoading {
-  const _$CommercioIdSetDidDocumentStateLoading();
+class _$CommercioIdSetDidDocumentsStateLoading
+    implements CommercioIdSetDidDocumentsStateLoading {
+  const _$CommercioIdSetDidDocumentsStateLoading();
 
   @override
   String toString() {
-    return 'CommercioIdSetDidDocumentState.loading()';
+    return 'CommercioIdSetDidDocumentsState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioIdSetDidDocumentStateLoading);
+        (other is CommercioIdSetDidDocumentsStateLoading);
   }
 
   @override
@@ -2617,10 +2619,10 @@ class _$CommercioIdSetDidDocumentStateLoading
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    @required Result error(CommercioIdSetDidDocumentsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -2632,10 +2634,10 @@ class _$CommercioIdSetDidDocumentStateLoading
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    Result initial(CommercioIdSetDidDocumentStateInitial value),
-    Result loading(CommercioIdSetDidDocumentStateLoading value),
-    Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    Result error(CommercioIdSetDidDocumentsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2646,58 +2648,58 @@ class _$CommercioIdSetDidDocumentStateLoading
   }
 }
 
-abstract class CommercioIdSetDidDocumentStateLoading
-    implements CommercioIdSetDidDocumentState {
-  const factory CommercioIdSetDidDocumentStateLoading() =
-      _$CommercioIdSetDidDocumentStateLoading;
+abstract class CommercioIdSetDidDocumentsStateLoading
+    implements CommercioIdSetDidDocumentsState {
+  const factory CommercioIdSetDidDocumentsStateLoading() =
+      _$CommercioIdSetDidDocumentsStateLoading;
 }
 
-abstract class $CommercioIdSetDidDocumentStateErrorCopyWith<$Res> {
-  factory $CommercioIdSetDidDocumentStateErrorCopyWith(
-          CommercioIdSetDidDocumentStateError value,
-          $Res Function(CommercioIdSetDidDocumentStateError) then) =
-      _$CommercioIdSetDidDocumentStateErrorCopyWithImpl<$Res>;
+abstract class $CommercioIdSetDidDocumentsStateErrorCopyWith<$Res> {
+  factory $CommercioIdSetDidDocumentsStateErrorCopyWith(
+          CommercioIdSetDidDocumentsStateError value,
+          $Res Function(CommercioIdSetDidDocumentsStateError) then) =
+      _$CommercioIdSetDidDocumentsStateErrorCopyWithImpl<$Res>;
   $Res call({String error});
 }
 
-class _$CommercioIdSetDidDocumentStateErrorCopyWithImpl<$Res>
-    extends _$CommercioIdSetDidDocumentStateCopyWithImpl<$Res>
-    implements $CommercioIdSetDidDocumentStateErrorCopyWith<$Res> {
-  _$CommercioIdSetDidDocumentStateErrorCopyWithImpl(
-      CommercioIdSetDidDocumentStateError _value,
-      $Res Function(CommercioIdSetDidDocumentStateError) _then)
-      : super(_value, (v) => _then(v as CommercioIdSetDidDocumentStateError));
+class _$CommercioIdSetDidDocumentsStateErrorCopyWithImpl<$Res>
+    extends _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioIdSetDidDocumentsStateErrorCopyWith<$Res> {
+  _$CommercioIdSetDidDocumentsStateErrorCopyWithImpl(
+      CommercioIdSetDidDocumentsStateError _value,
+      $Res Function(CommercioIdSetDidDocumentsStateError) _then)
+      : super(_value, (v) => _then(v as CommercioIdSetDidDocumentsStateError));
 
   @override
-  CommercioIdSetDidDocumentStateError get _value =>
-      super._value as CommercioIdSetDidDocumentStateError;
+  CommercioIdSetDidDocumentsStateError get _value =>
+      super._value as CommercioIdSetDidDocumentsStateError;
 
   @override
   $Res call({
     Object error = freezed,
   }) {
-    return _then(CommercioIdSetDidDocumentStateError(
+    return _then(CommercioIdSetDidDocumentsStateError(
       error == freezed ? _value.error : error as String,
     ));
   }
 }
 
-class _$CommercioIdSetDidDocumentStateError
-    implements CommercioIdSetDidDocumentStateError {
-  const _$CommercioIdSetDidDocumentStateError([this.error]);
+class _$CommercioIdSetDidDocumentsStateError
+    implements CommercioIdSetDidDocumentsStateError {
+  const _$CommercioIdSetDidDocumentsStateError([this.error]);
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'CommercioIdSetDidDocumentState.error(error: $error)';
+    return 'CommercioIdSetDidDocumentsState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioIdSetDidDocumentStateError &&
+        (other is CommercioIdSetDidDocumentsStateError &&
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)));
   }
@@ -2707,10 +2709,10 @@ class _$CommercioIdSetDidDocumentStateError
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $CommercioIdSetDidDocumentStateErrorCopyWith<
-          CommercioIdSetDidDocumentStateError>
-      get copyWith => _$CommercioIdSetDidDocumentStateErrorCopyWithImpl<
-          CommercioIdSetDidDocumentStateError>(this, _$identity);
+  $CommercioIdSetDidDocumentsStateErrorCopyWith<
+          CommercioIdSetDidDocumentsStateError>
+      get copyWith => _$CommercioIdSetDidDocumentsStateErrorCopyWithImpl<
+          CommercioIdSetDidDocumentsStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2746,10 +2748,10 @@ class _$CommercioIdSetDidDocumentStateError
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    @required Result error(CommercioIdSetDidDocumentsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -2761,10 +2763,10 @@ class _$CommercioIdSetDidDocumentStateError
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentStateData value), {
-    Result initial(CommercioIdSetDidDocumentStateInitial value),
-    Result loading(CommercioIdSetDidDocumentStateLoading value),
-    Result error(CommercioIdSetDidDocumentStateError value),
+    Result $default(CommercioIdSetDidDocumentsStateData value), {
+    Result initial(CommercioIdSetDidDocumentsStateInitial value),
+    Result loading(CommercioIdSetDidDocumentsStateLoading value),
+    Result error(CommercioIdSetDidDocumentsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2775,14 +2777,14 @@ class _$CommercioIdSetDidDocumentStateError
   }
 }
 
-abstract class CommercioIdSetDidDocumentStateError
-    implements CommercioIdSetDidDocumentState {
-  const factory CommercioIdSetDidDocumentStateError([String error]) =
-      _$CommercioIdSetDidDocumentStateError;
+abstract class CommercioIdSetDidDocumentsStateError
+    implements CommercioIdSetDidDocumentsState {
+  const factory CommercioIdSetDidDocumentsStateError([String error]) =
+      _$CommercioIdSetDidDocumentsStateError;
 
   String get error;
-  $CommercioIdSetDidDocumentStateErrorCopyWith<
-      CommercioIdSetDidDocumentStateError> get copyWith;
+  $CommercioIdSetDidDocumentsStateErrorCopyWith<
+      CommercioIdSetDidDocumentsStateError> get copyWith;
 }
 
 class _$CommercioIdRechargedTumblerStateTearOff {

@@ -373,7 +373,7 @@ void main() {
         mnemonic: correctMnemonic,
       );
 
-      final result = await commercioId.setDidDocument();
+      final result = await commercioId.setDidDocuments();
 
       expect(result.success, isTrue);
     });
@@ -399,8 +399,8 @@ void main() {
         mnemonic: correctMnemonic,
       );
 
-      final result = await commercioId.setDidDocument(
-        didDocument: correctDidDoc,
+      final result = await commercioId.setDidDocuments(
+        didDocuments: [correctDidDoc],
       );
 
       expect(result.success, isTrue);
@@ -415,7 +415,7 @@ void main() {
       await correctCommercioAccount.generateNewWallet();
 
       expectLater(
-        () => commercioId.setDidDocument(),
+        () => commercioId.setDidDocuments(),
         throwsA(isA<NoKeysFoundException>()),
       );
     });
@@ -429,7 +429,7 @@ void main() {
       );
 
       expectLater(
-        () => commercioId.setDidDocument(),
+        () => commercioId.setDidDocuments(),
         throwsA(isA<WalletNotFoundException>()),
       );
     });

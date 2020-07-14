@@ -230,11 +230,11 @@ class DeriveDidDocumentFlatButton extends CommercioFlatButton<
 }
 
 class SetDidDocumentFlatButton extends CommercioFlatButton<
-    CommercioIdSetDidDocumentBloc,
-    CommercioIdSetDidDocumentEvent,
-    CommercioIdSetDidDocumentState,
-    CommercioIdSetDidDocumentStateLoading,
-    CommercioIdSetDidDocumentStateError> {
+    CommercioIdSetDidDocumentsBloc,
+    CommercioIdSetDidDocumentsEvent,
+    CommercioIdSetDidDocumentsState,
+    CommercioIdSetDidDocumentsStateLoading,
+    CommercioIdSetDidDocumentsStateError> {
   SetDidDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -255,7 +255,7 @@ class SetDidDocumentFlatButton extends CommercioFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    @required CommercioIdSetDidDocumentEvent Function() event,
+    @required CommercioIdSetDidDocumentsEvent Function() event,
     Widget Function(BuildContext context) child,
     Widget Function(BuildContext context) loading,
     void Function(BuildContext context, String errorMessage) error,

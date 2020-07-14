@@ -97,33 +97,33 @@ class CommercioIdDeriveDidDocumentBloc extends Bloc<
   }
 }
 
-class CommercioIdSetDidDocumentBloc extends Bloc<CommercioIdSetDidDocumentEvent,
-    CommercioIdSetDidDocumentState> {
+class CommercioIdSetDidDocumentsBloc extends Bloc<
+    CommercioIdSetDidDocumentsEvent, CommercioIdSetDidDocumentsState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdSetDidDocumentBloc({@required this.commercioId})
-      : super(const CommercioIdSetDidDocumentStateInitial());
+  CommercioIdSetDidDocumentsBloc({@required this.commercioId})
+      : super(const CommercioIdSetDidDocumentsStateInitial());
 
   @override
-  Stream<CommercioIdSetDidDocumentState> mapEventToState(
-    CommercioIdSetDidDocumentEvent event,
+  Stream<CommercioIdSetDidDocumentsState> mapEventToState(
+    CommercioIdSetDidDocumentsEvent event,
   ) async* {
     try {
-      yield const CommercioIdSetDidDocumentStateLoading();
+      yield const CommercioIdSetDidDocumentsStateLoading();
 
       TransactionResult result;
 
-      if (event.didDocument != null) {
-        result = await commercioId.setDidDocument(
-          didDocument: event.didDocument,
+      if (event.didDocuments != null) {
+        result = await commercioId.setDidDocuments(
+          didDocuments: event.didDocuments,
         );
       } else {
-        result = await commercioId.setDidDocument();
+        result = await commercioId.setDidDocuments();
       }
 
-      yield CommercioIdSetDidDocumentStateData(result: result);
+      yield CommercioIdSetDidDocumentsStateData(result: result);
     } catch (e) {
-      yield CommercioIdSetDidDocumentStateError(e.toString());
+      yield CommercioIdSetDidDocumentsStateError(e.toString());
     }
   }
 }

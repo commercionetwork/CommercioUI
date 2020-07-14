@@ -213,13 +213,13 @@ class DeriveDidDocumentText extends CommercioText<
 }
 
 class SetDidDocumentText extends CommercioText<
-    CommercioIdSetDidDocumentBloc,
-    CommercioIdSetDidDocumentEvent,
-    CommercioIdSetDidDocumentState,
-    CommercioIdSetDidDocumentStateInitial,
-    CommercioIdSetDidDocumentStateData,
-    CommercioIdSetDidDocumentStateLoading,
-    CommercioIdSetDidDocumentStateError> {
+    CommercioIdSetDidDocumentsBloc,
+    CommercioIdSetDidDocumentsEvent,
+    CommercioIdSetDidDocumentsState,
+    CommercioIdSetDidDocumentsStateInitial,
+    CommercioIdSetDidDocumentsStateData,
+    CommercioIdSetDidDocumentsStateLoading,
+    CommercioIdSetDidDocumentsStateError> {
   const SetDidDocumentText({
     Key key,
     TextStyle style,
@@ -238,7 +238,7 @@ class SetDidDocumentText extends CommercioText<
     @required String Function(BuildContext context) loading,
     @required
         String Function(
-                BuildContext context, CommercioIdSetDidDocumentStateData state)
+                BuildContext context, CommercioIdSetDidDocumentsStateData state)
             text,
     String Function(BuildContext context, String errorMessage) error,
   }) : super(

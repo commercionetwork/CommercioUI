@@ -71,20 +71,20 @@ abstract class CommercioIdDerivedDidDocumentState
 }
 
 @freezed
-abstract class CommercioIdSetDidDocumentState
-    with _$CommercioIdSetDidDocumentState {
-  const factory CommercioIdSetDidDocumentState({
+abstract class CommercioIdSetDidDocumentsState
+    with _$CommercioIdSetDidDocumentsState {
+  const factory CommercioIdSetDidDocumentsState({
     @required TransactionResult result,
-  }) = CommercioIdSetDidDocumentStateData;
+  }) = CommercioIdSetDidDocumentsStateData;
 
-  const factory CommercioIdSetDidDocumentState.initial() =
-      CommercioIdSetDidDocumentStateInitial;
+  const factory CommercioIdSetDidDocumentsState.initial() =
+      CommercioIdSetDidDocumentsStateInitial;
 
-  const factory CommercioIdSetDidDocumentState.loading() =
-      CommercioIdSetDidDocumentStateLoading;
+  const factory CommercioIdSetDidDocumentsState.loading() =
+      CommercioIdSetDidDocumentsStateLoading;
 
-  const factory CommercioIdSetDidDocumentState.error([String error]) =
-      CommercioIdSetDidDocumentStateError;
+  const factory CommercioIdSetDidDocumentsState.error([String error]) =
+      CommercioIdSetDidDocumentsStateError;
 }
 
 @freezed

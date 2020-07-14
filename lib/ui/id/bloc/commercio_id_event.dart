@@ -34,13 +34,14 @@ class CommercioIdDeriveDidDocumentEvent extends CommercioIdEvent {
   List<Object> get props => [];
 }
 
-class CommercioIdSetDidDocumentEvent extends CommercioIdEvent {
-  final DidDocument didDocument;
+class CommercioIdSetDidDocumentsEvent extends CommercioIdEvent {
+  final List<DidDocument> didDocuments;
+  final StdFee fee;
 
-  const CommercioIdSetDidDocumentEvent({this.didDocument});
+  const CommercioIdSetDidDocumentsEvent({this.didDocuments, this.fee});
 
   @override
-  List<Object> get props => [didDocument];
+  List<Object> get props => [didDocuments, fee];
 }
 
 class CommercioIdRechargeTumblerEvent extends CommercioIdEvent {

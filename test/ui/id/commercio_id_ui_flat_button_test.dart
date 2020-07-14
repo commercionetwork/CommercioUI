@@ -263,26 +263,27 @@ void main() {
   testWidgets('Submit SetDidDocument Event', (
     WidgetTester tester,
   ) async {
-    when(commercioId.setDidDocument()).thenAnswer((_) async => correctTxResult);
+    when(commercioId.setDidDocuments())
+        .thenAnswer((_) async => correctTxResult);
 
-    final bloc = CommercioIdSetDidDocumentBloc(
+    final bloc = CommercioIdSetDidDocumentsBloc(
       commercioId: commercioId,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioIdSetDidDocumentStateLoading>(),
-        isA<CommercioIdSetDidDocumentStateData>(),
-        isA<CommercioIdSetDidDocumentStateLoading>(),
-        isA<CommercioIdSetDidDocumentStateError>(),
+        isA<CommercioIdSetDidDocumentsStateLoading>(),
+        isA<CommercioIdSetDidDocumentsStateData>(),
+        isA<CommercioIdSetDidDocumentsStateLoading>(),
+        isA<CommercioIdSetDidDocumentsStateError>(),
       ]),
     );
 
     final commFlatButton = SetDidDocumentFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioIdSetDidDocumentEvent(),
+      event: () => CommercioIdSetDidDocumentsEvent(),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text(err),
@@ -309,7 +310,7 @@ void main() {
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioId.setDidDocument()).thenThrow(Exception());
+    when(commercioId.setDidDocuments()).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
     await tester.pumpAndSettle();
@@ -320,27 +321,27 @@ void main() {
   testWidgets('Submit SetDidDocument with didDocument', (
     WidgetTester tester,
   ) async {
-    when(commercioId.setDidDocument(
-      didDocument: correctDidDoc,
+    when(commercioId.setDidDocuments(
+      didDocuments: [correctDidDoc],
     )).thenAnswer((_) async => correctTxResult);
 
-    final bloc = CommercioIdSetDidDocumentBloc(
+    final bloc = CommercioIdSetDidDocumentsBloc(
       commercioId: commercioId,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioIdSetDidDocumentStateLoading>(),
-        isA<CommercioIdSetDidDocumentStateData>(),
+        isA<CommercioIdSetDidDocumentsStateLoading>(),
+        isA<CommercioIdSetDidDocumentsStateData>(),
       ]),
     );
 
     final commFlatButton = SetDidDocumentFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioIdSetDidDocumentEvent(
-        didDocument: correctDidDoc,
+      event: () => CommercioIdSetDidDocumentsEvent(
+        didDocuments: [correctDidDoc],
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(

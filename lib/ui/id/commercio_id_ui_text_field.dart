@@ -454,13 +454,13 @@ class DeriveDidDocumentTextField extends CommercioTextField<
 }
 
 class SetDidDocumentTextField extends CommercioTextField<
-    CommercioIdSetDidDocumentBloc,
-    CommercioIdSetDidDocumentEvent,
-    CommercioIdSetDidDocumentState,
-    CommercioIdSetDidDocumentStateInitial,
-    CommercioIdSetDidDocumentStateData,
-    CommercioIdSetDidDocumentStateLoading,
-    CommercioIdSetDidDocumentStateError> {
+    CommercioIdSetDidDocumentsBloc,
+    CommercioIdSetDidDocumentsEvent,
+    CommercioIdSetDidDocumentsState,
+    CommercioIdSetDidDocumentsStateInitial,
+    CommercioIdSetDidDocumentsStateData,
+    CommercioIdSetDidDocumentsStateLoading,
+    CommercioIdSetDidDocumentsStateError> {
   SetDidDocumentTextField({
     Key key,
     TextEditingController controller,
@@ -509,7 +509,7 @@ class SetDidDocumentTextField extends CommercioTextField<
     @required String Function(BuildContext context) loading,
     @required
         String Function(
-                BuildContext context, CommercioIdSetDidDocumentStateData state)
+                BuildContext context, CommercioIdSetDidDocumentsStateData state)
             text,
     TextStyle loadingStyle,
     String Function(BuildContext context, String errorMessage) error,

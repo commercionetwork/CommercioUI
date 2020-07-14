@@ -28,6 +28,10 @@ void main() {
   });
 
   test('CommercioIdSetDidDocumentEvent', () {
+    const fee = StdFee(
+      amount: [StdCoin(amount: 'amount', denom: 'denom')],
+      gas: 'gas',
+    );
     final didDocument = DidDocument(
       context: 'context',
       id: 'id',
@@ -41,11 +45,15 @@ void main() {
         signatureValue: 'signatureValue',
       ),
     );
-    final event = CommercioIdSetDidDocumentEvent(
-      didDocument: didDocument,
+    final event = CommercioIdSetDidDocumentsEvent(
+      didDocuments: [didDocument],
+      fee: fee,
     );
 
-    expect(event.props, [didDocument]);
+    expect(event.props, [
+      [didDocument],
+      fee
+    ]);
   });
 
   test('CommercioIdRechargeTumblerEvent', () {

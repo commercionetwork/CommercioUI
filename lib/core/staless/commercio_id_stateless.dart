@@ -71,16 +71,16 @@ abstract class StatelessCommercioId {
     );
   }
 
-  /// Associate [didDocument] to your [wallet] identity. An optional [fee]
-  /// can be specified.
+  /// Associate the list of [didDocument] to the [wallet] identity.
+  /// An optional [fee] can be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> setDidDocument({
-    @required DidDocument didDocument,
+  static Future<TransactionResult> setDidDocuments({
+    @required List<DidDocument> didDocuments,
     @required Wallet wallet,
     StdFee fee,
   }) async {
-    return IdHelper.setDidDocument(didDocument, wallet, fee: fee);
+    return IdHelper.setDidDocumentsList(didDocuments, wallet, fee: fee);
   }
 
   /// Sent the [rechargeAmount] to the centralized entity Tk (tumbler) from
