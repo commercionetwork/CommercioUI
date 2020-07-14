@@ -48,9 +48,16 @@ void main() {
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsSharedDocumentStateLoading>(),
+        isA<CommercioDocsSharedDocumentStateData>(),
+        isA<CommercioDocsSharedDocumentStateLoading>(),
+        isA<CommercioDocsSharedDocumentStateError>(),
+      ]),
+    );
 
     final commFlatButton = ShareDocumentFlatButton(
       loading: (_) => const Text(loadingText),
@@ -84,11 +91,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSharedDocumentStateInitial',
-      'CommercioDocsSharedDocumentStateLoading',
-      'CommercioDocsSharedDocumentStateData',
-    ]);
 
     when(commercioDocs.shareDocument(
       metadata: correctMetadata,
@@ -104,13 +106,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSharedDocumentStateInitial',
-      'CommercioDocsSharedDocumentStateLoading',
-      'CommercioDocsSharedDocumentStateData',
-      'CommercioDocsSharedDocumentStateLoading',
-      'CommercioDocsSharedDocumentStateError',
-    ]);
   });
 
   testWidgets('Submit ShareEncryptedDocument Event', (
@@ -132,9 +127,16 @@ void main() {
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsSharedEncryptedDocumentStateLoading>(),
+        isA<CommercioDocsSharedEncryptedDocumentStateData>(),
+        isA<CommercioDocsSharedEncryptedDocumentStateLoading>(),
+        isA<CommercioDocsSharedEncryptedDocumentStateError>(),
+      ]),
+    );
 
     final commFlatButton = ShareEncryptedDocumentFlatButton(
       loading: (_) => const Text(loadingText),
@@ -169,11 +171,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSharedEncryptedDocumentStateInitial',
-      'CommercioDocsSharedEncryptedDocumentStateLoading',
-      'CommercioDocsSharedEncryptedDocumentStateData',
-    ]);
 
     when(commercioDocs.shareEncryptedDocument(
       metadata: correctMetadata,
@@ -191,13 +188,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSharedEncryptedDocumentStateInitial',
-      'CommercioDocsSharedEncryptedDocumentStateLoading',
-      'CommercioDocsSharedEncryptedDocumentStateData',
-      'CommercioDocsSharedEncryptedDocumentStateLoading',
-      'CommercioDocsSharedEncryptedDocumentStateError',
-    ]);
   });
 
   testWidgets('Submit SendReceipt Event', (
@@ -213,9 +203,16 @@ void main() {
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsSentReceiptStateLoading>(),
+        isA<CommercioDocsSentReceiptStateData>(),
+        isA<CommercioDocsSentReceiptStateLoading>(),
+        isA<CommercioDocsSentReceiptStateError>(),
+      ]),
+    );
 
     final commFlatButton = SendReceiptFlatButton(
       loading: (_) => const Text(loadingText),
@@ -250,11 +247,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSentReceiptStateInitial',
-      'CommercioDocsSentReceiptStateLoading',
-      'CommercioDocsSentReceiptStateData',
-    ]);
 
     when(commercioDocs.sendReceipt(
       docId: correctDocId,
@@ -266,13 +258,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSentReceiptStateInitial',
-      'CommercioDocsSentReceiptStateLoading',
-      'CommercioDocsSentReceiptStateData',
-      'CommercioDocsSentReceiptStateLoading',
-      'CommercioDocsSentReceiptStateError',
-    ]);
   });
 
   testWidgets('Submit SentDocuments Event', (
@@ -285,9 +270,16 @@ void main() {
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsSentDocumentsStateLoading>(),
+        isA<CommercioDocsSentDocumentsStateData>(),
+        isA<CommercioDocsSentDocumentsStateLoading>(),
+        isA<CommercioDocsSentDocumentsStateError>(),
+      ]),
+    );
 
     final commFlatButton = SentDocumentsFlatButton(
       loading: (_) => const Text(loadingText),
@@ -318,11 +310,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSentDocumentsStateInitial',
-      'CommercioDocsSentDocumentsStateLoading',
-      'CommercioDocsSentDocumentsStateData',
-    ]);
 
     when(commercioDocs.sentDocuments(walletAddress: '')).thenThrow(Exception());
 
@@ -330,13 +317,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSentDocumentsStateInitial',
-      'CommercioDocsSentDocumentsStateLoading',
-      'CommercioDocsSentDocumentsStateData',
-      'CommercioDocsSentDocumentsStateLoading',
-      'CommercioDocsSentDocumentsStateError',
-    ]);
   });
 
   testWidgets('Submit ReceivedDocuments Event', (
@@ -349,9 +329,16 @@ void main() {
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsReceivedDocumentsStateLoading>(),
+        isA<CommercioDocsReceivedDocumentsStateData>(),
+        isA<CommercioDocsReceivedDocumentsStateLoading>(),
+        isA<CommercioDocsReceivedDocumentsStateError>(),
+      ]),
+    );
 
     final commFlatButton = ReceivedDocumentsFlatButton(
       loading: (_) => const Text(loadingText),
@@ -382,11 +369,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsReceivedDocumentsStateInitial',
-      'CommercioDocsReceivedDocumentsStateLoading',
-      'CommercioDocsReceivedDocumentsStateData',
-    ]);
 
     when(commercioDocs.receivedDocuments(walletAddress: ''))
         .thenThrow(Exception());
@@ -395,13 +377,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsReceivedDocumentsStateInitial',
-      'CommercioDocsReceivedDocumentsStateLoading',
-      'CommercioDocsReceivedDocumentsStateData',
-      'CommercioDocsReceivedDocumentsStateLoading',
-      'CommercioDocsReceivedDocumentsStateError',
-    ]);
   });
 
   testWidgets('Submit SentReceipts Event', (
@@ -414,9 +389,16 @@ void main() {
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsSentReceiptsStateLoading>(),
+        isA<CommercioDocsSentReceiptsStateData>(),
+        isA<CommercioDocsSentReceiptsStateLoading>(),
+        isA<CommercioDocsSentReceiptsStateError>(),
+      ]),
+    );
 
     final commFlatButton = SentReceiptsFlatButton(
       loading: (_) => const Text(loadingText),
@@ -447,11 +429,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSentReceiptsStateInitial',
-      'CommercioDocsSentReceiptsStateLoading',
-      'CommercioDocsSentReceiptsStateData',
-    ]);
 
     when(commercioDocs.sentReceipts(walletAddress: '')).thenThrow(Exception());
 
@@ -459,13 +436,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsSentReceiptsStateInitial',
-      'CommercioDocsSentReceiptsStateLoading',
-      'CommercioDocsSentReceiptsStateData',
-      'CommercioDocsSentReceiptsStateLoading',
-      'CommercioDocsSentReceiptsStateError',
-    ]);
   });
 
   testWidgets('Submit ReceivedReceipts Event', (
@@ -478,9 +448,16 @@ void main() {
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsReceivedReceiptsStateLoading>(),
+        isA<CommercioDocsReceivedReceiptsStateData>(),
+        isA<CommercioDocsReceivedReceiptsStateLoading>(),
+        isA<CommercioDocsReceivedReceiptsStateError>(),
+      ]),
+    );
 
     final commFlatButton = ReceivedReceiptsFlatButton(
       loading: (_) => const Text(loadingText),
@@ -511,11 +488,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsReceivedReceiptsStateInitial',
-      'CommercioDocsReceivedReceiptsStateLoading',
-      'CommercioDocsReceivedReceiptsStateData',
-    ]);
 
     when(commercioDocs.receivedReceipts(walletAddress: ''))
         .thenThrow(Exception());
@@ -524,12 +496,5 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioDocsReceivedReceiptsStateInitial',
-      'CommercioDocsReceivedReceiptsStateLoading',
-      'CommercioDocsReceivedReceiptsStateData',
-      'CommercioDocsReceivedReceiptsStateLoading',
-      'CommercioDocsReceivedReceiptsStateError',
-    ]);
   });
 }

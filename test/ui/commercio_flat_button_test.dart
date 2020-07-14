@@ -56,10 +56,8 @@ void main() {
 
   testWidgets('Submit loading event', (WidgetTester tester) async {
     final blocMock = BlocMock();
-    final List<Type> states = [];
-    blocMock.listen((state) {
-      states.add(state.runtimeType);
-    });
+
+    expectLater(blocMock, emitsInOrder([isA<LoadingStateMock>()]));
 
     final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
@@ -88,16 +86,12 @@ void main() {
 
     await tester.tap(buttonFinder);
     await tester.pumpAndSettle();
-
-    expect(states, [InitialStateMock, LoadingStateMock]);
   });
 
   testWidgets('Submit data event', (WidgetTester tester) async {
     final blocMock = BlocMock();
-    final List<Type> states = [];
-    blocMock.listen((state) {
-      states.add(state.runtimeType);
-    });
+
+    expectLater(blocMock, emitsInOrder([isA<DataStateMock>()]));
 
     final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
@@ -126,16 +120,12 @@ void main() {
 
     await tester.tap(buttonFinder);
     await tester.pumpAndSettle();
-
-    expect(states, [InitialStateMock, DataStateMock]);
   });
 
   testWidgets('Submit error event', (WidgetTester tester) async {
     final blocMock = BlocMock();
-    final List<Type> states = [];
-    blocMock.listen((state) {
-      states.add(state.runtimeType);
-    });
+
+    expectLater(blocMock, emitsInOrder([isA<ErrorStateMock>()]));
 
     final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
@@ -165,16 +155,12 @@ void main() {
     await tester.tap(buttonFinder);
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('error'));
-
-    expect(states, [InitialStateMock, ErrorStateMock]);
   });
 
   testWidgets('Submit custom error event', (WidgetTester tester) async {
     final blocMock = BlocMock();
-    final List<Type> states = [];
-    blocMock.listen((state) {
-      states.add(state.runtimeType);
-    });
+
+    expectLater(blocMock, emitsInOrder([isA<ErrorStateMock>()]));
 
     final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
@@ -209,7 +195,5 @@ void main() {
     await tester.tap(buttonFinder);
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('error'));
-
-    expect(states, [InitialStateMock, ErrorStateMock]);
   });
 }

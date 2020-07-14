@@ -40,9 +40,16 @@ void main() {
     final bloc = CommercioAccountGenerateWalletBloc(
       commercioAccount: commercioAccount,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioAccountGenerateWalletLoading>(),
+        isA<CommercioAccountGenerateWalletData>(),
+        isA<CommercioAccountGenerateWalletLoading>(),
+        isA<CommercioAccountGenerateWalletError>(),
+      ]),
+    );
 
     final commFlatButton = GenerateWalletFlatButton(
       loading: (_) => const Text(loadingText),
@@ -73,11 +80,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountGenerateWalletInitial',
-      'CommercioAccountGenerateWalletLoading',
-      'CommercioAccountGenerateWalletData',
-    ]);
 
     when(commercioAccount.generateNewWallet()).thenThrow(Exception());
 
@@ -85,13 +87,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountGenerateWalletInitial',
-      'CommercioAccountGenerateWalletLoading',
-      'CommercioAccountGenerateWalletData',
-      'CommercioAccountGenerateWalletLoading',
-      'CommercioAccountGenerateWalletError',
-    ]);
   });
 
   testWidgets('Submit RestoreWallet Event', (
@@ -109,9 +104,16 @@ void main() {
     final bloc = CommercioAccountRestoreWalletBloc(
       commercioAccount: commercioAccount,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioAccountRestoredWalletStateLoading>(),
+        isA<CommercioAccountRestoredWalletStateData>(),
+        isA<CommercioAccountRestoredWalletStateLoading>(),
+        isA<CommercioAccountRestoredWalletStateError>(),
+      ]),
+    );
 
     final commFlatButton = RestoreWalletFlatButton(
       loading: (_) => const Text(loadingText),
@@ -142,11 +144,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountRestoredWalletStateInitial',
-      'CommercioAccountRestoredWalletStateLoading',
-      'CommercioAccountRestoredWalletStateData',
-    ]);
 
     when(commercioAccount.restoreWallet()).thenThrow(Exception());
 
@@ -154,13 +151,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountRestoredWalletStateInitial',
-      'CommercioAccountRestoredWalletStateLoading',
-      'CommercioAccountRestoredWalletStateData',
-      'CommercioAccountRestoredWalletStateLoading',
-      'CommercioAccountRestoredWalletStateError',
-    ]);
   });
 
   testWidgets('Submit RestoreWallet with mnemonic', (
@@ -178,9 +168,14 @@ void main() {
     final bloc = CommercioAccountRestoreWalletBloc(
       commercioAccount: commercioAccount,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioAccountRestoredWalletStateLoading>(),
+        isA<CommercioAccountRestoredWalletStateData>(),
+      ]),
+    );
 
     final commFlatButton = RestoreWalletFlatButton(
       loading: (_) => const Text(loadingText),
@@ -211,11 +206,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountRestoredWalletStateInitial',
-      'CommercioAccountRestoredWalletStateLoading',
-      'CommercioAccountRestoredWalletStateData',
-    ]);
   });
 
   testWidgets('Submit RequestFreeTokens Event', (
@@ -233,9 +223,16 @@ void main() {
     final bloc = CommercioAccountRequestFreeTokensBloc(
       commercioAccount: commercioAccount,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioAccountFreeTokensStateLoading>(),
+        isA<CommercioAccountFreeTokensStateData>(),
+        isA<CommercioAccountFreeTokensStateLoading>(),
+        isA<CommercioAccountFreeTokensStateError>(),
+      ]),
+    );
 
     final commFlatButton = RequestFreeTokensFlatButton(
       loading: (_) => const Text(loadingText),
@@ -266,11 +263,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountFreeTokensStateInitial',
-      'CommercioAccountFreeTokensStateLoading',
-      'CommercioAccountFreeTokensStateData',
-    ]);
 
     when(commercioAccount.requestFreeTokens()).thenThrow(Exception());
 
@@ -278,13 +270,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountFreeTokensStateInitial',
-      'CommercioAccountFreeTokensStateLoading',
-      'CommercioAccountFreeTokensStateData',
-      'CommercioAccountFreeTokensStateLoading',
-      'CommercioAccountFreeTokensStateError',
-    ]);
   });
 
   testWidgets('Submit CheckBalance Event', (
@@ -301,9 +286,16 @@ void main() {
     final bloc = CommercioAccountCheckBalanceBloc(
       commercioAccount: commercioAccount,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioAccountBalanceStateLoading>(),
+        isA<CommercioAccountBalanceStateData>(),
+        isA<CommercioAccountBalanceStateLoading>(),
+        isA<CommercioAccountBalanceStateError>(),
+      ]),
+    );
 
     final commFlatButton = CheckBalanceFlatButton(
       loading: (_) => const Text(loadingText),
@@ -334,11 +326,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountBalanceStateInitial',
-      'CommercioAccountBalanceStateLoading',
-      'CommercioAccountBalanceStateData',
-    ]);
 
     when(commercioAccount.checkAccountBalance()).thenThrow(Exception());
 
@@ -346,13 +333,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountBalanceStateInitial',
-      'CommercioAccountBalanceStateLoading',
-      'CommercioAccountBalanceStateData',
-      'CommercioAccountBalanceStateLoading',
-      'CommercioAccountBalanceStateError',
-    ]);
   });
 
   testWidgets('Submit SendTokens Event', (
@@ -377,9 +357,16 @@ void main() {
     final bloc = CommercioAccountSendTokensBloc(
       commercioAccount: commercioAccount,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioAccountSentTokensStateLoading>(),
+        isA<CommercioAccountSentTokensStateData>(),
+        isA<CommercioAccountSentTokensStateLoading>(),
+        isA<CommercioAccountSentTokensStateError>(),
+      ]),
+    );
 
     final commFlatButton = SendTokensFlatButton(
       loading: (_) => const Text(loadingText),
@@ -413,11 +400,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountSentTokensStateInitial',
-      'CommercioAccountSentTokensStateLoading',
-      'CommercioAccountSentTokensStateData',
-    ]);
 
     when(commercioAccount.sendTokens(
       recipientAddress: '',
@@ -430,13 +412,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountSentTokensStateInitial',
-      'CommercioAccountSentTokensStateLoading',
-      'CommercioAccountSentTokensStateData',
-      'CommercioAccountSentTokensStateLoading',
-      'CommercioAccountSentTokensStateError',
-    ]);
   });
 
   testWidgets('Submit GenerateQr Event', (
@@ -448,9 +423,16 @@ void main() {
     final bloc = CommercioAccountGenerateQrBloc(
       commercioAccount: commercioAccount,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioAccountQrStateLoading>(),
+        isA<CommercioAccountQrStateData>(),
+        isA<CommercioAccountQrStateLoading>(),
+        isA<CommercioAccountQrStateError>(),
+      ]),
+    );
 
     final commFlatButton = GenerateQrFlatButton(
       loading: (_) => const Text(loadingText),
@@ -481,11 +463,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountQrStateInitial',
-      'CommercioAccountQrStateLoading',
-      'CommercioAccountQrStateData',
-    ]);
 
     when(commercioAccount.walletAddress).thenThrow(Exception());
 
@@ -493,13 +470,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountQrStateInitial',
-      'CommercioAccountQrStateLoading',
-      'CommercioAccountQrStateData',
-      'CommercioAccountQrStateLoading',
-      'CommercioAccountQrStateError',
-    ]);
   });
 
   testWidgets('Submit GeneratePairwiseWallet Event', (
@@ -512,9 +482,16 @@ void main() {
     final bloc = CommercioAccountGeneratePairwiseWalletBloc(
       commercioAccount: commercioAccount,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioAccountPaiwiseWalletStateLoading>(),
+        isA<CommercioAccountPaiwiseWalletStateData>(),
+        isA<CommercioAccountPaiwiseWalletStateLoading>(),
+        isA<CommercioAccountPaiwiseWalletStateError>(),
+      ]),
+    );
 
     final commFlatButton = GeneratePairwiseWalletFlatButton(
       loading: (_) => const Text(loadingText),
@@ -547,11 +524,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountPaiwiseWalletStateInitial',
-      'CommercioAccountPaiwiseWalletStateLoading',
-      'CommercioAccountPaiwiseWalletStateData',
-    ]);
 
     when(commercioAccount.generatePairwiseWallet(
       lastDerivationPathSegment: '1',
@@ -561,12 +533,5 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioAccountPaiwiseWalletStateInitial',
-      'CommercioAccountPaiwiseWalletStateLoading',
-      'CommercioAccountPaiwiseWalletStateData',
-      'CommercioAccountPaiwiseWalletStateLoading',
-      'CommercioAccountPaiwiseWalletStateError',
-    ]);
   });
 }

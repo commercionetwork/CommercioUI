@@ -38,9 +38,16 @@ void main() {
     final bloc = CommercioIdGenerateKeysBloc(
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdGeneratedKeysStateLoading>(),
+        isA<CommercioIdGeneratedKeysStateData>(),
+        isA<CommercioIdGeneratedKeysStateLoading>(),
+        isA<CommercioIdGeneratedKeysStateError>(),
+      ]),
+    );
 
     final commText = GenerateKeysText(
       loading: (_) => loadingText,
@@ -66,11 +73,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdGeneratedKeysStateInitial',
-      'CommercioIdGeneratedKeysStateLoading',
-      'CommercioIdGeneratedKeysStateData',
-    ]);
 
     when(commercioId.generateKeys()).thenThrow(Exception());
 
@@ -78,13 +80,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
-    expect(states, [
-      'CommercioIdGeneratedKeysStateInitial',
-      'CommercioIdGeneratedKeysStateLoading',
-      'CommercioIdGeneratedKeysStateData',
-      'CommercioIdGeneratedKeysStateLoading',
-      'CommercioIdGeneratedKeysStateError',
-    ]);
   });
 
   testWidgets('Submit RestoreKeys Event', (
@@ -96,9 +91,16 @@ void main() {
     final bloc = CommercioIdRestoreKeysBloc(
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdRestoredKeysStateLoading>(),
+        isA<CommercioIdRestoredKeysStateData>(),
+        isA<CommercioIdRestoredKeysStateLoading>(),
+        isA<CommercioIdRestoredKeysStateError>(),
+      ]),
+    );
 
     final commText = RestoreKeysText(
       loading: (_) => loadingText,
@@ -124,11 +126,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdRestoredKeysStateInitial',
-      'CommercioIdRestoredKeysStateLoading',
-      'CommercioIdRestoredKeysStateData',
-    ]);
 
     when(commercioId.restoreKeys()).thenThrow(Exception());
 
@@ -136,13 +133,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
-    expect(states, [
-      'CommercioIdRestoredKeysStateInitial',
-      'CommercioIdRestoredKeysStateLoading',
-      'CommercioIdRestoredKeysStateData',
-      'CommercioIdRestoredKeysStateLoading',
-      'CommercioIdRestoredKeysStateError',
-    ]);
   });
 
   testWidgets('Submit DeleteKeys Event', (
@@ -153,9 +143,16 @@ void main() {
     final bloc = CommercioIdDeleteKeysBloc(
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdDeletedKeysStateLoading>(),
+        isA<CommercioIdDeletedKeysStateData>(),
+        isA<CommercioIdDeletedKeysStateLoading>(),
+        isA<CommercioIdDeletedKeysStateError>(),
+      ]),
+    );
 
     final commText = DeleteKeysText(
       loading: (_) => loadingText,
@@ -181,11 +178,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdDeletedKeysStateInitial',
-      'CommercioIdDeletedKeysStateLoading',
-      'CommercioIdDeletedKeysStateData',
-    ]);
 
     when(commercioId.deleteKeys()).thenThrow(Exception());
 
@@ -193,13 +185,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
-    expect(states, [
-      'CommercioIdDeletedKeysStateInitial',
-      'CommercioIdDeletedKeysStateLoading',
-      'CommercioIdDeletedKeysStateData',
-      'CommercioIdDeletedKeysStateLoading',
-      'CommercioIdDeletedKeysStateError',
-    ]);
   });
 
   testWidgets('Submit DeriveDidDocument Event', (
@@ -211,9 +196,16 @@ void main() {
     final bloc = CommercioIdDeriveDidDocumentBloc(
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdDerivedDidDocumentStateLoading>(),
+        isA<CommercioIdDerivedDidDocumentStateData>(),
+        isA<CommercioIdDerivedDidDocumentStateLoading>(),
+        isA<CommercioIdDerivedDidDocumentStateError>(),
+      ]),
+    );
 
     final commText = DeriveDidDocumentText(
       loading: (_) => loadingText,
@@ -239,11 +231,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdDerivedDidDocumentStateInitial',
-      'CommercioIdDerivedDidDocumentStateLoading',
-      'CommercioIdDerivedDidDocumentStateData',
-    ]);
 
     when(commercioId.deriveDidDocument()).thenThrow(Exception());
 
@@ -251,13 +238,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
-    expect(states, [
-      'CommercioIdDerivedDidDocumentStateInitial',
-      'CommercioIdDerivedDidDocumentStateLoading',
-      'CommercioIdDerivedDidDocumentStateData',
-      'CommercioIdDerivedDidDocumentStateLoading',
-      'CommercioIdDerivedDidDocumentStateError',
-    ]);
   });
 
   testWidgets('Submit SetDidDocument Event', (
@@ -268,9 +248,16 @@ void main() {
     final bloc = CommercioIdSetDidDocumentBloc(
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdSetDidDocumentStateLoading>(),
+        isA<CommercioIdSetDidDocumentStateData>(),
+        isA<CommercioIdSetDidDocumentStateLoading>(),
+        isA<CommercioIdSetDidDocumentStateError>(),
+      ]),
+    );
 
     final commText = SetDidDocumentText(
       loading: (_) => loadingText,
@@ -296,11 +283,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdSetDidDocumentStateInitial',
-      'CommercioIdSetDidDocumentStateLoading',
-      'CommercioIdSetDidDocumentStateData'
-    ]);
 
     when(commercioId.setDidDocument()).thenThrow(Exception());
 
@@ -308,13 +290,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
-    expect(states, [
-      'CommercioIdSetDidDocumentStateInitial',
-      'CommercioIdSetDidDocumentStateLoading',
-      'CommercioIdSetDidDocumentStateData',
-      'CommercioIdSetDidDocumentStateLoading',
-      'CommercioIdSetDidDocumentStateError',
-    ]);
   });
 
   testWidgets('Submit RechargeTumbler Event', (
@@ -328,9 +303,16 @@ void main() {
     final bloc = CommercioIdRechargeTumblerBloc(
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdRechargedTumblerStateLoading>(),
+        isA<CommercioIdRechargedTumblerStateData>(),
+        isA<CommercioIdRechargedTumblerStateLoading>(),
+        isA<CommercioIdRechargedTumblerStateError>(),
+      ]),
+    );
 
     final commText = RechargeTumblerText(
       loading: (_) => loadingText,
@@ -358,11 +340,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdRechargedTumblerStateInitial',
-      'CommercioIdRechargedTumblerStateLoading',
-      'CommercioIdRechargedTumblerStateData',
-    ]);
 
     when(commercioId.rechargeTumbler(
       rechargeAmount: [],
@@ -374,13 +351,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
-    expect(states, [
-      'CommercioIdRechargedTumblerStateInitial',
-      'CommercioIdRechargedTumblerStateLoading',
-      'CommercioIdRechargedTumblerStateData',
-      'CommercioIdRechargedTumblerStateLoading',
-      'CommercioIdRechargedTumblerStateError',
-    ]);
   });
 
   testWidgets('Submit RequestDidPowerUp Event', (
@@ -397,9 +367,16 @@ void main() {
     final bloc = CommercioIdRequestDidPowerUpBloc(
       commercioId: commercioId,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdRequestedDidPowerUpStateLoading>(),
+        isA<CommercioIdRequestedDidPowerUpStateData>(),
+        isA<CommercioIdRequestedDidPowerUpStateLoading>(),
+        isA<CommercioIdRequestedDidPowerUpStateError>(),
+      ]),
+    );
 
     final commText = RequestDidPowerUpText(
       loading: (_) => loadingText,
@@ -428,11 +405,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioIdRequestedDidPowerUpStateInitial',
-      'CommercioIdRequestedDidPowerUpStateLoading',
-      'CommercioIdRequestedDidPowerUpStateData',
-    ]);
 
     when(commercioId.requestDidPowerUp(
       pairwiseAddress: pairwiseAddress,
@@ -446,12 +418,5 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
-    expect(states, [
-      'CommercioIdRequestedDidPowerUpStateInitial',
-      'CommercioIdRequestedDidPowerUpStateLoading',
-      'CommercioIdRequestedDidPowerUpStateData',
-      'CommercioIdRequestedDidPowerUpStateLoading',
-      'CommercioIdRequestedDidPowerUpStateError',
-    ]);
   });
 }

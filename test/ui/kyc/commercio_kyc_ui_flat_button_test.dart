@@ -26,9 +26,16 @@ void main() {
     final bloc = CommercioKycRequestFaucetInviteBloc(
       commercioKyc: commercioKyc,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioKycRequestedFaucetInviteStateLoading>(),
+        isA<CommercioKycRequestedFaucetInviteStateData>(),
+        isA<CommercioKycRequestedFaucetInviteStateLoading>(),
+        isA<CommercioKycRequestedFaucetInviteStateError>(),
+      ]),
+    );
 
     final commFlatButton = RequestFaucetInviteFlatButton(
       loading: (_) => const Text(loadingText),
@@ -59,11 +66,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioKycRequestedFaucetInviteStateInitial',
-      'CommercioKycRequestedFaucetInviteStateLoading',
-      'CommercioKycRequestedFaucetInviteStateData',
-    ]);
 
     when(commercioKyc.requestFaucetInvite()).thenThrow(Exception());
 
@@ -71,13 +73,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioKycRequestedFaucetInviteStateInitial',
-      'CommercioKycRequestedFaucetInviteStateLoading',
-      'CommercioKycRequestedFaucetInviteStateData',
-      'CommercioKycRequestedFaucetInviteStateLoading',
-      'CommercioKycRequestedFaucetInviteStateError',
-    ]);
   });
 
   testWidgets('Submit BuyMembership Event', (
@@ -92,9 +87,16 @@ void main() {
     final bloc = CommercioKycBuyMembershipBloc(
       commercioKyc: commercioKyc,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioKycBuyMembershipStateLoading>(),
+        isA<CommercioKycBuyMembershipStateData>(),
+        isA<CommercioKycBuyMembershipStateLoading>(),
+        isA<CommercioKycBuyMembershipStateError>(),
+      ]),
+    );
 
     final commFlatButton = BuyMembershipFlatButton(
       loading: (_) => const Text(loadingText),
@@ -127,11 +129,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioKycBuyMembershipStateInitial',
-      'CommercioKycBuyMembershipStateLoading',
-      'CommercioKycBuyMembershipStateData',
-    ]);
 
     when(commercioKyc.buyMembership(
       membershipType: membershipType,
@@ -141,13 +138,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioKycBuyMembershipStateInitial',
-      'CommercioKycBuyMembershipStateLoading',
-      'CommercioKycBuyMembershipStateData',
-      'CommercioKycBuyMembershipStateLoading',
-      'CommercioKycBuyMembershipStateError',
-    ]);
   });
 
   testWidgets('Submit InviteMember Event', (
@@ -162,9 +152,16 @@ void main() {
     final bloc = CommercioKycInviteMemberBloc(
       commercioKyc: commercioKyc,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioKycInviteMemberStateLoading>(),
+        isA<CommercioKycInviteMemberStateData>(),
+        isA<CommercioKycInviteMemberStateLoading>(),
+        isA<CommercioKycInviteMemberStateError>(),
+      ]),
+    );
 
     final commFlatButton = InviteMemberFlatButton(
       loading: (_) => const Text(loadingText),
@@ -197,11 +194,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioKycInviteMemberStateInitial',
-      'CommercioKycInviteMemberStateLoading',
-      'CommercioKycInviteMemberStateData',
-    ]);
 
     when(commercioKyc.inviteMember(
       invitedAddress: invitedAddress,
@@ -211,12 +203,5 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioKycInviteMemberStateInitial',
-      'CommercioKycInviteMemberStateLoading',
-      'CommercioKycInviteMemberStateData',
-      'CommercioKycInviteMemberStateLoading',
-      'CommercioKycInviteMemberStateError',
-    ]);
   });
 }

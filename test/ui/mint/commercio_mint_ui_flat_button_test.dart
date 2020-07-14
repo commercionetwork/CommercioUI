@@ -24,9 +24,16 @@ void main() {
     final bloc = CommercioMintOpenCdpBloc(
       commercioMint: commercioMint,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioMintOpenedCdpStateLoading>(),
+        isA<CommercioMintOpenedCdpStateData>(),
+        isA<CommercioMintOpenedCdpStateLoading>(),
+        isA<CommercioMintOpenedCdpStateError>(),
+      ]),
+    );
 
     final commFlatButton = OpenCdpFlatButton(
       loading: (_) => const Text(loadingText),
@@ -59,11 +66,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioMintOpenedCdpStateInitial',
-      'CommercioMintOpenedCdpStateLoading',
-      'CommercioMintOpenedCdpStateData',
-    ]);
 
     when(commercioMint.openCdp(amount: amount)).thenThrow(Exception());
 
@@ -71,13 +73,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioMintOpenedCdpStateInitial',
-      'CommercioMintOpenedCdpStateLoading',
-      'CommercioMintOpenedCdpStateData',
-      'CommercioMintOpenedCdpStateLoading',
-      'CommercioMintOpenedCdpStateError',
-    ]);
   });
 
   testWidgets('Submit CloseCdp Event', (WidgetTester tester) async {
@@ -89,9 +84,16 @@ void main() {
     final bloc = CommercioMintCloseCdpBloc(
       commercioMint: commercioMint,
     );
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioMintClosedCdpStateLoading>(),
+        isA<CommercioMintClosedCdpStateData>(),
+        isA<CommercioMintClosedCdpStateLoading>(),
+        isA<CommercioMintClosedCdpStateError>(),
+      ]),
+    );
 
     final commFlatButton = CloseCdpFlatButton(
       loading: (_) => const Text(loadingText),
@@ -124,11 +126,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioMintClosedCdpStateInitial',
-      'CommercioMintClosedCdpStateLoading',
-      'CommercioMintClosedCdpStateData',
-    ]);
 
     when(commercioMint.closeCdp(blockHeight: blockHeight))
         .thenThrow(Exception());
@@ -137,12 +134,5 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
-    expect(states, [
-      'CommercioMintClosedCdpStateInitial',
-      'CommercioMintClosedCdpStateLoading',
-      'CommercioMintClosedCdpStateData',
-      'CommercioMintClosedCdpStateLoading',
-      'CommercioMintClosedCdpStateError',
-    ]);
   });
 }

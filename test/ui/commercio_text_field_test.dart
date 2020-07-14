@@ -56,10 +56,8 @@ void main() {
 
   testWidgets('Initial state', (WidgetTester tester) async {
     final blocMock = BlocMock();
-    final List<Type> states = [];
-    blocMock.listen((state) {
-      states.add(state.runtimeType);
-    });
+
+    expectLater(blocMock, emitsInOrder([]));
 
     final commTextField = CommercioTextField<BlocMock, EventMock, StateMock,
         InitialStateMock, DataStateMock, LoadingStateMock, ErrorStateMock>(
@@ -78,15 +76,12 @@ void main() {
     final textFinder = find.text(initialText);
 
     expect(textFinder, findsOneWidget);
-    expect(states, [InitialStateMock]);
   });
 
   testWidgets('Loading state', (WidgetTester tester) async {
     final blocMock = BlocMock();
-    final List<Type> states = [];
-    blocMock.listen((state) {
-      states.add(state.runtimeType);
-    });
+
+    expectLater(blocMock, emitsInOrder([isA<LoadingStateMock>()]));
 
     final commTextField = CommercioTextField<BlocMock, EventMock, StateMock,
         InitialStateMock, DataStateMock, LoadingStateMock, ErrorStateMock>(
@@ -105,15 +100,12 @@ void main() {
     await tester.pumpAndSettle();
 
     await expectLater(find.text(loadingText), findsOneWidget);
-    expect(states, [InitialStateMock, LoadingStateMock]);
   });
 
   testWidgets('Data state', (WidgetTester tester) async {
     final blocMock = BlocMock();
-    final List<Type> states = [];
-    blocMock.listen((state) {
-      states.add(state.runtimeType);
-    });
+
+    expectLater(blocMock, emitsInOrder([isA<DataStateMock>()]));
 
     final commTextField = CommercioTextField<BlocMock, EventMock, StateMock,
         InitialStateMock, DataStateMock, LoadingStateMock, ErrorStateMock>(
@@ -132,15 +124,12 @@ void main() {
     await tester.pumpAndSettle();
 
     await expect(find.text(childText), findsOneWidget);
-    expect(states, [InitialStateMock, DataStateMock]);
   });
 
   testWidgets('Error state', (WidgetTester tester) async {
     final blocMock = BlocMock();
-    final List<Type> states = [];
-    blocMock.listen((state) {
-      states.add(state.runtimeType);
-    });
+
+    expectLater(blocMock, emitsInOrder([isA<ErrorStateMock>()]));
 
     final commTextField = CommercioTextField<BlocMock, EventMock, StateMock,
         InitialStateMock, DataStateMock, LoadingStateMock, ErrorStateMock>(
@@ -160,6 +149,5 @@ void main() {
     await tester.pumpAndSettle();
 
     await expect(find.text('error'), findsOneWidget);
-    expect(states, [InitialStateMock, ErrorStateMock]);
   });
 }

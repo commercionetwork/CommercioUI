@@ -7,9 +7,6 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   testWidgets('Submit EncData Event', (WidgetTester tester) async {
     final bloc = CommercioDocsEncDataBloc();
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
 
     final commSwitchList = ShareDocumentEncryptedDataSwitchListTiles();
     final root = BlocProvider.value(
@@ -28,20 +25,11 @@ void main() {
 
     await tester.tap(finders[0]);
     await tester.pumpAndSettle();
-
-    expect(states, [
-      'CommercioDocsEncDataStateInitial',
-      'CommercioDocsEncDataStateLoading',
-      'CommercioDocsEncDataStateData',
-    ]);
   });
 
   testWidgets('Submit EncData with custom title', (WidgetTester tester) async {
     const entryText = 'Entry';
     final bloc = CommercioDocsEncDataBloc();
-    final List<String> states = [];
-    bloc.listen((state) =>
-        states.add(state.runtimeType.toString().replaceAll('_\$', '')));
 
     final commSwitchList = ShareDocumentEncryptedDataSwitchListTiles(
       title: (entry) => Text(entryText),
