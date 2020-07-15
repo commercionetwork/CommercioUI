@@ -87,6 +87,7 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
 
         return FlatButton(
           onPressed: onPressed,
+          onLongPress: null,
           onHighlightChanged: onHighlightChanged,
           textTheme: textTheme,
           disabledTextColor: disabledTextColor,
