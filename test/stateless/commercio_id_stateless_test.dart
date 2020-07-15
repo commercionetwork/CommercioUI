@@ -31,7 +31,6 @@ void main() {
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
   Wallet correctWallet =
       Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
-  ;
   String correctWalletAddress = correctWallet.bech32Address;
   WalletWithAddress correctWalletWithAddress = WalletWithAddress(
     wallet: correctWallet,
@@ -56,6 +55,19 @@ void main() {
       File('test_resources/correct_tumbler_response.json').readAsStringSync();
   final correctTumblerDdo =
       File('test_resources/correct_tumbler_ddo.json').readAsStringSync();
+
+  const correctAmount = [StdCoin(amount: '100', denom: 'denom')];
+  const correctProof = 'proof';
+  const correctUuid = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  const correctEncryptionKey = 'encryptionKey';
+  final correctDidPowerUpRequest = RequestDidPowerUp(
+    claimantDid: correctWalletAddress,
+    amount: correctAmount,
+    powerUpProof: correctProof,
+    uuid: correctUuid,
+    encryptionKey: correctEncryptionKey,
+  );
+  final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
 
   group('Generate keys', () {
     test('Correct', () async {
@@ -516,9 +528,37 @@ void main() {
     });
   });
 
-  group('Request Did PowerUps', () {
-    final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
+  group('Derive Did Power Up request', () {
+    test('Correct', () async {
+      Network.client = MockClient((request) {
+        if (request.url.path.contains('government')) {
+          return Future.value(Response(correctTumblerResponse, 200));
+        }
 
+        if (request.url.path.contains('identities')) {
+          return Future.value(Response(correctTumblerDdo, 200));
+        }
+
+        return null;
+      });
+
+      final didPowerUpRequest =
+          await StatelessCommercioId.deriveDidPowerUpRequest(
+        wallet: correctWallet,
+        pairwiseAddress: correctWalletAddress,
+        amount: correctAmount,
+        rsaSignaturePrivateKey: keysObj.rsaSignatureKeyPair.privateKey,
+      );
+
+      expect(didPowerUpRequest.uuid, isA<String>());
+      expect(didPowerUpRequest.powerUpProof, isA<String>());
+      expect(didPowerUpRequest.amount, correctAmount);
+      expect(didPowerUpRequest.claimantDid, correctWalletAddress);
+      expect(didPowerUpRequest.encryptionKey, isA<String>());
+    });
+  });
+
+  group('Request Did PowerUps', () {
     test('Correct', () async {
       TxSender.client = MockClient(
         (_) => Future.value(Response(correctTransactionRaw, 200)),
@@ -546,28 +586,10 @@ void main() {
 
       final result = await StatelessCommercioId.requestDidPowerUps(
         senderWallet: correctWallet,
-        pairwiseAddresses: [correctWalletAddress],
-        wallets: [correctWallet],
-        amounts: const [
-          [StdCoin(denom: 'ucommercio', amount: '10')]
-        ],
-        rsaSignaturePrivateKeys: [keysObj.rsaSignatureKeyPair.privateKey],
+        powerUpRequests: [correctDidPowerUpRequest],
       );
 
       expect(result.success, isTrue);
-    });
-
-    test('Wrong list lenghts should throw an exception', () async {
-      expect(
-        () => StatelessCommercioId.requestDidPowerUps(
-          senderWallet: correctWallet,
-          pairwiseAddresses: [correctWalletAddress],
-          wallets: [correctWallet],
-          amounts: [],
-          rsaSignaturePrivateKeys: [keysObj.rsaSignatureKeyPair.privateKey],
-        ),
-        throwsException,
-      );
     });
   });
 

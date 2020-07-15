@@ -28,6 +28,24 @@ void main() {
     ),
   );
   final commercioId = StatefulCommercioIdMock();
+  const correctAmount = [StdCoin(amount: '100', denom: 'denom')];
+  const correctProof = 'proof';
+  const correctUuid = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  const correctEncryptionKey = 'encryptionKey';
+  final NetworkInfo correctNetworkInfo =
+      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'http://lcd-url');
+  const String correctMnemonic =
+      'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
+  Wallet correctWallet =
+      Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
+  String correctWalletAddress = correctWallet.bech32Address;
+  final correctDidPowerUpRequest = RequestDidPowerUp(
+    claimantDid: correctWalletAddress,
+    amount: correctAmount,
+    powerUpProof: correctProof,
+    uuid: correctUuid,
+    encryptionKey: correctEncryptionKey,
+  );
 
   testWidgets('Submit ShareDocument Event', (
     WidgetTester tester,
@@ -354,15 +372,75 @@ void main() {
     expect(find.text(errorText), findsOneWidget);
   });
 
+  testWidgets('Submit DeriveDidPowerUp request Event', (
+    WidgetTester tester,
+  ) async {
+    when(commercioId.deriveDidPowerUpRequest(
+      pairwiseAddress: correctWalletAddress,
+      amount: correctAmount,
+    )).thenAnswer((_) async => correctDidPowerUpRequest);
+
+    final bloc = CommercioIdDeriveDidPowerUpRequestBloc(
+      commercioId: commercioId,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdDeriveDidPowerUpRequestStateLoading>(),
+        isA<CommercioIdDeriveDidPowerUpRequestStateData>(),
+        isA<CommercioIdDeriveDidPowerUpRequestStateLoading>(),
+        isA<CommercioIdDeriveDidPowerUpRequestStateError>(),
+      ]),
+    );
+
+    final commText = DeriveDidPowerUpRequestText(
+      loading: (_) => loadingText,
+      error: (_, __) => errorText,
+      text: (_, state) => childText,
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commText,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.byWidget(commText), findsOneWidget);
+
+    bloc.add(CommercioIdDeriveDidPowerUpRequestEvent(
+      pairwiseAddress: correctWalletAddress,
+      amount: correctAmount,
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioId.deriveDidPowerUpRequest(
+      pairwiseAddress: correctWalletAddress,
+      amount: correctAmount,
+    )).thenThrow(Exception());
+
+    bloc.add(CommercioIdDeriveDidPowerUpRequestEvent(
+      pairwiseAddress: correctWalletAddress,
+      amount: correctAmount,
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.text(errorText), findsOneWidget);
+  });
+
   testWidgets('Submit RequestDidPowerUp Event', (
     WidgetTester tester,
   ) async {
-    const amount = <StdCoin>[];
-    const pairwiseAddress = '';
-
     when(commercioId.requestDidPowerUps(
-      pairwiseAddresses: [pairwiseAddress],
-      amounts: [amount],
+      powerUpRequests: [correctDidPowerUpRequest],
     )).thenAnswer((_) async => correctTxResult);
 
     final bloc = CommercioIdRequestDidPowerUpsBloc(
@@ -399,22 +477,19 @@ void main() {
 
     expect(find.byWidget(commText), findsOneWidget);
 
-    bloc.add(const CommercioIdRequestDidPowerUpsEvent(
-      pairwiseAddresses: [pairwiseAddress],
-      amounts: [amount],
+    bloc.add(CommercioIdRequestDidPowerUpsEvent(
+      powerUpRequests: [correctDidPowerUpRequest],
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
     when(commercioId.requestDidPowerUps(
-      pairwiseAddresses: [pairwiseAddress],
-      amounts: [amount],
+      powerUpRequests: [correctDidPowerUpRequest],
     )).thenThrow(Exception());
 
-    bloc.add(const CommercioIdRequestDidPowerUpsEvent(
-      pairwiseAddresses: [pairwiseAddress],
-      amounts: [amount],
+    bloc.add(CommercioIdRequestDidPowerUpsEvent(
+      powerUpRequests: [correctDidPowerUpRequest],
     ));
     await tester.pumpAndSettle();
 

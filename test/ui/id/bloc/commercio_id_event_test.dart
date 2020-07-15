@@ -19,6 +19,18 @@ void main() {
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
+  final correctWalletAddress = correctWallet.bech32Address;
+  const correctAmount = [StdCoin(amount: '100', denom: 'denom')];
+  const correctProof = 'proof';
+  const correctUuid = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  const correctEncryptionKey = 'encryptionKey';
+  final correctDidPowerUpRequest = RequestDidPowerUp(
+    claimantDid: correctWalletAddress,
+    amount: correctAmount,
+    powerUpProof: correctProof,
+    uuid: correctUuid,
+    encryptionKey: correctEncryptionKey,
+  );
 
   test('CommercioIdGenerateKeysEvent', () {
     final event = CommercioIdGenerateKeysEvent();
@@ -87,27 +99,26 @@ void main() {
     expect(event.props, [rechargeAmount, rechargeFee, rechargeGas]);
   });
 
+  test('CommercioIdDeriveDidPowerUpRequestEvent', () {
+    final event = CommercioIdDeriveDidPowerUpRequestEvent(
+      pairwiseAddress: correctWalletAddress,
+      amount: correctAmount,
+    );
+
+    expect(event.props, [correctWalletAddress, correctAmount]);
+  });
+
   test('CommercioIdRequestDidPowerUpEvent', () {
-    const amounts = [<StdCoin>[]];
-    const pairwiseAddresses = ['pairwiseAddress'];
-    final rsaSignaturePrivateKeys = [RSAPrivateKey(null)];
-    final wallets = [correctWallet];
     const fee = StdFee(amount: [StdCoin(denom: '', amount: '')], gas: '');
 
     final event = CommercioIdRequestDidPowerUpsEvent(
-      amounts: amounts,
-      pairwiseAddresses: pairwiseAddresses,
-      wallets: wallets,
-      rsaSignaturePrivateKeys: rsaSignaturePrivateKeys,
+      powerUpRequests: [correctDidPowerUpRequest],
       fee: fee,
     );
 
     expect(event.props, [
-      pairwiseAddresses,
-      amounts,
-      wallets,
-      rsaSignaturePrivateKeys,
-      fee,
+      [correctDidPowerUpRequest],
+      fee
     ]);
   });
 }

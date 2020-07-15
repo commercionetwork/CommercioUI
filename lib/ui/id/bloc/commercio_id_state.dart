@@ -105,6 +105,23 @@ abstract class CommercioIdRechargedTumblerState
 }
 
 @freezed
+abstract class CommercioIdDeriveDidPowerUpRequestState
+    with _$CommercioIdDeriveDidPowerUpRequestState {
+  const factory CommercioIdDeriveDidPowerUpRequestState({
+    @required RequestDidPowerUp didPowerUpRequest,
+  }) = CommercioIdDeriveDidPowerUpRequestStateData;
+
+  const factory CommercioIdDeriveDidPowerUpRequestState.initial() =
+      CommercioIdDeriveDidPowerUpRequestStateInitial;
+
+  const factory CommercioIdDeriveDidPowerUpRequestState.loading() =
+      CommercioIdDeriveDidPowerUpRequestStateLoading;
+
+  const factory CommercioIdDeriveDidPowerUpRequestState.error([String error]) =
+      CommercioIdDeriveDidPowerUpRequestStateError;
+}
+
+@freezed
 abstract class CommercioIdRequestedDidPowerUpsState
     with _$CommercioIdRequestedDidPowerUpsState {
   const factory CommercioIdRequestedDidPowerUpsState({

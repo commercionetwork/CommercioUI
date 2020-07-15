@@ -27,6 +27,24 @@ void main() {
       File('test_resources/correct_did_document.json').readAsStringSync(),
     ),
   );
+  const correctAmount = [StdCoin(amount: '100', denom: 'denom')];
+  const correctProof = 'proof';
+  const correctUuid = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  const correctEncryptionKey = 'encryptionKey';
+  final NetworkInfo correctNetworkInfo =
+      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'http://lcd-url');
+  const String correctMnemonic =
+      'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
+  Wallet correctWallet =
+      Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
+  String correctWalletAddress = correctWallet.bech32Address;
+  final correctDidPowerUpRequest = RequestDidPowerUp(
+    claimantDid: correctWalletAddress,
+    amount: correctAmount,
+    powerUpProof: correctProof,
+    uuid: correctUuid,
+    encryptionKey: correctEncryptionKey,
+  );
   final commercioId = StatefulCommercioIdMock();
 
   testWidgets('Submit ShareDocument Event', (
@@ -494,15 +512,77 @@ void main() {
     expect(find.text(childText), findsOneWidget);
   });
 
+  testWidgets('Submit DeriveDidPowerUp Event', (
+    WidgetTester tester,
+  ) async {
+    when(commercioId.deriveDidPowerUpRequest(
+      pairwiseAddress: correctWalletAddress,
+      amount: correctAmount,
+    )).thenAnswer((_) async => correctDidPowerUpRequest);
+
+    final bloc = CommercioIdDeriveDidPowerUpRequestBloc(
+      commercioId: commercioId,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioIdDeriveDidPowerUpRequestState>(),
+        isA<CommercioIdDeriveDidPowerUpRequestStateData>(),
+        isA<CommercioIdDeriveDidPowerUpRequestStateLoading>(),
+        isA<CommercioIdDeriveDidPowerUpRequestStateError>(),
+      ]),
+    );
+
+    final commFlatButton = DeriveDidPowerUpRequestFlatButton(
+      loading: (_) => const Text(loadingText),
+      child: (_) => const Text(childText),
+      event: () => CommercioIdDeriveDidPowerUpRequestEvent(
+        pairwiseAddress: correctWalletAddress,
+        amount: correctAmount,
+      ),
+      error: (context, err) => Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err),
+        ),
+      ),
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commFlatButton,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioId.deriveDidPowerUpRequest(
+      pairwiseAddress: correctWalletAddress,
+      amount: correctAmount,
+    )).thenThrow(Exception());
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+  });
+
   testWidgets('Submit RequestDidPowerUp Event', (
     WidgetTester tester,
   ) async {
-    const amount = <StdCoin>[];
-    const pairwiseAddress = '';
-
     when(commercioId.requestDidPowerUps(
-      pairwiseAddresses: [pairwiseAddress],
-      amounts: [amount],
+      powerUpRequests: [correctDidPowerUpRequest],
     )).thenAnswer((_) async => correctTxResult);
 
     final bloc = CommercioIdRequestDidPowerUpsBloc(
@@ -523,8 +603,7 @@ void main() {
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
       event: () => CommercioIdRequestDidPowerUpsEvent(
-        amounts: [amount],
-        pairwiseAddresses: [pairwiseAddress],
+        powerUpRequests: [correctDidPowerUpRequest],
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
@@ -553,8 +632,7 @@ void main() {
     expect(find.text(childText), findsOneWidget);
 
     when(commercioId.requestDidPowerUps(
-      pairwiseAddresses: [pairwiseAddress],
-      amounts: [amount],
+      powerUpRequests: [correctDidPowerUpRequest],
     )).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));

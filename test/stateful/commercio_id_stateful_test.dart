@@ -33,7 +33,7 @@ class SecretStorageMethodsMock extends Mock implements SecretStorage {
 
 class HttpHelperMock extends Mock implements HttpHelper {}
 
-void main() {
+void main() async {
   if (Directory.current.path.endsWith('/test')) {
     Directory.current = Directory.current.parent;
   }
@@ -58,6 +58,9 @@ void main() {
     storageKey: secureStorageKey,
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,
+  );
+  await correctCommercioAccount.generateNewWallet(
+    mnemonic: correctMnemonic,
   );
   final commercioAccountWithoutWallet = StatefulCommercioAccount(
     storage: secretStorageMethodsMock,
@@ -87,6 +90,18 @@ void main() {
   final correctTumblerDdo =
       File('test_resources/correct_tumbler_ddo.json').readAsStringSync();
 
+  const correctAmount = [StdCoin(amount: '100', denom: 'denom')];
+  const correctProof = 'proof';
+  const correctUuid = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  const correctEncryptionKey = 'encryptionKey';
+  final correctDidPowerUpRequest = RequestDidPowerUp(
+    claimantDid: correctWalletAddress,
+    amount: correctAmount,
+    powerUpProof: correctProof,
+    uuid: correctUuid,
+    encryptionKey: correctEncryptionKey,
+  );
+
   group('Constructor', () {
     test('Correct', () {
       final commercioId = StatefulCommercioId(
@@ -115,17 +130,8 @@ void main() {
 
   group('Has did document', () {
     test('Correct', () async {
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMethodsMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
-        httpHelper: httpHelperMock,
-      );
-
-      await commercioAccount.generateNewWallet();
-
       final commercioId = StatefulCommercioId(
-        commercioAccount: commercioAccount,
+        commercioAccount: correctCommercioAccount,
         storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
@@ -261,9 +267,6 @@ void main() {
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
-      );
 
       final didDoc = await commercioId.deriveDidDocument();
 
@@ -291,9 +294,6 @@ void main() {
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
-      );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
       );
 
       final didDoc = await commercioId.deriveDidDocument(
@@ -325,9 +325,6 @@ void main() {
         commercioAccount: correctCommercioAccount,
         storage: secretStorageMock,
         storageKey: secureStorageKey,
-      );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
       );
 
       expect(
@@ -369,9 +366,6 @@ void main() {
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
-      );
 
       final result = await commercioId.setDidDocuments();
 
@@ -394,9 +388,6 @@ void main() {
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
-      );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
       );
 
       final result = await commercioId.setDidDocuments(
@@ -423,9 +414,6 @@ void main() {
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
-      );
       await commercioId.deriveDidDocument();
 
       expect(commercioId.hasDidDocument, isTrue);
@@ -441,7 +429,6 @@ void main() {
         storage: secretStorageMock,
         storageKey: secureStorageKey,
       );
-      await correctCommercioAccount.generateNewWallet();
 
       expectLater(
         () => commercioId.setDidDocuments(),
@@ -485,7 +472,6 @@ void main() {
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
-      await correctCommercioAccount.generateNewWallet();
 
       final result = await commercioId.rechargeTumbler(
         rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
@@ -507,6 +493,72 @@ void main() {
           rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
         ),
         throwsA(isA<WalletNotFoundException>()),
+      );
+    });
+  });
+
+  group('Derive Did Power Up request', () {
+    test('Correct', () async {
+      Network.client = MockClient((request) {
+        if (request.url.path.contains('government')) {
+          return Future.value(Response(correctTumblerResponse, 200));
+        }
+
+        if (request.url.path.contains('identities')) {
+          return Future.value(Response(correctTumblerDdo, 200));
+        }
+
+        return null;
+      });
+
+      final commercioId = StatefulCommercioId(
+        commercioAccount: correctCommercioAccount,
+        storage: secretStorageMock,
+        storageKey: secureStorageKey,
+        idKeys: keysObj,
+      );
+      final didPowerUpRequest = await commercioId.deriveDidPowerUpRequest(
+        pairwiseAddress: correctWalletAddress,
+        amount: correctAmount,
+      );
+
+      expect(didPowerUpRequest.uuid, isA<String>());
+      expect(didPowerUpRequest.powerUpProof, isA<String>());
+      expect(didPowerUpRequest.amount, correctAmount);
+      expect(didPowerUpRequest.claimantDid, correctWalletAddress);
+      expect(didPowerUpRequest.encryptionKey, isA<String>());
+    });
+
+    test('No wallet in commercioAccount should throw an exception', () async {
+      final commercioId = StatefulCommercioId(
+        commercioAccount: commercioAccountWithoutWallet,
+        storage: secretStorageMock,
+        storageKey: secureStorageKey,
+        idKeys: keysObj,
+      );
+
+      expectLater(
+        () => commercioId.deriveDidPowerUpRequest(
+          pairwiseAddress: correctWalletAddress,
+          amount: correctAmount,
+        ),
+        throwsA(isA<WalletNotFoundException>()),
+      );
+    });
+
+    test('No keys should throw an exception', () async {
+      final commercioId = StatefulCommercioId(
+        commercioAccount: correctCommercioAccount,
+        storage: secretStorageMock,
+        storageKey: secureStorageKey,
+      );
+
+      expectLater(
+        () => commercioId.deriveDidPowerUpRequest(
+          pairwiseAddress: correctWalletAddress,
+          amount: correctAmount,
+        ),
+        throwsA(isA<NoKeysFoundException>()),
       );
     });
   });
@@ -545,58 +597,9 @@ void main() {
         storageKey: secureStorageKey,
         idKeys: keysObj,
       );
-      await correctCommercioAccount.generateNewWallet();
 
       final result = await commercioId.requestDidPowerUps(
-        pairwiseAddresses: [correctWalletAddress],
-        amounts: const [
-          [StdCoin(denom: 'ucommercio', amount: '10')]
-        ],
-      );
-
-      expect(result.success, isTrue);
-    });
-
-    test('Correct with wallet and keys', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-      Network.client = MockClient((request) {
-        if (request.url.path.contains('government')) {
-          return Future.value(Response(correctTumblerResponse, 200));
-        }
-
-        if (request.url.path.contains('identities')) {
-          return Future.value(Response(correctTumblerDdo, 200));
-        }
-
-        return null;
-      });
-      AccountDataRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctAccountDataRaw, 200)),
-      );
-      NodeInfoRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctNodeInfoRaw, 200)),
-      );
-      when(httpHelperMock.getTumblerAddress()).thenAnswer(
-        (_) => Future.value(correctWalletAddress),
-      );
-
-      final commercioId = StatefulCommercioId(
-        commercioAccount: correctCommercioAccount,
-        storage: secretStorageMock,
-        storageKey: secureStorageKey,
-        idKeys: keysObj,
-      );
-      await correctCommercioAccount.generateNewWallet();
-
-      final result = await commercioId.requestDidPowerUps(
-        pairwiseAddresses: [correctWalletAddress],
-        amounts: const [
-          [StdCoin(denom: 'ucommercio', amount: '10')]
-        ],
-        wallets: [correctWallet],
-        rsaSignaturePrivateKeys: [keysObj.rsaSignatureKeyPair.privateKey],
+        powerUpRequests: [correctDidPowerUpRequest],
       );
 
       expect(result.success, isTrue);
@@ -612,31 +615,9 @@ void main() {
 
       expectLater(
         () => commercioId.requestDidPowerUps(
-          pairwiseAddresses: [correctWalletAddress],
-          amounts: [
-            const [StdCoin(denom: 'ucommercio', amount: '10')]
-          ],
+          powerUpRequests: [correctDidPowerUpRequest],
         ),
         throwsA(isA<WalletNotFoundException>()),
-      );
-    });
-
-    test('No keys in memory should throw an exception', () async {
-      final commercioId = StatefulCommercioId(
-        commercioAccount: correctCommercioAccount,
-        storage: secretStorageMock,
-        storageKey: secureStorageKey,
-      );
-      await correctCommercioAccount.generateNewWallet();
-
-      expectLater(
-        () => commercioId.requestDidPowerUps(
-          pairwiseAddresses: [correctWalletAddress],
-          amounts: const [
-            [StdCoin(denom: 'ucommercio', amount: '10')]
-          ],
-        ),
-        throwsA(isA<NoKeysFoundException>()),
       );
     });
   });

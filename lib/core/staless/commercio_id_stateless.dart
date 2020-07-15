@@ -110,8 +110,27 @@ abstract class StatelessCommercioId {
     );
   }
 
-  /// Request a list of Did Power Up from [senderWallet] for every element in
-  /// [pairwiseAddresses], [wallets], [amounts] and [rsaSignaturePrivateKeys].
+  /// Derive and returns a [RequestDidPowerUp] object from the [wallet],
+  /// [pairwiseAddress], [amount] and [rsaSignaturePrivateKey].
+  ///
+  /// In general [pairwiseAddress] is obtained generating it from the [wallet].
+  static Future<RequestDidPowerUp> deriveDidPowerUpRequest({
+    @required Wallet wallet,
+    @required String pairwiseAddress,
+    @required List<StdCoin> amount,
+    @required RSAPrivateKey rsaSignaturePrivateKey,
+  }) {
+    return RequestDidPowerUpHelper.fromWallet(
+      wallet,
+      pairwiseAddress,
+      amount,
+      rsaSignaturePrivateKey,
+    );
+  }
+
+  /// Request a list of Did Power Up from [senderWallet] for every power up
+  /// request in [powerUpRequests].
+  /// An optional [fee] can be specified.
   ///
   /// A did power up request is required to move the amount of
   /// tokens from a centralized entity Tk to one of its pairwiseAddress,
@@ -122,35 +141,11 @@ abstract class StatelessCommercioId {
   /// Returns the [TransactionResult].
   static Future<TransactionResult> requestDidPowerUps({
     @required Wallet senderWallet,
-    @required List<String> pairwiseAddresses,
-    @required List<Wallet> wallets,
-    @required List<List<StdCoin>> amounts,
-    @required List<RSAPrivateKey> rsaSignaturePrivateKeys,
+    @required List<RequestDidPowerUp> powerUpRequests,
     StdFee fee,
   }) async {
-    if (!(pairwiseAddresses.length == wallets.length &&
-        wallets.length == amounts.length &&
-        amounts.length == rsaSignaturePrivateKeys.length)) {
-      throw Exception(
-        'All paramenters should have the same number of elements.',
-      );
-    }
-
-    final List<RequestDidPowerUp> powerUps = [];
-
-    for (var i = 0; i < pairwiseAddresses.length; i++) {
-      final powerUp = await RequestDidPowerUpHelper.fromWallet(
-        wallets[i],
-        pairwiseAddresses[i],
-        amounts[i],
-        rsaSignaturePrivateKeys[i],
-      );
-
-      powerUps.add(powerUp);
-    }
-
     return IdHelper.requestDidPowerUpsList(
-      powerUps,
+      powerUpRequests,
       senderWallet,
       fee: fee,
     );

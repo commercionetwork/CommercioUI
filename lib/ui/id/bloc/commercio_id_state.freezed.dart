@@ -3349,6 +3349,587 @@ abstract class CommercioIdRechargedTumblerStateError
       CommercioIdRechargedTumblerStateError> get copyWith;
 }
 
+class _$CommercioIdDeriveDidPowerUpRequestStateTearOff {
+  const _$CommercioIdDeriveDidPowerUpRequestStateTearOff();
+
+  CommercioIdDeriveDidPowerUpRequestStateData call(
+      {@required RequestDidPowerUp didPowerUpRequest}) {
+    return CommercioIdDeriveDidPowerUpRequestStateData(
+      didPowerUpRequest: didPowerUpRequest,
+    );
+  }
+
+  CommercioIdDeriveDidPowerUpRequestStateInitial initial() {
+    return const CommercioIdDeriveDidPowerUpRequestStateInitial();
+  }
+
+  CommercioIdDeriveDidPowerUpRequestStateLoading loading() {
+    return const CommercioIdDeriveDidPowerUpRequestStateLoading();
+  }
+
+  CommercioIdDeriveDidPowerUpRequestStateError error([String error]) {
+    return CommercioIdDeriveDidPowerUpRequestStateError(
+      error,
+    );
+  }
+}
+
+// ignore: unused_element
+const $CommercioIdDeriveDidPowerUpRequestState =
+    _$CommercioIdDeriveDidPowerUpRequestStateTearOff();
+
+mixin _$CommercioIdDeriveDidPowerUpRequestState {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    @required
+        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    @required
+        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $CommercioIdDeriveDidPowerUpRequestStateCopyWith<$Res> {
+  factory $CommercioIdDeriveDidPowerUpRequestStateCopyWith(
+          CommercioIdDeriveDidPowerUpRequestState value,
+          $Res Function(CommercioIdDeriveDidPowerUpRequestState) then) =
+      _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>;
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
+    implements $CommercioIdDeriveDidPowerUpRequestStateCopyWith<$Res> {
+  _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl(
+      this._value, this._then);
+
+  final CommercioIdDeriveDidPowerUpRequestState _value;
+  // ignore: unused_field
+  final $Res Function(CommercioIdDeriveDidPowerUpRequestState) _then;
+}
+
+abstract class $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<$Res> {
+  factory $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith(
+          CommercioIdDeriveDidPowerUpRequestStateData value,
+          $Res Function(CommercioIdDeriveDidPowerUpRequestStateData) then) =
+      _$CommercioIdDeriveDidPowerUpRequestStateDataCopyWithImpl<$Res>;
+  $Res call({RequestDidPowerUp didPowerUpRequest});
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateDataCopyWithImpl<$Res>
+    extends _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
+    implements $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<$Res> {
+  _$CommercioIdDeriveDidPowerUpRequestStateDataCopyWithImpl(
+      CommercioIdDeriveDidPowerUpRequestStateData _value,
+      $Res Function(CommercioIdDeriveDidPowerUpRequestStateData) _then)
+      : super(_value,
+            (v) => _then(v as CommercioIdDeriveDidPowerUpRequestStateData));
+
+  @override
+  CommercioIdDeriveDidPowerUpRequestStateData get _value =>
+      super._value as CommercioIdDeriveDidPowerUpRequestStateData;
+
+  @override
+  $Res call({
+    Object didPowerUpRequest = freezed,
+  }) {
+    return _then(CommercioIdDeriveDidPowerUpRequestStateData(
+      didPowerUpRequest: didPowerUpRequest == freezed
+          ? _value.didPowerUpRequest
+          : didPowerUpRequest as RequestDidPowerUp,
+    ));
+  }
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateData
+    implements CommercioIdDeriveDidPowerUpRequestStateData {
+  const _$CommercioIdDeriveDidPowerUpRequestStateData(
+      {@required this.didPowerUpRequest})
+      : assert(didPowerUpRequest != null);
+
+  @override
+  final RequestDidPowerUp didPowerUpRequest;
+
+  @override
+  String toString() {
+    return 'CommercioIdDeriveDidPowerUpRequestState(didPowerUpRequest: $didPowerUpRequest)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioIdDeriveDidPowerUpRequestStateData &&
+            (identical(other.didPowerUpRequest, didPowerUpRequest) ||
+                const DeepCollectionEquality()
+                    .equals(other.didPowerUpRequest, didPowerUpRequest)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(didPowerUpRequest);
+
+  @override
+  $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<
+          CommercioIdDeriveDidPowerUpRequestStateData>
+      get copyWith => _$CommercioIdDeriveDidPowerUpRequestStateDataCopyWithImpl<
+          CommercioIdDeriveDidPowerUpRequestStateData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(didPowerUpRequest);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(didPowerUpRequest);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    @required
+        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    @required
+        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioIdDeriveDidPowerUpRequestStateData
+    implements CommercioIdDeriveDidPowerUpRequestState {
+  const factory CommercioIdDeriveDidPowerUpRequestStateData(
+          {@required RequestDidPowerUp didPowerUpRequest}) =
+      _$CommercioIdDeriveDidPowerUpRequestStateData;
+
+  RequestDidPowerUp get didPowerUpRequest;
+  $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<
+      CommercioIdDeriveDidPowerUpRequestStateData> get copyWith;
+}
+
+abstract class $CommercioIdDeriveDidPowerUpRequestStateInitialCopyWith<$Res> {
+  factory $CommercioIdDeriveDidPowerUpRequestStateInitialCopyWith(
+          CommercioIdDeriveDidPowerUpRequestStateInitial value,
+          $Res Function(CommercioIdDeriveDidPowerUpRequestStateInitial) then) =
+      _$CommercioIdDeriveDidPowerUpRequestStateInitialCopyWithImpl<$Res>;
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateInitialCopyWithImpl<$Res>
+    extends _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
+    implements $CommercioIdDeriveDidPowerUpRequestStateInitialCopyWith<$Res> {
+  _$CommercioIdDeriveDidPowerUpRequestStateInitialCopyWithImpl(
+      CommercioIdDeriveDidPowerUpRequestStateInitial _value,
+      $Res Function(CommercioIdDeriveDidPowerUpRequestStateInitial) _then)
+      : super(_value,
+            (v) => _then(v as CommercioIdDeriveDidPowerUpRequestStateInitial));
+
+  @override
+  CommercioIdDeriveDidPowerUpRequestStateInitial get _value =>
+      super._value as CommercioIdDeriveDidPowerUpRequestStateInitial;
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateInitial
+    implements CommercioIdDeriveDidPowerUpRequestStateInitial {
+  const _$CommercioIdDeriveDidPowerUpRequestStateInitial();
+
+  @override
+  String toString() {
+    return 'CommercioIdDeriveDidPowerUpRequestState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioIdDeriveDidPowerUpRequestStateInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    @required
+        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    @required
+        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioIdDeriveDidPowerUpRequestStateInitial
+    implements CommercioIdDeriveDidPowerUpRequestState {
+  const factory CommercioIdDeriveDidPowerUpRequestStateInitial() =
+      _$CommercioIdDeriveDidPowerUpRequestStateInitial;
+}
+
+abstract class $CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWith<$Res> {
+  factory $CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWith(
+          CommercioIdDeriveDidPowerUpRequestStateLoading value,
+          $Res Function(CommercioIdDeriveDidPowerUpRequestStateLoading) then) =
+      _$CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWithImpl<$Res>;
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
+    implements $CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWith<$Res> {
+  _$CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWithImpl(
+      CommercioIdDeriveDidPowerUpRequestStateLoading _value,
+      $Res Function(CommercioIdDeriveDidPowerUpRequestStateLoading) _then)
+      : super(_value,
+            (v) => _then(v as CommercioIdDeriveDidPowerUpRequestStateLoading));
+
+  @override
+  CommercioIdDeriveDidPowerUpRequestStateLoading get _value =>
+      super._value as CommercioIdDeriveDidPowerUpRequestStateLoading;
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateLoading
+    implements CommercioIdDeriveDidPowerUpRequestStateLoading {
+  const _$CommercioIdDeriveDidPowerUpRequestStateLoading();
+
+  @override
+  String toString() {
+    return 'CommercioIdDeriveDidPowerUpRequestState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioIdDeriveDidPowerUpRequestStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    @required
+        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    @required
+        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioIdDeriveDidPowerUpRequestStateLoading
+    implements CommercioIdDeriveDidPowerUpRequestState {
+  const factory CommercioIdDeriveDidPowerUpRequestStateLoading() =
+      _$CommercioIdDeriveDidPowerUpRequestStateLoading;
+}
+
+abstract class $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith<$Res> {
+  factory $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith(
+          CommercioIdDeriveDidPowerUpRequestStateError value,
+          $Res Function(CommercioIdDeriveDidPowerUpRequestStateError) then) =
+      _$CommercioIdDeriveDidPowerUpRequestStateErrorCopyWithImpl<$Res>;
+  $Res call({String error});
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateErrorCopyWithImpl<$Res>
+    extends _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
+    implements $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith<$Res> {
+  _$CommercioIdDeriveDidPowerUpRequestStateErrorCopyWithImpl(
+      CommercioIdDeriveDidPowerUpRequestStateError _value,
+      $Res Function(CommercioIdDeriveDidPowerUpRequestStateError) _then)
+      : super(_value,
+            (v) => _then(v as CommercioIdDeriveDidPowerUpRequestStateError));
+
+  @override
+  CommercioIdDeriveDidPowerUpRequestStateError get _value =>
+      super._value as CommercioIdDeriveDidPowerUpRequestStateError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(CommercioIdDeriveDidPowerUpRequestStateError(
+      error == freezed ? _value.error : error as String,
+    ));
+  }
+}
+
+class _$CommercioIdDeriveDidPowerUpRequestStateError
+    implements CommercioIdDeriveDidPowerUpRequestStateError {
+  const _$CommercioIdDeriveDidPowerUpRequestStateError([this.error]);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'CommercioIdDeriveDidPowerUpRequestState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioIdDeriveDidPowerUpRequestStateError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith<
+          CommercioIdDeriveDidPowerUpRequestStateError>
+      get copyWith =>
+          _$CommercioIdDeriveDidPowerUpRequestStateErrorCopyWithImpl<
+              CommercioIdDeriveDidPowerUpRequestStateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(RequestDidPowerUp didPowerUpRequest), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    @required
+        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    @required
+        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
+    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
+    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
+    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioIdDeriveDidPowerUpRequestStateError
+    implements CommercioIdDeriveDidPowerUpRequestState {
+  const factory CommercioIdDeriveDidPowerUpRequestStateError([String error]) =
+      _$CommercioIdDeriveDidPowerUpRequestStateError;
+
+  String get error;
+  $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith<
+      CommercioIdDeriveDidPowerUpRequestStateError> get copyWith;
+}
+
 class _$CommercioIdRequestedDidPowerUpsStateTearOff {
   const _$CommercioIdRequestedDidPowerUpsStateTearOff();
 

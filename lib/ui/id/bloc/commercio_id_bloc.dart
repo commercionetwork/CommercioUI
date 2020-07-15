@@ -163,6 +163,35 @@ class CommercioIdRechargeTumblerBloc extends Bloc<
   }
 }
 
+class CommercioIdDeriveDidPowerUpRequestBloc extends Bloc<
+    CommercioIdDeriveDidPowerUpRequestEvent,
+    CommercioIdDeriveDidPowerUpRequestState> {
+  final StatefulCommercioId commercioId;
+
+  CommercioIdDeriveDidPowerUpRequestBloc({@required this.commercioId})
+      : super(const CommercioIdDeriveDidPowerUpRequestStateInitial());
+
+  @override
+  Stream<CommercioIdDeriveDidPowerUpRequestState> mapEventToState(
+    CommercioIdDeriveDidPowerUpRequestEvent event,
+  ) async* {
+    try {
+      yield const CommercioIdDeriveDidPowerUpRequestStateLoading();
+
+      final powerUpRequest = await commercioId.deriveDidPowerUpRequest(
+        pairwiseAddress: event.pairwiseAddress,
+        amount: event.amount,
+      );
+
+      yield CommercioIdDeriveDidPowerUpRequestStateData(
+        didPowerUpRequest: powerUpRequest,
+      );
+    } catch (e) {
+      yield CommercioIdDeriveDidPowerUpRequestStateError(e.toString());
+    }
+  }
+}
+
 class CommercioIdRequestDidPowerUpsBloc extends Bloc<
     CommercioIdRequestDidPowerUpsEvent, CommercioIdRequestedDidPowerUpsState> {
   final StatefulCommercioId commercioId;
@@ -178,10 +207,7 @@ class CommercioIdRequestDidPowerUpsBloc extends Bloc<
       yield const CommercioIdRequestedDidPowerUpsStateLoading();
 
       final result = await commercioId.requestDidPowerUps(
-        pairwiseAddresses: event.pairwiseAddresses,
-        wallets: event.wallets,
-        amounts: event.amounts,
-        rsaSignaturePrivateKeys: event.rsaSignaturePrivateKeys,
+        powerUpRequests: event.powerUpRequests,
         fee: event.fee,
       );
 
