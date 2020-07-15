@@ -26,13 +26,26 @@ class CommercioKycBuyMembershipEvent extends CommercioKycEvent {
   List<Object> get props => [membershipType, fee];
 }
 
-class CommercioKycInviteMemberEvent extends CommercioKycEvent {
+class CommercioKycDeriveInviteMemberEvent extends CommercioKycEvent {
   final String invitedAddress;
-  final StdFee fee;
 
-  const CommercioKycInviteMemberEvent(
-      {@required this.invitedAddress, this.fee});
+  const CommercioKycDeriveInviteMemberEvent({
+    @required this.invitedAddress,
+  });
 
   @override
-  List<Object> get props => [invitedAddress, fee];
+  List<Object> get props => [invitedAddress];
+}
+
+class CommercioKycInviteMembersEvent extends CommercioKycEvent {
+  final List<InviteUser> inviteUsers;
+  final StdFee fee;
+
+  const CommercioKycInviteMembersEvent({
+    @required this.inviteUsers,
+    this.fee,
+  });
+
+  @override
+  List<Object> get props => [inviteUsers, fee];
 }

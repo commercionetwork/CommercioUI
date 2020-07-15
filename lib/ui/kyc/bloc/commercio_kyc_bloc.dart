@@ -52,28 +52,53 @@ class CommercioKycBuyMembershipBloc extends Bloc<CommercioKycBuyMembershipEvent,
   }
 }
 
-class CommercioKycInviteMemberBloc
-    extends Bloc<CommercioKycInviteMemberEvent, CommercioKycInviteMemberState> {
+class CommercioKycDeriveInviteMemberBloc extends Bloc<
+    CommercioKycDeriveInviteMemberEvent, CommercioKycDeriveInviteMemberState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycInviteMemberBloc({@required this.commercioKyc})
-      : super(const CommercioKycInviteMemberStateInitial());
+  CommercioKycDeriveInviteMemberBloc({@required this.commercioKyc})
+      : super(const CommercioKycDeriveInviteMemberStateInitial());
 
   @override
-  Stream<CommercioKycInviteMemberState> mapEventToState(
-    CommercioKycInviteMemberEvent event,
+  Stream<CommercioKycDeriveInviteMemberState> mapEventToState(
+    CommercioKycDeriveInviteMemberEvent event,
   ) async* {
     try {
-      yield const CommercioKycInviteMemberStateLoading();
+      yield const CommercioKycDeriveInviteMemberStateLoading();
 
-      final result = await commercioKyc.inviteMember(
+      final inviteUser = commercioKyc.deriveInviteMember(
         invitedAddress: event.invitedAddress,
+      );
+
+      yield CommercioKycDeriveInviteMemberStateData(inviteUser: inviteUser);
+    } catch (e) {
+      yield CommercioKycDeriveInviteMemberStateError(e.toString());
+    }
+  }
+}
+
+class CommercioKycInviteMembersBloc extends Bloc<CommercioKycInviteMembersEvent,
+    CommercioKycInviteMembersState> {
+  final StatefulCommercioKyc commercioKyc;
+
+  CommercioKycInviteMembersBloc({@required this.commercioKyc})
+      : super(const CommercioKycInviteMembersStateInitial());
+
+  @override
+  Stream<CommercioKycInviteMembersState> mapEventToState(
+    CommercioKycInviteMembersEvent event,
+  ) async* {
+    try {
+      yield const CommercioKycInviteMembersStateLoading();
+
+      final result = await commercioKyc.inviteMembers(
+        inviteUsers: event.inviteUsers,
         fee: event.fee,
       );
 
-      yield CommercioKycInviteMemberStateData(result: result);
+      yield CommercioKycInviteMembersStateData(result: result);
     } catch (e) {
-      yield CommercioKycInviteMemberStateError(e.toString());
+      yield CommercioKycInviteMembersStateError(e.toString());
     }
   }
 }

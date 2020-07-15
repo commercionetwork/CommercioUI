@@ -15,6 +15,21 @@ void main() {
   const loadingText = 'Loading';
   final correctTxResult = TransactionResult(hash: '', success: true);
   final commercioKyc = StatefulCommercioKycMock();
+  final NetworkInfo correctNetworkInfo = NetworkInfo(
+    bech32Hrp: 'bech32Hrp',
+    lcdUrl: 'http://lcd-url',
+  );
+  const String correctMnemonic =
+      'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
+  Wallet correctWallet = Wallet.derive(
+    correctMnemonic.split(' '),
+    correctNetworkInfo,
+  );
+  String correctWalletAddress = correctWallet.bech32Address;
+  final correctInviteUser = InviteUser(
+    recipientDid: correctWalletAddress,
+    senderDid: correctWalletAddress,
+  );
 
   testWidgets('Submit RequestFaucetInvite Event', (
     WidgetTester tester,
@@ -140,34 +155,32 @@ void main() {
     expect(find.text(childText), findsOneWidget);
   });
 
-  testWidgets('Submit InviteMember Event', (
+  testWidgets('Submit DeriveInviteMember Event', (
     WidgetTester tester,
   ) async {
-    const invitedAddress = '';
+    when(commercioKyc.deriveInviteMember(
+      invitedAddress: correctWalletAddress,
+    )).thenReturn(correctInviteUser);
 
-    when(commercioKyc.inviteMember(
-      invitedAddress: invitedAddress,
-    )).thenAnswer((_) async => correctTxResult);
-
-    final bloc = CommercioKycInviteMemberBloc(
+    final bloc = CommercioKycDeriveInviteMemberBloc(
       commercioKyc: commercioKyc,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioKycInviteMemberStateLoading>(),
-        isA<CommercioKycInviteMemberStateData>(),
-        isA<CommercioKycInviteMemberStateLoading>(),
-        isA<CommercioKycInviteMemberStateError>(),
+        isA<CommercioKycDeriveInviteMemberStateLoading>(),
+        isA<CommercioKycDeriveInviteMemberStateData>(),
+        isA<CommercioKycDeriveInviteMemberStateLoading>(),
+        isA<CommercioKycDeriveInviteMemberStateError>(),
       ]),
     );
 
-    final commFlatButton = InviteMemberFlatButton(
+    final commFlatButton = DeriveInviteMemberFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioKycInviteMemberEvent(
-        invitedAddress: invitedAddress,
+      event: () => CommercioKycDeriveInviteMemberEvent(
+        invitedAddress: correctWalletAddress,
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
@@ -195,8 +208,71 @@ void main() {
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioKyc.inviteMember(
-      invitedAddress: invitedAddress,
+    when(commercioKyc.deriveInviteMember(
+      invitedAddress: correctWalletAddress,
+    )).thenThrow(Exception());
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+  });
+
+  testWidgets('Submit InviteMember Event', (
+    WidgetTester tester,
+  ) async {
+    when(commercioKyc.inviteMembers(
+      inviteUsers: [correctInviteUser],
+    )).thenAnswer((_) async => correctTxResult);
+
+    final bloc = CommercioKycInviteMembersBloc(
+      commercioKyc: commercioKyc,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioKycInviteMembersStateLoading>(),
+        isA<CommercioKycInviteMembersStateData>(),
+        isA<CommercioKycInviteMembersStateLoading>(),
+        isA<CommercioKycInviteMembersStateError>(),
+      ]),
+    );
+
+    final commFlatButton = InviteMembersFlatButton(
+      loading: (_) => const Text(loadingText),
+      child: (_) => const Text(childText),
+      event: () => CommercioKycInviteMembersEvent(
+        inviteUsers: [correctInviteUser],
+      ),
+      error: (context, err) => Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err),
+        ),
+      ),
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commFlatButton,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioKyc.inviteMembers(
+      inviteUsers: [correctInviteUser],
     )).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));

@@ -51,15 +51,29 @@ abstract class StatelessCommercioKyc {
     return MembershipHelper.buyMembership(membershipType, wallet, fee: fee);
   }
 
-  /// Invite a new [invitedAddress] to the chain. To send an invite the
+  /// Returns the [InviteUser] object that represent an invite for
+  /// [invitedAddress].
+  static InviteUser deriveInviteMember({
+    @required String invitedAddress,
+    @required Wallet wallet,
+  }) {
+    return InviteUserHelper.fromWallet(
+      wallet,
+      invitedAddress,
+    );
+  }
+
+  /// Invites the list of [inviteUsers] wallet addresses from [wallet].
+  /// To send an invite the
   /// [wallet] must have bought a membership (see [buyMembership()]).
+  /// An optional [fee] can be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> inviteMember({
+  static Future<TransactionResult> inviteMembers({
+    @required List<InviteUser> inviteUsers,
     @required Wallet wallet,
-    @required String invitedAddress,
     StdFee fee,
   }) {
-    return MembershipHelper.inviteUser(invitedAddress, wallet, fee: fee);
+    return MembershipHelper.inviteUsersList(inviteUsers, wallet, fee: fee);
   }
 }

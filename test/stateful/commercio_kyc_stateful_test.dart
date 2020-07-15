@@ -31,7 +31,7 @@ class SecretStorageMethodsMock extends Mock implements SecretStorage {
 
 class HttpHelperMock extends Mock implements HttpHelper {}
 
-void main() {
+void main() async {
   if (Directory.current.path.endsWith('/test')) {
     Directory.current = Directory.current.parent;
   }
@@ -46,7 +46,7 @@ void main() {
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
-  String correctWalletAddress = correctWallet.bech32Address;
+  final correctWalletAddress = correctWallet.bech32Address;
   final HttpHelper httpHelperMock = HttpHelperMock();
   SecretStorage secretStorageMethodsMock = SecretStorageMethodsMock();
   const String secureStorageKey = 'secure-storage-key';
@@ -61,6 +61,13 @@ void main() {
     storageKey: secureStorageKey,
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,
+  );
+  await correctCommercioAccount.generateNewWallet(
+    mnemonic: correctMnemonic,
+  );
+  final correctInviteUser = InviteUser(
+    recipientDid: correctWalletAddress,
+    senderDid: correctWalletAddress,
   );
 
   const String correctTxHash =
@@ -97,9 +104,6 @@ void main() {
       final commercioKyc = StatefulCommercioKyc(
         commercioAccount: correctCommercioAccount,
       );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
-      );
 
       final response = await commercioKyc.requestFaucetInvite();
 
@@ -134,9 +138,6 @@ void main() {
       final commercioKyc = StatefulCommercioKyc(
         commercioAccount: correctCommercioAccount,
       );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
-      );
 
       final result = await commercioKyc.buyMembership(
         membershipType: MembershipType.BLACK,
@@ -157,6 +158,34 @@ void main() {
     });
   });
 
+  group('Derive invite member', () {
+    test('Correct', () {
+      final commercioKyc = StatefulCommercioKyc(
+        commercioAccount: correctCommercioAccount,
+      );
+
+      final inviteUser = commercioKyc.deriveInviteMember(
+        invitedAddress: correctWalletAddress,
+      );
+
+      expect(inviteUser.recipientDid, correctWalletAddress);
+      expect(inviteUser.senderDid, correctWalletAddress);
+    });
+
+    test('No wallet in commercioAccount should throw an exception', () {
+      final commercioKyc = StatefulCommercioKyc(
+        commercioAccount: commercioAccountWithoutWallet,
+      );
+
+      expect(
+        () => commercioKyc.deriveInviteMember(
+          invitedAddress: correctWalletAddress,
+        ),
+        throwsA(isA<WalletNotFoundException>()),
+      );
+    });
+  });
+
   group('Invite member', () {
     test('Correct', () async {
       TxSender.client = MockClient(
@@ -172,12 +201,9 @@ void main() {
       final commercioKyc = StatefulCommercioKyc(
         commercioAccount: correctCommercioAccount,
       );
-      await correctCommercioAccount.generateNewWallet(
-        mnemonic: correctMnemonic,
-      );
 
-      final result = await commercioKyc.inviteMember(
-        invitedAddress: correctWalletAddress,
+      final result = await commercioKyc.inviteMembers(
+        inviteUsers: [correctInviteUser],
       );
 
       expect(result.success, isTrue);
@@ -189,7 +215,9 @@ void main() {
       );
 
       expectLater(
-        () => commercioKyc.inviteMember(invitedAddress: correctWalletAddress),
+        () => commercioKyc.inviteMembers(
+          inviteUsers: [correctInviteUser],
+        ),
         throwsA(isA<WalletNotFoundException>()),
       );
     });

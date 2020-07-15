@@ -1166,38 +1166,610 @@ abstract class CommercioKycBuyMembershipStateError
       CommercioKycBuyMembershipStateError> get copyWith;
 }
 
-class _$CommercioKycInviteMemberStateTearOff {
-  const _$CommercioKycInviteMemberStateTearOff();
+class _$CommercioKycDeriveInviteMemberStateTearOff {
+  const _$CommercioKycDeriveInviteMemberStateTearOff();
 
 // ignore: unused_element
-  CommercioKycInviteMemberStateData call({@required TransactionResult result}) {
-    return CommercioKycInviteMemberStateData(
-      result: result,
+  CommercioKycDeriveInviteMemberStateData call(
+      {@required InviteUser inviteUser}) {
+    return CommercioKycDeriveInviteMemberStateData(
+      inviteUser: inviteUser,
     );
   }
 
 // ignore: unused_element
-  CommercioKycInviteMemberStateInitial initial() {
-    return const CommercioKycInviteMemberStateInitial();
+  CommercioKycDeriveInviteMemberStateInitial initial() {
+    return const CommercioKycDeriveInviteMemberStateInitial();
   }
 
 // ignore: unused_element
-  CommercioKycInviteMemberStateLoading loading() {
-    return const CommercioKycInviteMemberStateLoading();
+  CommercioKycDeriveInviteMemberStateLoading loading() {
+    return const CommercioKycDeriveInviteMemberStateLoading();
   }
 
 // ignore: unused_element
-  CommercioKycInviteMemberStateError error([String error]) {
-    return CommercioKycInviteMemberStateError(
+  CommercioKycDeriveInviteMemberStateError error([String error]) {
+    return CommercioKycDeriveInviteMemberStateError(
       error,
     );
   }
 }
 
 // ignore: unused_element
-const $CommercioKycInviteMemberState = _$CommercioKycInviteMemberStateTearOff();
+const $CommercioKycDeriveInviteMemberState =
+    _$CommercioKycDeriveInviteMemberStateTearOff();
 
-mixin _$CommercioKycInviteMemberState {
+mixin _$CommercioKycDeriveInviteMemberState {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    @required Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    @required Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    @required Result error(CommercioKycDeriveInviteMemberStateError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    Result error(CommercioKycDeriveInviteMemberStateError value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $CommercioKycDeriveInviteMemberStateCopyWith<$Res> {
+  factory $CommercioKycDeriveInviteMemberStateCopyWith(
+          CommercioKycDeriveInviteMemberState value,
+          $Res Function(CommercioKycDeriveInviteMemberState) then) =
+      _$CommercioKycDeriveInviteMemberStateCopyWithImpl<$Res>;
+}
+
+class _$CommercioKycDeriveInviteMemberStateCopyWithImpl<$Res>
+    implements $CommercioKycDeriveInviteMemberStateCopyWith<$Res> {
+  _$CommercioKycDeriveInviteMemberStateCopyWithImpl(this._value, this._then);
+
+  final CommercioKycDeriveInviteMemberState _value;
+  // ignore: unused_field
+  final $Res Function(CommercioKycDeriveInviteMemberState) _then;
+}
+
+abstract class $CommercioKycDeriveInviteMemberStateDataCopyWith<$Res> {
+  factory $CommercioKycDeriveInviteMemberStateDataCopyWith(
+          CommercioKycDeriveInviteMemberStateData value,
+          $Res Function(CommercioKycDeriveInviteMemberStateData) then) =
+      _$CommercioKycDeriveInviteMemberStateDataCopyWithImpl<$Res>;
+  $Res call({InviteUser inviteUser});
+}
+
+class _$CommercioKycDeriveInviteMemberStateDataCopyWithImpl<$Res>
+    extends _$CommercioKycDeriveInviteMemberStateCopyWithImpl<$Res>
+    implements $CommercioKycDeriveInviteMemberStateDataCopyWith<$Res> {
+  _$CommercioKycDeriveInviteMemberStateDataCopyWithImpl(
+      CommercioKycDeriveInviteMemberStateData _value,
+      $Res Function(CommercioKycDeriveInviteMemberStateData) _then)
+      : super(
+            _value, (v) => _then(v as CommercioKycDeriveInviteMemberStateData));
+
+  @override
+  CommercioKycDeriveInviteMemberStateData get _value =>
+      super._value as CommercioKycDeriveInviteMemberStateData;
+
+  @override
+  $Res call({
+    Object inviteUser = freezed,
+  }) {
+    return _then(CommercioKycDeriveInviteMemberStateData(
+      inviteUser:
+          inviteUser == freezed ? _value.inviteUser : inviteUser as InviteUser,
+    ));
+  }
+}
+
+class _$CommercioKycDeriveInviteMemberStateData
+    implements CommercioKycDeriveInviteMemberStateData {
+  const _$CommercioKycDeriveInviteMemberStateData({@required this.inviteUser})
+      : assert(inviteUser != null);
+
+  @override
+  final InviteUser inviteUser;
+
+  @override
+  String toString() {
+    return 'CommercioKycDeriveInviteMemberState(inviteUser: $inviteUser)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioKycDeriveInviteMemberStateData &&
+            (identical(other.inviteUser, inviteUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.inviteUser, inviteUser)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(inviteUser);
+
+  @override
+  $CommercioKycDeriveInviteMemberStateDataCopyWith<
+          CommercioKycDeriveInviteMemberStateData>
+      get copyWith => _$CommercioKycDeriveInviteMemberStateDataCopyWithImpl<
+          CommercioKycDeriveInviteMemberStateData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(inviteUser);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(inviteUser);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    @required Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    @required Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    @required Result error(CommercioKycDeriveInviteMemberStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    Result error(CommercioKycDeriveInviteMemberStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioKycDeriveInviteMemberStateData
+    implements CommercioKycDeriveInviteMemberState {
+  const factory CommercioKycDeriveInviteMemberStateData(
+          {@required InviteUser inviteUser}) =
+      _$CommercioKycDeriveInviteMemberStateData;
+
+  InviteUser get inviteUser;
+  $CommercioKycDeriveInviteMemberStateDataCopyWith<
+      CommercioKycDeriveInviteMemberStateData> get copyWith;
+}
+
+abstract class $CommercioKycDeriveInviteMemberStateInitialCopyWith<$Res> {
+  factory $CommercioKycDeriveInviteMemberStateInitialCopyWith(
+          CommercioKycDeriveInviteMemberStateInitial value,
+          $Res Function(CommercioKycDeriveInviteMemberStateInitial) then) =
+      _$CommercioKycDeriveInviteMemberStateInitialCopyWithImpl<$Res>;
+}
+
+class _$CommercioKycDeriveInviteMemberStateInitialCopyWithImpl<$Res>
+    extends _$CommercioKycDeriveInviteMemberStateCopyWithImpl<$Res>
+    implements $CommercioKycDeriveInviteMemberStateInitialCopyWith<$Res> {
+  _$CommercioKycDeriveInviteMemberStateInitialCopyWithImpl(
+      CommercioKycDeriveInviteMemberStateInitial _value,
+      $Res Function(CommercioKycDeriveInviteMemberStateInitial) _then)
+      : super(_value,
+            (v) => _then(v as CommercioKycDeriveInviteMemberStateInitial));
+
+  @override
+  CommercioKycDeriveInviteMemberStateInitial get _value =>
+      super._value as CommercioKycDeriveInviteMemberStateInitial;
+}
+
+class _$CommercioKycDeriveInviteMemberStateInitial
+    implements CommercioKycDeriveInviteMemberStateInitial {
+  const _$CommercioKycDeriveInviteMemberStateInitial();
+
+  @override
+  String toString() {
+    return 'CommercioKycDeriveInviteMemberState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioKycDeriveInviteMemberStateInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    @required Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    @required Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    @required Result error(CommercioKycDeriveInviteMemberStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    Result error(CommercioKycDeriveInviteMemberStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioKycDeriveInviteMemberStateInitial
+    implements CommercioKycDeriveInviteMemberState {
+  const factory CommercioKycDeriveInviteMemberStateInitial() =
+      _$CommercioKycDeriveInviteMemberStateInitial;
+}
+
+abstract class $CommercioKycDeriveInviteMemberStateLoadingCopyWith<$Res> {
+  factory $CommercioKycDeriveInviteMemberStateLoadingCopyWith(
+          CommercioKycDeriveInviteMemberStateLoading value,
+          $Res Function(CommercioKycDeriveInviteMemberStateLoading) then) =
+      _$CommercioKycDeriveInviteMemberStateLoadingCopyWithImpl<$Res>;
+}
+
+class _$CommercioKycDeriveInviteMemberStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioKycDeriveInviteMemberStateCopyWithImpl<$Res>
+    implements $CommercioKycDeriveInviteMemberStateLoadingCopyWith<$Res> {
+  _$CommercioKycDeriveInviteMemberStateLoadingCopyWithImpl(
+      CommercioKycDeriveInviteMemberStateLoading _value,
+      $Res Function(CommercioKycDeriveInviteMemberStateLoading) _then)
+      : super(_value,
+            (v) => _then(v as CommercioKycDeriveInviteMemberStateLoading));
+
+  @override
+  CommercioKycDeriveInviteMemberStateLoading get _value =>
+      super._value as CommercioKycDeriveInviteMemberStateLoading;
+}
+
+class _$CommercioKycDeriveInviteMemberStateLoading
+    implements CommercioKycDeriveInviteMemberStateLoading {
+  const _$CommercioKycDeriveInviteMemberStateLoading();
+
+  @override
+  String toString() {
+    return 'CommercioKycDeriveInviteMemberState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioKycDeriveInviteMemberStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    @required Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    @required Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    @required Result error(CommercioKycDeriveInviteMemberStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    Result error(CommercioKycDeriveInviteMemberStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioKycDeriveInviteMemberStateLoading
+    implements CommercioKycDeriveInviteMemberState {
+  const factory CommercioKycDeriveInviteMemberStateLoading() =
+      _$CommercioKycDeriveInviteMemberStateLoading;
+}
+
+abstract class $CommercioKycDeriveInviteMemberStateErrorCopyWith<$Res> {
+  factory $CommercioKycDeriveInviteMemberStateErrorCopyWith(
+          CommercioKycDeriveInviteMemberStateError value,
+          $Res Function(CommercioKycDeriveInviteMemberStateError) then) =
+      _$CommercioKycDeriveInviteMemberStateErrorCopyWithImpl<$Res>;
+  $Res call({String error});
+}
+
+class _$CommercioKycDeriveInviteMemberStateErrorCopyWithImpl<$Res>
+    extends _$CommercioKycDeriveInviteMemberStateCopyWithImpl<$Res>
+    implements $CommercioKycDeriveInviteMemberStateErrorCopyWith<$Res> {
+  _$CommercioKycDeriveInviteMemberStateErrorCopyWithImpl(
+      CommercioKycDeriveInviteMemberStateError _value,
+      $Res Function(CommercioKycDeriveInviteMemberStateError) _then)
+      : super(_value,
+            (v) => _then(v as CommercioKycDeriveInviteMemberStateError));
+
+  @override
+  CommercioKycDeriveInviteMemberStateError get _value =>
+      super._value as CommercioKycDeriveInviteMemberStateError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(CommercioKycDeriveInviteMemberStateError(
+      error == freezed ? _value.error : error as String,
+    ));
+  }
+}
+
+class _$CommercioKycDeriveInviteMemberStateError
+    implements CommercioKycDeriveInviteMemberStateError {
+  const _$CommercioKycDeriveInviteMemberStateError([this.error]);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'CommercioKycDeriveInviteMemberState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioKycDeriveInviteMemberStateError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $CommercioKycDeriveInviteMemberStateErrorCopyWith<
+          CommercioKycDeriveInviteMemberStateError>
+      get copyWith => _$CommercioKycDeriveInviteMemberStateErrorCopyWithImpl<
+          CommercioKycDeriveInviteMemberStateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(InviteUser inviteUser), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    @required Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    @required Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    @required Result error(CommercioKycDeriveInviteMemberStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioKycDeriveInviteMemberStateData value), {
+    Result initial(CommercioKycDeriveInviteMemberStateInitial value),
+    Result loading(CommercioKycDeriveInviteMemberStateLoading value),
+    Result error(CommercioKycDeriveInviteMemberStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioKycDeriveInviteMemberStateError
+    implements CommercioKycDeriveInviteMemberState {
+  const factory CommercioKycDeriveInviteMemberStateError([String error]) =
+      _$CommercioKycDeriveInviteMemberStateError;
+
+  String get error;
+  $CommercioKycDeriveInviteMemberStateErrorCopyWith<
+      CommercioKycDeriveInviteMemberStateError> get copyWith;
+}
+
+class _$CommercioKycInviteMembersStateTearOff {
+  const _$CommercioKycInviteMembersStateTearOff();
+
+// ignore: unused_element
+  CommercioKycInviteMembersStateData call(
+      {@required TransactionResult result}) {
+    return CommercioKycInviteMembersStateData(
+      result: result,
+    );
+  }
+
+// ignore: unused_element
+  CommercioKycInviteMembersStateInitial initial() {
+    return const CommercioKycInviteMembersStateInitial();
+  }
+
+// ignore: unused_element
+  CommercioKycInviteMembersStateLoading loading() {
+    return const CommercioKycInviteMembersStateLoading();
+  }
+
+// ignore: unused_element
+  CommercioKycInviteMembersStateError error([String error]) {
+    return CommercioKycInviteMembersStateError(
+      error,
+    );
+  }
+}
+
+// ignore: unused_element
+const $CommercioKycInviteMembersState =
+    _$CommercioKycInviteMembersStateTearOff();
+
+mixin _$CommercioKycInviteMembersState {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(TransactionResult result), {
@@ -1215,70 +1787,70 @@ mixin _$CommercioKycInviteMemberState {
   });
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    @required Result initial(CommercioKycInviteMemberStateInitial value),
-    @required Result loading(CommercioKycInviteMemberStateLoading value),
-    @required Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    @required Result initial(CommercioKycInviteMembersStateInitial value),
+    @required Result loading(CommercioKycInviteMembersStateLoading value),
+    @required Result error(CommercioKycInviteMembersStateError value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    Result initial(CommercioKycInviteMemberStateInitial value),
-    Result loading(CommercioKycInviteMemberStateLoading value),
-    Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    Result initial(CommercioKycInviteMembersStateInitial value),
+    Result loading(CommercioKycInviteMembersStateLoading value),
+    Result error(CommercioKycInviteMembersStateError value),
     @required Result orElse(),
   });
 }
 
-abstract class $CommercioKycInviteMemberStateCopyWith<$Res> {
-  factory $CommercioKycInviteMemberStateCopyWith(
-          CommercioKycInviteMemberState value,
-          $Res Function(CommercioKycInviteMemberState) then) =
-      _$CommercioKycInviteMemberStateCopyWithImpl<$Res>;
+abstract class $CommercioKycInviteMembersStateCopyWith<$Res> {
+  factory $CommercioKycInviteMembersStateCopyWith(
+          CommercioKycInviteMembersState value,
+          $Res Function(CommercioKycInviteMembersState) then) =
+      _$CommercioKycInviteMembersStateCopyWithImpl<$Res>;
 }
 
-class _$CommercioKycInviteMemberStateCopyWithImpl<$Res>
-    implements $CommercioKycInviteMemberStateCopyWith<$Res> {
-  _$CommercioKycInviteMemberStateCopyWithImpl(this._value, this._then);
+class _$CommercioKycInviteMembersStateCopyWithImpl<$Res>
+    implements $CommercioKycInviteMembersStateCopyWith<$Res> {
+  _$CommercioKycInviteMembersStateCopyWithImpl(this._value, this._then);
 
-  final CommercioKycInviteMemberState _value;
+  final CommercioKycInviteMembersState _value;
   // ignore: unused_field
-  final $Res Function(CommercioKycInviteMemberState) _then;
+  final $Res Function(CommercioKycInviteMembersState) _then;
 }
 
-abstract class $CommercioKycInviteMemberStateDataCopyWith<$Res> {
-  factory $CommercioKycInviteMemberStateDataCopyWith(
-          CommercioKycInviteMemberStateData value,
-          $Res Function(CommercioKycInviteMemberStateData) then) =
-      _$CommercioKycInviteMemberStateDataCopyWithImpl<$Res>;
+abstract class $CommercioKycInviteMembersStateDataCopyWith<$Res> {
+  factory $CommercioKycInviteMembersStateDataCopyWith(
+          CommercioKycInviteMembersStateData value,
+          $Res Function(CommercioKycInviteMembersStateData) then) =
+      _$CommercioKycInviteMembersStateDataCopyWithImpl<$Res>;
   $Res call({TransactionResult result});
 }
 
-class _$CommercioKycInviteMemberStateDataCopyWithImpl<$Res>
-    extends _$CommercioKycInviteMemberStateCopyWithImpl<$Res>
-    implements $CommercioKycInviteMemberStateDataCopyWith<$Res> {
-  _$CommercioKycInviteMemberStateDataCopyWithImpl(
-      CommercioKycInviteMemberStateData _value,
-      $Res Function(CommercioKycInviteMemberStateData) _then)
-      : super(_value, (v) => _then(v as CommercioKycInviteMemberStateData));
+class _$CommercioKycInviteMembersStateDataCopyWithImpl<$Res>
+    extends _$CommercioKycInviteMembersStateCopyWithImpl<$Res>
+    implements $CommercioKycInviteMembersStateDataCopyWith<$Res> {
+  _$CommercioKycInviteMembersStateDataCopyWithImpl(
+      CommercioKycInviteMembersStateData _value,
+      $Res Function(CommercioKycInviteMembersStateData) _then)
+      : super(_value, (v) => _then(v as CommercioKycInviteMembersStateData));
 
   @override
-  CommercioKycInviteMemberStateData get _value =>
-      super._value as CommercioKycInviteMemberStateData;
+  CommercioKycInviteMembersStateData get _value =>
+      super._value as CommercioKycInviteMembersStateData;
 
   @override
   $Res call({
     Object result = freezed,
   }) {
-    return _then(CommercioKycInviteMemberStateData(
+    return _then(CommercioKycInviteMembersStateData(
       result: result == freezed ? _value.result : result as TransactionResult,
     ));
   }
 }
 
-class _$CommercioKycInviteMemberStateData
-    implements CommercioKycInviteMemberStateData {
-  const _$CommercioKycInviteMemberStateData({@required this.result})
+class _$CommercioKycInviteMembersStateData
+    implements CommercioKycInviteMembersStateData {
+  const _$CommercioKycInviteMembersStateData({@required this.result})
       : assert(result != null);
 
   @override
@@ -1286,13 +1858,13 @@ class _$CommercioKycInviteMemberStateData
 
   @override
   String toString() {
-    return 'CommercioKycInviteMemberState(result: $result)';
+    return 'CommercioKycInviteMembersState(result: $result)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioKycInviteMemberStateData &&
+        (other is CommercioKycInviteMembersStateData &&
             (identical(other.result, result) ||
                 const DeepCollectionEquality().equals(other.result, result)));
   }
@@ -1302,9 +1874,10 @@ class _$CommercioKycInviteMemberStateData
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
   @override
-  $CommercioKycInviteMemberStateDataCopyWith<CommercioKycInviteMemberStateData>
-      get copyWith => _$CommercioKycInviteMemberStateDataCopyWithImpl<
-          CommercioKycInviteMemberStateData>(this, _$identity);
+  $CommercioKycInviteMembersStateDataCopyWith<
+          CommercioKycInviteMembersStateData>
+      get copyWith => _$CommercioKycInviteMembersStateDataCopyWithImpl<
+          CommercioKycInviteMembersStateData>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1340,10 +1913,10 @@ class _$CommercioKycInviteMemberStateData
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    @required Result initial(CommercioKycInviteMemberStateInitial value),
-    @required Result loading(CommercioKycInviteMemberStateLoading value),
-    @required Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    @required Result initial(CommercioKycInviteMembersStateInitial value),
+    @required Result loading(CommercioKycInviteMembersStateLoading value),
+    @required Result error(CommercioKycInviteMembersStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -1355,10 +1928,10 @@ class _$CommercioKycInviteMemberStateData
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    Result initial(CommercioKycInviteMemberStateInitial value),
-    Result loading(CommercioKycInviteMemberStateLoading value),
-    Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    Result initial(CommercioKycInviteMembersStateInitial value),
+    Result loading(CommercioKycInviteMembersStateLoading value),
+    Result error(CommercioKycInviteMembersStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1369,50 +1942,50 @@ class _$CommercioKycInviteMemberStateData
   }
 }
 
-abstract class CommercioKycInviteMemberStateData
-    implements CommercioKycInviteMemberState {
-  const factory CommercioKycInviteMemberStateData(
+abstract class CommercioKycInviteMembersStateData
+    implements CommercioKycInviteMembersState {
+  const factory CommercioKycInviteMembersStateData(
           {@required TransactionResult result}) =
-      _$CommercioKycInviteMemberStateData;
+      _$CommercioKycInviteMembersStateData;
 
   TransactionResult get result;
-  $CommercioKycInviteMemberStateDataCopyWith<CommercioKycInviteMemberStateData>
-      get copyWith;
+  $CommercioKycInviteMembersStateDataCopyWith<
+      CommercioKycInviteMembersStateData> get copyWith;
 }
 
-abstract class $CommercioKycInviteMemberStateInitialCopyWith<$Res> {
-  factory $CommercioKycInviteMemberStateInitialCopyWith(
-          CommercioKycInviteMemberStateInitial value,
-          $Res Function(CommercioKycInviteMemberStateInitial) then) =
-      _$CommercioKycInviteMemberStateInitialCopyWithImpl<$Res>;
+abstract class $CommercioKycInviteMembersStateInitialCopyWith<$Res> {
+  factory $CommercioKycInviteMembersStateInitialCopyWith(
+          CommercioKycInviteMembersStateInitial value,
+          $Res Function(CommercioKycInviteMembersStateInitial) then) =
+      _$CommercioKycInviteMembersStateInitialCopyWithImpl<$Res>;
 }
 
-class _$CommercioKycInviteMemberStateInitialCopyWithImpl<$Res>
-    extends _$CommercioKycInviteMemberStateCopyWithImpl<$Res>
-    implements $CommercioKycInviteMemberStateInitialCopyWith<$Res> {
-  _$CommercioKycInviteMemberStateInitialCopyWithImpl(
-      CommercioKycInviteMemberStateInitial _value,
-      $Res Function(CommercioKycInviteMemberStateInitial) _then)
-      : super(_value, (v) => _then(v as CommercioKycInviteMemberStateInitial));
+class _$CommercioKycInviteMembersStateInitialCopyWithImpl<$Res>
+    extends _$CommercioKycInviteMembersStateCopyWithImpl<$Res>
+    implements $CommercioKycInviteMembersStateInitialCopyWith<$Res> {
+  _$CommercioKycInviteMembersStateInitialCopyWithImpl(
+      CommercioKycInviteMembersStateInitial _value,
+      $Res Function(CommercioKycInviteMembersStateInitial) _then)
+      : super(_value, (v) => _then(v as CommercioKycInviteMembersStateInitial));
 
   @override
-  CommercioKycInviteMemberStateInitial get _value =>
-      super._value as CommercioKycInviteMemberStateInitial;
+  CommercioKycInviteMembersStateInitial get _value =>
+      super._value as CommercioKycInviteMembersStateInitial;
 }
 
-class _$CommercioKycInviteMemberStateInitial
-    implements CommercioKycInviteMemberStateInitial {
-  const _$CommercioKycInviteMemberStateInitial();
+class _$CommercioKycInviteMembersStateInitial
+    implements CommercioKycInviteMembersStateInitial {
+  const _$CommercioKycInviteMembersStateInitial();
 
   @override
   String toString() {
-    return 'CommercioKycInviteMemberState.initial()';
+    return 'CommercioKycInviteMembersState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioKycInviteMemberStateInitial);
+        (other is CommercioKycInviteMembersStateInitial);
   }
 
   @override
@@ -1452,10 +2025,10 @@ class _$CommercioKycInviteMemberStateInitial
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    @required Result initial(CommercioKycInviteMemberStateInitial value),
-    @required Result loading(CommercioKycInviteMemberStateLoading value),
-    @required Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    @required Result initial(CommercioKycInviteMembersStateInitial value),
+    @required Result loading(CommercioKycInviteMembersStateLoading value),
+    @required Result error(CommercioKycInviteMembersStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -1467,10 +2040,10 @@ class _$CommercioKycInviteMemberStateInitial
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    Result initial(CommercioKycInviteMemberStateInitial value),
-    Result loading(CommercioKycInviteMemberStateLoading value),
-    Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    Result initial(CommercioKycInviteMembersStateInitial value),
+    Result loading(CommercioKycInviteMembersStateLoading value),
+    Result error(CommercioKycInviteMembersStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1481,45 +2054,45 @@ class _$CommercioKycInviteMemberStateInitial
   }
 }
 
-abstract class CommercioKycInviteMemberStateInitial
-    implements CommercioKycInviteMemberState {
-  const factory CommercioKycInviteMemberStateInitial() =
-      _$CommercioKycInviteMemberStateInitial;
+abstract class CommercioKycInviteMembersStateInitial
+    implements CommercioKycInviteMembersState {
+  const factory CommercioKycInviteMembersStateInitial() =
+      _$CommercioKycInviteMembersStateInitial;
 }
 
-abstract class $CommercioKycInviteMemberStateLoadingCopyWith<$Res> {
-  factory $CommercioKycInviteMemberStateLoadingCopyWith(
-          CommercioKycInviteMemberStateLoading value,
-          $Res Function(CommercioKycInviteMemberStateLoading) then) =
-      _$CommercioKycInviteMemberStateLoadingCopyWithImpl<$Res>;
+abstract class $CommercioKycInviteMembersStateLoadingCopyWith<$Res> {
+  factory $CommercioKycInviteMembersStateLoadingCopyWith(
+          CommercioKycInviteMembersStateLoading value,
+          $Res Function(CommercioKycInviteMembersStateLoading) then) =
+      _$CommercioKycInviteMembersStateLoadingCopyWithImpl<$Res>;
 }
 
-class _$CommercioKycInviteMemberStateLoadingCopyWithImpl<$Res>
-    extends _$CommercioKycInviteMemberStateCopyWithImpl<$Res>
-    implements $CommercioKycInviteMemberStateLoadingCopyWith<$Res> {
-  _$CommercioKycInviteMemberStateLoadingCopyWithImpl(
-      CommercioKycInviteMemberStateLoading _value,
-      $Res Function(CommercioKycInviteMemberStateLoading) _then)
-      : super(_value, (v) => _then(v as CommercioKycInviteMemberStateLoading));
+class _$CommercioKycInviteMembersStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioKycInviteMembersStateCopyWithImpl<$Res>
+    implements $CommercioKycInviteMembersStateLoadingCopyWith<$Res> {
+  _$CommercioKycInviteMembersStateLoadingCopyWithImpl(
+      CommercioKycInviteMembersStateLoading _value,
+      $Res Function(CommercioKycInviteMembersStateLoading) _then)
+      : super(_value, (v) => _then(v as CommercioKycInviteMembersStateLoading));
 
   @override
-  CommercioKycInviteMemberStateLoading get _value =>
-      super._value as CommercioKycInviteMemberStateLoading;
+  CommercioKycInviteMembersStateLoading get _value =>
+      super._value as CommercioKycInviteMembersStateLoading;
 }
 
-class _$CommercioKycInviteMemberStateLoading
-    implements CommercioKycInviteMemberStateLoading {
-  const _$CommercioKycInviteMemberStateLoading();
+class _$CommercioKycInviteMembersStateLoading
+    implements CommercioKycInviteMembersStateLoading {
+  const _$CommercioKycInviteMembersStateLoading();
 
   @override
   String toString() {
-    return 'CommercioKycInviteMemberState.loading()';
+    return 'CommercioKycInviteMembersState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioKycInviteMemberStateLoading);
+        (other is CommercioKycInviteMembersStateLoading);
   }
 
   @override
@@ -1559,10 +2132,10 @@ class _$CommercioKycInviteMemberStateLoading
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    @required Result initial(CommercioKycInviteMemberStateInitial value),
-    @required Result loading(CommercioKycInviteMemberStateLoading value),
-    @required Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    @required Result initial(CommercioKycInviteMembersStateInitial value),
+    @required Result loading(CommercioKycInviteMembersStateLoading value),
+    @required Result error(CommercioKycInviteMembersStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -1574,10 +2147,10 @@ class _$CommercioKycInviteMemberStateLoading
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    Result initial(CommercioKycInviteMemberStateInitial value),
-    Result loading(CommercioKycInviteMemberStateLoading value),
-    Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    Result initial(CommercioKycInviteMembersStateInitial value),
+    Result loading(CommercioKycInviteMembersStateLoading value),
+    Result error(CommercioKycInviteMembersStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1588,58 +2161,58 @@ class _$CommercioKycInviteMemberStateLoading
   }
 }
 
-abstract class CommercioKycInviteMemberStateLoading
-    implements CommercioKycInviteMemberState {
-  const factory CommercioKycInviteMemberStateLoading() =
-      _$CommercioKycInviteMemberStateLoading;
+abstract class CommercioKycInviteMembersStateLoading
+    implements CommercioKycInviteMembersState {
+  const factory CommercioKycInviteMembersStateLoading() =
+      _$CommercioKycInviteMembersStateLoading;
 }
 
-abstract class $CommercioKycInviteMemberStateErrorCopyWith<$Res> {
-  factory $CommercioKycInviteMemberStateErrorCopyWith(
-          CommercioKycInviteMemberStateError value,
-          $Res Function(CommercioKycInviteMemberStateError) then) =
-      _$CommercioKycInviteMemberStateErrorCopyWithImpl<$Res>;
+abstract class $CommercioKycInviteMembersStateErrorCopyWith<$Res> {
+  factory $CommercioKycInviteMembersStateErrorCopyWith(
+          CommercioKycInviteMembersStateError value,
+          $Res Function(CommercioKycInviteMembersStateError) then) =
+      _$CommercioKycInviteMembersStateErrorCopyWithImpl<$Res>;
   $Res call({String error});
 }
 
-class _$CommercioKycInviteMemberStateErrorCopyWithImpl<$Res>
-    extends _$CommercioKycInviteMemberStateCopyWithImpl<$Res>
-    implements $CommercioKycInviteMemberStateErrorCopyWith<$Res> {
-  _$CommercioKycInviteMemberStateErrorCopyWithImpl(
-      CommercioKycInviteMemberStateError _value,
-      $Res Function(CommercioKycInviteMemberStateError) _then)
-      : super(_value, (v) => _then(v as CommercioKycInviteMemberStateError));
+class _$CommercioKycInviteMembersStateErrorCopyWithImpl<$Res>
+    extends _$CommercioKycInviteMembersStateCopyWithImpl<$Res>
+    implements $CommercioKycInviteMembersStateErrorCopyWith<$Res> {
+  _$CommercioKycInviteMembersStateErrorCopyWithImpl(
+      CommercioKycInviteMembersStateError _value,
+      $Res Function(CommercioKycInviteMembersStateError) _then)
+      : super(_value, (v) => _then(v as CommercioKycInviteMembersStateError));
 
   @override
-  CommercioKycInviteMemberStateError get _value =>
-      super._value as CommercioKycInviteMemberStateError;
+  CommercioKycInviteMembersStateError get _value =>
+      super._value as CommercioKycInviteMembersStateError;
 
   @override
   $Res call({
     Object error = freezed,
   }) {
-    return _then(CommercioKycInviteMemberStateError(
+    return _then(CommercioKycInviteMembersStateError(
       error == freezed ? _value.error : error as String,
     ));
   }
 }
 
-class _$CommercioKycInviteMemberStateError
-    implements CommercioKycInviteMemberStateError {
-  const _$CommercioKycInviteMemberStateError([this.error]);
+class _$CommercioKycInviteMembersStateError
+    implements CommercioKycInviteMembersStateError {
+  const _$CommercioKycInviteMembersStateError([this.error]);
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'CommercioKycInviteMemberState.error(error: $error)';
+    return 'CommercioKycInviteMembersState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioKycInviteMemberStateError &&
+        (other is CommercioKycInviteMembersStateError &&
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)));
   }
@@ -1649,10 +2222,10 @@ class _$CommercioKycInviteMemberStateError
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $CommercioKycInviteMemberStateErrorCopyWith<
-          CommercioKycInviteMemberStateError>
-      get copyWith => _$CommercioKycInviteMemberStateErrorCopyWithImpl<
-          CommercioKycInviteMemberStateError>(this, _$identity);
+  $CommercioKycInviteMembersStateErrorCopyWith<
+          CommercioKycInviteMembersStateError>
+      get copyWith => _$CommercioKycInviteMembersStateErrorCopyWithImpl<
+          CommercioKycInviteMembersStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1688,10 +2261,10 @@ class _$CommercioKycInviteMemberStateError
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    @required Result initial(CommercioKycInviteMemberStateInitial value),
-    @required Result loading(CommercioKycInviteMemberStateLoading value),
-    @required Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    @required Result initial(CommercioKycInviteMembersStateInitial value),
+    @required Result loading(CommercioKycInviteMembersStateLoading value),
+    @required Result error(CommercioKycInviteMembersStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -1703,10 +2276,10 @@ class _$CommercioKycInviteMemberStateError
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioKycInviteMemberStateData value), {
-    Result initial(CommercioKycInviteMemberStateInitial value),
-    Result loading(CommercioKycInviteMemberStateLoading value),
-    Result error(CommercioKycInviteMemberStateError value),
+    Result $default(CommercioKycInviteMembersStateData value), {
+    Result initial(CommercioKycInviteMembersStateInitial value),
+    Result loading(CommercioKycInviteMembersStateLoading value),
+    Result error(CommercioKycInviteMembersStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1717,12 +2290,12 @@ class _$CommercioKycInviteMemberStateError
   }
 }
 
-abstract class CommercioKycInviteMemberStateError
-    implements CommercioKycInviteMemberState {
-  const factory CommercioKycInviteMemberStateError([String error]) =
-      _$CommercioKycInviteMemberStateError;
+abstract class CommercioKycInviteMembersStateError
+    implements CommercioKycInviteMembersState {
+  const factory CommercioKycInviteMembersStateError([String error]) =
+      _$CommercioKycInviteMembersStateError;
 
   String get error;
-  $CommercioKycInviteMemberStateErrorCopyWith<
-      CommercioKycInviteMemberStateError> get copyWith;
+  $CommercioKycInviteMembersStateErrorCopyWith<
+      CommercioKycInviteMembersStateError> get copyWith;
 }

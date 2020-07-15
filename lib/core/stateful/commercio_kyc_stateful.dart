@@ -54,23 +54,42 @@ class StatefulCommercioKyc {
     );
   }
 
-  /// Invite a new [invitedAddress] to the chain. To send an invite the
-  /// account must have bought a membership (see [buyMembership()]).
+  /// Returns the [InviteUser] object that represent an invite for
+  /// [invitedAddress].
+  ///
+  /// Throw [WalletNotFoundException] if no wallet is avaiable.
+  InviteUser deriveInviteMember({
+    @required String invitedAddress,
+  }) {
+    if (!commercioAccount.hasWallet) {
+      throw const WalletNotFoundException();
+    }
+
+    return StatelessCommercioKyc.deriveInviteMember(
+      wallet: commercioAccount.wallet,
+      invitedAddress: invitedAddress,
+    );
+  }
+
+  /// Invites the list of [inviteUsers] wallet addresses from [wallet].
+  /// To send an invite the
+  /// [wallet] must have bought a membership (see [buyMembership()]).
+  /// An optional [fee] can be specified.
   ///
   /// Throw [WalletNotFoundException] if no wallet is avaiable.
   ///
   /// Returns the [TransactionResult].
-  Future<TransactionResult> inviteMember({
-    @required String invitedAddress,
+  Future<TransactionResult> inviteMembers({
+    @required List<InviteUser> inviteUsers,
     StdFee fee,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return MembershipHelper.inviteUser(
-      invitedAddress,
-      commercioAccount.wallet,
+    return StatelessCommercioKyc.inviteMembers(
+      inviteUsers: inviteUsers,
+      wallet: commercioAccount.wallet,
       fee: fee,
     );
   }

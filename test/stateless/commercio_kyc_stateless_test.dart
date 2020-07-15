@@ -28,6 +28,10 @@ void main() {
   );
   String correctWalletAddress = correctWallet.bech32Address;
   final HttpHelper httpHelperMock = HttpHelperMock();
+  final correctInviteUser = InviteUser(
+    recipientDid: correctWalletAddress,
+    senderDid: correctWalletAddress,
+  );
   const String correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
   const String correctTransactionRaw =
@@ -153,6 +157,18 @@ void main() {
     });
   });
 
+  group('Derive invite member', () {
+    test('Correct', () {
+      final inviteUser = StatelessCommercioKyc.deriveInviteMember(
+        invitedAddress: correctWalletAddress,
+        wallet: correctWallet,
+      );
+
+      expect(inviteUser.recipientDid, correctWalletAddress);
+      expect(inviteUser.senderDid, correctWalletAddress);
+    });
+  });
+
   group('Invite member', () {
     test('Correct', () async {
       TxSender.client = MockClient(
@@ -165,9 +181,9 @@ void main() {
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
 
-      final result = await StatelessCommercioKyc.inviteMember(
+      final result = await StatelessCommercioKyc.inviteMembers(
+        inviteUsers: [correctInviteUser],
         wallet: correctWallet,
-        invitedAddress: correctWalletAddress,
       );
 
       expect(result.success, isTrue);
@@ -184,9 +200,9 @@ void main() {
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
 
-      final result = await StatelessCommercioKyc.inviteMember(
+      final result = await StatelessCommercioKyc.inviteMembers(
+        inviteUsers: [correctInviteUser],
         wallet: correctWallet,
-        invitedAddress: correctWalletAddress,
         fee: const StdFee(
           amount: [StdCoin(amount: '10', denom: 'ucommercio')],
           gas: '10',
@@ -202,9 +218,9 @@ void main() {
       );
 
       expectLater(
-        () => StatelessCommercioKyc.inviteMember(
+        () => StatelessCommercioKyc.inviteMembers(
+          inviteUsers: [correctInviteUser],
           wallet: correctWallet,
-          invitedAddress: correctWalletAddress,
           fee: const StdFee(
             amount: [StdCoin(amount: '10', denom: 'ucommercio')],
             gas: '10',

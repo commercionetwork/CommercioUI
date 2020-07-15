@@ -3,6 +3,22 @@ import 'package:commerciosdk/export.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  final NetworkInfo correctNetworkInfo = NetworkInfo(
+    bech32Hrp: 'bech32Hrp',
+    lcdUrl: 'http://lcd-url',
+  );
+  const String correctMnemonic =
+      'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
+  Wallet correctWallet = Wallet.derive(
+    correctMnemonic.split(' '),
+    correctNetworkInfo,
+  );
+  String correctWalletAddress = correctWallet.bech32Address;
+  final correctInviteUser = InviteUser(
+    recipientDid: correctWalletAddress,
+    senderDid: correctWalletAddress,
+  );
+
   test('CommercioKycRequestFaucetInviteEvent', () {
     const faucetDomain = 'faucetDomain';
 
@@ -25,15 +41,25 @@ void main() {
     expect(event.props, [membershipType, fee]);
   });
 
-  test('CommercioKycInviteMemberEvent', () {
-    const invitedAddress = 'invitedAddress';
+  test('CommercioKycDeriveInviteMemberEvent', () {
+    final event = CommercioKycDeriveInviteMemberEvent(
+      invitedAddress: correctWalletAddress,
+    );
+
+    expect(event.props, [correctWalletAddress]);
+  });
+
+  test('CommercioKycInviteMembersEvent', () {
     const fee = StdFee(amount: [], gas: 'gas');
 
-    final event = CommercioKycInviteMemberEvent(
-      invitedAddress: invitedAddress,
+    final event = CommercioKycInviteMembersEvent(
+      inviteUsers: [correctInviteUser],
       fee: fee,
     );
 
-    expect(event.props, [invitedAddress, fee]);
+    expect(event.props, [
+      [correctInviteUser],
+      fee
+    ]);
   });
 }

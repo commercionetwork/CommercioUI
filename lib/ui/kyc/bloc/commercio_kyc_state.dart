@@ -1,4 +1,5 @@
 import 'package:commercio_ui/entities/faucet_invite_response.dart';
+import 'package:commerciosdk/export.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
@@ -40,18 +41,35 @@ abstract class CommercioKycBuyMembershipState
 }
 
 @freezed
-abstract class CommercioKycInviteMemberState
-    with _$CommercioKycInviteMemberState {
-  const factory CommercioKycInviteMemberState({
+abstract class CommercioKycDeriveInviteMemberState
+    with _$CommercioKycDeriveInviteMemberState {
+  const factory CommercioKycDeriveInviteMemberState({
+    @required InviteUser inviteUser,
+  }) = CommercioKycDeriveInviteMemberStateData;
+
+  const factory CommercioKycDeriveInviteMemberState.initial() =
+      CommercioKycDeriveInviteMemberStateInitial;
+
+  const factory CommercioKycDeriveInviteMemberState.loading() =
+      CommercioKycDeriveInviteMemberStateLoading;
+
+  const factory CommercioKycDeriveInviteMemberState.error([String error]) =
+      CommercioKycDeriveInviteMemberStateError;
+}
+
+@freezed
+abstract class CommercioKycInviteMembersState
+    with _$CommercioKycInviteMembersState {
+  const factory CommercioKycInviteMembersState({
     @required TransactionResult result,
-  }) = CommercioKycInviteMemberStateData;
+  }) = CommercioKycInviteMembersStateData;
 
-  const factory CommercioKycInviteMemberState.initial() =
-      CommercioKycInviteMemberStateInitial;
+  const factory CommercioKycInviteMembersState.initial() =
+      CommercioKycInviteMembersStateInitial;
 
-  const factory CommercioKycInviteMemberState.loading() =
-      CommercioKycInviteMemberStateLoading;
+  const factory CommercioKycInviteMembersState.loading() =
+      CommercioKycInviteMembersStateLoading;
 
-  const factory CommercioKycInviteMemberState.error([String error]) =
-      CommercioKycInviteMemberStateError;
+  const factory CommercioKycInviteMembersState.error([String error]) =
+      CommercioKycInviteMembersStateError;
 }
