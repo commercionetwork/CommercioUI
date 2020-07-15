@@ -70,32 +70,47 @@ class StatefulCommercioDocs {
     );
   }
 
-  /// Send a receipt which tells the [recipient] that the document from
-  /// identified by [docId] in transaction [txHash] was read
-  /// by [commercioAccount].
-  ///
-  /// An optional reading [proof] can be specified and also a custom [fee].
-  ///
-  /// Returns the [TransactionResult].
+  /// Returns a [CommercioDocReceipt] which tells the [recipient] that the
+  /// document having the specified [documentId] and present inside the
+  /// transaction with [txHash] has been properly seen.
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
-  Future<TransactionResult> sendReceipt({
+  ///
+  /// An optiona [proof] of reading can be specified.
+  CommercioDocReceipt deriveReceipt({
     @required String recipient,
     @required String txHash,
-    @required String docId,
-    String proof = '',
+    @required String documentId,
+    String proof = "",
+  }) {
+    if (!commercioAccount.hasWallet) {
+      throw const WalletNotFoundException();
+    }
+
+    return StatelessCommercioDocs.deriveReceipt(
+      wallet: commercioAccount.wallet,
+      recipient: recipient,
+      txHash: txHash,
+      documentId: documentId,
+      proof: proof,
+    );
+  }
+
+  /// Send a list of receipts [commercioDocReceipts].
+  /// An optional [fee] can be specified.
+  ///
+  /// Returns the [TransactionResult].
+  Future<TransactionResult> sendReceipts({
+    @required List<CommercioDocReceipt> commercioDocReceipts,
     StdFee fee,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioDocs.sendReceipt(
-      senderWallet: commercioAccount.wallet,
-      recipient: recipient,
-      txHash: txHash,
-      docId: docId,
-      proof: proof,
+    return StatelessCommercioDocs.sendReceipts(
+      commercioDocReceipts: commercioDocReceipts,
+      wallet: commercioAccount.wallet,
       fee: fee,
     );
   }

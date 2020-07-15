@@ -47,6 +47,15 @@ void main() {
     recipientDids: recipients,
     senderDid: correctWalletAddress,
   );
+  const correctProof = 'proof';
+  final correctDocReceipt = CommercioDocReceipt(
+    uuid: correctDocId,
+    senderDid: correctWalletAddress,
+    recipientDid: correctWalletAddress,
+    txHash: correctTxHash,
+    documentUuid: correctDocId,
+    proof: correctProof,
+  );
 
   testWidgets('Submit DeriveDocument Event', (
     WidgetTester tester,
@@ -194,16 +203,17 @@ void main() {
     expect(find.text(childText), findsOneWidget);
   });
 
-  testWidgets('Submit SendReceipt Event', (
+  testWidgets('Submit DeriveReceipt Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.sendReceipt(
-      docId: correctDocId,
+    when(commercioDocs.deriveReceipt(
+      documentId: correctDocId,
       recipient: correctRecipientAddress,
       txHash: correctTxHash,
-    )).thenAnswer((_) async => correctTxResult);
+      proof: correctProof,
+    )).thenReturn(correctDocReceipt);
 
-    final bloc = CommercioDocsSendReceiptBloc(
+    final bloc = CommercioDocsDeriveReceiptBloc(
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
@@ -211,20 +221,21 @@ void main() {
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioDocsSentReceiptStateLoading>(),
-        isA<CommercioDocsSentReceiptStateData>(),
-        isA<CommercioDocsSentReceiptStateLoading>(),
-        isA<CommercioDocsSentReceiptStateError>(),
+        isA<CommercioDocsDeriveReceiptStateLoading>(),
+        isA<CommercioDocsDeriveReceiptStateData>(),
+        isA<CommercioDocsDeriveReceiptStateLoading>(),
+        isA<CommercioDocsDeriveReceiptStateError>(),
       ]),
     );
 
-    final commFlatButton = SendReceiptFlatButton(
+    final commFlatButton = DeriveReceiptFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioDocsSendReceiptEvent(
-        docId: correctDocId,
+      event: () => CommercioDocsDeriveReceiptEvent(
+        documentId: correctDocId,
         recipient: correctRecipientAddress,
         txHash: correctTxHash,
+        proof: correctProof,
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
@@ -252,10 +263,75 @@ void main() {
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioDocs.sendReceipt(
-      docId: correctDocId,
+    when(commercioDocs.deriveReceipt(
+      documentId: correctDocId,
       recipient: correctRecipientAddress,
       txHash: correctTxHash,
+      proof: correctProof,
+    )).thenThrow(Exception());
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+  });
+
+  testWidgets('Submit SendReceipt Event', (
+    WidgetTester tester,
+  ) async {
+    when(commercioDocs.sendReceipts(
+      commercioDocReceipts: [correctDocReceipt],
+    )).thenAnswer((_) async => correctTxResult);
+
+    final bloc = CommercioDocsSendReceiptsBloc(
+      commercioDocs: commercioDocs,
+      commercioId: commercioId,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsSentReceiptStateLoading>(),
+        isA<CommercioDocsSentReceiptStateData>(),
+        isA<CommercioDocsSentReceiptStateLoading>(),
+        isA<CommercioDocsSentReceiptStateError>(),
+      ]),
+    );
+
+    final commFlatButton = SendReceiptsFlatButton(
+      loading: (_) => const Text(loadingText),
+      child: (_) => const Text(childText),
+      event: () => CommercioDocsSendReceiptsEvent(
+        commercioDocReceipts: [correctDocReceipt],
+      ),
+      error: (context, err) => Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err),
+        ),
+      ),
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commFlatButton,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioDocs.sendReceipts(
+      commercioDocReceipts: [correctDocReceipt],
     )).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));

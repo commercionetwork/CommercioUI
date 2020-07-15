@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'commercio_id_state.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$CommercioIdGeneratedKeysStateTearOff {
   const _$CommercioIdGeneratedKeysStateTearOff();
 
+// ignore: unused_element
   CommercioIdGeneratedKeysStateData call(
       {@required CommercioIdKeys commercioIdKeys}) {
     return CommercioIdGeneratedKeysStateData(
@@ -19,14 +20,17 @@ class _$CommercioIdGeneratedKeysStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioIdGeneratedKeysStateInitial initial() {
     return const CommercioIdGeneratedKeysStateInitial();
   }
 
+// ignore: unused_element
   CommercioIdGeneratedKeysStateLoading loading() {
     return const CommercioIdGeneratedKeysStateLoading();
   }
 
+// ignore: unused_element
   CommercioIdGeneratedKeysStateError error([String error]) {
     return CommercioIdGeneratedKeysStateError(
       error,
@@ -574,6 +578,7 @@ abstract class CommercioIdGeneratedKeysStateError
 class _$CommercioIdRestoredKeysStateTearOff {
   const _$CommercioIdRestoredKeysStateTearOff();
 
+// ignore: unused_element
   CommercioIdRestoredKeysStateData call(
       {@required CommercioIdKeys commercioIdKeys}) {
     return CommercioIdRestoredKeysStateData(
@@ -581,14 +586,17 @@ class _$CommercioIdRestoredKeysStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioIdRestoredKeysStateInitial initial() {
     return const CommercioIdRestoredKeysStateInitial();
   }
 
+// ignore: unused_element
   CommercioIdRestoredKeysStateLoading loading() {
     return const CommercioIdRestoredKeysStateLoading();
   }
 
+// ignore: unused_element
   CommercioIdRestoredKeysStateError error([String error]) {
     return CommercioIdRestoredKeysStateError(
       error,
@@ -1135,18 +1143,22 @@ abstract class CommercioIdRestoredKeysStateError
 class _$CommercioIdDeletedKeysStateTearOff {
   const _$CommercioIdDeletedKeysStateTearOff();
 
+// ignore: unused_element
   CommercioIdDeletedKeysStateData call() {
     return const CommercioIdDeletedKeysStateData();
   }
 
+// ignore: unused_element
   CommercioIdDeletedKeysStateInitial initial() {
     return const CommercioIdDeletedKeysStateInitial();
   }
 
+// ignore: unused_element
   CommercioIdDeletedKeysStateLoading loading() {
     return const CommercioIdDeletedKeysStateLoading();
   }
 
+// ignore: unused_element
   CommercioIdDeletedKeysStateError error([String error]) {
     return CommercioIdDeletedKeysStateError(
       error,
@@ -1661,6 +1673,7 @@ abstract class CommercioIdDeletedKeysStateError
 class _$CommercioIdDerivedDidDocumentStateTearOff {
   const _$CommercioIdDerivedDidDocumentStateTearOff();
 
+// ignore: unused_element
   CommercioIdDerivedDidDocumentStateData call(
       {@required DidDocument didDocument}) {
     return CommercioIdDerivedDidDocumentStateData(
@@ -1668,14 +1681,17 @@ class _$CommercioIdDerivedDidDocumentStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioIdDerivedDidDocumentStateInitial initial() {
     return const CommercioIdDerivedDidDocumentStateInitial();
   }
 
+// ignore: unused_element
   CommercioIdDerivedDidDocumentStateLoading loading() {
     return const CommercioIdDerivedDidDocumentStateLoading();
   }
 
+// ignore: unused_element
   CommercioIdDerivedDidDocumentStateError error([String error]) {
     return CommercioIdDerivedDidDocumentStateError(
       error,
@@ -2228,6 +2244,7 @@ abstract class CommercioIdDerivedDidDocumentStateError
 class _$CommercioIdSetDidDocumentsStateTearOff {
   const _$CommercioIdSetDidDocumentsStateTearOff();
 
+// ignore: unused_element
   CommercioIdSetDidDocumentsStateData call(
       {@required TransactionResult result}) {
     return CommercioIdSetDidDocumentsStateData(
@@ -2235,14 +2252,17 @@ class _$CommercioIdSetDidDocumentsStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioIdSetDidDocumentsStateInitial initial() {
     return const CommercioIdSetDidDocumentsStateInitial();
   }
 
+// ignore: unused_element
   CommercioIdSetDidDocumentsStateLoading loading() {
     return const CommercioIdSetDidDocumentsStateLoading();
   }
 
+// ignore: unused_element
   CommercioIdSetDidDocumentsStateError error([String error]) {
     return CommercioIdSetDidDocumentsStateError(
       error,
@@ -2790,6 +2810,7 @@ abstract class CommercioIdSetDidDocumentsStateError
 class _$CommercioIdRechargedTumblerStateTearOff {
   const _$CommercioIdRechargedTumblerStateTearOff();
 
+// ignore: unused_element
   CommercioIdRechargedTumblerStateData call(
       {@required TransactionResult result}) {
     return CommercioIdRechargedTumblerStateData(
@@ -2797,14 +2818,17 @@ class _$CommercioIdRechargedTumblerStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioIdRechargedTumblerStateInitial initial() {
     return const CommercioIdRechargedTumblerStateInitial();
   }
 
+// ignore: unused_element
   CommercioIdRechargedTumblerStateLoading loading() {
     return const CommercioIdRechargedTumblerStateLoading();
   }
 
+// ignore: unused_element
   CommercioIdRechargedTumblerStateError error([String error]) {
     return CommercioIdRechargedTumblerStateError(
       error,
@@ -3352,6 +3376,7 @@ abstract class CommercioIdRechargedTumblerStateError
 class _$CommercioIdDeriveDidPowerUpRequestStateTearOff {
   const _$CommercioIdDeriveDidPowerUpRequestStateTearOff();
 
+// ignore: unused_element
   CommercioIdDeriveDidPowerUpRequestStateData call(
       {@required RequestDidPowerUp didPowerUpRequest}) {
     return CommercioIdDeriveDidPowerUpRequestStateData(
@@ -3359,14 +3384,17 @@ class _$CommercioIdDeriveDidPowerUpRequestStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioIdDeriveDidPowerUpRequestStateInitial initial() {
     return const CommercioIdDeriveDidPowerUpRequestStateInitial();
   }
 
+// ignore: unused_element
   CommercioIdDeriveDidPowerUpRequestStateLoading loading() {
     return const CommercioIdDeriveDidPowerUpRequestStateLoading();
   }
 
+// ignore: unused_element
   CommercioIdDeriveDidPowerUpRequestStateError error([String error]) {
     return CommercioIdDeriveDidPowerUpRequestStateError(
       error,
@@ -3933,6 +3961,7 @@ abstract class CommercioIdDeriveDidPowerUpRequestStateError
 class _$CommercioIdRequestedDidPowerUpsStateTearOff {
   const _$CommercioIdRequestedDidPowerUpsStateTearOff();
 
+// ignore: unused_element
   CommercioIdRequestedDidPowerUpsStateData call(
       {@required TransactionResult result}) {
     return CommercioIdRequestedDidPowerUpsStateData(
@@ -3940,14 +3969,17 @@ class _$CommercioIdRequestedDidPowerUpsStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioIdRequestedDidPowerUpsStateInitial initial() {
     return const CommercioIdRequestedDidPowerUpsStateInitial();
   }
 
+// ignore: unused_element
   CommercioIdRequestedDidPowerUpsStateLoading loading() {
     return const CommercioIdRequestedDidPowerUpsStateLoading();
   }
 
+// ignore: unused_element
   CommercioIdRequestedDidPowerUpsStateError error([String error]) {
     return CommercioIdRequestedDidPowerUpsStateError(
       error,

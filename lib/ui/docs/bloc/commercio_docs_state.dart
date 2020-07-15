@@ -140,3 +140,20 @@ abstract class CommercioDocsEncDataState with _$CommercioDocsEncDataState {
   const factory CommercioDocsEncDataState.error([String error]) =
       CommercioDocsEncDataStateError;
 }
+
+@freezed
+abstract class CommercioDocsDeriveReceiptState
+    with _$CommercioDocsDeriveReceiptState {
+  const factory CommercioDocsDeriveReceiptState({
+    @required CommercioDocReceipt commercioDocReceipt,
+  }) = CommercioDocsDeriveReceiptStateData;
+
+  const factory CommercioDocsDeriveReceiptState.initial() =
+      CommercioDocsDeriveReceiptStateInitial;
+
+  const factory CommercioDocsDeriveReceiptState.loading() =
+      CommercioDocsDeriveReceiptStateLoading;
+
+  const factory CommercioDocsDeriveReceiptState.error([String error]) =
+      CommercioDocsDeriveReceiptStateError;
+}

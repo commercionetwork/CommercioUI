@@ -36,6 +36,13 @@ void main() {
     recipientDids: recipients,
     senderDid: senderDid,
   );
+  final correctDocReceipt = CommercioDocReceipt(
+    uuid: 'uuid',
+    senderDid: 'sender',
+    recipientDid: 'recipient',
+    txHash: 'txHash',
+    documentUuid: 'docId',
+  );
 
   test('CommercioDocsDeriveDocumentEvent', () {
     final event = CommercioDocsDeriveDocumentEvent(
@@ -73,18 +80,37 @@ void main() {
     ]);
   });
 
-  test('CommercioDocsSendReceiptEvent', () {
+  test('CommercioDocsDeriveReceiptEvent', () {
     const recipient = 'recipient';
     const docId = 'docId';
     const txHash = 'txHash';
+    const proof = 'proof';
 
-    final event = CommercioDocsSendReceiptEvent(
-      docId: docId,
+    final event = CommercioDocsDeriveReceiptEvent(
+      documentId: docId,
       recipient: recipient,
       txHash: txHash,
+      proof: proof,
     );
 
-    expect(event.props, [recipient, txHash, docId]);
+    expect(event.props, [recipient, txHash, docId, proof]);
+  });
+
+  test('CommercioDocsSendReceiptsEvent', () {
+    const fee = StdFee(
+      amount: [StdCoin(denom: 'denom', amount: '10')],
+      gas: '10',
+    );
+
+    final event = CommercioDocsSendReceiptsEvent(
+      commercioDocReceipts: [correctDocReceipt],
+      fee: fee,
+    );
+
+    expect(event.props, [
+      [correctDocReceipt],
+      fee
+    ]);
   });
 
   test('CommercioDocsSentDocumentsEvent', () {

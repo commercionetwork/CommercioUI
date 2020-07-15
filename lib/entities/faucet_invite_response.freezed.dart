@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'faucet_invite_response.dart';
 
@@ -15,6 +15,7 @@ FaucetInviteResponse _$FaucetInviteResponseFromJson(Map<String, dynamic> json) {
 class _$FaucetInviteResponseTearOff {
   const _$FaucetInviteResponseTearOff();
 
+// ignore: unused_element
   _FaucetInviteResponse call(
       {@JsonKey(name: 'tx_hash') String txHash, String error}) {
     return _FaucetInviteResponse(

@@ -53,19 +53,34 @@ class CommercioDocsShareDocumentsEvent extends CommercioDocsEvent {
   List<Object> get props => [commercioDocs, fee];
 }
 
-class CommercioDocsSendReceiptEvent extends CommercioDocsEvent {
+class CommercioDocsDeriveReceiptEvent extends CommercioDocsEvent {
   final String recipient;
   final String txHash;
-  final String docId;
+  final String documentId;
+  final String proof;
 
-  const CommercioDocsSendReceiptEvent({
+  const CommercioDocsDeriveReceiptEvent({
     @required this.recipient,
     @required this.txHash,
-    @required this.docId,
+    @required this.documentId,
+    this.proof = "",
   });
 
   @override
-  List<Object> get props => [recipient, txHash, docId];
+  List<Object> get props => [recipient, txHash, documentId, proof];
+}
+
+class CommercioDocsSendReceiptsEvent extends CommercioDocsEvent {
+  final List<CommercioDocReceipt> commercioDocReceipts;
+  final StdFee fee;
+
+  const CommercioDocsSendReceiptsEvent({
+    @required this.commercioDocReceipts,
+    this.fee,
+  });
+
+  @override
+  List<Object> get props => [commercioDocReceipts, fee];
 }
 
 class CommercioDocsSentDocumentsEvent extends CommercioDocsEvent {

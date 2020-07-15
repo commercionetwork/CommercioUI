@@ -57,26 +57,39 @@ abstract class StatelessCommercioDocs {
     return DocsHelper.shareDocumentsList(commercioDocs, wallet, fee: fee);
   }
 
-  /// Send a receipt which tells the [recipient] that the document from
-  /// identified by [docId] in transaction [txHash] was read by [senderWallet].
+  /// Returns a [CommercioDocReceipt] which tells the [recipient] that the
+  /// document having the specified [documentId] and present inside the
+  /// transaction with [txHash] has been properly seen.
   ///
-  /// An optional reading [proof] can be specified and also a custom [fee].
-  ///
-  /// Returns the [TransactionResult].
-  static Future<TransactionResult> sendReceipt({
-    @required Wallet senderWallet,
+  /// An optiona [proof] of reading can be specified.
+  static CommercioDocReceipt deriveReceipt({
+    @required Wallet wallet,
     @required String recipient,
     @required String txHash,
-    @required String docId,
+    @required String documentId,
     String proof = "",
-    StdFee fee,
   }) {
-    return DocsHelper.sendDocumentReceipt(
+    return CommercioDocReceiptHelper.fromWallet(
+      wallet: wallet,
       recipient: recipient,
       txHash: txHash,
-      documentId: docId,
-      wallet: senderWallet,
+      documentId: documentId,
       proof: proof,
+    );
+  }
+
+  /// Send a list of receipts [commercioDocReceipts] from the [wallet].
+  /// An optional [fee] can be specified.
+  ///
+  /// Returns the [TransactionResult].
+  static Future<TransactionResult> sendReceipts({
+    @required List<CommercioDocReceipt> commercioDocReceipts,
+    @required Wallet wallet,
+    StdFee fee,
+  }) {
+    return DocsHelper.sendDocumentReceiptsList(
+      commercioDocReceipts,
+      wallet,
       fee: fee,
     );
   }

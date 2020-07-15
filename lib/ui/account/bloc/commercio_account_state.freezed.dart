@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'commercio_account_state.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$CommercioAccountGenerateWalletStateTearOff {
   const _$CommercioAccountGenerateWalletStateTearOff();
 
+// ignore: unused_element
   CommercioAccountGenerateWalletData call(
       {@required String mnemonic,
       @required Wallet wallet,
@@ -23,14 +24,17 @@ class _$CommercioAccountGenerateWalletStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioAccountGenerateWalletInitial initial() {
     return const CommercioAccountGenerateWalletInitial();
   }
 
+// ignore: unused_element
   CommercioAccountGenerateWalletLoading loading() {
     return const CommercioAccountGenerateWalletLoading();
   }
 
+// ignore: unused_element
   CommercioAccountGenerateWalletError error([String error]) {
     return CommercioAccountGenerateWalletError(
       error,
@@ -603,6 +607,7 @@ abstract class CommercioAccountGenerateWalletError
 class _$CommercioAccountRestoredWalletStateTearOff {
   const _$CommercioAccountRestoredWalletStateTearOff();
 
+// ignore: unused_element
   CommercioAccountRestoredWalletStateData call(
       {@required String mnemonic,
       @required Wallet wallet,
@@ -614,14 +619,17 @@ class _$CommercioAccountRestoredWalletStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioAccountRestoredWalletStateInitial initial() {
     return const CommercioAccountRestoredWalletStateInitial();
   }
 
+// ignore: unused_element
   CommercioAccountRestoredWalletStateLoading loading() {
     return const CommercioAccountRestoredWalletStateLoading();
   }
 
+// ignore: unused_element
   CommercioAccountRestoredWalletStateError error([String error]) {
     return CommercioAccountRestoredWalletStateError(
       error,
@@ -1199,20 +1207,24 @@ abstract class CommercioAccountRestoredWalletStateError
 class _$CommercioAccountQrStateTearOff {
   const _$CommercioAccountQrStateTearOff();
 
+// ignore: unused_element
   CommercioAccountQrStateData call({@required String walletAddress}) {
     return CommercioAccountQrStateData(
       walletAddress: walletAddress,
     );
   }
 
+// ignore: unused_element
   CommercioAccountQrStateInitial initial() {
     return const CommercioAccountQrStateInitial();
   }
 
+// ignore: unused_element
   CommercioAccountQrStateLoading loading() {
     return const CommercioAccountQrStateLoading();
   }
 
+// ignore: unused_element
   CommercioAccountQrStateError error([String error]) {
     return CommercioAccountQrStateError(
       error,
@@ -1749,6 +1761,7 @@ abstract class CommercioAccountQrStateError implements CommercioAccountQrState {
 class _$CommercioAccountFreeTokensStateTearOff {
   const _$CommercioAccountFreeTokensStateTearOff();
 
+// ignore: unused_element
   CommercioAccountFreeTokensStateData call(
       {@required AccountRequestResponse accountRequestResponse}) {
     return CommercioAccountFreeTokensStateData(
@@ -1756,14 +1769,17 @@ class _$CommercioAccountFreeTokensStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioAccountFreeTokensStateInitial initial() {
     return const CommercioAccountFreeTokensStateInitial();
   }
 
+// ignore: unused_element
   CommercioAccountFreeTokensStateLoading loading() {
     return const CommercioAccountFreeTokensStateLoading();
   }
 
+// ignore: unused_element
   CommercioAccountFreeTokensStateError error([String error]) {
     return CommercioAccountFreeTokensStateError(
       error,
@@ -2316,20 +2332,24 @@ abstract class CommercioAccountFreeTokensStateError
 class _$CommercioAccountBalanceStateTearOff {
   const _$CommercioAccountBalanceStateTearOff();
 
+// ignore: unused_element
   CommercioAccountBalanceStateData call({@required List<StdCoin> balance}) {
     return CommercioAccountBalanceStateData(
       balance: balance,
     );
   }
 
+// ignore: unused_element
   CommercioAccountBalanceStateInitial initial() {
     return const CommercioAccountBalanceStateInitial();
   }
 
+// ignore: unused_element
   CommercioAccountBalanceStateLoading loading() {
     return const CommercioAccountBalanceStateLoading();
   }
 
+// ignore: unused_element
   CommercioAccountBalanceStateError error([String error]) {
     return CommercioAccountBalanceStateError(
       error,
@@ -2871,6 +2891,7 @@ abstract class CommercioAccountBalanceStateError
 class _$CommercioAccountSentTokensStateTearOff {
   const _$CommercioAccountSentTokensStateTearOff();
 
+// ignore: unused_element
   CommercioAccountSentTokensStateData call(
       {@required TransactionResult result}) {
     return CommercioAccountSentTokensStateData(
@@ -2878,14 +2899,17 @@ class _$CommercioAccountSentTokensStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioAccountSentTokensStateInitial initial() {
     return const CommercioAccountSentTokensStateInitial();
   }
 
+// ignore: unused_element
   CommercioAccountSentTokensStateLoading loading() {
     return const CommercioAccountSentTokensStateLoading();
   }
 
+// ignore: unused_element
   CommercioAccountSentTokensStateError error([String error]) {
     return CommercioAccountSentTokensStateError(
       error,
@@ -3433,6 +3457,7 @@ abstract class CommercioAccountSentTokensStateError
 class _$CommercioAccountPaiwiseWalletStateTearOff {
   const _$CommercioAccountPaiwiseWalletStateTearOff();
 
+// ignore: unused_element
   CommercioAccountPaiwiseWalletStateData call(
       {@required Wallet wallet, @required String walletAddress}) {
     return CommercioAccountPaiwiseWalletStateData(
@@ -3441,14 +3466,17 @@ class _$CommercioAccountPaiwiseWalletStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioAccountPaiwiseWalletStateInitial initial() {
     return const CommercioAccountPaiwiseWalletStateInitial();
   }
 
+// ignore: unused_element
   CommercioAccountPaiwiseWalletStateLoading loading() {
     return const CommercioAccountPaiwiseWalletStateLoading();
   }
 
+// ignore: unused_element
   CommercioAccountPaiwiseWalletStateError error([String error]) {
     return CommercioAccountPaiwiseWalletStateError(
       error,

@@ -115,13 +115,13 @@ class ShareDocumentsFlatButton extends CommercioFlatButton<
         );
 }
 
-class SendReceiptFlatButton extends CommercioFlatButton<
-    CommercioDocsSendReceiptBloc,
-    CommercioDocsSendReceiptEvent,
-    CommercioDocsSentReceiptState,
-    CommercioDocsSentReceiptStateLoading,
-    CommercioDocsSentReceiptStateError> {
-  SendReceiptFlatButton({
+class DeriveReceiptFlatButton extends CommercioFlatButton<
+    CommercioDocsDeriveReceiptBloc,
+    CommercioDocsDeriveReceiptEvent,
+    CommercioDocsDeriveReceiptState,
+    CommercioDocsDeriveReceiptStateLoading,
+    CommercioDocsDeriveReceiptStateError> {
+  DeriveReceiptFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -141,7 +141,64 @@ class SendReceiptFlatButton extends CommercioFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    @required CommercioDocsSendReceiptEvent Function() event,
+    @required CommercioDocsDeriveReceiptEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
+  }) : super(
+          key: key,
+          onHighlightChanged: onHighlightChanged,
+          textTheme: textTheme,
+          textColor: textColor,
+          disabledTextColor: disabledTextColor,
+          color: color,
+          disabledColor: disabledColor,
+          focusColor: focusColor,
+          hoverColor: hoverColor,
+          highlightColor: highlightColor,
+          splashColor: splashColor,
+          colorBrightness: colorBrightness,
+          padding: padding,
+          visualDensity: visualDensity,
+          shape: shape,
+          clipBehavior: clipBehavior,
+          focusNode: focusNode,
+          autofocus: autofocus,
+          materialTapTargetSize: materialTapTargetSize,
+          child: child,
+          error: error,
+          event: event,
+          loading: loading,
+        );
+}
+
+class SendReceiptsFlatButton extends CommercioFlatButton<
+    CommercioDocsSendReceiptsBloc,
+    CommercioDocsSendReceiptsEvent,
+    CommercioDocsSentReceiptState,
+    CommercioDocsSentReceiptStateLoading,
+    CommercioDocsSentReceiptStateError> {
+  SendReceiptsFlatButton({
+    Key key,
+    ValueChanged<bool> onHighlightChanged,
+    ButtonTextTheme textTheme,
+    Color textColor,
+    Color disabledTextColor,
+    Color color,
+    Color disabledColor,
+    Color focusColor,
+    Color hoverColor,
+    Color highlightColor,
+    Color splashColor,
+    Brightness colorBrightness,
+    EdgeInsetsGeometry padding,
+    VisualDensity visualDensity,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    FocusNode focusNode,
+    bool autofocus,
+    MaterialTapTargetSize materialTapTargetSize,
+    @required CommercioDocsSendReceiptsEvent Function() event,
     Widget Function(BuildContext context) child,
     Widget Function(BuildContext context) loading,
     void Function(BuildContext context, String errorMessage) error,

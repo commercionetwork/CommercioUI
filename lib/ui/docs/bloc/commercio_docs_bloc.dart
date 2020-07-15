@@ -67,27 +67,57 @@ class CommercioDocsShareDocumentsBloc extends Bloc<
   }
 }
 
-class CommercioDocsSendReceiptBloc
-    extends Bloc<CommercioDocsSendReceiptEvent, CommercioDocsSentReceiptState> {
+class CommercioDocsDeriveReceiptBloc extends Bloc<
+    CommercioDocsDeriveReceiptEvent, CommercioDocsDeriveReceiptState> {
   final StatefulCommercioDocs commercioDocs;
   final StatefulCommercioId commercioId;
 
-  CommercioDocsSendReceiptBloc({
+  CommercioDocsDeriveReceiptBloc({
+    @required this.commercioDocs,
+    @required this.commercioId,
+  }) : super(const CommercioDocsDeriveReceiptStateInitial());
+
+  @override
+  Stream<CommercioDocsDeriveReceiptState> mapEventToState(
+    CommercioDocsDeriveReceiptEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsDeriveReceiptStateLoading();
+
+      final receipt = await commercioDocs.deriveReceipt(
+        recipient: event.recipient,
+        txHash: event.txHash,
+        documentId: event.documentId,
+        proof: event.proof,
+      );
+
+      yield CommercioDocsDeriveReceiptStateData(commercioDocReceipt: receipt);
+    } catch (e) {
+      yield CommercioDocsDeriveReceiptStateError(e.toString());
+    }
+  }
+}
+
+class CommercioDocsSendReceiptsBloc extends Bloc<CommercioDocsSendReceiptsEvent,
+    CommercioDocsSentReceiptState> {
+  final StatefulCommercioDocs commercioDocs;
+  final StatefulCommercioId commercioId;
+
+  CommercioDocsSendReceiptsBloc({
     @required this.commercioDocs,
     @required this.commercioId,
   }) : super(const CommercioDocsSentReceiptStateInitial());
 
   @override
   Stream<CommercioDocsSentReceiptState> mapEventToState(
-    CommercioDocsSendReceiptEvent event,
+    CommercioDocsSendReceiptsEvent event,
   ) async* {
     try {
       yield const CommercioDocsSentReceiptStateLoading();
 
-      final txResult = await commercioDocs.sendReceipt(
-        recipient: event.recipient,
-        txHash: event.txHash,
-        docId: event.docId,
+      final txResult = await commercioDocs.sendReceipts(
+        commercioDocReceipts: event.commercioDocReceipts,
+        fee: event.fee,
       );
 
       yield CommercioDocsSentReceiptStateData(result: txResult);

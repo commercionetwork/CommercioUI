@@ -62,6 +62,14 @@ void main() {
       '{"error":"decoding bech32 failed: invalid bech32 string length 3"}';
 
   final httpHelperMock = HttpHelperMock();
+  const correctProof = 'proof';
+  final correctDocReceipt = CommercioDocReceipt(
+    uuid: correctDocId,
+    senderDid: correctWalletAddress,
+    recipientDid: correctWalletAddress,
+    txHash: correctTxHash,
+    documentUuid: correctDocId,
+  );
 
   group('Derive commercio document', () {
     AccountDataRetrieval.client = MockClient(
@@ -131,36 +139,37 @@ void main() {
     });
   });
 
+  group('Derive receipt', () {
+    test('Correct', () {
+      final receipt = StatelessCommercioDocs.deriveReceipt(
+        wallet: correctWallet,
+        recipient: correctWalletAddress,
+        txHash: correctTxHash,
+        documentId: correctDocId,
+        proof: correctProof,
+      );
+
+      expect(receipt.uuid, isA<String>());
+      expect(receipt.documentUuid, correctDocId);
+      expect(receipt.senderDid, correctWalletAddress);
+      expect(receipt.recipientDid, correctWalletAddress);
+      expect(receipt.txHash, correctTxHash);
+      expect(receipt.proof, correctProof);
+    });
+  });
+
   group('Send receipt', () {
     test('Correct', () async {
       TxSender.client = MockClient(
         (_) => Future.value(Response(correctTransactionRaw, 200)),
       );
 
-      final result = await StatelessCommercioDocs.sendReceipt(
-        senderWallet: correctWallet,
-        recipient: recipients[0],
-        txHash: correctTxHash,
-        docId: correctDocId,
+      final result = await StatelessCommercioDocs.sendReceipts(
+        commercioDocReceipts: [correctDocReceipt],
+        wallet: correctWallet,
       );
 
       expect(result.success, isTrue);
-    });
-
-    test('Wrong recipient address', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(wrongRecipientAddressRaw, 400)),
-      );
-
-      expectLater(
-        () => StatelessCommercioDocs.sendReceipt(
-          senderWallet: correctWallet,
-          recipient: 'abc',
-          txHash: correctTxHash,
-          docId: correctDocId,
-        ),
-        throwsException,
-      );
     });
   });
 

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'commercio_docs_state.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$CommercioDocsDeriveDocumentStateTearOff {
   const _$CommercioDocsDeriveDocumentStateTearOff();
 
+// ignore: unused_element
   CommercioDocsDeriveDocumentStateData call(
       {@required CommercioDoc commercioDoc}) {
     return CommercioDocsDeriveDocumentStateData(
@@ -19,14 +20,17 @@ class _$CommercioDocsDeriveDocumentStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioDocsDeriveDocumentStateInitial initial() {
     return const CommercioDocsDeriveDocumentStateInitial();
   }
 
+// ignore: unused_element
   CommercioDocsDeriveDocumentStateLoading loading() {
     return const CommercioDocsDeriveDocumentStateLoading();
   }
 
+// ignore: unused_element
   CommercioDocsDeriveDocumentStateError error([String error]) {
     return CommercioDocsDeriveDocumentStateError(
       error,
@@ -577,6 +581,7 @@ abstract class CommercioDocsDeriveDocumentStateError
 class _$CommercioDocsSharedDocumentsStateTearOff {
   const _$CommercioDocsSharedDocumentsStateTearOff();
 
+// ignore: unused_element
   CommercioDocsSharedDocumentsStateData call(
       {@required TransactionResult result}) {
     return CommercioDocsSharedDocumentsStateData(
@@ -584,14 +589,17 @@ class _$CommercioDocsSharedDocumentsStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioDocsSharedDocumentsStateInitial initial() {
     return const CommercioDocsSharedDocumentsStateInitial();
   }
 
+// ignore: unused_element
   CommercioDocsSharedDocumentsStateLoading loading() {
     return const CommercioDocsSharedDocumentsStateLoading();
   }
 
+// ignore: unused_element
   CommercioDocsSharedDocumentsStateError error([String error]) {
     return CommercioDocsSharedDocumentsStateError(
       error,
@@ -1140,20 +1148,24 @@ abstract class CommercioDocsSharedDocumentsStateError
 class _$CommercioDocsSentReceiptStateTearOff {
   const _$CommercioDocsSentReceiptStateTearOff();
 
+// ignore: unused_element
   CommercioDocsSentReceiptStateData call({@required TransactionResult result}) {
     return CommercioDocsSentReceiptStateData(
       result: result,
     );
   }
 
+// ignore: unused_element
   CommercioDocsSentReceiptStateInitial initial() {
     return const CommercioDocsSentReceiptStateInitial();
   }
 
+// ignore: unused_element
   CommercioDocsSentReceiptStateLoading loading() {
     return const CommercioDocsSentReceiptStateLoading();
   }
 
+// ignore: unused_element
   CommercioDocsSentReceiptStateError error([String error]) {
     return CommercioDocsSentReceiptStateError(
       error,
@@ -1697,6 +1709,7 @@ abstract class CommercioDocsSentReceiptStateError
 class _$CommercioDocsSentDocumentsStateTearOff {
   const _$CommercioDocsSentDocumentsStateTearOff();
 
+// ignore: unused_element
   CommercioDocsSentDocumentsStateData call(
       {@required List<CommercioDoc> sentDocuments}) {
     return CommercioDocsSentDocumentsStateData(
@@ -1704,14 +1717,17 @@ class _$CommercioDocsSentDocumentsStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioDocsSentDocumentsStateInitial initial() {
     return const CommercioDocsSentDocumentsStateInitial();
   }
 
+// ignore: unused_element
   CommercioDocsSentDocumentsStateLoading loading() {
     return const CommercioDocsSentDocumentsStateLoading();
   }
 
+// ignore: unused_element
   CommercioDocsSentDocumentsStateError error([String error]) {
     return CommercioDocsSentDocumentsStateError(
       error,
@@ -2262,6 +2278,7 @@ abstract class CommercioDocsSentDocumentsStateError
 class _$CommercioDocsReceivedDocumentsStateTearOff {
   const _$CommercioDocsReceivedDocumentsStateTearOff();
 
+// ignore: unused_element
   CommercioDocsReceivedDocumentsStateData call(
       {@required List<CommercioDoc> receivedDocuments}) {
     return CommercioDocsReceivedDocumentsStateData(
@@ -2269,14 +2286,17 @@ class _$CommercioDocsReceivedDocumentsStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioDocsReceivedDocumentsStateInitial initial() {
     return const CommercioDocsReceivedDocumentsStateInitial();
   }
 
+// ignore: unused_element
   CommercioDocsReceivedDocumentsStateLoading loading() {
     return const CommercioDocsReceivedDocumentsStateLoading();
   }
 
+// ignore: unused_element
   CommercioDocsReceivedDocumentsStateError error([String error]) {
     return CommercioDocsReceivedDocumentsStateError(
       error,
@@ -2831,6 +2851,7 @@ abstract class CommercioDocsReceivedDocumentsStateError
 class _$CommercioDocsSentReceiptsStateTearOff {
   const _$CommercioDocsSentReceiptsStateTearOff();
 
+// ignore: unused_element
   CommercioDocsSentReceiptsStateData call(
       {@required List<CommercioDocReceipt> sentReceipts}) {
     return CommercioDocsSentReceiptsStateData(
@@ -2838,14 +2859,17 @@ class _$CommercioDocsSentReceiptsStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioDocsSentReceiptsStateInitial initial() {
     return const CommercioDocsSentReceiptsStateInitial();
   }
 
+// ignore: unused_element
   CommercioDocsSentReceiptsStateLoading loading() {
     return const CommercioDocsSentReceiptsStateLoading();
   }
 
+// ignore: unused_element
   CommercioDocsSentReceiptsStateError error([String error]) {
     return CommercioDocsSentReceiptsStateError(
       error,
@@ -3394,6 +3418,7 @@ abstract class CommercioDocsSentReceiptsStateError
 class _$CommercioDocsReceivedReceiptsStateTearOff {
   const _$CommercioDocsReceivedReceiptsStateTearOff();
 
+// ignore: unused_element
   CommercioDocsReceivedReceiptsStateData call(
       {@required List<CommercioDocReceipt> receivedReceipts}) {
     return CommercioDocsReceivedReceiptsStateData(
@@ -3401,14 +3426,17 @@ class _$CommercioDocsReceivedReceiptsStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioDocsReceivedReceiptsStateInitial initial() {
     return const CommercioDocsReceivedReceiptsStateInitial();
   }
 
+// ignore: unused_element
   CommercioDocsReceivedReceiptsStateLoading loading() {
     return const CommercioDocsReceivedReceiptsStateLoading();
   }
 
+// ignore: unused_element
   CommercioDocsReceivedReceiptsStateError error([String error]) {
     return CommercioDocsReceivedReceiptsStateError(
       error,
@@ -3963,6 +3991,7 @@ abstract class CommercioDocsReceivedReceiptsStateError
 class _$CommercioDocsEncDataStateTearOff {
   const _$CommercioDocsEncDataStateTearOff();
 
+// ignore: unused_element
   CommercioDocsEncDataStateData call(
       {@required Map<EncryptedData, bool> encryptedData}) {
     return CommercioDocsEncDataStateData(
@@ -3970,6 +3999,7 @@ class _$CommercioDocsEncDataStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioDocsEncDataStateInitial initial(
       {@required Map<EncryptedData, bool> encryptedData}) {
     return CommercioDocsEncDataStateInitial(
@@ -3977,10 +4007,12 @@ class _$CommercioDocsEncDataStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioDocsEncDataStateLoading loading() {
     return const CommercioDocsEncDataStateLoading();
   }
 
+// ignore: unused_element
   CommercioDocsEncDataStateError error([String error]) {
     return CommercioDocsEncDataStateError(
       error,
@@ -4549,4 +4581,575 @@ abstract class CommercioDocsEncDataStateError
   String get error;
   $CommercioDocsEncDataStateErrorCopyWith<CommercioDocsEncDataStateError>
       get copyWith;
+}
+
+class _$CommercioDocsDeriveReceiptStateTearOff {
+  const _$CommercioDocsDeriveReceiptStateTearOff();
+
+// ignore: unused_element
+  CommercioDocsDeriveReceiptStateData call(
+      {@required CommercioDocReceipt commercioDocReceipt}) {
+    return CommercioDocsDeriveReceiptStateData(
+      commercioDocReceipt: commercioDocReceipt,
+    );
+  }
+
+// ignore: unused_element
+  CommercioDocsDeriveReceiptStateInitial initial() {
+    return const CommercioDocsDeriveReceiptStateInitial();
+  }
+
+// ignore: unused_element
+  CommercioDocsDeriveReceiptStateLoading loading() {
+    return const CommercioDocsDeriveReceiptStateLoading();
+  }
+
+// ignore: unused_element
+  CommercioDocsDeriveReceiptStateError error([String error]) {
+    return CommercioDocsDeriveReceiptStateError(
+      error,
+    );
+  }
+}
+
+// ignore: unused_element
+const $CommercioDocsDeriveReceiptState =
+    _$CommercioDocsDeriveReceiptStateTearOff();
+
+mixin _$CommercioDocsDeriveReceiptState {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    Result error(CommercioDocsDeriveReceiptStateError value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $CommercioDocsDeriveReceiptStateCopyWith<$Res> {
+  factory $CommercioDocsDeriveReceiptStateCopyWith(
+          CommercioDocsDeriveReceiptState value,
+          $Res Function(CommercioDocsDeriveReceiptState) then) =
+      _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>;
+}
+
+class _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveReceiptStateCopyWith<$Res> {
+  _$CommercioDocsDeriveReceiptStateCopyWithImpl(this._value, this._then);
+
+  final CommercioDocsDeriveReceiptState _value;
+  // ignore: unused_field
+  final $Res Function(CommercioDocsDeriveReceiptState) _then;
+}
+
+abstract class $CommercioDocsDeriveReceiptStateDataCopyWith<$Res> {
+  factory $CommercioDocsDeriveReceiptStateDataCopyWith(
+          CommercioDocsDeriveReceiptStateData value,
+          $Res Function(CommercioDocsDeriveReceiptStateData) then) =
+      _$CommercioDocsDeriveReceiptStateDataCopyWithImpl<$Res>;
+  $Res call({CommercioDocReceipt commercioDocReceipt});
+}
+
+class _$CommercioDocsDeriveReceiptStateDataCopyWithImpl<$Res>
+    extends _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveReceiptStateDataCopyWith<$Res> {
+  _$CommercioDocsDeriveReceiptStateDataCopyWithImpl(
+      CommercioDocsDeriveReceiptStateData _value,
+      $Res Function(CommercioDocsDeriveReceiptStateData) _then)
+      : super(_value, (v) => _then(v as CommercioDocsDeriveReceiptStateData));
+
+  @override
+  CommercioDocsDeriveReceiptStateData get _value =>
+      super._value as CommercioDocsDeriveReceiptStateData;
+
+  @override
+  $Res call({
+    Object commercioDocReceipt = freezed,
+  }) {
+    return _then(CommercioDocsDeriveReceiptStateData(
+      commercioDocReceipt: commercioDocReceipt == freezed
+          ? _value.commercioDocReceipt
+          : commercioDocReceipt as CommercioDocReceipt,
+    ));
+  }
+}
+
+class _$CommercioDocsDeriveReceiptStateData
+    implements CommercioDocsDeriveReceiptStateData {
+  const _$CommercioDocsDeriveReceiptStateData(
+      {@required this.commercioDocReceipt})
+      : assert(commercioDocReceipt != null);
+
+  @override
+  final CommercioDocReceipt commercioDocReceipt;
+
+  @override
+  String toString() {
+    return 'CommercioDocsDeriveReceiptState(commercioDocReceipt: $commercioDocReceipt)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioDocsDeriveReceiptStateData &&
+            (identical(other.commercioDocReceipt, commercioDocReceipt) ||
+                const DeepCollectionEquality()
+                    .equals(other.commercioDocReceipt, commercioDocReceipt)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(commercioDocReceipt);
+
+  @override
+  $CommercioDocsDeriveReceiptStateDataCopyWith<
+          CommercioDocsDeriveReceiptStateData>
+      get copyWith => _$CommercioDocsDeriveReceiptStateDataCopyWithImpl<
+          CommercioDocsDeriveReceiptStateData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(commercioDocReceipt);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(commercioDocReceipt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    Result error(CommercioDocsDeriveReceiptStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioDocsDeriveReceiptStateData
+    implements CommercioDocsDeriveReceiptState {
+  const factory CommercioDocsDeriveReceiptStateData(
+          {@required CommercioDocReceipt commercioDocReceipt}) =
+      _$CommercioDocsDeriveReceiptStateData;
+
+  CommercioDocReceipt get commercioDocReceipt;
+  $CommercioDocsDeriveReceiptStateDataCopyWith<
+      CommercioDocsDeriveReceiptStateData> get copyWith;
+}
+
+abstract class $CommercioDocsDeriveReceiptStateInitialCopyWith<$Res> {
+  factory $CommercioDocsDeriveReceiptStateInitialCopyWith(
+          CommercioDocsDeriveReceiptStateInitial value,
+          $Res Function(CommercioDocsDeriveReceiptStateInitial) then) =
+      _$CommercioDocsDeriveReceiptStateInitialCopyWithImpl<$Res>;
+}
+
+class _$CommercioDocsDeriveReceiptStateInitialCopyWithImpl<$Res>
+    extends _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveReceiptStateInitialCopyWith<$Res> {
+  _$CommercioDocsDeriveReceiptStateInitialCopyWithImpl(
+      CommercioDocsDeriveReceiptStateInitial _value,
+      $Res Function(CommercioDocsDeriveReceiptStateInitial) _then)
+      : super(
+            _value, (v) => _then(v as CommercioDocsDeriveReceiptStateInitial));
+
+  @override
+  CommercioDocsDeriveReceiptStateInitial get _value =>
+      super._value as CommercioDocsDeriveReceiptStateInitial;
+}
+
+class _$CommercioDocsDeriveReceiptStateInitial
+    implements CommercioDocsDeriveReceiptStateInitial {
+  const _$CommercioDocsDeriveReceiptStateInitial();
+
+  @override
+  String toString() {
+    return 'CommercioDocsDeriveReceiptState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioDocsDeriveReceiptStateInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    Result error(CommercioDocsDeriveReceiptStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioDocsDeriveReceiptStateInitial
+    implements CommercioDocsDeriveReceiptState {
+  const factory CommercioDocsDeriveReceiptStateInitial() =
+      _$CommercioDocsDeriveReceiptStateInitial;
+}
+
+abstract class $CommercioDocsDeriveReceiptStateLoadingCopyWith<$Res> {
+  factory $CommercioDocsDeriveReceiptStateLoadingCopyWith(
+          CommercioDocsDeriveReceiptStateLoading value,
+          $Res Function(CommercioDocsDeriveReceiptStateLoading) then) =
+      _$CommercioDocsDeriveReceiptStateLoadingCopyWithImpl<$Res>;
+}
+
+class _$CommercioDocsDeriveReceiptStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveReceiptStateLoadingCopyWith<$Res> {
+  _$CommercioDocsDeriveReceiptStateLoadingCopyWithImpl(
+      CommercioDocsDeriveReceiptStateLoading _value,
+      $Res Function(CommercioDocsDeriveReceiptStateLoading) _then)
+      : super(
+            _value, (v) => _then(v as CommercioDocsDeriveReceiptStateLoading));
+
+  @override
+  CommercioDocsDeriveReceiptStateLoading get _value =>
+      super._value as CommercioDocsDeriveReceiptStateLoading;
+}
+
+class _$CommercioDocsDeriveReceiptStateLoading
+    implements CommercioDocsDeriveReceiptStateLoading {
+  const _$CommercioDocsDeriveReceiptStateLoading();
+
+  @override
+  String toString() {
+    return 'CommercioDocsDeriveReceiptState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioDocsDeriveReceiptStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    Result error(CommercioDocsDeriveReceiptStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioDocsDeriveReceiptStateLoading
+    implements CommercioDocsDeriveReceiptState {
+  const factory CommercioDocsDeriveReceiptStateLoading() =
+      _$CommercioDocsDeriveReceiptStateLoading;
+}
+
+abstract class $CommercioDocsDeriveReceiptStateErrorCopyWith<$Res> {
+  factory $CommercioDocsDeriveReceiptStateErrorCopyWith(
+          CommercioDocsDeriveReceiptStateError value,
+          $Res Function(CommercioDocsDeriveReceiptStateError) then) =
+      _$CommercioDocsDeriveReceiptStateErrorCopyWithImpl<$Res>;
+  $Res call({String error});
+}
+
+class _$CommercioDocsDeriveReceiptStateErrorCopyWithImpl<$Res>
+    extends _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveReceiptStateErrorCopyWith<$Res> {
+  _$CommercioDocsDeriveReceiptStateErrorCopyWithImpl(
+      CommercioDocsDeriveReceiptStateError _value,
+      $Res Function(CommercioDocsDeriveReceiptStateError) _then)
+      : super(_value, (v) => _then(v as CommercioDocsDeriveReceiptStateError));
+
+  @override
+  CommercioDocsDeriveReceiptStateError get _value =>
+      super._value as CommercioDocsDeriveReceiptStateError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(CommercioDocsDeriveReceiptStateError(
+      error == freezed ? _value.error : error as String,
+    ));
+  }
+}
+
+class _$CommercioDocsDeriveReceiptStateError
+    implements CommercioDocsDeriveReceiptStateError {
+  const _$CommercioDocsDeriveReceiptStateError([this.error]);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'CommercioDocsDeriveReceiptState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioDocsDeriveReceiptStateError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $CommercioDocsDeriveReceiptStateErrorCopyWith<
+          CommercioDocsDeriveReceiptStateError>
+      get copyWith => _$CommercioDocsDeriveReceiptStateErrorCopyWithImpl<
+          CommercioDocsDeriveReceiptStateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDocReceipt commercioDocReceipt), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveReceiptStateData value), {
+    Result initial(CommercioDocsDeriveReceiptStateInitial value),
+    Result loading(CommercioDocsDeriveReceiptStateLoading value),
+    Result error(CommercioDocsDeriveReceiptStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioDocsDeriveReceiptStateError
+    implements CommercioDocsDeriveReceiptState {
+  const factory CommercioDocsDeriveReceiptStateError([String error]) =
+      _$CommercioDocsDeriveReceiptStateError;
+
+  String get error;
+  $CommercioDocsDeriveReceiptStateErrorCopyWith<
+      CommercioDocsDeriveReceiptStateError> get copyWith;
 }

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'commercio_mint_state.dart';
 
@@ -12,20 +12,24 @@ T _$identity<T>(T value) => value;
 class _$CommercioMintOpenedCdpStateTearOff {
   const _$CommercioMintOpenedCdpStateTearOff();
 
+// ignore: unused_element
   CommercioMintOpenedCdpStateData call({@required TransactionResult result}) {
     return CommercioMintOpenedCdpStateData(
       result: result,
     );
   }
 
+// ignore: unused_element
   CommercioMintOpenedCdpStateInitial initial() {
     return const CommercioMintOpenedCdpStateInitial();
   }
 
+// ignore: unused_element
   CommercioMintOpenedCdpStateLoading loading() {
     return const CommercioMintOpenedCdpStateLoading();
   }
 
+// ignore: unused_element
   CommercioMintOpenedCdpStateError error([String error]) {
     return CommercioMintOpenedCdpStateError(
       error,
@@ -567,20 +571,24 @@ abstract class CommercioMintOpenedCdpStateError
 class _$CommercioMintClosedCdpStateTearOff {
   const _$CommercioMintClosedCdpStateTearOff();
 
+// ignore: unused_element
   CommercioMintClosedCdpStateData call({@required TransactionResult result}) {
     return CommercioMintClosedCdpStateData(
       result: result,
     );
   }
 
+// ignore: unused_element
   CommercioMintClosedCdpStateInitial initial() {
     return const CommercioMintClosedCdpStateInitial();
   }
 
+// ignore: unused_element
   CommercioMintClosedCdpStateLoading loading() {
     return const CommercioMintClosedCdpStateLoading();
   }
 
+// ignore: unused_element
   CommercioMintClosedCdpStateError error([String error]) {
     return CommercioMintClosedCdpStateError(
       error,

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'commercio_kyc_state.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$CommercioKycRequestedFaucetInviteStateTearOff {
   const _$CommercioKycRequestedFaucetInviteStateTearOff();
 
+// ignore: unused_element
   CommercioKycRequestedFaucetInviteStateData call(
       {@required FaucetInviteResponse response}) {
     return CommercioKycRequestedFaucetInviteStateData(
@@ -19,14 +20,17 @@ class _$CommercioKycRequestedFaucetInviteStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioKycRequestedFaucetInviteStateInitial initial() {
     return const CommercioKycRequestedFaucetInviteStateInitial();
   }
 
+// ignore: unused_element
   CommercioKycRequestedFaucetInviteStateLoading loading() {
     return const CommercioKycRequestedFaucetInviteStateLoading();
   }
 
+// ignore: unused_element
   CommercioKycRequestedFaucetInviteStateError error([String error]) {
     return CommercioKycRequestedFaucetInviteStateError(
       error,
@@ -601,6 +605,7 @@ abstract class CommercioKycRequestedFaucetInviteStateError
 class _$CommercioKycBuyMembershipStateTearOff {
   const _$CommercioKycBuyMembershipStateTearOff();
 
+// ignore: unused_element
   CommercioKycBuyMembershipStateData call(
       {@required TransactionResult result}) {
     return CommercioKycBuyMembershipStateData(
@@ -608,14 +613,17 @@ class _$CommercioKycBuyMembershipStateTearOff {
     );
   }
 
+// ignore: unused_element
   CommercioKycBuyMembershipStateInitial initial() {
     return const CommercioKycBuyMembershipStateInitial();
   }
 
+// ignore: unused_element
   CommercioKycBuyMembershipStateLoading loading() {
     return const CommercioKycBuyMembershipStateLoading();
   }
 
+// ignore: unused_element
   CommercioKycBuyMembershipStateError error([String error]) {
     return CommercioKycBuyMembershipStateError(
       error,
@@ -1161,20 +1169,24 @@ abstract class CommercioKycBuyMembershipStateError
 class _$CommercioKycInviteMemberStateTearOff {
   const _$CommercioKycInviteMemberStateTearOff();
 
+// ignore: unused_element
   CommercioKycInviteMemberStateData call({@required TransactionResult result}) {
     return CommercioKycInviteMemberStateData(
       result: result,
     );
   }
 
+// ignore: unused_element
   CommercioKycInviteMemberStateInitial initial() {
     return const CommercioKycInviteMemberStateInitial();
   }
 
+// ignore: unused_element
   CommercioKycInviteMemberStateLoading loading() {
     return const CommercioKycInviteMemberStateLoading();
   }
 
+// ignore: unused_element
   CommercioKycInviteMemberStateError error([String error]) {
     return CommercioKycInviteMemberStateError(
       error,
