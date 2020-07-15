@@ -5,15 +5,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class ShareDocumentTextField extends CommercioTextField<
-    CommercioDocsShareDocumentBloc,
-    CommercioDocsShareDocumentEvent,
-    CommercioDocsSharedDocumentState,
-    CommercioDocsSharedDocumentStateInitial,
-    CommercioDocsSharedDocumentStateData,
-    CommercioDocsSharedDocumentStateLoading,
-    CommercioDocsSharedDocumentStateError> {
-  ShareDocumentTextField({
+class DeriveDocumentTextField extends CommercioTextField<
+    CommercioDocsDeriveDocumentBloc,
+    CommercioDocsDeriveDocumentEvent,
+    CommercioDocsDeriveDocumentState,
+    CommercioDocsDeriveDocumentStateInitial,
+    CommercioDocsDeriveDocumentStateData,
+    CommercioDocsDeriveDocumentStateLoading,
+    CommercioDocsDeriveDocumentStateError> {
+  DeriveDocumentTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -61,7 +61,7 @@ class ShareDocumentTextField extends CommercioTextField<
     @required String Function(BuildContext context) loading,
     @required
         String Function(BuildContext context,
-                CommercioDocsSharedDocumentStateData state)
+                CommercioDocsDeriveDocumentStateData state)
             text,
     TextStyle loadingStyle,
     String Function(BuildContext context, String errorMessage) error,
@@ -117,15 +117,15 @@ class ShareDocumentTextField extends CommercioTextField<
         );
 }
 
-class ShareEncryptedDocumentTextField extends CommercioTextField<
-    CommercioDocsShareEncryptedDocumentBloc,
-    CommercioDocsShareEncryptedDocumentEvent,
-    CommercioDocsSharedEncryptedDocumentState,
-    CommercioDocsSharedEncryptedDocumentStateInitial,
-    CommercioDocsSharedEncryptedDocumentStateData,
-    CommercioDocsSharedEncryptedDocumentStateLoading,
-    CommercioDocsSharedEncryptedDocumentStateError> {
-  ShareEncryptedDocumentTextField({
+class ShareDocumentsTextField extends CommercioTextField<
+    CommercioDocsShareDocumentsBloc,
+    CommercioDocsShareDocumentsEvent,
+    CommercioDocsSharedDocumentsState,
+    CommercioDocsSharedDocumentsStateInitial,
+    CommercioDocsSharedDocumentsStateData,
+    CommercioDocsSharedDocumentsStateLoading,
+    CommercioDocsSharedDocumentsStateError> {
+  ShareDocumentsTextField({
     Key key,
     TextEditingController controller,
     FocusNode focusNode,
@@ -173,7 +173,7 @@ class ShareEncryptedDocumentTextField extends CommercioTextField<
     @required String Function(BuildContext context) loading,
     @required
         String Function(BuildContext context,
-                CommercioDocsSharedEncryptedDocumentStateData state)
+                CommercioDocsSharedDocumentsStateData state)
             text,
     TextStyle loadingStyle,
     String Function(BuildContext context, String errorMessage) error,

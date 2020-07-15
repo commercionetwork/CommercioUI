@@ -9,36 +9,601 @@ part of 'commercio_docs_state.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$CommercioDocsSharedDocumentStateTearOff {
-  const _$CommercioDocsSharedDocumentStateTearOff();
+class _$CommercioDocsDeriveDocumentStateTearOff {
+  const _$CommercioDocsDeriveDocumentStateTearOff();
 
-  CommercioDocsSharedDocumentStateData call(
-      {@required TransactionResult result}) {
-    return CommercioDocsSharedDocumentStateData(
-      result: result,
+  CommercioDocsDeriveDocumentStateData call(
+      {@required CommercioDoc commercioDoc}) {
+    return CommercioDocsDeriveDocumentStateData(
+      commercioDoc: commercioDoc,
     );
   }
 
-  CommercioDocsSharedDocumentStateInitial initial() {
-    return const CommercioDocsSharedDocumentStateInitial();
+  CommercioDocsDeriveDocumentStateInitial initial() {
+    return const CommercioDocsDeriveDocumentStateInitial();
   }
 
-  CommercioDocsSharedDocumentStateLoading loading() {
-    return const CommercioDocsSharedDocumentStateLoading();
+  CommercioDocsDeriveDocumentStateLoading loading() {
+    return const CommercioDocsDeriveDocumentStateLoading();
   }
 
-  CommercioDocsSharedDocumentStateError error([String error]) {
-    return CommercioDocsSharedDocumentStateError(
+  CommercioDocsDeriveDocumentStateError error([String error]) {
+    return CommercioDocsDeriveDocumentStateError(
       error,
     );
   }
 }
 
 // ignore: unused_element
-const $CommercioDocsSharedDocumentState =
-    _$CommercioDocsSharedDocumentStateTearOff();
+const $CommercioDocsDeriveDocumentState =
+    _$CommercioDocsDeriveDocumentStateTearOff();
 
-mixin _$CommercioDocsSharedDocumentState {
+mixin _$CommercioDocsDeriveDocumentState {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    Result error(CommercioDocsDeriveDocumentStateError value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $CommercioDocsDeriveDocumentStateCopyWith<$Res> {
+  factory $CommercioDocsDeriveDocumentStateCopyWith(
+          CommercioDocsDeriveDocumentState value,
+          $Res Function(CommercioDocsDeriveDocumentState) then) =
+      _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>;
+}
+
+class _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveDocumentStateCopyWith<$Res> {
+  _$CommercioDocsDeriveDocumentStateCopyWithImpl(this._value, this._then);
+
+  final CommercioDocsDeriveDocumentState _value;
+  // ignore: unused_field
+  final $Res Function(CommercioDocsDeriveDocumentState) _then;
+}
+
+abstract class $CommercioDocsDeriveDocumentStateDataCopyWith<$Res> {
+  factory $CommercioDocsDeriveDocumentStateDataCopyWith(
+          CommercioDocsDeriveDocumentStateData value,
+          $Res Function(CommercioDocsDeriveDocumentStateData) then) =
+      _$CommercioDocsDeriveDocumentStateDataCopyWithImpl<$Res>;
+  $Res call({CommercioDoc commercioDoc});
+}
+
+class _$CommercioDocsDeriveDocumentStateDataCopyWithImpl<$Res>
+    extends _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveDocumentStateDataCopyWith<$Res> {
+  _$CommercioDocsDeriveDocumentStateDataCopyWithImpl(
+      CommercioDocsDeriveDocumentStateData _value,
+      $Res Function(CommercioDocsDeriveDocumentStateData) _then)
+      : super(_value, (v) => _then(v as CommercioDocsDeriveDocumentStateData));
+
+  @override
+  CommercioDocsDeriveDocumentStateData get _value =>
+      super._value as CommercioDocsDeriveDocumentStateData;
+
+  @override
+  $Res call({
+    Object commercioDoc = freezed,
+  }) {
+    return _then(CommercioDocsDeriveDocumentStateData(
+      commercioDoc: commercioDoc == freezed
+          ? _value.commercioDoc
+          : commercioDoc as CommercioDoc,
+    ));
+  }
+}
+
+class _$CommercioDocsDeriveDocumentStateData
+    implements CommercioDocsDeriveDocumentStateData {
+  const _$CommercioDocsDeriveDocumentStateData({@required this.commercioDoc})
+      : assert(commercioDoc != null);
+
+  @override
+  final CommercioDoc commercioDoc;
+
+  @override
+  String toString() {
+    return 'CommercioDocsDeriveDocumentState(commercioDoc: $commercioDoc)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioDocsDeriveDocumentStateData &&
+            (identical(other.commercioDoc, commercioDoc) ||
+                const DeepCollectionEquality()
+                    .equals(other.commercioDoc, commercioDoc)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(commercioDoc);
+
+  @override
+  $CommercioDocsDeriveDocumentStateDataCopyWith<
+          CommercioDocsDeriveDocumentStateData>
+      get copyWith => _$CommercioDocsDeriveDocumentStateDataCopyWithImpl<
+          CommercioDocsDeriveDocumentStateData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(commercioDoc);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(commercioDoc);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    Result error(CommercioDocsDeriveDocumentStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioDocsDeriveDocumentStateData
+    implements CommercioDocsDeriveDocumentState {
+  const factory CommercioDocsDeriveDocumentStateData(
+          {@required CommercioDoc commercioDoc}) =
+      _$CommercioDocsDeriveDocumentStateData;
+
+  CommercioDoc get commercioDoc;
+  $CommercioDocsDeriveDocumentStateDataCopyWith<
+      CommercioDocsDeriveDocumentStateData> get copyWith;
+}
+
+abstract class $CommercioDocsDeriveDocumentStateInitialCopyWith<$Res> {
+  factory $CommercioDocsDeriveDocumentStateInitialCopyWith(
+          CommercioDocsDeriveDocumentStateInitial value,
+          $Res Function(CommercioDocsDeriveDocumentStateInitial) then) =
+      _$CommercioDocsDeriveDocumentStateInitialCopyWithImpl<$Res>;
+}
+
+class _$CommercioDocsDeriveDocumentStateInitialCopyWithImpl<$Res>
+    extends _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveDocumentStateInitialCopyWith<$Res> {
+  _$CommercioDocsDeriveDocumentStateInitialCopyWithImpl(
+      CommercioDocsDeriveDocumentStateInitial _value,
+      $Res Function(CommercioDocsDeriveDocumentStateInitial) _then)
+      : super(
+            _value, (v) => _then(v as CommercioDocsDeriveDocumentStateInitial));
+
+  @override
+  CommercioDocsDeriveDocumentStateInitial get _value =>
+      super._value as CommercioDocsDeriveDocumentStateInitial;
+}
+
+class _$CommercioDocsDeriveDocumentStateInitial
+    implements CommercioDocsDeriveDocumentStateInitial {
+  const _$CommercioDocsDeriveDocumentStateInitial();
+
+  @override
+  String toString() {
+    return 'CommercioDocsDeriveDocumentState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioDocsDeriveDocumentStateInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    Result error(CommercioDocsDeriveDocumentStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioDocsDeriveDocumentStateInitial
+    implements CommercioDocsDeriveDocumentState {
+  const factory CommercioDocsDeriveDocumentStateInitial() =
+      _$CommercioDocsDeriveDocumentStateInitial;
+}
+
+abstract class $CommercioDocsDeriveDocumentStateLoadingCopyWith<$Res> {
+  factory $CommercioDocsDeriveDocumentStateLoadingCopyWith(
+          CommercioDocsDeriveDocumentStateLoading value,
+          $Res Function(CommercioDocsDeriveDocumentStateLoading) then) =
+      _$CommercioDocsDeriveDocumentStateLoadingCopyWithImpl<$Res>;
+}
+
+class _$CommercioDocsDeriveDocumentStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveDocumentStateLoadingCopyWith<$Res> {
+  _$CommercioDocsDeriveDocumentStateLoadingCopyWithImpl(
+      CommercioDocsDeriveDocumentStateLoading _value,
+      $Res Function(CommercioDocsDeriveDocumentStateLoading) _then)
+      : super(
+            _value, (v) => _then(v as CommercioDocsDeriveDocumentStateLoading));
+
+  @override
+  CommercioDocsDeriveDocumentStateLoading get _value =>
+      super._value as CommercioDocsDeriveDocumentStateLoading;
+}
+
+class _$CommercioDocsDeriveDocumentStateLoading
+    implements CommercioDocsDeriveDocumentStateLoading {
+  const _$CommercioDocsDeriveDocumentStateLoading();
+
+  @override
+  String toString() {
+    return 'CommercioDocsDeriveDocumentState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioDocsDeriveDocumentStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    Result error(CommercioDocsDeriveDocumentStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioDocsDeriveDocumentStateLoading
+    implements CommercioDocsDeriveDocumentState {
+  const factory CommercioDocsDeriveDocumentStateLoading() =
+      _$CommercioDocsDeriveDocumentStateLoading;
+}
+
+abstract class $CommercioDocsDeriveDocumentStateErrorCopyWith<$Res> {
+  factory $CommercioDocsDeriveDocumentStateErrorCopyWith(
+          CommercioDocsDeriveDocumentStateError value,
+          $Res Function(CommercioDocsDeriveDocumentStateError) then) =
+      _$CommercioDocsDeriveDocumentStateErrorCopyWithImpl<$Res>;
+  $Res call({String error});
+}
+
+class _$CommercioDocsDeriveDocumentStateErrorCopyWithImpl<$Res>
+    extends _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
+    implements $CommercioDocsDeriveDocumentStateErrorCopyWith<$Res> {
+  _$CommercioDocsDeriveDocumentStateErrorCopyWithImpl(
+      CommercioDocsDeriveDocumentStateError _value,
+      $Res Function(CommercioDocsDeriveDocumentStateError) _then)
+      : super(_value, (v) => _then(v as CommercioDocsDeriveDocumentStateError));
+
+  @override
+  CommercioDocsDeriveDocumentStateError get _value =>
+      super._value as CommercioDocsDeriveDocumentStateError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(CommercioDocsDeriveDocumentStateError(
+      error == freezed ? _value.error : error as String,
+    ));
+  }
+}
+
+class _$CommercioDocsDeriveDocumentStateError
+    implements CommercioDocsDeriveDocumentStateError {
+  const _$CommercioDocsDeriveDocumentStateError([this.error]);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'CommercioDocsDeriveDocumentState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioDocsDeriveDocumentStateError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $CommercioDocsDeriveDocumentStateErrorCopyWith<
+          CommercioDocsDeriveDocumentStateError>
+      get copyWith => _$CommercioDocsDeriveDocumentStateErrorCopyWithImpl<
+          CommercioDocsDeriveDocumentStateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CommercioDoc commercioDoc), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioDocsDeriveDocumentStateData value), {
+    Result initial(CommercioDocsDeriveDocumentStateInitial value),
+    Result loading(CommercioDocsDeriveDocumentStateLoading value),
+    Result error(CommercioDocsDeriveDocumentStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioDocsDeriveDocumentStateError
+    implements CommercioDocsDeriveDocumentState {
+  const factory CommercioDocsDeriveDocumentStateError([String error]) =
+      _$CommercioDocsDeriveDocumentStateError;
+
+  String get error;
+  $CommercioDocsDeriveDocumentStateErrorCopyWith<
+      CommercioDocsDeriveDocumentStateError> get copyWith;
+}
+
+class _$CommercioDocsSharedDocumentsStateTearOff {
+  const _$CommercioDocsSharedDocumentsStateTearOff();
+
+  CommercioDocsSharedDocumentsStateData call(
+      {@required TransactionResult result}) {
+    return CommercioDocsSharedDocumentsStateData(
+      result: result,
+    );
+  }
+
+  CommercioDocsSharedDocumentsStateInitial initial() {
+    return const CommercioDocsSharedDocumentsStateInitial();
+  }
+
+  CommercioDocsSharedDocumentsStateLoading loading() {
+    return const CommercioDocsSharedDocumentsStateLoading();
+  }
+
+  CommercioDocsSharedDocumentsStateError error([String error]) {
+    return CommercioDocsSharedDocumentsStateError(
+      error,
+    );
+  }
+}
+
+// ignore: unused_element
+const $CommercioDocsSharedDocumentsState =
+    _$CommercioDocsSharedDocumentsStateTearOff();
+
+mixin _$CommercioDocsSharedDocumentsState {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(TransactionResult result), {
@@ -56,70 +621,70 @@ mixin _$CommercioDocsSharedDocumentState {
   });
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    @required Result error(CommercioDocsSharedDocumentsStateError value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    Result initial(CommercioDocsSharedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedDocumentStateLoading value),
-    Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    Result error(CommercioDocsSharedDocumentsStateError value),
     @required Result orElse(),
   });
 }
 
-abstract class $CommercioDocsSharedDocumentStateCopyWith<$Res> {
-  factory $CommercioDocsSharedDocumentStateCopyWith(
-          CommercioDocsSharedDocumentState value,
-          $Res Function(CommercioDocsSharedDocumentState) then) =
-      _$CommercioDocsSharedDocumentStateCopyWithImpl<$Res>;
+abstract class $CommercioDocsSharedDocumentsStateCopyWith<$Res> {
+  factory $CommercioDocsSharedDocumentsStateCopyWith(
+          CommercioDocsSharedDocumentsState value,
+          $Res Function(CommercioDocsSharedDocumentsState) then) =
+      _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>;
 }
 
-class _$CommercioDocsSharedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedDocumentStateCopyWith<$Res> {
-  _$CommercioDocsSharedDocumentStateCopyWithImpl(this._value, this._then);
+class _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioDocsSharedDocumentsStateCopyWith<$Res> {
+  _$CommercioDocsSharedDocumentsStateCopyWithImpl(this._value, this._then);
 
-  final CommercioDocsSharedDocumentState _value;
+  final CommercioDocsSharedDocumentsState _value;
   // ignore: unused_field
-  final $Res Function(CommercioDocsSharedDocumentState) _then;
+  final $Res Function(CommercioDocsSharedDocumentsState) _then;
 }
 
-abstract class $CommercioDocsSharedDocumentStateDataCopyWith<$Res> {
-  factory $CommercioDocsSharedDocumentStateDataCopyWith(
-          CommercioDocsSharedDocumentStateData value,
-          $Res Function(CommercioDocsSharedDocumentStateData) then) =
-      _$CommercioDocsSharedDocumentStateDataCopyWithImpl<$Res>;
+abstract class $CommercioDocsSharedDocumentsStateDataCopyWith<$Res> {
+  factory $CommercioDocsSharedDocumentsStateDataCopyWith(
+          CommercioDocsSharedDocumentsStateData value,
+          $Res Function(CommercioDocsSharedDocumentsStateData) then) =
+      _$CommercioDocsSharedDocumentsStateDataCopyWithImpl<$Res>;
   $Res call({TransactionResult result});
 }
 
-class _$CommercioDocsSharedDocumentStateDataCopyWithImpl<$Res>
-    extends _$CommercioDocsSharedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedDocumentStateDataCopyWith<$Res> {
-  _$CommercioDocsSharedDocumentStateDataCopyWithImpl(
-      CommercioDocsSharedDocumentStateData _value,
-      $Res Function(CommercioDocsSharedDocumentStateData) _then)
-      : super(_value, (v) => _then(v as CommercioDocsSharedDocumentStateData));
+class _$CommercioDocsSharedDocumentsStateDataCopyWithImpl<$Res>
+    extends _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioDocsSharedDocumentsStateDataCopyWith<$Res> {
+  _$CommercioDocsSharedDocumentsStateDataCopyWithImpl(
+      CommercioDocsSharedDocumentsStateData _value,
+      $Res Function(CommercioDocsSharedDocumentsStateData) _then)
+      : super(_value, (v) => _then(v as CommercioDocsSharedDocumentsStateData));
 
   @override
-  CommercioDocsSharedDocumentStateData get _value =>
-      super._value as CommercioDocsSharedDocumentStateData;
+  CommercioDocsSharedDocumentsStateData get _value =>
+      super._value as CommercioDocsSharedDocumentsStateData;
 
   @override
   $Res call({
     Object result = freezed,
   }) {
-    return _then(CommercioDocsSharedDocumentStateData(
+    return _then(CommercioDocsSharedDocumentsStateData(
       result: result == freezed ? _value.result : result as TransactionResult,
     ));
   }
 }
 
-class _$CommercioDocsSharedDocumentStateData
-    implements CommercioDocsSharedDocumentStateData {
-  const _$CommercioDocsSharedDocumentStateData({@required this.result})
+class _$CommercioDocsSharedDocumentsStateData
+    implements CommercioDocsSharedDocumentsStateData {
+  const _$CommercioDocsSharedDocumentsStateData({@required this.result})
       : assert(result != null);
 
   @override
@@ -127,13 +692,13 @@ class _$CommercioDocsSharedDocumentStateData
 
   @override
   String toString() {
-    return 'CommercioDocsSharedDocumentState(result: $result)';
+    return 'CommercioDocsSharedDocumentsState(result: $result)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioDocsSharedDocumentStateData &&
+        (other is CommercioDocsSharedDocumentsStateData &&
             (identical(other.result, result) ||
                 const DeepCollectionEquality().equals(other.result, result)));
   }
@@ -143,10 +708,10 @@ class _$CommercioDocsSharedDocumentStateData
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
   @override
-  $CommercioDocsSharedDocumentStateDataCopyWith<
-          CommercioDocsSharedDocumentStateData>
-      get copyWith => _$CommercioDocsSharedDocumentStateDataCopyWithImpl<
-          CommercioDocsSharedDocumentStateData>(this, _$identity);
+  $CommercioDocsSharedDocumentsStateDataCopyWith<
+          CommercioDocsSharedDocumentsStateData>
+      get copyWith => _$CommercioDocsSharedDocumentsStateDataCopyWithImpl<
+          CommercioDocsSharedDocumentsStateData>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -182,10 +747,10 @@ class _$CommercioDocsSharedDocumentStateData
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    @required Result error(CommercioDocsSharedDocumentsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -197,10 +762,10 @@ class _$CommercioDocsSharedDocumentStateData
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    Result initial(CommercioDocsSharedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedDocumentStateLoading value),
-    Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    Result error(CommercioDocsSharedDocumentsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -211,51 +776,51 @@ class _$CommercioDocsSharedDocumentStateData
   }
 }
 
-abstract class CommercioDocsSharedDocumentStateData
-    implements CommercioDocsSharedDocumentState {
-  const factory CommercioDocsSharedDocumentStateData(
+abstract class CommercioDocsSharedDocumentsStateData
+    implements CommercioDocsSharedDocumentsState {
+  const factory CommercioDocsSharedDocumentsStateData(
           {@required TransactionResult result}) =
-      _$CommercioDocsSharedDocumentStateData;
+      _$CommercioDocsSharedDocumentsStateData;
 
   TransactionResult get result;
-  $CommercioDocsSharedDocumentStateDataCopyWith<
-      CommercioDocsSharedDocumentStateData> get copyWith;
+  $CommercioDocsSharedDocumentsStateDataCopyWith<
+      CommercioDocsSharedDocumentsStateData> get copyWith;
 }
 
-abstract class $CommercioDocsSharedDocumentStateInitialCopyWith<$Res> {
-  factory $CommercioDocsSharedDocumentStateInitialCopyWith(
-          CommercioDocsSharedDocumentStateInitial value,
-          $Res Function(CommercioDocsSharedDocumentStateInitial) then) =
-      _$CommercioDocsSharedDocumentStateInitialCopyWithImpl<$Res>;
+abstract class $CommercioDocsSharedDocumentsStateInitialCopyWith<$Res> {
+  factory $CommercioDocsSharedDocumentsStateInitialCopyWith(
+          CommercioDocsSharedDocumentsStateInitial value,
+          $Res Function(CommercioDocsSharedDocumentsStateInitial) then) =
+      _$CommercioDocsSharedDocumentsStateInitialCopyWithImpl<$Res>;
 }
 
-class _$CommercioDocsSharedDocumentStateInitialCopyWithImpl<$Res>
-    extends _$CommercioDocsSharedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedDocumentStateInitialCopyWith<$Res> {
-  _$CommercioDocsSharedDocumentStateInitialCopyWithImpl(
-      CommercioDocsSharedDocumentStateInitial _value,
-      $Res Function(CommercioDocsSharedDocumentStateInitial) _then)
-      : super(
-            _value, (v) => _then(v as CommercioDocsSharedDocumentStateInitial));
+class _$CommercioDocsSharedDocumentsStateInitialCopyWithImpl<$Res>
+    extends _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioDocsSharedDocumentsStateInitialCopyWith<$Res> {
+  _$CommercioDocsSharedDocumentsStateInitialCopyWithImpl(
+      CommercioDocsSharedDocumentsStateInitial _value,
+      $Res Function(CommercioDocsSharedDocumentsStateInitial) _then)
+      : super(_value,
+            (v) => _then(v as CommercioDocsSharedDocumentsStateInitial));
 
   @override
-  CommercioDocsSharedDocumentStateInitial get _value =>
-      super._value as CommercioDocsSharedDocumentStateInitial;
+  CommercioDocsSharedDocumentsStateInitial get _value =>
+      super._value as CommercioDocsSharedDocumentsStateInitial;
 }
 
-class _$CommercioDocsSharedDocumentStateInitial
-    implements CommercioDocsSharedDocumentStateInitial {
-  const _$CommercioDocsSharedDocumentStateInitial();
+class _$CommercioDocsSharedDocumentsStateInitial
+    implements CommercioDocsSharedDocumentsStateInitial {
+  const _$CommercioDocsSharedDocumentsStateInitial();
 
   @override
   String toString() {
-    return 'CommercioDocsSharedDocumentState.initial()';
+    return 'CommercioDocsSharedDocumentsState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioDocsSharedDocumentStateInitial);
+        (other is CommercioDocsSharedDocumentsStateInitial);
   }
 
   @override
@@ -295,10 +860,10 @@ class _$CommercioDocsSharedDocumentStateInitial
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    @required Result error(CommercioDocsSharedDocumentsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -310,10 +875,10 @@ class _$CommercioDocsSharedDocumentStateInitial
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    Result initial(CommercioDocsSharedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedDocumentStateLoading value),
-    Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    Result error(CommercioDocsSharedDocumentsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -324,46 +889,46 @@ class _$CommercioDocsSharedDocumentStateInitial
   }
 }
 
-abstract class CommercioDocsSharedDocumentStateInitial
-    implements CommercioDocsSharedDocumentState {
-  const factory CommercioDocsSharedDocumentStateInitial() =
-      _$CommercioDocsSharedDocumentStateInitial;
+abstract class CommercioDocsSharedDocumentsStateInitial
+    implements CommercioDocsSharedDocumentsState {
+  const factory CommercioDocsSharedDocumentsStateInitial() =
+      _$CommercioDocsSharedDocumentsStateInitial;
 }
 
-abstract class $CommercioDocsSharedDocumentStateLoadingCopyWith<$Res> {
-  factory $CommercioDocsSharedDocumentStateLoadingCopyWith(
-          CommercioDocsSharedDocumentStateLoading value,
-          $Res Function(CommercioDocsSharedDocumentStateLoading) then) =
-      _$CommercioDocsSharedDocumentStateLoadingCopyWithImpl<$Res>;
+abstract class $CommercioDocsSharedDocumentsStateLoadingCopyWith<$Res> {
+  factory $CommercioDocsSharedDocumentsStateLoadingCopyWith(
+          CommercioDocsSharedDocumentsStateLoading value,
+          $Res Function(CommercioDocsSharedDocumentsStateLoading) then) =
+      _$CommercioDocsSharedDocumentsStateLoadingCopyWithImpl<$Res>;
 }
 
-class _$CommercioDocsSharedDocumentStateLoadingCopyWithImpl<$Res>
-    extends _$CommercioDocsSharedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedDocumentStateLoadingCopyWith<$Res> {
-  _$CommercioDocsSharedDocumentStateLoadingCopyWithImpl(
-      CommercioDocsSharedDocumentStateLoading _value,
-      $Res Function(CommercioDocsSharedDocumentStateLoading) _then)
-      : super(
-            _value, (v) => _then(v as CommercioDocsSharedDocumentStateLoading));
+class _$CommercioDocsSharedDocumentsStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioDocsSharedDocumentsStateLoadingCopyWith<$Res> {
+  _$CommercioDocsSharedDocumentsStateLoadingCopyWithImpl(
+      CommercioDocsSharedDocumentsStateLoading _value,
+      $Res Function(CommercioDocsSharedDocumentsStateLoading) _then)
+      : super(_value,
+            (v) => _then(v as CommercioDocsSharedDocumentsStateLoading));
 
   @override
-  CommercioDocsSharedDocumentStateLoading get _value =>
-      super._value as CommercioDocsSharedDocumentStateLoading;
+  CommercioDocsSharedDocumentsStateLoading get _value =>
+      super._value as CommercioDocsSharedDocumentsStateLoading;
 }
 
-class _$CommercioDocsSharedDocumentStateLoading
-    implements CommercioDocsSharedDocumentStateLoading {
-  const _$CommercioDocsSharedDocumentStateLoading();
+class _$CommercioDocsSharedDocumentsStateLoading
+    implements CommercioDocsSharedDocumentsStateLoading {
+  const _$CommercioDocsSharedDocumentsStateLoading();
 
   @override
   String toString() {
-    return 'CommercioDocsSharedDocumentState.loading()';
+    return 'CommercioDocsSharedDocumentsState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioDocsSharedDocumentStateLoading);
+        (other is CommercioDocsSharedDocumentsStateLoading);
   }
 
   @override
@@ -403,10 +968,10 @@ class _$CommercioDocsSharedDocumentStateLoading
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    @required Result error(CommercioDocsSharedDocumentsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -418,10 +983,10 @@ class _$CommercioDocsSharedDocumentStateLoading
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    Result initial(CommercioDocsSharedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedDocumentStateLoading value),
-    Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    Result error(CommercioDocsSharedDocumentsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -432,58 +997,59 @@ class _$CommercioDocsSharedDocumentStateLoading
   }
 }
 
-abstract class CommercioDocsSharedDocumentStateLoading
-    implements CommercioDocsSharedDocumentState {
-  const factory CommercioDocsSharedDocumentStateLoading() =
-      _$CommercioDocsSharedDocumentStateLoading;
+abstract class CommercioDocsSharedDocumentsStateLoading
+    implements CommercioDocsSharedDocumentsState {
+  const factory CommercioDocsSharedDocumentsStateLoading() =
+      _$CommercioDocsSharedDocumentsStateLoading;
 }
 
-abstract class $CommercioDocsSharedDocumentStateErrorCopyWith<$Res> {
-  factory $CommercioDocsSharedDocumentStateErrorCopyWith(
-          CommercioDocsSharedDocumentStateError value,
-          $Res Function(CommercioDocsSharedDocumentStateError) then) =
-      _$CommercioDocsSharedDocumentStateErrorCopyWithImpl<$Res>;
+abstract class $CommercioDocsSharedDocumentsStateErrorCopyWith<$Res> {
+  factory $CommercioDocsSharedDocumentsStateErrorCopyWith(
+          CommercioDocsSharedDocumentsStateError value,
+          $Res Function(CommercioDocsSharedDocumentsStateError) then) =
+      _$CommercioDocsSharedDocumentsStateErrorCopyWithImpl<$Res>;
   $Res call({String error});
 }
 
-class _$CommercioDocsSharedDocumentStateErrorCopyWithImpl<$Res>
-    extends _$CommercioDocsSharedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedDocumentStateErrorCopyWith<$Res> {
-  _$CommercioDocsSharedDocumentStateErrorCopyWithImpl(
-      CommercioDocsSharedDocumentStateError _value,
-      $Res Function(CommercioDocsSharedDocumentStateError) _then)
-      : super(_value, (v) => _then(v as CommercioDocsSharedDocumentStateError));
+class _$CommercioDocsSharedDocumentsStateErrorCopyWithImpl<$Res>
+    extends _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
+    implements $CommercioDocsSharedDocumentsStateErrorCopyWith<$Res> {
+  _$CommercioDocsSharedDocumentsStateErrorCopyWithImpl(
+      CommercioDocsSharedDocumentsStateError _value,
+      $Res Function(CommercioDocsSharedDocumentsStateError) _then)
+      : super(
+            _value, (v) => _then(v as CommercioDocsSharedDocumentsStateError));
 
   @override
-  CommercioDocsSharedDocumentStateError get _value =>
-      super._value as CommercioDocsSharedDocumentStateError;
+  CommercioDocsSharedDocumentsStateError get _value =>
+      super._value as CommercioDocsSharedDocumentsStateError;
 
   @override
   $Res call({
     Object error = freezed,
   }) {
-    return _then(CommercioDocsSharedDocumentStateError(
+    return _then(CommercioDocsSharedDocumentsStateError(
       error == freezed ? _value.error : error as String,
     ));
   }
 }
 
-class _$CommercioDocsSharedDocumentStateError
-    implements CommercioDocsSharedDocumentStateError {
-  const _$CommercioDocsSharedDocumentStateError([this.error]);
+class _$CommercioDocsSharedDocumentsStateError
+    implements CommercioDocsSharedDocumentsStateError {
+  const _$CommercioDocsSharedDocumentsStateError([this.error]);
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'CommercioDocsSharedDocumentState.error(error: $error)';
+    return 'CommercioDocsSharedDocumentsState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioDocsSharedDocumentStateError &&
+        (other is CommercioDocsSharedDocumentsStateError &&
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)));
   }
@@ -493,10 +1059,10 @@ class _$CommercioDocsSharedDocumentStateError
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $CommercioDocsSharedDocumentStateErrorCopyWith<
-          CommercioDocsSharedDocumentStateError>
-      get copyWith => _$CommercioDocsSharedDocumentStateErrorCopyWithImpl<
-          CommercioDocsSharedDocumentStateError>(this, _$identity);
+  $CommercioDocsSharedDocumentsStateErrorCopyWith<
+          CommercioDocsSharedDocumentsStateError>
+      get copyWith => _$CommercioDocsSharedDocumentsStateErrorCopyWithImpl<
+          CommercioDocsSharedDocumentsStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -532,10 +1098,10 @@ class _$CommercioDocsSharedDocumentStateError
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    @required Result error(CommercioDocsSharedDocumentsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -547,10 +1113,10 @@ class _$CommercioDocsSharedDocumentStateError
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentStateData value), {
-    Result initial(CommercioDocsSharedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedDocumentStateLoading value),
-    Result error(CommercioDocsSharedDocumentStateError value),
+    Result $default(CommercioDocsSharedDocumentsStateData value), {
+    Result initial(CommercioDocsSharedDocumentsStateInitial value),
+    Result loading(CommercioDocsSharedDocumentsStateLoading value),
+    Result error(CommercioDocsSharedDocumentsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -561,602 +1127,14 @@ class _$CommercioDocsSharedDocumentStateError
   }
 }
 
-abstract class CommercioDocsSharedDocumentStateError
-    implements CommercioDocsSharedDocumentState {
-  const factory CommercioDocsSharedDocumentStateError([String error]) =
-      _$CommercioDocsSharedDocumentStateError;
+abstract class CommercioDocsSharedDocumentsStateError
+    implements CommercioDocsSharedDocumentsState {
+  const factory CommercioDocsSharedDocumentsStateError([String error]) =
+      _$CommercioDocsSharedDocumentsStateError;
 
   String get error;
-  $CommercioDocsSharedDocumentStateErrorCopyWith<
-      CommercioDocsSharedDocumentStateError> get copyWith;
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateTearOff {
-  const _$CommercioDocsSharedEncryptedDocumentStateTearOff();
-
-  CommercioDocsSharedEncryptedDocumentStateData call(
-      {@required TransactionResult result}) {
-    return CommercioDocsSharedEncryptedDocumentStateData(
-      result: result,
-    );
-  }
-
-  CommercioDocsSharedEncryptedDocumentStateInitial initial() {
-    return const CommercioDocsSharedEncryptedDocumentStateInitial();
-  }
-
-  CommercioDocsSharedEncryptedDocumentStateLoading loading() {
-    return const CommercioDocsSharedEncryptedDocumentStateLoading();
-  }
-
-  CommercioDocsSharedEncryptedDocumentStateError error([String error]) {
-    return CommercioDocsSharedEncryptedDocumentStateError(
-      error,
-    );
-  }
-}
-
-// ignore: unused_element
-const $CommercioDocsSharedEncryptedDocumentState =
-    _$CommercioDocsSharedEncryptedDocumentStateTearOff();
-
-mixin _$CommercioDocsSharedEncryptedDocumentState {
-  @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    @required
-        Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    @required
-        Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    @required
-        Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-    @required Result orElse(),
-  });
-}
-
-abstract class $CommercioDocsSharedEncryptedDocumentStateCopyWith<$Res> {
-  factory $CommercioDocsSharedEncryptedDocumentStateCopyWith(
-          CommercioDocsSharedEncryptedDocumentState value,
-          $Res Function(CommercioDocsSharedEncryptedDocumentState) then) =
-      _$CommercioDocsSharedEncryptedDocumentStateCopyWithImpl<$Res>;
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedEncryptedDocumentStateCopyWith<$Res> {
-  _$CommercioDocsSharedEncryptedDocumentStateCopyWithImpl(
-      this._value, this._then);
-
-  final CommercioDocsSharedEncryptedDocumentState _value;
-  // ignore: unused_field
-  final $Res Function(CommercioDocsSharedEncryptedDocumentState) _then;
-}
-
-abstract class $CommercioDocsSharedEncryptedDocumentStateDataCopyWith<$Res> {
-  factory $CommercioDocsSharedEncryptedDocumentStateDataCopyWith(
-          CommercioDocsSharedEncryptedDocumentStateData value,
-          $Res Function(CommercioDocsSharedEncryptedDocumentStateData) then) =
-      _$CommercioDocsSharedEncryptedDocumentStateDataCopyWithImpl<$Res>;
-  $Res call({TransactionResult result});
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateDataCopyWithImpl<$Res>
-    extends _$CommercioDocsSharedEncryptedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedEncryptedDocumentStateDataCopyWith<$Res> {
-  _$CommercioDocsSharedEncryptedDocumentStateDataCopyWithImpl(
-      CommercioDocsSharedEncryptedDocumentStateData _value,
-      $Res Function(CommercioDocsSharedEncryptedDocumentStateData) _then)
-      : super(_value,
-            (v) => _then(v as CommercioDocsSharedEncryptedDocumentStateData));
-
-  @override
-  CommercioDocsSharedEncryptedDocumentStateData get _value =>
-      super._value as CommercioDocsSharedEncryptedDocumentStateData;
-
-  @override
-  $Res call({
-    Object result = freezed,
-  }) {
-    return _then(CommercioDocsSharedEncryptedDocumentStateData(
-      result: result == freezed ? _value.result : result as TransactionResult,
-    ));
-  }
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateData
-    implements CommercioDocsSharedEncryptedDocumentStateData {
-  const _$CommercioDocsSharedEncryptedDocumentStateData({@required this.result})
-      : assert(result != null);
-
-  @override
-  final TransactionResult result;
-
-  @override
-  String toString() {
-    return 'CommercioDocsSharedEncryptedDocumentState(result: $result)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is CommercioDocsSharedEncryptedDocumentStateData &&
-            (identical(other.result, result) ||
-                const DeepCollectionEquality().equals(other.result, result)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
-
-  @override
-  $CommercioDocsSharedEncryptedDocumentStateDataCopyWith<
-          CommercioDocsSharedEncryptedDocumentStateData>
-      get copyWith =>
-          _$CommercioDocsSharedEncryptedDocumentStateDataCopyWithImpl<
-              CommercioDocsSharedEncryptedDocumentStateData>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
-    return $default(result);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if ($default != null) {
-      return $default(result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    @required
-        Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    @required
-        Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    @required
-        Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-  }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CommercioDocsSharedEncryptedDocumentStateData
-    implements CommercioDocsSharedEncryptedDocumentState {
-  const factory CommercioDocsSharedEncryptedDocumentStateData(
-          {@required TransactionResult result}) =
-      _$CommercioDocsSharedEncryptedDocumentStateData;
-
-  TransactionResult get result;
-  $CommercioDocsSharedEncryptedDocumentStateDataCopyWith<
-      CommercioDocsSharedEncryptedDocumentStateData> get copyWith;
-}
-
-abstract class $CommercioDocsSharedEncryptedDocumentStateInitialCopyWith<$Res> {
-  factory $CommercioDocsSharedEncryptedDocumentStateInitialCopyWith(
-          CommercioDocsSharedEncryptedDocumentStateInitial value,
-          $Res Function(CommercioDocsSharedEncryptedDocumentStateInitial)
-              then) =
-      _$CommercioDocsSharedEncryptedDocumentStateInitialCopyWithImpl<$Res>;
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateInitialCopyWithImpl<$Res>
-    extends _$CommercioDocsSharedEncryptedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedEncryptedDocumentStateInitialCopyWith<$Res> {
-  _$CommercioDocsSharedEncryptedDocumentStateInitialCopyWithImpl(
-      CommercioDocsSharedEncryptedDocumentStateInitial _value,
-      $Res Function(CommercioDocsSharedEncryptedDocumentStateInitial) _then)
-      : super(
-            _value,
-            (v) =>
-                _then(v as CommercioDocsSharedEncryptedDocumentStateInitial));
-
-  @override
-  CommercioDocsSharedEncryptedDocumentStateInitial get _value =>
-      super._value as CommercioDocsSharedEncryptedDocumentStateInitial;
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateInitial
-    implements CommercioDocsSharedEncryptedDocumentStateInitial {
-  const _$CommercioDocsSharedEncryptedDocumentStateInitial();
-
-  @override
-  String toString() {
-    return 'CommercioDocsSharedEncryptedDocumentState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is CommercioDocsSharedEncryptedDocumentStateInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    @required
-        Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    @required
-        Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    @required
-        Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-  }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CommercioDocsSharedEncryptedDocumentStateInitial
-    implements CommercioDocsSharedEncryptedDocumentState {
-  const factory CommercioDocsSharedEncryptedDocumentStateInitial() =
-      _$CommercioDocsSharedEncryptedDocumentStateInitial;
-}
-
-abstract class $CommercioDocsSharedEncryptedDocumentStateLoadingCopyWith<$Res> {
-  factory $CommercioDocsSharedEncryptedDocumentStateLoadingCopyWith(
-          CommercioDocsSharedEncryptedDocumentStateLoading value,
-          $Res Function(CommercioDocsSharedEncryptedDocumentStateLoading)
-              then) =
-      _$CommercioDocsSharedEncryptedDocumentStateLoadingCopyWithImpl<$Res>;
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateLoadingCopyWithImpl<$Res>
-    extends _$CommercioDocsSharedEncryptedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedEncryptedDocumentStateLoadingCopyWith<$Res> {
-  _$CommercioDocsSharedEncryptedDocumentStateLoadingCopyWithImpl(
-      CommercioDocsSharedEncryptedDocumentStateLoading _value,
-      $Res Function(CommercioDocsSharedEncryptedDocumentStateLoading) _then)
-      : super(
-            _value,
-            (v) =>
-                _then(v as CommercioDocsSharedEncryptedDocumentStateLoading));
-
-  @override
-  CommercioDocsSharedEncryptedDocumentStateLoading get _value =>
-      super._value as CommercioDocsSharedEncryptedDocumentStateLoading;
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateLoading
-    implements CommercioDocsSharedEncryptedDocumentStateLoading {
-  const _$CommercioDocsSharedEncryptedDocumentStateLoading();
-
-  @override
-  String toString() {
-    return 'CommercioDocsSharedEncryptedDocumentState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is CommercioDocsSharedEncryptedDocumentStateLoading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    @required
-        Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    @required
-        Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    @required
-        Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-  }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CommercioDocsSharedEncryptedDocumentStateLoading
-    implements CommercioDocsSharedEncryptedDocumentState {
-  const factory CommercioDocsSharedEncryptedDocumentStateLoading() =
-      _$CommercioDocsSharedEncryptedDocumentStateLoading;
-}
-
-abstract class $CommercioDocsSharedEncryptedDocumentStateErrorCopyWith<$Res> {
-  factory $CommercioDocsSharedEncryptedDocumentStateErrorCopyWith(
-          CommercioDocsSharedEncryptedDocumentStateError value,
-          $Res Function(CommercioDocsSharedEncryptedDocumentStateError) then) =
-      _$CommercioDocsSharedEncryptedDocumentStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateErrorCopyWithImpl<$Res>
-    extends _$CommercioDocsSharedEncryptedDocumentStateCopyWithImpl<$Res>
-    implements $CommercioDocsSharedEncryptedDocumentStateErrorCopyWith<$Res> {
-  _$CommercioDocsSharedEncryptedDocumentStateErrorCopyWithImpl(
-      CommercioDocsSharedEncryptedDocumentStateError _value,
-      $Res Function(CommercioDocsSharedEncryptedDocumentStateError) _then)
-      : super(_value,
-            (v) => _then(v as CommercioDocsSharedEncryptedDocumentStateError));
-
-  @override
-  CommercioDocsSharedEncryptedDocumentStateError get _value =>
-      super._value as CommercioDocsSharedEncryptedDocumentStateError;
-
-  @override
-  $Res call({
-    Object error = freezed,
-  }) {
-    return _then(CommercioDocsSharedEncryptedDocumentStateError(
-      error == freezed ? _value.error : error as String,
-    ));
-  }
-}
-
-class _$CommercioDocsSharedEncryptedDocumentStateError
-    implements CommercioDocsSharedEncryptedDocumentStateError {
-  const _$CommercioDocsSharedEncryptedDocumentStateError([this.error]);
-
-  @override
-  final String error;
-
-  @override
-  String toString() {
-    return 'CommercioDocsSharedEncryptedDocumentState.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is CommercioDocsSharedEncryptedDocumentStateError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
-
-  @override
-  $CommercioDocsSharedEncryptedDocumentStateErrorCopyWith<
-          CommercioDocsSharedEncryptedDocumentStateError>
-      get copyWith =>
-          _$CommercioDocsSharedEncryptedDocumentStateErrorCopyWithImpl<
-              CommercioDocsSharedEncryptedDocumentStateError>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    @required
-        Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    @required
-        Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    @required
-        Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-  }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedEncryptedDocumentStateData value), {
-    Result initial(CommercioDocsSharedEncryptedDocumentStateInitial value),
-    Result loading(CommercioDocsSharedEncryptedDocumentStateLoading value),
-    Result error(CommercioDocsSharedEncryptedDocumentStateError value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CommercioDocsSharedEncryptedDocumentStateError
-    implements CommercioDocsSharedEncryptedDocumentState {
-  const factory CommercioDocsSharedEncryptedDocumentStateError([String error]) =
-      _$CommercioDocsSharedEncryptedDocumentStateError;
-
-  String get error;
-  $CommercioDocsSharedEncryptedDocumentStateErrorCopyWith<
-      CommercioDocsSharedEncryptedDocumentStateError> get copyWith;
+  $CommercioDocsSharedDocumentsStateErrorCopyWith<
+      CommercioDocsSharedDocumentsStateError> get copyWith;
 }
 
 class _$CommercioDocsSentReceiptStateTearOff {

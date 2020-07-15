@@ -9,39 +9,9 @@ import 'package:uuid/uuid.dart';
 /// The [StatelessCommercioDocs] allows you to send a document to another user,
 /// and retrieve the list of documents that you have received.
 abstract class StatelessCommercioDocs {
-  /// Share the document associated with the given [metadata] and having the
-  /// optional [contentUri], [doSign] and [checksum] from the [senderWallet] to
-  /// the [recipients] list of addresses.
-  /// The [docId] should be a valid UUID v4, if it's not specified a new one
-  /// is generated.
-  /// An optional [fee] can be specified.
+  /// Returns the [CommercioDoc] from the given [wallet] and data.
   ///
-  /// Returns the [TransactionResult].
-  static Future<TransactionResult> shareDocument({
-    @required Wallet senderWallet,
-    @required CommercioDocMetadata metadata,
-    @required List<String> recipients,
-    String docId,
-    CommercioDoSign doSign,
-    CommercioDocChecksum checksum,
-    String contentUri,
-    StdFee fee,
-  }) async {
-    return shareEncryptedDocument(
-      wallet: senderWallet,
-      metadata: metadata,
-      recipients: recipients,
-      aesKey: null,
-      encryptedData: null,
-      docId: docId,
-      doSign: doSign,
-      checksum: checksum,
-      contentUri: contentUri,
-      fee: fee,
-    );
-  }
-
-  /// Share the document associated with the given [metadata] and having the
+  /// The document associated with the given [metadata] and having the
   /// optional [contentUri], [doSign] and [checksum] from the [senderWallet] to
   /// the [recipients] list of addresses.
   /// The [encryptedData] are encrypted with an optional [aesKey].
@@ -49,35 +19,42 @@ abstract class StatelessCommercioDocs {
   ///
   /// The [docId] should be a valid UUID v4, if it's not specified a new one
   /// is generated.
-  /// An optional [fee] can be specified.
-  ///
-  /// Returns the [TransactionResult].
-  static Future<TransactionResult> shareEncryptedDocument({
+  static Future<CommercioDoc> deriveCommercioDocument({
     @required Wallet wallet,
     @required CommercioDocMetadata metadata,
     @required List<String> recipients,
-    @required List<EncryptedData> encryptedData,
-    Key aesKey,
     String docId,
+    String contentUri,
     CommercioDoSign doSign,
     CommercioDocChecksum checksum,
-    String contentUri,
-    StdFee fee,
+    List<EncryptedData> encryptedData,
+    Key aesKey,
   }) {
     final id = docId ?? Uuid().v4();
 
-    return DocsHelper.shareDocument(
+    return CommercioDocHelper.fromWallet(
+      wallet: wallet,
+      recipients: recipients,
       id: id,
       metadata: metadata,
-      recipients: recipients,
-      wallet: wallet,
-      doSign: doSign,
       checksum: checksum,
       contentUri: contentUri,
-      aesKey: aesKey,
+      doSign: doSign,
       encryptedData: encryptedData,
-      fee: fee,
+      aesKey: aesKey,
     );
+  }
+
+  /// Share the list of [CommercioDoc] from the [wallet].
+  /// An optional [fee] can be specified.
+  ///
+  /// Returns the [TransactionResult].
+  static Future<TransactionResult> shareDocuments({
+    @required Wallet wallet,
+    @required List<CommercioDoc> commercioDocs,
+    StdFee fee,
+  }) async {
+    return DocsHelper.shareDocumentsList(commercioDocs, wallet, fee: fee);
   }
 
   /// Send a receipt which tells the [recipient] that the document from

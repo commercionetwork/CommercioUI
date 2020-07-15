@@ -10,77 +10,64 @@ class StatefulCommercioDocs {
   /// Creates a [StatefulCommercioDocs] with [commercioAccount].
   StatefulCommercioDocs({@required this.commercioAccount});
 
-  /// Share the document associated with the given [metadata] and having the
-  /// optional [contentUri], [doSign] and [checksum] from the
-  /// [commercioAccount] to the [recipients] list of addresses.
-  /// The [docId] should be a valid UUID v4, if it's not specified a new one
-  /// is generated.
-  /// An optional [fee] can be specified.
+  /// Returns the [CommercioDoc] from the given data.
   ///
-  /// Returns the [TransactionResult].
-  ///
-  /// If the wallet does not exists then [WalletNotFoundException] is thrown.
-  Future<TransactionResult> shareDocument({
-    @required CommercioDocMetadata metadata,
-    @required List<String> recipients,
-    String docId,
-    CommercioDoSign doSign,
-    CommercioDocChecksum checksum,
-    String contentUri,
-    StdFee fee,
-  }) async {
-    return shareEncryptedDocument(
-      metadata: metadata,
-      recipients: recipients,
-      aesKey: null,
-      encryptedData: null,
-      docId: docId,
-      doSign: doSign,
-      checksum: checksum,
-      contentUri: contentUri,
-      fee: fee,
-    );
-  }
-
-  /// Share the document associated with the given [metadata] and having the
-  /// optional [contentUri], [doSign] and [checksum] from the
-  /// [commercioAccount] to the [recipients] list of addresses.
+  /// The document associated with the given [metadata] and having the
+  /// optional [contentUri], [doSign] and [checksum] from the [senderWallet] to
+  /// the [recipients] list of addresses.
   /// The [encryptedData] are encrypted with an optional [aesKey].
   /// If no [aesKey] is provided a new one is generated.
   ///
   /// The [docId] should be a valid UUID v4, if it's not specified a new one
   /// is generated.
-  /// An optional [fee] can be specified.
-  ///
-  /// Returns the [TransactionResult].
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
-  Future<TransactionResult> shareEncryptedDocument({
+  Future<CommercioDoc> deriveCommercioDocument({
     @required CommercioDocMetadata metadata,
     @required List<String> recipients,
-    @required List<EncryptedData> encryptedData,
-    Key aesKey,
     String docId,
+    String contentUri,
     CommercioDoSign doSign,
     CommercioDocChecksum checksum,
-    String contentUri,
-    StdFee fee,
+    List<EncryptedData> encryptedData,
+    Key aesKey,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioDocs.shareEncryptedDocument(
-        wallet: commercioAccount.wallet,
-        metadata: metadata,
-        recipients: recipients,
-        encryptedData: encryptedData,
-        aesKey: aesKey,
-        docId: docId,
-        doSign: doSign,
-        checksum: checksum,
-        contentUri: contentUri,
-        fee: fee);
+    return StatelessCommercioDocs.deriveCommercioDocument(
+      wallet: commercioAccount.wallet,
+      metadata: metadata,
+      recipients: recipients,
+      docId: docId,
+      contentUri: contentUri,
+      doSign: doSign,
+      checksum: checksum,
+      encryptedData: encryptedData,
+      aesKey: aesKey,
+    );
+  }
+
+  /// Share the list of [CommercioDoc] from the [wallet].
+  /// An optional [fee] can be specified.
+  ///
+  /// If the wallet does not exists then [WalletNotFoundException] is thrown.
+  ///
+  /// Returns the [TransactionResult].
+  Future<TransactionResult> shareDocuments({
+    @required List<CommercioDoc> commercioDocs,
+    StdFee fee,
+  }) async {
+    if (!commercioAccount.hasWallet) {
+      throw const WalletNotFoundException();
+    }
+
+    return StatelessCommercioDocs.shareDocuments(
+      wallet: commercioAccount.wallet,
+      commercioDocs: commercioDocs,
+      fee: fee,
+    );
   }
 
   /// Send a receipt which tells the [recipient] that the document from

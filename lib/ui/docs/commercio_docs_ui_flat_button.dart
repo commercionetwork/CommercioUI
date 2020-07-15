@@ -1,13 +1,13 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class ShareDocumentFlatButton extends CommercioFlatButton<
-    CommercioDocsShareDocumentBloc,
-    CommercioDocsShareDocumentEvent,
-    CommercioDocsSharedDocumentState,
-    CommercioDocsSharedDocumentStateLoading,
-    CommercioDocsSharedDocumentStateError> {
-  ShareDocumentFlatButton({
+class DeriveDocumentFlatButton extends CommercioFlatButton<
+    CommercioDocsDeriveDocumentBloc,
+    CommercioDocsDeriveDocumentEvent,
+    CommercioDocsDeriveDocumentState,
+    CommercioDocsDeriveDocumentStateLoading,
+    CommercioDocsDeriveDocumentStateError> {
+  DeriveDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -27,7 +27,7 @@ class ShareDocumentFlatButton extends CommercioFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    @required CommercioDocsShareDocumentEvent Function() event,
+    @required CommercioDocsDeriveDocumentEvent Function() event,
     Widget Function(BuildContext context) child,
     Widget Function(BuildContext context) loading,
     void Function(BuildContext context, String errorMessage) error,
@@ -58,13 +58,13 @@ class ShareDocumentFlatButton extends CommercioFlatButton<
         );
 }
 
-class ShareEncryptedDocumentFlatButton extends CommercioFlatButton<
-    CommercioDocsShareEncryptedDocumentBloc,
-    CommercioDocsShareEncryptedDocumentEvent,
-    CommercioDocsSharedEncryptedDocumentState,
-    CommercioDocsSharedEncryptedDocumentStateLoading,
-    CommercioDocsSharedEncryptedDocumentStateError> {
-  ShareEncryptedDocumentFlatButton({
+class ShareDocumentsFlatButton extends CommercioFlatButton<
+    CommercioDocsShareDocumentsBloc,
+    CommercioDocsShareDocumentsEvent,
+    CommercioDocsSharedDocumentsState,
+    CommercioDocsSharedDocumentsStateLoading,
+    CommercioDocsSharedDocumentsStateError> {
+  ShareDocumentsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -84,7 +84,7 @@ class ShareEncryptedDocumentFlatButton extends CommercioFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    @required CommercioDocsShareEncryptedDocumentEvent Function() event,
+    @required CommercioDocsShareDocumentsEvent Function() event,
     Widget Function(BuildContext context) child,
     Widget Function(BuildContext context) loading,
     void Function(BuildContext context, String errorMessage) error,

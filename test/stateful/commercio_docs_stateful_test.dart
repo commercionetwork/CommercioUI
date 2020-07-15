@@ -31,7 +31,7 @@ class SecretStorageMethodsMock extends Mock implements SecretStorage {
 
 class HttpHelperMock extends Mock implements HttpHelper {}
 
-void main() {
+void main() async {
   if (Directory.current.path.endsWith('/test')) {
     Directory.current = Directory.current.parent;
   }
@@ -63,6 +63,7 @@ void main() {
     networkInfo: correctNetworkInfo,
     httpHelper: httpHelperMock,
   );
+  await correctCommercioAccount.generateNewWallet();
   final commercioAccountWithoutWallet = StatefulCommercioAccount(
     storage: secretStorageMethodsMock,
     storageKey: secureStorageKey,
@@ -81,6 +82,14 @@ void main() {
   );
   final String correctRecipientAddress =
       'did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u44';
+  final List<String> recipients = [correctRecipientAddress];
+  const String correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  final correctCommercioDoc = CommercioDoc(
+    uuid: correctDocId,
+    metadata: correctMetadata,
+    recipientDids: recipients,
+    senderDid: correctWalletAddress,
+  );
 
   const String correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
@@ -91,7 +100,6 @@ void main() {
       '{"height":"70927","result":{"type":"cosmos-sdk/Account","value":{"address":"did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u33","coins":[{"denom":"ucommercio","amount":"99990300"}],"public_key":"did:com:pub1addwnpepq0efr3d09eja4utyghxte0n8xku33d3cnjmd3wjypfv4y9l540z66spk8xf","account_number":8,"sequence":1}}}';
   const String correctNodeInfoRaw =
       '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
-  const String correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
 
   group('Constructor', () {
     test('Correct', () {
@@ -103,7 +111,37 @@ void main() {
     });
   });
 
-  group('Share document', () {
+  group('Derive commercio document', () {
+    test('Correct', () async {
+      final commercioDocs = StatefulCommercioDocs(
+        commercioAccount: correctCommercioAccount,
+      );
+
+      final commDoc = await commercioDocs.deriveCommercioDocument(
+        metadata: correctMetadata,
+        recipients: recipients,
+      );
+
+      expect(commDoc.metadata, correctMetadata);
+      expect(commDoc.recipientDids, recipients);
+    });
+
+    test('No active wallet should throw an exception', () {
+      final commercioDocs = StatefulCommercioDocs(
+        commercioAccount: commercioAccountWithoutWallet,
+      );
+
+      expect(
+        () => commercioDocs.deriveCommercioDocument(
+          metadata: correctMetadata,
+          recipients: recipients,
+        ),
+        throwsA(isA<WalletNotFoundException>()),
+      );
+    });
+  });
+
+  group('Share documents', () {
     AccountDataRetrieval.client = MockClient(
       (_) => Future.value(Response(correctAccountDataRaw, 200)),
     );
@@ -120,11 +158,8 @@ void main() {
         commercioAccount: correctCommercioAccount,
       );
 
-      await correctCommercioAccount.generateNewWallet();
-
-      final response = await commercioDocs.shareDocument(
-        metadata: correctMetadata,
-        recipients: [correctRecipientAddress],
+      final response = await commercioDocs.shareDocuments(
+        commercioDocs: [correctCommercioDoc],
       );
 
       expect(response.success, isTrue);
@@ -139,20 +174,15 @@ void main() {
         commercioAccount: correctCommercioAccount,
       );
 
-      await correctCommercioAccount.generateNewWallet();
-
-      final response = await commercioDocs.shareDocument(
-        metadata: correctMetadata,
-        recipients: [correctRecipientAddress],
-        contentUri: 'contentUri',
-        docId: correctDocId,
+      final response = await commercioDocs.shareDocuments(
+        commercioDocs: [correctCommercioDoc],
         fee: correctStdFee,
       );
 
       expect(response.success, isTrue);
     });
 
-    test('Correct + optional params', () async {
+    test('No wallet should throw an exception', () async {
       TxSender.client = MockClient(
         (_) => Future.value(Response(correctTransactionRaw, 200)),
       );
@@ -162,9 +192,8 @@ void main() {
       );
 
       expectLater(
-        () => commercioDocs.shareDocument(
-          metadata: correctMetadata,
-          recipients: [correctRecipientAddress],
+        () => commercioDocs.shareDocuments(
+          commercioDocs: [correctCommercioDoc],
         ),
         throwsA(isA<WalletNotFoundException>()),
       );
@@ -188,8 +217,6 @@ void main() {
         commercioAccount: correctCommercioAccount,
       );
 
-      await correctCommercioAccount.generateNewWallet();
-
       final result = await commercioDocs.sendReceipt(
         recipient: correctWalletAddress,
         txHash: correctTxHash,
@@ -207,8 +234,6 @@ void main() {
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
       );
-
-      await correctCommercioAccount.generateNewWallet();
 
       final result = await commercioDocs.sendReceipt(
         recipient: correctWalletAddress,
@@ -261,7 +286,6 @@ void main() {
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
       );
-      await correctCommercioAccount.generateNewWallet();
 
       final sentDocuments = await commercioDocs.sentDocuments(
         walletAddress: correctWalletAddress,
@@ -291,7 +315,6 @@ void main() {
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
       );
-      await correctCommercioAccount.generateNewWallet();
 
       final receivedDocuments = await commercioDocs.receivedDocuments(
         walletAddress: correctWalletAddress,
@@ -321,7 +344,6 @@ void main() {
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
       );
-      await correctCommercioAccount.generateNewWallet();
 
       final sentReceipts = await commercioDocs.sentReceipts(
         walletAddress: correctWalletAddress,
@@ -350,7 +372,6 @@ void main() {
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
       );
-      await correctCommercioAccount.generateNewWallet();
 
       final receivedReceipts = await commercioDocs.receivedReceipts(
         walletAddress: correctWalletAddress,

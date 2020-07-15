@@ -3,59 +3,24 @@ import 'package:commerciosdk/docs/export.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-class CommercioDocsShareDocumentBloc extends Bloc<
-    CommercioDocsShareDocumentEvent, CommercioDocsSharedDocumentState> {
+class CommercioDocsDeriveDocumentBloc extends Bloc<
+    CommercioDocsDeriveDocumentEvent, CommercioDocsDeriveDocumentState> {
   final StatefulCommercioDocs commercioDocs;
   final StatefulCommercioId commercioId;
 
-  CommercioDocsShareDocumentBloc({
+  CommercioDocsDeriveDocumentBloc({
     @required this.commercioDocs,
     @required this.commercioId,
-  }) : super(const CommercioDocsSharedDocumentStateInitial());
+  }) : super(const CommercioDocsDeriveDocumentStateInitial());
 
   @override
-  Stream<CommercioDocsSharedDocumentState> mapEventToState(
-    CommercioDocsShareDocumentEvent event,
+  Stream<CommercioDocsDeriveDocumentState> mapEventToState(
+    CommercioDocsDeriveDocumentEvent event,
   ) async* {
     try {
-      yield const CommercioDocsSharedDocumentStateLoading();
+      yield const CommercioDocsDeriveDocumentStateLoading();
 
-      final txResult = await commercioDocs.shareDocument(
-        metadata: event.metadata,
-        recipients: event.recipients,
-        docId: event.docId,
-        doSign: event.doSign,
-        checksum: event.checksum,
-        contentUri: event.contentUri,
-        fee: event.fee,
-      );
-
-      yield CommercioDocsSharedDocumentStateData(result: txResult);
-    } catch (e) {
-      yield CommercioDocsSharedDocumentStateError(e.toString());
-    }
-  }
-}
-
-class CommercioDocsShareEncryptedDocumentBloc extends Bloc<
-    CommercioDocsShareEncryptedDocumentEvent,
-    CommercioDocsSharedEncryptedDocumentState> {
-  final StatefulCommercioDocs commercioDocs;
-  final StatefulCommercioId commercioId;
-
-  CommercioDocsShareEncryptedDocumentBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
-  }) : super(const CommercioDocsSharedEncryptedDocumentStateInitial());
-
-  @override
-  Stream<CommercioDocsSharedEncryptedDocumentState> mapEventToState(
-    CommercioDocsShareEncryptedDocumentEvent event,
-  ) async* {
-    try {
-      yield const CommercioDocsSharedEncryptedDocumentStateLoading();
-
-      final txResult = await commercioDocs.shareEncryptedDocument(
+      final commercioDoc = await commercioDocs.deriveCommercioDocument(
         metadata: event.metadata,
         recipients: event.recipients,
         aesKey: event.aesKey,
@@ -64,12 +29,40 @@ class CommercioDocsShareEncryptedDocumentBloc extends Bloc<
         doSign: event.doSign,
         checksum: event.checksum,
         contentUri: event.contentUri,
+      );
+
+      yield CommercioDocsDeriveDocumentStateData(commercioDoc: commercioDoc);
+    } catch (e) {
+      yield CommercioDocsDeriveDocumentStateError(e.toString());
+    }
+  }
+}
+
+class CommercioDocsShareDocumentsBloc extends Bloc<
+    CommercioDocsShareDocumentsEvent, CommercioDocsSharedDocumentsState> {
+  final StatefulCommercioDocs commercioDocs;
+  final StatefulCommercioId commercioId;
+
+  CommercioDocsShareDocumentsBloc({
+    @required this.commercioDocs,
+    @required this.commercioId,
+  }) : super(const CommercioDocsSharedDocumentsStateInitial());
+
+  @override
+  Stream<CommercioDocsSharedDocumentsState> mapEventToState(
+    CommercioDocsShareDocumentsEvent event,
+  ) async* {
+    try {
+      yield const CommercioDocsSharedDocumentsStateLoading();
+
+      final txResult = await commercioDocs.shareDocuments(
+        commercioDocs: event.commercioDocs,
         fee: event.fee,
       );
 
-      yield CommercioDocsSharedEncryptedDocumentStateData(result: txResult);
+      yield CommercioDocsSharedDocumentsStateData(result: txResult);
     } catch (e) {
-      yield CommercioDocsSharedEncryptedDocumentStateError(e.toString());
+      yield CommercioDocsSharedDocumentsStateError(e.toString());
     }
   }
 }

@@ -6,37 +6,37 @@ import 'package:sacco/sacco.dart';
 part 'commercio_docs_state.freezed.dart';
 
 @freezed
-abstract class CommercioDocsSharedDocumentState
-    with _$CommercioDocsSharedDocumentState {
-  const factory CommercioDocsSharedDocumentState({
-    @required TransactionResult result,
-  }) = CommercioDocsSharedDocumentStateData;
+abstract class CommercioDocsDeriveDocumentState
+    with _$CommercioDocsDeriveDocumentState {
+  const factory CommercioDocsDeriveDocumentState({
+    @required CommercioDoc commercioDoc,
+  }) = CommercioDocsDeriveDocumentStateData;
 
-  const factory CommercioDocsSharedDocumentState.initial() =
-      CommercioDocsSharedDocumentStateInitial;
+  const factory CommercioDocsDeriveDocumentState.initial() =
+      CommercioDocsDeriveDocumentStateInitial;
 
-  const factory CommercioDocsSharedDocumentState.loading() =
-      CommercioDocsSharedDocumentStateLoading;
+  const factory CommercioDocsDeriveDocumentState.loading() =
+      CommercioDocsDeriveDocumentStateLoading;
 
-  const factory CommercioDocsSharedDocumentState.error([String error]) =
-      CommercioDocsSharedDocumentStateError;
+  const factory CommercioDocsDeriveDocumentState.error([String error]) =
+      CommercioDocsDeriveDocumentStateError;
 }
 
 @freezed
-abstract class CommercioDocsSharedEncryptedDocumentState
-    with _$CommercioDocsSharedEncryptedDocumentState {
-  const factory CommercioDocsSharedEncryptedDocumentState({
+abstract class CommercioDocsSharedDocumentsState
+    with _$CommercioDocsSharedDocumentsState {
+  const factory CommercioDocsSharedDocumentsState({
     @required TransactionResult result,
-  }) = CommercioDocsSharedEncryptedDocumentStateData;
+  }) = CommercioDocsSharedDocumentsStateData;
 
-  const factory CommercioDocsSharedEncryptedDocumentState.initial() =
-      CommercioDocsSharedEncryptedDocumentStateInitial;
+  const factory CommercioDocsSharedDocumentsState.initial() =
+      CommercioDocsSharedDocumentsStateInitial;
 
-  const factory CommercioDocsSharedEncryptedDocumentState.loading() =
-      CommercioDocsSharedEncryptedDocumentStateLoading;
+  const factory CommercioDocsSharedDocumentsState.loading() =
+      CommercioDocsSharedDocumentsStateLoading;
 
-  const factory CommercioDocsSharedEncryptedDocumentState.error(
-      [String error]) = CommercioDocsSharedEncryptedDocumentStateError;
+  const factory CommercioDocsSharedDocumentsState.error([String error]) =
+      CommercioDocsSharedDocumentsStateError;
 }
 
 @freezed

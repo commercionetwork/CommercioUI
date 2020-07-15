@@ -30,21 +30,39 @@ void main() {
   final correctTxResult = TransactionResult(hash: '', success: true);
   final commercioDocs = StatefulCommercioDocsMock();
   final commercioId = StatefulCommercioIdMock();
+  const String correctMnemonic =
+      'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
+  final NetworkInfo correctNetworkInfo = NetworkInfo(
+    bech32Hrp: 'bech32Hrp',
+    lcdUrl: 'http://lcd-url',
+  );
+  Wallet correctWallet = Wallet.derive(
+    correctMnemonic.split(' '),
+    correctNetworkInfo,
+  );
+  final correctWalletAddress = correctWallet.bech32Address;
+  final correctCommercioDoc = CommercioDoc(
+    uuid: correctDocId,
+    metadata: correctMetadata,
+    recipientDids: recipients,
+    senderDid: correctWalletAddress,
+  );
 
-  testWidgets('Submit ShareDocument Event', (
+  testWidgets('Submit DeriveDocument Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.shareDocument(
+    when(commercioDocs.deriveCommercioDocument(
       metadata: correctMetadata,
       recipients: recipients,
+      encryptedData: [],
+      aesKey: null,
       docId: null,
       doSign: null,
       checksum: null,
       contentUri: null,
-      fee: null,
-    )).thenAnswer((_) async => correctTxResult);
+    )).thenAnswer((_) async => correctCommercioDoc);
 
-    final bloc = CommercioDocsShareDocumentBloc(
+    final bloc = CommercioDocsDeriveDocumentBloc(
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
@@ -52,14 +70,14 @@ void main() {
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioDocsSharedDocumentStateLoading>(),
-        isA<CommercioDocsSharedDocumentStateData>(),
-        isA<CommercioDocsSharedDocumentStateLoading>(),
-        isA<CommercioDocsSharedDocumentStateError>(),
+        isA<CommercioDocsDeriveDocumentStateLoading>(),
+        isA<CommercioDocsDeriveDocumentStateData>(),
+        isA<CommercioDocsDeriveDocumentStateLoading>(),
+        isA<CommercioDocsDeriveDocumentStateError>(),
       ]),
     );
 
-    final commText = ShareDocumentText(
+    final commText = DeriveDocumentText(
       loading: (_) => loadingText,
       error: (_, __) => errorText,
       text: (_, state) => childText,
@@ -79,49 +97,45 @@ void main() {
 
     expect(find.byWidget(commText), findsOneWidget);
 
-    bloc.add(CommercioDocsShareDocumentEvent(
+    bloc.add(CommercioDocsDeriveDocumentEvent(
       metadata: correctMetadata,
       recipients: recipients,
+      encryptedData: [],
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioDocs.shareDocument(
+    when(commercioDocs.deriveCommercioDocument(
       metadata: correctMetadata,
       recipients: recipients,
+      encryptedData: [],
+      aesKey: null,
       docId: null,
       doSign: null,
       checksum: null,
       contentUri: null,
-      fee: null,
     )).thenThrow(Exception());
 
-    bloc.add(CommercioDocsShareDocumentEvent(
+    bloc.add(CommercioDocsDeriveDocumentEvent(
       metadata: correctMetadata,
       recipients: recipients,
+      encryptedData: [],
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
   });
 
-  testWidgets('Submit ShareEncryptedDocument Event', (
+  testWidgets('Submit ShareDocuments Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.shareEncryptedDocument(
-      metadata: correctMetadata,
-      recipients: recipients,
-      encryptedData: [],
-      aesKey: null,
-      docId: null,
-      doSign: null,
-      checksum: null,
-      contentUri: null,
+    when(commercioDocs.shareDocuments(
+      commercioDocs: [correctCommercioDoc],
       fee: null,
     )).thenAnswer((_) async => correctTxResult);
 
-    final bloc = CommercioDocsShareEncryptedDocumentBloc(
+    final bloc = CommercioDocsShareDocumentsBloc(
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
@@ -129,14 +143,14 @@ void main() {
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioDocsSharedEncryptedDocumentStateLoading>(),
-        isA<CommercioDocsSharedEncryptedDocumentStateData>(),
-        isA<CommercioDocsSharedEncryptedDocumentStateLoading>(),
-        isA<CommercioDocsSharedEncryptedDocumentStateError>(),
+        isA<CommercioDocsSharedDocumentsStateLoading>(),
+        isA<CommercioDocsSharedDocumentsStateData>(),
+        isA<CommercioDocsSharedDocumentsStateLoading>(),
+        isA<CommercioDocsSharedDocumentsStateError>(),
       ]),
     );
 
-    final commText = ShareEncryptedDocumentText(
+    final commText = ShareDocumentsText(
       loading: (_) => loadingText,
       error: (_, __) => errorText,
       text: (_, state) => childText,
@@ -156,31 +170,20 @@ void main() {
 
     expect(find.byWidget(commText), findsOneWidget);
 
-    bloc.add(CommercioDocsShareEncryptedDocumentEvent(
-      metadata: correctMetadata,
-      recipients: recipients,
-      encryptedData: [],
+    bloc.add(CommercioDocsShareDocumentsEvent(
+      commercioDocs: [correctCommercioDoc],
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioDocs.shareEncryptedDocument(
-      metadata: correctMetadata,
-      recipients: recipients,
-      encryptedData: [],
-      aesKey: null,
-      docId: null,
-      doSign: null,
-      checksum: null,
-      contentUri: null,
+    when(commercioDocs.shareDocuments(
+      commercioDocs: [correctCommercioDoc],
       fee: null,
     )).thenThrow(Exception());
 
-    bloc.add(CommercioDocsShareEncryptedDocumentEvent(
-      metadata: correctMetadata,
-      recipients: recipients,
-      encryptedData: [],
+    bloc.add(CommercioDocsShareDocumentsEvent(
+      commercioDocs: [correctCommercioDoc],
     ));
     await tester.pumpAndSettle();
 

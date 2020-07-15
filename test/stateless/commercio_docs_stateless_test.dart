@@ -29,8 +29,7 @@ void main() {
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
-  ;
-  String correctWalletAddress = correctWallet.bech32Address;
+  final correctWalletAddress = correctWallet.bech32Address;
 
   final correctMetadata = CommercioDocMetadata(
     contentUri: 'contentUri',
@@ -42,6 +41,13 @@ void main() {
   final String correctRecipientAddress =
       'did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u44';
   final List<String> recipients = [correctRecipientAddress];
+  const String correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  final correctCommercioDoc = CommercioDoc(
+    uuid: correctDocId,
+    metadata: correctMetadata,
+    recipientDids: recipients,
+    senderDid: correctWalletAddress,
+  );
 
   const String correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
@@ -55,10 +61,9 @@ void main() {
   const String wrongRecipientAddressRaw =
       '{"error":"decoding bech32 failed: invalid bech32 string length 3"}';
 
-  const String correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
   final httpHelperMock = HttpHelperMock();
 
-  group('Share document', () {
+  group('Derive commercio document', () {
     AccountDataRetrieval.client = MockClient(
       (_) => Future.value(Response(correctAccountDataRaw, 200)),
     );
@@ -71,55 +76,18 @@ void main() {
         (_) => Future.value(Response(correctTransactionRaw, 200)),
       );
 
-      final result = await StatelessCommercioDocs.shareDocument(
-        senderWallet: correctWallet,
+      final commercioDoc = await StatelessCommercioDocs.deriveCommercioDocument(
+        wallet: correctWallet,
         metadata: correctMetadata,
         recipients: recipients,
       );
 
-      expect(result.success, isTrue);
-    });
-
-    test('Correct with fee', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-
-      final result = await StatelessCommercioDocs.shareDocument(
-        senderWallet: correctWallet,
-        metadata: correctMetadata,
-        recipients: recipients,
-        fee: const StdFee(
-          amount: const [
-            StdCoin(
-              denom: 'ucommercio',
-              amount: '10000',
-            ),
-          ],
-          gas: '10000',
-        ),
-      );
-
-      expect(result.success, isTrue);
-    });
-
-    test('Wrong recipient address', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(wrongRecipientAddressRaw, 400)),
-      );
-
-      expectLater(
-        () => StatelessCommercioDocs.shareDocument(
-          senderWallet: correctWallet,
-          metadata: correctMetadata,
-          recipients: const ['abc'],
-        ),
-        throwsException,
-      );
+      expect(commercioDoc.metadata, correctMetadata);
+      expect(commercioDoc.recipientDids, recipients);
     });
   });
 
-  group('Share encrypted document', () {
+  group('Share documents', () {
     AccountDataRetrieval.client = MockClient(
       (_) => Future.value(Response(correctAccountDataRaw, 200)),
     );
@@ -132,12 +100,9 @@ void main() {
         (_) => Future.value(Response(correctTransactionRaw, 200)),
       );
 
-      final result = await StatelessCommercioDocs.shareEncryptedDocument(
-        contentUri: 'contentUri',
+      final result = await StatelessCommercioDocs.shareDocuments(
+        commercioDocs: [correctCommercioDoc],
         wallet: correctWallet,
-        metadata: correctMetadata,
-        recipients: recipients,
-        encryptedData: const [EncryptedData.CONTENT_URI],
       );
 
       expect(result.success, isTrue);
@@ -148,12 +113,9 @@ void main() {
         (_) => Future.value(Response(correctTransactionRaw, 200)),
       );
 
-      final result = await StatelessCommercioDocs.shareEncryptedDocument(
-        contentUri: 'contentUri',
+      final result = await StatelessCommercioDocs.shareDocuments(
+        commercioDocs: [correctCommercioDoc],
         wallet: correctWallet,
-        metadata: correctMetadata,
-        recipients: recipients,
-        encryptedData: const [EncryptedData.CONTENT_URI],
         fee: const StdFee(
           amount: const [
             StdCoin(
@@ -166,69 +128,6 @@ void main() {
       );
 
       expect(result.success, isTrue);
-    });
-
-    test('EncryptedData metadata content uri', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-
-      final result = await StatelessCommercioDocs.shareEncryptedDocument(
-        contentUri: 'contentUri',
-        wallet: correctWallet,
-        metadata: correctMetadata,
-        recipients: recipients,
-        encryptedData: const [EncryptedData.METADATA_CONTENT_URI],
-      );
-
-      expect(result.success, isTrue);
-    });
-
-    test('EncryptedData metadata schema uri', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-
-      final result = await StatelessCommercioDocs.shareEncryptedDocument(
-        contentUri: 'contentUri',
-        wallet: correctWallet,
-        metadata: correctMetadata,
-        recipients: recipients,
-        encryptedData: const [EncryptedData.METADATA_SCHEMA_URI],
-      );
-
-      expect(result.success, isTrue);
-    });
-
-    test('EncryptedData content uri without field should rise error', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-
-      expectLater(
-        () => StatelessCommercioDocs.shareEncryptedDocument(
-          wallet: correctWallet,
-          metadata: correctMetadata,
-          recipients: recipients,
-          encryptedData: const [EncryptedData.CONTENT_URI],
-        ),
-        throwsNoSuchMethodError,
-      );
-    });
-
-    test('Wrong recipient address', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(wrongRecipientAddressRaw, 400)),
-      );
-
-      expectLater(
-        () => StatelessCommercioDocs.shareDocument(
-          senderWallet: correctWallet,
-          metadata: correctMetadata,
-          recipients: const ['abc'],
-        ),
-        throwsException,
-      );
     });
   });
 

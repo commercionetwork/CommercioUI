@@ -3,15 +3,15 @@ import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class ShareDocumentText extends CommercioText<
-    CommercioDocsShareDocumentBloc,
-    CommercioDocsShareDocumentEvent,
-    CommercioDocsSharedDocumentState,
-    CommercioDocsSharedDocumentStateInitial,
-    CommercioDocsSharedDocumentStateData,
-    CommercioDocsSharedDocumentStateLoading,
-    CommercioDocsSharedDocumentStateError> {
-  const ShareDocumentText({
+class DeriveDocumentText extends CommercioText<
+    CommercioDocsDeriveDocumentBloc,
+    CommercioDocsDeriveDocumentEvent,
+    CommercioDocsDeriveDocumentState,
+    CommercioDocsDeriveDocumentStateInitial,
+    CommercioDocsDeriveDocumentStateData,
+    CommercioDocsDeriveDocumentStateLoading,
+    CommercioDocsDeriveDocumentStateError> {
+  const DeriveDocumentText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -31,7 +31,7 @@ class ShareDocumentText extends CommercioText<
     @required
         String Function(
       BuildContext context,
-      CommercioDocsSharedDocumentStateData state,
+      CommercioDocsDeriveDocumentStateData state,
     )
             text,
     String Function(BuildContext context, String errorMessage) error,
@@ -56,15 +56,15 @@ class ShareDocumentText extends CommercioText<
         );
 }
 
-class ShareEncryptedDocumentText extends CommercioText<
-    CommercioDocsShareEncryptedDocumentBloc,
-    CommercioDocsShareEncryptedDocumentEvent,
-    CommercioDocsSharedEncryptedDocumentState,
-    CommercioDocsSharedEncryptedDocumentStateInitial,
-    CommercioDocsSharedEncryptedDocumentStateData,
-    CommercioDocsSharedEncryptedDocumentStateLoading,
-    CommercioDocsSharedEncryptedDocumentStateError> {
-  const ShareEncryptedDocumentText({
+class ShareDocumentsText extends CommercioText<
+    CommercioDocsShareDocumentsBloc,
+    CommercioDocsShareDocumentsEvent,
+    CommercioDocsSharedDocumentsState,
+    CommercioDocsSharedDocumentsStateInitial,
+    CommercioDocsSharedDocumentsStateData,
+    CommercioDocsSharedDocumentsStateLoading,
+    CommercioDocsSharedDocumentsStateError> {
+  const ShareDocumentsText({
     Key key,
     TextStyle style,
     TextStyle loadingStyle,
@@ -84,7 +84,7 @@ class ShareEncryptedDocumentText extends CommercioText<
     @required
         String Function(
       BuildContext context,
-      CommercioDocsSharedEncryptedDocumentStateData state,
+      CommercioDocsSharedDocumentsStateData state,
     )
             text,
     String Function(BuildContext context, String errorMessage) error,

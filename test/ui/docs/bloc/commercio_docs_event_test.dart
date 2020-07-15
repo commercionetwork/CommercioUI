@@ -1,91 +1,74 @@
+import 'dart:io';
+
 import 'package:commercio_ui/ui/docs/bloc/docs_bloc.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('CommercioDocsShareDocumentEvent', () {
-    final metadata = CommercioDocMetadata(
-      contentUri: 'contentUri',
-      schemaType: 'schemaType',
-    );
-    const recipients = <String>[];
-    const docId = 'docId';
-    final doSign = CommercioDoSign(
-      certificateProfile: 'certificateProfile',
-      signerIstance: 'signerIstance',
-      storageUri: 'storageUri',
-      vcrId: 'vcrId',
-    );
-    final checksum = CommercioDocChecksum(
-      algorithm: CommercioDocChecksumAlgorithm.SHA256,
-      value: 'value',
-    );
-    const contentUri = 'contentUri';
-    const fee = StdFee(amount: <StdCoin>[], gas: 'gas');
+  if (Directory.current.path.endsWith('/test')) {
+    Directory.current = Directory.current.parent;
+  }
 
-    final event = CommercioDocsShareDocumentEvent(
+  final metadata = CommercioDocMetadata(
+    contentUri: 'contentUri',
+    schemaType: 'schemaType',
+  );
+  const recipients = ['recipient'];
+  const docId = 'docId';
+  final doSign = CommercioDoSign(
+    certificateProfile: 'certificateProfile',
+    signerIstance: 'signerIstance',
+    storageUri: 'storageUri',
+    vcrId: 'vcrId',
+  );
+  final checksum = CommercioDocChecksum(
+    algorithm: CommercioDocChecksumAlgorithm.SHA256,
+    value: 'value',
+  );
+  const contentUri = 'contentUri';
+  const encryptedData = <EncryptedData>[];
+  const aesKey = null;
+  const senderDid = 'senderDid';
+  const fee = StdFee(amount: <StdCoin>[], gas: 'gas');
+  final correctCommercioDoc = CommercioDoc(
+    uuid: 'uuid',
+    metadata: metadata,
+    recipientDids: recipients,
+    senderDid: senderDid,
+  );
+
+  test('CommercioDocsDeriveDocumentEvent', () {
+    final event = CommercioDocsDeriveDocumentEvent(
       metadata: metadata,
       recipients: recipients,
       docId: docId,
       doSign: doSign,
       checksum: checksum,
       contentUri: contentUri,
+      encryptedData: encryptedData,
+      aesKey: aesKey,
+    );
+
+    expect(event.props, [
+      metadata,
+      recipients,
+      docId,
+      contentUri,
+      doSign,
+      checksum,
+      encryptedData,
+      aesKey,
+    ]);
+  });
+
+  test('CommercioDocsShareDocumentsEvent', () {
+    final event = CommercioDocsShareDocumentsEvent(
+      commercioDocs: [correctCommercioDoc],
       fee: fee,
     );
 
     expect(event.props, [
-      metadata,
-      recipients,
-      docId,
-      doSign,
-      checksum,
-      contentUri,
-      fee,
-    ]);
-  });
-
-  test('CommercioDocsShareEncryptedDocumentEvent', () {
-    final metadata = CommercioDocMetadata(
-      contentUri: 'contentUri',
-      schemaType: 'schemaType',
-    );
-    const recipients = <String>[];
-    const docId = 'docId';
-    final doSign = CommercioDoSign(
-      certificateProfile: 'certificateProfile',
-      signerIstance: 'signerIstance',
-      storageUri: 'storageUri',
-      vcrId: 'vcrId',
-    );
-    final checksum = CommercioDocChecksum(
-      algorithm: CommercioDocChecksumAlgorithm.SHA256,
-      value: 'value',
-    );
-    const contentUri = 'contentUri';
-    const fee = StdFee(amount: <StdCoin>[], gas: 'gas');
-    const encryptedData = <EncryptedData>[];
-    const aesKey = null;
-
-    final event = CommercioDocsShareEncryptedDocumentEvent(
-        metadata: metadata,
-        recipients: recipients,
-        docId: docId,
-        doSign: doSign,
-        checksum: checksum,
-        contentUri: contentUri,
-        fee: fee,
-        encryptedData: encryptedData,
-        aesKey: aesKey);
-
-    expect(event.props, [
-      metadata,
-      recipients,
-      encryptedData,
-      aesKey,
-      docId,
-      doSign,
-      checksum,
-      contentUri,
+      [correctCommercioDoc],
       fee,
     ]);
   });

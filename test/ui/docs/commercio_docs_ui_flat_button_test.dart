@@ -30,88 +30,28 @@ void main() {
   final correctTxResult = TransactionResult(hash: '', success: true);
   final commercioDocs = StatefulCommercioDocsMock();
   final commercioId = StatefulCommercioIdMock();
+  const String correctMnemonic =
+      'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
+  final NetworkInfo correctNetworkInfo = NetworkInfo(
+    bech32Hrp: 'bech32Hrp',
+    lcdUrl: 'http://lcd-url',
+  );
+  Wallet correctWallet = Wallet.derive(
+    correctMnemonic.split(' '),
+    correctNetworkInfo,
+  );
+  final correctWalletAddress = correctWallet.bech32Address;
+  final correctCommercioDoc = CommercioDoc(
+    uuid: correctDocId,
+    metadata: correctMetadata,
+    recipientDids: recipients,
+    senderDid: correctWalletAddress,
+  );
 
-  testWidgets('Submit ShareDocument Event', (
+  testWidgets('Submit DeriveDocument Event', (
     WidgetTester tester,
   ) async {
-    when(commercioDocs.shareDocument(
-      metadata: correctMetadata,
-      recipients: recipients,
-      docId: null,
-      doSign: null,
-      checksum: null,
-      contentUri: null,
-      fee: null,
-    )).thenAnswer((_) async => correctTxResult);
-
-    final bloc = CommercioDocsShareDocumentBloc(
-      commercioDocs: commercioDocs,
-      commercioId: commercioId,
-    );
-
-    expectLater(
-      bloc,
-      emitsInOrder([
-        isA<CommercioDocsSharedDocumentStateLoading>(),
-        isA<CommercioDocsSharedDocumentStateData>(),
-        isA<CommercioDocsSharedDocumentStateLoading>(),
-        isA<CommercioDocsSharedDocumentStateError>(),
-      ]),
-    );
-
-    final commFlatButton = ShareDocumentFlatButton(
-      loading: (_) => const Text(loadingText),
-      child: (_) => const Text(childText),
-      event: () => CommercioDocsShareDocumentEvent(
-        recipients: recipients,
-        metadata: correctMetadata,
-      ),
-      error: (context, err) => Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text(err),
-        ),
-      ),
-    );
-
-    final root = BlocProvider.value(
-      value: bloc,
-      child: MaterialApp(
-        home: Scaffold(
-          body: commFlatButton,
-        ),
-      ),
-    );
-
-    await tester.pumpWidget(root);
-    await tester.pumpAndSettle();
-
-    expect(find.text(childText), findsOneWidget);
-
-    await tester.tap(find.byWidget(commFlatButton));
-    await tester.pumpAndSettle();
-
-    expect(find.text(childText), findsOneWidget);
-
-    when(commercioDocs.shareDocument(
-      metadata: correctMetadata,
-      recipients: recipients,
-      docId: null,
-      doSign: null,
-      checksum: null,
-      contentUri: null,
-      fee: null,
-    )).thenThrow(Exception());
-
-    await tester.tap(find.byWidget(commFlatButton));
-    await tester.pumpAndSettle();
-
-    expect(find.text(childText), findsOneWidget);
-  });
-
-  testWidgets('Submit ShareEncryptedDocument Event', (
-    WidgetTester tester,
-  ) async {
-    when(commercioDocs.shareEncryptedDocument(
+    when(commercioDocs.deriveCommercioDocument(
       metadata: correctMetadata,
       recipients: recipients,
       encryptedData: [],
@@ -120,10 +60,9 @@ void main() {
       doSign: null,
       checksum: null,
       contentUri: null,
-      fee: null,
-    )).thenAnswer((_) async => correctTxResult);
+    )).thenAnswer((_) async => correctCommercioDoc);
 
-    final bloc = CommercioDocsShareEncryptedDocumentBloc(
+    final bloc = CommercioDocsDeriveDocumentBloc(
       commercioDocs: commercioDocs,
       commercioId: commercioId,
     );
@@ -131,17 +70,17 @@ void main() {
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioDocsSharedEncryptedDocumentStateLoading>(),
-        isA<CommercioDocsSharedEncryptedDocumentStateData>(),
-        isA<CommercioDocsSharedEncryptedDocumentStateLoading>(),
-        isA<CommercioDocsSharedEncryptedDocumentStateError>(),
+        isA<CommercioDocsDeriveDocumentStateLoading>(),
+        isA<CommercioDocsDeriveDocumentStateData>(),
+        isA<CommercioDocsDeriveDocumentStateLoading>(),
+        isA<CommercioDocsDeriveDocumentStateError>(),
       ]),
     );
 
-    final commFlatButton = ShareEncryptedDocumentFlatButton(
+    final commFlatButton = DeriveDocumentFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioDocsShareEncryptedDocumentEvent(
+      event: () => CommercioDocsDeriveDocumentEvent(
         recipients: recipients,
         metadata: correctMetadata,
         encryptedData: [],
@@ -172,7 +111,7 @@ void main() {
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioDocs.shareEncryptedDocument(
+    when(commercioDocs.deriveCommercioDocument(
       metadata: correctMetadata,
       recipients: recipients,
       encryptedData: [],
@@ -181,6 +120,71 @@ void main() {
       doSign: null,
       checksum: null,
       contentUri: null,
+    )).thenThrow(Exception());
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+  });
+
+  testWidgets('Submit ShareDocuments Event', (
+    WidgetTester tester,
+  ) async {
+    when(commercioDocs.shareDocuments(
+      commercioDocs: [correctCommercioDoc],
+      fee: null,
+    )).thenAnswer((_) async => correctTxResult);
+
+    final bloc = CommercioDocsShareDocumentsBloc(
+      commercioDocs: commercioDocs,
+      commercioId: commercioId,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioDocsSharedDocumentsStateLoading>(),
+        isA<CommercioDocsSharedDocumentsStateData>(),
+        isA<CommercioDocsSharedDocumentsStateLoading>(),
+        isA<CommercioDocsSharedDocumentsStateError>(),
+      ]),
+    );
+
+    final commFlatButton = ShareDocumentsFlatButton(
+      loading: (_) => const Text(loadingText),
+      child: (_) => const Text(childText),
+      event: () => CommercioDocsShareDocumentsEvent(
+        commercioDocs: [correctCommercioDoc],
+      ),
+      error: (context, err) => Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err),
+        ),
+      ),
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commFlatButton,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioDocs.shareDocuments(
+      commercioDocs: [correctCommercioDoc],
       fee: null,
     )).thenThrow(Exception());
 
