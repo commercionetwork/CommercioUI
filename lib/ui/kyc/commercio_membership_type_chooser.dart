@@ -25,7 +25,8 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
   final int semanticChildCount;
   final DragStartBehavior dragStartBehavior;
   final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
-  final bool Function(MembershipType) radioToggleable;
+  // Only avaiable on dev
+  //final bool Function(MembershipType) radioToggleable;
   final Color Function(MembershipType) radioActiveColor;
   final Widget Function(MembershipType) subtitle;
   final bool Function(MembershipType) radioIsThreeLine;
@@ -33,7 +34,8 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
   final Widget Function(MembershipType) radioSecondary;
   final bool Function(MembershipType) radioSelected;
   final ListTileControlAffinity Function(MembershipType) radioControlAffinity;
-  final bool Function(MembershipType) radioAutofocus;
+  // Only avaiable on dev
+  //final bool Function(MembershipType) radioAutofocus;
 
   static const _defaultScrollDirection = Axis.vertical;
   static const _defaultReverse = false;
@@ -44,11 +46,11 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
   static const _defaultDragStartBehavior = DragStartBehavior.start;
   static const _defaultKeyboardDismissBehavior =
       ScrollViewKeyboardDismissBehavior.manual;
-  static const _defaultRadioToggleable = false;
+  //static const _defaultRadioToggleable = false;
   static const _defaultRadioIsThreeLine = false;
   static const _defaultRadioSelected = false;
   static const _defaultRadioControlAffinity = ListTileControlAffinity.platform;
-  static const _defaultRadioAutofocus = false;
+  //static const _defaultRadioAutofocus = false;
 
   const CommercioMembershipTypeChooser({
     Key key,
@@ -68,7 +70,7 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
     this.semanticChildCount,
     DragStartBehavior dragStartBehavior,
     ScrollViewKeyboardDismissBehavior keyboardDismissBehavior,
-    this.radioToggleable,
+    //this.radioToggleable,
     this.radioActiveColor,
     this.subtitle,
     this.radioIsThreeLine,
@@ -76,7 +78,7 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
     this.radioSecondary,
     this.radioSelected,
     this.radioControlAffinity,
-    this.radioAutofocus,
+    //this.radioAutofocus,
   })  : scrollDirection = scrollDirection ?? _defaultScrollDirection,
         reverse = reverse ?? _defaultReverse,
         shrinkWrap = shrinkWrap ?? _defaultShrinkWrap,
@@ -127,9 +129,9 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
               activeColor: radioActiveColor != null
                   ? radioActiveColor(membershipType)
                   : null,
-              toggleable: radioToggleable != null
+              /*toggleable: radioToggleable != null
                   ? radioToggleable(membershipType)
-                  : _defaultRadioToggleable,
+                  : _defaultRadioToggleable,*/
               isThreeLine: radioIsThreeLine != null
                   ? radioIsThreeLine(membershipType)
                   : _defaultRadioIsThreeLine,
@@ -143,9 +145,9 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
               controlAffinity: radioControlAffinity != null
                   ? radioControlAffinity(membershipType)
                   : _defaultRadioControlAffinity,
-              autofocus: radioAutofocus != null
+              /*autofocus: radioAutofocus != null
                   ? radioAutofocus(membershipType)
-                  : _defaultRadioAutofocus,
+                  : _defaultRadioAutofocus,*/
             );
           },
         );

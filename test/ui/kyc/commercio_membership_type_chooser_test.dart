@@ -48,13 +48,13 @@ void main() {
   ) async {
     final title = (MembershipType m) => Text(m.value);
     final radioActiveColor = (MembershipType) => Colors.blue;
-    final radioToggleable = (MembershipType) => false;
+    //final radioToggleable = (MembershipType) => false;
     final radioIsThreeLine = (MembershipType) => false;
     final radioSecondary = (MembershipType) => Text('radioSecondary');
     final radioSelected = (MembershipType) => false;
     final radioControlAffinity =
         (MembershipType) => ListTileControlAffinity.platform;
-    final radioAutofocus = (MembershipType) => false;
+    //final radioAutofocus = (MembershipType) => false;
 
     final bloc = CommercioKycMembershipTypeChooserBloc();
 
@@ -62,12 +62,12 @@ void main() {
       shrinkWrap: true,
       title: title,
       radioActiveColor: radioActiveColor,
-      radioToggleable: radioToggleable,
+      //radioToggleable: radioToggleable,
       radioIsThreeLine: radioIsThreeLine,
       radioSecondary: radioSecondary,
       radioSelected: radioSelected,
       radioControlAffinity: radioControlAffinity,
-      radioAutofocus: radioAutofocus,
+      //radioAutofocus: radioAutofocus,
     );
 
     final root = BlocProvider.value(
