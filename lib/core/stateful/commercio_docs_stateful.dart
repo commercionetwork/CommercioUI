@@ -50,7 +50,7 @@ class StatefulCommercioDocs {
   }
 
   /// Share the list of [CommercioDoc] from the [wallet].
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   ///
@@ -58,6 +58,7 @@ class StatefulCommercioDocs {
   Future<TransactionResult> shareDocuments({
     @required List<CommercioDoc> commercioDocs,
     StdFee fee,
+    BroadcastingMode mode,
   }) async {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -67,6 +68,7 @@ class StatefulCommercioDocs {
       wallet: commercioAccount.wallet,
       commercioDocs: commercioDocs,
       fee: fee,
+      mode: mode,
     );
   }
 
@@ -97,12 +99,13 @@ class StatefulCommercioDocs {
   }
 
   /// Send a list of receipts [commercioDocReceipts].
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> sendReceipts({
     @required List<CommercioDocReceipt> commercioDocReceipts,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -112,6 +115,7 @@ class StatefulCommercioDocs {
       commercioDocReceipts: commercioDocReceipts,
       wallet: commercioAccount.wallet,
       fee: fee,
+      mode: mode,
     );
   }
 

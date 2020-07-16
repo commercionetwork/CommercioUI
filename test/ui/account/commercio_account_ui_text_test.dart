@@ -263,8 +263,6 @@ void main() {
     when(commercioAccount.sendTokens(
       recipientAddress: '',
       amount: [],
-      feeAmount: null,
-      gas: null,
     )).thenAnswer((_) async => TransactionResult(
           success: true,
           hash: '',
@@ -321,8 +319,6 @@ void main() {
     when(commercioAccount.sendTokens(
       recipientAddress: '',
       amount: [],
-      feeAmount: null,
-      gas: null,
     )).thenThrow(Exception());
 
     bloc.add(const CommercioAccountSendTokensEvent(

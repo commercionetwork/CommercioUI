@@ -1,5 +1,6 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commercio_ui/data/data.dart';
+import 'package:commercio_ui/entities/exceptions/did_document_not_found.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:meta/meta.dart';
 
@@ -108,23 +109,25 @@ class StatefulCommercioId {
   /// Associate an optional list of [didDocument].
   /// If no [didDocument] is specified then if there is a previously generated
   /// [DidDocument] (for example by calling `derivateDidDocument()`) that is
-  /// used. If no [DidDocument] is avaible a new one is derived.
-  /// An optional [fee] can be specified.
+  /// used.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// If no [commercioAccount] does not have a wallet then a
   /// [WalletNotFoundException] is thrown.
+  /// Throw [DidDocumentNotFoundException] if no [DidDocument] is found in
+  /// memory.
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> setDidDocuments({
     List<DidDocument> didDocuments,
     StdFee fee,
+    BroadcastingMode mode,
   }) async {
     if (didDocuments == null || didDocuments.isEmpty) {
       if (hasDidDocument) {
         didDocuments = [didDocument];
       } else {
-        didDocument = await deriveDidDocument();
-        didDocuments = [didDocument];
+        throw const DidDocumentNotFoundException();
       }
     }
 
@@ -132,25 +135,24 @@ class StatefulCommercioId {
       throw const WalletNotFoundException();
     }
 
-    //didDocument = await deriveDidDocument();
-
     return StatelessCommercioId.setDidDocuments(
       didDocuments: didDocuments,
       wallet: commercioAccount.wallet,
       fee: fee,
+      mode: mode,
     );
   }
 
-  /// Sent the [rechargeAmount] to the centralized entity Tk (tumbler).
+  /// Sent the [amount] to the centralized entity Tk (tumbler).
   /// Only avaiable in a testnet.
   ///
   /// An optional amount of [rechargeFee] and [rechargeGas] can be specified.
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> rechargeTumbler({
-    @required List<StdCoin> rechargeAmount,
-    List<StdCoin> rechargeFee,
-    String rechargeGas,
+    @required List<StdCoin> amount,
+    StdFee fee,
+    BroadcastingMode mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -158,10 +160,10 @@ class StatefulCommercioId {
 
     return StatelessCommercioId.rechargeTumbler(
       walletWithAddress: commercioAccount.walletWithAddress,
-      rechargeAmount: rechargeAmount,
-      rechargeFee: rechargeFee,
-      rechargeGas: rechargeGas,
+      amount: amount,
       httpHelper: commercioAccount.httpHelper,
+      fee: fee,
+      mode: mode,
     );
   }
 
@@ -194,7 +196,7 @@ class StatefulCommercioId {
 
   /// Request a list of Did Power Up from [senderWallet] for every power up
   /// request in [powerUpRequests].
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// A did power up request is required to move the amount of
   /// tokens from a centralized entity Tk to one of its pairwiseAddress,
@@ -208,6 +210,7 @@ class StatefulCommercioId {
   Future<TransactionResult> requestDidPowerUps({
     @required List<RequestDidPowerUp> powerUpRequests,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -217,6 +220,7 @@ class StatefulCommercioId {
       senderWallet: commercioAccount.wallet,
       powerUpRequests: powerUpRequests,
       fee: fee,
+      mode: mode,
     );
   }
 

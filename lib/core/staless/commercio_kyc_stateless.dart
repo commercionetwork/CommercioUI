@@ -51,18 +51,21 @@ abstract class StatelessCommercioKyc {
     );
   }
 
-  /// Buy a list of [membershipType] for the [wallet] with optional [fee].
+  /// Buy a list of [membershipType] for the [wallet] with optional [fee]
+  /// and [mode].
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> buyMemberships({
     @required List<BuyMembership> buyMemberships,
     @required Wallet wallet,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
     return MembershipHelper.buyMembershipsList(
       buyMemberships,
       wallet,
       fee: fee,
+      mode: mode,
     );
   }
 
@@ -81,14 +84,20 @@ abstract class StatelessCommercioKyc {
   /// Invites the list of [inviteUsers] wallet addresses from [wallet].
   /// To send an invite the
   /// [wallet] must have bought a membership (see [buyMembership()]).
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> inviteMembers({
     @required List<InviteUser> inviteUsers,
     @required Wallet wallet,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
-    return MembershipHelper.inviteUsersList(inviteUsers, wallet, fee: fee);
+    return MembershipHelper.inviteUsersList(
+      inviteUsers,
+      wallet,
+      fee: fee,
+      mode: mode,
+    );
   }
 }

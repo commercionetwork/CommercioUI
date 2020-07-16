@@ -43,14 +43,16 @@ class CommercioDocsDeriveDocumentEvent extends CommercioDocsEvent {
 class CommercioDocsShareDocumentsEvent extends CommercioDocsEvent {
   final List<CommercioDoc> commercioDocs;
   final StdFee fee;
+  final BroadcastingMode mode;
 
   const CommercioDocsShareDocumentsEvent({
     @required this.commercioDocs,
     this.fee,
+    this.mode,
   });
 
   @override
-  List<Object> get props => [commercioDocs, fee];
+  List<Object> get props => [commercioDocs, fee, mode];
 }
 
 class CommercioDocsDeriveReceiptEvent extends CommercioDocsEvent {
@@ -73,14 +75,16 @@ class CommercioDocsDeriveReceiptEvent extends CommercioDocsEvent {
 class CommercioDocsSendReceiptsEvent extends CommercioDocsEvent {
   final List<CommercioDocReceipt> commercioDocReceipts;
   final StdFee fee;
+  final BroadcastingMode mode;
 
   const CommercioDocsSendReceiptsEvent({
     @required this.commercioDocReceipts,
     this.fee,
+    this.mode,
   });
 
   @override
-  List<Object> get props => [commercioDocReceipts, fee];
+  List<Object> get props => [commercioDocReceipts, fee, mode];
 }
 
 class CommercioDocsSentDocumentsEvent extends CommercioDocsEvent {

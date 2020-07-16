@@ -20,6 +20,7 @@ class CommercioMintOpenCdpBloc
       final result = await commercioMint.openCdp(
         amount: event.amount,
         fee: event.fee,
+        mode: event.mode,
       );
 
       yield CommercioMintOpenedCdpStateData(result: result);
@@ -73,6 +74,7 @@ class CommercioMintCloseCdpsBloc
       final result = await commercioMint.closeCdps(
         closeCdps: event.closeCdps,
         fee: event.fee,
+        mode: event.mode,
       );
 
       yield CommercioMintClosedCdpsStateData(result: result);

@@ -46,15 +46,21 @@ abstract class StatelessCommercioDocs {
   }
 
   /// Share the list of [CommercioDoc] from the [wallet].
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> shareDocuments({
     @required Wallet wallet,
     @required List<CommercioDoc> commercioDocs,
     StdFee fee,
+    BroadcastingMode mode,
   }) async {
-    return DocsHelper.shareDocumentsList(commercioDocs, wallet, fee: fee);
+    return DocsHelper.shareDocumentsList(
+      commercioDocs,
+      wallet,
+      fee: fee,
+      mode: mode,
+    );
   }
 
   /// Returns a [CommercioDocReceipt] which tells the [recipient] that the
@@ -79,18 +85,20 @@ abstract class StatelessCommercioDocs {
   }
 
   /// Send a list of receipts [commercioDocReceipts] from the [wallet].
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> sendReceipts({
     @required List<CommercioDocReceipt> commercioDocReceipts,
     @required Wallet wallet,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
     return DocsHelper.sendDocumentReceiptsList(
       commercioDocReceipts,
       wallet,
       fee: fee,
+      mode: mode,
     );
   }
 

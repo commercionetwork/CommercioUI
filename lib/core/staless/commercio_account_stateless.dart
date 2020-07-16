@@ -191,29 +191,16 @@ abstract class StatelessCommercioAccount {
   /// Send the [amount] of tokens from the [senderWallet] to a
   /// [recipientAddress] list.
   ///
-  /// An optional [feeAmount] and [gas] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> sendTokens({
     @required WalletWithAddress senderWallet,
     @required String recipientAddress,
     @required List<StdCoin> amount,
-    List<StdCoin> feeAmount,
-    String gas,
+    StdFee fee,
+    BroadcastingMode mode,
   }) async {
-    StdFee fee;
-
-    if (gas != null && feeAmount != null) {
-      if (int.tryParse(gas) == null) {
-        throw const AccountRequestError('Gas is not a valid integer');
-      }
-
-      fee = StdFee(
-        gas: gas,
-        amount: feeAmount,
-      );
-    }
-
     return TxHelper.createSignAndSendTx(
       [
         MsgSend(
@@ -224,6 +211,7 @@ abstract class StatelessCommercioAccount {
       ],
       senderWallet.wallet,
       fee: fee,
+      mode: mode,
     );
   }
 }

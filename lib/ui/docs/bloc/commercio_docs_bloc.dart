@@ -58,6 +58,7 @@ class CommercioDocsShareDocumentsBloc extends Bloc<
       final txResult = await commercioDocs.shareDocuments(
         commercioDocs: event.commercioDocs,
         fee: event.fee,
+        mode: event.mode,
       );
 
       yield CommercioDocsSharedDocumentsStateData(result: txResult);
@@ -118,6 +119,7 @@ class CommercioDocsSendReceiptsBloc extends Bloc<CommercioDocsSendReceiptsEvent,
       final txResult = await commercioDocs.sendReceipts(
         commercioDocReceipts: event.commercioDocReceipts,
         fee: event.fee,
+        mode: event.mode,
       );
 
       yield CommercioDocsSentReceiptStateData(result: txResult);

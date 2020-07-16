@@ -261,8 +261,9 @@ void main() {
   testWidgets('Submit SetDidDocument Event', (
     WidgetTester tester,
   ) async {
-    when(commercioId.setDidDocuments())
-        .thenAnswer((_) async => correctTxResult);
+    when(commercioId.setDidDocuments(
+      didDocuments: [],
+    )).thenAnswer((_) async => correctTxResult);
 
     final bloc = CommercioIdSetDidDocumentsBloc(
       commercioId: commercioId,
@@ -298,14 +299,20 @@ void main() {
 
     expect(find.byWidget(commText), findsOneWidget);
 
-    bloc.add(const CommercioIdSetDidDocumentsEvent());
+    bloc.add(const CommercioIdSetDidDocumentsEvent(
+      didDocuments: [],
+    ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioId.setDidDocuments()).thenThrow(Exception());
+    when(commercioId.setDidDocuments(
+      didDocuments: [],
+    )).thenThrow(Exception());
 
-    bloc.add(const CommercioIdSetDidDocumentsEvent());
+    bloc.add(const CommercioIdSetDidDocumentsEvent(
+      didDocuments: [],
+    ));
     await tester.pumpAndSettle();
 
     expect(find.text(errorText), findsOneWidget);
@@ -316,7 +323,7 @@ void main() {
   ) async {
     when(commercioId.hasKeys).thenReturn(false);
     when(commercioId.rechargeTumbler(
-      rechargeAmount: [],
+      amount: [],
     )).thenAnswer((_) async => correctTxResult);
 
     final bloc = CommercioIdRechargeTumblerBloc(
@@ -354,18 +361,18 @@ void main() {
     expect(find.byWidget(commText), findsOneWidget);
 
     bloc.add(const CommercioIdRechargeTumblerEvent(
-      rechargeAmount: [],
+      amount: [],
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
     when(commercioId.rechargeTumbler(
-      rechargeAmount: [],
+      amount: [],
     )).thenThrow(Exception());
 
     bloc.add(const CommercioIdRechargeTumblerEvent(
-      rechargeAmount: [],
+      amount: [],
     ));
     await tester.pumpAndSettle();
 

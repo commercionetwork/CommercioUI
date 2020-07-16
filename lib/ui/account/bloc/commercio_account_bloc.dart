@@ -132,8 +132,8 @@ class CommercioAccountSendTokensBloc extends Bloc<
       final result = await commercioAccount.sendTokens(
         recipientAddress: event.recipientAddress,
         amount: event.amount,
-        feeAmount: event.feeAmount,
-        gas: event.gas,
+        fee: event.fee,
+        mode: event.mode,
       );
 
       yield CommercioAccountSentTokensStateData(result: result);

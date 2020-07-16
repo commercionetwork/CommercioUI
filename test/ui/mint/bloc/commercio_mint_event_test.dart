@@ -11,6 +11,8 @@ final correctCloseCdp = CloseCdp(
 );
 
 void main() {
+  const mode = BroadcastingMode.ASYNC;
+
   test('CommercioMintOpenCdpEvent', () {
     const amount = 1;
     const fee = StdFee(amount: [], gas: 'gas');
@@ -18,9 +20,10 @@ void main() {
     final event = CommercioMintOpenCdpEvent(
       amount: amount,
       fee: fee,
+      mode: mode,
     );
 
-    expect(event.props, [amount, fee]);
+    expect(event.props, [amount, fee, mode]);
   });
 
   test('CommercioMintDeriveCloseCdpEvent', () {
@@ -37,11 +40,13 @@ void main() {
     final event = CommercioMintCloseCdpsEvent(
       closeCdps: [correctCloseCdp],
       fee: fee,
+      mode: mode,
     );
 
     expect(event.props, [
       [correctCloseCdp],
-      fee
+      fee,
+      mode,
     ]);
   });
 }

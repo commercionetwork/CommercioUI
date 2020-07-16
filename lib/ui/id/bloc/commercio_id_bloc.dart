@@ -111,15 +111,9 @@ class CommercioIdSetDidDocumentsBloc extends Bloc<
     try {
       yield const CommercioIdSetDidDocumentsStateLoading();
 
-      TransactionResult result;
-
-      if (event.didDocuments != null) {
-        result = await commercioId.setDidDocuments(
-          didDocuments: event.didDocuments,
-        );
-      } else {
-        result = await commercioId.setDidDocuments();
-      }
+      final result = await commercioId.setDidDocuments(
+        didDocuments: event.didDocuments,
+      );
 
       yield CommercioIdSetDidDocumentsStateData(result: result);
     } catch (e) {
@@ -144,17 +138,11 @@ class CommercioIdRechargeTumblerBloc extends Bloc<
 
       TransactionResult result;
 
-      if (event.rechargeFee != null && event.rechargeGas != null) {
-        result = await commercioId.rechargeTumbler(
-          rechargeAmount: event.rechargeAmount,
-          rechargeFee: event.rechargeFee,
-          rechargeGas: event.rechargeGas,
-        );
-      } else {
-        result = await commercioId.rechargeTumbler(
-          rechargeAmount: event.rechargeAmount,
-        );
-      }
+      result = await commercioId.rechargeTumbler(
+        amount: event.amount,
+        fee: event.fee,
+        mode: event.mode,
+      );
 
       yield CommercioIdRechargedTumblerStateData(result: result);
     } catch (e) {

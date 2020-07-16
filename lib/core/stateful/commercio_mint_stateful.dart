@@ -13,12 +13,13 @@ class StatefulCommercioMint {
   const StatefulCommercioMint({@required this.commercioAccount});
 
   /// Open a new CDP with the [amount] of ucommercio to get in returns the
-  /// half of the [amount] in uccc. An optional [fee] can specified.
+  /// half of the [amount] in uccc. An optional [fee] and [mode] can specified.
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> openCdp({
     @required int amount,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
     if (amount < 0) {
       throw ArgumentError('The amount must not be negative');
@@ -32,6 +33,7 @@ class StatefulCommercioMint {
       wallet: commercioAccount.wallet,
       amount: amount,
       fee: fee,
+      mode: mode,
     );
   }
 
@@ -57,7 +59,7 @@ class StatefulCommercioMint {
   }
 
   /// Closes the open CDPs from the list [closeCdps] with the associated
-  /// [wallet] with optional [fee].
+  /// [wallet] with optional [fee] and [mode].
   ///
   /// Throw [WalletNotFoundException] if no wallet is found.
   /// Throw [ArgumentError] if [blockHeight] is less than zero.
@@ -66,6 +68,7 @@ class StatefulCommercioMint {
   Future<TransactionResult> closeCdps({
     @required List<CloseCdp> closeCdps,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -74,6 +77,8 @@ class StatefulCommercioMint {
     return StatelessCommercioMint.closeCdps(
       closeCdps: closeCdps,
       wallet: commercioAccount.wallet,
+      fee: fee,
+      mode: mode,
     );
   }
 }

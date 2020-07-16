@@ -714,8 +714,10 @@ void main() {
       final result = await commercioAccount.sendTokens(
         recipientAddress: correctWalletAddress,
         amount: [correctAmount],
-        feeAmount: [correctAmount],
-        gas: '100',
+        fee: const StdFee(
+          amount: [StdCoin(denom: 'denom', amount: '10')],
+          gas: '10',
+        ),
       );
 
       expect(result.success, isTrue);

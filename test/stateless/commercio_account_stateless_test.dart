@@ -505,8 +505,6 @@ void main() {
         ),
         recipientAddress: correctWalletAddress,
         amount: correctAccountBalance,
-        feeAmount: correctAccountBalance,
-        gas: '1000',
       );
 
       expect(response.success, isTrue);

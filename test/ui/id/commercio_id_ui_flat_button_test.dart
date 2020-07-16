@@ -281,8 +281,9 @@ void main() {
   testWidgets('Submit SetDidDocument Event', (
     WidgetTester tester,
   ) async {
-    when(commercioId.setDidDocuments())
-        .thenAnswer((_) async => correctTxResult);
+    when(commercioId.setDidDocuments(
+      didDocuments: [],
+    )).thenAnswer((_) async => correctTxResult);
 
     final bloc = CommercioIdSetDidDocumentsBloc(
       commercioId: commercioId,
@@ -301,7 +302,9 @@ void main() {
     final commFlatButton = SetDidDocumentFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioIdSetDidDocumentsEvent(),
+      event: () => CommercioIdSetDidDocumentsEvent(
+        didDocuments: [],
+      ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text(err),
@@ -328,7 +331,9 @@ void main() {
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioId.setDidDocuments()).thenThrow(Exception());
+    when(commercioId.setDidDocuments(
+      didDocuments: [],
+    )).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
     await tester.pumpAndSettle();
@@ -393,7 +398,7 @@ void main() {
   ) async {
     when(commercioId.hasKeys).thenReturn(false);
     when(commercioId.rechargeTumbler(
-      rechargeAmount: [],
+      amount: [],
     )).thenAnswer((_) async => correctTxResult);
 
     final bloc = CommercioIdRechargeTumblerBloc(
@@ -414,7 +419,7 @@ void main() {
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
       event: () => CommercioIdRechargeTumblerEvent(
-        rechargeAmount: [],
+        amount: [],
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
@@ -443,7 +448,7 @@ void main() {
     expect(find.text(childText), findsOneWidget);
 
     when(commercioId.rechargeTumbler(
-      rechargeAmount: [],
+      amount: [],
     )).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
@@ -452,17 +457,18 @@ void main() {
     expect(find.text(childText), findsOneWidget);
   });
 
-  testWidgets('Submit RechargeTumbler with gas & fee', (
+  testWidgets('Submit RechargeTumbler with fee', (
     WidgetTester tester,
   ) async {
-    const fee = <StdCoin>[];
-    const gas = '';
+    const correctFee = const StdFee(
+      amount: [StdCoin(amount: '10', denom: 'denom')],
+      gas: '10',
+    );
 
     when(commercioId.hasKeys).thenReturn(false);
     when(commercioId.rechargeTumbler(
-      rechargeAmount: [],
-      rechargeFee: fee,
-      rechargeGas: gas,
+      amount: [],
+      fee: correctFee,
     )).thenAnswer((_) async => correctTxResult);
 
     final bloc = CommercioIdRechargeTumblerBloc(
@@ -481,9 +487,8 @@ void main() {
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
       event: () => CommercioIdRechargeTumblerEvent(
-        rechargeAmount: [],
-        rechargeFee: fee,
-        rechargeGas: gas,
+        amount: [],
+        fee: correctFee,
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(

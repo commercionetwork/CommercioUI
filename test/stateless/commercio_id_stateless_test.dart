@@ -376,7 +376,7 @@ void main() {
 
       final result = await StatelessCommercioId.rechargeTumbler(
         walletWithAddress: correctWalletWithAddress,
-        rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+        amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
         httpHelper: httpHelperMock,
       );
 
@@ -399,9 +399,12 @@ void main() {
 
       final result = await StatelessCommercioId.rechargeTumbler(
         walletWithAddress: correctWalletWithAddress,
-        rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+        amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
         httpHelper: httpHelperMock,
-        rechargeFee: const [StdCoin(denom: 'ucommercio', amount: '10')],
+        fee: const StdFee(
+          amount: [StdCoin(denom: 'ucommercio', amount: '10')],
+          gas: '10',
+        ),
       );
 
       expect(result.success, isTrue);
@@ -423,10 +426,12 @@ void main() {
 
       final result = await StatelessCommercioId.rechargeTumbler(
         walletWithAddress: correctWalletWithAddress,
-        rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+        amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
         httpHelper: httpHelperMock,
-        rechargeFee: const [StdCoin(denom: 'ucommercio', amount: '10')],
-        rechargeGas: '10',
+        fee: const StdFee(
+          amount: [StdCoin(denom: 'ucommercio', amount: '10')],
+          gas: '10',
+        ),
       );
 
       expect(result.success, isTrue);
@@ -449,7 +454,7 @@ void main() {
       expectLater(
         () => StatelessCommercioId.rechargeTumbler(
           walletWithAddress: correctWalletWithAddress,
-          rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+          amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
           httpHelper: httpHelperMock,
         ),
         throwsException,
@@ -473,7 +478,7 @@ void main() {
       expectLater(
         () => StatelessCommercioId.rechargeTumbler(
           walletWithAddress: correctWalletWithAddress,
-          rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+          amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
           httpHelper: httpHelperMock,
         ),
         throwsException,
@@ -497,7 +502,7 @@ void main() {
       expectLater(
         () => StatelessCommercioId.rechargeTumbler(
           walletWithAddress: correctWalletWithAddress,
-          rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+          amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
           httpHelper: httpHelperMock,
         ),
         throwsException,
@@ -521,7 +526,7 @@ void main() {
       expectLater(
         () => StatelessCommercioId.rechargeTumbler(
           walletWithAddress: correctWalletWithAddress,
-          rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+          amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
         ),
         throwsA(isA<SocketException>()),
       );

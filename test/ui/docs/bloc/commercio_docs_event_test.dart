@@ -43,6 +43,7 @@ void main() {
     txHash: 'txHash',
     documentUuid: 'docId',
   );
+  const mode = BroadcastingMode.ASYNC;
 
   test('CommercioDocsDeriveDocumentEvent', () {
     final event = CommercioDocsDeriveDocumentEvent(
@@ -72,11 +73,13 @@ void main() {
     final event = CommercioDocsShareDocumentsEvent(
       commercioDocs: [correctCommercioDoc],
       fee: fee,
+      mode: mode,
     );
 
     expect(event.props, [
       [correctCommercioDoc],
       fee,
+      mode,
     ]);
   });
 
@@ -105,11 +108,13 @@ void main() {
     final event = CommercioDocsSendReceiptsEvent(
       commercioDocReceipts: [correctDocReceipt],
       fee: fee,
+      mode: mode,
     );
 
     expect(event.props, [
       [correctDocReceipt],
-      fee
+      fee,
+      mode,
     ]);
   });
 

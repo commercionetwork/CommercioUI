@@ -72,29 +72,35 @@ abstract class StatelessCommercioId {
   }
 
   /// Associate the list of [didDocument] to the [wallet] identity.
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> setDidDocuments({
     @required List<DidDocument> didDocuments,
     @required Wallet wallet,
     StdFee fee,
+    BroadcastingMode mode,
   }) async {
-    return IdHelper.setDidDocumentsList(didDocuments, wallet, fee: fee);
+    return IdHelper.setDidDocumentsList(
+      didDocuments,
+      wallet,
+      fee: fee,
+      mode: mode,
+    );
   }
 
-  /// Sent the [rechargeAmount] to the centralized entity Tk (tumbler) from
+  /// Sent the [amount] to the centralized entity Tk (tumbler) from
   /// the [walletWithAddress]. Only avaiable in a testnet.
   ///
-  /// An optional amount of [rechargeFee], [rechargeGas] and [httpHelper] can
+  /// An optional [fee], [mode] and [httpHelper] can
   /// be specified.
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> rechargeTumbler({
     @required WalletWithAddress walletWithAddress,
-    @required List<StdCoin> rechargeAmount,
-    List<StdCoin> rechargeFee,
-    String rechargeGas,
+    @required List<StdCoin> amount,
+    StdFee fee,
+    BroadcastingMode mode,
     HttpHelper httpHelper,
   }) async {
     httpHelper ??= HttpHelper();
@@ -104,9 +110,9 @@ abstract class StatelessCommercioId {
     return StatelessCommercioAccount.sendTokens(
       senderWallet: walletWithAddress,
       recipientAddress: tumblerAddress,
-      amount: rechargeAmount,
-      feeAmount: rechargeFee,
-      gas: rechargeGas,
+      amount: amount,
+      fee: fee,
+      mode: mode,
     );
   }
 
@@ -130,7 +136,7 @@ abstract class StatelessCommercioId {
 
   /// Request a list of Did Power Up from [senderWallet] for every power up
   /// request in [powerUpRequests].
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// A did power up request is required to move the amount of
   /// tokens from a centralized entity Tk to one of its pairwiseAddress,
@@ -143,11 +149,13 @@ abstract class StatelessCommercioId {
     @required Wallet senderWallet,
     @required List<RequestDidPowerUp> powerUpRequests,
     StdFee fee,
+    BroadcastingMode mode,
   }) async {
     return IdHelper.requestDidPowerUpsList(
       powerUpRequests,
       senderWallet,
       fee: fee,
+      mode: mode,
     );
   }
 }

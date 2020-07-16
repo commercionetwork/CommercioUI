@@ -44,17 +44,17 @@ void main() {
   test('CommercioAccountSendTokensEvent', () {
     const recipientAddress = 'recipientAddress';
     const amount = <StdCoin>[];
-    const feeAmount = <StdCoin>[];
-    const gas = 'gas';
+    const fee = StdFee(amount: [], gas: '');
+    const mode = BroadcastingMode.ASYNC;
 
     final event = CommercioAccountSendTokensEvent(
       recipientAddress: recipientAddress,
       amount: amount,
-      feeAmount: feeAmount,
-      gas: gas,
+      fee: fee,
+      mode: mode,
     );
 
-    expect(event.props, [recipientAddress, amount, feeAmount, gas]);
+    expect(event.props, [recipientAddress, amount, fee, mode]);
   });
 
   test('CommercioAccountGenerateQrEvent', () {

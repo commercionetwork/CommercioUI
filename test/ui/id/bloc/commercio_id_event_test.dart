@@ -74,29 +74,33 @@ void main() {
         signatureValue: 'signatureValue',
       ),
     );
+    const mode = BroadcastingMode.ASYNC;
+
     final event = CommercioIdSetDidDocumentsEvent(
       didDocuments: [didDocument],
       fee: fee,
+      mode: mode,
     );
 
     expect(event.props, [
       [didDocument],
-      fee
+      fee,
+      mode,
     ]);
   });
 
   test('CommercioIdRechargeTumblerEvent', () {
-    const rechargeAmount = <StdCoin>[];
-    const rechargeFee = <StdCoin>[];
-    const rechargeGas = 'rechargeGas';
+    const amount = <StdCoin>[];
+    const fee = StdFee(amount: [], gas: '');
+    const mode = BroadcastingMode.ASYNC;
 
     final event = CommercioIdRechargeTumblerEvent(
-      rechargeAmount: rechargeAmount,
-      rechargeFee: rechargeFee,
-      rechargeGas: rechargeGas,
+      amount: amount,
+      fee: fee,
+      mode: mode,
     );
 
-    expect(event.props, [rechargeAmount, rechargeFee, rechargeGas]);
+    expect(event.props, [amount, fee, mode]);
   });
 
   test('CommercioIdDeriveDidPowerUpRequestEvent', () {

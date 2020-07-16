@@ -50,12 +50,13 @@ class StatefulCommercioKyc {
     );
   }
 
-  /// Buy a list of [membershipType] account with optional [fee].
+  /// Buy a list of [membershipType] account with optional [fee] and [mode].
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> buyMemberships({
     @required List<BuyMembership> buyMemberships,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -65,6 +66,7 @@ class StatefulCommercioKyc {
       buyMemberships: buyMemberships,
       wallet: commercioAccount.wallet,
       fee: fee,
+      mode: mode,
     );
   }
 
@@ -88,7 +90,7 @@ class StatefulCommercioKyc {
   /// Invites the list of [inviteUsers] wallet addresses from [wallet].
   /// To send an invite the
   /// [wallet] must have bought a membership (see [buyMembership()]).
-  /// An optional [fee] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Throw [WalletNotFoundException] if no wallet is avaiable.
   ///
@@ -96,6 +98,7 @@ class StatefulCommercioKyc {
   Future<TransactionResult> inviteMembers({
     @required List<InviteUser> inviteUsers,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -105,6 +108,7 @@ class StatefulCommercioKyc {
       inviteUsers: inviteUsers,
       wallet: commercioAccount.wallet,
       fee: fee,
+      mode: mode,
     );
   }
 }

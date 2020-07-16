@@ -72,6 +72,7 @@ class CommercioKycBuyMembershipsBloc extends Bloc<
       final result = await commercioKyc.buyMemberships(
         buyMemberships: event.buyMemberships,
         fee: event.fee,
+        mode: event.mode,
       );
 
       yield CommercioKycBuyMembershipsStateData(result: result);
@@ -123,6 +124,7 @@ class CommercioKycInviteMembersBloc extends Bloc<CommercioKycInviteMembersEvent,
       final result = await commercioKyc.inviteMembers(
         inviteUsers: event.inviteUsers,
         fee: event.fee,
+        mode: event.mode,
       );
 
       yield CommercioKycInviteMembersStateData(result: result);

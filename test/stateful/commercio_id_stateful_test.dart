@@ -367,7 +367,10 @@ void main() async {
         idKeys: keysObj,
       );
 
-      final result = await commercioId.setDidDocuments();
+      final didDocument = await commercioId.deriveDidDocument();
+      final result = await commercioId.setDidDocuments(
+        didDocuments: [didDocument],
+      );
 
       expect(result.success, isTrue);
     });
@@ -418,12 +421,14 @@ void main() async {
 
       expect(commercioId.hasDidDocument, isTrue);
 
-      final result = await commercioId.setDidDocuments();
+      final result = await commercioId.setDidDocuments(
+        didDocuments: [],
+      );
 
       expect(result.success, isTrue);
     });
 
-    test('No keys in memory should throw an exception', () async {
+    test('No did document in memory should throw an exception', () async {
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
         storage: secretStorageMock,
@@ -432,7 +437,7 @@ void main() async {
 
       expectLater(
         () => commercioId.setDidDocuments(),
-        throwsA(isA<NoKeysFoundException>()),
+        throwsA(isA<DidDocumentNotFoundException>()),
       );
     });
 
@@ -441,6 +446,11 @@ void main() async {
         commercioAccount: commercioAccountWithoutWallet,
         storage: secretStorageMock,
         storageKey: secureStorageKey,
+        idKeys: keysObj,
+      );
+
+      commercioId.didDocument = await StatelessCommercioId.deriveDidDocument(
+        wallet: correctCommercioAccount.wallet,
         idKeys: keysObj,
       );
 
@@ -474,7 +484,7 @@ void main() async {
       );
 
       final result = await commercioId.rechargeTumbler(
-        rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+        amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
       );
 
       expect(result.success, isTrue);
@@ -490,7 +500,7 @@ void main() async {
 
       expect(
         () => commercioId.rechargeTumbler(
-          rechargeAmount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+          amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
         ),
         throwsA(isA<WalletNotFoundException>()),
       );

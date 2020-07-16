@@ -9,15 +9,16 @@ import 'package:meta/meta.dart';
 abstract class StatelessCommercioMint {
   /// Open a new CDP for the [wallet] with the [amount] of ucommercio to
   /// get in returns the half of the [amount] in uccc.
-  /// An optional [fee] can specified.
+  /// An optional [fee] and [mode] can specified.
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> openCdp({
     @required Wallet wallet,
     @required int amount,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
-    return MintHelper.openCdp(amount, wallet, fee: fee);
+    return MintHelper.openCdp(amount, wallet, fee: fee, mode: mode);
   }
 
   /// Returns a [CloseCdp] object that indicates the closing of a DCP at
@@ -30,14 +31,15 @@ abstract class StatelessCommercioMint {
   }
 
   /// Closes the open CDPs from the list [closeCdps] with the associated
-  /// [wallet] with optional [fee].
+  /// [wallet] with optional [fee] and [mode].
   ///
   /// Returns the [TransactionResult].
   static Future<TransactionResult> closeCdps({
     @required List<CloseCdp> closeCdps,
     @required Wallet wallet,
     StdFee fee,
+    BroadcastingMode mode,
   }) {
-    return MintHelper.closeCdpsList(closeCdps, wallet, fee: fee);
+    return MintHelper.closeCdpsList(closeCdps, wallet, fee: fee, mode: mode);
   }
 }

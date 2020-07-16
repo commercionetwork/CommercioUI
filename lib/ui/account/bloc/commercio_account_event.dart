@@ -1,3 +1,4 @@
+import 'package:commerciosdk/export.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
@@ -52,18 +53,18 @@ class CommercioAccountCheckBalanceEvent extends CommercioAccountEvent {
 class CommercioAccountSendTokensEvent extends CommercioAccountEvent {
   final String recipientAddress;
   final List<StdCoin> amount;
-  final List<StdCoin> feeAmount;
-  final String gas;
+  final StdFee fee;
+  final BroadcastingMode mode;
 
   const CommercioAccountSendTokensEvent({
     @required this.recipientAddress,
     @required this.amount,
-    this.feeAmount,
-    this.gas,
+    this.fee,
+    this.mode,
   });
 
   @override
-  List<Object> get props => [recipientAddress, amount, feeAmount, gas];
+  List<Object> get props => [recipientAddress, amount, fee, mode];
 }
 
 class CommercioAccountGenerateQrEvent extends CommercioAccountEvent {

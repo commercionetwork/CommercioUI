@@ -201,7 +201,7 @@ class StatefulCommercioAccount {
 
   /// Send the [amount] of tokens from the accoun to a [recipientAddress] list.
   ///
-  /// An optional [feeAmount] and [gas] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
   ///
@@ -209,8 +209,8 @@ class StatefulCommercioAccount {
   Future<TransactionResult> sendTokens({
     @required String recipientAddress,
     @required List<StdCoin> amount,
-    List<StdCoin> feeAmount,
-    String gas,
+    StdFee fee,
+    BroadcastingMode mode,
   }) {
     if (!hasWallet) {
       throw const WalletNotFoundException();
@@ -220,8 +220,8 @@ class StatefulCommercioAccount {
       senderWallet: walletWithAddress,
       recipientAddress: recipientAddress,
       amount: amount,
-      feeAmount: feeAmount,
-      gas: gas,
+      fee: fee,
+      mode: mode,
     );
   }
 }

@@ -44,15 +44,18 @@ void main() {
 
   test('CommercioKycBuyMembershipEvent', () {
     const fee = StdFee(amount: [], gas: 'gas');
+    const mode = BroadcastingMode.ASYNC;
 
     final event = CommercioKycBuyMembershipsEvent(
       buyMemberships: [correctBuyMembership],
       fee: fee,
+      mode: mode,
     );
 
     expect(event.props, [
       [correctBuyMembership],
-      fee
+      fee,
+      mode,
     ]);
   });
 
@@ -66,15 +69,18 @@ void main() {
 
   test('CommercioKycInviteMembersEvent', () {
     const fee = StdFee(amount: [], gas: 'gas');
+    const mode = BroadcastingMode.ASYNC;
 
     final event = CommercioKycInviteMembersEvent(
       inviteUsers: [correctInviteUser],
       fee: fee,
+      mode: mode,
     );
 
     expect(event.props, [
       [correctInviteUser],
-      fee
+      fee,
+      mode,
     ]);
   });
 
