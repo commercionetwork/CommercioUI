@@ -36,14 +36,14 @@ class _ExamplePageState extends State<ExamplePage> {
   final TextEditingController walletTextController = TextEditingController();
   final TextEditingController mnemonicTextController = TextEditingController();
 
-  // Create a commercio account with default NetworkInfo, FlutterStorage and
+  // Create a commercio account with default NetworkInfo, secret storage and
   // storage key
   final StatefulCommercioAccount commercioAccount = StatefulCommercioAccount();
 
   // We need to manage the state during mnemonic creation and wallet derivation
   bool isGenerating = false;
 
-  // Generate a new wallet using the stateless layer
+  // Generate a new wallet using the stateful layer
   Future<Wallet> _deriveNewWallet() async {
     // Derive a new wallet using auto-generated mnemonic words
     // The resulting words are automatically stored inside the secure storage
@@ -70,58 +70,43 @@ class _ExamplePageState extends State<ExamplePage> {
       ),
       body: Center(
         child: FutureBuilder<Wallet>(
-            future: isGenerating ? _deriveNewWallet() : null,
-            builder: (context, snap) {
-              if (snap.connectionState == ConnectionState.waiting) {
-                walletTextController.text = 'Generating...';
-                mnemonicTextController.text = 'Generating...';
+          future: isGenerating ? _deriveNewWallet() : null,
+          builder: (context, snap) {
+            Function() fn = () => setState(() => isGenerating = true);
+            String text = 'Generate new wallet';
 
-                return Column(
-                  children: [
-                    const FlatButton(
-                      onPressed: null,
-                      disabledTextColor: Colors.brown,
-                      disabledColor: Colors.orangeAccent,
-                      child: Text(
-                        'Generating...',
-                      ),
-                    ),
-                    const Text('Mnemonic words:'),
-                    TextField(
-                      controller: mnemonicTextController,
-                      readOnly: true,
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    const Text('Wallet address:'),
-                    TextField(
-                      controller: walletTextController,
-                      readOnly: true,
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ],
-                );
-              }
+            if (snap.connectionState == ConnectionState.waiting) {
+              walletTextController.text = 'Generating...';
+              mnemonicTextController.text = 'Generating...';
+              text = 'Generating...';
+              fn = null;
+            }
 
-              return Column(
-                children: [
-                  FlatButton(
-                      onPressed: () => setState(() => isGenerating = true),
-                      textColor: Colors.brown,
-                      color: Colors.orange,
-                      child: const Text('Generate new wallet')),
-                  const Text('Mnemonic words:'),
-                  TextField(
-                    controller: mnemonicTextController,
-                    readOnly: true,
-                  ),
-                  const Text('Wallet address:'),
-                  TextField(
-                    controller: walletTextController,
-                    readOnly: true,
-                  ),
-                ],
-              );
-            }),
+            return Column(
+              children: [
+                FlatButton(
+                  onPressed: fn,
+                  textColor: Colors.brown,
+                  color: Colors.orange,
+                  disabledColor: Colors.orange[700],
+                  child: Text(text),
+                ),
+                const Text('Mnemonic words:'),
+                TextField(
+                  controller: mnemonicTextController,
+                  readOnly: true,
+                  maxLines: null,
+                ),
+                const Text('Wallet address:'),
+                TextField(
+                  controller: walletTextController,
+                  readOnly: true,
+                  maxLines: null,
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

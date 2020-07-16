@@ -1,12 +1,12 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class GenerateKeysFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdGeneratingKeysLoading,
-    CommercioIdGeneratingKeysError> {
+class GenerateKeysFlatButton extends CommercioFlatButton<
+    CommercioIdGenerateKeysBloc,
+    CommercioIdGenerateKeysEvent,
+    CommercioIdGeneratedKeysState,
+    CommercioIdGeneratedKeysStateLoading,
+    CommercioIdGeneratedKeysStateError> {
   GenerateKeysFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -27,10 +27,10 @@ class GenerateKeysFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioIdGenerateKeysEvent Function() accountEventCallback,
+    @required CommercioIdGenerateKeysEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -51,19 +51,19 @@ class GenerateKeysFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class RestoreKeysFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRestoringKeysLoading,
-    CommercioIdRestoringKeysError> {
+class RestoreKeysFlatButton extends CommercioFlatButton<
+    CommercioIdRestoreKeysBloc,
+    CommercioIdRestoreKeysEvent,
+    CommercioIdRestoredKeysState,
+    CommercioIdRestoredKeysStateLoading,
+    CommercioIdRestoredKeysStateError> {
   RestoreKeysFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -84,10 +84,10 @@ class RestoreKeysFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioIdRestoreKeysEvent Function() accountEventCallback,
+    @required CommercioIdRestoreKeysEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -108,19 +108,19 @@ class RestoreKeysFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class DeleteKeysFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdDeletingKeysLoading,
-    CommercioIdDeletingKeysError> {
+class DeleteKeysFlatButton extends CommercioFlatButton<
+    CommercioIdDeleteKeysBloc,
+    CommercioIdDeleteKeysEvent,
+    CommercioIdDeletedKeysState,
+    CommercioIdDeletedKeysStateLoading,
+    CommercioIdDeletedKeysStateError> {
   DeleteKeysFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -141,10 +141,10 @@ class DeleteKeysFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioIdDeleteKeysEvent Function() accountEventCallback,
+    @required CommercioIdDeleteKeysEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -165,19 +165,19 @@ class DeleteKeysFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class DeriveDidDocumentFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdDerivingDidDocumentLoading,
-    CommercioIdDerivingDidDocumentError> {
+class DeriveDidDocumentFlatButton extends CommercioFlatButton<
+    CommercioIdDeriveDidDocumentBloc,
+    CommercioIdDeriveDidDocumentEvent,
+    CommercioIdDerivedDidDocumentState,
+    CommercioIdDerivedDidDocumentStateLoading,
+    CommercioIdDerivedDidDocumentStateError> {
   DeriveDidDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -198,10 +198,10 @@ class DeriveDidDocumentFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioIdDeriveDidDocumentEvent Function() accountEventCallback,
+    @required CommercioIdDeriveDidDocumentEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -222,19 +222,19 @@ class DeriveDidDocumentFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class SetDidDocumentFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdSettingDidDocumentLoading,
-    CommercioIdSettingDidDocumentError> {
+class SetDidDocumentFlatButton extends CommercioFlatButton<
+    CommercioIdSetDidDocumentsBloc,
+    CommercioIdSetDidDocumentsEvent,
+    CommercioIdSetDidDocumentsState,
+    CommercioIdSetDidDocumentsStateLoading,
+    CommercioIdSetDidDocumentsStateError> {
   SetDidDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -255,10 +255,10 @@ class SetDidDocumentFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioIdSetDidDocumentEvent Function() accountEventCallback,
+    @required CommercioIdSetDidDocumentsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -279,20 +279,20 @@ class SetDidDocumentFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class RechargeGovernmentFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRechargingGovernmentLoading,
-    CommercioIdRechargingGovernmentError> {
-  RechargeGovernmentFlatButton({
+class RechargeTumblerFlatButton extends CommercioFlatButton<
+    CommercioIdRechargeTumblerBloc,
+    CommercioIdRechargeTumblerEvent,
+    CommercioIdRechargedTumblerState,
+    CommercioIdRechargedTumblerStateLoading,
+    CommercioIdRechargedTumblerStateError> {
+  RechargeTumblerFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -312,11 +312,10 @@ class RechargeGovernmentFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required
-        CommercioIdRechargeGovernmentEvent Function() accountEventCallback,
+    @required CommercioIdRechargeTumblerEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -337,19 +336,76 @@ class RechargeGovernmentFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class RequestDidPowerUpFlatButton extends EventFlatButton<
-    CommercioIdBloc,
-    CommercioIdEvent,
-    CommercioIdState,
-    CommercioIdRequestingDidPowerUpLoading,
-    CommercioIdRequestingDidPowerUpError> {
+class DeriveDidPowerUpRequestFlatButton extends CommercioFlatButton<
+    CommercioIdDeriveDidPowerUpRequestBloc,
+    CommercioIdDeriveDidPowerUpRequestEvent,
+    CommercioIdDeriveDidPowerUpRequestState,
+    CommercioIdDeriveDidPowerUpRequestStateLoading,
+    CommercioIdDeriveDidPowerUpRequestStateError> {
+  DeriveDidPowerUpRequestFlatButton({
+    Key key,
+    ValueChanged<bool> onHighlightChanged,
+    ButtonTextTheme textTheme,
+    Color textColor,
+    Color disabledTextColor,
+    Color color,
+    Color disabledColor,
+    Color focusColor,
+    Color hoverColor,
+    Color highlightColor,
+    Color splashColor,
+    Brightness colorBrightness,
+    EdgeInsetsGeometry padding,
+    VisualDensity visualDensity,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    FocusNode focusNode,
+    bool autofocus,
+    MaterialTapTargetSize materialTapTargetSize,
+    @required CommercioIdDeriveDidPowerUpRequestEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
+  }) : super(
+          key: key,
+          onHighlightChanged: onHighlightChanged,
+          textTheme: textTheme,
+          textColor: textColor,
+          disabledTextColor: disabledTextColor,
+          color: color,
+          disabledColor: disabledColor,
+          focusColor: focusColor,
+          hoverColor: hoverColor,
+          highlightColor: highlightColor,
+          splashColor: splashColor,
+          colorBrightness: colorBrightness,
+          padding: padding,
+          visualDensity: visualDensity,
+          shape: shape,
+          clipBehavior: clipBehavior,
+          focusNode: focusNode,
+          autofocus: autofocus,
+          materialTapTargetSize: materialTapTargetSize,
+          child: child,
+          error: error,
+          event: event,
+          loading: loading,
+        );
+}
+
+class RequestDidPowerUpFlatButton extends CommercioFlatButton<
+    CommercioIdRequestDidPowerUpsBloc,
+    CommercioIdRequestDidPowerUpsEvent,
+    CommercioIdRequestedDidPowerUpsState,
+    CommercioIdRequestedDidPowerUpsStateLoading,
+    CommercioIdRequestedDidPowerUpsStateError> {
   RequestDidPowerUpFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -370,10 +426,10 @@ class RequestDidPowerUpFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioIdRequestDidPowerUpEvent Function() accountEventCallback,
+    @required CommercioIdRequestDidPowerUpsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -394,9 +450,9 @@ class RequestDidPowerUpFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }

@@ -1,30 +1,41 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:commercio_ui/core/staless/commercio_account_stateless.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commercio_ui/entities/account_request_response.dart';
+import 'package:commercio_ui/entities/wallet_with_address.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sacco/utils/export.dart';
 
-class FlutterSecureStorageMock extends Mock implements FlutterSecureStorage {}
+class SecretStorageMock extends Mock implements SecretStorage {}
 
 class HttpHelperMock extends Mock implements HttpHelper {}
 
 void main() {
-  FlutterSecureStorage secureStorageMock;
-  final NetworkInfo correctNetworkInfo =
-      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'lcdUrl');
+  if (Directory.current.path.endsWith('/test')) {
+    Directory.current = Directory.current.parent;
+  }
+
+  SecretStorage secretStorageMock = SecretStorageMock();
+  final NetworkInfo correctNetworkInfo = NetworkInfo(
+    bech32Hrp: 'bech32Hrp',
+    lcdUrl: 'lcdUrl',
+  );
   const String secureStorageKey = 'secure-storage-key';
   const String correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet;
-  String correctWalletAddress;
+  Wallet correctWallet = Wallet.derive(
+    correctMnemonic.split(' '),
+    correctNetworkInfo,
+  );
+  String correctWalletAddress = correctWallet.bech32Address;
   final HttpHelper httpHelperMock = HttpHelperMock();
   final String correctAccountBalanceRaw =
       '{"height":"69945","result":[{"denom": "ucommercio","amount": "100000000"}]}';
@@ -44,13 +55,6 @@ void main() {
   const String correctNodeInfoRaw =
       '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
 
-  setUp(() {
-    secureStorageMock = FlutterSecureStorageMock();
-    correctWallet =
-        Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
-    correctWalletAddress = correctWallet.bech32Address;
-  });
-
   group('Mnemonic generation', () {
     test('Correct', () async {
       final mnemonic = await StatelessCommercioAccount.generateMnemonic();
@@ -64,13 +68,13 @@ void main() {
 
   group('Store mnemonic', () {
     test('Correct', () {
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
               key: secureStorageKey, value: correctMnemonic))
           .thenAnswer((_) => Future.value());
 
       expectLater(
           () => StatelessCommercioAccount.storeMnemonic(
-                secureStorage: secureStorageMock,
+                secretStorage: secretStorageMock,
                 secureStorageKey: secureStorageKey,
                 mnemonic: correctMnemonic,
               ),
@@ -80,13 +84,13 @@ void main() {
     test('Platform exception', () {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.write(
+      when(secretStorageMock.write(
               key: secureStorageKey, value: correctMnemonic))
           .thenThrow(platformException);
 
       expectLater(
           () => StatelessCommercioAccount.storeMnemonic(
-                secureStorage: secureStorageMock,
+                secretStorage: secretStorageMock,
                 secureStorageKey: secureStorageKey,
                 mnemonic: correctMnemonic,
               ),
@@ -96,11 +100,11 @@ void main() {
 
   group('Fetch mnemonic', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final fetchedMnemonic = await StatelessCommercioAccount.fetchMnemonic(
-        secureStorage: secureStorageMock,
+        secretStorage: secretStorageMock,
         secureStorageKey: secureStorageKey,
       );
 
@@ -108,11 +112,11 @@ void main() {
     });
 
     test('No mnemonic stored', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(null));
 
       final fetchedMnemonic = await StatelessCommercioAccount.fetchMnemonic(
-        secureStorage: secureStorageMock,
+        secretStorage: secretStorageMock,
         secureStorageKey: secureStorageKey,
       );
 
@@ -122,12 +126,12 @@ void main() {
     test('Platform exception', () {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenThrow(platformException);
 
       expectLater(
           () => StatelessCommercioAccount.fetchMnemonic(
-                secureStorage: secureStorageMock,
+                secretStorage: secretStorageMock,
                 secureStorageKey: secureStorageKey,
               ),
           throwsA(platformException));
@@ -136,12 +140,12 @@ void main() {
 
   group('Delete mnemonic', () {
     test('Correct', () async {
-      when(secureStorageMock.delete(key: secureStorageKey))
+      when(secretStorageMock.delete(key: secureStorageKey))
           .thenAnswer((_) => Future.value());
 
       expectLater(
           () => StatelessCommercioAccount.deleteMnemonic(
-                secureStorage: secureStorageMock,
+                secretStorage: secretStorageMock,
                 secureStorageKey: secureStorageKey,
               ),
           returnsNormally);
@@ -150,12 +154,12 @@ void main() {
     test('Platform exception', () {
       final platformException = PlatformException(code: 'code');
 
-      when(secureStorageMock.delete(key: secureStorageKey))
+      when(secretStorageMock.delete(key: secureStorageKey))
           .thenThrow(platformException);
 
       expectLater(
         () => StatelessCommercioAccount.deleteMnemonic(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
         ),
         throwsA(platformException),
@@ -165,11 +169,11 @@ void main() {
 
   group('Restore wallet', () {
     test('Correct', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final fetchedWallet = await StatelessCommercioAccount.restoreWallet(
-        secureStorage: secureStorageMock,
+        secretStorage: secretStorageMock,
         secureStorageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
       );
@@ -178,12 +182,12 @@ void main() {
     });
 
     test('No mnemonic already stored', () async {
-      when(secureStorageMock.read(key: secureStorageKey))
+      when(secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(null));
 
       expectLater(
         () => StatelessCommercioAccount.restoreWallet(
-          secureStorage: secureStorageMock,
+          secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
           networkInfo: correctNetworkInfo,
         ),
@@ -360,14 +364,24 @@ void main() {
       when(httpHelperMock.faucetRequest(path: HttpPath.give, data: {
         'addr': correctWalletAddress,
         'amount': '100000000',
-      })).thenThrow(Exception(correctWalletAddress));
+      })).thenThrow(Exception());
 
-      final response = await StatelessCommercioAccount.requestFreeTokens(
-        walletAddress: correctWalletAddress,
-        httpHelper: httpHelperMock,
+      expectLater(
+        () => StatelessCommercioAccount.requestFreeTokens(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsA(isA<AccountRequestError>()),
       );
+    });
 
-      expectLater(response, isA<AccountRequestError>());
+    test('Default httpHelper should be throw an exception', () async {
+      expectLater(
+        () => StatelessCommercioAccount.requestFreeTokens(
+          walletAddress: correctWalletAddress,
+        ),
+        throwsA(isA<AccountRequestError>()),
+      );
     });
   });
 
@@ -391,7 +405,7 @@ void main() {
       expect(accountBalance[0].denom, correctAccountBalance[0].denom);
     });
 
-    test('Http error', () async {
+    test('Http 404 response', () async {
       when(
         httpHelperMock.getRequest(
           endpoint: HttpEndpoint.balance,
@@ -400,11 +414,29 @@ void main() {
       ).thenAnswer((_) => Future.value(Response('', 404)));
 
       expectLater(
-          () => StatelessCommercioAccount.checkAccountBalance(
-                walletAddress: correctWalletAddress,
-                httpHelper: httpHelperMock,
-              ),
-          throwsException);
+        () => StatelessCommercioAccount.checkAccountBalance(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsException,
+      );
+    });
+
+    test('Http error', () async {
+      when(
+        httpHelperMock.getRequest(
+          endpoint: HttpEndpoint.balance,
+          walletAddress: correctWalletAddress,
+        ),
+      ).thenAnswer((_) => throw Exception());
+
+      expectLater(
+        () => StatelessCommercioAccount.checkAccountBalance(
+          walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
+        ),
+        throwsA(isA<AccountRequestError>()),
+      );
     });
 
     test('Invalid address', () async {
@@ -417,11 +449,21 @@ void main() {
           (_) => Future.value(Response(wrongAddressAccountBalanceRaw, 500)));
 
       expectLater(
-          () => StatelessCommercioAccount.checkAccountBalance(
-                walletAddress: 'abc',
-                httpHelper: httpHelperMock,
-              ),
-          throwsNoSuchMethodError);
+        () => StatelessCommercioAccount.checkAccountBalance(
+          walletAddress: 'abc',
+          httpHelper: httpHelperMock,
+        ),
+        throwsNoSuchMethodError,
+      );
+    });
+
+    test('Default httpHelper should be throw an exception', () async {
+      expect(
+        () => StatelessCommercioAccount.checkAccountBalance(
+          walletAddress: 'abc',
+        ),
+        throwsA(isA<AccountRequestError>()),
+      );
     });
   });
 
@@ -439,8 +481,10 @@ void main() {
       );
 
       final response = await StatelessCommercioAccount.sendTokens(
-        senderAddress: correctWalletAddress,
-        senderWallet: correctWallet,
+        senderWallet: WalletWithAddress(
+          wallet: correctWallet,
+          address: correctWalletAddress,
+        ),
         recipientAddress: correctWalletAddress,
         amount: correctAccountBalance,
       );
@@ -455,12 +499,12 @@ void main() {
       );
 
       final response = await StatelessCommercioAccount.sendTokens(
-        senderAddress: correctWalletAddress,
-        senderWallet: correctWallet,
+        senderWallet: WalletWithAddress(
+          wallet: correctWallet,
+          address: correctWalletAddress,
+        ),
         recipientAddress: correctWalletAddress,
         amount: correctAccountBalance,
-        feeAmount: correctAccountBalance,
-        gas: '1000',
       );
 
       expect(response.success, isTrue);
@@ -474,8 +518,10 @@ void main() {
 
       expectLater(
         () => StatelessCommercioAccount.sendTokens(
-          senderAddress: correctWalletAddress,
-          senderWallet: correctWallet,
+          senderWallet: WalletWithAddress(
+            wallet: correctWallet,
+            address: correctWalletAddress,
+          ),
           recipientAddress: '',
           amount: correctAccountBalance,
         ),
@@ -490,8 +536,10 @@ void main() {
 
       expectLater(
         () => StatelessCommercioAccount.sendTokens(
-          senderAddress: '',
-          senderWallet: correctWallet,
+          senderWallet: WalletWithAddress(
+            wallet: correctWallet,
+            address: '',
+          ),
           recipientAddress: correctWalletAddress,
           amount: correctAccountBalance,
         ),

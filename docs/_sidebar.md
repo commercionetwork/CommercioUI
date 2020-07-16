@@ -1,0 +1,7 @@
+* [Home](/)
+* [Core](core/core.md)
+  * [Stateless](core/stateless.md)
+  * [Stateful](core/stateful.md)
+* [UI](ui/ui.md)
+  * [BLoC](ui/bloc.md)
+  * [Widgets](ui/widgets.md)

@@ -2,7 +2,7 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:commerciosdk/export.dart' as sdk;
+import 'package:commerciosdk/export.dart' hide Key;
 
 /// Represents a list of [SwitchListTile] with every switch that can be used
 /// to opt-in or opt-out the [EncryptedData] field before do an encrypted
@@ -14,7 +14,7 @@ class ShareDocumentEncryptedDataSwitchListTiles extends StatelessWidget {
   final Color inactiveTrackColor;
   final ImageProvider activeThumbImage;
   final ImageProvider inactiveThumbImage;
-  final Widget Function(MapEntry<sdk.EncryptedData, bool> entry) title;
+  final Widget Function(MapEntry<EncryptedData, bool> entry) title;
   final Widget subtitle;
   final Widget secondary;
   final bool isThreeLine;
@@ -43,12 +43,22 @@ class ShareDocumentEncryptedDataSwitchListTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CommercioDocsEncDataBloc, CommercioDocsEncDataState>(
         builder: (_, state) {
-      if (state is CommercioDocsEncDataChanged ||
-          state is CommercioDocsEncDataInitial) {
+      if (state is CommercioDocsEncDataStateData ||
+          state is CommercioDocsEncDataStateInitial) {
+        Iterable<MapEntry<EncryptedData, bool>> entries;
+
+        if (state is CommercioDocsEncDataStateData) {
+          entries = state.encryptedData.entries;
+        }
+
+        if (state is CommercioDocsEncDataStateInitial) {
+          entries = state.encryptedData.entries;
+        }
+
         return Column(
-            children: state.encryptedData.entries
+            children: entries
                 .map(
-                  (MapEntry<sdk.EncryptedData, bool> entry) => SwitchListTile(
+                  (MapEntry<EncryptedData, bool> entry) => SwitchListTile(
                     activeColor: activeColor,
                     activeTrackColor: activeTrackColor,
                     inactiveThumbColor: inactiveThumbColor,

@@ -12,7 +12,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // - Default error handling
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    RepositoryProvider<StatefulCommercioAccount>(
+      create: (_) => StatefulCommercioAccount(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,21 +26,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Provide the CommercioAccountBloc, still required
-    return BlocProvider<CommercioAccountBloc>(
-      create: (_) =>
-          CommercioAccountBloc(commercioAccount: StatefulCommercioAccount()),
+    return BlocProvider<CommercioAccountGenerateWalletBloc>(
+      create: (_) => CommercioAccountGenerateWalletBloc(
+        commercioAccount:
+            RepositoryProvider.of<StatefulCommercioAccount>(context),
+      ),
       child: MaterialApp(
-        title: 'Example app',
+        title: 'Example App',
         home: ExamplePage(),
       ),
     );
   }
 }
 
-class ExamplePage extends StatelessWidget {
+class ExamplePage extends StatefulWidget {
   ExamplePage({Key key}) : super(key: key);
 
+  @override
+  _ExamplePageState createState() => _ExamplePageState();
+}
+
+class _ExamplePageState extends State<ExamplePage> {
   final TextEditingController textCtrl = TextEditingController();
+
+  @override
+  void dispose() {
+    textCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,39 +66,39 @@ class ExamplePage extends StatelessWidget {
           // Custom FlatButton that when is pressed sends an event
           // to generate new mnemonic and derive the wallet
           GenerateWalletFlatButton(
-            accountEventCallback: () =>
-                const CommercioAccountGenerateNewWalletEvent(),
+            event: () => const CommercioAccountGenerateWalletEvent(),
             disabledTextColor: Colors.brown,
             color: Colors.orangeAccent,
-            child: () => const Text('Generate new wallet'),
-            loadingChild: () => const Text('Generating...'),
+            disabledColor: Colors.orange[700],
+            child: (_) => const Text('Generate new wallet'),
           ),
 
           const Text('Mnemonic words:'),
 
           // We can still use the BLoC components to intercept the states
           // and provide custom logic
-          BlocBuilder<CommercioAccountBloc, CommercioAccountState>(
-              builder: (_, state) {
-            textCtrl.text = '';
+          BlocBuilder<CommercioAccountGenerateWalletBloc,
+              CommercioAccountGenerateWalletState>(
+            builder: (_, state) {
+              state.when(
+                (mnemonic, wallet, walletAddress) => textCtrl.text = mnemonic,
+                initial: () => textCtrl.text = '',
+                loading: () => textCtrl.text = 'Generating...',
+                error: (e) => textCtrl.text = 'Error: $e',
+              );
 
-            if (state is CommercioAccountLoadingGenerateWallet) {
-              textCtrl.text = 'Generating...';
-            }
-
-            if (state is CommercioAccountGeneratedWithWallet) {
-              textCtrl.text = state.commercioAccount.mnemonic;
-            }
-
-            return TextField(
-              controller: textCtrl,
-              readOnly: true,
-              style: TextStyle(
-                  color: (state is CommercioAccountLoadingGenerateWallet)
+              return TextField(
+                controller: textCtrl,
+                readOnly: true,
+                style: TextStyle(
+                  color: (state is CommercioAccountGenerateWalletLoading)
                       ? Colors.grey
-                      : Colors.black),
-            );
-          }),
+                      : Colors.black,
+                ),
+                maxLines: null,
+              );
+            },
+          ),
 
           const Text('Wallet address:'),
 
@@ -88,8 +106,8 @@ class ExamplePage extends StatelessWidget {
           // that the user can intercept in the callback
           GenerateWalletTextField(
             readOnly: true,
-            loadingTextCallback: () => 'Generating...',
-            textCallback: (state) => state.commercioAccount.walletAddress,
+            loading: (_) => 'Generating...',
+            text: (_, state) => state.walletAddress,
           ),
         ],
       ),

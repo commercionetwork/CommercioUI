@@ -4,157 +4,196 @@ import 'package:bloc/bloc.dart';
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:meta/meta.dart';
 
-class CommercioAccountBloc
-    extends Bloc<CommercioAccountEvent, CommercioAccountState> {
+class CommercioAccountGenerateWalletBloc extends Bloc<
+    CommercioAccountGenerateWalletEvent, CommercioAccountGenerateWalletState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountBloc({@required this.commercioAccount});
+  CommercioAccountGenerateWalletBloc({@required this.commercioAccount})
+      : super(const CommercioAccountGenerateWalletInitial());
 
   @override
-  CommercioAccountState get initialState => CommercioAccountInitial();
-
-  @override
-  Stream<CommercioAccountState> mapEventToState(
-    CommercioAccountEvent event,
-  ) async* {
-    if (event is CommercioAccountGenerateNewWalletEvent) {
-      yield* _mapCommercioAccountGenerateNewWalletEventToState(event);
-    }
-
-    if (event is CommercioAccountRestoreWalletEvent) {
-      yield* _mapCommercioAccountRestoreWalletEventToState(event);
-    }
-
-    if (event is CommercioAccountRequestFreeTokensEvent) {
-      yield* _mapCommercioAccountRequestFreeTokensEventToState(event);
-    }
-
-    if (event is CommercioAccountCheckBalanceEvent) {
-      yield* _mapCommercioAccountCheckBalanceEventToState(event);
-    }
-
-    if (event is CommercioAccountSendTokensEvent) {
-      yield* _mapCommercioAccountSendTokensEventToState(event);
-    }
-
-    if (event is CommercioAccountGenerateQrEvent) {
-      yield* _mapCommercioAccountGenerateQrEventToState(event);
-    }
-
-    if (event is CommercioAccountGeneratePairwiseWalletEvent) {
-      yield* _mapCommercioAccountGeneratePairwiseWalletToState(event);
-    }
-  }
-
-  Stream<CommercioAccountState> _mapCommercioAccountRestoreWalletEventToState(
-    CommercioAccountRestoreWalletEvent event,
+  Stream<CommercioAccountGenerateWalletState> mapEventToState(
+    CommercioAccountGenerateWalletEvent event,
   ) async* {
     try {
-      yield const CommercioAccountLoadingRestoreWallet();
-
-      await commercioAccount.restoreWallet();
-
-      yield CommercioAccountRestoredWithWallet(
-          commercioAccount: commercioAccount);
-    } catch (e) {
-      yield CommercioAccountRestoreWalletError(e.toString());
-    }
-  }
-
-  Stream<CommercioAccountState>
-      _mapCommercioAccountGenerateNewWalletEventToState(
-    CommercioAccountGenerateNewWalletEvent event,
-  ) async* {
-    try {
-      yield const CommercioAccountLoadingGenerateWallet();
+      yield const CommercioAccountGenerateWalletLoading();
 
       await commercioAccount.generateNewWallet(
-          mnemonic: event.mnemonic,
-          lastDerivationPathSegment: event.lastDerivationPathSegment);
+        mnemonic: event.mnemonic,
+        lastDerivationPathSegment: event.lastDerivationPathSegment,
+      );
 
-      yield CommercioAccountGeneratedWithWallet(
-          commercioAccount: commercioAccount);
+      yield CommercioAccountGenerateWalletData(
+        mnemonic: commercioAccount.mnemonic,
+        wallet: commercioAccount.wallet,
+        walletAddress: commercioAccount.walletAddress,
+      );
     } catch (e) {
       yield CommercioAccountGenerateWalletError(e.toString());
     }
   }
+}
 
-  Stream<CommercioAccountState>
-      _mapCommercioAccountRequestFreeTokensEventToState(
-    CommercioAccountRequestFreeTokensEvent event,
+class CommercioAccountRestoreWalletBloc extends Bloc<
+    CommercioAccountRestoreWalletEvent, CommercioAccountRestoredWalletState> {
+  final StatefulCommercioAccount commercioAccount;
+
+  CommercioAccountRestoreWalletBloc({@required this.commercioAccount})
+      : super(const CommercioAccountRestoredWalletStateInitial());
+
+  @override
+  Stream<CommercioAccountRestoredWalletState> mapEventToState(
+    CommercioAccountRestoreWalletEvent event,
   ) async* {
     try {
-      yield const CommercioAccountLoadingRequestFreeTokensWallet();
-      final response =
-          await commercioAccount.requestFreeTokens(amount: event.amount);
+      yield const CommercioAccountRestoredWalletStateLoading();
 
-      yield CommercioAccountWithWalletFreeTokens(
-          commercioAccount: commercioAccount, accountRequestResponse: response);
+      if (event.mnemonic != null) {
+        await commercioAccount.generateNewWallet(mnemonic: event.mnemonic);
+      } else {
+        await commercioAccount.restoreWallet();
+      }
+
+      yield CommercioAccountRestoredWalletStateData(
+        mnemonic: commercioAccount.mnemonic,
+        wallet: commercioAccount.wallet,
+        walletAddress: commercioAccount.walletAddress,
+      );
     } catch (e) {
-      yield CommercioAccountRequestFreeTokensError(e.toString());
+      yield CommercioAccountRestoredWalletStateError(e.toString());
     }
   }
+}
 
-  Stream<CommercioAccountState> _mapCommercioAccountCheckBalanceEventToState(
-    CommercioAccountCheckBalanceEvent event,
-  ) async* {
-    try {
-      yield const CommercioAccountLoadingCheckBalance();
+class CommercioAccountGenerateQrBloc
+    extends Bloc<CommercioAccountGenerateQrEvent, CommercioAccountQrState> {
+  final StatefulCommercioAccount commercioAccount;
 
-      final balance = await commercioAccount.checkAccountBalance();
+  CommercioAccountGenerateQrBloc({@required this.commercioAccount})
+      : super(const CommercioAccountQrStateInitial());
 
-      yield CommercioAccountBalance(
-          commercioAccount: commercioAccount, balance: balance);
-    } catch (e) {
-      yield CommercioAccountCheckBalanceError(e.toString());
-    }
-  }
-
-  Stream<CommercioAccountState> _mapCommercioAccountSendTokensEventToState(
-    CommercioAccountSendTokensEvent event,
-  ) async* {
-    try {
-      yield const CommercioAccountLoadingSendTokens();
-
-      final result = await commercioAccount.sendTokens(
-          recipientAddress: event.recipientAddress,
-          amount: event.amount,
-          feeAmount: event.feeAmount,
-          gas: event.gas);
-
-      yield CommercioAccountSentTokens(
-          commercioAccount: commercioAccount, result: result);
-    } catch (e) {
-      yield CommercioAccountSendTokensError(e.toString());
-    }
-  }
-
-  Stream<CommercioAccountState> _mapCommercioAccountGenerateQrEventToState(
+  @override
+  Stream<CommercioAccountQrState> mapEventToState(
     CommercioAccountGenerateQrEvent event,
   ) async* {
     try {
-      yield const CommercioAccountLoadingGenerateQr();
+      yield const CommercioAccountQrStateLoading();
 
-      yield CommercioAccountQrWithWallet(commercioAccount: commercioAccount);
+      if (!commercioAccount.hasWalletAddress) {
+        throw const WalletNotFoundException();
+      }
+
+      yield CommercioAccountQrStateData(
+        walletAddress: commercioAccount.walletAddress,
+      );
     } catch (e) {
-      yield CommercioAccountGenerateQrError(e.toString());
+      yield CommercioAccountQrStateError(e.toString());
     }
   }
+}
 
-  Stream<CommercioAccountState>
-      _mapCommercioAccountGeneratePairwiseWalletToState(
+class CommercioAccountCheckBalanceBloc extends Bloc<
+    CommercioAccountCheckBalanceEvent, CommercioAccountBalanceState> {
+  final StatefulCommercioAccount commercioAccount;
+
+  CommercioAccountCheckBalanceBloc({@required this.commercioAccount})
+      : super(const CommercioAccountBalanceStateInitial());
+
+  @override
+  Stream<CommercioAccountBalanceState> mapEventToState(
+    CommercioAccountCheckBalanceEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountBalanceStateLoading();
+
+      final balance = await commercioAccount.checkAccountBalance();
+
+      yield CommercioAccountBalanceStateData(balance: balance);
+    } catch (e) {
+      yield CommercioAccountBalanceStateError(e.toString());
+    }
+  }
+}
+
+class CommercioAccountSendTokensBloc extends Bloc<
+    CommercioAccountSendTokensEvent, CommercioAccountSentTokensState> {
+  final StatefulCommercioAccount commercioAccount;
+
+  CommercioAccountSendTokensBloc({@required this.commercioAccount})
+      : super(const CommercioAccountSentTokensStateInitial());
+
+  @override
+  Stream<CommercioAccountSentTokensState> mapEventToState(
+    CommercioAccountSendTokensEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountSentTokensStateLoading();
+
+      final result = await commercioAccount.sendTokens(
+        recipientAddress: event.recipientAddress,
+        amount: event.amount,
+        fee: event.fee,
+        mode: event.mode,
+      );
+
+      yield CommercioAccountSentTokensStateData(result: result);
+    } catch (e) {
+      yield CommercioAccountSentTokensStateError(e.toString());
+    }
+  }
+}
+
+class CommercioAccountRequestFreeTokensBloc extends Bloc<
+    CommercioAccountRequestFreeTokensEvent, CommercioAccountFreeTokensState> {
+  final StatefulCommercioAccount commercioAccount;
+
+  CommercioAccountRequestFreeTokensBloc({@required this.commercioAccount})
+      : super(const CommercioAccountFreeTokensStateInitial());
+
+  @override
+  Stream<CommercioAccountFreeTokensState> mapEventToState(
+    CommercioAccountRequestFreeTokensEvent event,
+  ) async* {
+    try {
+      yield const CommercioAccountFreeTokensStateLoading();
+
+      final response =
+          await commercioAccount.requestFreeTokens(amount: event.amount);
+
+      yield CommercioAccountFreeTokensStateData(
+        accountRequestResponse: response,
+      );
+    } catch (e) {
+      yield CommercioAccountFreeTokensStateError(e.toString());
+    }
+  }
+}
+
+class CommercioAccountGeneratePairwiseWalletBloc extends Bloc<
+    CommercioAccountGeneratePairwiseWalletEvent,
+    CommercioAccountPaiwiseWalletState> {
+  final StatefulCommercioAccount commercioAccount;
+
+  CommercioAccountGeneratePairwiseWalletBloc({@required this.commercioAccount})
+      : super(const CommercioAccountPaiwiseWalletStateInitial());
+
+  @override
+  Stream<CommercioAccountPaiwiseWalletState> mapEventToState(
     CommercioAccountGeneratePairwiseWalletEvent event,
   ) async* {
     try {
-      yield const CommercioAccountLoadingGeneratePairwiseWallet();
+      yield const CommercioAccountPaiwiseWalletStateLoading();
 
       final pairwiseWallet = await commercioAccount.generatePairwiseWallet(
         lastDerivationPathSegment: event.lastDerivationPath,
       );
 
-      yield CommercioAccountGeneratedPaiwiseWallet(wallet: pairwiseWallet);
+      yield CommercioAccountPaiwiseWalletStateData(
+        wallet: pairwiseWallet,
+        walletAddress: pairwiseWallet.bech32Address,
+      );
     } catch (e) {
-      yield CommercioAccountGeneratePairwiseWalletError(e.toString());
+      yield CommercioAccountPaiwiseWalletStateError(e.toString());
     }
   }
 }

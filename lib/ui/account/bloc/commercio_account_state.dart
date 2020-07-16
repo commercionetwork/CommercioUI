@@ -1,89 +1,129 @@
 import 'package:commercio_ui/commercio_ui.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
-abstract class CommercioAccountState extends CommercioState {
-  const CommercioAccountState();
+part 'commercio_account_state.freezed.dart';
+
+@freezed
+abstract class CommercioAccountGenerateWalletState
+    with _$CommercioAccountGenerateWalletState {
+  const factory CommercioAccountGenerateWalletState({
+    @required String mnemonic,
+    @required Wallet wallet,
+    @required String walletAddress,
+  }) = CommercioAccountGenerateWalletData;
+
+  const factory CommercioAccountGenerateWalletState.initial() =
+      CommercioAccountGenerateWalletInitial;
+
+  const factory CommercioAccountGenerateWalletState.loading() =
+      CommercioAccountGenerateWalletLoading;
+
+  const factory CommercioAccountGenerateWalletState.error([String error]) =
+      CommercioAccountGenerateWalletError;
 }
 
-class CommercioAccountInitial extends CommercioAccountState {
-  @override
-  List<Object> get props => [];
+@freezed
+abstract class CommercioAccountRestoredWalletState
+    with _$CommercioAccountRestoredWalletState {
+  const factory CommercioAccountRestoredWalletState({
+    @required String mnemonic,
+    @required Wallet wallet,
+    @required String walletAddress,
+  }) = CommercioAccountRestoredWalletStateData;
+
+  const factory CommercioAccountRestoredWalletState.initial() =
+      CommercioAccountRestoredWalletStateInitial;
+
+  const factory CommercioAccountRestoredWalletState.loading() =
+      CommercioAccountRestoredWalletStateLoading;
+
+  const factory CommercioAccountRestoredWalletState.error([String error]) =
+      CommercioAccountRestoredWalletStateError;
 }
 
-class CommercioAccountWithWallet extends CommercioAccountState {
-  final StatefulCommercioAccount commercioAccount;
+@freezed
+abstract class CommercioAccountQrState with _$CommercioAccountQrState {
+  const factory CommercioAccountQrState({
+    @required String walletAddress,
+  }) = CommercioAccountQrStateData;
 
-  const CommercioAccountWithWallet({@required this.commercioAccount});
+  const factory CommercioAccountQrState.initial() =
+      CommercioAccountQrStateInitial;
 
-  @override
-  List<Object> get props => [commercioAccount];
+  const factory CommercioAccountQrState.loading() =
+      CommercioAccountQrStateLoading;
+
+  const factory CommercioAccountQrState.error([String error]) =
+      CommercioAccountQrStateError;
 }
 
-class CommercioAccountGeneratedWithWallet extends CommercioAccountWithWallet {
-  const CommercioAccountGeneratedWithWallet(
-      {@required StatefulCommercioAccount commercioAccount})
-      : super(commercioAccount: commercioAccount);
+@freezed
+abstract class CommercioAccountFreeTokensState
+    with _$CommercioAccountFreeTokensState {
+  const factory CommercioAccountFreeTokensState({
+    @required AccountRequestResponse accountRequestResponse,
+  }) = CommercioAccountFreeTokensStateData;
+
+  const factory CommercioAccountFreeTokensState.initial() =
+      CommercioAccountFreeTokensStateInitial;
+
+  const factory CommercioAccountFreeTokensState.loading() =
+      CommercioAccountFreeTokensStateLoading;
+
+  const factory CommercioAccountFreeTokensState.error([String error]) =
+      CommercioAccountFreeTokensStateError;
 }
 
-class CommercioAccountRestoredWithWallet extends CommercioAccountWithWallet {
-  const CommercioAccountRestoredWithWallet(
-      {@required StatefulCommercioAccount commercioAccount})
-      : super(commercioAccount: commercioAccount);
+@freezed
+abstract class CommercioAccountBalanceState
+    with _$CommercioAccountBalanceState {
+  const factory CommercioAccountBalanceState({
+    @required List<StdCoin> balance,
+  }) = CommercioAccountBalanceStateData;
+
+  const factory CommercioAccountBalanceState.initial() =
+      CommercioAccountBalanceStateInitial;
+
+  const factory CommercioAccountBalanceState.loading() =
+      CommercioAccountBalanceStateLoading;
+
+  const factory CommercioAccountBalanceState.error([String error]) =
+      CommercioAccountBalanceStateError;
 }
 
-class CommercioAccountQrWithWallet extends CommercioAccountWithWallet {
-  const CommercioAccountQrWithWallet(
-      {@required StatefulCommercioAccount commercioAccount})
-      : super(commercioAccount: commercioAccount);
+@freezed
+abstract class CommercioAccountSentTokensState
+    with _$CommercioAccountSentTokensState {
+  const factory CommercioAccountSentTokensState({
+    @required TransactionResult result,
+  }) = CommercioAccountSentTokensStateData;
+
+  const factory CommercioAccountSentTokensState.initial() =
+      CommercioAccountSentTokensStateInitial;
+
+  const factory CommercioAccountSentTokensState.loading() =
+      CommercioAccountSentTokensStateLoading;
+
+  const factory CommercioAccountSentTokensState.error([String error]) =
+      CommercioAccountSentTokensStateError;
 }
 
-class CommercioAccountWithWalletFreeTokens extends CommercioAccountState {
-  final StatefulCommercioAccount commercioAccount;
-  final AccountRequestResponse accountRequestResponse;
+@freezed
+abstract class CommercioAccountPaiwiseWalletState
+    with _$CommercioAccountPaiwiseWalletState {
+  const factory CommercioAccountPaiwiseWalletState({
+    @required Wallet wallet,
+    @required String walletAddress,
+  }) = CommercioAccountPaiwiseWalletStateData;
 
-  const CommercioAccountWithWalletFreeTokens({
-    @required this.commercioAccount,
-    @required this.accountRequestResponse,
-  });
+  const factory CommercioAccountPaiwiseWalletState.initial() =
+      CommercioAccountPaiwiseWalletStateInitial;
 
-  @override
-  List<Object> get props => [commercioAccount, accountRequestResponse];
-}
+  const factory CommercioAccountPaiwiseWalletState.loading() =
+      CommercioAccountPaiwiseWalletStateLoading;
 
-class CommercioAccountBalance extends CommercioAccountState {
-  final StatefulCommercioAccount commercioAccount;
-  final List<StdCoin> balance;
-
-  const CommercioAccountBalance({
-    @required this.commercioAccount,
-    @required this.balance,
-  });
-
-  @override
-  List<Object> get props => [commercioAccount, balance];
-}
-
-class CommercioAccountSentTokens extends CommercioAccountState {
-  final StatefulCommercioAccount commercioAccount;
-  final TransactionResult result;
-
-  const CommercioAccountSentTokens({
-    @required this.commercioAccount,
-    @required this.result,
-  });
-
-  @override
-  List<Object> get props => [commercioAccount, result];
-}
-
-class CommercioAccountGeneratedPaiwiseWallet extends CommercioAccountState {
-  final Wallet wallet;
-
-  const CommercioAccountGeneratedPaiwiseWallet({
-    @required this.wallet,
-  });
-
-  @override
-  List<Object> get props => [wallet];
+  const factory CommercioAccountPaiwiseWalletState.error([String error]) =
+      CommercioAccountPaiwiseWalletStateError;
 }

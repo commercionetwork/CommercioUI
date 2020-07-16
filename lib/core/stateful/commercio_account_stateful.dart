@@ -1,8 +1,8 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/core/utils/export.dart';
+import 'package:commercio_ui/core/utils/utils.dart';
+import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
@@ -10,7 +10,7 @@ import 'package:sacco/sacco.dart';
 /// wallets, send and request tokens.
 class StatefulCommercioAccount {
   final String secureStorageKey;
-  final FlutterSecureStorage secureStorage;
+  final ISecretStorage storage;
   NetworkInfo _networkInfo;
   HttpHelper httpHelper;
   WalletWithAddress walletWithAddress;
@@ -19,12 +19,12 @@ class StatefulCommercioAccount {
   /// Creates a [StatefulCommercioAccount] with the optional [storageKey],
   /// [storage] and [networkInfo].
   StatefulCommercioAccount({
-    String storageKey,
-    FlutterSecureStorage storage,
-    NetworkInfo networkInfo,
     HttpHelper httpHelper,
+    ISecretStorage storage,
+    NetworkInfo networkInfo,
+    String storageKey,
   })  : secureStorageKey = storageKey ?? 'commercio-account-mnemonic',
-        secureStorage = storage ?? const FlutterSecureStorage(),
+        storage = storage ?? SecretStorage(),
         _networkInfo = networkInfo ??
             NetworkInfo(
               bech32Hrp: 'did:com:',
@@ -47,12 +47,10 @@ class StatefulCommercioAccount {
   /// Returns [true] if the account has the mnemonic in memory.
   bool get hasMnemonic => mnemonic != null;
 
-  /// Set a new [networkInfo], invalidating current [walletWithAddress] and
-  /// [mnemonic].
+  /// Set a new [networkInfo], invalidating current [walletWithAddress].
   void set networkInfo(NetworkInfo networkInfo) {
     _networkInfo = networkInfo;
     walletWithAddress = null;
-    mnemonic = null;
   }
 
   /// Get the current [networkInfo].
@@ -65,23 +63,34 @@ class StatefulCommercioAccount {
   }
 
   /// Save the [mnemonic] in the secure storage.
-  Future<void> storeMnemonic({@required String mnemonic}) {
+  Future<void> storeMnemonic({String mnemonic}) {
+    final mnemonicToStore = mnemonic ?? this.mnemonic;
+
+    if (mnemonicToStore == null) {
+      throw Exception('No mnemonic found in memory');
+    }
+
     return StatelessCommercioAccount.storeMnemonic(
-        secureStorage: secureStorage,
-        secureStorageKey: secureStorageKey,
-        mnemonic: mnemonic ?? this.mnemonic);
+      secretStorage: storage,
+      secureStorageKey: secureStorageKey,
+      mnemonic: mnemonicToStore,
+    );
   }
 
   /// Restore and return the mnemonic from the secure storage.
   Future<String> fetchMnemonic() {
     return StatelessCommercioAccount.fetchMnemonic(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secretStorage: storage,
+      secureStorageKey: secureStorageKey,
+    );
   }
 
   /// Delete the mnemonic inside the secure storage.
   Future<void> deleteMnemonic() {
     return StatelessCommercioAccount.deleteMnemonic(
-        secureStorage: secureStorage, secureStorageKey: secureStorageKey);
+      secretStorage: storage,
+      secureStorageKey: secureStorageKey,
+    );
   }
 
   /// Restore and return the [Wallet] with the mnemonic stored inside the
@@ -92,15 +101,19 @@ class StatefulCommercioAccount {
   Future<Wallet> restoreWallet() async {
     mnemonic ??= await fetchMnemonic();
 
-    if (mnemonic == null) {
+    if (!hasMnemonic) {
       throw const MnemonicNotStoredException();
     }
 
     final wallet = await StatelessCommercioAccount.deriveWallet(
-        networkInfo: networkInfo, mnemonic: mnemonic);
+      networkInfo: networkInfo,
+      mnemonic: mnemonic,
+    );
 
-    walletWithAddress =
-        WalletWithAddress(wallet: wallet, address: wallet.bech32Address);
+    walletWithAddress = WalletWithAddress(
+      wallet: wallet,
+      address: wallet.bech32Address,
+    );
 
     return wallet;
   }
@@ -118,29 +131,27 @@ class StatefulCommercioAccount {
     await storeMnemonic(mnemonic: mnemonic);
 
     final wallet = await StatelessCommercioAccount.deriveWallet(
-        networkInfo: networkInfo,
-        mnemonic: this.mnemonic,
-        lastDerivationPathSegment: lastDerivationPathSegment);
+      networkInfo: networkInfo,
+      mnemonic: this.mnemonic,
+      lastDerivationPathSegment: lastDerivationPathSegment,
+    );
 
-    walletWithAddress =
-        WalletWithAddress(wallet: wallet, address: wallet.bech32Address);
+    walletWithAddress = WalletWithAddress(
+      wallet: wallet,
+      address: wallet.bech32Address,
+    );
 
     return wallet;
   }
 
   /// Generate a pairwise [Wallet] from the given [lastDerivationPathSegment].
-  /// If no [NetworkInfo] is setted an [Exception] is thrown.
-  /// If no [mnemonic] is already loaded an [WalletNotFoundException] is
+  /// If no [mnemonic] is already loaded an [MnemonicNotStoredException] is
   /// thrown.
   Future<Wallet> generatePairwiseWallet({
     @required String lastDerivationPathSegment,
   }) {
-    if (networkInfo == null) {
-      throw Exception('No network info');
-    }
-
-    if (mnemonic == null) {
-      throw WalletNotFoundException();
+    if (!hasMnemonic) {
+      throw MnemonicNotStoredException();
     }
 
     return StatelessCommercioAccount.generatePairwiseWallet(
@@ -158,7 +169,7 @@ class StatefulCommercioAccount {
   /// If the account does not have a wallet then [WalletNotFoundException] is
   /// thrown.
   Future<AccountRequestResponse> requestFreeTokens({String amount}) {
-    if (walletAddress == null) {
+    if (!hasWallet) {
       throw const WalletNotFoundException();
     }
 
@@ -167,7 +178,10 @@ class StatefulCommercioAccount {
     }
 
     return StatelessCommercioAccount.requestFreeTokens(
-        walletAddress: walletAddress, amount: amount, httpHelper: httpHelper);
+      walletAddress: walletAddress,
+      amount: amount,
+      httpHelper: httpHelper,
+    );
   }
 
   /// Get the account balance of this account as a list of [StdCoin].
@@ -175,17 +189,19 @@ class StatefulCommercioAccount {
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   /// If an error happens in the request [AccountRequestError] is thrown.
   Future<List<StdCoin>> checkAccountBalance() async {
-    if (wallet == null || walletAddress == null) {
+    if (!hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return StatelessCommercioAccount.checkAccountBalance(
-        walletAddress: walletAddress, httpHelper: httpHelper);
+      walletAddress: walletAddress,
+      httpHelper: httpHelper,
+    );
   }
 
   /// Send the [amount] of tokens from the accoun to a [recipientAddress] list.
   ///
-  /// An optional [feeAmount] and [gas] can be specified.
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
   ///
@@ -193,19 +209,19 @@ class StatefulCommercioAccount {
   Future<TransactionResult> sendTokens({
     @required String recipientAddress,
     @required List<StdCoin> amount,
-    List<StdCoin> feeAmount,
-    String gas,
+    StdFee fee,
+    BroadcastingMode mode,
   }) {
-    if (wallet == null || walletAddress == null) {
+    if (!hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return StatelessCommercioAccount.sendTokens(
-        senderAddress: walletAddress,
-        senderWallet: wallet,
-        recipientAddress: recipientAddress,
-        amount: amount,
-        feeAmount: feeAmount,
-        gas: gas);
+      senderWallet: walletWithAddress,
+      recipientAddress: recipientAddress,
+      amount: amount,
+      fee: fee,
+      mode: mode,
+    );
   }
 }

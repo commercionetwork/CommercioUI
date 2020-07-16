@@ -1,9 +1,9 @@
-import 'package:commercio_ui/ui/bloc/commercio_state.dart';
+import 'package:commercio_ui/core/utils/type_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EventFlatButton<B extends Bloc<E, S>, E, S, L extends CommercioLoading,
-    ERR extends CommercioError> extends StatelessWidget {
+class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
+    ERR extends S> extends StatelessWidget {
   final ValueChanged<bool> onHighlightChanged;
   final ButtonTextTheme textTheme;
   final Color textColor;
@@ -22,12 +22,12 @@ class EventFlatButton<B extends Bloc<E, S>, E, S, L extends CommercioLoading,
   final FocusNode focusNode;
   final bool autofocus;
   final MaterialTapTargetSize materialTapTargetSize;
-  final Widget Function() loadingChild;
-  final Widget Function() child;
-  final E Function() accountEventCallback;
-  final void Function(String errorMessage) errorCallback;
+  final Widget Function(BuildContext context) loading;
+  final Widget Function(BuildContext context) child;
+  final E Function() event;
+  final void Function(BuildContext context, String errorMessage) error;
 
-  const EventFlatButton({
+  const CommercioFlatButton({
     Key key,
     this.onHighlightChanged,
     this.textTheme,
@@ -47,73 +47,66 @@ class EventFlatButton<B extends Bloc<E, S>, E, S, L extends CommercioLoading,
     this.focusNode,
     this.autofocus,
     this.materialTapTargetSize,
-    @required this.loadingChild,
     @required this.child,
-    @required this.accountEventCallback,
-    this.errorCallback,
+    @required this.event,
+    this.error,
+    this.loading,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<B, S>(
-      builder: (context, state) {
-        if (state.runtimeType == ERR) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (errorCallback == null) {
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text((state as ERR).message),
+    return BlocConsumer<B, S>(
+      listener: (context, state) {
+        if (TypeHelper.hasType(state.runtimeType, ERR)) {
+          if (error == null) {
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                // [state] must be dynamic to call the [error] getter on it.
+                content: Text((state as dynamic).error as String),
                 backgroundColor: Colors.red,
-              ));
-            } else {
-              errorCallback((state as ERR).message);
-            }
-          });
+              ),
+            );
+          } else {
+            error(context, (state as dynamic).error as String);
+          }
         }
+      },
+      builder: (context, state) {
+        void Function() onPressed = (event != null)
+            ? () => BlocProvider.of<B>(context).add(event())
+            : null;
+        Widget childWidget = child(context);
 
-        if (state.runtimeType == L) {
-          return FlatButton(
-              onPressed: null,
-              onHighlightChanged: onHighlightChanged,
-              textTheme: textTheme,
-              disabledTextColor: disabledTextColor,
-              color: color,
-              disabledColor: disabledColor,
-              focusColor: focusColor,
-              hoverColor: hoverColor,
-              highlightColor: highlightColor,
-              splashColor: splashColor,
-              colorBrightness: colorBrightness,
-              padding: padding,
-              visualDensity: visualDensity,
-              shape: shape,
-              clipBehavior: clipBehavior ?? Clip.none,
-              focusNode: focusNode,
-              autofocus: autofocus ?? false,
-              materialTapTargetSize: materialTapTargetSize,
-              child: loadingChild());
+        if (TypeHelper.hasType(state.runtimeType, L)) {
+          onPressed = null;
+
+          if (loading != null) {
+            childWidget = loading(context);
+          }
         }
 
         return FlatButton(
-            onPressed: () =>
-                BlocProvider.of<B>(context).add(accountEventCallback()),
-            onHighlightChanged: onHighlightChanged,
-            textTheme: textTheme,
-            disabledTextColor: disabledTextColor,
-            color: color,
-            disabledColor: disabledColor,
-            focusColor: focusColor,
-            hoverColor: hoverColor,
-            highlightColor: highlightColor,
-            splashColor: splashColor,
-            colorBrightness: colorBrightness,
-            padding: padding,
-            visualDensity: visualDensity,
-            shape: shape,
-            clipBehavior: clipBehavior ?? Clip.none,
-            focusNode: focusNode,
-            autofocus: autofocus ?? false,
-            materialTapTargetSize: materialTapTargetSize,
-            child: child());
+          onPressed: onPressed,
+          onLongPress: null,
+          onHighlightChanged: onHighlightChanged,
+          textTheme: textTheme,
+          disabledTextColor: disabledTextColor,
+          color: color,
+          disabledColor: disabledColor,
+          focusColor: focusColor,
+          hoverColor: hoverColor,
+          highlightColor: highlightColor,
+          splashColor: splashColor,
+          colorBrightness: colorBrightness,
+          padding: padding,
+          visualDensity: visualDensity,
+          shape: shape,
+          clipBehavior: clipBehavior ?? Clip.none,
+          focusNode: focusNode,
+          autofocus: autofocus ?? false,
+          materialTapTargetSize: materialTapTargetSize,
+          child: childWidget,
+        );
       },
     );
   }

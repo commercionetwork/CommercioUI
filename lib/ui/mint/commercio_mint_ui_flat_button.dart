@@ -1,12 +1,12 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class OpenCdpFlatButton extends EventFlatButton<
-    CommercioMintBloc,
-    CommercioMintEvent,
-    CommercioMintState,
-    CommercioMintOpenCdpLoading,
-    CommercioMintOpenCdpError> {
+class OpenCdpFlatButton extends CommercioFlatButton<
+    CommercioMintOpenCdpBloc,
+    CommercioMintOpenCdpEvent,
+    CommercioMintOpenedCdpState,
+    CommercioMintOpenedCdpStateLoading,
+    CommercioMintOpenedCdpStateError> {
   OpenCdpFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -27,10 +27,10 @@ class OpenCdpFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioMintOpenCdpEvent Function() accountEventCallback,
+    @required CommercioMintOpenCdpEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -51,20 +51,20 @@ class OpenCdpFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class CloseCdpFlatButton extends EventFlatButton<
-    CommercioMintBloc,
-    CommercioMintEvent,
-    CommercioMintState,
-    CommercioMintCloseCdpLoading,
-    CommercioMintCloseCdpError> {
-  CloseCdpFlatButton({
+class DeriveCloseCdpFlatButton extends CommercioFlatButton<
+    CommercioMintDeriveCloseCdpBloc,
+    CommercioMintDeriveCloseCdpEvent,
+    CommercioMintDeriveCloseCdpState,
+    CommercioMintDeriveCloseCdpStateLoading,
+    CommercioMintDeriveCloseCdpStateError> {
+  DeriveCloseCdpFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -84,10 +84,10 @@ class CloseCdpFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioMintCloseCdpEvent Function() accountEventCallback,
+    @required CommercioMintDeriveCloseCdpEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -108,9 +108,66 @@ class CloseCdpFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
+        );
+}
+
+class CloseCdpsFlatButton extends CommercioFlatButton<
+    CommercioMintCloseCdpsBloc,
+    CommercioMintCloseCdpsEvent,
+    CommercioMintClosedCdpsState,
+    CommercioMintClosedCdpsStateLoading,
+    CommercioMintClosedCdpsStateError> {
+  CloseCdpsFlatButton({
+    Key key,
+    ValueChanged<bool> onHighlightChanged,
+    ButtonTextTheme textTheme,
+    Color textColor,
+    Color disabledTextColor,
+    Color color,
+    Color disabledColor,
+    Color focusColor,
+    Color hoverColor,
+    Color highlightColor,
+    Color splashColor,
+    Brightness colorBrightness,
+    EdgeInsetsGeometry padding,
+    VisualDensity visualDensity,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    FocusNode focusNode,
+    bool autofocus,
+    MaterialTapTargetSize materialTapTargetSize,
+    @required CommercioMintCloseCdpsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
+  }) : super(
+          key: key,
+          onHighlightChanged: onHighlightChanged,
+          textTheme: textTheme,
+          textColor: textColor,
+          disabledTextColor: disabledTextColor,
+          color: color,
+          disabledColor: disabledColor,
+          focusColor: focusColor,
+          hoverColor: hoverColor,
+          highlightColor: highlightColor,
+          splashColor: splashColor,
+          colorBrightness: colorBrightness,
+          padding: padding,
+          visualDensity: visualDensity,
+          shape: shape,
+          clipBehavior: clipBehavior,
+          focusNode: focusNode,
+          autofocus: autofocus,
+          materialTapTargetSize: materialTapTargetSize,
+          child: child,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }

@@ -6,108 +6,129 @@ abstract class CommercioDocsEvent extends Equatable {
   const CommercioDocsEvent();
 }
 
-class CommercioDocsShareDocumentEvent extends CommercioDocsEvent {
+class CommercioDocsDeriveDocumentEvent extends CommercioDocsEvent {
   final CommercioDocMetadata metadata;
   final List<String> recipients;
   final String docId;
+  final String contentUri;
   final CommercioDoSign doSign;
   final CommercioDocChecksum checksum;
-  final String contentUri;
-  final StdFee fee;
-
-  const CommercioDocsShareDocumentEvent({
-    @required this.metadata,
-    @required this.recipients,
-    this.docId,
-    this.doSign,
-    this.checksum,
-    this.contentUri,
-    this.fee,
-  });
-
-  @override
-  List<Object> get props =>
-      [metadata, recipients, docId, doSign, checksum, contentUri, fee];
-}
-
-class CommercioDocsShareEncryptedDocumentEvent extends CommercioDocsEvent {
-  final CommercioDocMetadata metadata;
-  final List<String> recipients;
-  final Key aesKey;
   final List<EncryptedData> encryptedData;
-  final String docId;
-  final CommercioDoSign doSign;
-  final CommercioDocChecksum checksum;
-  final String contentUri;
-  final StdFee fee;
+  final Key aesKey;
 
-  const CommercioDocsShareEncryptedDocumentEvent({
+  const CommercioDocsDeriveDocumentEvent({
     @required this.metadata,
     @required this.recipients,
-    @required this.encryptedData,
-    this.aesKey,
     this.docId,
+    this.contentUri,
     this.doSign,
     this.checksum,
-    this.contentUri,
-    this.fee,
+    this.encryptedData,
+    this.aesKey,
   });
 
   @override
   List<Object> get props => [
         metadata,
         recipients,
-        encryptedData,
-        aesKey,
         docId,
+        contentUri,
         doSign,
         checksum,
-        contentUri,
-        fee
+        encryptedData,
+        aesKey,
       ];
 }
 
-class CommercioDocsSendReceiptEvent extends CommercioDocsEvent {
-  final String recipient;
-  final String txHash;
-  final String docId;
+class CommercioDocsShareDocumentsEvent extends CommercioDocsEvent {
+  final List<CommercioDoc> commercioDocs;
+  final StdFee fee;
+  final BroadcastingMode mode;
 
-  const CommercioDocsSendReceiptEvent({
-    @required this.recipient,
-    @required this.txHash,
-    @required this.docId,
+  const CommercioDocsShareDocumentsEvent({
+    @required this.commercioDocs,
+    this.fee,
+    this.mode,
   });
 
   @override
-  List<Object> get props => [recipient, txHash, docId];
+  List<Object> get props => [commercioDocs, fee, mode];
+}
+
+class CommercioDocsDeriveReceiptEvent extends CommercioDocsEvent {
+  final String recipient;
+  final String txHash;
+  final String documentId;
+  final String proof;
+
+  const CommercioDocsDeriveReceiptEvent({
+    @required this.recipient,
+    @required this.txHash,
+    @required this.documentId,
+    this.proof = "",
+  });
+
+  @override
+  List<Object> get props => [recipient, txHash, documentId, proof];
+}
+
+class CommercioDocsSendReceiptsEvent extends CommercioDocsEvent {
+  final List<CommercioDocReceipt> commercioDocReceipts;
+  final StdFee fee;
+  final BroadcastingMode mode;
+
+  const CommercioDocsSendReceiptsEvent({
+    @required this.commercioDocReceipts,
+    this.fee,
+    this.mode,
+  });
+
+  @override
+  List<Object> get props => [commercioDocReceipts, fee, mode];
 }
 
 class CommercioDocsSentDocumentsEvent extends CommercioDocsEvent {
-  const CommercioDocsSentDocumentsEvent();
+  final String walletAddress;
+
+  const CommercioDocsSentDocumentsEvent({
+    @required this.walletAddress,
+  });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [walletAddress];
 }
 
 class CommercioDocsReceivedDocumentsEvent extends CommercioDocsEvent {
-  const CommercioDocsReceivedDocumentsEvent();
+  final String walletAddress;
+
+  const CommercioDocsReceivedDocumentsEvent({
+    @required this.walletAddress,
+  });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [walletAddress];
 }
 
 class CommercioDocsSentReceiptsEvent extends CommercioDocsEvent {
-  const CommercioDocsSentReceiptsEvent();
+  final String walletAddress;
+
+  const CommercioDocsSentReceiptsEvent({
+    @required this.walletAddress,
+  });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [walletAddress];
 }
 
 class CommercioDocsReceivedReceiptsEvent extends CommercioDocsEvent {
-  const CommercioDocsReceivedReceiptsEvent();
+  final String walletAddress;
+
+  const CommercioDocsReceivedReceiptsEvent({
+    @required this.walletAddress,
+  });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [walletAddress];
 }
 
 abstract class CommercioDocsEncDataEvent extends Equatable {

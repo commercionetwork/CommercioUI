@@ -5,166 +5,203 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:meta/meta.dart';
 
-class CommercioIdBloc extends Bloc<CommercioIdEvent, CommercioIdState> {
+class CommercioIdGenerateKeysBloc
+    extends Bloc<CommercioIdGenerateKeysEvent, CommercioIdGeneratedKeysState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdBloc({@required this.commercioId});
+  CommercioIdGenerateKeysBloc({@required this.commercioId})
+      : super(const CommercioIdGeneratedKeysStateInitial());
 
   @override
-  CommercioIdState get initialState => const CommercioIdInitial();
-
-  @override
-  Stream<CommercioIdState> mapEventToState(
-    CommercioIdEvent event,
-  ) async* {
-    if (event is CommercioIdGenerateKeysEvent) {
-      yield* _mapCommercioIdGenerateKeysEventToState(event);
-    }
-
-    if (event is CommercioIdRestoreKeysEvent) {
-      yield* _mapCommercioIdRestoreKeysEventToState(event);
-    }
-
-    if (event is CommercioIdDeleteKeysEvent) {
-      yield* _mapCommercioIdDeleteKeysEventToState(event);
-    }
-
-    if (event is CommercioIdDeriveDidDocumentEvent) {
-      yield* _mapCommercioIdDeriveDidDocumentEventToState(event);
-    }
-
-    if (event is CommercioIdSetDidDocumentEvent) {
-      yield* _mapCommercioIdSetDidDocumentEventToState(event);
-    }
-
-    if (event is CommercioIdRechargeGovernmentEvent) {
-      yield* _mapCommercioIdRechargeGovernmentEventToState(event);
-    }
-
-    if (event is CommercioIdRequestDidPowerUpEvent) {
-      yield* _mapCommercioIdRequestDidPowerUpEventToState(event);
-    }
-  }
-
-  Stream<CommercioIdState> _mapCommercioIdGenerateKeysEventToState(
+  Stream<CommercioIdGeneratedKeysState> mapEventToState(
     CommercioIdGenerateKeysEvent event,
   ) async* {
     try {
-      yield const CommercioIdGeneratingKeysLoading();
+      yield const CommercioIdGeneratedKeysStateLoading();
 
-      await commercioId.generateKeys();
+      final keys = await commercioId.generateKeys();
 
-      yield CommercioIdWithGeneratedKeys(commercioId: commercioId);
+      yield CommercioIdGeneratedKeysStateData(commercioIdKeys: keys);
     } catch (e) {
-      yield CommercioIdGeneratingKeysError(e.toString());
+      yield CommercioIdGeneratedKeysStateError(e.toString());
     }
   }
+}
 
-  Stream<CommercioIdState> _mapCommercioIdRestoreKeysEventToState(
+class CommercioIdRestoreKeysBloc
+    extends Bloc<CommercioIdRestoreKeysEvent, CommercioIdRestoredKeysState> {
+  final StatefulCommercioId commercioId;
+
+  CommercioIdRestoreKeysBloc({@required this.commercioId})
+      : super(const CommercioIdRestoredKeysStateInitial());
+
+  @override
+  Stream<CommercioIdRestoredKeysState> mapEventToState(
     CommercioIdRestoreKeysEvent event,
   ) async* {
     try {
-      yield const CommercioIdRestoringKeysLoading();
+      yield const CommercioIdRestoredKeysStateLoading();
 
-      await commercioId.restoreKeys();
+      final keys = await commercioId.restoreKeys();
 
-      yield CommercioIdWithRestoredKeys(commercioId: commercioId);
+      yield CommercioIdRestoredKeysStateData(commercioIdKeys: keys);
     } catch (e) {
-      yield CommercioIdRestoringKeysError(e.toString());
+      yield CommercioIdRestoredKeysStateError(e.toString());
     }
   }
+}
 
-  Stream<CommercioIdState> _mapCommercioIdDeleteKeysEventToState(
+class CommercioIdDeleteKeysBloc
+    extends Bloc<CommercioIdDeleteKeysEvent, CommercioIdDeletedKeysState> {
+  final StatefulCommercioId commercioId;
+
+  CommercioIdDeleteKeysBloc({@required this.commercioId})
+      : super(const CommercioIdDeletedKeysStateInitial());
+
+  @override
+  Stream<CommercioIdDeletedKeysState> mapEventToState(
     CommercioIdDeleteKeysEvent event,
   ) async* {
     try {
-      yield const CommercioIdDeletingKeysLoading();
+      yield const CommercioIdDeletedKeysStateLoading();
 
       await commercioId.deleteKeys();
 
-      yield CommercioIdWithDeletedKeys(commercioId: commercioId);
+      yield CommercioIdDeletedKeysStateData();
     } catch (e) {
-      yield CommercioIdDeletingKeysError(e.toString());
+      yield CommercioIdDeletedKeysStateError(e.toString());
     }
   }
+}
 
-  Stream<CommercioIdState> _mapCommercioIdDeriveDidDocumentEventToState(
+class CommercioIdDeriveDidDocumentBloc extends Bloc<
+    CommercioIdDeriveDidDocumentEvent, CommercioIdDerivedDidDocumentState> {
+  final StatefulCommercioId commercioId;
+
+  CommercioIdDeriveDidDocumentBloc({@required this.commercioId})
+      : super(const CommercioIdDerivedDidDocumentStateInitial());
+
+  @override
+  Stream<CommercioIdDerivedDidDocumentState> mapEventToState(
     CommercioIdDeriveDidDocumentEvent event,
   ) async* {
     try {
-      yield const CommercioIdDerivingDidDocumentLoading();
+      yield const CommercioIdDerivedDidDocumentStateLoading();
 
-      final didDocument = await commercioId.derivateDidDocument();
+      final didDocument = await commercioId.deriveDidDocument();
 
-      yield CommercioIdWithDerivedDidDocument(
-          commercioId: commercioId, didDocument: didDocument);
+      yield CommercioIdDerivedDidDocumentStateData(didDocument: didDocument);
     } catch (e) {
-      yield CommercioIdDerivingDidDocumentError(e.toString());
+      yield CommercioIdDerivedDidDocumentStateError(e.toString());
     }
   }
+}
 
-  Stream<CommercioIdState> _mapCommercioIdSetDidDocumentEventToState(
-    CommercioIdSetDidDocumentEvent event,
+class CommercioIdSetDidDocumentsBloc extends Bloc<
+    CommercioIdSetDidDocumentsEvent, CommercioIdSetDidDocumentsState> {
+  final StatefulCommercioId commercioId;
+
+  CommercioIdSetDidDocumentsBloc({@required this.commercioId})
+      : super(const CommercioIdSetDidDocumentsStateInitial());
+
+  @override
+  Stream<CommercioIdSetDidDocumentsState> mapEventToState(
+    CommercioIdSetDidDocumentsEvent event,
   ) async* {
     try {
-      yield const CommercioIdSettingDidDocumentLoading();
+      yield const CommercioIdSetDidDocumentsStateLoading();
 
-      TransactionResult transactionResult;
+      final result = await commercioId.setDidDocuments(
+        didDocuments: event.didDocuments,
+      );
 
-      if (event.didDocument != null) {
-        transactionResult =
-            await commercioId.setDidDocument(didDocument: event.didDocument);
-      } else {
-        transactionResult = await commercioId.setDidDocument();
-      }
-
-      yield CommercioIdSetDidDocument(
-          commercioId: commercioId, transactionResult: transactionResult);
+      yield CommercioIdSetDidDocumentsStateData(result: result);
     } catch (e) {
-      yield CommercioIdSettingDidDocumentError(e.toString());
+      yield CommercioIdSetDidDocumentsStateError(e.toString());
     }
   }
+}
 
-  Stream<CommercioIdState> _mapCommercioIdRechargeGovernmentEventToState(
-    CommercioIdRechargeGovernmentEvent event,
+class CommercioIdRechargeTumblerBloc extends Bloc<
+    CommercioIdRechargeTumblerEvent, CommercioIdRechargedTumblerState> {
+  final StatefulCommercioId commercioId;
+
+  CommercioIdRechargeTumblerBloc({@required this.commercioId})
+      : super(const CommercioIdRechargedTumblerStateInitial());
+
+  @override
+  Stream<CommercioIdRechargedTumblerState> mapEventToState(
+    CommercioIdRechargeTumblerEvent event,
   ) async* {
     try {
-      yield const CommercioIdRechargingGovernmentLoading();
+      yield const CommercioIdRechargedTumblerStateLoading();
 
-      TransactionResult transactionResult;
+      TransactionResult result;
 
-      if (event.rechargeFee != null && event.rechargeGas != null) {
-        transactionResult = await commercioId.rechargeGovernment(
-            rechargeAmount: event.rechargeAmount,
-            rechargeFee: event.rechargeFee,
-            rechargeGas: event.rechargeGas);
-      } else {
-        transactionResult = await commercioId.rechargeGovernment(
-            rechargeAmount: event.rechargeAmount);
-      }
+      result = await commercioId.rechargeTumbler(
+        amount: event.amount,
+        fee: event.fee,
+        mode: event.mode,
+      );
 
-      yield CommercioIdRechargedGovernment(
-          commercioId: commercioId, transactionResult: transactionResult);
+      yield CommercioIdRechargedTumblerStateData(result: result);
     } catch (e) {
-      yield CommercioIdRechargingGovernmentError(e.toString());
+      yield CommercioIdRechargedTumblerStateError(e.toString());
     }
   }
+}
 
-  Stream<CommercioIdState> _mapCommercioIdRequestDidPowerUpEventToState(
-    CommercioIdRequestDidPowerUpEvent event,
+class CommercioIdDeriveDidPowerUpRequestBloc extends Bloc<
+    CommercioIdDeriveDidPowerUpRequestEvent,
+    CommercioIdDeriveDidPowerUpRequestState> {
+  final StatefulCommercioId commercioId;
+
+  CommercioIdDeriveDidPowerUpRequestBloc({@required this.commercioId})
+      : super(const CommercioIdDeriveDidPowerUpRequestStateInitial());
+
+  @override
+  Stream<CommercioIdDeriveDidPowerUpRequestState> mapEventToState(
+    CommercioIdDeriveDidPowerUpRequestEvent event,
   ) async* {
     try {
-      yield const CommercioIdRequestingDidPowerUpLoading();
+      yield const CommercioIdDeriveDidPowerUpRequestStateLoading();
 
-      final transactionResult = await commercioId.requestDidPowerUp(
-          pairwiseAddress: event.pairwiseAddress,
-          amount: event.amount,
-          rsaSignaturePrivateKey: event.rsaSignaturePrivateKey);
+      final powerUpRequest = await commercioId.deriveDidPowerUpRequest(
+        pairwiseAddress: event.pairwiseAddress,
+        amount: event.amount,
+      );
 
-      yield CommercioIdRequestedDidPowerUp(
-          commercioId: commercioId, transactionResult: transactionResult);
+      yield CommercioIdDeriveDidPowerUpRequestStateData(
+        didPowerUpRequest: powerUpRequest,
+      );
     } catch (e) {
-      yield CommercioIdRequestingDidPowerUpError(e.toString());
+      yield CommercioIdDeriveDidPowerUpRequestStateError(e.toString());
+    }
+  }
+}
+
+class CommercioIdRequestDidPowerUpsBloc extends Bloc<
+    CommercioIdRequestDidPowerUpsEvent, CommercioIdRequestedDidPowerUpsState> {
+  final StatefulCommercioId commercioId;
+
+  CommercioIdRequestDidPowerUpsBloc({@required this.commercioId})
+      : super(const CommercioIdRequestedDidPowerUpsStateInitial());
+
+  @override
+  Stream<CommercioIdRequestedDidPowerUpsState> mapEventToState(
+    CommercioIdRequestDidPowerUpsEvent event,
+  ) async* {
+    try {
+      yield const CommercioIdRequestedDidPowerUpsStateLoading();
+
+      final result = await commercioId.requestDidPowerUps(
+        powerUpRequests: event.powerUpRequests,
+        fee: event.fee,
+      );
+
+      yield CommercioIdRequestedDidPowerUpsStateData(result: result);
+    } catch (e) {
+      yield CommercioIdRequestedDidPowerUpsStateError(e.toString());
     }
   }
 }

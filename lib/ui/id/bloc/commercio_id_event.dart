@@ -34,41 +34,58 @@ class CommercioIdDeriveDidDocumentEvent extends CommercioIdEvent {
   List<Object> get props => [];
 }
 
-class CommercioIdSetDidDocumentEvent extends CommercioIdEvent {
-  final DidDocument didDocument;
+class CommercioIdSetDidDocumentsEvent extends CommercioIdEvent {
+  final List<DidDocument> didDocuments;
+  final StdFee fee;
+  final BroadcastingMode mode;
 
-  const CommercioIdSetDidDocumentEvent({this.didDocument});
-
-  @override
-  List<Object> get props => [];
-}
-
-class CommercioIdRechargeGovernmentEvent extends CommercioIdEvent {
-  final List<StdCoin> rechargeAmount;
-  final List<StdCoin> rechargeFee;
-  final String rechargeGas;
-
-  const CommercioIdRechargeGovernmentEvent({
-    @required this.rechargeAmount,
-    this.rechargeFee,
-    this.rechargeGas,
+  const CommercioIdSetDidDocumentsEvent({
+    this.didDocuments,
+    this.fee,
+    this.mode,
   });
 
   @override
-  List<Object> get props => [rechargeAmount, rechargeFee, rechargeGas];
+  List<Object> get props => [didDocuments, fee, mode];
 }
 
-class CommercioIdRequestDidPowerUpEvent extends CommercioIdEvent {
+class CommercioIdRechargeTumblerEvent extends CommercioIdEvent {
+  final List<StdCoin> amount;
+  final StdFee fee;
+  final BroadcastingMode mode;
+
+  const CommercioIdRechargeTumblerEvent({
+    @required this.amount,
+    this.fee,
+    this.mode,
+  });
+
+  @override
+  List<Object> get props => [amount, fee, mode];
+}
+
+class CommercioIdDeriveDidPowerUpRequestEvent extends CommercioIdEvent {
   final String pairwiseAddress;
   final List<StdCoin> amount;
-  final RSAPrivateKey rsaSignaturePrivateKey;
 
-  const CommercioIdRequestDidPowerUpEvent({
+  const CommercioIdDeriveDidPowerUpRequestEvent({
     @required this.pairwiseAddress,
     @required this.amount,
-    this.rsaSignaturePrivateKey,
   });
 
   @override
-  List<Object> get props => [pairwiseAddress, amount, rsaSignaturePrivateKey];
+  List<Object> get props => [pairwiseAddress, amount];
+}
+
+class CommercioIdRequestDidPowerUpsEvent extends CommercioIdEvent {
+  final List<RequestDidPowerUp> powerUpRequests;
+  final StdFee fee;
+
+  const CommercioIdRequestDidPowerUpsEvent({
+    @required this.powerUpRequests,
+    this.fee,
+  });
+
+  @override
+  List<Object> get props => [powerUpRequests, fee];
 }

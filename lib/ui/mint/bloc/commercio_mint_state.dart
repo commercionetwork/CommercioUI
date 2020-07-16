@@ -1,36 +1,56 @@
-import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commerciosdk/export.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
-abstract class CommercioMintState extends CommercioState {
-  const CommercioMintState();
+part 'commercio_mint_state.freezed.dart';
+
+@freezed
+abstract class CommercioMintOpenedCdpState with _$CommercioMintOpenedCdpState {
+  const factory CommercioMintOpenedCdpState({
+    @required TransactionResult result,
+  }) = CommercioMintOpenedCdpStateData;
+
+  const factory CommercioMintOpenedCdpState.initial() =
+      CommercioMintOpenedCdpStateInitial;
+
+  const factory CommercioMintOpenedCdpState.loading() =
+      CommercioMintOpenedCdpStateLoading;
+
+  const factory CommercioMintOpenedCdpState.error([String error]) =
+      CommercioMintOpenedCdpStateError;
 }
 
-class CommercioMintInitial extends CommercioMintState {
-  const CommercioMintInitial();
+@freezed
+abstract class CommercioMintDeriveCloseCdpState
+    with _$CommercioMintDeriveCloseCdpState {
+  const factory CommercioMintDeriveCloseCdpState({
+    @required CloseCdp closeCdp,
+  }) = CommercioMintDeriveCloseCdpStateData;
 
-  @override
-  List<Object> get props => [];
+  const factory CommercioMintDeriveCloseCdpState.initial() =
+      CommercioMintDeriveCloseCdpStateInitial;
+
+  const factory CommercioMintDeriveCloseCdpState.loading() =
+      CommercioMintDeriveCloseCdpStateLoading;
+
+  const factory CommercioMintDeriveCloseCdpState.error([String error]) =
+      CommercioMintDeriveCloseCdpStateError;
 }
 
-class CommercioMintOpenedCdp extends CommercioMintState {
-  final StatefulCommercioMint commercioMint;
-  final TransactionResult transactionResult;
+@freezed
+abstract class CommercioMintClosedCdpsState
+    with _$CommercioMintClosedCdpsState {
+  const factory CommercioMintClosedCdpsState({
+    @required TransactionResult result,
+  }) = CommercioMintClosedCdpsStateData;
 
-  const CommercioMintOpenedCdp(
-      {@required this.commercioMint, @required this.transactionResult});
+  const factory CommercioMintClosedCdpsState.initial() =
+      CommercioMintClosedCdpsStateInitial;
 
-  @override
-  List<Object> get props => [commercioMint, transactionResult];
-}
+  const factory CommercioMintClosedCdpsState.loading() =
+      CommercioMintClosedCdpsStateLoading;
 
-class CommercioMintClosedCdp extends CommercioMintState {
-  final StatefulCommercioMint commercioMint;
-  final TransactionResult transactionResult;
-
-  const CommercioMintClosedCdp(
-      {@required this.commercioMint, @required this.transactionResult});
-
-  @override
-  List<Object> get props => [commercioMint, transactionResult];
+  const factory CommercioMintClosedCdpsState.error([String error]) =
+      CommercioMintClosedCdpsStateError;
 }

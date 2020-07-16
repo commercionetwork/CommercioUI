@@ -1,146 +1,220 @@
+import 'dart:convert';
+
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
+import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
 /// The [StatelessCommercioDocs] allows you to send a document to another user,
 /// and retrieve the list of documents that you have received.
-class StatelessCommercioDocs {
-  StatelessCommercioDocs._();
-
-  /// Share the document associated with the given [metadata] and having the
-  /// optional [contentUri], [doSign] and [checksum] from the [senderWallet] to
-  /// the [recipients] list of addresses.
-  /// The [docId] should be a valid UUID v5, if it's not specified a new one
-  /// is generated.
-  /// An optional [fee] can be specified.
+abstract class StatelessCommercioDocs {
+  /// Returns the [CommercioDoc] from the given [wallet] and data.
   ///
-  /// Returns the [TransactionResult].
-  static Future<TransactionResult> shareDocument({
-    @required Wallet senderWallet,
-    @required CommercioDocMetadata metadata,
-    @required List<String> recipients,
-    String docId,
-    CommercioDoSign doSign,
-    CommercioDocChecksum checksum,
-    String contentUri,
-    StdFee fee,
-  }) async {
-    return shareEncryptedDocument(
-      wallet: senderWallet,
-      metadata: metadata,
-      recipients: recipients,
-      aesKey: null,
-      encryptedData: null,
-      docId: docId,
-      doSign: doSign,
-      checksum: checksum,
-      contentUri: contentUri,
-      fee: fee,
-    );
-  }
-
-  /// Share the document associated with the given [metadata] and having the
+  /// The document associated with the given [metadata] and having the
   /// optional [contentUri], [doSign] and [checksum] from the [senderWallet] to
   /// the [recipients] list of addresses.
   /// The [encryptedData] are encrypted with an optional [aesKey].
   /// If no [aesKey] is provided a new one is generated.
   ///
-  /// The [docId] should be a valid UUID v5, if it's not specified a new one
+  /// The [docId] should be a valid UUID v4, if it's not specified a new one
   /// is generated.
-  /// An optional [fee] can be specified.
-  ///
-  /// Returns the [TransactionResult].
-  static Future<TransactionResult> shareEncryptedDocument({
+  static Future<CommercioDoc> deriveCommercioDocument({
     @required Wallet wallet,
     @required CommercioDocMetadata metadata,
     @required List<String> recipients,
-    @required List<EncryptedData> encryptedData,
-    Key aesKey,
     String docId,
+    String contentUri,
     CommercioDoSign doSign,
     CommercioDocChecksum checksum,
-    String contentUri,
-    StdFee fee,
+    List<EncryptedData> encryptedData,
+    Key aesKey,
   }) {
     final id = docId ?? Uuid().v4();
 
-    return DocsHelper.shareDocument(
+    return CommercioDocHelper.fromWallet(
+      wallet: wallet,
+      recipients: recipients,
       id: id,
       metadata: metadata,
-      recipients: recipients,
-      wallet: wallet,
-      doSign: doSign,
       checksum: checksum,
       contentUri: contentUri,
-      aesKey: aesKey,
+      doSign: doSign,
       encryptedData: encryptedData,
-      fee: fee,
+      aesKey: aesKey,
     );
   }
 
-  /// Send a receipt which tells the [recipient] that the document from
-  /// identified by [docId] in transaction [txHash] was read by [senderWallet].
-  ///
-  /// An optional reading [proof] can be specified and also a custom [fee].
+  /// Share the list of [CommercioDoc] from the [wallet].
+  /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> sendReceipt({
-    @required Wallet senderWallet,
+  static Future<TransactionResult> shareDocuments({
+    @required Wallet wallet,
+    @required List<CommercioDoc> commercioDocs,
+    StdFee fee,
+    BroadcastingMode mode,
+  }) async {
+    return DocsHelper.shareDocumentsList(
+      commercioDocs,
+      wallet,
+      fee: fee,
+      mode: mode,
+    );
+  }
+
+  /// Returns a [CommercioDocReceipt] which tells the [recipient] that the
+  /// document having the specified [documentId] and present inside the
+  /// transaction with [txHash] has been properly seen.
+  ///
+  /// An optiona [proof] of reading can be specified.
+  static CommercioDocReceipt deriveReceipt({
+    @required Wallet wallet,
     @required String recipient,
     @required String txHash,
-    @required String docId,
+    @required String documentId,
     String proof = "",
-    StdFee fee,
   }) {
-    return DocsHelper.sendDocumentReceipt(
+    return CommercioDocReceiptHelper.fromWallet(
+      wallet: wallet,
       recipient: recipient,
       txHash: txHash,
-      documentId: docId,
-      wallet: senderWallet,
+      documentId: documentId,
       proof: proof,
+    );
+  }
+
+  /// Send a list of receipts [commercioDocReceipts] from the [wallet].
+  /// An optional [fee] and [mode] can be specified.
+  ///
+  /// Returns the [TransactionResult].
+  static Future<TransactionResult> sendReceipts({
+    @required List<CommercioDocReceipt> commercioDocReceipts,
+    @required Wallet wallet,
+    StdFee fee,
+    BroadcastingMode mode,
+  }) {
+    return DocsHelper.sendDocumentReceiptsList(
+      commercioDocReceipts,
+      wallet,
       fee: fee,
+      mode: mode,
     );
   }
 
-  /// Returns the list of [CommercioDoc] sent from [walletWithAddress].
+  /// Returns the list of [CommercioDoc] sent by [walletAddress].
+  ///
+  /// An optional [HttpHelper] can be specified.
   static Future<List<CommercioDoc>> sentDocuments({
-    @required WalletWithAddress walletWithAddress,
+    @required String walletAddress,
+    HttpHelper httpHelper,
   }) async {
-    return DocsHelper.getSendDocuments(
-      walletWithAddress.address,
-      walletWithAddress.wallet,
-    );
+    httpHelper ??= HttpHelper();
+
+    Response response;
+    try {
+      response = await httpHelper.getRequest(
+        endpoint: HttpEndpoint.sentDocs,
+        walletAddress: walletAddress,
+      );
+    } catch (e) {
+      throw Exception('Network error: $e');
+    }
+
+    if (response.statusCode != 200) {
+      throw Exception('${response.statusCode}: ${response.body}');
+    }
+
+    final docs = jsonDecode(response.body)['result'] as List;
+
+    return docs.map((doc) => CommercioDoc.fromJson(doc)).toList();
   }
 
-  /// Returns the list of [CommercioDoc] received by [walletWithAddress].
+  /// Returns the list of [CommercioDoc] received by [walletAddress].
+  ///
+  /// An optional [HttpHelper] can be specified.
   static Future<List<CommercioDoc>> receivedDocuments({
-    @required WalletWithAddress walletWithAddress,
+    @required String walletAddress,
+    HttpHelper httpHelper,
   }) async {
-    return DocsHelper.getReceivedDocuments(
-      walletWithAddress.address,
-      walletWithAddress.wallet,
-    );
+    httpHelper ??= HttpHelper();
+
+    Response response;
+    try {
+      response = await httpHelper.getRequest(
+        endpoint: HttpEndpoint.receivedDocs,
+        walletAddress: walletAddress,
+      );
+    } catch (e) {
+      throw Exception('Network error: $e');
+    }
+
+    if (response.statusCode != 200) {
+      throw Exception('${response.statusCode}: ${response.body}');
+    }
+
+    final docs = jsonDecode(response.body)['result'] as List;
+
+    return docs.map((doc) => CommercioDoc.fromJson(doc)).toList();
   }
 
-  /// Returns the list of [CommercioDocReceipt] sent from [walletWithAddress].
+  /// Returns the list of [CommercioDocReceipt] sent by [walletAddress].
+  ///
+  /// An optional [HttpHelper] can be specified.
   static Future<List<CommercioDocReceipt>> sentReceipts({
-    @required WalletWithAddress walletWithAddress,
+    @required String walletAddress,
+    HttpHelper httpHelper,
   }) async {
-    return DocsHelper.getSentReceipts(
-      walletWithAddress.address,
-      walletWithAddress.wallet,
-    );
+    httpHelper ??= HttpHelper();
+
+    Response response;
+    try {
+      response = await httpHelper.getRequest(
+        endpoint: HttpEndpoint.sentReceipts,
+        walletAddress: walletAddress,
+      );
+    } catch (e) {
+      throw Exception('Network error: $e');
+    }
+
+    if (response.statusCode != 200) {
+      throw Exception('${response.statusCode}: ${response.body}');
+    }
+
+    final receipts = jsonDecode(response.body)['result'] as List;
+
+    return receipts
+        .map((receipt) => CommercioDocReceipt.fromJson(receipt))
+        .toList();
   }
 
-  /// Returns the list of [CommercioDocReceipt] received by
-  /// [walletWithAddress].
+  /// Returns the list of [CommercioDocReceipt] received by [walletAddress].
+  ///
+  /// An optional [HttpHelper] can be specified.
   static Future<List<CommercioDocReceipt>> receivedReceipts({
-    @required WalletWithAddress walletWithAddress,
+    @required String walletAddress,
+    HttpHelper httpHelper,
   }) async {
-    return DocsHelper.getReceivedReceipts(
-      walletWithAddress.address,
-      walletWithAddress.wallet,
-    );
+    httpHelper ??= HttpHelper();
+
+    Response response;
+    try {
+      response = await httpHelper.getRequest(
+        endpoint: HttpEndpoint.receivedReceipts,
+        walletAddress: walletAddress,
+      );
+    } catch (e) {
+      throw Exception('Network error: $e');
+    }
+
+    if (response.statusCode != 200) {
+      throw Exception('${response.statusCode}: ${response.body}');
+    }
+
+    final receipts = jsonDecode(response.body)['result'] as List;
+
+    return receipts
+        .map((receipt) => CommercioDocReceipt.fromJson(receipt))
+        .toList();
   }
 }

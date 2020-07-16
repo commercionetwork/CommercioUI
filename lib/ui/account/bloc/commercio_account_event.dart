@@ -1,3 +1,4 @@
+import 'package:commerciosdk/export.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
@@ -6,11 +7,12 @@ abstract class CommercioAccountEvent extends Equatable {
   const CommercioAccountEvent();
 }
 
-class CommercioAccountGenerateNewWalletEvent extends CommercioAccountEvent {
+class CommercioAccountGenerateWalletEvent extends Equatable
+    implements CommercioAccountEvent {
   final String mnemonic;
   final String lastDerivationPathSegment;
 
-  const CommercioAccountGenerateNewWalletEvent({
+  const CommercioAccountGenerateWalletEvent({
     this.mnemonic,
     this.lastDerivationPathSegment,
   });
@@ -20,10 +22,12 @@ class CommercioAccountGenerateNewWalletEvent extends CommercioAccountEvent {
 }
 
 class CommercioAccountRestoreWalletEvent extends CommercioAccountEvent {
-  const CommercioAccountRestoreWalletEvent();
+  final String mnemonic;
+
+  const CommercioAccountRestoreWalletEvent({this.mnemonic});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [mnemonic];
 }
 
 class CommercioAccountRequestFreeTokensEvent extends CommercioAccountEvent {
@@ -49,18 +53,18 @@ class CommercioAccountCheckBalanceEvent extends CommercioAccountEvent {
 class CommercioAccountSendTokensEvent extends CommercioAccountEvent {
   final String recipientAddress;
   final List<StdCoin> amount;
-  final List<StdCoin> feeAmount;
-  final String gas;
+  final StdFee fee;
+  final BroadcastingMode mode;
 
   const CommercioAccountSendTokensEvent({
     @required this.recipientAddress,
     @required this.amount,
-    this.feeAmount,
-    this.gas,
+    this.fee,
+    this.mode,
   });
 
   @override
-  List<Object> get props => [recipientAddress, amount, feeAmount, gas];
+  List<Object> get props => [recipientAddress, amount, fee, mode];
 }
 
 class CommercioAccountGenerateQrEvent extends CommercioAccountEvent {

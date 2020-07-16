@@ -1,11 +1,11 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class GenerateWalletFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingGenerateWallet,
+class GenerateWalletFlatButton extends CommercioFlatButton<
+    CommercioAccountGenerateWalletBloc,
+    CommercioAccountGenerateWalletEvent,
+    CommercioAccountGenerateWalletState,
+    CommercioAccountGenerateWalletLoading,
     CommercioAccountGenerateWalletError> {
   GenerateWalletFlatButton({
     Key key,
@@ -27,11 +27,10 @@ class GenerateWalletFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required
-        CommercioAccountGenerateNewWalletEvent Function() accountEventCallback,
+    @required CommercioAccountGenerateWalletEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -52,19 +51,19 @@ class GenerateWalletFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class RestoreWalletFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingRestoreWallet,
-    CommercioAccountRestoreWalletError> {
+class RestoreWalletFlatButton extends CommercioFlatButton<
+    CommercioAccountRestoreWalletBloc,
+    CommercioAccountRestoreWalletEvent,
+    CommercioAccountRestoredWalletState,
+    CommercioAccountRestoredWalletStateLoading,
+    CommercioAccountRestoredWalletStateError> {
   RestoreWalletFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -85,11 +84,10 @@ class RestoreWalletFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required
-        CommercioAccountRestoreWalletEvent Function() accountEventCallback,
+    @required CommercioAccountRestoreWalletEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -110,19 +108,19 @@ class RestoreWalletFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class RequestFreeTokensFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingRequestFreeTokensWallet,
-    CommercioAccountRequestFreeTokensError> {
+class RequestFreeTokensFlatButton extends CommercioFlatButton<
+    CommercioAccountRequestFreeTokensBloc,
+    CommercioAccountRequestFreeTokensEvent,
+    CommercioAccountFreeTokensState,
+    CommercioAccountFreeTokensStateLoading,
+    CommercioAccountFreeTokensStateError> {
   RequestFreeTokensFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -143,11 +141,10 @@ class RequestFreeTokensFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required
-        CommercioAccountRequestFreeTokensEvent Function() accountEventCallback,
+    @required CommercioAccountRequestFreeTokensEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -168,19 +165,19 @@ class RequestFreeTokensFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class CheckBalanceFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingCheckBalance,
-    CommercioAccountCheckBalanceError> {
+class CheckBalanceFlatButton extends CommercioFlatButton<
+    CommercioAccountCheckBalanceBloc,
+    CommercioAccountCheckBalanceEvent,
+    CommercioAccountBalanceState,
+    CommercioAccountBalanceStateLoading,
+    CommercioAccountBalanceStateError> {
   CheckBalanceFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -201,10 +198,10 @@ class CheckBalanceFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioAccountCheckBalanceEvent Function() accountEventCallback,
+    @required CommercioAccountCheckBalanceEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -225,19 +222,19 @@ class CheckBalanceFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class SendTokensFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingSendTokens,
-    CommercioAccountSendTokensError> {
+class SendTokensFlatButton extends CommercioFlatButton<
+    CommercioAccountSendTokensBloc,
+    CommercioAccountSendTokensEvent,
+    CommercioAccountSentTokensState,
+    CommercioAccountSentTokensStateLoading,
+    CommercioAccountSentTokensStateError> {
   SendTokensFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -258,10 +255,10 @@ class SendTokensFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioAccountSendTokensEvent Function() accountEventCallback,
+    @required CommercioAccountSendTokensEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -282,19 +279,19 @@ class SendTokensFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class GenerateQrFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingGenerateQr,
-    CommercioAccountGenerateQrError> {
+class GenerateQrFlatButton extends CommercioFlatButton<
+    CommercioAccountGenerateQrBloc,
+    CommercioAccountGenerateQrEvent,
+    CommercioAccountQrState,
+    CommercioAccountQrStateLoading,
+    CommercioAccountQrStateError> {
   GenerateQrFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -315,9 +312,10 @@ class GenerateQrFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
+    @required CommercioAccountGenerateQrEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -338,19 +336,19 @@ class GenerateQrFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () => const CommercioAccountGenerateQrEvent(),
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class GeneratePairwiseWalletFlatButton extends EventFlatButton<
-    CommercioAccountBloc,
-    CommercioAccountEvent,
-    CommercioAccountState,
-    CommercioAccountLoadingGeneratePairwiseWallet,
-    CommercioAccountGeneratePairwiseWalletError> {
+class GeneratePairwiseWalletFlatButton extends CommercioFlatButton<
+    CommercioAccountGeneratePairwiseWalletBloc,
+    CommercioAccountGeneratePairwiseWalletEvent,
+    CommercioAccountPaiwiseWalletState,
+    CommercioAccountPaiwiseWalletStateLoading,
+    CommercioAccountPaiwiseWalletStateError> {
   GeneratePairwiseWalletFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -371,11 +369,10 @@ class GeneratePairwiseWalletFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    String newMnemonic,
-    String lastDerivationPath = '1',
+    @required CommercioAccountGeneratePairwiseWalletEvent Function() event,
+    Widget Function(BuildContext context) loading,
+    Widget Function(BuildContext context) child,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -396,12 +393,9 @@ class GeneratePairwiseWalletFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: () =>
-              CommercioAccountGeneratePairwiseWalletEvent(
-            lastDerivationPath: lastDerivationPath,
-          ),
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }

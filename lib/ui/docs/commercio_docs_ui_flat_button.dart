@@ -1,13 +1,13 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 
-class ShareDocumentFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsShareDocumentLoading,
-    CommercioDocsShareDocumentError> {
-  ShareDocumentFlatButton({
+class DeriveDocumentFlatButton extends CommercioFlatButton<
+    CommercioDocsDeriveDocumentBloc,
+    CommercioDocsDeriveDocumentEvent,
+    CommercioDocsDeriveDocumentState,
+    CommercioDocsDeriveDocumentStateLoading,
+    CommercioDocsDeriveDocumentStateError> {
+  DeriveDocumentFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -27,10 +27,10 @@ class ShareDocumentFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioDocsShareDocumentEvent Function() accountEventCallback,
+    @required CommercioDocsDeriveDocumentEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -51,20 +51,20 @@ class ShareDocumentFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class ShareEncryptedDocumentFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsShareEncryptedDocumentLoading,
-    CommercioDocsShareEncryptedDocumentError> {
-  ShareEncryptedDocumentFlatButton({
+class ShareDocumentsFlatButton extends CommercioFlatButton<
+    CommercioDocsShareDocumentsBloc,
+    CommercioDocsShareDocumentsEvent,
+    CommercioDocsSharedDocumentsState,
+    CommercioDocsSharedDocumentsStateLoading,
+    CommercioDocsSharedDocumentsStateError> {
+  ShareDocumentsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -84,12 +84,10 @@ class ShareEncryptedDocumentFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required
-        CommercioDocsShareEncryptedDocumentEvent Function()
-            accountEventCallback,
+    @required CommercioDocsShareDocumentsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -110,20 +108,20 @@ class ShareEncryptedDocumentFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class SendReceiptFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSendReceiptLoading,
-    CommercioDocsSendReceiptError> {
-  SendReceiptFlatButton({
+class DeriveReceiptFlatButton extends CommercioFlatButton<
+    CommercioDocsDeriveReceiptBloc,
+    CommercioDocsDeriveReceiptEvent,
+    CommercioDocsDeriveReceiptState,
+    CommercioDocsDeriveReceiptStateLoading,
+    CommercioDocsDeriveReceiptStateError> {
+  DeriveReceiptFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -143,10 +141,10 @@ class SendReceiptFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioDocsSendReceiptEvent Function() accountEventCallback,
+    @required CommercioDocsDeriveReceiptEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -167,19 +165,76 @@ class SendReceiptFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class SentDocumentsFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSentDocumentsLoading,
-    CommercioDocsSentDocumentsError> {
+class SendReceiptsFlatButton extends CommercioFlatButton<
+    CommercioDocsSendReceiptsBloc,
+    CommercioDocsSendReceiptsEvent,
+    CommercioDocsSentReceiptState,
+    CommercioDocsSentReceiptStateLoading,
+    CommercioDocsSentReceiptStateError> {
+  SendReceiptsFlatButton({
+    Key key,
+    ValueChanged<bool> onHighlightChanged,
+    ButtonTextTheme textTheme,
+    Color textColor,
+    Color disabledTextColor,
+    Color color,
+    Color disabledColor,
+    Color focusColor,
+    Color hoverColor,
+    Color highlightColor,
+    Color splashColor,
+    Brightness colorBrightness,
+    EdgeInsetsGeometry padding,
+    VisualDensity visualDensity,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    FocusNode focusNode,
+    bool autofocus,
+    MaterialTapTargetSize materialTapTargetSize,
+    @required CommercioDocsSendReceiptsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
+  }) : super(
+          key: key,
+          onHighlightChanged: onHighlightChanged,
+          textTheme: textTheme,
+          textColor: textColor,
+          disabledTextColor: disabledTextColor,
+          color: color,
+          disabledColor: disabledColor,
+          focusColor: focusColor,
+          hoverColor: hoverColor,
+          highlightColor: highlightColor,
+          splashColor: splashColor,
+          colorBrightness: colorBrightness,
+          padding: padding,
+          visualDensity: visualDensity,
+          shape: shape,
+          clipBehavior: clipBehavior,
+          focusNode: focusNode,
+          autofocus: autofocus,
+          materialTapTargetSize: materialTapTargetSize,
+          child: child,
+          error: error,
+          event: event,
+          loading: loading,
+        );
+}
+
+class SentDocumentsFlatButton extends CommercioFlatButton<
+    CommercioDocsSentDocumentsBloc,
+    CommercioDocsSentDocumentsEvent,
+    CommercioDocsSentDocumentsState,
+    CommercioDocsSentDocumentsStateLoading,
+    CommercioDocsSentDocumentsStateError> {
   SentDocumentsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -200,10 +255,10 @@ class SentDocumentsFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioDocsSentDocumentsEvent Function() accountEventCallback,
+    @required CommercioDocsSentDocumentsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -224,19 +279,19 @@ class SentDocumentsFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class ReceivedDocumentsFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsReceivedDocumentsLoading,
-    CommercioDocsReceivedDocumentsError> {
+class ReceivedDocumentsFlatButton extends CommercioFlatButton<
+    CommercioDocsReceivedDocumentsBloc,
+    CommercioDocsReceivedDocumentsEvent,
+    CommercioDocsReceivedDocumentsState,
+    CommercioDocsReceivedDocumentsStateLoading,
+    CommercioDocsReceivedDocumentsStateError> {
   ReceivedDocumentsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -257,11 +312,10 @@ class ReceivedDocumentsFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required
-        CommercioDocsReceivedDocumentsEvent Function() accountEventCallback,
+    @required CommercioDocsReceivedDocumentsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -282,19 +336,19 @@ class ReceivedDocumentsFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class SentReceiptsFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsSentReceiptsLoading,
-    CommercioDocsSentReceiptsError> {
+class SentReceiptsFlatButton extends CommercioFlatButton<
+    CommercioDocsSentReceiptsBloc,
+    CommercioDocsSentReceiptsEvent,
+    CommercioDocsSentReceiptsState,
+    CommercioDocsSentReceiptsStateLoading,
+    CommercioDocsSentReceiptsStateError> {
   SentReceiptsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -315,10 +369,10 @@ class SentReceiptsFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required CommercioDocsSentReceiptsEvent Function() accountEventCallback,
+    @required CommercioDocsSentReceiptsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -339,19 +393,19 @@ class SentReceiptsFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }
 
-class ReceivedReceiptsFlatButton extends EventFlatButton<
-    CommercioDocsBloc,
-    CommercioDocsEvent,
-    CommercioDocsState,
-    CommercioDocsReceivedReceiptsLoading,
-    CommercioDocsReceivedReceiptsError> {
+class ReceivedReceiptsFlatButton extends CommercioFlatButton<
+    CommercioDocsReceivedReceiptsBloc,
+    CommercioDocsReceivedReceiptsEvent,
+    CommercioDocsReceivedReceiptsState,
+    CommercioDocsReceivedReceiptsStateLoading,
+    CommercioDocsReceivedReceiptsStateError> {
   ReceivedReceiptsFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
@@ -372,11 +426,10 @@ class ReceivedReceiptsFlatButton extends EventFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    Widget Function() loadingChild,
-    Widget Function() child,
-    void Function(String errorMessage) errorCallback,
-    @required
-        CommercioDocsReceivedReceiptsEvent Function() accountEventCallback,
+    @required CommercioDocsReceivedReceiptsEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
   }) : super(
           key: key,
           onHighlightChanged: onHighlightChanged,
@@ -397,9 +450,9 @@ class ReceivedReceiptsFlatButton extends EventFlatButton<
           focusNode: focusNode,
           autofocus: autofocus,
           materialTapTargetSize: materialTapTargetSize,
-          loadingChild: loadingChild,
           child: child,
-          accountEventCallback: accountEventCallback,
-          errorCallback: errorCallback,
+          error: error,
+          event: event,
+          loading: loading,
         );
 }

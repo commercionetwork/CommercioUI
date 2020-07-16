@@ -1,3 +1,73 @@
+## [0.2.0] - 2020-07-16
+
+* **Experimental web support**: the app can be compiled and used in a web browser. Keep in mind that the web support is only for demonstration purposes.
+* **Experimental linux support**: the app can be compiled and used on a desktop pc. Keep in mind that the desktop support is only for demonstration purposes.
+* **HttpHelper**
+  * Rename `getGovernment` in `getTumbler` for `HttpEndpoint`
+  * Remove optional `faucetDomain` param in `faucetRequest`
+  * Add `HttpEndpoint.sentReceipts`
+  * Add `HttpEndpoint.receivedReceipts`
+* **CommercioFlatButton**
+  * Rename `EventFlatButton` to `CommercioFlatButton`
+  * Add `BuildContext` parameter
+  * Rename `loadingChild` to `loading`
+  * Rename `accountEventCallback` to `event`
+  * Rename `errorCallback` to `error`
+* **TypeHelper**
+  * Rename `freezedEquals` to `hasType`
+  * Stricter comparing
+* **CommercioText**
+  * Rename `CommercioTextWidget` to `CommercioText`
+  * Add `BuildContext` parameter
+  * Rename `textCallback` to `text`
+  * Rename `loadingTextCallback` to `loading`
+* **CommercioTextField**
+  * Add `BuildContext` parameter
+  * Rename `textCallback` to `text`
+  * Rename `loadingTextCallback` to `loading`
+  * Rename `errorCallback` to `error`
+* **CommercioId**
+  * Rename `derivateDidDocument` to `deriveDidDocument`
+* **StatelessCommercioId**
+  * Remove `fetchKeys()`. Use `restoreKeys()` instead
+* **StatelessCommercioAccount**
+  * Replace in `sendTokens()` the parameters `senderAddress` and `senderWallet` using a single `WalletWithAddress senderWallet`
+* **StatelessCommercioKyc**
+  * Remove `faucetDomain` parameter in `requestFaucetInvite()`
+* **StatefulCommercioAccount**
+  * Make `mnemonic` in `storeMnemonic` optional
+* **CommercioDocs**
+  * Completly revisit old wrong implementation
+  * Add `walletAddress` parameter
+* **Remove base states**
+  * Remove `CommercioState`
+  * Remove `CommercioAccountState`
+  * Remove `CommercioDocsState`
+  * Remove `CommercioIdState`
+  * Remove `CommercioKycState`
+  * Remove `CommercioMintState`
+* Add `didDocument` field in `props` of `CommercioIdSetDidDocumentEvent`
+* Correctly catch errors in `CommercioMintOpenCdpBloc` and `CommercioMintCloseCdpBloc`
+* Add `BroadcastingMode`
+* Support multiple transactions with their object derivations
+* **Test**: Bump code coverage to 97%
+* **SecretStorage**
+  * Remove direct references to `FlutterSecureStorage` to use `ISecretStorage` and `SecretStorage` instead because of web support
+* Rename library export files, e.g. `export.dart` to `utils.dart`
+* Add `FaucetInviteResponse` entity class
+* **Widget layer**: Rename and simplify custom arguments in `CommercioFlatButton`, `CommercioText` and `CommercioTextField`:
+  * Rename `loadingChild` to `loading`
+  * Rename `accountEventCallback` to `event`
+  * Rename `errorCallback` to `error`
+  * Add `BuildContext` as paramenter
+* **Dependencies**
+  * Add `freezed_annotation`
+  * Add `shared_preferences` and `shared_preferences_web`
+  * Update `flutter_bloc` and `bloc` to 5.0.x
+  * Update `basic_utils` to 2.5.5
+  * Update `uuid` to 2.2.0
+  * Remove `meta`
+
 ## [0.1.0] - 2020-06-22
 
 * Add more documentation
@@ -73,7 +143,6 @@
 * Add `ReceivedReceiptsText`
 * Add `SentReceiptsTextField`
 * Add `ReceivedReceiptsTextField`
-
 
 ## [0.0.1] - 2020-06-04
 

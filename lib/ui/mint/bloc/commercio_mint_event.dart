@@ -1,3 +1,4 @@
+import 'package:commerciosdk/export.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
@@ -9,19 +10,40 @@ abstract class CommercioMintEvent extends Equatable {
 class CommercioMintOpenCdpEvent extends CommercioMintEvent {
   final int amount;
   final StdFee fee;
+  final BroadcastingMode mode;
 
-  const CommercioMintOpenCdpEvent({@required this.amount, this.fee});
+  const CommercioMintOpenCdpEvent({
+    @required this.amount,
+    this.fee,
+    this.mode,
+  });
 
   @override
-  List<Object> get props => [amount, fee];
+  List<Object> get props => [amount, fee, mode];
 }
 
-class CommercioMintCloseCdpEvent extends CommercioMintEvent {
+class CommercioMintDeriveCloseCdpEvent extends CommercioMintEvent {
   final int blockHeight;
-  final StdFee fee;
 
-  const CommercioMintCloseCdpEvent({@required this.blockHeight, this.fee});
+  const CommercioMintDeriveCloseCdpEvent({
+    @required this.blockHeight,
+  });
 
   @override
-  List<Object> get props => [blockHeight, fee];
+  List<Object> get props => [blockHeight];
+}
+
+class CommercioMintCloseCdpsEvent extends CommercioMintEvent {
+  final List<CloseCdp> closeCdps;
+  final StdFee fee;
+  final BroadcastingMode mode;
+
+  const CommercioMintCloseCdpsEvent({
+    @required this.closeCdps,
+    this.fee,
+    this.mode,
+  });
+
+  @override
+  List<Object> get props => [closeCdps, fee, mode];
 }

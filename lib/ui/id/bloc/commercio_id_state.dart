@@ -1,99 +1,139 @@
-import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commercio_ui/entities/commercio_id_keys.dart';
 import 'package:commerciosdk/export.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 
-abstract class CommercioIdState extends CommercioState {
-  const CommercioIdState();
+part 'commercio_id_state.freezed.dart';
 
-  @override
-  List<Object> get props => [];
+@freezed
+abstract class CommercioIdGeneratedKeysState
+    with _$CommercioIdGeneratedKeysState {
+  const factory CommercioIdGeneratedKeysState({
+    @required CommercioIdKeys commercioIdKeys,
+  }) = CommercioIdGeneratedKeysStateData;
+
+  const factory CommercioIdGeneratedKeysState.initial() =
+      CommercioIdGeneratedKeysStateInitial;
+
+  const factory CommercioIdGeneratedKeysState.loading() =
+      CommercioIdGeneratedKeysStateLoading;
+
+  const factory CommercioIdGeneratedKeysState.error([String error]) =
+      CommercioIdGeneratedKeysStateError;
 }
 
-class CommercioIdInitial extends CommercioIdState {
-  const CommercioIdInitial();
+@freezed
+abstract class CommercioIdRestoredKeysState
+    with _$CommercioIdRestoredKeysState {
+  const factory CommercioIdRestoredKeysState({
+    @required CommercioIdKeys commercioIdKeys,
+  }) = CommercioIdRestoredKeysStateData;
+
+  const factory CommercioIdRestoredKeysState.initial() =
+      CommercioIdRestoredKeysStateInitial;
+
+  const factory CommercioIdRestoredKeysState.loading() =
+      CommercioIdRestoredKeysStateLoading;
+
+  const factory CommercioIdRestoredKeysState.error([String error]) =
+      CommercioIdRestoredKeysStateError;
 }
 
-class CommercioIdWithAccount extends CommercioIdState {
-  final StatefulCommercioAccount commercioAccount;
+@freezed
+abstract class CommercioIdDeletedKeysState with _$CommercioIdDeletedKeysState {
+  const factory CommercioIdDeletedKeysState() = CommercioIdDeletedKeysStateData;
 
-  const CommercioIdWithAccount({@required this.commercioAccount});
+  const factory CommercioIdDeletedKeysState.initial() =
+      CommercioIdDeletedKeysStateInitial;
+
+  const factory CommercioIdDeletedKeysState.loading() =
+      CommercioIdDeletedKeysStateLoading;
+
+  const factory CommercioIdDeletedKeysState.error([String error]) =
+      CommercioIdDeletedKeysStateError;
 }
 
-class CommercioIdWithGeneratedKeys extends CommercioIdState {
-  final StatefulCommercioId commercioId;
+@freezed
+abstract class CommercioIdDerivedDidDocumentState
+    with _$CommercioIdDerivedDidDocumentState {
+  const factory CommercioIdDerivedDidDocumentState({
+    @required DidDocument didDocument,
+  }) = CommercioIdDerivedDidDocumentStateData;
 
-  const CommercioIdWithGeneratedKeys({@required this.commercioId});
+  const factory CommercioIdDerivedDidDocumentState.initial() =
+      CommercioIdDerivedDidDocumentStateInitial;
 
-  @override
-  List<Object> get props => [commercioId];
+  const factory CommercioIdDerivedDidDocumentState.loading() =
+      CommercioIdDerivedDidDocumentStateLoading;
+
+  const factory CommercioIdDerivedDidDocumentState.error([String error]) =
+      CommercioIdDerivedDidDocumentStateError;
 }
 
-class CommercioIdWithRestoredKeys extends CommercioIdState {
-  final StatefulCommercioId commercioId;
+@freezed
+abstract class CommercioIdSetDidDocumentsState
+    with _$CommercioIdSetDidDocumentsState {
+  const factory CommercioIdSetDidDocumentsState({
+    @required TransactionResult result,
+  }) = CommercioIdSetDidDocumentsStateData;
 
-  const CommercioIdWithRestoredKeys({@required this.commercioId});
+  const factory CommercioIdSetDidDocumentsState.initial() =
+      CommercioIdSetDidDocumentsStateInitial;
 
-  @override
-  List<Object> get props => [commercioId];
+  const factory CommercioIdSetDidDocumentsState.loading() =
+      CommercioIdSetDidDocumentsStateLoading;
+
+  const factory CommercioIdSetDidDocumentsState.error([String error]) =
+      CommercioIdSetDidDocumentsStateError;
 }
 
-class CommercioIdWithDeletedKeys extends CommercioIdState {
-  final StatefulCommercioId commercioId;
+@freezed
+abstract class CommercioIdRechargedTumblerState
+    with _$CommercioIdRechargedTumblerState {
+  const factory CommercioIdRechargedTumblerState({
+    @required TransactionResult result,
+  }) = CommercioIdRechargedTumblerStateData;
 
-  const CommercioIdWithDeletedKeys({@required this.commercioId});
+  const factory CommercioIdRechargedTumblerState.initial() =
+      CommercioIdRechargedTumblerStateInitial;
 
-  @override
-  List<Object> get props => [commercioId];
+  const factory CommercioIdRechargedTumblerState.loading() =
+      CommercioIdRechargedTumblerStateLoading;
+
+  const factory CommercioIdRechargedTumblerState.error([String error]) =
+      CommercioIdRechargedTumblerStateError;
 }
 
-class CommercioIdWithDerivedDidDocument extends CommercioIdState {
-  final StatefulCommercioId commercioId;
-  final DidDocument didDocument;
+@freezed
+abstract class CommercioIdDeriveDidPowerUpRequestState
+    with _$CommercioIdDeriveDidPowerUpRequestState {
+  const factory CommercioIdDeriveDidPowerUpRequestState({
+    @required RequestDidPowerUp didPowerUpRequest,
+  }) = CommercioIdDeriveDidPowerUpRequestStateData;
 
-  const CommercioIdWithDerivedDidDocument({
-    @required this.commercioId,
-    @required this.didDocument,
-  });
+  const factory CommercioIdDeriveDidPowerUpRequestState.initial() =
+      CommercioIdDeriveDidPowerUpRequestStateInitial;
 
-  @override
-  List<Object> get props => [commercioId, didDocument];
+  const factory CommercioIdDeriveDidPowerUpRequestState.loading() =
+      CommercioIdDeriveDidPowerUpRequestStateLoading;
+
+  const factory CommercioIdDeriveDidPowerUpRequestState.error([String error]) =
+      CommercioIdDeriveDidPowerUpRequestStateError;
 }
 
-class CommercioIdSetDidDocument extends CommercioIdState {
-  final StatefulCommercioId commercioId;
-  final TransactionResult transactionResult;
+@freezed
+abstract class CommercioIdRequestedDidPowerUpsState
+    with _$CommercioIdRequestedDidPowerUpsState {
+  const factory CommercioIdRequestedDidPowerUpsState({
+    @required TransactionResult result,
+  }) = CommercioIdRequestedDidPowerUpsStateData;
 
-  const CommercioIdSetDidDocument({
-    @required this.commercioId,
-    @required this.transactionResult,
-  });
+  const factory CommercioIdRequestedDidPowerUpsState.initial() =
+      CommercioIdRequestedDidPowerUpsStateInitial;
 
-  @override
-  List<Object> get props => [commercioId, transactionResult];
-}
+  const factory CommercioIdRequestedDidPowerUpsState.loading() =
+      CommercioIdRequestedDidPowerUpsStateLoading;
 
-class CommercioIdRechargedGovernment extends CommercioIdState {
-  final StatefulCommercioId commercioId;
-  final TransactionResult transactionResult;
-
-  const CommercioIdRechargedGovernment({
-    @required this.commercioId,
-    @required this.transactionResult,
-  });
-
-  @override
-  List<Object> get props => [commercioId, transactionResult];
-}
-
-class CommercioIdRequestedDidPowerUp extends CommercioIdState {
-  final StatefulCommercioId commercioId;
-  final TransactionResult transactionResult;
-
-  const CommercioIdRequestedDidPowerUp({
-    @required this.commercioId,
-    @required this.transactionResult,
-  });
-
-  @override
-  List<Object> get props => [commercioId, transactionResult];
+  const factory CommercioIdRequestedDidPowerUpsState.error([String error]) =
+      CommercioIdRequestedDidPowerUpsStateError;
 }
