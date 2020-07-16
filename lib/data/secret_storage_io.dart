@@ -1,14 +1,17 @@
+import 'dart:io';
+
 import 'package:commercio_ui/data/secret_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences_linux/shared_preferences_linux.dart';
-import 'dart:io';
 
-/// Web implementation of [ISecretStorage] that used the [localStorage] of the
-/// browser to store keys and values.
+/// IO implementation of [ISecretStorage] that use:
+/// - [FlutterSecureStorage] if it is a mobile device (Android/iOS)
+/// - [SharedPreferencesLinux] if the platform is a linux distribution
 ///
-/// **WARNING**: this implementation does not encrypt the data stored so
-/// it should not be used to store real data.
+/// **WARNING**: in [SharedPreferencesLinux] implementation the data is not
+/// encrypted the data stored so it should not be used to store sensitive
+/// information.
 class SecretStorage implements ISecretStorage {
   SecretStorage({Object handler})
       : _handler = handler ?? _isMobile
@@ -48,13 +51,17 @@ class SecretStorage implements ISecretStorage {
         : _desktopRead(_handler, key: key);
   }
 
-  Future<String> _mobileRead(FlutterSecureStorage handler,
-      {@required String key}) async {
+  Future<String> _mobileRead(
+    FlutterSecureStorage handler, {
+    @required String key,
+  }) async {
     return handler.read(key: key);
   }
 
-  Future<String> _desktopRead(SharedPreferencesLinux handler,
-      {@required String key}) async {
+  Future<String> _desktopRead(
+    SharedPreferencesLinux handler, {
+    @required String key,
+  }) async {
     final map = await handler.getAll();
 
     return map[key];
