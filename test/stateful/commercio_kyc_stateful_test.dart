@@ -69,6 +69,11 @@ void main() async {
     recipientDid: correctWalletAddress,
     senderDid: correctWalletAddress,
   );
+  final correctMembershipType = MembershipType.BRONZE;
+  final correctBuyMembership = BuyMembership(
+    membershipType: correctMembershipType.value,
+    buyerDid: correctWalletAddress,
+  );
 
   const String correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
@@ -123,7 +128,35 @@ void main() async {
     });
   });
 
-  group('Buy membership', () {
+  group('Derive buy membership', () {
+    test('Correct', () {
+      final commercioKyc = StatefulCommercioKyc(
+        commercioAccount: correctCommercioAccount,
+      );
+
+      final buyMembership = commercioKyc.deriveBuyMembership(
+        membershipType: correctMembershipType,
+      );
+
+      expect(buyMembership.buyerDid, correctWalletAddress);
+      expect(buyMembership.membershipType, correctMembershipType.value);
+    });
+
+    test('No wallet in commercioAccount should throw an exception', () {
+      final commercioKyc = StatefulCommercioKyc(
+        commercioAccount: commercioAccountWithoutWallet,
+      );
+
+      expect(
+        () => commercioKyc.deriveBuyMembership(
+          membershipType: correctMembershipType,
+        ),
+        throwsA(isA<WalletNotFoundException>()),
+      );
+    });
+  });
+
+  group('Buy memberships', () {
     test('Correct', () async {
       TxSender.client = MockClient(
         (_) => Future.value(Response(correctTransactionRaw, 200)),
@@ -139,8 +172,8 @@ void main() async {
         commercioAccount: correctCommercioAccount,
       );
 
-      final result = await commercioKyc.buyMembership(
-        membershipType: MembershipType.BLACK,
+      final result = await commercioKyc.buyMemberships(
+        buyMemberships: [correctBuyMembership],
       );
 
       expect(result.success, isTrue);
@@ -152,7 +185,9 @@ void main() async {
       );
 
       expectLater(
-        () => commercioKyc.buyMembership(membershipType: MembershipType.BLACK),
+        () => commercioKyc.buyMemberships(
+          buyMemberships: [correctBuyMembership],
+        ),
         throwsA(isA<WalletNotFoundException>()),
       );
     });

@@ -30,6 +30,11 @@ void main() {
     recipientDid: correctWalletAddress,
     senderDid: correctWalletAddress,
   );
+  final correctMembershipType = MembershipType.BRONZE;
+  final correctBuyMembership = BuyMembership(
+    membershipType: correctMembershipType.value,
+    buyerDid: correctWalletAddress,
+  );
 
   testWidgets('Submit RequestFaucetInvite Event', (
     WidgetTester tester,
@@ -90,34 +95,32 @@ void main() {
     expect(find.text(childText), findsOneWidget);
   });
 
-  testWidgets('Submit BuyMembership Event', (
+  testWidgets('Submit DeriveBuyMembership Event', (
     WidgetTester tester,
   ) async {
-    const membershipType = MembershipType.BLACK;
+    when(commercioKyc.deriveBuyMembership(
+      membershipType: correctMembershipType,
+    )).thenReturn(correctBuyMembership);
 
-    when(commercioKyc.buyMembership(
-      membershipType: membershipType,
-    )).thenAnswer((_) async => correctTxResult);
-
-    final bloc = CommercioKycBuyMembershipBloc(
+    final bloc = CommercioKycDeriveBuyMembershipBloc(
       commercioKyc: commercioKyc,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioKycBuyMembershipStateLoading>(),
-        isA<CommercioKycBuyMembershipStateData>(),
-        isA<CommercioKycBuyMembershipStateLoading>(),
-        isA<CommercioKycBuyMembershipStateError>(),
+        isA<CommercioKycDeriveBuyMembershipStateLoading>(),
+        isA<CommercioKycDeriveBuyMembershipStateData>(),
+        isA<CommercioKycDeriveBuyMembershipStateLoading>(),
+        isA<CommercioKycDeriveBuyMembershipStateError>(),
       ]),
     );
 
-    final commFlatButton = BuyMembershipFlatButton(
+    final commFlatButton = DeriveBuyMembershipFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioKycBuyMembershipEvent(
-        membershipType: membershipType,
+      event: () => CommercioKycDeriveBuyMembershipEvent(
+        membershipType: correctMembershipType,
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
@@ -145,8 +148,71 @@ void main() {
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioKyc.buyMembership(
-      membershipType: membershipType,
+    when(commercioKyc.deriveBuyMembership(
+      membershipType: correctMembershipType,
+    )).thenThrow(Exception());
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+  });
+
+  testWidgets('Submit BuyMemberships Event', (
+    WidgetTester tester,
+  ) async {
+    when(commercioKyc.buyMemberships(
+      buyMemberships: [correctBuyMembership],
+    )).thenAnswer((_) async => correctTxResult);
+
+    final bloc = CommercioKycBuyMembershipsBloc(
+      commercioKyc: commercioKyc,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioKycBuyMembershipsStateLoading>(),
+        isA<CommercioKycBuyMembershipsStateData>(),
+        isA<CommercioKycBuyMembershipsStateLoading>(),
+        isA<CommercioKycBuyMembershipsStateError>(),
+      ]),
+    );
+
+    final commFlatButton = BuyMembershipsFlatButton(
+      loading: (_) => const Text(loadingText),
+      child: (_) => const Text(childText),
+      event: () => CommercioKycBuyMembershipsEvent(
+        buyMemberships: [correctBuyMembership],
+      ),
+      error: (context, err) => Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err),
+        ),
+      ),
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commFlatButton,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioKyc.buyMemberships(
+      buyMemberships: [correctBuyMembership],
     )).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));

@@ -30,6 +30,11 @@ void main() {
     recipientDid: correctWalletAddress,
     senderDid: correctWalletAddress,
   );
+  final correctMembershipType = MembershipType.BRONZE;
+  final correctBuyMembership = BuyMembership(
+    membershipType: correctMembershipType.value,
+    buyerDid: correctWalletAddress,
+  );
 
   testWidgets('Submit RequestFaucetInvite Event', (
     WidgetTester tester,
@@ -85,30 +90,88 @@ void main() {
     expect(find.text(errorText), findsOneWidget);
   });
 
-  testWidgets('Submit BuyMembership Event', (
+  testWidgets('Submit DeriveBuyMembership Event', (
     WidgetTester tester,
   ) async {
-    const membershipType = MembershipType.BLACK;
+    when(commercioKyc.deriveBuyMembership(
+      membershipType: correctMembershipType,
+    )).thenReturn(correctBuyMembership);
 
-    when(commercioKyc.buyMembership(
-      membershipType: membershipType,
-    )).thenAnswer((_) async => correctTxResult);
-
-    final bloc = CommercioKycBuyMembershipBloc(
+    final bloc = CommercioKycDeriveBuyMembershipBloc(
       commercioKyc: commercioKyc,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioKycBuyMembershipStateLoading>(),
-        isA<CommercioKycBuyMembershipStateData>(),
-        isA<CommercioKycBuyMembershipStateLoading>(),
-        isA<CommercioKycBuyMembershipStateError>(),
+        isA<CommercioKycDeriveBuyMembershipStateLoading>(),
+        isA<CommercioKycDeriveBuyMembershipStateData>(),
+        isA<CommercioKycDeriveBuyMembershipStateLoading>(),
+        isA<CommercioKycDeriveBuyMembershipStateError>(),
       ]),
     );
 
-    final commText = BuyMembershipText(
+    final commTextField = DeriveBuyMembershipText(
+      loading: (_) => loadingText,
+      error: (_, __) => errorText,
+      text: (_, state) => childText,
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commTextField,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.byWidget(commTextField), findsOneWidget);
+
+    bloc.add(CommercioKycDeriveBuyMembershipEvent(
+      membershipType: correctMembershipType,
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioKyc.deriveBuyMembership(
+      membershipType: correctMembershipType,
+    )).thenThrow(Exception());
+
+    bloc.add(CommercioKycDeriveBuyMembershipEvent(
+      membershipType: correctMembershipType,
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.text(errorText), findsOneWidget);
+  });
+
+  testWidgets('Submit BuyMemberships Event', (
+    WidgetTester tester,
+  ) async {
+    when(commercioKyc.buyMemberships(
+      buyMemberships: [correctBuyMembership],
+    )).thenAnswer((_) async => correctTxResult);
+
+    final bloc = CommercioKycBuyMembershipsBloc(
+      commercioKyc: commercioKyc,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioKycBuyMembershipsStateLoading>(),
+        isA<CommercioKycBuyMembershipsStateData>(),
+        isA<CommercioKycBuyMembershipsStateLoading>(),
+        isA<CommercioKycBuyMembershipsStateError>(),
+      ]),
+    );
+
+    final commText = BuyMembershipsText(
       loading: (_) => loadingText,
       error: (_, __) => errorText,
       text: (_, state) => childText,
@@ -128,19 +191,19 @@ void main() {
 
     expect(find.byWidget(commText), findsOneWidget);
 
-    bloc.add(const CommercioKycBuyMembershipEvent(
-      membershipType: membershipType,
+    bloc.add(CommercioKycBuyMembershipsEvent(
+      buyMemberships: [correctBuyMembership],
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioKyc.buyMembership(
-      membershipType: membershipType,
+    when(commercioKyc.buyMemberships(
+      buyMemberships: [correctBuyMembership],
     )).thenThrow(Exception());
 
-    bloc.add(const CommercioKycBuyMembershipEvent(
-      membershipType: membershipType,
+    bloc.add(CommercioKycBuyMembershipsEvent(
+      buyMemberships: [correctBuyMembership],
     ));
     await tester.pumpAndSettle();
 

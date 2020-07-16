@@ -15,15 +15,28 @@ class CommercioKycRequestFaucetInviteEvent extends CommercioKycEvent {
   List<Object> get props => [faucetDomain];
 }
 
-class CommercioKycBuyMembershipEvent extends CommercioKycEvent {
+class CommercioKycDeriveBuyMembershipEvent extends CommercioKycEvent {
   final MembershipType membershipType;
-  final StdFee fee;
 
-  const CommercioKycBuyMembershipEvent(
-      {@required this.membershipType, this.fee});
+  const CommercioKycDeriveBuyMembershipEvent({
+    @required this.membershipType,
+  });
 
   @override
-  List<Object> get props => [membershipType, fee];
+  List<Object> get props => [membershipType];
+}
+
+class CommercioKycBuyMembershipsEvent extends CommercioKycEvent {
+  final List<BuyMembership> buyMemberships;
+  final StdFee fee;
+
+  const CommercioKycBuyMembershipsEvent({
+    @required this.buyMemberships,
+    this.fee,
+  });
+
+  @override
+  List<Object> get props => [buyMemberships, fee];
 }
 
 class CommercioKycDeriveInviteMemberEvent extends CommercioKycEvent {
@@ -48,4 +61,15 @@ class CommercioKycInviteMembersEvent extends CommercioKycEvent {
 
   @override
   List<Object> get props => [inviteUsers, fee];
+}
+
+class CommercioKycChangeMembershipTypeEvent extends CommercioKycEvent {
+  final MembershipType membershipType;
+
+  const CommercioKycChangeMembershipTypeEvent({
+    @required this.membershipType,
+  });
+
+  @override
+  List<Object> get props => [membershipType];
 }

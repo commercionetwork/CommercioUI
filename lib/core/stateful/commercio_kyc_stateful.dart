@@ -29,27 +29,41 @@ class StatefulCommercioKyc {
     );
   }
 
-  /// Buy a [membershipType] with optional [fee].
-  ///
-  /// To buy a membership the account must be:
-  /// 1. Invited by another member with at least bronze membership
-  /// 2. Have at least the required Commercio Cash Credits (CCC)
-  ///    required for the [membershipType] (see [StatefulCommercioMint]).
+  /// Returns the [BuyMembership] object that represent an invite for
+  /// the [membershipType].
+  /// To buy a membership the account must have:
+  /// 1. To be invited by another member with at least bronze membership;
+  /// 2. At least the required Commercio Cash Credits (CCC).
+  ///    required for the [membershipType] (see [StatelessCommercioMint]).
   ///
   /// Throw [WalletNotFoundException] if no wallet is avaiable.
+  BuyMembership deriveBuyMembership({
+    @required MembershipType membershipType,
+  }) {
+    if (!commercioAccount.hasWallet) {
+      throw const WalletNotFoundException();
+    }
+
+    return StatelessCommercioKyc.deriveBuyMembership(
+      membershipType: membershipType,
+      wallet: commercioAccount.wallet,
+    );
+  }
+
+  /// Buy a list of [membershipType] account with optional [fee].
   ///
   /// Returns the [TransactionResult].
-  Future<TransactionResult> buyMembership({
-    @required MembershipType membershipType,
+  Future<TransactionResult> buyMemberships({
+    @required List<BuyMembership> buyMemberships,
     StdFee fee,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return MembershipHelper.buyMembership(
-      membershipType,
-      commercioAccount.wallet,
+    return StatelessCommercioKyc.buyMemberships(
+      buyMemberships: buyMemberships,
+      wallet: commercioAccount.wallet,
       fee: fee,
     );
   }

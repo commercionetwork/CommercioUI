@@ -24,20 +24,37 @@ abstract class CommercioKycRequestedFaucetInviteState
 }
 
 @freezed
-abstract class CommercioKycBuyMembershipState
-    with _$CommercioKycBuyMembershipState {
-  const factory CommercioKycBuyMembershipState({
+abstract class CommercioKycDeriveBuyMembershipState
+    with _$CommercioKycDeriveBuyMembershipState {
+  const factory CommercioKycDeriveBuyMembershipState({
+    @required BuyMembership buyMembership,
+  }) = CommercioKycDeriveBuyMembershipStateData;
+
+  const factory CommercioKycDeriveBuyMembershipState.initial() =
+      CommercioKycDeriveBuyMembershipStateInitial;
+
+  const factory CommercioKycDeriveBuyMembershipState.loading() =
+      CommercioKycDeriveBuyMembershipStateLoading;
+
+  const factory CommercioKycDeriveBuyMembershipState.error([String error]) =
+      CommercioKycDeriveBuyMembershipStateError;
+}
+
+@freezed
+abstract class CommercioKycBuyMembershipsState
+    with _$CommercioKycBuyMembershipsState {
+  const factory CommercioKycBuyMembershipsState({
     @required TransactionResult result,
-  }) = CommercioKycBuyMembershipStateData;
+  }) = CommercioKycBuyMembershipsStateData;
 
-  const factory CommercioKycBuyMembershipState.initial() =
-      CommercioKycBuyMembershipStateInitial;
+  const factory CommercioKycBuyMembershipsState.initial() =
+      CommercioKycBuyMembershipsStateInitial;
 
-  const factory CommercioKycBuyMembershipState.loading() =
-      CommercioKycBuyMembershipStateLoading;
+  const factory CommercioKycBuyMembershipsState.loading() =
+      CommercioKycBuyMembershipsStateLoading;
 
-  const factory CommercioKycBuyMembershipState.error([String error]) =
-      CommercioKycBuyMembershipStateError;
+  const factory CommercioKycBuyMembershipsState.error([String error]) =
+      CommercioKycBuyMembershipsStateError;
 }
 
 @freezed
@@ -72,4 +89,16 @@ abstract class CommercioKycInviteMembersState
 
   const factory CommercioKycInviteMembersState.error([String error]) =
       CommercioKycInviteMembersStateError;
+}
+
+@freezed
+abstract class CommercioKycChangeMembershipState
+    with _$CommercioKycChangeMembershipState {
+  const factory CommercioKycChangeMembershipState({
+    @required MembershipType membershipType,
+  }) = CommercioKycChangedMembershipState;
+
+  const factory CommercioKycChangeMembershipState.initial({
+    @required MembershipType membershipType,
+  }) = CommercioKycChangeMembershipStateInitial;
 }

@@ -43,6 +43,11 @@ void main() {
   final correctFaucetInviteResponse = '{"tx_hash":"$correctTxHash"}';
   final wrongFaucetInviteReponseAlreadyInvited =
       '{"error":"sign/broadcast message error: could not broadcast transaction to the Cosmos network: codespace sdk: unknown request: did:com:1094hqazlk36va0cqha96fg30y6cdrrxmu4j6at has already been invited: failed to execute message; message index: 0, code 6"}';
+  final correctMembershipType = MembershipType.BRONZE;
+  final correctBuyMembership = BuyMembership(
+    membershipType: correctMembershipType.value,
+    buyerDid: correctWalletAddress,
+  );
 
   group('Request faucet invite', () {
     test('Correct', () async {
@@ -95,7 +100,19 @@ void main() {
     });
   });
 
-  group('Buy membership', () {
+  group('Derive buy membership', () {
+    test('Correct', () {
+      final buyMembership = StatelessCommercioKyc.deriveBuyMembership(
+        membershipType: correctMembershipType,
+        wallet: correctWallet,
+      );
+
+      expect(buyMembership.buyerDid, correctWalletAddress);
+      expect(buyMembership.membershipType, correctMembershipType.value);
+    });
+  });
+
+  group('Buy memberships', () {
     test('Correct', () async {
       TxSender.client = MockClient(
         (_) => Future.value(Response(correctTransactionRaw, 200)),
@@ -107,9 +124,9 @@ void main() {
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
 
-      final result = await StatelessCommercioKyc.buyMembership(
+      final result = await StatelessCommercioKyc.buyMemberships(
         wallet: correctWallet,
-        membershipType: MembershipType.BLACK,
+        buyMemberships: [correctBuyMembership],
       );
 
       expect(result.success, isTrue);
@@ -126,9 +143,9 @@ void main() {
         (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       );
 
-      final result = await StatelessCommercioKyc.buyMembership(
+      final result = await StatelessCommercioKyc.buyMemberships(
         wallet: correctWallet,
-        membershipType: MembershipType.BLACK,
+        buyMemberships: [correctBuyMembership],
         fee: const StdFee(
           amount: [StdCoin(amount: '10', denom: 'ucommercio')],
           gas: '10',
@@ -144,9 +161,9 @@ void main() {
       );
 
       expectLater(
-        () => StatelessCommercioKyc.buyMembership(
+        () => StatelessCommercioKyc.buyMemberships(
           wallet: correctWallet,
-          membershipType: MembershipType.BLACK,
+          buyMemberships: [correctBuyMembership],
           fee: const StdFee(
             amount: [StdCoin(amount: '10', denom: 'ucommercio')],
             gas: '10',

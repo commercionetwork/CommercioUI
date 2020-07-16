@@ -58,13 +58,13 @@ class RequestFaucetInviteFlatButton extends CommercioFlatButton<
         );
 }
 
-class BuyMembershipFlatButton extends CommercioFlatButton<
-    CommercioKycBuyMembershipBloc,
-    CommercioKycBuyMembershipEvent,
-    CommercioKycBuyMembershipState,
-    CommercioKycBuyMembershipStateLoading,
-    CommercioKycBuyMembershipStateError> {
-  BuyMembershipFlatButton({
+class DeriveBuyMembershipFlatButton extends CommercioFlatButton<
+    CommercioKycDeriveBuyMembershipBloc,
+    CommercioKycDeriveBuyMembershipEvent,
+    CommercioKycDeriveBuyMembershipState,
+    CommercioKycDeriveBuyMembershipStateLoading,
+    CommercioKycDeriveBuyMembershipStateError> {
+  DeriveBuyMembershipFlatButton({
     Key key,
     ValueChanged<bool> onHighlightChanged,
     ButtonTextTheme textTheme,
@@ -84,7 +84,64 @@ class BuyMembershipFlatButton extends CommercioFlatButton<
     FocusNode focusNode,
     bool autofocus,
     MaterialTapTargetSize materialTapTargetSize,
-    @required CommercioKycBuyMembershipEvent Function() event,
+    @required CommercioKycDeriveBuyMembershipEvent Function() event,
+    Widget Function(BuildContext context) child,
+    Widget Function(BuildContext context) loading,
+    void Function(BuildContext context, String errorMessage) error,
+  }) : super(
+          key: key,
+          onHighlightChanged: onHighlightChanged,
+          textTheme: textTheme,
+          textColor: textColor,
+          disabledTextColor: disabledTextColor,
+          color: color,
+          disabledColor: disabledColor,
+          focusColor: focusColor,
+          hoverColor: hoverColor,
+          highlightColor: highlightColor,
+          splashColor: splashColor,
+          colorBrightness: colorBrightness,
+          padding: padding,
+          visualDensity: visualDensity,
+          shape: shape,
+          clipBehavior: clipBehavior,
+          focusNode: focusNode,
+          autofocus: autofocus,
+          materialTapTargetSize: materialTapTargetSize,
+          child: child,
+          error: error,
+          event: event,
+          loading: loading,
+        );
+}
+
+class BuyMembershipsFlatButton extends CommercioFlatButton<
+    CommercioKycBuyMembershipsBloc,
+    CommercioKycBuyMembershipsEvent,
+    CommercioKycBuyMembershipsState,
+    CommercioKycBuyMembershipsStateLoading,
+    CommercioKycBuyMembershipsStateError> {
+  BuyMembershipsFlatButton({
+    Key key,
+    ValueChanged<bool> onHighlightChanged,
+    ButtonTextTheme textTheme,
+    Color textColor,
+    Color disabledTextColor,
+    Color color,
+    Color disabledColor,
+    Color focusColor,
+    Color hoverColor,
+    Color highlightColor,
+    Color splashColor,
+    Brightness colorBrightness,
+    EdgeInsetsGeometry padding,
+    VisualDensity visualDensity,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    FocusNode focusNode,
+    bool autofocus,
+    MaterialTapTargetSize materialTapTargetSize,
+    @required CommercioKycBuyMembershipsEvent Function() event,
     Widget Function(BuildContext context) child,
     Widget Function(BuildContext context) loading,
     void Function(BuildContext context, String errorMessage) error,

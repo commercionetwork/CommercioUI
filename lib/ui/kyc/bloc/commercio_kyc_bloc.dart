@@ -1,4 +1,5 @@
 import 'package:commercio_ui/commercio_ui.dart';
+import 'package:commerciosdk/entities/membership/membership_type.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -26,28 +27,56 @@ class CommercioKycRequestFaucetInviteBloc extends Bloc<
   }
 }
 
-class CommercioKycBuyMembershipBloc extends Bloc<CommercioKycBuyMembershipEvent,
-    CommercioKycBuyMembershipState> {
+class CommercioKycDeriveBuyMembershipBloc extends Bloc<
+    CommercioKycDeriveBuyMembershipEvent,
+    CommercioKycDeriveBuyMembershipState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycBuyMembershipBloc({@required this.commercioKyc})
-      : super(const CommercioKycBuyMembershipStateInitial());
+  CommercioKycDeriveBuyMembershipBloc({@required this.commercioKyc})
+      : super(const CommercioKycDeriveBuyMembershipStateInitial());
 
   @override
-  Stream<CommercioKycBuyMembershipState> mapEventToState(
-    CommercioKycBuyMembershipEvent event,
+  Stream<CommercioKycDeriveBuyMembershipState> mapEventToState(
+    CommercioKycDeriveBuyMembershipEvent event,
   ) async* {
     try {
-      yield const CommercioKycBuyMembershipStateLoading();
+      yield const CommercioKycDeriveBuyMembershipStateLoading();
 
-      final result = await commercioKyc.buyMembership(
+      final buyMembership = await commercioKyc.deriveBuyMembership(
         membershipType: event.membershipType,
+      );
+
+      yield CommercioKycDeriveBuyMembershipStateData(
+        buyMembership: buyMembership,
+      );
+    } catch (e) {
+      yield CommercioKycDeriveBuyMembershipStateError(e.toString());
+    }
+  }
+}
+
+class CommercioKycBuyMembershipsBloc extends Bloc<
+    CommercioKycBuyMembershipsEvent, CommercioKycBuyMembershipsState> {
+  final StatefulCommercioKyc commercioKyc;
+
+  CommercioKycBuyMembershipsBloc({@required this.commercioKyc})
+      : super(const CommercioKycBuyMembershipsStateInitial());
+
+  @override
+  Stream<CommercioKycBuyMembershipsState> mapEventToState(
+    CommercioKycBuyMembershipsEvent event,
+  ) async* {
+    try {
+      yield const CommercioKycBuyMembershipsStateLoading();
+
+      final result = await commercioKyc.buyMemberships(
+        buyMemberships: event.buyMemberships,
         fee: event.fee,
       );
 
-      yield CommercioKycBuyMembershipStateData(result: result);
+      yield CommercioKycBuyMembershipsStateData(result: result);
     } catch (e) {
-      yield CommercioKycBuyMembershipStateError(e.toString());
+      yield CommercioKycBuyMembershipsStateError(e.toString());
     }
   }
 }
@@ -99,6 +128,27 @@ class CommercioKycInviteMembersBloc extends Bloc<CommercioKycInviteMembersEvent,
       yield CommercioKycInviteMembersStateData(result: result);
     } catch (e) {
       yield CommercioKycInviteMembersStateError(e.toString());
+    }
+  }
+}
+
+class CommercioKycMembershipTypeChooserBloc extends Bloc<
+    CommercioKycChangeMembershipTypeEvent, CommercioKycChangeMembershipState> {
+  MembershipType membershipType = MembershipType.BRONZE;
+
+  CommercioKycMembershipTypeChooserBloc()
+      : super(CommercioKycChangeMembershipStateInitial(
+          membershipType: MembershipType.BRONZE,
+        ));
+
+  @override
+  Stream<CommercioKycChangeMembershipState> mapEventToState(
+    CommercioKycChangeMembershipTypeEvent event,
+  ) async* {
+    if (event is CommercioKycChangeMembershipTypeEvent) {
+      membershipType = event.membershipType;
+
+      yield CommercioKycChangedMembershipState(membershipType: membershipType);
     }
   }
 }

@@ -35,20 +35,35 @@ abstract class StatelessCommercioKyc {
     return FaucetInviteResponse.fromJson(jsonDecode(response.body));
   }
 
-  /// Buy a [membershipType] for the [wallet] with optional [fee].
-  ///
+  /// Returns the [BuyMembership] object that represent an invite for
+  /// the [membershipType].
   /// To buy a membership the [wallet] must be:
   /// 1. Invited by another member with at least bronze membership
   /// 2. Have at least the required Commercio Cash Credits (CCC)
   ///    required for the [membershipType] (see [StatelessCommercioMint]).
+  static BuyMembership deriveBuyMembership({
+    @required MembershipType membershipType,
+    @required Wallet wallet,
+  }) {
+    return BuyMembershipHelper.fromWallet(
+      wallet,
+      membershipType,
+    );
+  }
+
+  /// Buy a list of [membershipType] for the [wallet] with optional [fee].
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> buyMembership({
+  static Future<TransactionResult> buyMemberships({
+    @required List<BuyMembership> buyMemberships,
     @required Wallet wallet,
-    @required MembershipType membershipType,
     StdFee fee,
   }) {
-    return MembershipHelper.buyMembership(membershipType, wallet, fee: fee);
+    return MembershipHelper.buyMembershipsList(
+      buyMemberships,
+      wallet,
+      fee: fee,
+    );
   }
 
   /// Returns the [InviteUser] object that represent an invite for

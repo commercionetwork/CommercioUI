@@ -18,6 +18,11 @@ void main() {
     recipientDid: correctWalletAddress,
     senderDid: correctWalletAddress,
   );
+  final correctMembershipType = MembershipType.BRONZE;
+  final correctBuyMembership = BuyMembership(
+    membershipType: correctMembershipType.value,
+    buyerDid: correctWalletAddress,
+  );
 
   test('CommercioKycRequestFaucetInviteEvent', () {
     const faucetDomain = 'faucetDomain';
@@ -29,16 +34,26 @@ void main() {
     expect(event.props, [faucetDomain]);
   });
 
+  test('CommercioKycDeriveBuyMembershipEvent', () {
+    final event = CommercioKycDeriveBuyMembershipEvent(
+      membershipType: correctMembershipType,
+    );
+
+    expect(event.props, [correctMembershipType]);
+  });
+
   test('CommercioKycBuyMembershipEvent', () {
-    const membershipType = MembershipType.BLACK;
     const fee = StdFee(amount: [], gas: 'gas');
 
-    final event = CommercioKycBuyMembershipEvent(
-      membershipType: membershipType,
+    final event = CommercioKycBuyMembershipsEvent(
+      buyMemberships: [correctBuyMembership],
       fee: fee,
     );
 
-    expect(event.props, [membershipType, fee]);
+    expect(event.props, [
+      [correctBuyMembership],
+      fee
+    ]);
   });
 
   test('CommercioKycDeriveInviteMemberEvent', () {
@@ -61,5 +76,13 @@ void main() {
       [correctInviteUser],
       fee
     ]);
+  });
+
+  test('CommercioKycChangeMembershipTypeEvent', () {
+    final event = CommercioKycChangeMembershipTypeEvent(
+      membershipType: correctMembershipType,
+    );
+
+    expect(event.props, [correctMembershipType]);
   });
 }
