@@ -27,6 +27,8 @@ dependencies:
       ref: master
   shared_preferences: ^0.5.8
   shared_preferences_web: ">=0.1.0 <2.0.0"
+  shared_preferences_linux: ">=0.0.2 <0.1.0"
+  shared_preferences_macos: ">=0.0.1 <0.1.0"
   uuid: ^2.2.0
 
 dev_dependencies:
