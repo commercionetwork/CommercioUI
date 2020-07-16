@@ -1,3 +1,4 @@
+import 'package:commerciosdk/export.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
@@ -21,17 +22,35 @@ abstract class CommercioMintOpenedCdpState with _$CommercioMintOpenedCdpState {
 }
 
 @freezed
-abstract class CommercioMintClosedCdpState with _$CommercioMintClosedCdpState {
-  const factory CommercioMintClosedCdpState({
+abstract class CommercioMintDeriveCloseCdpState
+    with _$CommercioMintDeriveCloseCdpState {
+  const factory CommercioMintDeriveCloseCdpState({
+    @required CloseCdp closeCdp,
+  }) = CommercioMintDeriveCloseCdpStateData;
+
+  const factory CommercioMintDeriveCloseCdpState.initial() =
+      CommercioMintDeriveCloseCdpStateInitial;
+
+  const factory CommercioMintDeriveCloseCdpState.loading() =
+      CommercioMintDeriveCloseCdpStateLoading;
+
+  const factory CommercioMintDeriveCloseCdpState.error([String error]) =
+      CommercioMintDeriveCloseCdpStateError;
+}
+
+@freezed
+abstract class CommercioMintClosedCdpsState
+    with _$CommercioMintClosedCdpsState {
+  const factory CommercioMintClosedCdpsState({
     @required TransactionResult result,
-  }) = CommercioMintClosedCdpStateData;
+  }) = CommercioMintClosedCdpsStateData;
 
-  const factory CommercioMintClosedCdpState.initial() =
-      CommercioMintClosedCdpStateInitial;
+  const factory CommercioMintClosedCdpsState.initial() =
+      CommercioMintClosedCdpsStateInitial;
 
-  const factory CommercioMintClosedCdpState.loading() =
-      CommercioMintClosedCdpStateLoading;
+  const factory CommercioMintClosedCdpsState.loading() =
+      CommercioMintClosedCdpsStateLoading;
 
-  const factory CommercioMintClosedCdpState.error([String error]) =
-      CommercioMintClosedCdpStateError;
+  const factory CommercioMintClosedCdpsState.error([String error]) =
+      CommercioMintClosedCdpsStateError;
 }

@@ -29,29 +29,55 @@ class CommercioMintOpenCdpBloc
   }
 }
 
-class CommercioMintCloseCdpBloc
-    extends Bloc<CommercioMintCloseCdpEvent, CommercioMintClosedCdpState> {
+class CommercioMintDeriveCloseCdpBloc extends Bloc<
+    CommercioMintDeriveCloseCdpEvent, CommercioMintDeriveCloseCdpState> {
   final StatefulCommercioMint commercioMint;
 
-  CommercioMintCloseCdpBloc({
+  CommercioMintDeriveCloseCdpBloc({
     @required this.commercioMint,
-  }) : super(const CommercioMintClosedCdpStateInitial());
+  }) : super(const CommercioMintDeriveCloseCdpStateInitial());
 
   @override
-  Stream<CommercioMintClosedCdpState> mapEventToState(
-    CommercioMintCloseCdpEvent event,
+  Stream<CommercioMintDeriveCloseCdpState> mapEventToState(
+    CommercioMintDeriveCloseCdpEvent event,
   ) async* {
     try {
-      yield const CommercioMintClosedCdpStateLoading();
+      yield const CommercioMintDeriveCloseCdpStateLoading();
 
-      final result = await commercioMint.closeCdp(
+      final closeCdp = await commercioMint.deriveCloseCdp(
         blockHeight: event.blockHeight,
+      );
+
+      yield CommercioMintDeriveCloseCdpStateData(closeCdp: closeCdp);
+    } catch (e) {
+      yield CommercioMintDeriveCloseCdpStateError(e.toString());
+    }
+  }
+}
+
+class CommercioMintCloseCdpsBloc
+    extends Bloc<CommercioMintCloseCdpsEvent, CommercioMintClosedCdpsState> {
+  final StatefulCommercioMint commercioMint;
+
+  CommercioMintCloseCdpsBloc({
+    @required this.commercioMint,
+  }) : super(const CommercioMintClosedCdpsStateInitial());
+
+  @override
+  Stream<CommercioMintClosedCdpsState> mapEventToState(
+    CommercioMintCloseCdpsEvent event,
+  ) async* {
+    try {
+      yield const CommercioMintClosedCdpsStateLoading();
+
+      final result = await commercioMint.closeCdps(
+        closeCdps: event.closeCdps,
         fee: event.fee,
       );
 
-      yield CommercioMintClosedCdpStateData(result: result);
+      yield CommercioMintClosedCdpsStateData(result: result);
     } catch (e) {
-      yield CommercioMintClosedCdpStateError(e.toString());
+      yield CommercioMintClosedCdpsStateError(e.toString());
     }
   }
 }

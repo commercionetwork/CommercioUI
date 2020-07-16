@@ -1,4 +1,5 @@
 import 'package:commerciosdk/export.dart';
+import 'package:commerciosdk/mint/export.dart';
 import 'package:meta/meta.dart';
 
 /// The [StatelessCommercioMint] module is the one that allows you to create
@@ -19,15 +20,24 @@ abstract class StatelessCommercioMint {
     return MintHelper.openCdp(amount, wallet, fee: fee);
   }
 
-  /// Close a previously opened CDP at [blockHeight] from the [wallet] with
-  /// optional [fee].
+  /// Returns a [CloseCdp] object that indicates the closing of a DCP at
+  /// [blockHeight] assciated with the address inside [wallet].
+  static CloseCdp deriveCloseCdp({
+    @required int blockHeight,
+    @required Wallet wallet,
+  }) {
+    return CloseCdpHelper.fromWallet(wallet, blockHeight);
+  }
+
+  /// Closes the open CDPs from the list [closeCdps] with the associated
+  /// [wallet] with optional [fee].
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> closeCdp({
+  static Future<TransactionResult> closeCdps({
+    @required List<CloseCdp> closeCdps,
     @required Wallet wallet,
-    @required int blockHeight,
     StdFee fee,
   }) {
-    return MintHelper.closeCdp(blockHeight, wallet, fee: fee);
+    return MintHelper.closeCdpsList(closeCdps, wallet, fee: fee);
   }
 }

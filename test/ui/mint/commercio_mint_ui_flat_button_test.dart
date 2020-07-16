@@ -14,6 +14,13 @@ void main() {
   const loadingText = 'Loading';
   final correctTxResult = TransactionResult(hash: '', success: true);
   final commercioMint = StatefulCommercioMintMock();
+  const correctSignerDid = 'signerDid';
+  const correctTimestamp = '1234';
+  const correctBlockHeigth = 1234;
+  final correctCloseCdp = CloseCdp(
+    signerDid: correctSignerDid,
+    timeStamp: correctTimestamp,
+  );
 
   testWidgets('Submit OpenCdp Event', (WidgetTester tester) async {
     const amount = 1;
@@ -75,31 +82,30 @@ void main() {
     expect(find.text(childText), findsOneWidget);
   });
 
-  testWidgets('Submit CloseCdp Event', (WidgetTester tester) async {
-    const blockHeight = 1;
+  testWidgets('Submit DeriveCloseCdp Event', (WidgetTester tester) async {
+    when(commercioMint.deriveCloseCdp(
+      blockHeight: correctBlockHeigth,
+    )).thenReturn(correctCloseCdp);
 
-    when(commercioMint.closeCdp(blockHeight: blockHeight))
-        .thenAnswer((_) async => correctTxResult);
-
-    final bloc = CommercioMintCloseCdpBloc(
+    final bloc = CommercioMintDeriveCloseCdpBloc(
       commercioMint: commercioMint,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioMintClosedCdpStateLoading>(),
-        isA<CommercioMintClosedCdpStateData>(),
-        isA<CommercioMintClosedCdpStateLoading>(),
-        isA<CommercioMintClosedCdpStateError>(),
+        isA<CommercioMintDeriveCloseCdpStateLoading>(),
+        isA<CommercioMintDeriveCloseCdpStateData>(),
+        isA<CommercioMintDeriveCloseCdpStateLoading>(),
+        isA<CommercioMintDeriveCloseCdpStateError>(),
       ]),
     );
 
-    final commFlatButton = CloseCdpFlatButton(
+    final commFlatButton = DeriveCloseCdpFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioMintCloseCdpEvent(
-        blockHeight: blockHeight,
+      event: () => CommercioMintDeriveCloseCdpEvent(
+        blockHeight: correctBlockHeigth,
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
@@ -127,8 +133,70 @@ void main() {
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioMint.closeCdp(blockHeight: blockHeight))
-        .thenThrow(Exception());
+    when(commercioMint.deriveCloseCdp(
+      blockHeight: correctBlockHeigth,
+    )).thenThrow(Exception());
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+  });
+
+  testWidgets('Submit CloseCdps Event', (WidgetTester tester) async {
+    when(commercioMint.closeCdps(
+      closeCdps: [correctCloseCdp],
+    )).thenAnswer((_) async => correctTxResult);
+
+    final bloc = CommercioMintCloseCdpsBloc(
+      commercioMint: commercioMint,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioMintClosedCdpsStateLoading>(),
+        isA<CommercioMintClosedCdpsStateData>(),
+        isA<CommercioMintClosedCdpsStateLoading>(),
+        isA<CommercioMintClosedCdpsStateError>(),
+      ]),
+    );
+
+    final commFlatButton = CloseCdpsFlatButton(
+      loading: (_) => const Text(loadingText),
+      child: (_) => const Text(childText),
+      event: () => CommercioMintCloseCdpsEvent(
+        closeCdps: [correctCloseCdp],
+      ),
+      error: (context, err) => Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err),
+        ),
+      ),
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commFlatButton,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    await tester.tap(find.byWidget(commFlatButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioMint.closeCdps(
+      closeCdps: [correctCloseCdp],
+    )).thenThrow(Exception());
 
     await tester.tap(find.byWidget(commFlatButton));
     await tester.pumpAndSettle();

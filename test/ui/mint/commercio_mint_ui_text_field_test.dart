@@ -14,6 +14,13 @@ void main() {
   const errorText = 'Error';
   final correctTxResult = TransactionResult(hash: '', success: true);
   final commercioMint = StatefulCommercioMintMock();
+  const correctSignerDid = 'signerDid';
+  const correctTimestamp = '1234';
+  const correctBlockHeigth = 1234;
+  final correctCloseCdp = CloseCdp(
+    signerDid: correctSignerDid,
+    timeStamp: correctTimestamp,
+  );
 
   testWidgets('Submit OpenCdp Event', (WidgetTester tester) async {
     const amount = 1;
@@ -72,27 +79,26 @@ void main() {
     expect(find.text(errorText), findsOneWidget);
   });
 
-  testWidgets('Submit CloseCdp Event', (WidgetTester tester) async {
-    const blockHeight = 1;
+  testWidgets('Submit DeriveCloseCdp Event', (WidgetTester tester) async {
+    when(commercioMint.deriveCloseCdp(
+      blockHeight: correctBlockHeigth,
+    )).thenReturn(correctCloseCdp);
 
-    when(commercioMint.closeCdp(blockHeight: blockHeight))
-        .thenAnswer((_) async => correctTxResult);
-
-    final bloc = CommercioMintCloseCdpBloc(
+    final bloc = CommercioMintDeriveCloseCdpBloc(
       commercioMint: commercioMint,
     );
 
     expectLater(
       bloc,
       emitsInOrder([
-        isA<CommercioMintClosedCdpStateLoading>(),
-        isA<CommercioMintClosedCdpStateData>(),
-        isA<CommercioMintClosedCdpStateLoading>(),
-        isA<CommercioMintClosedCdpStateError>(),
+        isA<CommercioMintDeriveCloseCdpStateLoading>(),
+        isA<CommercioMintDeriveCloseCdpStateData>(),
+        isA<CommercioMintDeriveCloseCdpStateLoading>(),
+        isA<CommercioMintDeriveCloseCdpStateError>(),
       ]),
     );
 
-    final commTextField = CloseCdpTextField(
+    final commTextField = DeriveCloseCdpTextField(
       loading: (_) => loadingText,
       error: (_, __) => errorText,
       text: (_, state) => childText,
@@ -112,18 +118,77 @@ void main() {
 
     expect(find.byWidget(commTextField), findsOneWidget);
 
-    bloc.add(const CommercioMintCloseCdpEvent(
-      blockHeight: blockHeight,
+    bloc.add(CommercioMintDeriveCloseCdpEvent(
+      blockHeight: correctBlockHeigth,
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
-    when(commercioMint.closeCdp(blockHeight: blockHeight))
-        .thenThrow(Exception());
+    when(commercioMint.deriveCloseCdp(
+      blockHeight: correctBlockHeigth,
+    )).thenThrow(Exception());
 
-    bloc.add(const CommercioMintCloseCdpEvent(
-      blockHeight: blockHeight,
+    bloc.add(CommercioMintDeriveCloseCdpEvent(
+      blockHeight: correctBlockHeigth,
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.text(errorText), findsOneWidget);
+  });
+
+  testWidgets('Submit CloseCdps Event', (WidgetTester tester) async {
+    when(commercioMint.closeCdps(
+      closeCdps: [correctCloseCdp],
+    )).thenAnswer((_) async => correctTxResult);
+
+    final bloc = CommercioMintCloseCdpsBloc(
+      commercioMint: commercioMint,
+    );
+
+    expectLater(
+      bloc,
+      emitsInOrder([
+        isA<CommercioMintClosedCdpsStateLoading>(),
+        isA<CommercioMintClosedCdpsStateData>(),
+        isA<CommercioMintClosedCdpsStateLoading>(),
+        isA<CommercioMintClosedCdpsStateError>(),
+      ]),
+    );
+
+    final commTextField = CloseCdpsTextField(
+      loading: (_) => loadingText,
+      error: (_, __) => errorText,
+      text: (_, state) => childText,
+    );
+
+    final root = BlocProvider.value(
+      value: bloc,
+      child: MaterialApp(
+        home: Scaffold(
+          body: commTextField,
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(root);
+    await tester.pumpAndSettle();
+
+    expect(find.byWidget(commTextField), findsOneWidget);
+
+    bloc.add(CommercioMintCloseCdpsEvent(
+      closeCdps: [correctCloseCdp],
+    ));
+    await tester.pumpAndSettle();
+
+    expect(find.text(childText), findsOneWidget);
+
+    when(commercioMint.closeCdps(
+      closeCdps: [correctCloseCdp],
+    )).thenThrow(Exception());
+
+    bloc.add(CommercioMintCloseCdpsEvent(
+      closeCdps: [correctCloseCdp],
     ));
     await tester.pumpAndSettle();
 

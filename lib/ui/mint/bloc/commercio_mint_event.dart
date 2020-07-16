@@ -1,3 +1,4 @@
+import 'package:commerciosdk/entities/mint/close_cdp.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
@@ -16,12 +17,26 @@ class CommercioMintOpenCdpEvent extends CommercioMintEvent {
   List<Object> get props => [amount, fee];
 }
 
-class CommercioMintCloseCdpEvent extends CommercioMintEvent {
+class CommercioMintDeriveCloseCdpEvent extends CommercioMintEvent {
   final int blockHeight;
-  final StdFee fee;
 
-  const CommercioMintCloseCdpEvent({@required this.blockHeight, this.fee});
+  const CommercioMintDeriveCloseCdpEvent({
+    @required this.blockHeight,
+  });
 
   @override
-  List<Object> get props => [blockHeight, fee];
+  List<Object> get props => [blockHeight];
+}
+
+class CommercioMintCloseCdpsEvent extends CommercioMintEvent {
+  final List<CloseCdp> closeCdps;
+  final StdFee fee;
+
+  const CommercioMintCloseCdpsEvent({
+    @required this.closeCdps,
+    this.fee,
+  });
+
+  @override
+  List<Object> get props => [closeCdps, fee];
 }

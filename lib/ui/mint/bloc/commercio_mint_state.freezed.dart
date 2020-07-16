@@ -568,38 +568,603 @@ abstract class CommercioMintOpenedCdpStateError
       get copyWith;
 }
 
-class _$CommercioMintClosedCdpStateTearOff {
-  const _$CommercioMintClosedCdpStateTearOff();
+class _$CommercioMintDeriveCloseCdpStateTearOff {
+  const _$CommercioMintDeriveCloseCdpStateTearOff();
 
 // ignore: unused_element
-  CommercioMintClosedCdpStateData call({@required TransactionResult result}) {
-    return CommercioMintClosedCdpStateData(
-      result: result,
+  CommercioMintDeriveCloseCdpStateData call({@required CloseCdp closeCdp}) {
+    return CommercioMintDeriveCloseCdpStateData(
+      closeCdp: closeCdp,
     );
   }
 
 // ignore: unused_element
-  CommercioMintClosedCdpStateInitial initial() {
-    return const CommercioMintClosedCdpStateInitial();
+  CommercioMintDeriveCloseCdpStateInitial initial() {
+    return const CommercioMintDeriveCloseCdpStateInitial();
   }
 
 // ignore: unused_element
-  CommercioMintClosedCdpStateLoading loading() {
-    return const CommercioMintClosedCdpStateLoading();
+  CommercioMintDeriveCloseCdpStateLoading loading() {
+    return const CommercioMintDeriveCloseCdpStateLoading();
   }
 
 // ignore: unused_element
-  CommercioMintClosedCdpStateError error([String error]) {
-    return CommercioMintClosedCdpStateError(
+  CommercioMintDeriveCloseCdpStateError error([String error]) {
+    return CommercioMintDeriveCloseCdpStateError(
       error,
     );
   }
 }
 
 // ignore: unused_element
-const $CommercioMintClosedCdpState = _$CommercioMintClosedCdpStateTearOff();
+const $CommercioMintDeriveCloseCdpState =
+    _$CommercioMintDeriveCloseCdpStateTearOff();
 
-mixin _$CommercioMintClosedCdpState {
+mixin _$CommercioMintDeriveCloseCdpState {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    @required Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    @required Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    @required Result error(CommercioMintDeriveCloseCdpStateError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    Result error(CommercioMintDeriveCloseCdpStateError value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $CommercioMintDeriveCloseCdpStateCopyWith<$Res> {
+  factory $CommercioMintDeriveCloseCdpStateCopyWith(
+          CommercioMintDeriveCloseCdpState value,
+          $Res Function(CommercioMintDeriveCloseCdpState) then) =
+      _$CommercioMintDeriveCloseCdpStateCopyWithImpl<$Res>;
+}
+
+class _$CommercioMintDeriveCloseCdpStateCopyWithImpl<$Res>
+    implements $CommercioMintDeriveCloseCdpStateCopyWith<$Res> {
+  _$CommercioMintDeriveCloseCdpStateCopyWithImpl(this._value, this._then);
+
+  final CommercioMintDeriveCloseCdpState _value;
+  // ignore: unused_field
+  final $Res Function(CommercioMintDeriveCloseCdpState) _then;
+}
+
+abstract class $CommercioMintDeriveCloseCdpStateDataCopyWith<$Res> {
+  factory $CommercioMintDeriveCloseCdpStateDataCopyWith(
+          CommercioMintDeriveCloseCdpStateData value,
+          $Res Function(CommercioMintDeriveCloseCdpStateData) then) =
+      _$CommercioMintDeriveCloseCdpStateDataCopyWithImpl<$Res>;
+  $Res call({CloseCdp closeCdp});
+}
+
+class _$CommercioMintDeriveCloseCdpStateDataCopyWithImpl<$Res>
+    extends _$CommercioMintDeriveCloseCdpStateCopyWithImpl<$Res>
+    implements $CommercioMintDeriveCloseCdpStateDataCopyWith<$Res> {
+  _$CommercioMintDeriveCloseCdpStateDataCopyWithImpl(
+      CommercioMintDeriveCloseCdpStateData _value,
+      $Res Function(CommercioMintDeriveCloseCdpStateData) _then)
+      : super(_value, (v) => _then(v as CommercioMintDeriveCloseCdpStateData));
+
+  @override
+  CommercioMintDeriveCloseCdpStateData get _value =>
+      super._value as CommercioMintDeriveCloseCdpStateData;
+
+  @override
+  $Res call({
+    Object closeCdp = freezed,
+  }) {
+    return _then(CommercioMintDeriveCloseCdpStateData(
+      closeCdp: closeCdp == freezed ? _value.closeCdp : closeCdp as CloseCdp,
+    ));
+  }
+}
+
+class _$CommercioMintDeriveCloseCdpStateData
+    implements CommercioMintDeriveCloseCdpStateData {
+  const _$CommercioMintDeriveCloseCdpStateData({@required this.closeCdp})
+      : assert(closeCdp != null);
+
+  @override
+  final CloseCdp closeCdp;
+
+  @override
+  String toString() {
+    return 'CommercioMintDeriveCloseCdpState(closeCdp: $closeCdp)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioMintDeriveCloseCdpStateData &&
+            (identical(other.closeCdp, closeCdp) ||
+                const DeepCollectionEquality()
+                    .equals(other.closeCdp, closeCdp)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(closeCdp);
+
+  @override
+  $CommercioMintDeriveCloseCdpStateDataCopyWith<
+          CommercioMintDeriveCloseCdpStateData>
+      get copyWith => _$CommercioMintDeriveCloseCdpStateDataCopyWithImpl<
+          CommercioMintDeriveCloseCdpStateData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(closeCdp);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(closeCdp);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    @required Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    @required Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    @required Result error(CommercioMintDeriveCloseCdpStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    Result error(CommercioMintDeriveCloseCdpStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioMintDeriveCloseCdpStateData
+    implements CommercioMintDeriveCloseCdpState {
+  const factory CommercioMintDeriveCloseCdpStateData(
+      {@required CloseCdp closeCdp}) = _$CommercioMintDeriveCloseCdpStateData;
+
+  CloseCdp get closeCdp;
+  $CommercioMintDeriveCloseCdpStateDataCopyWith<
+      CommercioMintDeriveCloseCdpStateData> get copyWith;
+}
+
+abstract class $CommercioMintDeriveCloseCdpStateInitialCopyWith<$Res> {
+  factory $CommercioMintDeriveCloseCdpStateInitialCopyWith(
+          CommercioMintDeriveCloseCdpStateInitial value,
+          $Res Function(CommercioMintDeriveCloseCdpStateInitial) then) =
+      _$CommercioMintDeriveCloseCdpStateInitialCopyWithImpl<$Res>;
+}
+
+class _$CommercioMintDeriveCloseCdpStateInitialCopyWithImpl<$Res>
+    extends _$CommercioMintDeriveCloseCdpStateCopyWithImpl<$Res>
+    implements $CommercioMintDeriveCloseCdpStateInitialCopyWith<$Res> {
+  _$CommercioMintDeriveCloseCdpStateInitialCopyWithImpl(
+      CommercioMintDeriveCloseCdpStateInitial _value,
+      $Res Function(CommercioMintDeriveCloseCdpStateInitial) _then)
+      : super(
+            _value, (v) => _then(v as CommercioMintDeriveCloseCdpStateInitial));
+
+  @override
+  CommercioMintDeriveCloseCdpStateInitial get _value =>
+      super._value as CommercioMintDeriveCloseCdpStateInitial;
+}
+
+class _$CommercioMintDeriveCloseCdpStateInitial
+    implements CommercioMintDeriveCloseCdpStateInitial {
+  const _$CommercioMintDeriveCloseCdpStateInitial();
+
+  @override
+  String toString() {
+    return 'CommercioMintDeriveCloseCdpState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioMintDeriveCloseCdpStateInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    @required Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    @required Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    @required Result error(CommercioMintDeriveCloseCdpStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    Result error(CommercioMintDeriveCloseCdpStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioMintDeriveCloseCdpStateInitial
+    implements CommercioMintDeriveCloseCdpState {
+  const factory CommercioMintDeriveCloseCdpStateInitial() =
+      _$CommercioMintDeriveCloseCdpStateInitial;
+}
+
+abstract class $CommercioMintDeriveCloseCdpStateLoadingCopyWith<$Res> {
+  factory $CommercioMintDeriveCloseCdpStateLoadingCopyWith(
+          CommercioMintDeriveCloseCdpStateLoading value,
+          $Res Function(CommercioMintDeriveCloseCdpStateLoading) then) =
+      _$CommercioMintDeriveCloseCdpStateLoadingCopyWithImpl<$Res>;
+}
+
+class _$CommercioMintDeriveCloseCdpStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioMintDeriveCloseCdpStateCopyWithImpl<$Res>
+    implements $CommercioMintDeriveCloseCdpStateLoadingCopyWith<$Res> {
+  _$CommercioMintDeriveCloseCdpStateLoadingCopyWithImpl(
+      CommercioMintDeriveCloseCdpStateLoading _value,
+      $Res Function(CommercioMintDeriveCloseCdpStateLoading) _then)
+      : super(
+            _value, (v) => _then(v as CommercioMintDeriveCloseCdpStateLoading));
+
+  @override
+  CommercioMintDeriveCloseCdpStateLoading get _value =>
+      super._value as CommercioMintDeriveCloseCdpStateLoading;
+}
+
+class _$CommercioMintDeriveCloseCdpStateLoading
+    implements CommercioMintDeriveCloseCdpStateLoading {
+  const _$CommercioMintDeriveCloseCdpStateLoading();
+
+  @override
+  String toString() {
+    return 'CommercioMintDeriveCloseCdpState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioMintDeriveCloseCdpStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    @required Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    @required Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    @required Result error(CommercioMintDeriveCloseCdpStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    Result error(CommercioMintDeriveCloseCdpStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioMintDeriveCloseCdpStateLoading
+    implements CommercioMintDeriveCloseCdpState {
+  const factory CommercioMintDeriveCloseCdpStateLoading() =
+      _$CommercioMintDeriveCloseCdpStateLoading;
+}
+
+abstract class $CommercioMintDeriveCloseCdpStateErrorCopyWith<$Res> {
+  factory $CommercioMintDeriveCloseCdpStateErrorCopyWith(
+          CommercioMintDeriveCloseCdpStateError value,
+          $Res Function(CommercioMintDeriveCloseCdpStateError) then) =
+      _$CommercioMintDeriveCloseCdpStateErrorCopyWithImpl<$Res>;
+  $Res call({String error});
+}
+
+class _$CommercioMintDeriveCloseCdpStateErrorCopyWithImpl<$Res>
+    extends _$CommercioMintDeriveCloseCdpStateCopyWithImpl<$Res>
+    implements $CommercioMintDeriveCloseCdpStateErrorCopyWith<$Res> {
+  _$CommercioMintDeriveCloseCdpStateErrorCopyWithImpl(
+      CommercioMintDeriveCloseCdpStateError _value,
+      $Res Function(CommercioMintDeriveCloseCdpStateError) _then)
+      : super(_value, (v) => _then(v as CommercioMintDeriveCloseCdpStateError));
+
+  @override
+  CommercioMintDeriveCloseCdpStateError get _value =>
+      super._value as CommercioMintDeriveCloseCdpStateError;
+
+  @override
+  $Res call({
+    Object error = freezed,
+  }) {
+    return _then(CommercioMintDeriveCloseCdpStateError(
+      error == freezed ? _value.error : error as String,
+    ));
+  }
+}
+
+class _$CommercioMintDeriveCloseCdpStateError
+    implements CommercioMintDeriveCloseCdpStateError {
+  const _$CommercioMintDeriveCloseCdpStateError([this.error]);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'CommercioMintDeriveCloseCdpState.error(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CommercioMintDeriveCloseCdpStateError &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @override
+  $CommercioMintDeriveCloseCdpStateErrorCopyWith<
+          CommercioMintDeriveCloseCdpStateError>
+      get copyWith => _$CommercioMintDeriveCloseCdpStateErrorCopyWithImpl<
+          CommercioMintDeriveCloseCdpStateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    @required Result initial(),
+    @required Result loading(),
+    @required Result error(String error),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(CloseCdp closeCdp), {
+    Result initial(),
+    Result loading(),
+    Result error(String error),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    @required Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    @required Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    @required Result error(CommercioMintDeriveCloseCdpStateError value),
+  }) {
+    assert($default != null);
+    assert(initial != null);
+    assert(loading != null);
+    assert(error != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(CommercioMintDeriveCloseCdpStateData value), {
+    Result initial(CommercioMintDeriveCloseCdpStateInitial value),
+    Result loading(CommercioMintDeriveCloseCdpStateLoading value),
+    Result error(CommercioMintDeriveCloseCdpStateError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CommercioMintDeriveCloseCdpStateError
+    implements CommercioMintDeriveCloseCdpState {
+  const factory CommercioMintDeriveCloseCdpStateError([String error]) =
+      _$CommercioMintDeriveCloseCdpStateError;
+
+  String get error;
+  $CommercioMintDeriveCloseCdpStateErrorCopyWith<
+      CommercioMintDeriveCloseCdpStateError> get copyWith;
+}
+
+class _$CommercioMintClosedCdpsStateTearOff {
+  const _$CommercioMintClosedCdpsStateTearOff();
+
+// ignore: unused_element
+  CommercioMintClosedCdpsStateData call({@required TransactionResult result}) {
+    return CommercioMintClosedCdpsStateData(
+      result: result,
+    );
+  }
+
+// ignore: unused_element
+  CommercioMintClosedCdpsStateInitial initial() {
+    return const CommercioMintClosedCdpsStateInitial();
+  }
+
+// ignore: unused_element
+  CommercioMintClosedCdpsStateLoading loading() {
+    return const CommercioMintClosedCdpsStateLoading();
+  }
+
+// ignore: unused_element
+  CommercioMintClosedCdpsStateError error([String error]) {
+    return CommercioMintClosedCdpsStateError(
+      error,
+    );
+  }
+}
+
+// ignore: unused_element
+const $CommercioMintClosedCdpsState = _$CommercioMintClosedCdpsStateTearOff();
+
+mixin _$CommercioMintClosedCdpsState {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(TransactionResult result), {
@@ -617,70 +1182,70 @@ mixin _$CommercioMintClosedCdpState {
   });
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    @required Result initial(CommercioMintClosedCdpStateInitial value),
-    @required Result loading(CommercioMintClosedCdpStateLoading value),
-    @required Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    @required Result initial(CommercioMintClosedCdpsStateInitial value),
+    @required Result loading(CommercioMintClosedCdpsStateLoading value),
+    @required Result error(CommercioMintClosedCdpsStateError value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    Result initial(CommercioMintClosedCdpStateInitial value),
-    Result loading(CommercioMintClosedCdpStateLoading value),
-    Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    Result initial(CommercioMintClosedCdpsStateInitial value),
+    Result loading(CommercioMintClosedCdpsStateLoading value),
+    Result error(CommercioMintClosedCdpsStateError value),
     @required Result orElse(),
   });
 }
 
-abstract class $CommercioMintClosedCdpStateCopyWith<$Res> {
-  factory $CommercioMintClosedCdpStateCopyWith(
-          CommercioMintClosedCdpState value,
-          $Res Function(CommercioMintClosedCdpState) then) =
-      _$CommercioMintClosedCdpStateCopyWithImpl<$Res>;
+abstract class $CommercioMintClosedCdpsStateCopyWith<$Res> {
+  factory $CommercioMintClosedCdpsStateCopyWith(
+          CommercioMintClosedCdpsState value,
+          $Res Function(CommercioMintClosedCdpsState) then) =
+      _$CommercioMintClosedCdpsStateCopyWithImpl<$Res>;
 }
 
-class _$CommercioMintClosedCdpStateCopyWithImpl<$Res>
-    implements $CommercioMintClosedCdpStateCopyWith<$Res> {
-  _$CommercioMintClosedCdpStateCopyWithImpl(this._value, this._then);
+class _$CommercioMintClosedCdpsStateCopyWithImpl<$Res>
+    implements $CommercioMintClosedCdpsStateCopyWith<$Res> {
+  _$CommercioMintClosedCdpsStateCopyWithImpl(this._value, this._then);
 
-  final CommercioMintClosedCdpState _value;
+  final CommercioMintClosedCdpsState _value;
   // ignore: unused_field
-  final $Res Function(CommercioMintClosedCdpState) _then;
+  final $Res Function(CommercioMintClosedCdpsState) _then;
 }
 
-abstract class $CommercioMintClosedCdpStateDataCopyWith<$Res> {
-  factory $CommercioMintClosedCdpStateDataCopyWith(
-          CommercioMintClosedCdpStateData value,
-          $Res Function(CommercioMintClosedCdpStateData) then) =
-      _$CommercioMintClosedCdpStateDataCopyWithImpl<$Res>;
+abstract class $CommercioMintClosedCdpsStateDataCopyWith<$Res> {
+  factory $CommercioMintClosedCdpsStateDataCopyWith(
+          CommercioMintClosedCdpsStateData value,
+          $Res Function(CommercioMintClosedCdpsStateData) then) =
+      _$CommercioMintClosedCdpsStateDataCopyWithImpl<$Res>;
   $Res call({TransactionResult result});
 }
 
-class _$CommercioMintClosedCdpStateDataCopyWithImpl<$Res>
-    extends _$CommercioMintClosedCdpStateCopyWithImpl<$Res>
-    implements $CommercioMintClosedCdpStateDataCopyWith<$Res> {
-  _$CommercioMintClosedCdpStateDataCopyWithImpl(
-      CommercioMintClosedCdpStateData _value,
-      $Res Function(CommercioMintClosedCdpStateData) _then)
-      : super(_value, (v) => _then(v as CommercioMintClosedCdpStateData));
+class _$CommercioMintClosedCdpsStateDataCopyWithImpl<$Res>
+    extends _$CommercioMintClosedCdpsStateCopyWithImpl<$Res>
+    implements $CommercioMintClosedCdpsStateDataCopyWith<$Res> {
+  _$CommercioMintClosedCdpsStateDataCopyWithImpl(
+      CommercioMintClosedCdpsStateData _value,
+      $Res Function(CommercioMintClosedCdpsStateData) _then)
+      : super(_value, (v) => _then(v as CommercioMintClosedCdpsStateData));
 
   @override
-  CommercioMintClosedCdpStateData get _value =>
-      super._value as CommercioMintClosedCdpStateData;
+  CommercioMintClosedCdpsStateData get _value =>
+      super._value as CommercioMintClosedCdpsStateData;
 
   @override
   $Res call({
     Object result = freezed,
   }) {
-    return _then(CommercioMintClosedCdpStateData(
+    return _then(CommercioMintClosedCdpsStateData(
       result: result == freezed ? _value.result : result as TransactionResult,
     ));
   }
 }
 
-class _$CommercioMintClosedCdpStateData
-    implements CommercioMintClosedCdpStateData {
-  const _$CommercioMintClosedCdpStateData({@required this.result})
+class _$CommercioMintClosedCdpsStateData
+    implements CommercioMintClosedCdpsStateData {
+  const _$CommercioMintClosedCdpsStateData({@required this.result})
       : assert(result != null);
 
   @override
@@ -688,13 +1253,13 @@ class _$CommercioMintClosedCdpStateData
 
   @override
   String toString() {
-    return 'CommercioMintClosedCdpState(result: $result)';
+    return 'CommercioMintClosedCdpsState(result: $result)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioMintClosedCdpStateData &&
+        (other is CommercioMintClosedCdpsStateData &&
             (identical(other.result, result) ||
                 const DeepCollectionEquality().equals(other.result, result)));
   }
@@ -704,9 +1269,9 @@ class _$CommercioMintClosedCdpStateData
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
   @override
-  $CommercioMintClosedCdpStateDataCopyWith<CommercioMintClosedCdpStateData>
-      get copyWith => _$CommercioMintClosedCdpStateDataCopyWithImpl<
-          CommercioMintClosedCdpStateData>(this, _$identity);
+  $CommercioMintClosedCdpsStateDataCopyWith<CommercioMintClosedCdpsStateData>
+      get copyWith => _$CommercioMintClosedCdpsStateDataCopyWithImpl<
+          CommercioMintClosedCdpsStateData>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -742,10 +1307,10 @@ class _$CommercioMintClosedCdpStateData
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    @required Result initial(CommercioMintClosedCdpStateInitial value),
-    @required Result loading(CommercioMintClosedCdpStateLoading value),
-    @required Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    @required Result initial(CommercioMintClosedCdpsStateInitial value),
+    @required Result loading(CommercioMintClosedCdpsStateLoading value),
+    @required Result error(CommercioMintClosedCdpsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -757,10 +1322,10 @@ class _$CommercioMintClosedCdpStateData
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    Result initial(CommercioMintClosedCdpStateInitial value),
-    Result loading(CommercioMintClosedCdpStateLoading value),
-    Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    Result initial(CommercioMintClosedCdpsStateInitial value),
+    Result loading(CommercioMintClosedCdpsStateLoading value),
+    Result error(CommercioMintClosedCdpsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -771,49 +1336,50 @@ class _$CommercioMintClosedCdpStateData
   }
 }
 
-abstract class CommercioMintClosedCdpStateData
-    implements CommercioMintClosedCdpState {
-  const factory CommercioMintClosedCdpStateData(
-      {@required TransactionResult result}) = _$CommercioMintClosedCdpStateData;
+abstract class CommercioMintClosedCdpsStateData
+    implements CommercioMintClosedCdpsState {
+  const factory CommercioMintClosedCdpsStateData(
+          {@required TransactionResult result}) =
+      _$CommercioMintClosedCdpsStateData;
 
   TransactionResult get result;
-  $CommercioMintClosedCdpStateDataCopyWith<CommercioMintClosedCdpStateData>
+  $CommercioMintClosedCdpsStateDataCopyWith<CommercioMintClosedCdpsStateData>
       get copyWith;
 }
 
-abstract class $CommercioMintClosedCdpStateInitialCopyWith<$Res> {
-  factory $CommercioMintClosedCdpStateInitialCopyWith(
-          CommercioMintClosedCdpStateInitial value,
-          $Res Function(CommercioMintClosedCdpStateInitial) then) =
-      _$CommercioMintClosedCdpStateInitialCopyWithImpl<$Res>;
+abstract class $CommercioMintClosedCdpsStateInitialCopyWith<$Res> {
+  factory $CommercioMintClosedCdpsStateInitialCopyWith(
+          CommercioMintClosedCdpsStateInitial value,
+          $Res Function(CommercioMintClosedCdpsStateInitial) then) =
+      _$CommercioMintClosedCdpsStateInitialCopyWithImpl<$Res>;
 }
 
-class _$CommercioMintClosedCdpStateInitialCopyWithImpl<$Res>
-    extends _$CommercioMintClosedCdpStateCopyWithImpl<$Res>
-    implements $CommercioMintClosedCdpStateInitialCopyWith<$Res> {
-  _$CommercioMintClosedCdpStateInitialCopyWithImpl(
-      CommercioMintClosedCdpStateInitial _value,
-      $Res Function(CommercioMintClosedCdpStateInitial) _then)
-      : super(_value, (v) => _then(v as CommercioMintClosedCdpStateInitial));
+class _$CommercioMintClosedCdpsStateInitialCopyWithImpl<$Res>
+    extends _$CommercioMintClosedCdpsStateCopyWithImpl<$Res>
+    implements $CommercioMintClosedCdpsStateInitialCopyWith<$Res> {
+  _$CommercioMintClosedCdpsStateInitialCopyWithImpl(
+      CommercioMintClosedCdpsStateInitial _value,
+      $Res Function(CommercioMintClosedCdpsStateInitial) _then)
+      : super(_value, (v) => _then(v as CommercioMintClosedCdpsStateInitial));
 
   @override
-  CommercioMintClosedCdpStateInitial get _value =>
-      super._value as CommercioMintClosedCdpStateInitial;
+  CommercioMintClosedCdpsStateInitial get _value =>
+      super._value as CommercioMintClosedCdpsStateInitial;
 }
 
-class _$CommercioMintClosedCdpStateInitial
-    implements CommercioMintClosedCdpStateInitial {
-  const _$CommercioMintClosedCdpStateInitial();
+class _$CommercioMintClosedCdpsStateInitial
+    implements CommercioMintClosedCdpsStateInitial {
+  const _$CommercioMintClosedCdpsStateInitial();
 
   @override
   String toString() {
-    return 'CommercioMintClosedCdpState.initial()';
+    return 'CommercioMintClosedCdpsState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioMintClosedCdpStateInitial);
+        (other is CommercioMintClosedCdpsStateInitial);
   }
 
   @override
@@ -853,10 +1419,10 @@ class _$CommercioMintClosedCdpStateInitial
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    @required Result initial(CommercioMintClosedCdpStateInitial value),
-    @required Result loading(CommercioMintClosedCdpStateLoading value),
-    @required Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    @required Result initial(CommercioMintClosedCdpsStateInitial value),
+    @required Result loading(CommercioMintClosedCdpsStateLoading value),
+    @required Result error(CommercioMintClosedCdpsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -868,10 +1434,10 @@ class _$CommercioMintClosedCdpStateInitial
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    Result initial(CommercioMintClosedCdpStateInitial value),
-    Result loading(CommercioMintClosedCdpStateLoading value),
-    Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    Result initial(CommercioMintClosedCdpsStateInitial value),
+    Result loading(CommercioMintClosedCdpsStateLoading value),
+    Result error(CommercioMintClosedCdpsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -882,45 +1448,45 @@ class _$CommercioMintClosedCdpStateInitial
   }
 }
 
-abstract class CommercioMintClosedCdpStateInitial
-    implements CommercioMintClosedCdpState {
-  const factory CommercioMintClosedCdpStateInitial() =
-      _$CommercioMintClosedCdpStateInitial;
+abstract class CommercioMintClosedCdpsStateInitial
+    implements CommercioMintClosedCdpsState {
+  const factory CommercioMintClosedCdpsStateInitial() =
+      _$CommercioMintClosedCdpsStateInitial;
 }
 
-abstract class $CommercioMintClosedCdpStateLoadingCopyWith<$Res> {
-  factory $CommercioMintClosedCdpStateLoadingCopyWith(
-          CommercioMintClosedCdpStateLoading value,
-          $Res Function(CommercioMintClosedCdpStateLoading) then) =
-      _$CommercioMintClosedCdpStateLoadingCopyWithImpl<$Res>;
+abstract class $CommercioMintClosedCdpsStateLoadingCopyWith<$Res> {
+  factory $CommercioMintClosedCdpsStateLoadingCopyWith(
+          CommercioMintClosedCdpsStateLoading value,
+          $Res Function(CommercioMintClosedCdpsStateLoading) then) =
+      _$CommercioMintClosedCdpsStateLoadingCopyWithImpl<$Res>;
 }
 
-class _$CommercioMintClosedCdpStateLoadingCopyWithImpl<$Res>
-    extends _$CommercioMintClosedCdpStateCopyWithImpl<$Res>
-    implements $CommercioMintClosedCdpStateLoadingCopyWith<$Res> {
-  _$CommercioMintClosedCdpStateLoadingCopyWithImpl(
-      CommercioMintClosedCdpStateLoading _value,
-      $Res Function(CommercioMintClosedCdpStateLoading) _then)
-      : super(_value, (v) => _then(v as CommercioMintClosedCdpStateLoading));
+class _$CommercioMintClosedCdpsStateLoadingCopyWithImpl<$Res>
+    extends _$CommercioMintClosedCdpsStateCopyWithImpl<$Res>
+    implements $CommercioMintClosedCdpsStateLoadingCopyWith<$Res> {
+  _$CommercioMintClosedCdpsStateLoadingCopyWithImpl(
+      CommercioMintClosedCdpsStateLoading _value,
+      $Res Function(CommercioMintClosedCdpsStateLoading) _then)
+      : super(_value, (v) => _then(v as CommercioMintClosedCdpsStateLoading));
 
   @override
-  CommercioMintClosedCdpStateLoading get _value =>
-      super._value as CommercioMintClosedCdpStateLoading;
+  CommercioMintClosedCdpsStateLoading get _value =>
+      super._value as CommercioMintClosedCdpsStateLoading;
 }
 
-class _$CommercioMintClosedCdpStateLoading
-    implements CommercioMintClosedCdpStateLoading {
-  const _$CommercioMintClosedCdpStateLoading();
+class _$CommercioMintClosedCdpsStateLoading
+    implements CommercioMintClosedCdpsStateLoading {
+  const _$CommercioMintClosedCdpsStateLoading();
 
   @override
   String toString() {
-    return 'CommercioMintClosedCdpState.loading()';
+    return 'CommercioMintClosedCdpsState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioMintClosedCdpStateLoading);
+        (other is CommercioMintClosedCdpsStateLoading);
   }
 
   @override
@@ -960,10 +1526,10 @@ class _$CommercioMintClosedCdpStateLoading
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    @required Result initial(CommercioMintClosedCdpStateInitial value),
-    @required Result loading(CommercioMintClosedCdpStateLoading value),
-    @required Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    @required Result initial(CommercioMintClosedCdpsStateInitial value),
+    @required Result loading(CommercioMintClosedCdpsStateLoading value),
+    @required Result error(CommercioMintClosedCdpsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -975,10 +1541,10 @@ class _$CommercioMintClosedCdpStateLoading
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    Result initial(CommercioMintClosedCdpStateInitial value),
-    Result loading(CommercioMintClosedCdpStateLoading value),
-    Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    Result initial(CommercioMintClosedCdpsStateInitial value),
+    Result loading(CommercioMintClosedCdpsStateLoading value),
+    Result error(CommercioMintClosedCdpsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -989,58 +1555,58 @@ class _$CommercioMintClosedCdpStateLoading
   }
 }
 
-abstract class CommercioMintClosedCdpStateLoading
-    implements CommercioMintClosedCdpState {
-  const factory CommercioMintClosedCdpStateLoading() =
-      _$CommercioMintClosedCdpStateLoading;
+abstract class CommercioMintClosedCdpsStateLoading
+    implements CommercioMintClosedCdpsState {
+  const factory CommercioMintClosedCdpsStateLoading() =
+      _$CommercioMintClosedCdpsStateLoading;
 }
 
-abstract class $CommercioMintClosedCdpStateErrorCopyWith<$Res> {
-  factory $CommercioMintClosedCdpStateErrorCopyWith(
-          CommercioMintClosedCdpStateError value,
-          $Res Function(CommercioMintClosedCdpStateError) then) =
-      _$CommercioMintClosedCdpStateErrorCopyWithImpl<$Res>;
+abstract class $CommercioMintClosedCdpsStateErrorCopyWith<$Res> {
+  factory $CommercioMintClosedCdpsStateErrorCopyWith(
+          CommercioMintClosedCdpsStateError value,
+          $Res Function(CommercioMintClosedCdpsStateError) then) =
+      _$CommercioMintClosedCdpsStateErrorCopyWithImpl<$Res>;
   $Res call({String error});
 }
 
-class _$CommercioMintClosedCdpStateErrorCopyWithImpl<$Res>
-    extends _$CommercioMintClosedCdpStateCopyWithImpl<$Res>
-    implements $CommercioMintClosedCdpStateErrorCopyWith<$Res> {
-  _$CommercioMintClosedCdpStateErrorCopyWithImpl(
-      CommercioMintClosedCdpStateError _value,
-      $Res Function(CommercioMintClosedCdpStateError) _then)
-      : super(_value, (v) => _then(v as CommercioMintClosedCdpStateError));
+class _$CommercioMintClosedCdpsStateErrorCopyWithImpl<$Res>
+    extends _$CommercioMintClosedCdpsStateCopyWithImpl<$Res>
+    implements $CommercioMintClosedCdpsStateErrorCopyWith<$Res> {
+  _$CommercioMintClosedCdpsStateErrorCopyWithImpl(
+      CommercioMintClosedCdpsStateError _value,
+      $Res Function(CommercioMintClosedCdpsStateError) _then)
+      : super(_value, (v) => _then(v as CommercioMintClosedCdpsStateError));
 
   @override
-  CommercioMintClosedCdpStateError get _value =>
-      super._value as CommercioMintClosedCdpStateError;
+  CommercioMintClosedCdpsStateError get _value =>
+      super._value as CommercioMintClosedCdpsStateError;
 
   @override
   $Res call({
     Object error = freezed,
   }) {
-    return _then(CommercioMintClosedCdpStateError(
+    return _then(CommercioMintClosedCdpsStateError(
       error == freezed ? _value.error : error as String,
     ));
   }
 }
 
-class _$CommercioMintClosedCdpStateError
-    implements CommercioMintClosedCdpStateError {
-  const _$CommercioMintClosedCdpStateError([this.error]);
+class _$CommercioMintClosedCdpsStateError
+    implements CommercioMintClosedCdpsStateError {
+  const _$CommercioMintClosedCdpsStateError([this.error]);
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'CommercioMintClosedCdpState.error(error: $error)';
+    return 'CommercioMintClosedCdpsState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommercioMintClosedCdpStateError &&
+        (other is CommercioMintClosedCdpsStateError &&
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)));
   }
@@ -1050,9 +1616,9 @@ class _$CommercioMintClosedCdpStateError
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $CommercioMintClosedCdpStateErrorCopyWith<CommercioMintClosedCdpStateError>
-      get copyWith => _$CommercioMintClosedCdpStateErrorCopyWithImpl<
-          CommercioMintClosedCdpStateError>(this, _$identity);
+  $CommercioMintClosedCdpsStateErrorCopyWith<CommercioMintClosedCdpsStateError>
+      get copyWith => _$CommercioMintClosedCdpsStateErrorCopyWithImpl<
+          CommercioMintClosedCdpsStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1088,10 +1654,10 @@ class _$CommercioMintClosedCdpStateError
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    @required Result initial(CommercioMintClosedCdpStateInitial value),
-    @required Result loading(CommercioMintClosedCdpStateLoading value),
-    @required Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    @required Result initial(CommercioMintClosedCdpsStateInitial value),
+    @required Result loading(CommercioMintClosedCdpsStateLoading value),
+    @required Result error(CommercioMintClosedCdpsStateError value),
   }) {
     assert($default != null);
     assert(initial != null);
@@ -1103,10 +1669,10 @@ class _$CommercioMintClosedCdpStateError
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(CommercioMintClosedCdpStateData value), {
-    Result initial(CommercioMintClosedCdpStateInitial value),
-    Result loading(CommercioMintClosedCdpStateLoading value),
-    Result error(CommercioMintClosedCdpStateError value),
+    Result $default(CommercioMintClosedCdpsStateData value), {
+    Result initial(CommercioMintClosedCdpsStateInitial value),
+    Result loading(CommercioMintClosedCdpsStateLoading value),
+    Result error(CommercioMintClosedCdpsStateError value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1117,12 +1683,12 @@ class _$CommercioMintClosedCdpStateError
   }
 }
 
-abstract class CommercioMintClosedCdpStateError
-    implements CommercioMintClosedCdpState {
-  const factory CommercioMintClosedCdpStateError([String error]) =
-      _$CommercioMintClosedCdpStateError;
+abstract class CommercioMintClosedCdpsStateError
+    implements CommercioMintClosedCdpsState {
+  const factory CommercioMintClosedCdpsStateError([String error]) =
+      _$CommercioMintClosedCdpsStateError;
 
   String get error;
-  $CommercioMintClosedCdpStateErrorCopyWith<CommercioMintClosedCdpStateError>
+  $CommercioMintClosedCdpsStateErrorCopyWith<CommercioMintClosedCdpsStateError>
       get copyWith;
 }
