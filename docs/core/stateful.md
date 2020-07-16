@@ -38,13 +38,8 @@ A `DidDocument` can be derived from the `wallet` by calling `deriveDidDocument()
 
 ```dart
 final didDocument = await commercioId.deriveDidDocument();
-final transactionResult = await commercioId.setDidDocument(didDocument: didDocument);
-
-// Equivalent but shorter
-final transactionResult2 = await commercioId.setDidDocument();
+final transactionResult = await commercioId.setDidDocuments(didDocuments: [didDocument]);
 ```
-
-The last version is more convenient when we are directly interested to do the operation all in a single step.
 
 ### Request a did power up
 

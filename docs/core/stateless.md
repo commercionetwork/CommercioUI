@@ -168,14 +168,14 @@ The `CommercioIdKeys` object contains the verification and signature key pairs. 
 A valid Did document can be derivated using the user wallet and the pairs of RSA key. Then it can be associated to the user identity on the blockchain.
 
 ```dart
-final didDocument = await StatelessCommercioId.derivateDidDocument(
+final didDocument = await StatelessCommercioId.deriveDidDocument(
   wallet: wallet,
   idKeys: commercioIdKeys,
 );
 
 // Associate the Did document to the identity
-final transactionResult = await StatelessCommercioId.setDidDocument(
-  didDocument: didDocument,
+final transactionResult = await StatelessCommercioId.setDidDocuments(
+  didDocument: [didDocument],
   wallet: wallet,
 );
 ```
@@ -195,11 +195,16 @@ final pairwiseWallet = await StatelessCommercioAccount.generatePairwiseWallet(
   ),
 );
 
-final transactionResult = await StatelessCommercioId.requestDidPowerUp(
+final powerUp = await StatelessCommercioId.deriveDidPowerUpRequest(
   pairwiseAddress: pairwiseWallet.bech32Address,
-  senderWallet: wallet,
-  amount: const [CommercioCoin(amount: '1000'),
+  wallet: wallet,
+  amount: const [CommercioCoin(amount: '1000')],
   rsaSignaturePrivateKey: commercioIdKeys.rsaSignatureKeyPair.privateKey,
+);
+
+final transactionResult = await StatelessCommercioId.requestDidPowerUps(
+  powerUpRequests: [powerUp],
+  senderWallet: wallet,
 );
 ```
 
@@ -225,11 +230,16 @@ final metadata = final correctMetadata = CommercioDocMetadata(
   ),
 );
 
-final transactionResult = await StatelessCommercioDocs.shareDocument(
-  senderWallet: wallet,
+final commercioDoc = await StatelessCommercioDocs.deriveCommercioDocument(
+  wallet: wallet,
   metadata: metadata,
   recipients: const [recipientAddress],
   contentUri: 'https://example.com/document',
+);
+
+final transactionResult = await StatelessCommercioDocs.shareDocuments(
+  commercioDocs: [commercioDoc],
+  wallet: wallet,
 );
 ```
 
@@ -245,13 +255,18 @@ import 'package:commerciosdk/crypto/keys_helper.dart';
 // Generate an AES key with the help of commercio-sdk
 final aesKey = await KeysHelper.generateAesKey();
 
-final transactionResult = await StatelessCommercioDocs.shareEncryptedDocument(
+final encryptedDoc = await StatelessCommercioDocs.deriveCommercioDocument(
   senderWallet: wallet,
   metadata: metadata,
   recipients: const [recipientAddress],
   contentUri: 'https://example.com/document',
   encryptedData: const [EncryptedData.CONTENT_URI],
   aesKey: aesKey,
+);
+
+final transactionResult = await StatelessCommercioDocs.shareDocuments(
+  commercioDocs: [encryptedDoc],
+  wallet: wallet,
 );
 ```
 
@@ -262,11 +277,16 @@ If no `aesKey` is provided then a new one is generated internally. The key is us
 Send a receipt which tells back to the `recipient` that the document `docId` was read by `senderWallet`. A proof of reading can also specified.
 
 ```dart
-final transactionResult = await StatelessCommercioDocs.sendReceipt(
-  senderWallet: wallet,
+final receipt = await StatelessCommercioDocs.deriveReceipt(
   recipient: recipientAddress,
   txHash: 'D1B615E4B506FD0E0EAD9DA1E09204E6AA9C0A4FADA8F015C24CDD42CA3D2F66',
-  docId: '0188acd7-320d-4d2f-8b74-df1a5ddbe839',
+  documentId: '0188acd7-320d-4d2f-8b74-df1a5ddbe839',
+  wallet: wallet,
+);
+
+final transactionResult = await StatelessCommercioDocs.sendReceipts(
+  commercioDocReceipts: [receipt],
+  wallet: wallet,
 );
 ```
 
@@ -300,9 +320,14 @@ final transactionResult = await StatelessCommercioMint.openCdp(
 The opening of a CDP inserts in the blockchain a transaction at a certain block height. After have used the CCC tokens (for example buying a membership) to close a CDP we should specify the opening block height:
 
 ```dart
-final transactionResult = await StatelessCommercioMint.closeCdp(
+final closeCdp = await StatelessCommercioMint.deriveCloseCdp(
   wallet: wallet,
   blockHeight: 231434,
+);
+
+final transactionResult = await StatelessCommercioMint.closeCdps(
+  closeCdps: [closeCdp],
+  wallet: wallet,
 );
 ```
 
@@ -341,9 +366,14 @@ if (inviteResponse.success) {
 A trusted member of the blockchain can buy a membership (given that has already buyed enough Commercio Cash Credits (CCC)) with:
 
 ```dart
-final transactionResult = await StatelessCommercioKyc.buyMembership(
+final buyMembership = await StatelessCommercioKyc.deriveBuyMembership(
   wallet: wallet,
   membershipType: MembershipType.BRONZE,
+);
+
+final transactionResult = await StatelessCommercioKyc.buyMemberships(
+  buyMemberships: [buyMembership],
+  wallet: wallet,
 );
 ```
 
@@ -352,8 +382,13 @@ Now that the user has buyed a membership of at least level `BRONZE` he can invit
 ```dart
 final invitedAddress = 'did:com:1a223..';  // A wallet address of a new non-member
 
-final transactionResult = await StatelessCommercioKyc.inviteMember(
+final inviteMember = await StatelessCommercioKyc.deriveInviteMember(
+  invitedAddress: walletAddress,
   wallet: wallet,
-  invitedAddress: invitedAddress,
+);
+
+final transactionResult = await StatelessCommercioKyc.inviteMembers(
+  inviteUsers: [inviteMember],
+  wallet: wallet,
 );
 ```
