@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/commercionetwork/CommercioUI.svg?branch=master)](https://travis-ci.com/commercionetwork/CommercioUI)
 ![Coverage](https://img.shields.io/badge/coverage-97%25-success.svg)
-[![Pub version](https://img.shields.io/badge/pub-0.2.0-orange.svg)](https://pub.dev/packages/commercio_ui)
+[![Pub version](https://img.shields.io/badge/pub-0.1.0-orange.svg)](https://pub.dev/packages/commercio_ui)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 [![bloc library](https://tinyurl.com/bloc-library)](https://pub.dev/packages/bloc)
 
@@ -39,7 +39,7 @@ For example, can used with a `Provider-ChangeNotifier/StateNotifier` implementat
 
 ### BLoC
 
-If the project already uses or will be created using the BLoC library then **CommercioUI** provides a large set of blocs, events and states already implemented that can be integrated easily in the project. 
+If the project already uses or will be created using the BLoC library then **CommercioUI** provides a large set of blocs, events and states already implemented that can be integrated easily in the project.
 
 ### Widgets
 
