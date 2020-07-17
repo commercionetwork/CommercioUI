@@ -83,7 +83,7 @@ class StatefulCommercioDocs {
     @required String recipient,
     @required String txHash,
     @required String documentId,
-    String proof = "",
+    String proof = '',
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();

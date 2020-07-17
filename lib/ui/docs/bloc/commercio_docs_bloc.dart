@@ -85,7 +85,7 @@ class CommercioDocsDeriveReceiptBloc extends Bloc<
     try {
       yield const CommercioDocsDeriveReceiptStateLoading();
 
-      final receipt = await commercioDocs.deriveReceipt(
+      final receipt = commercioDocs.deriveReceipt(
         recipient: event.recipient,
         txHash: event.txHash,
         documentId: event.documentId,

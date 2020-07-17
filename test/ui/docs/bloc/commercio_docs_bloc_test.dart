@@ -9,7 +9,7 @@ void main() {
     test('Encrypted data list', () async {
       final bloc = CommercioDocsEncDataBloc();
 
-      expectLater(
+      expect(
         bloc,
         emitsInOrder([
           isA<CommercioDocsEncDataStateLoading>(),

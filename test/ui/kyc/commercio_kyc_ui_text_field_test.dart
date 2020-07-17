@@ -15,17 +15,17 @@ void main() {
   const errorText = 'Error';
   final correctTxResult = TransactionResult(hash: '', success: true);
   final commercioKyc = StatefulCommercioKycMock();
-  final NetworkInfo correctNetworkInfo = NetworkInfo(
+  final correctNetworkInfo = NetworkInfo(
     bech32Hrp: 'bech32Hrp',
     lcdUrl: 'http://lcd-url',
   );
-  const String correctMnemonic =
+  const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet = Wallet.derive(
+  final correctWallet = Wallet.derive(
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
-  String correctWalletAddress = correctWallet.bech32Address;
+  final correctWalletAddress = correctWallet.bech32Address;
   final correctInviteUser = InviteUser(
     recipientDid: correctWalletAddress,
     senderDid: correctWalletAddress,
@@ -47,7 +47,7 @@ void main() {
       commercioKyc: commercioKyc,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioKycRequestedFaucetInviteStateLoading>(),
@@ -101,7 +101,7 @@ void main() {
       commercioKyc: commercioKyc,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioKycDeriveBuyMembershipStateLoading>(),
@@ -161,7 +161,7 @@ void main() {
       commercioKyc: commercioKyc,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioKycBuyMembershipsStateLoading>(),
@@ -221,7 +221,7 @@ void main() {
       commercioKyc: commercioKyc,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioKycDeriveInviteMemberStateLoading>(),
@@ -281,7 +281,7 @@ void main() {
       commercioKyc: commercioKyc,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioKycInviteMembersStateLoading>(),

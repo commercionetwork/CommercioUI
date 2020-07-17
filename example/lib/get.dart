@@ -12,7 +12,7 @@ class WalletWithMnemonicsController extends GetxController {
   /// Derive a new [Wallet], stores it and notify when the generation
   /// process is on through [isGenerating].
   Future<Wallet> deriveNewWallet() async {
-    StatefulCommercioAccount commercioAccount = Get.find();
+    final commercioAccount = Get.find();
     isGenerating.value = true;
 
     final wallet = await commercioAccount.generateNewWallet();
@@ -75,10 +75,10 @@ class _ExamplePageState extends State<ExamplePage> {
             GetX<WalletWithMnemonicsController>(
               init: WalletWithMnemonicsController(),
               builder: (ctrl) {
-                Function() fn = ctrl.isGenerating.value
+                final fn = ctrl.isGenerating.value
                     ? null
                     : () => ctrl.deriveNewWallet();
-                String text = ctrl.isGenerating.value
+                final text = ctrl.isGenerating.value
                     ? 'Generating...'
                     : 'Generate new wallet';
 
@@ -94,7 +94,7 @@ class _ExamplePageState extends State<ExamplePage> {
             const Text('Mnemonic words:'),
             GetX<WalletWithMnemonicsController>(
               builder: (ctrl) {
-                StatefulCommercioAccount commercioAccount = Get.find();
+                final commercioAccount = Get.find();
 
                 if (ctrl.isGenerating.value) {
                   mnemonicTextController.text = 'Generating...';
@@ -114,7 +114,7 @@ class _ExamplePageState extends State<ExamplePage> {
             const Text('Wallet address:'),
             GetX<WalletWithMnemonicsController>(
               builder: (ctrl) {
-                StatefulCommercioAccount commercioAccount = Get.find();
+                final commercioAccount = Get.find();
 
                 if (ctrl.isGenerating.value) {
                   walletTextController.text = 'Generating...';

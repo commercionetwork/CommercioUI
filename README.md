@@ -39,7 +39,7 @@ For example, can used with a `Provider-ChangeNotifier/StateNotifier` implementat
 
 ### BLoC
 
-If the project already uses or will be created using the BLoC library then **CommercioUI** provides a large set of blocs, events and states already implemented that can be integrated easily in the project. 
+If the project already uses or will be created using the BLoC library then **CommercioUI** provides a large set of blocs, events and states already implemented that can be integrated easily in the project.
 
 ### Widgets
 

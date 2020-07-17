@@ -20,6 +20,7 @@ class SecretStorage implements ISecretStorage {
 
   final Object _handler;
 
+  @override
   bool get started => _handler != null;
 
   static bool get _isMobile => Platform.isAndroid || Platform.isIOS;
@@ -27,6 +28,7 @@ class SecretStorage implements ISecretStorage {
   // ignore: unused_element
   static bool get _isDesktop => !_isMobile;
 
+  @override
   Future<void> delete({String key}) {
     return _isMobile
         ? _mobileDelete(_handler, key: key)
@@ -41,6 +43,7 @@ class SecretStorage implements ISecretStorage {
     return handler.remove(key);
   }
 
+  @override
   Future<String> read({@required String key}) async {
     if (!started) {
       throw Exception('Not already started');
@@ -67,6 +70,7 @@ class SecretStorage implements ISecretStorage {
     return map[key];
   }
 
+  @override
   Future<void> write({@required String key, @required String value}) {
     if (!started) {
       throw Exception('Not already started');

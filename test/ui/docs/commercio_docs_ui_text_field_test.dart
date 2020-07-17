@@ -27,22 +27,22 @@ void main() {
       version: '1.0.0',
     ),
   );
-  final String correctRecipientAddress =
+  final correctRecipientAddress =
       'did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u44';
-  final List<String> recipients = [correctRecipientAddress];
-  const String correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
-  const String correctTxHash =
+  final recipients = [correctRecipientAddress];
+  const correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
+  const correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
   final correctTxResult = TransactionResult(hash: '', success: true);
   final commercioDocs = StatefulCommercioDocsMock();
   final commercioId = StatefulCommercioIdMock();
-  const String correctMnemonic =
+  const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  final NetworkInfo correctNetworkInfo = NetworkInfo(
+  final correctNetworkInfo = NetworkInfo(
     bech32Hrp: 'bech32Hrp',
     lcdUrl: 'http://lcd-url',
   );
-  Wallet correctWallet = Wallet.derive(
+  final correctWallet = Wallet.derive(
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
@@ -82,7 +82,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioDocsDeriveDocumentStateLoading>(),
@@ -155,7 +155,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioDocsSharedDocumentsStateLoading>(),
@@ -220,7 +220,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioDocsDeriveReceiptStateLoading>(),
@@ -290,7 +290,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioDocsSentReceiptStateLoading>(),
@@ -350,7 +350,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioDocsSentDocumentsStateLoading>(),
@@ -404,7 +404,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioDocsReceivedDocumentsStateLoading>(),
@@ -459,7 +459,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioDocsSentReceiptsStateLoading>(),
@@ -513,7 +513,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioDocsReceivedReceiptsStateLoading>(),

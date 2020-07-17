@@ -100,7 +100,7 @@ class _$_FaucetInviteResponse implements _FaucetInviteResponse {
   _$_FaucetInviteResponse({@JsonKey(name: 'tx_hash') this.txHash, this.error});
 
   factory _$_FaucetInviteResponse.fromJson(Map<String, dynamic> json) =>
-      _$_$_FaucetInviteResponseFromJson(json);
+      faucetInviteResponseFromJson(json);
 
   @override
   @JsonKey(name: 'tx_hash')
@@ -148,7 +148,7 @@ class _$_FaucetInviteResponse implements _FaucetInviteResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_FaucetInviteResponseToJson(this);
+    return faucetInviteResponseToJson(this);
   }
 }
 

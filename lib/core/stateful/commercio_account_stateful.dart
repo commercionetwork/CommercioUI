@@ -48,7 +48,7 @@ class StatefulCommercioAccount {
   bool get hasMnemonic => mnemonic != null;
 
   /// Set a new [networkInfo], invalidating current [walletWithAddress].
-  void set networkInfo(NetworkInfo networkInfo) {
+  set networkInfo(NetworkInfo networkInfo) {
     _networkInfo = networkInfo;
     walletWithAddress = null;
   }
@@ -173,9 +173,7 @@ class StatefulCommercioAccount {
       throw const WalletNotFoundException();
     }
 
-    if (amount == null) {
-      amount = '100000000';
-    }
+    amount ??= '100000000';
 
     return StatelessCommercioAccount.requestFreeTokens(
       walletAddress: walletAddress,

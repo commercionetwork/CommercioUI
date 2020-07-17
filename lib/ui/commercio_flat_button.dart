@@ -72,10 +72,10 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
         }
       },
       builder: (context, state) {
-        void Function() onPressed = (event != null)
+        var onPressed = (event != null)
             ? () => BlocProvider.of<B>(context).add(event())
             : null;
-        Widget childWidget = child(context);
+        var childWidget = child(context);
 
         if (TypeHelper.hasType(state.runtimeType, L)) {
           onPressed = null;

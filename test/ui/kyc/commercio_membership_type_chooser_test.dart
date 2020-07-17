@@ -10,7 +10,7 @@ void main() {
   ) async {
     final bloc = CommercioKycMembershipTypeChooserBloc();
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         CommercioKycChangedMembershipState(
@@ -47,13 +47,12 @@ void main() {
     WidgetTester tester,
   ) async {
     final title = (MembershipType m) => Text(m.value);
-    final radioActiveColor = (MembershipType) => Colors.blue;
+    final radioActiveColor = (m) => Colors.blue;
     //final radioToggleable = (MembershipType) => false;
-    final radioIsThreeLine = (MembershipType) => false;
-    final radioSecondary = (MembershipType) => Text('radioSecondary');
-    final radioSelected = (MembershipType) => false;
-    final radioControlAffinity =
-        (MembershipType) => ListTileControlAffinity.platform;
+    final radioIsThreeLine = (m) => false;
+    final radioSecondary = (m) => Text('radioSecondary');
+    final radioSelected = (m) => false;
+    final radioControlAffinity = (m) => ListTileControlAffinity.platform;
     //final radioAutofocus = (MembershipType) => false;
 
     final bloc = CommercioKycMembershipTypeChooserBloc();

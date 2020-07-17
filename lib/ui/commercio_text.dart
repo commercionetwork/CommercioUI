@@ -61,7 +61,7 @@ class _CommercioTextState<
 
   @override
   Widget build(BuildContext context) {
-    String text = previousText;
+    var text = previousText;
 
     return BlocBuilder<B, T>(
       builder: (context, state) {

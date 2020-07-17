@@ -42,7 +42,7 @@ class CommercioKycDeriveBuyMembershipBloc extends Bloc<
     try {
       yield const CommercioKycDeriveBuyMembershipStateLoading();
 
-      final buyMembership = await commercioKyc.deriveBuyMembership(
+      final buyMembership = commercioKyc.deriveBuyMembership(
         membershipType: event.membershipType,
       );
 

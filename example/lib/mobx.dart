@@ -90,10 +90,10 @@ class _ExamplePageState extends State<ExamplePage> {
           children: [
             Observer(
               builder: (_) {
-                Function() fn = widget.walletWithMnemonics.isGenerating
+                final fn = widget.walletWithMnemonics.isGenerating
                     ? null
                     : () => widget.walletWithMnemonics.deriveNewWallet();
-                String text = widget.walletWithMnemonics.isGenerating
+                final text = widget.walletWithMnemonics.isGenerating
                     ? 'Generating...'
                     : 'Generate new wallet';
 

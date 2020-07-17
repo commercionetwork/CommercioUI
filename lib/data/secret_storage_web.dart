@@ -14,8 +14,10 @@ class SecretStorage implements ISecretStorage {
   final SharedPreferencesPlugin _handler;
   final String _keyPrefix = 'flutter.';
 
+  @override
   bool get started => _handler != null;
 
+  @override
   Future<void> delete({String key}) {
     if (!started) {
       throw Exception('Not already started');
@@ -24,6 +26,7 @@ class SecretStorage implements ISecretStorage {
     return _handler.remove('$_keyPrefix$key');
   }
 
+  @override
   Future<String> read({@required String key}) async {
     if (!started) {
       throw Exception('Not already started');
@@ -34,6 +37,7 @@ class SecretStorage implements ISecretStorage {
     return map['$_keyPrefix$key'];
   }
 
+  @override
   Future<void> write({@required String key, @required String value}) {
     if (!started) {
       throw Exception('Not already started');

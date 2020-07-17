@@ -31,13 +31,13 @@ void main() {
   const correctProof = 'proof';
   const correctUuid = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
   const correctEncryptionKey = 'encryptionKey';
-  final NetworkInfo correctNetworkInfo =
+  final correctNetworkInfo =
       NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'http://lcd-url');
-  const String correctMnemonic =
+  const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet =
+  final correctWallet =
       Wallet.derive(correctMnemonic.split(' '), correctNetworkInfo);
-  String correctWalletAddress = correctWallet.bech32Address;
+  final correctWalletAddress = correctWallet.bech32Address;
   final correctDidPowerUpRequest = RequestDidPowerUp(
     claimantDid: correctWalletAddress,
     amount: correctAmount,
@@ -57,7 +57,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdGeneratedKeysStateLoading>(),
@@ -115,7 +115,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdRestoredKeysStateLoading>(),
@@ -172,7 +172,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdDeletedKeysStateLoading>(),
@@ -230,7 +230,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdDerivedDidDocumentStateLoading>(),
@@ -289,7 +289,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdSetDidDocumentsStateLoading>(),
@@ -352,7 +352,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdSetDidDocumentsStateLoading>(),
@@ -405,7 +405,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdRechargedTumblerStateLoading>(),
@@ -460,7 +460,7 @@ void main() {
   testWidgets('Submit RechargeTumbler with fee', (
     WidgetTester tester,
   ) async {
-    const correctFee = const StdFee(
+    const correctFee = StdFee(
       amount: [StdCoin(amount: '10', denom: 'denom')],
       gas: '10',
     );
@@ -475,7 +475,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdRechargedTumblerStateLoading>(),
@@ -529,7 +529,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdDeriveDidPowerUpRequestState>(),
@@ -594,7 +594,7 @@ void main() {
       commercioId: commercioId,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioIdRequestedDidPowerUpsStateLoading>(),

@@ -65,7 +65,7 @@ class CommercioDocsDeriveReceiptEvent extends CommercioDocsEvent {
     @required this.recipient,
     @required this.txHash,
     @required this.documentId,
-    this.proof = "",
+    this.proof = '',
   });
 
   @override

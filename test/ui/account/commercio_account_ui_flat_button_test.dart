@@ -12,17 +12,17 @@ class StatefulCommercioAccountMock extends Mock
 void main() {
   const childText = 'Child';
   const loadingText = 'Loading';
-  final NetworkInfo correctNetworkInfo = NetworkInfo(
+  final correctNetworkInfo = NetworkInfo(
     bech32Hrp: 'bech32Hrp',
     lcdUrl: 'lcdUrl',
   );
-  const String correctMnemonic =
+  const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet = Wallet.derive(
+  final correctWallet = Wallet.derive(
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
-  String correctWalletAddress = correctWallet.bech32Address;
+  final correctWalletAddress = correctWallet.bech32Address;
   final commercioAccount = StatefulCommercioAccountMock();
 
   testWidgets('Submit GenerateWallet Event', (
@@ -41,7 +41,7 @@ void main() {
       commercioAccount: commercioAccount,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioAccountGenerateWalletLoading>(),
@@ -105,7 +105,7 @@ void main() {
       commercioAccount: commercioAccount,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioAccountRestoredWalletStateLoading>(),
@@ -169,7 +169,7 @@ void main() {
       commercioAccount: commercioAccount,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioAccountRestoredWalletStateLoading>(),
@@ -224,7 +224,7 @@ void main() {
       commercioAccount: commercioAccount,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioAccountFreeTokensStateLoading>(),
@@ -287,7 +287,7 @@ void main() {
       commercioAccount: commercioAccount,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioAccountBalanceStateLoading>(),
@@ -356,7 +356,7 @@ void main() {
       commercioAccount: commercioAccount,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioAccountSentTokensStateLoading>(),
@@ -420,7 +420,7 @@ void main() {
       commercioAccount: commercioAccount,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioAccountQrStateLoading>(),
@@ -479,7 +479,7 @@ void main() {
       commercioAccount: commercioAccount,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioAccountPaiwiseWalletStateLoading>(),

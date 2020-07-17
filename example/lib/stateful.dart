@@ -72,8 +72,8 @@ class _ExamplePageState extends State<ExamplePage> {
         child: FutureBuilder<Wallet>(
           future: isGenerating ? _deriveNewWallet() : null,
           builder: (context, snap) {
-            Function() fn = () => setState(() => isGenerating = true);
-            String text = 'Generate new wallet';
+            var fn = () => setState(() => isGenerating = true);
+            var text = 'Generate new wallet';
 
             if (snap.connectionState == ConnectionState.waiting) {
               walletTextController.text = 'Generating...';

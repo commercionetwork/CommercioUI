@@ -73,7 +73,7 @@ abstract class StatelessCommercioDocs {
     @required String recipient,
     @required String txHash,
     @required String documentId,
-    String proof = "",
+    String proof = '',
   }) {
     return CommercioDocReceiptHelper.fromWallet(
       wallet: wallet,

@@ -89,7 +89,9 @@ class HttpHelper {
     bool https = true,
   }) async {
     final uri = https
+        // ignore: unnecessary_this
         ? Uri.https(faucetDomain ?? this.faucetDomain, path.value, data)
+        // ignore: unnecessary_this
         : Uri.http(faucetDomain ?? this.faucetDomain, path.value, data);
 
     return httpClient.get(uri);

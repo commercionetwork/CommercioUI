@@ -22,7 +22,7 @@ class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
   static const _defaultCursorWidth = 2.0;
   static const _defaultSelectionHeightStyle = ui.BoxHeightStyle.tight;
   static const _defaultSelectionWidthStyle = ui.BoxWidthStyle.tight;
-  static const _defaultScrollPadding = const EdgeInsets.all(20.0);
+  static const _defaultScrollPadding = EdgeInsets.all(20.0);
   static const _defaultDragStartBehavior = DragStartBehavior.start;
   static const _defaultEnableInteractiveSelection = true;
 

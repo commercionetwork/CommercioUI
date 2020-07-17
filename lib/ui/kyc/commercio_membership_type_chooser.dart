@@ -114,18 +114,21 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
         return BlocBuilder<CommercioKycMembershipTypeChooserBloc,
             CommercioKycChangeMembershipState>(
           builder: (context, state) {
-            final bloc = context.bloc<CommercioKycMembershipTypeChooserBloc>();
-
             return RadioListTile<MembershipType>(
               title: title != null
                   ? title(membershipType)
                   : Text(membershipType.value.toUpperCase()),
               subtitle: subtitle != null ? subtitle(membershipType) : null,
               value: membershipType,
-              groupValue: bloc.membershipType,
-              onChanged: (newValue) => bloc.add(
-                CommercioKycChangeMembershipTypeEvent(membershipType: newValue),
-              ),
+              groupValue: context
+                  .bloc<CommercioKycMembershipTypeChooserBloc>()
+                  .membershipType,
+              onChanged: (newValue) =>
+                  context.bloc<CommercioKycMembershipTypeChooserBloc>().add(
+                        CommercioKycChangeMembershipTypeEvent(
+                          membershipType: newValue,
+                        ),
+                      ),
               activeColor: radioActiveColor != null
                   ? radioActiveColor(membershipType)
                   : null,

@@ -9,13 +9,13 @@ void main() {
     Directory.current = Directory.current.parent;
   }
 
-  final NetworkInfo correctNetworkInfo = NetworkInfo(
+  final correctNetworkInfo = NetworkInfo(
     bech32Hrp: 'bech32Hrp',
     lcdUrl: 'lcdUrl',
   );
-  const String correctMnemonic =
+  const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet = Wallet.derive(
+  final correctWallet = Wallet.derive(
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );

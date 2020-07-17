@@ -80,9 +80,9 @@ class _ExamplePageState extends State<ExamplePage> {
           children: [
             Consumer<WalletWithMnemonicsModel>(
               builder: (context, value, child) {
-                Function() fn =
+                final fn =
                     value.isGenerating ? null : () => value.deriveNewWallet();
-                String text = value.isGenerating
+                final text = value.isGenerating
                     ? 'Generating...'
                     : 'Generate new wallet';
 

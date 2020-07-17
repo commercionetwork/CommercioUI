@@ -3,17 +3,17 @@ import 'package:commerciosdk/export.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final NetworkInfo correctNetworkInfo = NetworkInfo(
+  final correctNetworkInfo = NetworkInfo(
     bech32Hrp: 'bech32Hrp',
     lcdUrl: 'http://lcd-url',
   );
-  const String correctMnemonic =
+  const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet = Wallet.derive(
+  final correctWallet = Wallet.derive(
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
-  String correctWalletAddress = correctWallet.bech32Address;
+  final correctWalletAddress = correctWallet.bech32Address;
   final correctInviteUser = InviteUser(
     recipientDid: correctWalletAddress,
     senderDid: correctWalletAddress,

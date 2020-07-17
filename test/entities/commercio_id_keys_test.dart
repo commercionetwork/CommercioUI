@@ -10,9 +10,7 @@ void main() {
   }
 
   final correctIdKeys = File('test_resources/id_keys.json').readAsStringSync();
-  final CommercioIdKeys keysObj = CommercioIdKeys.fromJson(
-    jsonDecode(correctIdKeys),
-  );
+  final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
 
   test('Correct', () {
     final commIdKeys = CommercioIdKeys(

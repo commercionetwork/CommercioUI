@@ -45,7 +45,7 @@ class CommercioMintDeriveCloseCdpBloc extends Bloc<
     try {
       yield const CommercioMintDeriveCloseCdpStateLoading();
 
-      final closeCdp = await commercioMint.deriveCloseCdp(
+      final closeCdp = commercioMint.deriveCloseCdp(
         blockHeight: event.blockHeight,
       );
 

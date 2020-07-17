@@ -32,7 +32,7 @@ void main() {
       commercioMint: commercioMint,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioMintOpenedCdpStateLoading>(),
@@ -88,7 +88,7 @@ void main() {
       commercioMint: commercioMint,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioMintDeriveCloseCdpStateLoading>(),
@@ -146,7 +146,7 @@ void main() {
       commercioMint: commercioMint,
     );
 
-    expectLater(
+    expect(
       bloc,
       emitsInOrder([
         isA<CommercioMintClosedCdpsStateLoading>(),

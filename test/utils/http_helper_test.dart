@@ -13,17 +13,17 @@ void main() {
 
   const correctFaucetDomain = 'faucet-devnet.localhost';
   const correctLcdUrl = 'http://lcd-url';
-  final NetworkInfo correctNetworkInfo = NetworkInfo(
+  final correctNetworkInfo = NetworkInfo(
     bech32Hrp: 'bech32Hrp',
     lcdUrl: correctLcdUrl,
   );
-  const String correctMnemonic =
+  const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
-  Wallet correctWallet = Wallet.derive(
+  final correctWallet = Wallet.derive(
     correctMnemonic.split(' '),
     correctNetworkInfo,
   );
-  String correctWalletAddress = correctWallet.bech32Address;
+  final correctWalletAddress = correctWallet.bech32Address;
   final correctTumblerResponse =
       File('test_resources/correct_tumbler_response.json').readAsStringSync();
 
