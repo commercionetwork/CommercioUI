@@ -57,7 +57,12 @@ void main() {
   testWidgets('Submit loading event', (WidgetTester tester) async {
     final blocMock = BlocMock();
 
-    expect(blocMock, emitsInOrder([isA<LoadingStateMock>()]));
+    expect(
+        blocMock,
+        emitsInOrder([
+          isA<InitialStateMock>(),
+          isA<LoadingStateMock>(),
+        ]));
 
     final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
@@ -91,7 +96,12 @@ void main() {
   testWidgets('Submit data event', (WidgetTester tester) async {
     final blocMock = BlocMock();
 
-    expect(blocMock, emitsInOrder([isA<DataStateMock>()]));
+    expect(
+        blocMock,
+        emitsInOrder([
+          isA<InitialStateMock>(),
+          isA<DataStateMock>(),
+        ]));
 
     final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
@@ -125,7 +135,12 @@ void main() {
   testWidgets('Submit error event', (WidgetTester tester) async {
     final blocMock = BlocMock();
 
-    expect(blocMock, emitsInOrder([isA<ErrorStateMock>()]));
+    expect(
+        blocMock,
+        emitsInOrder([
+          isA<InitialStateMock>(),
+          isA<ErrorStateMock>(),
+        ]));
 
     final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
@@ -160,7 +175,12 @@ void main() {
   testWidgets('Submit custom error event', (WidgetTester tester) async {
     final blocMock = BlocMock();
 
-    expect(blocMock, emitsInOrder([isA<ErrorStateMock>()]));
+    expect(
+        blocMock,
+        emitsInOrder([
+          isA<InitialStateMock>(),
+          isA<ErrorStateMock>(),
+        ]));
 
     final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(

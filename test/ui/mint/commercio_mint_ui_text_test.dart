@@ -35,6 +35,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioMintOpenedCdpStateInitial>(),
         isA<CommercioMintOpenedCdpStateLoading>(),
         isA<CommercioMintOpenedCdpStateData>(),
         isA<CommercioMintOpenedCdpStateLoading>(),
@@ -91,6 +92,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioMintDeriveCloseCdpStateInitial>(),
         isA<CommercioMintDeriveCloseCdpStateLoading>(),
         isA<CommercioMintDeriveCloseCdpStateData>(),
         isA<CommercioMintDeriveCloseCdpStateLoading>(),
@@ -149,6 +151,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioMintClosedCdpsStateInitial>(),
         isA<CommercioMintClosedCdpsStateLoading>(),
         isA<CommercioMintClosedCdpsStateData>(),
         isA<CommercioMintClosedCdpsStateLoading>(),

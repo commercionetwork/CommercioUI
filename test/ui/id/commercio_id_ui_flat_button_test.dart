@@ -60,6 +60,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdGeneratedKeysStateInitial>(),
         isA<CommercioIdGeneratedKeysStateLoading>(),
         isA<CommercioIdGeneratedKeysStateData>(),
         isA<CommercioIdGeneratedKeysStateLoading>(),
@@ -118,6 +119,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdRestoredKeysStateInitial>(),
         isA<CommercioIdRestoredKeysStateLoading>(),
         isA<CommercioIdRestoredKeysStateData>(),
         isA<CommercioIdRestoredKeysStateLoading>(),
@@ -175,6 +177,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdDeletedKeysStateInitial>(),
         isA<CommercioIdDeletedKeysStateLoading>(),
         isA<CommercioIdDeletedKeysStateData>(),
         isA<CommercioIdDeletedKeysStateLoading>(),
@@ -233,6 +236,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdDerivedDidDocumentStateInitial>(),
         isA<CommercioIdDerivedDidDocumentStateLoading>(),
         isA<CommercioIdDerivedDidDocumentStateData>(),
         isA<CommercioIdDerivedDidDocumentStateLoading>(),
@@ -292,6 +296,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdSetDidDocumentsStateInitial>(),
         isA<CommercioIdSetDidDocumentsStateLoading>(),
         isA<CommercioIdSetDidDocumentsStateData>(),
         isA<CommercioIdSetDidDocumentsStateLoading>(),
@@ -355,6 +360,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdSetDidDocumentsStateInitial>(),
         isA<CommercioIdSetDidDocumentsStateLoading>(),
         isA<CommercioIdSetDidDocumentsStateData>(),
       ]),
@@ -408,6 +414,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdRechargedTumblerStateInitial>(),
         isA<CommercioIdRechargedTumblerStateLoading>(),
         isA<CommercioIdRechargedTumblerStateData>(),
         isA<CommercioIdRechargedTumblerStateLoading>(),
@@ -478,6 +485,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdRechargedTumblerStateInitial>(),
         isA<CommercioIdRechargedTumblerStateLoading>(),
         isA<CommercioIdRechargedTumblerStateData>(),
       ]),
@@ -532,6 +540,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdDeriveDidPowerUpRequestStateInitial>(),
         isA<CommercioIdDeriveDidPowerUpRequestState>(),
         isA<CommercioIdDeriveDidPowerUpRequestStateData>(),
         isA<CommercioIdDeriveDidPowerUpRequestStateLoading>(),
@@ -597,6 +606,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioIdRequestedDidPowerUpsStateInitial>(),
         isA<CommercioIdRequestedDidPowerUpsStateLoading>(),
         isA<CommercioIdRequestedDidPowerUpsStateData>(),
         isA<CommercioIdRequestedDidPowerUpsStateLoading>(),

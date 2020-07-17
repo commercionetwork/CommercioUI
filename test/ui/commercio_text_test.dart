@@ -57,7 +57,7 @@ void main() {
   testWidgets('Initial state', (WidgetTester tester) async {
     final blocMock = BlocMock();
 
-    expect(blocMock, emitsInOrder([]));
+    expect(blocMock, emitsInOrder([isA<InitialStateMock>()]));
 
     final commText = CommercioText<BlocMock, EventMock, StateMock,
         InitialStateMock, DataStateMock, LoadingStateMock, ErrorStateMock>(
@@ -81,7 +81,12 @@ void main() {
   testWidgets('Loading state', (WidgetTester tester) async {
     final blocMock = BlocMock();
 
-    expect(blocMock, emitsInOrder([isA<LoadingStateMock>()]));
+    expect(
+        blocMock,
+        emitsInOrder([
+          isA<InitialStateMock>(),
+          isA<LoadingStateMock>(),
+        ]));
 
     final commText = CommercioText<BlocMock, EventMock, StateMock,
         InitialStateMock, DataStateMock, LoadingStateMock, ErrorStateMock>(
@@ -105,7 +110,12 @@ void main() {
   testWidgets('Data state', (WidgetTester tester) async {
     final blocMock = BlocMock();
 
-    expect(blocMock, emitsInOrder([isA<DataStateMock>()]));
+    expect(
+        blocMock,
+        emitsInOrder([
+          isA<InitialStateMock>(),
+          isA<DataStateMock>(),
+        ]));
 
     final commText = CommercioText<BlocMock, EventMock, StateMock,
         InitialStateMock, DataStateMock, LoadingStateMock, ErrorStateMock>(

@@ -85,6 +85,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioDocsDeriveDocumentStateInitial>(),
         isA<CommercioDocsDeriveDocumentStateLoading>(),
         isA<CommercioDocsDeriveDocumentStateData>(),
         isA<CommercioDocsDeriveDocumentStateLoading>(),
@@ -158,6 +159,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioDocsSharedDocumentsStateInitial>(),
         isA<CommercioDocsSharedDocumentsStateLoading>(),
         isA<CommercioDocsSharedDocumentsStateData>(),
         isA<CommercioDocsSharedDocumentsStateLoading>(),
@@ -223,6 +225,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioDocsDeriveReceiptStateInitial>(),
         isA<CommercioDocsDeriveReceiptStateLoading>(),
         isA<CommercioDocsDeriveReceiptStateData>(),
         isA<CommercioDocsDeriveReceiptStateLoading>(),
@@ -293,6 +296,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioDocsSentReceiptStateInitial>(),
         isA<CommercioDocsSentReceiptStateLoading>(),
         isA<CommercioDocsSentReceiptStateData>(),
         isA<CommercioDocsSentReceiptStateLoading>(),
@@ -353,6 +357,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioDocsSentDocumentsStateInitial>(),
         isA<CommercioDocsSentDocumentsStateLoading>(),
         isA<CommercioDocsSentDocumentsStateData>(),
         isA<CommercioDocsSentDocumentsStateLoading>(),
@@ -407,6 +412,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioDocsReceivedDocumentsStateInitial>(),
         isA<CommercioDocsReceivedDocumentsStateLoading>(),
         isA<CommercioDocsReceivedDocumentsStateData>(),
         isA<CommercioDocsReceivedDocumentsStateLoading>(),
@@ -462,6 +468,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioDocsSentReceiptsStateInitial>(),
         isA<CommercioDocsSentReceiptsStateLoading>(),
         isA<CommercioDocsSentReceiptsStateData>(),
         isA<CommercioDocsSentReceiptsStateLoading>(),
@@ -516,6 +523,7 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
+        isA<CommercioDocsReceivedReceiptsStateInitial>(),
         isA<CommercioDocsReceivedReceiptsStateLoading>(),
         isA<CommercioDocsReceivedReceiptsStateData>(),
         isA<CommercioDocsReceivedReceiptsStateLoading>(),
