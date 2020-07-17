@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
+import 'package:flutter/foundation.dart' hide Key;
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
 /// The [StatelessCommercioDocs] allows you to send a document to another user,

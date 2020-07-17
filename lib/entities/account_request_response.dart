@@ -1,4 +1,4 @@
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
 /// Represents a generic HTTP response.
 class AccountRequestResponse {

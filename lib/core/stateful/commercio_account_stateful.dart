@@ -3,7 +3,6 @@ import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
 /// The [StatefulCommercioAccount] module allows to generate mnemonics, derive

@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:commercio_ui/entities/faucet_invite_response.dart';
 import 'package:commerciosdk/export.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
 
 /// The [StatelessCommercioKyc] module allows you to buy memberships
 /// to display to everyone that you've been invited by an already verified

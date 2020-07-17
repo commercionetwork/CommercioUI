@@ -1,6 +1,6 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
 /// The [StatefulCommercioKyc] module allows you to buy memberships
 /// to display to everyone that you've been invited by an already verified

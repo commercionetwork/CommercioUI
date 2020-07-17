@@ -1,7 +1,6 @@
 import 'package:commercio_ui/entities/commercio_id_keys.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
 
 part 'commercio_id_state.freezed.dart';
 

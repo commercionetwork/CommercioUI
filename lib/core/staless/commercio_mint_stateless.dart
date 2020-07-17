@@ -1,6 +1,6 @@
 import 'package:commerciosdk/export.dart';
 import 'package:commerciosdk/mint/export.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
 /// The [StatelessCommercioMint] module is the one that allows you to create
 /// Collateralized Debt Positions (CDPs) using your Commercio.network tokens

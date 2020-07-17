@@ -1,4 +1,4 @@
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sacco/wallet.dart';
 
 /// Represents a [Wallet] with its [address] already derived.

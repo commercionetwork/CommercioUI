@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:commerciosdk/entities/crypto/tumbler_response.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
 
 enum HttpPath {
   give,

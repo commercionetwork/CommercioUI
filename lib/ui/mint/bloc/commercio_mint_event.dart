@@ -1,6 +1,6 @@
 import 'package:commerciosdk/export.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sacco/sacco.dart';
 
 abstract class CommercioMintEvent extends Equatable {

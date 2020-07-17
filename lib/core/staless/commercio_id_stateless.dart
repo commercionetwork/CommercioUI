@@ -5,7 +5,6 @@ import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:commercio_ui/data/data.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 
 /// The [StatelessCommercioId] module allows to create a new identity and
 /// associate it to a Did Document.

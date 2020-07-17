@@ -2,7 +2,7 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commercio_ui/data/data.dart';
 import 'package:commercio_ui/entities/exceptions/did_document_not_found.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
 /// The [StatefulCommercioId] module allows to create a new identity and
 /// associate to it a Did Document.

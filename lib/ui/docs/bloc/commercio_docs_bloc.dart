@@ -1,7 +1,7 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/docs/export.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 class CommercioDocsDeriveDocumentBloc extends Bloc<
     CommercioDocsDeriveDocumentEvent, CommercioDocsDeriveDocumentState> {

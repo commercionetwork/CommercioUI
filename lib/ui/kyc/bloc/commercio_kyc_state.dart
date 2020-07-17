@@ -1,7 +1,6 @@
 import 'package:commercio_ui/entities/faucet_invite_response.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
 part 'commercio_kyc_state.freezed.dart';

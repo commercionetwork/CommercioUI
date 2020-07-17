@@ -1,6 +1,5 @@
 import 'package:commerciosdk/export.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
 part 'commercio_mint_state.freezed.dart';

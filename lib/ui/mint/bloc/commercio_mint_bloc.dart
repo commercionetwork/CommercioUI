@@ -1,6 +1,6 @@
 import 'package:commercio_ui/commercio_ui.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 class CommercioMintOpenCdpBloc
     extends Bloc<CommercioMintOpenCdpEvent, CommercioMintOpenedCdpState> {

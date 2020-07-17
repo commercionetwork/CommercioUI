@@ -1,6 +1,6 @@
 import 'package:basic_utils/basic_utils.dart';
 import 'package:commerciosdk/entities/keys/export.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
 /// Represents the RSA verification and signature key pairs.
 class CommercioIdKeys {

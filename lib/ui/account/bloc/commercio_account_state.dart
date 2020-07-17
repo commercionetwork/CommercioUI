@@ -1,6 +1,5 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
 import 'package:sacco/sacco.dart';
 
 part 'commercio_account_state.freezed.dart';
