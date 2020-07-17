@@ -67,11 +67,6 @@
   * Update `basic_utils` to 2.5.5
   * Update `uuid` to 2.2.0
   * Remove `meta`
-
-## [0.1.0] - 2020-06-22
-
-* Add more documentation
-* Add examples
 * Add Stateless Account and Docs tests
 * Use patched version of sacco from git to make test usable
 * Make stateless constructors private
