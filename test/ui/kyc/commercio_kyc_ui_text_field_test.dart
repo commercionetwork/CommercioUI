@@ -1,5 +1,5 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/entities/faucet_invite_response.dart';
+import 'package:commercio_ui/src/entities/faucet_invite_response.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

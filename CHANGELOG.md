@@ -2,6 +2,7 @@
 
 * **Experimental web support**: the app can be compiled and used in a web browser. Keep in mind that the web support is only for demonstration purposes.
 * **Experimental linux support**: the app can be compiled and used on a desktop pc. Keep in mind that the desktop support is only for demonstration purposes.
+* Move sources into `src` directory
 * **HttpHelper**
   * Rename `getGovernment` in `getTumbler` for `HttpEndpoint`
   * Remove optional `faucetDomain` param in `faucetRequest`

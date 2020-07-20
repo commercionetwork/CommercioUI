@@ -1,5 +1,4 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commercio_ui/data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sacco/sacco.dart';

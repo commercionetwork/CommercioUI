@@ -1,4 +1,4 @@
-import 'package:commercio_ui/entities/account_request_response.dart';
+import 'package:commercio_ui/src/entities/account_request_response.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

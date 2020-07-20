@@ -1,4 +1,4 @@
-import 'package:commercio_ui/ui/kyc/export.dart';
+import 'package:commercio_ui/src/ui/kyc/export.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

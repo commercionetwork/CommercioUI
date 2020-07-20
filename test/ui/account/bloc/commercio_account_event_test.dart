@@ -1,4 +1,4 @@
-import 'package:commercio_ui/ui/account/bloc/commercio_account_event.dart';
+import 'package:commercio_ui/src/ui/account/bloc/commercio_account_event.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter_test/flutter_test.dart';
 

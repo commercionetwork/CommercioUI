@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:commercio_ui/core/core.dart';
-import 'package:commercio_ui/core/utils/utils.dart';
-import 'package:commercio_ui/data/data.dart';
-import 'package:commercio_ui/entities/commercio_id_keys.dart';
-import 'package:commercio_ui/entities/entities.dart';
+import 'package:commercio_ui/src/core/core.dart';
+import 'package:commercio_ui/src/core/utils/utils.dart';
+import 'package:commercio_ui/src/data/data.dart';
+import 'package:commercio_ui/src/entities/commercio_id_keys.dart';
+import 'package:commercio_ui/src/entities/entities.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';

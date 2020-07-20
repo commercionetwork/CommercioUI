@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:commercio_ui/core/core.dart';
-import 'package:commercio_ui/core/utils/utils.dart';
-import 'package:commercio_ui/data/data.dart';
-import 'package:commercio_ui/entities/exceptions/exceptions.dart';
+import 'package:commercio_ui/src/core/core.dart';
+import 'package:commercio_ui/src/core/utils/utils.dart';
+import 'package:commercio_ui/src/data/data.dart';
+import 'package:commercio_ui/src/entities/exceptions/exceptions.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';

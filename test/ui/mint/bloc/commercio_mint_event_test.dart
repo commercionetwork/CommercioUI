@@ -1,4 +1,4 @@
-import 'package:commercio_ui/ui/mint/bloc/commercio_mint_event.dart';
+import 'package:commercio_ui/src/ui/mint/bloc/commercio_mint_event.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter_test/flutter_test.dart';
 

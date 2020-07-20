@@ -1,4 +1,4 @@
-import 'package:commercio_ui/entities/commercio_coin.dart';
+import 'package:commercio_ui/src/entities/commercio_coin.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

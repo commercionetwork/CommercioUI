@@ -1,4 +1,4 @@
-import 'package:commercio_ui/entities/exceptions/exceptions.dart';
+import 'package:commercio_ui/src/entities/exceptions/exceptions.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

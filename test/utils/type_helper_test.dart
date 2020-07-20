@@ -1,4 +1,4 @@
-import 'package:commercio_ui/core/utils/type_helper.dart';
+import 'package:commercio_ui/src/core/utils/type_helper.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class A {}

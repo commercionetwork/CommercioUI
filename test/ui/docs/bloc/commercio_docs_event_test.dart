@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:commercio_ui/ui/docs/bloc/docs_bloc.dart';
+import 'package:commercio_ui/src/ui/docs/bloc/docs_bloc.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter_test/flutter_test.dart';
 

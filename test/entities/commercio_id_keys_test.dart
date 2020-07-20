@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:commercio_ui/entities/commercio_id_keys.dart';
+import 'package:commercio_ui/src/entities/commercio_id_keys.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

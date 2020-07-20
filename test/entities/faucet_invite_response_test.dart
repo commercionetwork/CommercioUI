@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:commercio_ui/entities/faucet_invite_response.dart';
+import 'package:commercio_ui/src/entities/faucet_invite_response.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

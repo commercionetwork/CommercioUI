@@ -1,4 +1,4 @@
-import 'package:commercio_ui/entities/wallet_with_address.dart';
+import 'package:commercio_ui/src/entities/wallet_with_address.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sacco/sacco.dart';
 
