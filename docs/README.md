@@ -24,7 +24,7 @@ final networkInfo = NetworkInfo(
   lcdUrl: 'http://localhost:1317',
 );
 
-final wallet = await StatelessCommercioAccount.generateNewWallet(
+final wallet = await StatelessCommercioAccount().generateNewWallet(
   networkInfo: networkInfo,
 );
 ```
