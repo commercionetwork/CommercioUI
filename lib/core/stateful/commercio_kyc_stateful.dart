@@ -7,10 +7,14 @@ import 'package:flutter/foundation.dart';
 /// members to join the network and invite other members.
 class StatefulCommercioKyc {
   final StatefulCommercioAccount commercioAccount;
+  final StatelessCommercioKyc statelessHandler;
 
   /// Creates a new [StatefulCommercioKyc] with the given
   /// [commercioAccount].
-  const StatefulCommercioKyc({@required this.commercioAccount});
+  const StatefulCommercioKyc({
+    @required this.commercioAccount,
+    this.statelessHandler = const StatelessCommercioKyc(),
+  });
 
   /// Request an member invitation from the faucet.
   /// The [walletAddress] must be not already on the chain.
@@ -23,7 +27,7 @@ class StatefulCommercioKyc {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioKyc.requestFaucetInvite(
+    return statelessHandler.requestFaucetInvite(
       walletAddress: commercioAccount.walletAddress,
       httpHelper: commercioAccount.httpHelper,
     );
@@ -44,7 +48,7 @@ class StatefulCommercioKyc {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioKyc.deriveBuyMembership(
+    return statelessHandler.deriveBuyMembership(
       membershipType: membershipType,
       wallet: commercioAccount.wallet,
     );
@@ -62,7 +66,7 @@ class StatefulCommercioKyc {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioKyc.buyMemberships(
+    return statelessHandler.buyMemberships(
       buyMemberships: buyMemberships,
       wallet: commercioAccount.wallet,
       fee: fee,
@@ -81,7 +85,7 @@ class StatefulCommercioKyc {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioKyc.deriveInviteMember(
+    return statelessHandler.deriveInviteMember(
       wallet: commercioAccount.wallet,
       invitedAddress: invitedAddress,
     );
@@ -104,7 +108,7 @@ class StatefulCommercioKyc {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioKyc.inviteMembers(
+    return statelessHandler.inviteMembers(
       inviteUsers: inviteUsers,
       wallet: commercioAccount.wallet,
       fee: fee,

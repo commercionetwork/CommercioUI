@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sacco/utils/export.dart';
+// import 'package:sacco/utils/export.dart';
 
 class SecretStorageMock extends Mock implements SecretStorage {}
 
@@ -32,6 +32,8 @@ class SecretStorageMethodsMock extends Mock implements SecretStorage {
 }
 
 class HttpHelperMock extends Mock implements HttpHelper {}
+
+class StatelessCommercioIdMock extends Mock implements StatelessCommercioId {}
 
 void main() async {
   if (Directory.current.path.endsWith('/test')) {
@@ -71,13 +73,13 @@ void main() async {
 
   const correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
-  const correctTransactionRaw =
-      '{"height":"0","txhash":"$correctTxHash","raw_log":"[]"}';
+  // const correctTransactionRaw =
+  //     '{"height":"0","txhash":"$correctTxHash","raw_log":"[]"}';
 
-  const correctAccountDataRaw =
-      '{"height":"70927","result":{"type":"cosmos-sdk/Account","value":{"address":"did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u33","coins":[{"denom":"ucommercio","amount":"99990300"}],"public_key":"did:com:pub1addwnpepq0efr3d09eja4utyghxte0n8xku33d3cnjmd3wjypfv4y9l540z66spk8xf","account_number":8,"sequence":1}}}';
-  const correctNodeInfoRaw =
-      '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
+  // const correctAccountDataRaw =
+  //     '{"height":"70927","result":{"type":"cosmos-sdk/Account","value":{"address":"did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u33","coins":[{"denom":"ucommercio","amount":"99990300"}],"public_key":"did:com:pub1addwnpepq0efr3d09eja4utyghxte0n8xku33d3cnjmd3wjypfv4y9l540z66spk8xf","account_number":8,"sequence":1}}}';
+  // const correctNodeInfoRaw =
+  //     '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
   final correctIdKeys = File('test_resources/id_keys.json').readAsStringSync();
   final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
   final correctDidDoc = DidDocument.fromJson(
@@ -101,6 +103,7 @@ void main() async {
     uuid: correctUuid,
     encryptionKey: correctEncryptionKey,
   );
+  final statelessCommercioIdMock = StatelessCommercioIdMock();
 
   group('Constructor', () {
     test('Correct', () {
@@ -350,24 +353,34 @@ void main() async {
 
   group('Set Did Document', () {
     test('Correct', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-      AccountDataRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctAccountDataRaw, 200)),
-      );
-      NodeInfoRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctNodeInfoRaw, 200)),
-      );
-
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      // AccountDataRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctAccountDataRaw, 200)),
+      // );
+      // NodeInfoRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
+      // );
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
+        statelessHandler: statelessCommercioIdMock,
       );
 
       final didDocument = await commercioId.deriveDidDocument();
+
+      when(statelessCommercioIdMock.setDidDocuments(
+        didDocuments: [didDocument],
+        wallet: correctWallet,
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
+      );
+
       final result = await commercioId.setDidDocuments(
         didDocuments: [didDocument],
       );
@@ -376,14 +389,23 @@ void main() async {
     });
 
     test('Correct + didDocument', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-      AccountDataRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctAccountDataRaw, 200)),
-      );
-      NodeInfoRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctNodeInfoRaw, 200)),
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      // AccountDataRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctAccountDataRaw, 200)),
+      // );
+      // NodeInfoRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
+      // );
+
+      when(statelessCommercioIdMock.setDidDocuments(
+        didDocuments: [correctDidDoc],
+        wallet: correctWallet,
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
       );
 
       final commercioId = StatefulCommercioId(
@@ -391,6 +413,7 @@ void main() async {
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
+        statelessHandler: statelessCommercioIdMock,
       );
 
       final result = await commercioId.setDidDocuments(
@@ -401,29 +424,42 @@ void main() async {
     });
 
     test('Correct with didDocument in memory', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-      AccountDataRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctAccountDataRaw, 200)),
-      );
-      NodeInfoRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctNodeInfoRaw, 200)),
-      );
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      // AccountDataRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctAccountDataRaw, 200)),
+      // );
+      // NodeInfoRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
+      // );
+
+      when(statelessCommercioIdMock.deriveDidDocument(
+        wallet: correctWallet,
+        idKeys: keysObj,
+      )).thenAnswer((realInvocation) => Future.value(correctDidDoc));
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
+        statelessHandler: statelessCommercioIdMock,
       );
       await commercioId.deriveDidDocument();
 
+      when(statelessCommercioIdMock.setDidDocuments(
+        didDocuments: [correctDidDoc],
+        wallet: correctWallet,
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
+      );
+
       expect(commercioId.hasDidDocument, isTrue);
 
-      final result = await commercioId.setDidDocuments(
-        didDocuments: [],
-      );
+      final result = await commercioId.setDidDocuments();
 
       expect(result.success, isTrue);
     });
@@ -449,7 +485,7 @@ void main() async {
         idKeys: keysObj,
       );
 
-      commercioId.didDocument = await StatelessCommercioId.deriveDidDocument(
+      commercioId.didDocument = await StatelessCommercioId().deriveDidDocument(
         wallet: correctCommercioAccount.wallet,
         idKeys: keysObj,
       );
@@ -463,17 +499,32 @@ void main() async {
 
   group('Recharge tumbler', () {
     test('Correct', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-      AccountDataRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctAccountDataRaw, 200)),
-      );
-      NodeInfoRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctNodeInfoRaw, 200)),
-      );
-      when(httpHelperMock.getTumblerAddress()).thenAnswer(
-        (_) => Future.value(correctWalletAddress),
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      // AccountDataRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctAccountDataRaw, 200)),
+      // );
+      // NodeInfoRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
+      // );
+      // when(httpHelperMock.getTumblerAddress()).thenAnswer(
+      //   (_) => Future.value(correctWalletAddress),
+      // );
+
+      const amount = [StdCoin(denom: 'ucommercio', amount: '10')];
+
+      when(statelessCommercioIdMock.rechargeTumbler(
+        amount: amount,
+        walletWithAddress: WalletWithAddress(
+          wallet: correctWallet,
+          address: correctWalletAddress,
+        ),
+        httpHelper: httpHelperMock,
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
       );
 
       final commercioId = StatefulCommercioId(
@@ -481,10 +532,11 @@ void main() async {
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
+        statelessHandler: statelessCommercioIdMock,
       );
 
       final result = await commercioId.rechargeTumbler(
-        amount: const [StdCoin(denom: 'ucommercio', amount: '10')],
+        amount: amount,
       );
 
       expect(result.success, isTrue);
@@ -577,28 +629,37 @@ void main() async {
     final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
 
     test('Correct', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-      Network.client = MockClient((request) {
-        if (request.url.path.contains('government')) {
-          return Future.value(Response(correctTumblerResponse, 200));
-        }
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      // Network.client = MockClient((request) {
+      //   if (request.url.path.contains('government')) {
+      //     return Future.value(Response(correctTumblerResponse, 200));
+      //   }
 
-        if (request.url.path.contains('identities')) {
-          return Future.value(Response(correctTumblerDdo, 200));
-        }
+      //   if (request.url.path.contains('identities')) {
+      //     return Future.value(Response(correctTumblerDdo, 200));
+      //   }
 
-        return null;
-      });
-      AccountDataRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctAccountDataRaw, 200)),
-      );
-      NodeInfoRetrieval.client = MockClient(
-        (_) => Future.value(Response(correctNodeInfoRaw, 200)),
-      );
-      when(httpHelperMock.getTumblerAddress()).thenAnswer(
-        (_) => Future.value(correctWalletAddress),
+      //   return null;
+      // });
+      // AccountDataRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctAccountDataRaw, 200)),
+      // );
+      // NodeInfoRetrieval.client = MockClient(
+      //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
+      // );
+      // when(httpHelperMock.getTumblerAddress()).thenAnswer(
+      //   (_) => Future.value(correctWalletAddress),
+      // );
+
+      when(statelessCommercioIdMock.requestDidPowerUps(
+        powerUpRequests: [correctDidPowerUpRequest],
+        senderWallet: correctWallet,
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
       );
 
       final commercioId = StatefulCommercioId(
@@ -606,6 +667,7 @@ void main() async {
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
+        statelessHandler: statelessCommercioIdMock,
       );
 
       final result = await commercioId.requestDidPowerUps(

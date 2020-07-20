@@ -10,6 +10,7 @@ import 'package:sacco/sacco.dart';
 class StatefulCommercioAccount {
   final String secureStorageKey;
   final ISecretStorage storage;
+  final StatelessCommercioAccount statelessHandler;
   NetworkInfo _networkInfo;
   HttpHelper httpHelper;
   WalletWithAddress walletWithAddress;
@@ -18,6 +19,7 @@ class StatefulCommercioAccount {
   /// Creates a [StatefulCommercioAccount] with the optional [storageKey],
   /// [storage] and [networkInfo].
   StatefulCommercioAccount({
+    this.statelessHandler = const StatelessCommercioAccount(),
     HttpHelper httpHelper,
     ISecretStorage storage,
     NetworkInfo networkInfo,
@@ -57,7 +59,8 @@ class StatefulCommercioAccount {
 
   /// Generates a new String of 24 space-separated mnemonic words.
   Future<String> generateMnemonic() {
-    return StatelessCommercioAccount.generateMnemonic()
+    return statelessHandler
+        .generateMnemonic()
         .then((value) => mnemonic = value);
   }
 
@@ -69,7 +72,7 @@ class StatefulCommercioAccount {
       throw Exception('No mnemonic found in memory');
     }
 
-    return StatelessCommercioAccount.storeMnemonic(
+    return statelessHandler.storeMnemonic(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
       mnemonic: mnemonicToStore,
@@ -78,7 +81,7 @@ class StatefulCommercioAccount {
 
   /// Restore and return the mnemonic from the secure storage.
   Future<String> fetchMnemonic() {
-    return StatelessCommercioAccount.fetchMnemonic(
+    return statelessHandler.fetchMnemonic(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
@@ -86,7 +89,7 @@ class StatefulCommercioAccount {
 
   /// Delete the mnemonic inside the secure storage.
   Future<void> deleteMnemonic() {
-    return StatelessCommercioAccount.deleteMnemonic(
+    return statelessHandler.deleteMnemonic(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
@@ -104,7 +107,7 @@ class StatefulCommercioAccount {
       throw const MnemonicNotStoredException();
     }
 
-    final wallet = await StatelessCommercioAccount.deriveWallet(
+    final wallet = await statelessHandler.deriveWallet(
       networkInfo: networkInfo,
       mnemonic: mnemonic,
     );
@@ -129,7 +132,7 @@ class StatefulCommercioAccount {
     this.mnemonic = mnemonic ?? await generateMnemonic();
     await storeMnemonic(mnemonic: mnemonic);
 
-    final wallet = await StatelessCommercioAccount.deriveWallet(
+    final wallet = await statelessHandler.deriveWallet(
       networkInfo: networkInfo,
       mnemonic: this.mnemonic,
       lastDerivationPathSegment: lastDerivationPathSegment,
@@ -153,7 +156,7 @@ class StatefulCommercioAccount {
       throw MnemonicNotStoredException();
     }
 
-    return StatelessCommercioAccount.generatePairwiseWallet(
+    return statelessHandler.generatePairwiseWallet(
       networkInfo: networkInfo,
       mnemonic: mnemonic,
       lastDerivationPathSegment: lastDerivationPathSegment,
@@ -174,7 +177,7 @@ class StatefulCommercioAccount {
 
     amount ??= '100000000';
 
-    return StatelessCommercioAccount.requestFreeTokens(
+    return statelessHandler.requestFreeTokens(
       walletAddress: walletAddress,
       amount: amount,
       httpHelper: httpHelper,
@@ -190,7 +193,7 @@ class StatefulCommercioAccount {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioAccount.checkAccountBalance(
+    return statelessHandler.checkAccountBalance(
       walletAddress: walletAddress,
       httpHelper: httpHelper,
     );
@@ -213,7 +216,7 @@ class StatefulCommercioAccount {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioAccount.sendTokens(
+    return statelessHandler.sendTokens(
       senderWallet: walletWithAddress,
       recipientAddress: recipientAddress,
       amount: amount,

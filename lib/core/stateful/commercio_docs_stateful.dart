@@ -6,9 +6,13 @@ import 'package:flutter/foundation.dart' hide Key;
 /// and retrieve the list of documents that you have received.
 class StatefulCommercioDocs {
   final StatefulCommercioAccount commercioAccount;
+  final StatelessCommercioDocs statelessHandler;
 
   /// Creates a [StatefulCommercioDocs] with [commercioAccount].
-  StatefulCommercioDocs({@required this.commercioAccount});
+  StatefulCommercioDocs({
+    @required this.commercioAccount,
+    this.statelessHandler = const StatelessCommercioDocs(),
+  });
 
   /// Returns the [CommercioDoc] from the given data.
   ///
@@ -36,7 +40,7 @@ class StatefulCommercioDocs {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioDocs.deriveCommercioDocument(
+    return statelessHandler.deriveCommercioDocument(
       wallet: commercioAccount.wallet,
       metadata: metadata,
       recipients: recipients,
@@ -64,7 +68,7 @@ class StatefulCommercioDocs {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioDocs.shareDocuments(
+    return statelessHandler.shareDocuments(
       wallet: commercioAccount.wallet,
       commercioDocs: commercioDocs,
       fee: fee,
@@ -89,7 +93,7 @@ class StatefulCommercioDocs {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioDocs.deriveReceipt(
+    return statelessHandler.deriveReceipt(
       wallet: commercioAccount.wallet,
       recipient: recipient,
       txHash: txHash,
@@ -111,7 +115,7 @@ class StatefulCommercioDocs {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioDocs.sendReceipts(
+    return statelessHandler.sendReceipts(
       commercioDocReceipts: commercioDocReceipts,
       wallet: commercioAccount.wallet,
       fee: fee,
@@ -127,7 +131,7 @@ class StatefulCommercioDocs {
   Future<List<CommercioDoc>> sentDocuments({
     @required String walletAddress,
   }) {
-    return StatelessCommercioDocs.sentDocuments(
+    return statelessHandler.sentDocuments(
       walletAddress: walletAddress,
       httpHelper: commercioAccount.httpHelper,
     );
@@ -141,7 +145,7 @@ class StatefulCommercioDocs {
   Future<List<CommercioDoc>> receivedDocuments({
     @required String walletAddress,
   }) {
-    return StatelessCommercioDocs.receivedDocuments(
+    return statelessHandler.receivedDocuments(
       walletAddress: walletAddress,
       httpHelper: commercioAccount.httpHelper,
     );
@@ -155,7 +159,7 @@ class StatefulCommercioDocs {
   Future<List<CommercioDocReceipt>> sentReceipts({
     @required String walletAddress,
   }) {
-    return StatelessCommercioDocs.sentReceipts(
+    return statelessHandler.sentReceipts(
       walletAddress: walletAddress,
       httpHelper: commercioAccount.httpHelper,
     );
@@ -169,7 +173,7 @@ class StatefulCommercioDocs {
   Future<List<CommercioDocReceipt>> receivedReceipts({
     @required String walletAddress,
   }) {
-    return StatelessCommercioDocs.receivedReceipts(
+    return statelessHandler.receivedReceipts(
       walletAddress: walletAddress,
       httpHelper: commercioAccount.httpHelper,
     );

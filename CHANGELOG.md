@@ -70,6 +70,7 @@
 * Add Stateless Account and Docs tests
 * Use patched version of sacco from git to make test usable
 * Make stateless constructors private
+* Make `Stateless` classes concrete and remove static methods
 * **Stateless Account**
   * Fix `generatePairwiseWallet`, make `mnemonic` and `lastDerivationPathSegment` required parameters
   * Update `requestFreeTokens` removing `faucetDomain` and add optional `httpHelper`

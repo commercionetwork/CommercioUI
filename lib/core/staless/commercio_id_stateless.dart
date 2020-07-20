@@ -8,16 +8,18 @@ import 'package:flutter/foundation.dart';
 
 /// The [StatelessCommercioId] module allows to create a new identity and
 /// associate it to a Did Document.
-abstract class StatelessCommercioId {
+class StatelessCommercioId {
+  const StatelessCommercioId();
+
   /// Returns new generated [CommercioIdKeys] that cointains two RSA keys pair,
   /// one pair for verification and another for signature.
-  static Future<CommercioIdKeys> generateKeys() {
+  Future<CommercioIdKeys> generateKeys() {
     return compute(computeNewKeyPair, const GenerateKeysData());
   }
 
   /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
   /// [secureStorageKey].
-  static Future<CommercioIdKeys> restoreKeys({
+  Future<CommercioIdKeys> restoreKeys({
     @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) async {
@@ -33,7 +35,7 @@ abstract class StatelessCommercioId {
   }
 
   /// Save [idKeys] inside the [secureStorage] identified by [secureStorageKey].
-  static Future<void> storeKeys({
+  Future<void> storeKeys({
     @required ISecretStorage secretStorage,
     @required String secureStorageKey,
     @required CommercioIdKeys idKeys,
@@ -46,7 +48,7 @@ abstract class StatelessCommercioId {
 
   /// Delete the [CommercioIdKeys] inside the [secureStorage] identified by
   /// [secureStorageKey].
-  static Future<void> deleteKeys({
+  Future<void> deleteKeys({
     @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) {
@@ -55,7 +57,7 @@ abstract class StatelessCommercioId {
 
   /// Derive a [DidDocument] from the given [wallet], [idKeys] and optional
   /// [service].
-  static Future<DidDocument> deriveDidDocument({
+  Future<DidDocument> deriveDidDocument({
     @required Wallet wallet,
     @required CommercioIdKeys idKeys,
     List<DidDocumentService> service,
@@ -74,7 +76,7 @@ abstract class StatelessCommercioId {
   /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> setDidDocuments({
+  Future<TransactionResult> setDidDocuments({
     @required List<DidDocument> didDocuments,
     @required Wallet wallet,
     StdFee fee,
@@ -95,7 +97,7 @@ abstract class StatelessCommercioId {
   /// be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> rechargeTumbler({
+  Future<TransactionResult> rechargeTumbler({
     @required WalletWithAddress walletWithAddress,
     @required List<StdCoin> amount,
     StdFee fee,
@@ -106,7 +108,7 @@ abstract class StatelessCommercioId {
 
     final tumblerAddress = await httpHelper.getTumblerAddress();
 
-    return StatelessCommercioAccount.sendTokens(
+    return StatelessCommercioAccount().sendTokens(
       senderWallet: walletWithAddress,
       recipientAddress: tumblerAddress,
       amount: amount,
@@ -119,7 +121,7 @@ abstract class StatelessCommercioId {
   /// [pairwiseAddress], [amount] and [rsaSignaturePrivateKey].
   ///
   /// In general [pairwiseAddress] is obtained generating it from the [wallet].
-  static Future<RequestDidPowerUp> deriveDidPowerUpRequest({
+  Future<RequestDidPowerUp> deriveDidPowerUpRequest({
     @required Wallet wallet,
     @required String pairwiseAddress,
     @required List<StdCoin> amount,
@@ -144,7 +146,7 @@ abstract class StatelessCommercioId {
   /// A Did Power Up is required to send documents.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> requestDidPowerUps({
+  Future<TransactionResult> requestDidPowerUps({
     @required Wallet senderWallet,
     @required List<RequestDidPowerUp> powerUpRequests,
     StdFee fee,

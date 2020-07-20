@@ -23,16 +23,16 @@ To represent a generic secure storage the library uses the interface `ISecretSto
 Generating and securely saving the result becames really simple:
 
 ```dart
-final mnemonic = await StatelessCommercioAccount.generateMnemonic();
+final mnemonic = await StatelessCommercioAccount().generateMnemonic();
 
 // Save the mnemonic words
-await StatelessCommercioAccount.storeMnemonic(
+await StatelessCommercioAccount().storeMnemonic(
   secretStorage: SecretStorage(),
   secureStorageKey: 'my-mnemonic-key',
   mnemonic: mnemonic,
 );
 
-final wallet =  await StatelessCommercioAccount.generateNewWallet(
+final wallet =  await StatelessCommercioAccount().generateNewWallet(
   mnemonic: mnemonic,
   networkInfo: NetworkInfo(
     bech32Hrp: 'did:com:',
@@ -46,7 +46,7 @@ The costructor `SecretStorage()` gives the appropriate secure storage object tha
 The stored mnemonic can be restored on the next app launch with:
 
 ```dart
-final mnemonic = await StatelessCommercioAccount.fetchMnemonic(
+final mnemonic = await StatelessCommercioAccount().fetchMnemonic(
   secretStorage: SecretStorage(),
   secureStorageKey: 'my-mnemonic-key',
 );
@@ -55,7 +55,7 @@ final mnemonic = await StatelessCommercioAccount.fetchMnemonic(
 If is only the user wallet that we are interested in then, assuming that mnemonic words have been saved previously, `restoreWallet` can be used:
 
 ```dart
-final wallet = await StatelessCommercioAccount.restoreWallet(
+final wallet = await StatelessCommercioAccount().restoreWallet(
   secretStorage: SecretStorage(),
   secureStorageKey: 'my-mnemonic-key',
   networkInfo: NetworkInfo(
@@ -68,7 +68,7 @@ final wallet = await StatelessCommercioAccount.restoreWallet(
 A pairwise wallet can be generated providing the user wallet `mnemonic`, `networkInfo` and a custom `lastDerivationPathSegment`, for example `'1'`:
 
 ```dart
-final wallet = await StatelessCommercioAccount.generatePairwiseWallet(
+final wallet = await StatelessCommercioAccount().generatePairwiseWallet(
   mnemonic: userMnemonic,
   lastDerivationPathSegment: '1',
   networkInfo: NetworkInfo(
@@ -85,7 +85,7 @@ Free tokens can be requested for a wallet, for example user's wallet. This metho
 Using the default values the request is:
 
 ```dart
-final response = await StatelessCommercioAccount.requestFreeTokens(
+final response = await StatelessCommercioAccount().requestFreeTokens(
   walletAddress: wallet.bech32Address,
 );
 ```
@@ -100,7 +100,7 @@ A subclass of `AccountRequestResponse` is returned, that is:
 The account balance of any wallet can be retrieved by calling `checkAccountBalance`:
 
 ```dart
-final balance = StatelessCommercioAccount.checkAccountBalance(
+final balance = StatelessCommercioAccount().checkAccountBalance(
   walletAddress: wallet.bech32Address,
 );
 ```
@@ -114,7 +114,7 @@ The returned `balance` is a list of `StdCoin`, for example with the first `StdCo
 Sends an `amount` of tokens from the user `wallet` to a `recipientAddress`, that is, the recipient wallet address:
 
 ```dart
-final transactionResult = await StatelessCommercioAccount.sendTokens(
+final transactionResult = await StatelessCommercioAccount().sendTokens(
   senderWallet: WalletWithAddress(
     wallet: wallet,
     address: wallet.bech32Address,
@@ -145,17 +145,17 @@ To associate a Did document as the user identity two pair of RSA keys needs to b
 To generate and save the needed RSA key pairs the following procedure can be used:
 
 ```dart
-final commercioIdKeys = await StatelessCommercioId.generateKeys();
+final commercioIdKeys = await StatelessCommercioId().generateKeys();
 
 // Store the new generated keys
-await StatelessCommercioId.storeKeys(
+await StatelessCommercioId().storeKeys(
   secretStorage: SecretStorage(),
   secureStorageKey: 'my-keys-key',
   idKeys: commercioIdKeys,
 );
 
 // Later restore the keys
-final restoredKeys = await StatelessCommercioId.restoreKeys(
+final restoredKeys = await StatelessCommercioId().restoreKeys(
   secretStorage: SecretStorage(),
   secureStorageKey: 'my-keys-key',
 );
@@ -168,13 +168,13 @@ The `CommercioIdKeys` object contains the verification and signature key pairs. 
 A valid Did document can be derivated using the user wallet and the pairs of RSA key. Then it can be associated to the user identity on the blockchain.
 
 ```dart
-final didDocument = await StatelessCommercioId.deriveDidDocument(
+final didDocument = await StatelessCommercioId().deriveDidDocument(
   wallet: wallet,
   idKeys: commercioIdKeys,
 );
 
 // Associate the Did document to the identity
-final transactionResult = await StatelessCommercioId.setDidDocuments(
+final transactionResult = await StatelessCommercioId().setDidDocuments(
   didDocument: [didDocument],
   wallet: wallet,
 );
@@ -186,7 +186,7 @@ To request a Did power up from `senderWallet` to one of its `pairwiseAddress` wi
 
 ```dart
 // Generate a pairwise wallet with derivation path 1
-final pairwiseWallet = await StatelessCommercioAccount.generatePairwiseWallet(
+final pairwiseWallet = await StatelessCommercioAccount().generatePairwiseWallet(
   mnemonic: userMnemonic,
   lastDerivationPathSegment: '1',
   networkInfo: NetworkInfo(
@@ -195,14 +195,14 @@ final pairwiseWallet = await StatelessCommercioAccount.generatePairwiseWallet(
   ),
 );
 
-final powerUp = await StatelessCommercioId.deriveDidPowerUpRequest(
+final powerUp = await StatelessCommercioId().deriveDidPowerUpRequest(
   pairwiseAddress: pairwiseWallet.bech32Address,
   wallet: wallet,
   amount: const [CommercioCoin(amount: '1000')],
   rsaSignaturePrivateKey: commercioIdKeys.rsaSignatureKeyPair.privateKey,
 );
 
-final transactionResult = await StatelessCommercioId.requestDidPowerUps(
+final transactionResult = await StatelessCommercioId().requestDidPowerUps(
   powerUpRequests: [powerUp],
   senderWallet: wallet,
 );
@@ -230,14 +230,14 @@ final metadata = final correctMetadata = CommercioDocMetadata(
   ),
 );
 
-final commercioDoc = await StatelessCommercioDocs.deriveCommercioDocument(
+final commercioDoc = await StatelessCommercioDocs().deriveCommercioDocument(
   wallet: wallet,
   metadata: metadata,
   recipients: const [recipientAddress],
   contentUri: 'https://example.com/document',
 );
 
-final transactionResult = await StatelessCommercioDocs.shareDocuments(
+final transactionResult = await StatelessCommercioDocs().shareDocuments(
   commercioDocs: [commercioDoc],
   wallet: wallet,
 );
@@ -255,7 +255,7 @@ import 'package:commerciosdk/crypto/keys_helper.dart';
 // Generate an AES key with the help of commercio-sdk
 final aesKey = await KeysHelper.generateAesKey();
 
-final encryptedDoc = await StatelessCommercioDocs.deriveCommercioDocument(
+final encryptedDoc = await StatelessCommercioDocs().deriveCommercioDocument(
   senderWallet: wallet,
   metadata: metadata,
   recipients: const [recipientAddress],
@@ -264,7 +264,7 @@ final encryptedDoc = await StatelessCommercioDocs.deriveCommercioDocument(
   aesKey: aesKey,
 );
 
-final transactionResult = await StatelessCommercioDocs.shareDocuments(
+final transactionResult = await StatelessCommercioDocs().shareDocuments(
   commercioDocs: [encryptedDoc],
   wallet: wallet,
 );
@@ -277,14 +277,14 @@ If no `aesKey` is provided then a new one is generated internally. The key is us
 Send a receipt which tells back to the `recipient` that the document `docId` was read by `senderWallet`. A proof of reading can also specified.
 
 ```dart
-final receipt = await StatelessCommercioDocs.deriveReceipt(
+final receipt = await StatelessCommercioDocs().deriveReceipt(
   recipient: recipientAddress,
   txHash: 'D1B615E4B506FD0E0EAD9DA1E09204E6AA9C0A4FADA8F015C24CDD42CA3D2F66',
   documentId: '0188acd7-320d-4d2f-8b74-df1a5ddbe839',
   wallet: wallet,
 );
 
-final transactionResult = await StatelessCommercioDocs.sendReceipts(
+final transactionResult = await StatelessCommercioDocs().sendReceipts(
   commercioDocReceipts: [receipt],
   wallet: wallet,
 );
@@ -295,7 +295,7 @@ final transactionResult = await StatelessCommercioDocs.sendReceipts(
 You can get the list of every document sent by some `walletAddress` by calling:
 
 ```dart
-final sentDocuments = await StatelessCommercioDocs.sentDocuments(
+final sentDocuments = await StatelessCommercioDocs().sentDocuments(
   walletAddress: walletAddress,
 );
 ```
@@ -311,7 +311,7 @@ The **StatelessCommercioMint** module is the one that allows you to create *Coll
 To open a CDP with `amount` of tokens to get the half back as `CCC`:
 
 ```dart
-final transactionResult = await StatelessCommercioMint.openCdp(
+final transactionResult = await StatelessCommercioMint().openCdp(
   wallet: wallet,
   amount: 1000000,
 );
@@ -320,12 +320,12 @@ final transactionResult = await StatelessCommercioMint.openCdp(
 The opening of a CDP inserts in the blockchain a transaction at a certain block height. After have used the CCC tokens (for example buying a membership) to close a CDP we should specify the opening block height:
 
 ```dart
-final closeCdp = await StatelessCommercioMint.deriveCloseCdp(
+final closeCdp = await StatelessCommercioMint().deriveCloseCdp(
   wallet: wallet,
   blockHeight: 231434,
 );
 
-final transactionResult = await StatelessCommercioMint.closeCdps(
+final transactionResult = await StatelessCommercioMint().closeCdps(
   closeCdps: [closeCdp],
   wallet: wallet,
 );
@@ -346,7 +346,7 @@ The **StatelessCommercioKyc** module allows you to:
 To request an invite to join for the address [walletAddress] from the faucet, that is an already trusted member, just call `requestFaucetInvite`:
 
 ```dart
-final inviteResponse = await StatelessCommercioKyc.requestFaucetInvite(
+final inviteResponse = await StatelessCommercioKyc().requestFaucetInvite(
   walletAddress: walletAddress,
 );
 ```
@@ -366,12 +366,12 @@ if (inviteResponse.success) {
 A trusted member of the blockchain can buy a membership (given that has already buyed enough Commercio Cash Credits (CCC)) with:
 
 ```dart
-final buyMembership = await StatelessCommercioKyc.deriveBuyMembership(
+final buyMembership = await StatelessCommercioKyc().deriveBuyMembership(
   wallet: wallet,
   membershipType: MembershipType.BRONZE,
 );
 
-final transactionResult = await StatelessCommercioKyc.buyMemberships(
+final transactionResult = await StatelessCommercioKyc().buyMemberships(
   buyMemberships: [buyMembership],
   wallet: wallet,
 );
@@ -382,12 +382,12 @@ Now that the user has buyed a membership of at least level `BRONZE` he can invit
 ```dart
 final invitedAddress = 'did:com:1a223..';  // A wallet address of a new non-member
 
-final inviteMember = await StatelessCommercioKyc.deriveInviteMember(
+final inviteMember = await StatelessCommercioKyc().deriveInviteMember(
   invitedAddress: walletAddress,
   wallet: wallet,
 );
 
-final transactionResult = await StatelessCommercioKyc.inviteMembers(
+final transactionResult = await StatelessCommercioKyc().inviteMembers(
   inviteUsers: [inviteMember],
   wallet: wallet,
 );

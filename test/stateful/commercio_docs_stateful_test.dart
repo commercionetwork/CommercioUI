@@ -31,6 +31,9 @@ class SecretStorageMethodsMock extends Mock implements SecretStorage {
 
 class HttpHelperMock extends Mock implements HttpHelper {}
 
+class StatelessCommercioDocsMock extends Mock
+    implements StatelessCommercioDocs {}
+
 void main() async {
   if (Directory.current.path.endsWith('/test')) {
     Directory.current = Directory.current.parent;
@@ -95,8 +98,8 @@ void main() async {
 
   const correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
-  const correctTransactionRaw =
-      '{"height":"0","txhash":"$correctTxHash","raw_log":"[]"}';
+  // const correctTransactionRaw =
+  //     '{"height":"0","txhash":"$correctTxHash","raw_log":"[]"}';
 
   const correctAccountDataRaw =
       '{"height":"70927","result":{"type":"cosmos-sdk/Account","value":{"address":"did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u33","coins":[{"denom":"ucommercio","amount":"99990300"}],"public_key":"did:com:pub1addwnpepq0efr3d09eja4utyghxte0n8xku33d3cnjmd3wjypfv4y9l540z66spk8xf","account_number":8,"sequence":1}}}';
@@ -111,6 +114,7 @@ void main() async {
     documentUuid: correctDocId,
     proof: correctProof,
   );
+  final statelessCommercioDocsMock = StatelessCommercioDocsMock();
 
   group('Constructor', () {
     test('Correct', () {
@@ -161,12 +165,21 @@ void main() async {
     );
 
     test('Correct', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      when(statelessCommercioDocsMock.shareDocuments(
+        wallet: correctWallet,
+        commercioDocs: [correctCommercioDoc],
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
       );
 
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
+        statelessHandler: statelessCommercioDocsMock,
       );
 
       final response = await commercioDocs.shareDocuments(
@@ -177,12 +190,22 @@ void main() async {
     });
 
     test('Correct + optional params', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      when(statelessCommercioDocsMock.shareDocuments(
+        wallet: correctWallet,
+        commercioDocs: [correctCommercioDoc],
+        fee: correctStdFee,
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
       );
 
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
+        statelessHandler: statelessCommercioDocsMock,
       );
 
       final response = await commercioDocs.shareDocuments(
@@ -194,12 +217,9 @@ void main() async {
     });
 
     test('No wallet should throw an exception', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: commercioAccountWithoutWallet,
+        statelessHandler: statelessCommercioDocsMock,
       );
 
       expect(
@@ -242,12 +262,21 @@ void main() async {
     );
 
     test('Correct', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      when(statelessCommercioDocsMock.sendReceipts(
+        wallet: correctWallet,
+        commercioDocReceipts: [correctDocReceipt],
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
       );
 
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
+        statelessHandler: statelessCommercioDocsMock,
       );
 
       final result = await commercioDocs.sendReceipts(
@@ -258,12 +287,22 @@ void main() async {
     });
 
     test('Correct + fee', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+      when(statelessCommercioDocsMock.sendReceipts(
+        wallet: correctWallet,
+        commercioDocReceipts: [correctDocReceipt],
+        fee: correctStdFee,
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTxHash, success: true),
+        ),
       );
 
       final commercioDocs = StatefulCommercioDocs(
         commercioAccount: correctCommercioAccount,
+        statelessHandler: statelessCommercioDocsMock,
       );
 
       final result = await commercioDocs.sendReceipts(

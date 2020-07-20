@@ -8,7 +8,9 @@ import 'package:uuid/uuid.dart';
 
 /// The [StatelessCommercioDocs] allows you to send a document to another user,
 /// and retrieve the list of documents that you have received.
-abstract class StatelessCommercioDocs {
+class StatelessCommercioDocs {
+  const StatelessCommercioDocs();
+
   /// Returns the [CommercioDoc] from the given [wallet] and data.
   ///
   /// The document associated with the given [metadata] and having the
@@ -19,7 +21,7 @@ abstract class StatelessCommercioDocs {
   ///
   /// The [docId] should be a valid UUID v4, if it's not specified a new one
   /// is generated.
-  static Future<CommercioDoc> deriveCommercioDocument({
+  Future<CommercioDoc> deriveCommercioDocument({
     @required Wallet wallet,
     @required CommercioDocMetadata metadata,
     @required List<String> recipients,
@@ -49,7 +51,7 @@ abstract class StatelessCommercioDocs {
   /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> shareDocuments({
+  Future<TransactionResult> shareDocuments({
     @required Wallet wallet,
     @required List<CommercioDoc> commercioDocs,
     StdFee fee,
@@ -68,7 +70,7 @@ abstract class StatelessCommercioDocs {
   /// transaction with [txHash] has been properly seen.
   ///
   /// An optiona [proof] of reading can be specified.
-  static CommercioDocReceipt deriveReceipt({
+  CommercioDocReceipt deriveReceipt({
     @required Wallet wallet,
     @required String recipient,
     @required String txHash,
@@ -88,7 +90,7 @@ abstract class StatelessCommercioDocs {
   /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> sendReceipts({
+  Future<TransactionResult> sendReceipts({
     @required List<CommercioDocReceipt> commercioDocReceipts,
     @required Wallet wallet,
     StdFee fee,
@@ -105,7 +107,7 @@ abstract class StatelessCommercioDocs {
   /// Returns the list of [CommercioDoc] sent by [walletAddress].
   ///
   /// An optional [HttpHelper] can be specified.
-  static Future<List<CommercioDoc>> sentDocuments({
+  Future<List<CommercioDoc>> sentDocuments({
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {
@@ -133,7 +135,7 @@ abstract class StatelessCommercioDocs {
   /// Returns the list of [CommercioDoc] received by [walletAddress].
   ///
   /// An optional [HttpHelper] can be specified.
-  static Future<List<CommercioDoc>> receivedDocuments({
+  Future<List<CommercioDoc>> receivedDocuments({
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {
@@ -161,7 +163,7 @@ abstract class StatelessCommercioDocs {
   /// Returns the list of [CommercioDocReceipt] sent by [walletAddress].
   ///
   /// An optional [HttpHelper] can be specified.
-  static Future<List<CommercioDocReceipt>> sentReceipts({
+  Future<List<CommercioDocReceipt>> sentReceipts({
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {
@@ -191,7 +193,7 @@ abstract class StatelessCommercioDocs {
   /// Returns the list of [CommercioDocReceipt] received by [walletAddress].
   ///
   /// An optional [HttpHelper] can be specified.
-  static Future<List<CommercioDocReceipt>> receivedReceipts({
+  Future<List<CommercioDocReceipt>> receivedReceipts({
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {

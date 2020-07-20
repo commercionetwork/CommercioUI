@@ -8,9 +8,13 @@ import 'package:flutter/foundation.dart';
 /// return.
 class StatefulCommercioMint {
   final StatefulCommercioAccount commercioAccount;
+  final StatelessCommercioMint statelessHandler;
 
   /// Creates a new [StatefulCommercioMint] with the given [commercioAccount].
-  const StatefulCommercioMint({@required this.commercioAccount});
+  const StatefulCommercioMint({
+    @required this.commercioAccount,
+    this.statelessHandler = const StatelessCommercioMint(),
+  });
 
   /// Open a new CDP with the [amount] of ucommercio to get in returns the
   /// half of the [amount] in uccc. An optional [fee] and [mode] can specified.
@@ -29,7 +33,7 @@ class StatefulCommercioMint {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioMint.openCdp(
+    return statelessHandler.openCdp(
       wallet: commercioAccount.wallet,
       amount: amount,
       fee: fee,
@@ -52,7 +56,7 @@ class StatefulCommercioMint {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioMint.deriveCloseCdp(
+    return statelessHandler.deriveCloseCdp(
       blockHeight: blockHeight,
       wallet: commercioAccount.wallet,
     );
@@ -74,7 +78,7 @@ class StatefulCommercioMint {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioMint.closeCdps(
+    return statelessHandler.closeCdps(
       closeCdps: closeCdps,
       wallet: commercioAccount.wallet,
       fee: fee,

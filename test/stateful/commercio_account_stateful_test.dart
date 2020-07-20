@@ -1,3 +1,4 @@
+// import 'dart:convert';
 import 'dart:io';
 
 import 'package:commercio_ui/core/staless/commercio_account_stateless.dart';
@@ -6,6 +7,7 @@ import 'package:commercio_ui/core/utils/utils.dart';
 import 'package:commercio_ui/data/data.dart';
 import 'package:commercio_ui/entities/account_request_response.dart';
 import 'package:commercio_ui/entities/exceptions/exceptions.dart';
+import 'package:commercio_ui/entities/wallet_with_address.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -36,7 +38,10 @@ class SecretStorageMethodsMock extends Mock implements SecretStorage {
 
 class HttpHelperMock extends Mock implements HttpHelper {}
 
-void main() {
+class StatelessCommercioAccountMock extends Mock
+    implements StatelessCommercioAccount {}
+
+void main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   if (Directory.current.path.endsWith('/test')) {
@@ -45,6 +50,7 @@ void main() {
 
   SecretStorage secretStorageMock = SecretStorageMock();
   SecretStorage secretStorageMethodsMock = SecretStorageMethodsMock();
+  final statelessCommercioAccountMock = StatelessCommercioAccountMock();
   final correctNetworkInfo = NetworkInfo(
     bech32Hrp: 'bech32Hrp',
     lcdUrl: 'lcdUrl',
@@ -58,8 +64,8 @@ void main() {
   );
   final httpHelperMock = HttpHelperMock();
   final correctWalletAddress = correctWallet.bech32Address;
-  final correctAccountBalanceRaw =
-      '{"height":"69945","result":[{"denom": "ucommercio","amount": "100000000"}]}';
+  // final correctAccountBalanceRaw =
+  //     '{"height":"69945","result":[{"denom": "ucommercio","amount": "100000000"}]}';
   const correctTxHash =
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
   const correctTransactionRaw =
@@ -68,6 +74,22 @@ void main() {
       '{"height":"70927","result":{"type":"cosmos-sdk/Account","value":{"address":"did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u33","coins":[{"denom":"ucommercio","amount":"99990300"}],"public_key":"did:com:pub1addwnpepq0efr3d09eja4utyghxte0n8xku33d3cnjmd3wjypfv4y9l540z66spk8xf","account_number":8,"sequence":1}}}';
   const correctNodeInfoRaw =
       '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
+
+  when(statelessCommercioAccountMock.deriveWallet(
+    networkInfo: correctNetworkInfo,
+    mnemonic: correctMnemonic,
+  )).thenAnswer((_) => Future.value(correctWallet));
+
+  final correctCommercioAccount = StatefulCommercioAccount(
+    storage: secretStorageMethodsMock,
+    storageKey: secureStorageKey,
+    networkInfo: correctNetworkInfo,
+    httpHelper: httpHelperMock,
+    statelessHandler: statelessCommercioAccountMock,
+  );
+  await correctCommercioAccount.generateNewWallet(
+    mnemonic: correctMnemonic,
+  );
 
   group('Constructor', () {
     test('Default', () async {
@@ -282,7 +304,7 @@ void main() {
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
       );
-      final mnemonic = await StatelessCommercioAccount.generateMnemonic();
+      final mnemonic = await StatelessCommercioAccount().generateMnemonic();
 
       expect(mnemonic, isNotNull);
 
@@ -554,51 +576,26 @@ void main() {
 
   group('Request free tokens', () {
     test('Correct', () async {
-      when(httpHelperMock.faucetRequest(
-        path: HttpPath.give,
-        data: {
-          'addr': correctWalletAddress,
-          'amount': '100000000',
-        },
-      )).thenAnswer((_) => Future.value(Response('', 200)));
-
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMethodsMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
+      when(statelessCommercioAccountMock.requestFreeTokens(
+        walletAddress: correctWalletAddress,
+        amount: '100000000',
         httpHelper: httpHelperMock,
-      );
+      )).thenAnswer((_) => Future.value(AccountRequestSuccess('')));
 
-      await commercioAccount.generateNewWallet(mnemonic: correctMnemonic);
-
-      expect(commercioAccount.wallet, correctWallet);
-
-      final response = await commercioAccount.requestFreeTokens();
+      final response = await correctCommercioAccount.requestFreeTokens();
 
       expect(response, isA<AccountRequestSuccess>());
     });
 
     test('Correct + amount', () async {
-      when(httpHelperMock.faucetRequest(
-        path: HttpPath.give,
-        data: {
-          'addr': correctWalletAddress,
-          'amount': '10',
-        },
-      )).thenAnswer((_) => Future.value(Response('', 200)));
-
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMethodsMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
+      when(statelessCommercioAccountMock.requestFreeTokens(
+        walletAddress: correctWalletAddress,
+        amount: '10',
         httpHelper: httpHelperMock,
-      );
+      )).thenAnswer((_) => Future.value(AccountRequestSuccess('')));
 
-      await commercioAccount.generateNewWallet(mnemonic: correctMnemonic);
-
-      expect(commercioAccount.wallet, correctWallet);
-
-      final response = await commercioAccount.requestFreeTokens(amount: '10');
+      final response =
+          await correctCommercioAccount.requestFreeTokens(amount: '10');
 
       expect(response, isA<AccountRequestSuccess>());
     });
@@ -628,27 +625,20 @@ void main() {
 
   group('Check account balance', () {
     test('Correct', () async {
+      const balanceCoin = [StdCoin(denom: 'ucommercio', amount: '1000')];
+
       when(
-        httpHelperMock.getRequest(
-          endpoint: HttpEndpoint.balance,
+        statelessCommercioAccountMock.checkAccountBalance(
           walletAddress: correctWalletAddress,
+          httpHelper: httpHelperMock,
         ),
       ).thenAnswer(
-        (_) => Future.value(Response(correctAccountBalanceRaw, 200)),
+        (_) => Future.value(balanceCoin),
       );
 
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMethodsMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
-        httpHelper: httpHelperMock,
-      );
+      final balance = await correctCommercioAccount.checkAccountBalance();
 
-      await commercioAccount.generateNewWallet(mnemonic: correctMnemonic);
-
-      final balance = await commercioAccount.checkAccountBalance();
-
-      expect(balance.isNotEmpty, isTrue);
+      expect(balance, balanceCoin);
     });
 
     test('No wallet should throw an exception', () async {
@@ -676,20 +666,24 @@ void main() {
     final correctAmount = const StdCoin(denom: 'denom', amount: '10');
 
     test('Correct', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+
+      when(statelessCommercioAccountMock.sendTokens(
+        senderWallet: WalletWithAddress(
+          wallet: correctWallet,
+          address: correctWalletAddress,
+        ),
+        recipientAddress: correctWalletAddress,
+        amount: [correctAmount],
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTransactionRaw, success: true),
+        ),
       );
 
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMethodsMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
-        httpHelper: httpHelperMock,
-      );
-
-      await commercioAccount.generateNewWallet(mnemonic: correctMnemonic);
-
-      final result = await commercioAccount.sendTokens(
+      final result = await correctCommercioAccount.sendTokens(
         recipientAddress: correctWalletAddress,
         amount: [correctAmount],
       );
@@ -698,36 +692,39 @@ void main() {
     });
 
     test('Correct + fee + gas', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // TxSender.client = MockClient(
+      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+      // );
+
+      const fee = StdFee(
+        amount: [StdCoin(denom: 'denom', amount: '10')],
+        gas: '10',
       );
 
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMethodsMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
-        httpHelper: httpHelperMock,
-      );
-
-      await commercioAccount.generateNewWallet(mnemonic: correctMnemonic);
-
-      final result = await commercioAccount.sendTokens(
+      when(statelessCommercioAccountMock.sendTokens(
+        senderWallet: WalletWithAddress(
+          wallet: correctWallet,
+          address: correctWalletAddress,
+        ),
         recipientAddress: correctWalletAddress,
         amount: [correctAmount],
-        fee: const StdFee(
-          amount: [StdCoin(denom: 'denom', amount: '10')],
-          gas: '10',
+        fee: fee,
+      )).thenAnswer(
+        (_) => Future.value(
+          TransactionResult(hash: correctTransactionRaw, success: true),
         ),
+      );
+
+      final result = await correctCommercioAccount.sendTokens(
+        recipientAddress: correctWalletAddress,
+        amount: [correctAmount],
+        fee: fee,
       );
 
       expect(result.success, isTrue);
     });
 
     test('No wallet should throw an exception', () async {
-      TxSender.client = MockClient(
-        (_) => Future.value(Response(correctTransactionRaw, 200)),
-      );
-
       final commercioAccount = StatefulCommercioAccount(
         storage: secretStorageMethodsMock,
         storageKey: secureStorageKey,

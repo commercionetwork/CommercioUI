@@ -11,15 +11,17 @@ import 'package:sacco/sacco.dart';
 
 /// The [StatelessCommercioAccount] module allows to generate mnemonics, derive
 /// wallets, send and request tokens.
-abstract class StatelessCommercioAccount {
+class StatelessCommercioAccount {
+  const StatelessCommercioAccount();
+
   /// Generates a new String of 24 space-separated mnemonic words.
-  static Future<String> generateMnemonic() {
+  Future<String> generateMnemonic() {
     return compute(computeMnemonic, const ComputeMnemonicData(256));
   }
 
   /// Save [mnemonic] inside the [secureStorage] identified by the key
   /// [secureStorageKey].
-  static Future<void> storeMnemonic({
+  Future<void> storeMnemonic({
     @required ISecretStorage secretStorage,
     @required String secureStorageKey,
     @required String mnemonic,
@@ -29,7 +31,7 @@ abstract class StatelessCommercioAccount {
 
   /// Get the mnemonic from the [secureStorage] identified by the key
   /// [secureStorageKey].
-  static Future<String> fetchMnemonic({
+  Future<String> fetchMnemonic({
     @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) {
@@ -38,7 +40,7 @@ abstract class StatelessCommercioAccount {
 
   /// Deletes the mnemonic inside the [secureStorage] identified by the key
   /// [secureStorageKey].
-  static Future<void> deleteMnemonic({
+  Future<void> deleteMnemonic({
     @required ISecretStorage secretStorage,
     @required String secureStorageKey,
   }) {
@@ -48,7 +50,7 @@ abstract class StatelessCommercioAccount {
   /// Restores the mnemonic words from the [secureStorage] identified by the
   /// key [secureStorageKey]. The words and the [networkInfo] are used to
   /// derive the [Wallet].
-  static Future<Wallet> restoreWallet({
+  Future<Wallet> restoreWallet({
     @required ISecretStorage secretStorage,
     @required String secureStorageKey,
     @required NetworkInfo networkInfo,
@@ -73,7 +75,7 @@ abstract class StatelessCommercioAccount {
   ///
   /// An optional [lastDerivationPathSegment] can be specified to derive a
   /// different [Wallet].
-  static Future<Wallet> generateNewWallet({
+  Future<Wallet> generateNewWallet({
     @required NetworkInfo networkInfo,
     String mnemonic,
     String lastDerivationPathSegment,
@@ -90,7 +92,7 @@ abstract class StatelessCommercioAccount {
   ///
   /// An optional [lastDerivationPathSegment] can be specified to derive a
   /// different [Wallet].
-  static Future<Wallet> deriveWallet({
+  Future<Wallet> deriveWallet({
     @required NetworkInfo networkInfo,
     @required String mnemonic,
     String lastDerivationPathSegment,
@@ -110,7 +112,7 @@ abstract class StatelessCommercioAccount {
   /// generated.
   ///
   /// Some valid [lastDerivationPathSegment] values are: '1', '2' and so on.
-  static Future<Wallet> generatePairwiseWallet({
+  Future<Wallet> generatePairwiseWallet({
     @required NetworkInfo networkInfo,
     @required String mnemonic,
     @required String lastDerivationPathSegment,
@@ -127,7 +129,7 @@ abstract class StatelessCommercioAccount {
   ///
   /// A [AccountRequestResponse] is returned with the success or failure of
   /// the request.
-  static Future<AccountRequestResponse> requestFreeTokens({
+  Future<AccountRequestResponse> requestFreeTokens({
     @required String walletAddress,
     String amount = '100000000',
     HttpHelper httpHelper,
@@ -158,7 +160,7 @@ abstract class StatelessCommercioAccount {
   /// [httpHelper].
   ///
   /// Returns a list of [StdCoin] or an [AccountRequestError] is thrown.
-  static Future<List<StdCoin>> checkAccountBalance({
+  Future<List<StdCoin>> checkAccountBalance({
     @required String walletAddress,
     HttpHelper httpHelper,
   }) async {
@@ -193,7 +195,7 @@ abstract class StatelessCommercioAccount {
   /// An optional [fee] and [mode] can be specified.
   ///
   /// Returns the [TransactionResult].
-  static Future<TransactionResult> sendTokens({
+  Future<TransactionResult> sendTokens({
     @required WalletWithAddress senderWallet,
     @required String recipientAddress,
     @required List<StdCoin> amount,

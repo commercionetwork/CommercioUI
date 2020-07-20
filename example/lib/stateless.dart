@@ -48,18 +48,18 @@ class _ExamplePageState extends State<ExamplePage> {
   // Generate a new wallet using the stateless layer
   Future<Wallet> _deriveNewWallet() async {
     // Generate a string of 24 space-separed mnemonic words
-    final mnemonic = await StatelessCommercioAccount.generateMnemonic();
+    final mnemonic = await StatelessCommercioAccount().generateMnemonic();
 
     // Derive a wallet using the generated mnemonic words and the given
     // network info
-    final wallet = await StatelessCommercioAccount.generateNewWallet(
+    final wallet = await StatelessCommercioAccount().generateNewWallet(
       networkInfo: networkInfo,
       mnemonic: mnemonic,
     );
 
     // Save the generated mnemonic words inside the device secure storage
     // We skip the error handling code
-    await StatelessCommercioAccount.storeMnemonic(
+    await StatelessCommercioAccount().storeMnemonic(
       secretStorage: SecretStorage(),
       secureStorageKey: 'my-mnemonic-key',
       mnemonic: mnemonic,

@@ -49,7 +49,7 @@ packages:
       name: basic_utils
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.5"
+    version: "2.5.6"
   bech32:
     dependency: transitive
     description:
@@ -207,11 +207,9 @@ packages:
   commerciosdk:
     dependency: transitive
     description:
-      path: "."
-      ref: master
-      resolved-ref: "5dd3d4a31e53a6404c4dc767b8aca45b14e39ad1"
-      url: "https://github.com/pasqenr/commercio-sdk.dart.git"
-    source: git
+      name: commerciosdk
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "2.1.2"
   convert:
     dependency: transitive
@@ -346,7 +344,7 @@ packages:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.2"
+    version: "3.3.0"
   glob:
     dependency: transitive
     description:
@@ -381,7 +379,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.1"
+    version: "0.12.2"
   http_multi_server:
     dependency: transitive
     description:
@@ -600,13 +598,11 @@ packages:
     source: hosted
     version: "2.1.3"
   sacco:
-    dependency: "direct main"
+    dependency: transitive
     description:
-      path: "."
-      ref: master
-      resolved-ref: "97a6633e6b1b9831e5e558ac5e90513bddba5b34"
-      url: "https://github.com/pasqenr/sacco.dart"
-    source: git
+      name: sacco
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.1.4"
   shared_preferences:
     dependency: transitive

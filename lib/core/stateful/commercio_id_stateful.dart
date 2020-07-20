@@ -10,6 +10,7 @@ class StatefulCommercioId {
   final StatefulCommercioAccount commercioAccount;
   final ISecretStorage storage;
   final String secureStorageKey;
+  final StatelessCommercioId statelessHandler;
   CommercioIdKeys commercioIdKeys;
   DidDocument didDocument;
 
@@ -17,6 +18,7 @@ class StatefulCommercioId {
   /// optional [storageKey], [storage] and [idKeys].
   StatefulCommercioId({
     @required this.commercioAccount,
+    this.statelessHandler = const StatelessCommercioId(),
     String storageKey,
     ISecretStorage storage,
     CommercioIdKeys idKeys,
@@ -40,7 +42,7 @@ class StatefulCommercioId {
   Future<CommercioIdKeys> generateKeys() async {
     _invalidateDidDocument();
 
-    commercioIdKeys = await StatelessCommercioId.generateKeys();
+    commercioIdKeys = await statelessHandler.generateKeys();
 
     await storeKeys(idKeys: commercioIdKeys);
 
@@ -52,7 +54,7 @@ class StatefulCommercioId {
   ///
   /// If no keys are found then a [NoKeysFoundException] is thrown.
   Future<CommercioIdKeys> restoreKeys() async {
-    commercioIdKeys = await StatelessCommercioId.restoreKeys(
+    commercioIdKeys = await statelessHandler.restoreKeys(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
@@ -66,7 +68,7 @@ class StatefulCommercioId {
 
   /// Save [idKeys] inside the the secure storage.
   Future<void> storeKeys({@required CommercioIdKeys idKeys}) {
-    return StatelessCommercioId.storeKeys(
+    return statelessHandler.storeKeys(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
       idKeys: idKeys,
@@ -76,7 +78,7 @@ class StatefulCommercioId {
   /// Delete the [CommercioIdKeys] inside the [secureStorage] identified by
   /// [secureStorageKey].
   Future<void> deleteKeys() {
-    return StatelessCommercioId.deleteKeys(
+    return statelessHandler.deleteKeys(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
     );
@@ -97,7 +99,7 @@ class StatefulCommercioId {
       throw const WalletNotFoundException();
     }
 
-    didDocument = await StatelessCommercioId.deriveDidDocument(
+    didDocument = await statelessHandler.deriveDidDocument(
       wallet: commercioAccount.wallet,
       idKeys: commercioIdKeys,
       service: service,
@@ -135,7 +137,7 @@ class StatefulCommercioId {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioId.setDidDocuments(
+    return statelessHandler.setDidDocuments(
       didDocuments: didDocuments,
       wallet: commercioAccount.wallet,
       fee: fee,
@@ -158,7 +160,7 @@ class StatefulCommercioId {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioId.rechargeTumbler(
+    return statelessHandler.rechargeTumbler(
       walletWithAddress: commercioAccount.walletWithAddress,
       amount: amount,
       httpHelper: commercioAccount.httpHelper,
@@ -186,7 +188,7 @@ class StatefulCommercioId {
       throw const NoKeysFoundException();
     }
 
-    return StatelessCommercioId.deriveDidPowerUpRequest(
+    return statelessHandler.deriveDidPowerUpRequest(
       wallet: commercioAccount.wallet,
       pairwiseAddress: pairwiseAddress,
       amount: amount,
@@ -216,7 +218,7 @@ class StatefulCommercioId {
       throw const WalletNotFoundException();
     }
 
-    return StatelessCommercioId.requestDidPowerUps(
+    return statelessHandler.requestDidPowerUps(
       senderWallet: commercioAccount.wallet,
       powerUpRequests: powerUpRequests,
       fee: fee,
