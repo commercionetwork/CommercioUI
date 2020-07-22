@@ -50,7 +50,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioKycRequestedFaucetInviteStateInitial>(),
         isA<CommercioKycRequestedFaucetInviteStateLoading>(),
         isA<CommercioKycRequestedFaucetInviteStateData>(),
         isA<CommercioKycRequestedFaucetInviteStateLoading>(),
@@ -105,7 +104,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioKycDeriveBuyMembershipStateInitial>(),
         isA<CommercioKycDeriveBuyMembershipStateLoading>(),
         isA<CommercioKycDeriveBuyMembershipStateData>(),
         isA<CommercioKycDeriveBuyMembershipStateLoading>(),
@@ -166,7 +164,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioKycBuyMembershipsStateInitial>(),
         isA<CommercioKycBuyMembershipsStateLoading>(),
         isA<CommercioKycBuyMembershipsStateData>(),
         isA<CommercioKycBuyMembershipsStateLoading>(),
@@ -227,7 +224,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioKycDeriveInviteMemberStateInitial>(),
         isA<CommercioKycDeriveInviteMemberStateLoading>(),
         isA<CommercioKycDeriveInviteMemberStateData>(),
         isA<CommercioKycDeriveInviteMemberStateLoading>(),
@@ -288,7 +284,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioKycInviteMembersStateInitial>(),
         isA<CommercioKycInviteMembersStateLoading>(),
         isA<CommercioKycInviteMembersStateData>(),
         isA<CommercioKycInviteMembersStateLoading>(),
