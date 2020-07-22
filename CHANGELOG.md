@@ -64,8 +64,8 @@
 * **Dependencies**
   * Add `freezed_annotation`
   * Add `shared_preferences` and `shared_preferences_web`
-  * Update `flutter_bloc` and `bloc` to 5.0.x
-  * Update `basic_utils` to 2.5.5
+  * Update `flutter_bloc` and `bloc` to 6.0
+  * Update `basic_utils` to 2.5.6
   * Update `uuid` to 2.2.0
   * Remove `meta`
 * Add Stateless Account and Docs tests
