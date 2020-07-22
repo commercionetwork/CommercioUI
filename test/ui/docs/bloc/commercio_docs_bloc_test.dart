@@ -12,7 +12,6 @@ void main() {
       expect(
         bloc,
         emitsInOrder([
-          isA<CommercioDocsEncDataStateInitial>(),
           isA<CommercioDocsEncDataStateLoading>(),
           isA<CommercioDocsEncDataStateData>(),
         ]),

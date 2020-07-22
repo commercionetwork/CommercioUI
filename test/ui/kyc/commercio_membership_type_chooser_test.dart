@@ -13,7 +13,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioKycChangeMembershipStateInitial>(),
         CommercioKycChangedMembershipState(
           membershipType: MembershipType.BLACK,
         ),

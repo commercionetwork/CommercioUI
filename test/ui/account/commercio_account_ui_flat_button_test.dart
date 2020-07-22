@@ -44,7 +44,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioAccountGenerateWalletInitial>(),
         isA<CommercioAccountGenerateWalletLoading>(),
         isA<CommercioAccountGenerateWalletData>(),
         isA<CommercioAccountGenerateWalletLoading>(),
@@ -109,7 +108,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioAccountRestoredWalletStateInitial>(),
         isA<CommercioAccountRestoredWalletStateLoading>(),
         isA<CommercioAccountRestoredWalletStateData>(),
         isA<CommercioAccountRestoredWalletStateLoading>(),
@@ -174,7 +172,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioAccountRestoredWalletStateInitial>(),
         isA<CommercioAccountRestoredWalletStateLoading>(),
         isA<CommercioAccountRestoredWalletStateData>(),
       ]),
@@ -230,7 +227,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioAccountFreeTokensStateInitial>(),
         isA<CommercioAccountFreeTokensStateLoading>(),
         isA<CommercioAccountFreeTokensStateData>(),
         isA<CommercioAccountFreeTokensStateLoading>(),
@@ -294,7 +290,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioAccountBalanceStateInitial>(),
         isA<CommercioAccountBalanceStateLoading>(),
         isA<CommercioAccountBalanceStateData>(),
         isA<CommercioAccountBalanceStateLoading>(),
@@ -364,7 +359,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioAccountSentTokensStateInitial>(),
         isA<CommercioAccountSentTokensStateLoading>(),
         isA<CommercioAccountSentTokensStateData>(),
         isA<CommercioAccountSentTokensStateLoading>(),
@@ -429,7 +423,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioAccountQrStateInitial>(),
         isA<CommercioAccountQrStateLoading>(),
         isA<CommercioAccountQrStateData>(),
         isA<CommercioAccountQrStateLoading>(),
@@ -489,7 +482,6 @@ void main() {
     expect(
       bloc,
       emitsInOrder([
-        isA<CommercioAccountPaiwiseWalletStateInitial>(),
         isA<CommercioAccountPaiwiseWalletStateLoading>(),
         isA<CommercioAccountPaiwiseWalletStateData>(),
         isA<CommercioAccountPaiwiseWalletStateLoading>(),
