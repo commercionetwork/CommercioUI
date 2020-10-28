@@ -30,11 +30,13 @@ extension KeyPairJsonExtension on KeyPair<RSAPublicKey, RSAPrivateKey> {
   static KeyPair<RSAPublicKey, RSAPrivateKey> fromJson(
     Map<String, dynamic> json,
   ) {
-    final pubKey = X509Utils.publicKeyFromPem(json['RSAPublicKey'] as String);
+    final pubKey = CryptoUtils.rsaPublicKeyFromPem(
+      json['RSAPublicKey'] as String,
+    );
     final type = json['type'] as String;
     final rsaPublicKey = RSAPublicKey(pubKey, keyType: type);
 
-    final secretKey = X509Utils.privateKeyFromPem(
+    final secretKey = CryptoUtils.rsaPrivateKeyFromPem(
       json['RSAPrivateKey'] as String,
     );
     final rsaPrivateKey = RSAPrivateKey(secretKey);
@@ -46,11 +48,12 @@ extension KeyPairJsonExtension on KeyPair<RSAPublicKey, RSAPrivateKey> {
     KeyPair<RSAPublicKey, RSAPrivateKey> keyPair,
   ) =>
       {
-        'RSAPublicKey':
-            X509Utils.encodeRSAPublicKeyToPem(keyPair.publicKey.pubKey).trim(),
-        'RSAPrivateKey':
-            X509Utils.encodeRSAPrivateKeyToPem(keyPair.privateKey.secretKey)
-                .trim(),
+        'RSAPublicKey': CryptoUtils.encodeRSAPublicKeyToPem(
+          keyPair.publicKey.pubKey,
+        ).trim(),
+        'RSAPrivateKey': CryptoUtils.encodeRSAPrivateKeyToPem(
+          keyPair.privateKey.secretKey,
+        ).trim(),
         'type': keyPair.publicKey.getType().trim()
       };
 }

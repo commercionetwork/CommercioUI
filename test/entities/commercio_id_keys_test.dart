@@ -39,6 +39,7 @@ void main() {
       commIdKeysRaw.trim(),
       correctIdKeys
           .replaceAll('\n', '')
+          .replaceAll('\r', '')
           .replaceAll('    ', '')
           .replaceAll(' {', '{')
           .replaceAll(' "', '"'),
