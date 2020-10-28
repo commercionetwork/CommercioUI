@@ -28,7 +28,7 @@ mixin _$WalletWithMnemonics on WalletWithMnemonicsBase, Store {
       AsyncAction('WalletWithMnemonicsBase.deriveNewWallet');
 
   @override
-  Future<Wallet> deriveNewWallet() {
+  Future<WalletWithMnemonic> deriveNewWallet() {
     return _$deriveNewWalletAsyncAction.run(() => super.deriveNewWallet());
   }
 

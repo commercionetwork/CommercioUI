@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 class WalletWithMnemonicsModel extends ChangeNotifier {
   final StatefulCommercioAccount commercioAccount;
   bool isGenerating;
+  WalletWithMnemonic walletWithMnemonic;
 
   WalletWithMnemonicsModel({
     @required this.commercioAccount,
@@ -17,16 +18,16 @@ class WalletWithMnemonicsModel extends ChangeNotifier {
 
   /// Derive a new [Wallet], stores it and notify when the generation
   /// process is on through [isGenerating].
-  Future<Wallet> deriveNewWallet() async {
+  Future<WalletWithMnemonic> deriveNewWallet() async {
     isGenerating = true;
     notifyListeners();
 
-    final wallet = await commercioAccount.generateNewWallet();
+    walletWithMnemonic = await commercioAccount.generateNewWallet();
 
     isGenerating = false;
     notifyListeners();
 
-    return wallet;
+    return walletWithMnemonic;
   }
 }
 
@@ -101,10 +102,9 @@ class _ExamplePageState extends State<ExamplePage> {
                 if (value.isGenerating) {
                   mnemonicTextController.text = 'Generating...';
                 } else {
-                  mnemonicTextController.text =
-                      value.commercioAccount.hasMnemonic
-                          ? value.commercioAccount.mnemonic
-                          : '';
+                  mnemonicTextController.text = value.walletWithMnemonic != null
+                      ? value.walletWithMnemonic.mnemonic
+                      : '';
                 }
 
                 return TextField(

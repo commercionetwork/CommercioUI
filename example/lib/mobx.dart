@@ -16,6 +16,7 @@ abstract class WalletWithMnemonicsBase with Store {
   bool isGenerating;
 
   final StatefulCommercioAccount commercioAccount;
+  WalletWithMnemonic walletWithMnemonic;
 
   WalletWithMnemonicsBase({
     @required this.commercioAccount,
@@ -25,14 +26,14 @@ abstract class WalletWithMnemonicsBase with Store {
   /// Derive a new [Wallet], stores it and notify when the generation
   /// process is on through [isGenerating].
   @action
-  Future<Wallet> deriveNewWallet() async {
+  Future<WalletWithMnemonic> deriveNewWallet() async {
     isGenerating = true;
 
-    final wallet = await commercioAccount.generateNewWallet();
+    walletWithMnemonic = await commercioAccount.generateNewWallet();
 
     isGenerating = false;
 
-    return wallet;
+    return walletWithMnemonic;
   }
 }
 
@@ -112,10 +113,10 @@ class _ExamplePageState extends State<ExamplePage> {
                 if (widget.walletWithMnemonics.isGenerating) {
                   mnemonicTextController.text = 'Generating...';
                 } else {
-                  mnemonicTextController.text =
-                      widget.walletWithMnemonics.commercioAccount.hasMnemonic
-                          ? widget.walletWithMnemonics.commercioAccount.mnemonic
-                          : '';
+                  mnemonicTextController.text = widget.walletWithMnemonics !=
+                          null
+                      ? widget.walletWithMnemonics.walletWithMnemonic.mnemonic
+                      : '';
                 }
 
                 return TextField(

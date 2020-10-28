@@ -49,12 +49,14 @@ class _ExamplePageState extends State<ExamplePage> {
     // The resulting words are automatically stored inside the secure storage
     await commercioAccount.generateNewWallet();
 
+    final mnemonic = await commercioAccount.fetchMnemonic();
+
     setState(() {
       // Cached wallet address to greatly improve perfomance
       walletTextController.text = commercioAccount.walletAddress;
 
-      // The mnemonic generated are stored inside the object state
-      mnemonicTextController.text = commercioAccount.mnemonic;
+      // The mnemonic generated are taken from the account
+      mnemonicTextController.text = mnemonic;
 
       isGenerating = false;
     });

@@ -1,4 +1,3 @@
-// import 'dart:convert';
 import 'dart:io';
 
 import 'package:commercio_ui/src/core/staless/commercio_account_stateless.dart';
@@ -8,6 +7,7 @@ import 'package:commercio_ui/src/data/data.dart';
 import 'package:commercio_ui/src/entities/account_request_response.dart';
 import 'package:commercio_ui/src/entities/exceptions/exceptions.dart';
 import 'package:commercio_ui/src/entities/wallet_with_address.dart';
+import 'package:commercio_ui/src/entities/wallet_with_mnemonic.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -90,6 +90,10 @@ void main() async {
   await correctCommercioAccount.generateNewWallet(
     mnemonic: correctMnemonic,
   );
+  final correctWalletWithMnemonic = WalletWithMnemonic(
+    wallet: correctWallet,
+    mnemonic: correctMnemonic,
+  );
 
   group('Constructor', () {
     test('Default', () async {
@@ -141,48 +145,6 @@ void main() async {
       await commercioAccount.restoreWallet();
 
       expect(commercioAccount.hasWallet, isTrue);
-    });
-  });
-
-  group('Has mnemonic', () {
-    test('Newly created account does not have mnemonic in memory', () async {
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
-        httpHelper: httpHelperMock,
-      );
-
-      expect(commercioAccount.hasMnemonic, isFalse);
-    });
-
-    test('Account have mnemonic after generating it', () async {
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
-        httpHelper: httpHelperMock,
-      );
-
-      await commercioAccount.generateNewWallet();
-
-      expect(commercioAccount.hasMnemonic, isTrue);
-    });
-
-    test('Account have mnemonic after successfully restoring it', () async {
-      when(secretStorageMock.read(key: secureStorageKey))
-          .thenAnswer((_) => Future.value(correctMnemonic));
-
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
-        httpHelper: httpHelperMock,
-      );
-
-      await commercioAccount.restoreWallet();
-
-      expect(commercioAccount.hasMnemonic, isTrue);
     });
   });
 
@@ -243,7 +205,6 @@ void main() async {
 
       expect(commercioAccount.hasWallet, isTrue);
       expect(commercioAccount.hasWalletAddress, isTrue);
-      expect(commercioAccount.hasMnemonic, isTrue);
 
       commercioAccount.networkInfo = NetworkInfo(
         bech32Hrp: 'newBench32Hrp',
@@ -252,7 +213,6 @@ void main() async {
 
       expect(commercioAccount.hasWallet, isFalse);
       expect(commercioAccount.hasWalletAddress, isFalse);
-      expect(commercioAccount.hasMnemonic, isTrue);
     });
   });
 
@@ -289,7 +249,8 @@ void main() async {
 
       expect(mnemonic, isNotNull);
 
-      expect(() => commercioAccount.storeMnemonic(), returnsNormally);
+      expect(() => commercioAccount.storeMnemonic(mnemonic: correctMnemonic),
+          returnsNormally);
     });
 
     test('Correct with custom mnemonic', () async {
@@ -328,7 +289,7 @@ void main() async {
       );
 
       expect(
-        () => commercioAccount.storeMnemonic(),
+        () => commercioAccount.storeMnemonic(mnemonic: null),
         throwsA(isA<Exception>()),
       );
     });
@@ -346,7 +307,7 @@ void main() async {
       );
 
       expect(
-        () => commercioAccount.storeMnemonic(),
+        () => commercioAccount.storeMnemonic(mnemonic: correctMnemonic),
         throwsException,
       );
     });
@@ -454,9 +415,9 @@ void main() async {
         httpHelper: httpHelperMock,
       );
 
-      final wallet = await commercioAccount.restoreWallet();
+      final walletWithMnemonic = await commercioAccount.restoreWallet();
 
-      expect(wallet, correctWallet);
+      expect(walletWithMnemonic, correctWalletWithMnemonic);
     });
 
     test('No mnemonic stored should throw an exception', () async {
@@ -486,10 +447,10 @@ void main() async {
         httpHelper: httpHelperMock,
       );
 
-      final wallet = await commercioAccount.generateNewWallet();
+      final walletWithMnemonic = await commercioAccount.generateNewWallet();
 
-      expect(wallet, isNotNull);
-      expect(wallet.bech32Address, isNotNull);
+      expect(walletWithMnemonic, isNotNull);
+      expect(walletWithMnemonic.wallet.bech32Address, isNotNull);
     });
 
     test('Correct + mnemonic', () async {
@@ -500,11 +461,11 @@ void main() async {
         httpHelper: httpHelperMock,
       );
 
-      final wallet = await commercioAccount.generateNewWallet(
+      final walletWithMnemonic = await commercioAccount.generateNewWallet(
         mnemonic: correctMnemonic,
       );
 
-      expect(wallet, correctWallet);
+      expect(walletWithMnemonic, correctWalletWithMnemonic);
     });
 
     test('Correct + mnemonic + lastDerivationPath should be deterministic',
@@ -535,14 +496,24 @@ void main() async {
   group('Generate pairwise wallet', () {
     test('Correct', () async {
       final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMethodsMock,
+        storage: secretStorageMock,
         storageKey: secureStorageKey,
         networkInfo: correctNetworkInfo,
         httpHelper: httpHelperMock,
       );
 
+      when(secretStorageMock.write(
+        key: secureStorageKey,
+        value: correctMnemonic,
+      )).thenAnswer(
+        (_) async => correctMnemonic,
+      );
+      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
+        (_) async => correctMnemonic,
+      );
+
       // Make sure mnemonic is not null
-      await commercioAccount.generateMnemonic();
+      await commercioAccount.storeMnemonic(mnemonic: correctMnemonic);
 
       final pairwise = await commercioAccount.generatePairwiseWallet(
         lastDerivationPathSegment: '1',

@@ -18,14 +18,14 @@ class CommercioAccountGenerateWalletBloc extends Bloc<
     try {
       yield const CommercioAccountGenerateWalletLoading();
 
-      await commercioAccount.generateNewWallet(
+      final walletWithMnemonic = await commercioAccount.generateNewWallet(
         mnemonic: event.mnemonic,
         lastDerivationPathSegment: event.lastDerivationPathSegment,
       );
 
       yield CommercioAccountGenerateWalletData(
-        mnemonic: commercioAccount.mnemonic,
-        wallet: commercioAccount.wallet,
+        mnemonic: walletWithMnemonic.mnemonic,
+        wallet: walletWithMnemonic.wallet,
         walletAddress: commercioAccount.walletAddress,
       );
     } catch (e) {
@@ -48,15 +48,18 @@ class CommercioAccountRestoreWalletBloc extends Bloc<
     try {
       yield const CommercioAccountRestoredWalletStateLoading();
 
+      WalletWithMnemonic walletWithMnemonic;
       if (event.mnemonic != null) {
-        await commercioAccount.generateNewWallet(mnemonic: event.mnemonic);
+        walletWithMnemonic = await commercioAccount.generateNewWallet(
+          mnemonic: event.mnemonic,
+        );
       } else {
-        await commercioAccount.restoreWallet();
+        walletWithMnemonic = await commercioAccount.restoreWallet();
       }
 
       yield CommercioAccountRestoredWalletStateData(
-        mnemonic: commercioAccount.mnemonic,
-        wallet: commercioAccount.wallet,
+        mnemonic: walletWithMnemonic.mnemonic,
+        wallet: walletWithMnemonic.wallet,
         walletAddress: commercioAccount.walletAddress,
       );
     } catch (e) {

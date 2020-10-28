@@ -14,7 +14,6 @@ class StatefulCommercioAccount {
   NetworkInfo _networkInfo;
   HttpHelper httpHelper;
   WalletWithAddress walletWithAddress;
-  String mnemonic;
 
   /// Creates a [StatefulCommercioAccount] with the optional [storageKey],
   /// [storage] and [networkInfo].
@@ -45,9 +44,6 @@ class StatefulCommercioAccount {
   /// Returns [true] if the account has the [Wallet] address in memory.
   bool get hasWalletAddress => walletAddress != null;
 
-  /// Returns [true] if the account has the mnemonic in memory.
-  bool get hasMnemonic => mnemonic != null;
-
   /// Set a new [networkInfo], invalidating current [walletWithAddress].
   set networkInfo(NetworkInfo networkInfo) {
     _networkInfo = networkInfo;
@@ -59,14 +55,12 @@ class StatefulCommercioAccount {
 
   /// Generates a new String of 24 space-separated mnemonic words.
   Future<String> generateMnemonic() {
-    return statelessHandler
-        .generateMnemonic()
-        .then((value) => mnemonic = value);
+    return statelessHandler.generateMnemonic();
   }
 
   /// Save the [mnemonic] in the secure storage.
-  Future<void> storeMnemonic({String mnemonic}) {
-    final mnemonicToStore = mnemonic ?? this.mnemonic;
+  Future<void> storeMnemonic({@required String mnemonic}) {
+    final mnemonicToStore = mnemonic;
 
     if (mnemonicToStore == null) {
       throw Exception('No mnemonic found in memory');
@@ -100,10 +94,10 @@ class StatefulCommercioAccount {
   ///
   /// If there are not mnemonic stored then a [MnemonicNotStoredException] is
   /// thrown.
-  Future<Wallet> restoreWallet() async {
-    mnemonic ??= await fetchMnemonic();
+  Future<WalletWithMnemonic> restoreWallet() async {
+    final mnemonic = await fetchMnemonic();
 
-    if (!hasMnemonic) {
+    if (mnemonic == null) {
       throw const MnemonicNotStoredException();
     }
 
@@ -117,7 +111,7 @@ class StatefulCommercioAccount {
       address: wallet.bech32Address,
     );
 
-    return wallet;
+    return WalletWithMnemonic(wallet: wallet, mnemonic: mnemonic);
   }
 
   /// Generate a new [Wallet] associated with the optional [mnemonic],
@@ -125,25 +119,26 @@ class StatefulCommercioAccount {
   ///
   /// If no [mnemonic] are specified then new words are generated and stored
   /// in the account.
-  Future<Wallet> generateNewWallet({
+  Future<WalletWithMnemonic> generateNewWallet({
     String mnemonic,
     String lastDerivationPathSegment,
   }) async {
-    this.mnemonic = mnemonic ?? await generateMnemonic();
-    await storeMnemonic(mnemonic: mnemonic);
+    mnemonic = mnemonic ?? await generateMnemonic();
 
     final wallet = await statelessHandler.deriveWallet(
       networkInfo: networkInfo,
-      mnemonic: this.mnemonic,
+      mnemonic: mnemonic,
       lastDerivationPathSegment: lastDerivationPathSegment,
     );
+
+    await storeMnemonic(mnemonic: mnemonic);
 
     walletWithAddress = WalletWithAddress(
       wallet: wallet,
       address: wallet.bech32Address,
     );
 
-    return wallet;
+    return WalletWithMnemonic(wallet: wallet, mnemonic: mnemonic);
   }
 
   /// Generate a pairwise [Wallet] from the given [lastDerivationPathSegment].
@@ -151,8 +146,10 @@ class StatefulCommercioAccount {
   /// thrown.
   Future<Wallet> generatePairwiseWallet({
     @required String lastDerivationPathSegment,
-  }) {
-    if (!hasMnemonic) {
+  }) async {
+    final mnemonic = await fetchMnemonic();
+
+    if (mnemonic == null) {
       throw MnemonicNotStoredException();
     }
 

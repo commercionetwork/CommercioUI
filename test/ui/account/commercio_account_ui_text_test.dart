@@ -24,17 +24,19 @@ void main() {
   );
   final correctWalletAddress = correctWallet.bech32Address;
   final commercioAccount = StatefulCommercioAccountMock();
+  final correctWalletWithMnemonic = WalletWithMnemonic(
+    wallet: correctWallet,
+    mnemonic: correctMnemonic,
+  );
 
   testWidgets('Submit GenerateWallet Event', (
     WidgetTester tester,
   ) async {
     when(commercioAccount.generateNewWallet())
-        .thenAnswer((_) async => correctWallet);
+        .thenAnswer((_) async => correctWalletWithMnemonic);
     when(commercioAccount.hasWallet).thenReturn(false);
-    when(commercioAccount.hasMnemonic).thenReturn(false);
     when(commercioAccount.hasWalletAddress).thenReturn(false);
     when(commercioAccount.wallet).thenReturn(correctWallet);
-    when(commercioAccount.mnemonic).thenReturn(correctMnemonic);
     when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
 
     final bloc = CommercioAccountGenerateWalletBloc(
@@ -87,12 +89,10 @@ void main() {
     WidgetTester tester,
   ) async {
     when(commercioAccount.restoreWallet())
-        .thenAnswer((_) async => correctWallet);
+        .thenAnswer((_) async => correctWalletWithMnemonic);
     when(commercioAccount.hasWallet).thenReturn(false);
-    when(commercioAccount.hasMnemonic).thenReturn(false);
     when(commercioAccount.hasWalletAddress).thenReturn(false);
     when(commercioAccount.wallet).thenReturn(correctWallet);
-    when(commercioAccount.mnemonic).thenReturn(correctMnemonic);
     when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
 
     final bloc = CommercioAccountRestoreWalletBloc(
@@ -147,10 +147,8 @@ void main() {
     when(commercioAccount.requestFreeTokens())
         .thenAnswer((_) async => AccountRequestSuccess(''));
     when(commercioAccount.hasWallet).thenReturn(false);
-    when(commercioAccount.hasMnemonic).thenReturn(false);
     when(commercioAccount.hasWalletAddress).thenReturn(false);
     when(commercioAccount.wallet).thenReturn(correctWallet);
-    when(commercioAccount.mnemonic).thenReturn(correctMnemonic);
     when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
 
     final bloc = CommercioAccountRequestFreeTokensBloc(
@@ -205,10 +203,8 @@ void main() {
   ) async {
     when(commercioAccount.checkAccountBalance()).thenAnswer((_) async => []);
     when(commercioAccount.hasWallet).thenReturn(false);
-    when(commercioAccount.hasMnemonic).thenReturn(false);
     when(commercioAccount.hasWalletAddress).thenReturn(false);
     when(commercioAccount.wallet).thenReturn(correctWallet);
-    when(commercioAccount.mnemonic).thenReturn(correctMnemonic);
     when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
 
     final bloc = CommercioAccountCheckBalanceBloc(
@@ -268,10 +264,8 @@ void main() {
           hash: '',
         ));
     when(commercioAccount.hasWallet).thenReturn(false);
-    when(commercioAccount.hasMnemonic).thenReturn(false);
     when(commercioAccount.hasWalletAddress).thenReturn(false);
     when(commercioAccount.wallet).thenReturn(correctWallet);
-    when(commercioAccount.mnemonic).thenReturn(correctMnemonic);
     when(commercioAccount.walletAddress).thenReturn(correctWalletAddress);
 
     final bloc = CommercioAccountSendTokensBloc(
