@@ -1,3 +1,9 @@
+## [0.2.0] - 2020-10-28
+
+* **[BREAKING]** Remove `mnemonic` attribute and `hasMnemonic` getter from `StatefulCommercioAccount`
+* **[BREAKING]** Make `mnemonic` argument in `storeMnemonic()` as `@required`
+* **[BREAKING]** `restoreWallet()` now returns a `WalletWithMnemonic` entity
+
 ## [0.1.0] - 2020-07-17
 
 * **Experimental web support**: the app can be compiled and used in a web browser. Keep in mind that the web support is only for demonstration purposes.
