@@ -1,8 +1,6 @@
-import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_commercio_ui/flutter_commercio_ui.dart';
 import 'package:get/get.dart';
-import 'package:sacco/sacco.dart';
 
 /// [GetxController] that wraps the [Wallet] generation inside a method
 /// and exposes an observable value to rebuild UI when generating or not.
@@ -53,7 +51,9 @@ class _ExamplePageState extends State<ExamplePage> {
   @override
   void initState() {
     super.initState();
-    Get.put<StatefulCommercioAccount>(StatefulCommercioAccount());
+    Get.put<StatefulCommercioAccount>(StatefulCommercioAccount(
+      storage: SecretStorage(),
+    ));
   }
 
   @override

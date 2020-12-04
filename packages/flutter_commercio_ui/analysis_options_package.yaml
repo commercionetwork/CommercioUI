@@ -1,0 +1,9 @@
+include: package:pedantic/analysis_options_package.yaml
+
+linter:
+  rules:
+    avoid_implementing_value_types: false
+    avoid_classes_with_only_static_members: false
+    # Not reliable enough (https://github.com/flutter/flutter/blob/master/analysis_options.yaml)
+    close_sinks: false
+    # public_member_api_docs: true

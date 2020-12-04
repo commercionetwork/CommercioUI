@@ -1,6 +1,6 @@
-import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_commercio_ui/flutter_commercio_ui.dart';
 
 // The UI BLoC layer provides already built blocs, events and states
 // that can be used in every application. The opinionated choice to use
@@ -15,7 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   runApp(
     RepositoryProvider<StatefulCommercioAccount>(
-      create: (_) => StatefulCommercioAccount(),
+      create: (_) => StatefulCommercioAccount(storage: SecretStorage()),
       child: const MyApp(),
     ),
   );
@@ -62,8 +62,6 @@ class _ExamplePageState extends State<ExamplePage> {
 
   @override
   Widget build(BuildContext context) {
-    final generateWalletBloc =
-        context.bloc<CommercioAccountGenerateWalletBloc>();
     String flatButtonText;
 
     return Scaffold(
@@ -85,7 +83,8 @@ class _ExamplePageState extends State<ExamplePage> {
             );
           },
           builder: (_, state) {
-            Function() onPressed = () => generateWalletBloc
+            Function() onPressed = () => context
+                .read<CommercioAccountGenerateWalletBloc>()
                 .add(const CommercioAccountGenerateWalletEvent());
 
             state.when(

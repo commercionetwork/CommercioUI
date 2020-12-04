@@ -1,6 +1,6 @@
-import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_commercio_ui/flutter_commercio_ui.dart';
 
 // The UI widgets layer is the topmost layer in the CommercioUI library.
 // The layer provides a set of pre-built widgets around the BLoC components
@@ -14,7 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   runApp(
     RepositoryProvider<StatefulCommercioAccount>(
-      create: (_) => StatefulCommercioAccount(),
+      create: (_) => StatefulCommercioAccount(storage: SecretStorage()),
       child: const MyApp(),
     ),
   );

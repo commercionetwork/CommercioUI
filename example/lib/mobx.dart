@@ -1,9 +1,7 @@
-import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_commercio_ui/flutter_commercio_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
-import 'package:sacco/sacco.dart';
 
 part 'mobx.g.dart';
 
@@ -50,7 +48,7 @@ class MyApp extends StatelessWidget {
       title: 'Example',
       home: ExamplePage(
         walletWithMnemonics: WalletWithMnemonics(
-          commercioAccount: StatefulCommercioAccount(),
+          commercioAccount: StatefulCommercioAccount(storage: SecretStorage()),
         ),
       ),
     );

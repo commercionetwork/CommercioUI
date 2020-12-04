@@ -1,6 +1,5 @@
-import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_commercio_ui/flutter_commercio_ui.dart';
 import 'package:provider/provider.dart';
 
 /// [ChangeNotifier] that wraps the [Wallet] generation inside a method
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
       title: 'Example app',
       home: ChangeNotifierProvider(
         create: (_) => WalletWithMnemonicsModel(
-          commercioAccount: StatefulCommercioAccount(),
+          commercioAccount: StatefulCommercioAccount(storage: SecretStorage()),
         ),
         child: const ExamplePage(),
       ),

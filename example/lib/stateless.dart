@@ -1,7 +1,6 @@
-import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sacco/sacco.dart';
+import 'package:flutter_commercio_ui/flutter_commercio_ui.dart';
 
 // The Stateless layer is just a convenient Flutter wrapper around
 // commercio-sdk. The aim is to simplify the API and give more methods

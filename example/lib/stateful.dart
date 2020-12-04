@@ -1,6 +1,5 @@
-import 'package:commercio_ui/commercio_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_commercio_ui/flutter_commercio_ui.dart';
 
 // The Stateful layer is built directly on the Stateless layer.
 // Using this layer we have:
@@ -37,7 +36,9 @@ class _ExamplePageState extends State<ExamplePage> {
 
   // Create a commercio account with default NetworkInfo, secret storage and
   // storage key
-  final StatefulCommercioAccount commercioAccount = StatefulCommercioAccount();
+  final StatefulCommercioAccount commercioAccount = StatefulCommercioAccount(
+    storage: SecretStorage(),
+  );
 
   // We need to manage the state during mnemonic creation and wallet derivation
   bool isGenerating = false;

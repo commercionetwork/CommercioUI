@@ -1,0 +1,13 @@
+import 'package:commercio_ui/src/entities/exceptions/no_keys_found_exception.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('To string', () {
+    final ex = NoKeysFoundException();
+
+    expect(
+      ex.toString(),
+      'No keys associated to the account. Have you generated or restored them?',
+    );
+  });
+}
