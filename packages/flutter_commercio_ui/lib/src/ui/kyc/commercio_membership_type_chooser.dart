@@ -120,14 +120,15 @@ class CommercioMembershipTypeChooser extends StatelessWidget {
               subtitle: subtitle != null ? subtitle(membershipType) : null,
               value: membershipType,
               groupValue: context
-                  .read<CommercioKycMembershipTypeChooserBloc>()
+                  .watch<CommercioKycMembershipTypeChooserBloc>()
                   .membershipType,
-              onChanged: (newValue) =>
-                  context.read<CommercioKycMembershipTypeChooserBloc>().add(
-                        CommercioKycChangeMembershipTypeEvent(
-                          membershipType: newValue,
-                        ),
+              onChanged: (newValue) {
+                context.read<CommercioKycMembershipTypeChooserBloc>().add(
+                      CommercioKycChangeMembershipTypeEvent(
+                        membershipType: newValue,
                       ),
+                    );
+              },
               activeColor: radioActiveColor != null
                   ? radioActiveColor(membershipType)
                   : null,
