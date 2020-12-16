@@ -580,7 +580,7 @@ void main() async {
           wallet: correctWallet,
           address: correctWalletAddress,
         ),
-        recipientAddress: correctWalletAddress,
+        recipientAddresses: [correctWalletAddress],
         amount: [correctAmount],
       )).thenAnswer(
         (_) => Future.value(
@@ -589,7 +589,7 @@ void main() async {
       );
 
       final result = await correctCommercioAccount.sendTokens(
-        recipientAddress: correctWalletAddress,
+        recipientAddresses: [correctWalletAddress],
         amount: [correctAmount],
       );
 
@@ -611,7 +611,7 @@ void main() async {
           wallet: correctWallet,
           address: correctWalletAddress,
         ),
-        recipientAddress: correctWalletAddress,
+        recipientAddresses: [correctWalletAddress],
         amount: [correctAmount],
         fee: fee,
       )).thenAnswer(
@@ -621,7 +621,7 @@ void main() async {
       );
 
       final result = await correctCommercioAccount.sendTokens(
-        recipientAddress: correctWalletAddress,
+        recipientAddresses: [correctWalletAddress],
         amount: [correctAmount],
         fee: fee,
       );
@@ -639,7 +639,7 @@ void main() async {
 
       expect(
         () => commercioAccount.sendTokens(
-          recipientAddress: correctWalletAddress,
+          recipientAddresses: [correctWalletAddress],
           amount: [correctAmount],
         ),
         throwsA(isA<WalletNotFoundException>()),

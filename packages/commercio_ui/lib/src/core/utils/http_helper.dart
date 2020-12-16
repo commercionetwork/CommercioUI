@@ -11,11 +11,12 @@ enum HttpPath {
 
 enum HttpEndpoint {
   balance,
-  sentDocs,
-  receivedDocs,
-  sentReceipts,
-  receivedReceipts,
+  didDocument,
   getTumbler,
+  receivedDocs,
+  receivedReceipts,
+  sentDocs,
+  sentReceipts,
 }
 
 extension HttpActionExtension on HttpPath {
@@ -41,6 +42,9 @@ extension HttpEndpointExtension on HttpEndpoint {
     switch (this) {
       case HttpEndpoint.balance:
         return '$lcdUrl/bank/balances/$walletAddress';
+
+      case HttpEndpoint.didDocument:
+        return '$lcdUrl/identities/$walletAddress';
 
       case HttpEndpoint.sentDocs:
         return '$lcdUrl/docs/$walletAddress/sent';

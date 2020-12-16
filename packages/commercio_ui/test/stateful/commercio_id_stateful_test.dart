@@ -79,6 +79,11 @@ void main() async {
   //     '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
   final correctIdKeys = File('test_resources/id_keys.json').readAsStringSync();
   final keysObj = CommercioIdKeys.fromJson(jsonDecode(correctIdKeys));
+  final correctGetDidDocRaw =
+      File('test_resources/correct_get_did_document_response.json')
+          .readAsStringSync();
+  final correctGetDidDoc = DidDocument.fromJson(
+      jsonDecode(correctGetDidDocRaw)['result']['did_document']);
   final correctDidDoc = DidDocument.fromJson(
     jsonDecode(
       File('test_resources/correct_did_document.json').readAsStringSync(),
@@ -345,6 +350,55 @@ void main() async {
       expect(
         () => commercioId.deriveDidDocument(),
         throwsA(isA<WalletNotFoundException>()),
+      );
+    });
+  });
+
+  group('Get Did Document', () {
+    test('Correct', () async {
+      final commercioId = StatefulCommercioId(
+        commercioAccount: correctCommercioAccount,
+        storage: secretStorageMock,
+        storageKey: secureStorageKey,
+        idKeys: keysObj,
+        statelessHandler: StatelessCommercioId(),
+        httpHelper: httpHelperMock,
+      );
+
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.didDocument,
+        walletAddress: correctWalletAddress,
+        lcdUrl: anyNamed('lcdUrl'),
+      )).thenAnswer((_) async => Response(correctGetDidDocRaw, 200));
+
+      final didDocument = await commercioId.getDidDocument(
+        walletAddress: correctWalletAddress,
+      );
+
+      expect(didDocument, correctGetDidDoc);
+    });
+
+    test('Http response >= 300 throws an exception', () async {
+      final commercioId = StatefulCommercioId(
+        commercioAccount: correctCommercioAccount,
+        storage: secretStorageMock,
+        storageKey: secureStorageKey,
+        idKeys: keysObj,
+        statelessHandler: StatelessCommercioId(),
+        httpHelper: httpHelperMock,
+      );
+
+      when(httpHelperMock.getRequest(
+        endpoint: HttpEndpoint.didDocument,
+        walletAddress: correctWalletAddress,
+        lcdUrl: anyNamed('lcdUrl'),
+      )).thenAnswer((_) async => Response('', 404));
+
+      expect(
+        commercioId.getDidDocument(
+          walletAddress: correctWalletAddress,
+        ),
+        throwsException,
       );
     });
   });

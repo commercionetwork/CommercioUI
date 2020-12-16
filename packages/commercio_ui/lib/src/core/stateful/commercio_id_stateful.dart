@@ -13,6 +13,7 @@ class StatefulCommercioId {
   final ISecretStorage storage;
   final String secureStorageKey;
   final StatelessCommercioId statelessHandler;
+  final HttpHelper httpHelper;
   CommercioIdKeys commercioIdKeys;
   DidDocument didDocument;
 
@@ -24,10 +25,12 @@ class StatefulCommercioId {
     this.statelessHandler = const StatelessCommercioId(),
     String storageKey,
     CommercioIdKeys idKeys,
+    HttpHelper httpHelper,
   })  : assert(commercioAccount != null),
         assert(storage != null),
         secureStorageKey = storageKey ?? 'commercio-id-rsa-keys',
-        commercioIdKeys = idKeys;
+        commercioIdKeys = idKeys,
+        httpHelper = httpHelper ?? HttpHelper();
 
   /// Returns [true] if there are [commercioIdKeys] in memory.
   bool get hasKeys => commercioIdKeys != null;
@@ -109,6 +112,17 @@ class StatefulCommercioId {
     );
 
     return didDocument;
+  }
+
+  /// Returns the `DidDocument` associated with the given [did], raising an
+  /// exception if `DidDocument` was not found.
+  Future<DidDocument> getDidDocument({
+    @required String walletAddress,
+  }) async {
+    return statelessHandler.getDidDocument(
+      walletAddress: walletAddress,
+      httpHelper: httpHelper,
+    );
   }
 
   /// Associate an optional list of [didDocument].

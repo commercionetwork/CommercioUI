@@ -199,19 +199,21 @@ class StatelessCommercioAccount {
   /// Returns the [TransactionResult].
   Future<TransactionResult> sendTokens({
     @required WalletWithAddress senderWallet,
-    @required String recipientAddress,
+    @required List<String> recipientAddresses,
     @required List<StdCoin> amount,
     StdFee fee,
     BroadcastingMode mode,
   }) async {
+    final msgs = recipientAddresses
+        .map((addr) => MsgSend(
+              amount: amount,
+              fromAddress: senderWallet.address,
+              toAddress: addr,
+            ))
+        .toList();
+
     return TxHelper.createSignAndSendTx(
-      [
-        MsgSend(
-          amount: amount,
-          fromAddress: senderWallet.address,
-          toAddress: recipientAddress,
-        ),
-      ],
+      msgs,
       senderWallet.wallet,
       fee: fee,
       mode: mode,

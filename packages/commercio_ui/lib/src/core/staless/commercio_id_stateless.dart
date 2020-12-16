@@ -75,6 +75,25 @@ class StatelessCommercioId {
     );
   }
 
+  /// Returns the `DidDocument` associated with the given [did], raising an
+  /// exception if `DidDocument` was not found.
+  Future<DidDocument> getDidDocument({
+    @required String walletAddress,
+    @required HttpHelper httpHelper,
+  }) async {
+    final response = await httpHelper.getRequest(
+      endpoint: HttpEndpoint.didDocument,
+      walletAddress: walletAddress,
+    );
+
+    if (response.statusCode >= 300) {
+      throw Exception('No document of $walletAddress found.');
+    }
+
+    return DidDocument.fromJson(
+        jsonDecode(response.body)['result']['did_document']);
+  }
+
   /// Associate the list of [didDocument] to the [wallet] identity.
   /// An optional [fee] and [mode] can be specified.
   ///
@@ -113,7 +132,7 @@ class StatelessCommercioId {
 
     return StatelessCommercioAccount().sendTokens(
       senderWallet: walletWithAddress,
-      recipientAddress: tumblerAddress,
+      recipientAddresses: [tumblerAddress],
       amount: amount,
       fee: fee,
       mode: mode,

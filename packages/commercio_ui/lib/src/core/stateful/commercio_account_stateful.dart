@@ -206,7 +206,7 @@ class StatefulCommercioAccount {
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<TransactionResult> sendTokens({
-    @required String recipientAddress,
+    @required List<String> recipientAddresses,
     @required List<StdCoin> amount,
     StdFee fee,
     BroadcastingMode mode,
@@ -217,7 +217,7 @@ class StatefulCommercioAccount {
 
     return statelessHandler.sendTokens(
       senderWallet: walletWithAddress,
-      recipientAddress: recipientAddress,
+      recipientAddresses: recipientAddresses,
       amount: amount,
       fee: fee,
       mode: mode,
