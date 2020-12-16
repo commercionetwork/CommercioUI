@@ -51,20 +51,20 @@ class CommercioAccountCheckBalanceEvent extends CommercioAccountEvent {
 }
 
 class CommercioAccountSendTokensEvent extends CommercioAccountEvent {
-  final String recipientAddress;
+  final List<String> recipientAddresses;
   final List<StdCoin> amount;
   final StdFee fee;
   final BroadcastingMode mode;
 
   const CommercioAccountSendTokensEvent({
-    @required this.recipientAddress,
+    @required this.recipientAddresses,
     @required this.amount,
     this.fee,
     this.mode,
   });
 
   @override
-  List<Object> get props => [recipientAddress, amount, fee, mode];
+  List<Object> get props => [recipientAddresses, amount, fee, mode];
 }
 
 class CommercioAccountGenerateQrEvent extends CommercioAccountEvent {

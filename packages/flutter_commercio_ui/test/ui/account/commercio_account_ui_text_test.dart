@@ -256,7 +256,7 @@ void main() {
     WidgetTester tester,
   ) async {
     when(commercioAccount.sendTokens(
-      recipientAddress: '',
+      recipientAddresses: [''],
       amount: [],
     )).thenAnswer((_) async => TransactionResult(
           success: true,
@@ -303,20 +303,20 @@ void main() {
 
     bloc.add(const CommercioAccountSendTokensEvent(
       amount: [],
-      recipientAddress: '',
+      recipientAddresses: [''],
     ));
     await tester.pumpAndSettle();
 
     expect(find.text(childText), findsOneWidget);
 
     when(commercioAccount.sendTokens(
-      recipientAddress: '',
+      recipientAddresses: [''],
       amount: [],
     )).thenThrow(Exception());
 
     bloc.add(const CommercioAccountSendTokensEvent(
       amount: [],
-      recipientAddress: '',
+      recipientAddresses: [''],
     ));
     await tester.pumpAndSettle();
 

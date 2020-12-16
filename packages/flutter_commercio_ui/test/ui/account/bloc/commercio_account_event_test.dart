@@ -47,13 +47,18 @@ void main() {
     const mode = BroadcastingMode.ASYNC;
 
     final event = CommercioAccountSendTokensEvent(
-      recipientAddress: recipientAddress,
+      recipientAddresses: [recipientAddress],
       amount: amount,
       fee: fee,
       mode: mode,
     );
 
-    expect(event.props, [recipientAddress, amount, fee, mode]);
+    expect(event.props, [
+      [recipientAddress],
+      amount,
+      fee,
+      mode,
+    ]);
   });
 
   test('CommercioAccountGenerateQrEvent', () {

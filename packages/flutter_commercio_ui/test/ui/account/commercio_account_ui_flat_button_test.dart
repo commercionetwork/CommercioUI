@@ -332,7 +332,7 @@ void main() {
     WidgetTester tester,
   ) async {
     when(commercioAccount.sendTokens(
-      recipientAddress: '',
+      recipientAddresses: [''],
       amount: [],
     )).thenAnswer((_) async => TransactionResult(
           success: true,
@@ -362,7 +362,7 @@ void main() {
       child: (_) => const Text(childText),
       event: () => CommercioAccountSendTokensEvent(
         amount: [],
-        recipientAddress: '',
+        recipientAddresses: [''],
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
         SnackBar(
@@ -391,7 +391,7 @@ void main() {
     expect(find.text(childText), findsOneWidget);
 
     when(commercioAccount.sendTokens(
-      recipientAddress: '',
+      recipientAddresses: [''],
       amount: [],
     )).thenThrow(Exception());
 
