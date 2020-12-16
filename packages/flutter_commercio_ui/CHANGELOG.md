@@ -3,6 +3,7 @@
 * **[BREAKING]** Remove `mnemonic` attribute and `hasMnemonic` getter from `StatefulCommercioAccount`
 * **[BREAKING]** Make `mnemonic` argument in `storeMnemonic()` as `@required`
 * **[BREAKING]** `restoreWallet()` now returns a `WalletWithMnemonic` entity
+* **[BREAKING]** Update `CommercioAccountSendTokensEvent` replacing `recipientAddress` with `recipientAddresses`
 
 ## [0.1.0] - 2020-07-17
 
