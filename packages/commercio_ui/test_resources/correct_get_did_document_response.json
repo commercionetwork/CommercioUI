@@ -1,0 +1,32 @@
+{
+    "height": "0",
+    "result": {
+        "owner": "did:com:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5",
+        "did_document": {
+            "@context": "https://www.w3.org/ns/did/v1",
+            "id": "did:com:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5",
+            "publicKey": [
+                {
+                    "id": "did:com:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5#keys-1",
+                    "type": "RsaVerificationKey2018",
+                    "controller": "did:com:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5",
+                    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArC0ApIgc5MmQ2sBinhSV9DD+o2kn2OcRE5REdNV3X5COXZy28XEAdhEFDy4VfbCbyTg+nMAqkV1/9ImO2AH3b49xbHyeSHkk2Tj9r77KAqR0fLKaeguzK23ufwBN5rZYXAXPngY7airwQAyP+SQBsBLFawBOXhjRtqwsv5iq/zCwqgBL6eQfnN7jYDxyR6iaFYYalPAyXQHsuxbH6+/roM4q9HJxI9XwgNg82N6qILEjI87i1FydKTf0XLYOFLuJ7KgPA8xwajsFn10Q24e0Ll1muxoYDny/4ylXZTU4pNE87gAhxuy5zYQ27ZHuUewuvEtVMpSIHSMxWQY1dUeJJwIDAQAB\n-----END PUBLIC KEY-----"
+                },
+                {
+                    "id": "did:com:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5#keys-2",
+                    "type": "RsaSignatureKey2018",
+                    "controller": "did:com:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5",
+                    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+Juw6xqYchTNFYUznmoBCzKfQG75v2Pv1Db1Z5EJgP6i0yRsBG1VqIOY4icRnyhDDVFi1omQjjUuCRxWGjscB1UkSnybm0WC+g82HL3mUzbZja27NFJPuNaMaUlNbe0daOG88FS67jq5J2LsZH/VcGZBX5bbtCe0Niq39mQdJxdHq3D5ROMA73qeYvLkmXS6Dvs0w0fHsy+DwJtdOnOjxt4F5hIEXGP53qz2tBjCRL6HiMP/cLSwAd7oc67abgQxfnf9qldyd3X0IABpti1LirJNugfN6HuxHDm6dlXVReOhHRbkEcWedv82Ji5d/sDZ+WT+yWILOq03EJo/LXJ1SQIDAQAB\n-----END PUBLIC KEY-----"
+                }
+            ],
+            "proof": {
+                "type": "EcdsaSecp256k1VerificationKey2019",
+                "created": "2020-11-12T10:41:10.740886Z",
+                "proofPurpose": "authentication",
+                "controller": "did:com:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5",
+                "verificationMethod": "did:com:pub1addwnpepqf9d9yj76ygn2rfhljhx8yr4a0e9p5vwjquwrptr2u9648yp55f9ztgd460",
+                "signatureValue": "JLTRNSG/H1FwmJUatuoaEzu8RNinR3AhNNlFc9iJeZBePJsviaS2khx0OBj6BmQpF2zcvHJO5fjUwWvJek5dMw=="
+            }
+        }
+    }
+}
