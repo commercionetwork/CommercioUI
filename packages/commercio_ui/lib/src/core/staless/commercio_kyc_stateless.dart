@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
 
 import '../../entities/entities.dart';
@@ -18,8 +17,8 @@ class StatelessCommercioKyc {
   ///
   /// Returns the [FaucetInviteResponse].
   Future<FaucetInviteResponse> requestFaucetInvite({
-    @required String walletAddress,
-    HttpHelper httpHelper,
+    required String walletAddress,
+    HttpHelper? httpHelper,
   }) async {
     httpHelper ??= HttpHelper();
 
@@ -45,12 +44,14 @@ class StatelessCommercioKyc {
   /// 2. Have at least the required Commercio Cash Credits (CCC)
   ///    required for the [membershipType] (see [StatelessCommercioMint]).
   BuyMembership deriveBuyMembership({
-    @required MembershipType membershipType,
-    @required Wallet wallet,
+    required MembershipType membershipType,
+    required String tsp,
+    required Wallet wallet,
   }) {
     return BuyMembershipHelper.fromWallet(
-      wallet,
-      membershipType,
+      wallet: wallet,
+      membershipType: membershipType,
+      tsp: tsp,
     );
   }
 
@@ -59,12 +60,12 @@ class StatelessCommercioKyc {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> buyMemberships({
-    @required List<BuyMembership> buyMemberships,
-    @required Wallet wallet,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<BuyMembership> buyMemberships,
+    required Wallet wallet,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
-    return MembershipHelper.buyMembershipsList(
+    return KycHelper.buyMembershipsList(
       buyMemberships,
       wallet,
       fee: fee,
@@ -75,12 +76,12 @@ class StatelessCommercioKyc {
   /// Returns the [InviteUser] object that represent an invite for
   /// [invitedAddress].
   InviteUser deriveInviteMember({
-    @required String invitedAddress,
-    @required Wallet wallet,
+    required String invitedAddress,
+    required Wallet wallet,
   }) {
     return InviteUserHelper.fromWallet(
-      wallet,
-      invitedAddress,
+      wallet: wallet,
+      recipientDid: invitedAddress,
     );
   }
 
@@ -91,12 +92,12 @@ class StatelessCommercioKyc {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> inviteMembers({
-    @required List<InviteUser> inviteUsers,
-    @required Wallet wallet,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<InviteUser> inviteUsers,
+    required Wallet wallet,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
-    return MembershipHelper.inviteUsersList(
+    return KycHelper.inviteUsersList(
       inviteUsers,
       wallet,
       fee: fee,

@@ -1,5 +1,4 @@
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../entities/entities.dart';
 import '../core.dart';
@@ -14,7 +13,7 @@ class StatefulCommercioDocs {
 
   /// Creates a [StatefulCommercioDocs] with [commercioAccount].
   StatefulCommercioDocs({
-    @required this.commercioAccount,
+    required this.commercioAccount,
     this.statelessHandler = const StatelessCommercioDocs(),
   });
 
@@ -31,21 +30,21 @@ class StatefulCommercioDocs {
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<CommercioDoc> deriveCommercioDocument({
-    @required CommercioDocMetadata metadata,
-    @required List<String> recipients,
-    String docId,
-    String contentUri,
-    CommercioDoSign doSign,
-    CommercioDocChecksum checksum,
-    List<EncryptedData> encryptedData,
-    Key aesKey,
+    required CommercioDocMetadata metadata,
+    required List<String> recipients,
+    String? docId,
+    String? contentUri,
+    CommercioDocChecksum? checksum,
+    CommercioDoSign? doSign,
+    Set<CommercioEncryptedData>? encryptedData,
+    Uint8List? aesKey,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return statelessHandler.deriveCommercioDocument(
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       metadata: metadata,
       recipients: recipients,
       docId: docId,
@@ -64,16 +63,16 @@ class StatefulCommercioDocs {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> shareDocuments({
-    @required List<CommercioDoc> commercioDocs,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<CommercioDoc> commercioDocs,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) async {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return statelessHandler.shareDocuments(
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       commercioDocs: commercioDocs,
       fee: fee,
       mode: mode,
@@ -88,17 +87,17 @@ class StatefulCommercioDocs {
   ///
   /// An optiona [proof] of reading can be specified.
   CommercioDocReceipt deriveReceipt({
-    @required String recipient,
-    @required String txHash,
-    @required String documentId,
-    String proof = '',
+    required String recipient,
+    required String txHash,
+    required String documentId,
+    String? proof,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return statelessHandler.deriveReceipt(
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       recipient: recipient,
       txHash: txHash,
       documentId: documentId,
@@ -111,9 +110,9 @@ class StatefulCommercioDocs {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> sendReceipts({
-    @required List<CommercioDocReceipt> commercioDocReceipts,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<CommercioDocReceipt> commercioDocReceipts,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -121,7 +120,7 @@ class StatefulCommercioDocs {
 
     return statelessHandler.sendReceipts(
       commercioDocReceipts: commercioDocReceipts,
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       fee: fee,
       mode: mode,
     );
@@ -133,7 +132,7 @@ class StatefulCommercioDocs {
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<List<CommercioDoc>> sentDocuments({
-    @required String walletAddress,
+    required String walletAddress,
   }) {
     return statelessHandler.sentDocuments(
       walletAddress: walletAddress,
@@ -147,7 +146,7 @@ class StatefulCommercioDocs {
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<List<CommercioDoc>> receivedDocuments({
-    @required String walletAddress,
+    required String walletAddress,
   }) {
     return statelessHandler.receivedDocuments(
       walletAddress: walletAddress,
@@ -161,7 +160,7 @@ class StatefulCommercioDocs {
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<List<CommercioDocReceipt>> sentReceipts({
-    @required String walletAddress,
+    required String walletAddress,
   }) {
     return statelessHandler.sentReceipts(
       walletAddress: walletAddress,
@@ -175,7 +174,7 @@ class StatefulCommercioDocs {
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<List<CommercioDocReceipt>> receivedReceipts({
-    @required String walletAddress,
+    required String walletAddress,
   }) {
     return statelessHandler.receivedReceipts(
       walletAddress: walletAddress,

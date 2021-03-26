@@ -2,26 +2,23 @@ import 'dart:io';
 
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
-import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
-import 'package:sacco/utils/export.dart';
 import 'package:test/test.dart';
 
 class SecretStorageMock extends Mock implements ISecretStorage {}
 
 class SecretStorageMethodsMock extends Mock implements ISecretStorage {
   @override
-  Future<void> write({@required String key, @required String value}) async {}
+  Future<void> write({required String key, required String value}) async {}
 
   @override
-  Future<String> read({@required String key}) async {
+  Future<String> read({required String key}) async {
     return Future.value();
   }
 
   @override
-  Future<void> delete({@required String key}) async {}
+  Future<void> delete({required String key}) async {}
 }
 
 class HttpHelperMock extends Mock implements HttpHelper {}
@@ -38,8 +35,8 @@ void main() async {
   ISecretStorage secretStorageMethodsMock = SecretStorageMethodsMock();
   final statelessCommercioAccountMock = StatelessCommercioAccountMock();
   final correctNetworkInfo = NetworkInfo(
-    bech32Hrp: 'bech32Hrp',
-    lcdUrl: 'lcdUrl',
+    bech32Hrp: 'did:com:',
+    lcdUrl: Uri.parse('http://lcd.uri'),
   );
   const secureStorageKey = 'secure-storage-key';
   const correctMnemonic =
@@ -56,10 +53,10 @@ void main() async {
       'EBD5B9FA2499BDB9E58D78EA88A017C0B7986F9AB1CDD704A3D5D88DEE6C9621';
   const correctTransactionRaw =
       '{"height":"0","txhash":"$correctTxHash","raw_log":"[]"}';
-  const correctAccountDataRaw =
-      '{"height":"70927","result":{"type":"cosmos-sdk/Account","value":{"address":"did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u33","coins":[{"denom":"ucommercio","amount":"99990300"}],"public_key":"did:com:pub1addwnpepq0efr3d09eja4utyghxte0n8xku33d3cnjmd3wjypfv4y9l540z66spk8xf","account_number":8,"sequence":1}}}';
-  const correctNodeInfoRaw =
-      '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
+  // const correctAccountDataRaw =
+  //     '{"height":"70927","result":{"type":"cosmos-sdk/Account","value":{"address":"did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u33","coins":[{"denom":"ucommercio","amount":"99990300"}],"public_key":"did:com:pub1addwnpepq0efr3d09eja4utyghxte0n8xku33d3cnjmd3wjypfv4y9l540z66spk8xf","account_number":8,"sequence":1}}}';
+  // const correctNodeInfoRaw =
+  //     '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
 
   when(statelessCommercioAccountMock.deriveWallet(
     networkInfo: correctNetworkInfo,
@@ -89,8 +86,8 @@ void main() async {
 
       expect(commercioAccount.secureStorageKey, 'commercio-account-mnemonic');
       expect(commercioAccount.storage, isA<ISecretStorage>());
-      expect(commercioAccount.networkInfo.bech32Hrp, 'did:com:');
-      expect(commercioAccount.networkInfo.lcdUrl, 'http://localhost:1317');
+      expect(commercioAccount.networkInfo!.bech32Hrp, 'did:com:');
+      expect(commercioAccount.networkInfo!.lcdUrl, 'http://localhost:1317');
     });
   });
 
@@ -196,7 +193,7 @@ void main() async {
 
       commercioAccount.networkInfo = NetworkInfo(
         bech32Hrp: 'newBench32Hrp',
-        lcdUrl: 'http://new-lcd-url/',
+        lcdUrl: Uri.parse('http://new.lcd.url'),
       );
 
       expect(commercioAccount.hasWallet, isFalse);
@@ -260,25 +257,6 @@ void main() async {
       expect(
         () => commercioAccount.storeMnemonic(mnemonic: mnemonic),
         returnsNormally,
-      );
-    });
-
-    test('No mnemonic should throw an exception', () async {
-      when(secretStorageMock.write(
-        key: secureStorageKey,
-        value: correctMnemonic,
-      )).thenAnswer((_) => Future.value());
-
-      final commercioAccount = StatefulCommercioAccount(
-        storage: secretStorageMock,
-        storageKey: secureStorageKey,
-        networkInfo: correctNetworkInfo,
-        httpHelper: httpHelperMock,
-      );
-
-      expect(
-        () => commercioAccount.storeMnemonic(mnemonic: null),
-        throwsA(isA<Exception>()),
       );
     });
   });
@@ -562,12 +540,12 @@ void main() async {
   });
 
   group('Send tokens', () {
-    AccountDataRetrieval.client = MockClient(
-      (_) => Future.value(Response(correctAccountDataRaw, 200)),
-    );
-    NodeInfoRetrieval.client = MockClient(
-      (_) => Future.value(Response(correctNodeInfoRaw, 200)),
-    );
+    // AccountDataRetrieval.client = MockClient(
+    //   (_) => Future.value(Response(correctAccountDataRaw, 200)),
+    // );
+    // NodeInfoRetrieval.client = MockClient(
+    //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
+    // );
     final correctAmount = const StdCoin(denom: 'denom', amount: '10');
 
     test('Correct', () async {

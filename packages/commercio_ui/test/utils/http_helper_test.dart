@@ -12,9 +12,9 @@ void main() {
   }
 
   const correctFaucetDomain = 'faucet-devnet.localhost';
-  const correctLcdUrl = 'http://lcd-url';
+  final correctLcdUrl = Uri.parse('http://lcd.url');
   final correctNetworkInfo = NetworkInfo(
-    bech32Hrp: 'bech32Hrp',
+    bech32Hrp: 'did:com:',
     lcdUrl: correctLcdUrl,
   );
   const correctMnemonic =
@@ -155,7 +155,7 @@ void main() {
       final response = await httpHelper.getRequest(
         endpoint: HttpEndpoint.balance,
         walletAddress: correctWalletAddress,
-        lcdUrl: 'http://new-lcd-url',
+        lcdUrl: Uri.parse('http://new.lcd.url'),
       );
 
       expect(response.statusCode, 200);
@@ -192,7 +192,7 @@ void main() {
       );
 
       final tumblerAddress = await httpHelper.getTumblerAddress(
-        lcdUrl: 'http://new-lcd-url',
+        lcdUrl: Uri.parse('http://new.lcd.url'),
       );
 
       expect(tumblerAddress, 'did:com:14ttg3eyu88jda8udvxpwjl2pwxemh72w0grsau');

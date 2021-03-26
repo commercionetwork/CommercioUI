@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
 // import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
@@ -11,17 +10,17 @@ import 'package:test/test.dart';
 
 class SecretStorageMethodsMock extends Mock implements ISecretStorage {
   @override
-  Future<void> write({@required String key, @required String value}) async {
+  Future<void> write({required String key, required String value}) async {
     return Future.value();
   }
 
   @override
-  Future<String> read({@required String key}) async {
+  Future<String> read({required String key}) async {
     return Future.value();
   }
 
   @override
-  Future<void> delete({@required String key}) {
+  Future<void> delete({required String key}) {
     return Future.value();
   }
 }
@@ -36,8 +35,8 @@ void main() async {
   }
 
   final correctNetworkInfo = NetworkInfo(
-    bech32Hrp: 'bech32Hrp',
-    lcdUrl: 'http://lcd-url',
+    bech32Hrp: 'did:com:',
+    lcdUrl: Uri.parse('http://lcd.url'),
   );
   const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
@@ -69,9 +68,11 @@ void main() async {
     senderDid: correctWalletAddress,
   );
   final correctMembershipType = MembershipType.BRONZE;
+  final correctTsp = 'tsp';
   final correctBuyMembership = BuyMembership(
     membershipType: correctMembershipType.value,
     buyerDid: correctWalletAddress,
+    tsp: correctTsp,
   );
 
   const correctTxHash =
@@ -137,10 +138,12 @@ void main() async {
 
       final buyMembership = commercioKyc.deriveBuyMembership(
         membershipType: correctMembershipType,
+        tsp: correctTsp,
       );
 
       expect(buyMembership.buyerDid, correctWalletAddress);
       expect(buyMembership.membershipType, correctMembershipType.value);
+      expect(buyMembership.tsp, correctTsp);
     });
 
     test('No wallet in commercioAccount should throw an exception', () {
@@ -151,6 +154,7 @@ void main() async {
       expect(
         () => commercioKyc.deriveBuyMembership(
           membershipType: correctMembershipType,
+          tsp: correctTsp,
         ),
         throwsA(isA<WalletNotFoundException>()),
       );

@@ -1,5 +1,4 @@
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../entities/entities.dart';
 import '../core.dart';
@@ -15,7 +14,7 @@ class StatefulCommercioKyc {
   /// Creates a new [StatefulCommercioKyc] with the given
   /// [commercioAccount].
   const StatefulCommercioKyc({
-    @required this.commercioAccount,
+    required this.commercioAccount,
     this.statelessHandler = const StatelessCommercioKyc(),
   });
 
@@ -31,7 +30,7 @@ class StatefulCommercioKyc {
     }
 
     return statelessHandler.requestFaucetInvite(
-      walletAddress: commercioAccount.walletAddress,
+      walletAddress: commercioAccount.walletAddress!,
       httpHelper: commercioAccount.httpHelper,
     );
   }
@@ -45,7 +44,8 @@ class StatefulCommercioKyc {
   ///
   /// Throw [WalletNotFoundException] if no wallet is avaiable.
   BuyMembership deriveBuyMembership({
-    @required MembershipType membershipType,
+    required MembershipType membershipType,
+    required String tsp,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -53,7 +53,8 @@ class StatefulCommercioKyc {
 
     return statelessHandler.deriveBuyMembership(
       membershipType: membershipType,
-      wallet: commercioAccount.wallet,
+      tsp: tsp,
+      wallet: commercioAccount.wallet!,
     );
   }
 
@@ -61,9 +62,9 @@ class StatefulCommercioKyc {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> buyMemberships({
-    @required List<BuyMembership> buyMemberships,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<BuyMembership> buyMemberships,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -71,7 +72,7 @@ class StatefulCommercioKyc {
 
     return statelessHandler.buyMemberships(
       buyMemberships: buyMemberships,
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       fee: fee,
       mode: mode,
     );
@@ -82,14 +83,14 @@ class StatefulCommercioKyc {
   ///
   /// Throw [WalletNotFoundException] if no wallet is avaiable.
   InviteUser deriveInviteMember({
-    @required String invitedAddress,
+    required String invitedAddress,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return statelessHandler.deriveInviteMember(
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       invitedAddress: invitedAddress,
     );
   }
@@ -103,9 +104,9 @@ class StatefulCommercioKyc {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> inviteMembers({
-    @required List<InviteUser> inviteUsers,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<InviteUser> inviteUsers,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -113,7 +114,7 @@ class StatefulCommercioKyc {
 
     return statelessHandler.inviteMembers(
       inviteUsers: inviteUsers,
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       fee: fee,
       mode: mode,
     );

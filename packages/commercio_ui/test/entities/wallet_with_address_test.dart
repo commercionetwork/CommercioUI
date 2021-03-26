@@ -4,8 +4,8 @@ import 'package:sacco/sacco.dart';
 
 void main() {
   final correctNetworkInfo = NetworkInfo(
-    bech32Hrp: 'bech32Hrp',
-    lcdUrl: 'lcdUrl',
+    bech32Hrp: 'did:com:',
+    lcdUrl: Uri.parse('http://lcd.uri'),
   );
   const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';

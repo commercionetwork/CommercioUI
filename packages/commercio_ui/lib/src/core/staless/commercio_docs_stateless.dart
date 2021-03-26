@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
 import 'package:uuid/uuid.dart';
 
@@ -23,15 +22,15 @@ class StatelessCommercioDocs {
   /// The [docId] should be a valid UUID v4, if it's not specified a new one
   /// is generated.
   Future<CommercioDoc> deriveCommercioDocument({
-    @required Wallet wallet,
-    @required CommercioDocMetadata metadata,
-    @required List<String> recipients,
-    String docId,
-    String contentUri,
-    CommercioDoSign doSign,
-    CommercioDocChecksum checksum,
-    List<EncryptedData> encryptedData,
-    Key aesKey,
+    required Wallet wallet,
+    required CommercioDocMetadata metadata,
+    required List<String> recipients,
+    String? docId,
+    String? contentUri,
+    CommercioDocChecksum? checksum,
+    CommercioDoSign? doSign,
+    Set<CommercioEncryptedData>? encryptedData,
+    Uint8List? aesKey,
   }) {
     final id = docId ?? Uuid().v4();
 
@@ -53,10 +52,10 @@ class StatelessCommercioDocs {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> shareDocuments({
-    @required Wallet wallet,
-    @required List<CommercioDoc> commercioDocs,
-    StdFee fee,
-    BroadcastingMode mode,
+    required Wallet wallet,
+    required List<CommercioDoc> commercioDocs,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) async {
     return DocsHelper.shareDocumentsList(
       commercioDocs,
@@ -72,11 +71,11 @@ class StatelessCommercioDocs {
   ///
   /// An optiona [proof] of reading can be specified.
   CommercioDocReceipt deriveReceipt({
-    @required Wallet wallet,
-    @required String recipient,
-    @required String txHash,
-    @required String documentId,
-    String proof = '',
+    required Wallet wallet,
+    required String recipient,
+    required String txHash,
+    required String documentId,
+    String? proof,
   }) {
     return CommercioDocReceiptHelper.fromWallet(
       wallet: wallet,
@@ -92,10 +91,10 @@ class StatelessCommercioDocs {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> sendReceipts({
-    @required List<CommercioDocReceipt> commercioDocReceipts,
-    @required Wallet wallet,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<CommercioDocReceipt> commercioDocReceipts,
+    required Wallet wallet,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
     return DocsHelper.sendDocumentReceiptsList(
       commercioDocReceipts,
@@ -109,8 +108,8 @@ class StatelessCommercioDocs {
   ///
   /// An optional [HttpHelper] can be specified.
   Future<List<CommercioDoc>> sentDocuments({
-    @required String walletAddress,
-    HttpHelper httpHelper,
+    required String walletAddress,
+    HttpHelper? httpHelper,
   }) async {
     httpHelper ??= HttpHelper();
 
@@ -137,8 +136,8 @@ class StatelessCommercioDocs {
   ///
   /// An optional [HttpHelper] can be specified.
   Future<List<CommercioDoc>> receivedDocuments({
-    @required String walletAddress,
-    HttpHelper httpHelper,
+    required String walletAddress,
+    HttpHelper? httpHelper,
   }) async {
     httpHelper ??= HttpHelper();
 
@@ -165,8 +164,8 @@ class StatelessCommercioDocs {
   ///
   /// An optional [HttpHelper] can be specified.
   Future<List<CommercioDocReceipt>> sentReceipts({
-    @required String walletAddress,
-    HttpHelper httpHelper,
+    required String walletAddress,
+    HttpHelper? httpHelper,
   }) async {
     httpHelper ??= HttpHelper();
 
@@ -195,8 +194,8 @@ class StatelessCommercioDocs {
   ///
   /// An optional [HttpHelper] can be specified.
   Future<List<CommercioDocReceipt>> receivedReceipts({
-    @required String walletAddress,
-    HttpHelper httpHelper,
+    required String walletAddress,
+    HttpHelper? httpHelper,
   }) async {
     httpHelper ??= HttpHelper();
 

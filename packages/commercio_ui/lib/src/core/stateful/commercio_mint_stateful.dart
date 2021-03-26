@@ -1,5 +1,4 @@
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../entities/entities.dart';
 import '../core.dart';
@@ -15,53 +14,65 @@ class StatefulCommercioMint {
 
   /// Creates a new [StatefulCommercioMint] with the given [commercioAccount].
   const StatefulCommercioMint({
-    @required this.commercioAccount,
+    required this.commercioAccount,
     this.statelessHandler = const StatelessCommercioMint(),
-  }) : assert(commercioAccount != null);
+  });
 
   /// Open a new CDP with the [amount] of ucommercio to get in returns the
   /// half of the [amount] in uccc. An optional [fee] and [mode] can specified.
   ///
   /// Returns the [TransactionResult].
-  Future<TransactionResult> openCdp({
-    @required int amount,
-    StdFee fee,
-    BroadcastingMode mode,
+  MintCcc deriveMintCcc({
+    required List<StdCoin> amount,
+    required String id,
+    String? signerAddress,
   }) {
-    if (amount < 0) {
-      throw ArgumentError('The amount must not be negative');
-    }
-
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return statelessHandler.openCdp(
-      wallet: commercioAccount.wallet,
+    return statelessHandler.deriveMintCcc(
+      signerAddress: signerAddress ?? commercioAccount.walletAddress!,
       amount: amount,
+      id: id,
+    );
+  }
+
+  Future<TransactionResult> closeCdps({
+    required List<MintCcc> mintCccs,
+    StdFee? fee,
+    BroadcastingMode? mode,
+  }) {
+    if (!commercioAccount.hasWallet) {
+      throw const WalletNotFoundException();
+    }
+
+    return statelessHandler.mintCccsList(
+      mintCccs: mintCccs,
+      wallet: commercioAccount.wallet!,
       fee: fee,
       mode: mode,
     );
   }
 
-  /// Returns a [CloseCdp] object that indicates the closing of a DCP at
-  /// [blockHeight] assciated with the address inside [wallet].
+  /// Returns a [BurnCcc] object from [walletAddress], [id] and [walletAddress].
   ///
   /// Throw [WalletNotFoundException] if no wallet is found.
-  CloseCdp deriveCloseCdp({
-    @required int blockHeight,
+  BurnCcc deriveBurnCcc({
+    required StdCoin amount,
+    required String id,
+    String? walletAddress,
   }) {
-    if (blockHeight < 0) {
-      throw ArgumentError('blockHeight must not be negative');
-    }
-
-    if (!commercioAccount.hasWallet) {
+    if (walletAddress == null && !commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return statelessHandler.deriveCloseCdp(
-      blockHeight: blockHeight,
-      wallet: commercioAccount.wallet,
+    walletAddress ??= commercioAccount.walletAddress;
+
+    return statelessHandler.deriveBurnCcc(
+      amount: amount,
+      id: id,
+      walletAddress: walletAddress!,
     );
   }
 
@@ -72,20 +83,35 @@ class StatefulCommercioMint {
   /// Throw [ArgumentError] if [blockHeight] is less than zero.
   ///
   /// Returns the [TransactionResult].
-  Future<TransactionResult> closeCdps({
-    @required List<CloseCdp> closeCdps,
-    StdFee fee,
-    BroadcastingMode mode,
+  Future<TransactionResult> burnCccsList({
+    required List<BurnCcc> burnCccs,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
-    return statelessHandler.closeCdps(
-      closeCdps: closeCdps,
-      wallet: commercioAccount.wallet,
+    return statelessHandler.burnCccsList(
+      burnCccs: burnCccs,
+      wallet: commercioAccount.wallet!,
       fee: fee,
       mode: mode,
+    );
+  }
+
+  Future<List<ExchangeTradePosition>> getExchangeTradePositions({
+    String? walletAddress,
+  }) async {
+    if (walletAddress == null && !commercioAccount.hasWallet) {
+      throw const WalletNotFoundException();
+    }
+
+    walletAddress ??= commercioAccount.walletAddress;
+
+    return statelessHandler.getExchangeTradePositions(
+      walletAddress: walletAddress!,
+      httpHelper: commercioAccount.httpHelper,
     );
   }
 }

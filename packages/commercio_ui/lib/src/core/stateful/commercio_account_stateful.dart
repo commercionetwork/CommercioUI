@@ -1,5 +1,4 @@
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sacco/sacco.dart';
 
 import '../../data/secret_storage.dart';
@@ -13,32 +12,31 @@ class StatefulCommercioAccount {
   final String secureStorageKey;
   final ISecretStorage storage;
   final StatelessCommercioAccount statelessHandler;
-  NetworkInfo _networkInfo;
-  HttpHelper httpHelper;
-  WalletWithAddress walletWithAddress;
+  NetworkInfo? _networkInfo;
+  HttpHelper? httpHelper;
+  WalletWithAddress? walletWithAddress;
 
   /// Creates a [StatefulCommercioAccount] with the optional [storageKey],
   /// [storage] and [networkInfo].
   StatefulCommercioAccount({
-    @required this.storage,
+    required this.storage,
     this.statelessHandler = const StatelessCommercioAccount(),
-    HttpHelper httpHelper,
-    NetworkInfo networkInfo,
-    String storageKey,
-  })  : assert(storage != null),
-        secureStorageKey = storageKey ?? 'commercio-account-mnemonic',
+    HttpHelper? httpHelper,
+    NetworkInfo? networkInfo,
+    String? storageKey,
+  })  : secureStorageKey = storageKey ?? 'commercio-account-mnemonic',
         _networkInfo = networkInfo ??
             NetworkInfo(
               bech32Hrp: 'did:com:',
-              lcdUrl: 'http://localhost:1317',
+              lcdUrl: Uri.parse('http://localhost:1317'),
             ),
         httpHelper = httpHelper ?? HttpHelper();
 
   /// Returns the [Wallet] of this account.
-  Wallet get wallet => walletWithAddress?.wallet;
+  Wallet? get wallet => walletWithAddress?.wallet;
 
   /// Returns the [Wallet] address of this account.
-  String get walletAddress => walletWithAddress?.address;
+  String? get walletAddress => walletWithAddress?.address;
 
   /// Returns [true] if the account has the [Wallet] in memory.
   bool get hasWallet => wallet != null;
@@ -47,13 +45,13 @@ class StatefulCommercioAccount {
   bool get hasWalletAddress => walletAddress != null;
 
   /// Set a new [networkInfo], invalidating current [walletWithAddress].
-  set networkInfo(NetworkInfo networkInfo) {
+  set networkInfo(NetworkInfo? networkInfo) {
     _networkInfo = networkInfo;
     walletWithAddress = null;
   }
 
   /// Get the current [networkInfo].
-  NetworkInfo get networkInfo => _networkInfo;
+  NetworkInfo? get networkInfo => _networkInfo;
 
   /// Generates a new String of 24 space-separated mnemonic words.
   Future<String> generateMnemonic() {
@@ -61,22 +59,16 @@ class StatefulCommercioAccount {
   }
 
   /// Save the [mnemonic] in the secure storage.
-  Future<void> storeMnemonic({@required String mnemonic}) {
-    final mnemonicToStore = mnemonic;
-
-    if (mnemonicToStore == null) {
-      throw Exception('No mnemonic found in memory');
-    }
-
+  Future<void> storeMnemonic({required String mnemonic}) {
     return statelessHandler.storeMnemonic(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
-      mnemonic: mnemonicToStore,
+      mnemonic: mnemonic,
     );
   }
 
   /// Restore and return the mnemonic from the secure storage.
-  Future<String> fetchMnemonic() {
+  Future<String?> fetchMnemonic() {
     return statelessHandler.fetchMnemonic(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
@@ -103,8 +95,12 @@ class StatefulCommercioAccount {
       throw const MnemonicNotStoredException();
     }
 
+    if (networkInfo == null) {
+      throw Exception('Network info is null');
+    }
+
     final wallet = await statelessHandler.deriveWallet(
-      networkInfo: networkInfo,
+      networkInfo: networkInfo!,
       mnemonic: mnemonic,
     );
 
@@ -122,13 +118,17 @@ class StatefulCommercioAccount {
   /// If no [mnemonic] are specified then new words are generated and stored
   /// in the account.
   Future<WalletWithMnemonic> generateNewWallet({
-    String mnemonic,
-    String lastDerivationPathSegment,
+    String? mnemonic,
+    String? lastDerivationPathSegment,
   }) async {
     mnemonic = mnemonic ?? await generateMnemonic();
 
+    if (networkInfo == null) {
+      throw Exception('Network info is null');
+    }
+
     final wallet = await statelessHandler.deriveWallet(
-      networkInfo: networkInfo,
+      networkInfo: networkInfo!,
       mnemonic: mnemonic,
       lastDerivationPathSegment: lastDerivationPathSegment,
     );
@@ -147,7 +147,7 @@ class StatefulCommercioAccount {
   /// If no [mnemonic] is already loaded an [MnemonicNotStoredException] is
   /// thrown.
   Future<Wallet> generatePairwiseWallet({
-    @required String lastDerivationPathSegment,
+    required String lastDerivationPathSegment,
   }) async {
     final mnemonic = await fetchMnemonic();
 
@@ -155,8 +155,12 @@ class StatefulCommercioAccount {
       throw MnemonicNotStoredException();
     }
 
+    if (networkInfo == null) {
+      throw Exception('Network info is null');
+    }
+
     return statelessHandler.generatePairwiseWallet(
-      networkInfo: networkInfo,
+      networkInfo: networkInfo!,
       mnemonic: mnemonic,
       lastDerivationPathSegment: lastDerivationPathSegment,
     );
@@ -169,7 +173,7 @@ class StatefulCommercioAccount {
   ///
   /// If the account does not have a wallet then [WalletNotFoundException] is
   /// thrown.
-  Future<AccountRequestResponse> requestFreeTokens({String amount}) {
+  Future<AccountRequestResponse> requestFreeTokens({String? amount}) {
     if (!hasWallet) {
       throw const WalletNotFoundException();
     }
@@ -177,7 +181,7 @@ class StatefulCommercioAccount {
     amount ??= '100000000';
 
     return statelessHandler.requestFreeTokens(
-      walletAddress: walletAddress,
+      walletAddress: walletAddress!,
       amount: amount,
       httpHelper: httpHelper,
     );
@@ -193,7 +197,7 @@ class StatefulCommercioAccount {
     }
 
     return statelessHandler.checkAccountBalance(
-      walletAddress: walletAddress,
+      walletAddress: walletAddress!,
       httpHelper: httpHelper,
     );
   }
@@ -206,17 +210,17 @@ class StatefulCommercioAccount {
   ///
   /// If the wallet does not exists then [WalletNotFoundException] is thrown.
   Future<TransactionResult> sendTokens({
-    @required List<String> recipientAddresses,
-    @required List<StdCoin> amount,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<String> recipientAddresses,
+    required List<StdCoin> amount,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
     if (!hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return statelessHandler.sendTokens(
-      senderWallet: walletWithAddress,
+      senderWallet: walletWithAddress!,
       recipientAddresses: recipientAddresses,
       amount: amount,
       fee: fee,

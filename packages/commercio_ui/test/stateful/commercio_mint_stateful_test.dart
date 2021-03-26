@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 // import 'package:http/http.dart';
 // import 'package:http/testing.dart';
 import 'package:mockito/mockito.dart';
@@ -11,17 +10,17 @@ import 'package:test/test.dart';
 
 class SecretStorageMethodsMock extends Mock implements ISecretStorage {
   @override
-  Future<void> write({@required String key, @required String value}) async {
+  Future<void> write({required String key, required String value}) async {
     return Future.value();
   }
 
   @override
-  Future<String> read({@required String key}) async {
+  Future<String> read({required String key}) async {
     return Future.value();
   }
 
   @override
-  Future<void> delete({@required String key}) {
+  Future<void> delete({required String key}) {
     return Future.value();
   }
 }
@@ -37,8 +36,8 @@ void main() async {
   }
 
   final correctNetworkInfo = NetworkInfo(
-    bech32Hrp: 'bech32Hrp',
-    lcdUrl: 'http://lcd-url',
+    bech32Hrp: 'did:com:',
+    lcdUrl: Uri.parse('http://lcd.url'),
   );
   final httpHelperMock = HttpHelperMock();
   final secretStorageMethodsMock = SecretStorageMethodsMock();
@@ -75,11 +74,14 @@ void main() async {
   //     '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
 
   const correctSignerDid = 'signerDid';
-  const correctTimestamp = '1234';
-  const correctBlockHeigth = 1234;
-  final correctCloseCdp = CloseCdp(
+  // const correctTimestamp = '1234';
+  // const correctBlockHeigth = 1234;
+  const correctAmount = StdCoin(denom: 'denom', amount: '1000');
+  const correctMintId = 'mint-id';
+  final correctBurnCcc = BurnCcc(
     signerDid: correctSignerDid,
-    timeStamp: correctTimestamp,
+    amount: correctAmount,
+    id: correctMintId,
   );
   final statelessCommercioMintMock = StatelessCommercioMintMock();
 
@@ -93,70 +95,73 @@ void main() async {
     });
   });
 
-  group('Open Cdp', () {
-    test('Correct', () async {
-      // TxSender.client = MockClient(
-      //   (_) => Future.value(Response(correctTransactionRaw, 200)),
-      // );
-      // AccountDataRetrieval.client = MockClient(
-      //   (_) => Future.value(Response(correctAccountDataRaw, 200)),
-      // );
-      // NodeInfoRetrieval.client = MockClient(
-      //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
-      // );
+  // group('Mint Ccc list', () {
+  //   test('Correct', () async {
+  //     // TxSender.client = MockClient(
+  //     //   (_) => Future.value(Response(correctTransactionRaw, 200)),
+  //     // );
+  //     // AccountDataRetrieval.client = MockClient(
+  //     //   (_) => Future.value(Response(correctAccountDataRaw, 200)),
+  //     // );
+  //     // NodeInfoRetrieval.client = MockClient(
+  //     //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
+  //     // );
 
-      when(statelessCommercioMintMock.openCdp(
-        wallet: correctWallet,
-        amount: 10,
-      )).thenAnswer(
-        (_) => Future.value(TransactionResult(
-          hash: correctTxHash,
-          success: true,
-        )),
-      );
+  //     when(statelessCommercioMintMock.mintCccsList(
+  //       wallet: correctWallet,
+  //       amount: 10,
+  //     )).thenAnswer(
+  //       (_) => Future.value(TransactionResult(
+  //         hash: correctTxHash,
+  //         success: true,
+  //       )),
+  //     );
 
-      final commercioMint = StatefulCommercioMint(
-        commercioAccount: correctCommercioAccount,
-        statelessHandler: statelessCommercioMintMock,
-      );
+  //     final commercioMint = StatefulCommercioMint(
+  //       commercioAccount: correctCommercioAccount,
+  //       statelessHandler: statelessCommercioMintMock,
+  //     );
 
-      final result = await commercioMint.openCdp(amount: 10);
+  //     final result = await commercioMint.openCdp(amount: 10);
 
-      expect(result.success, isTrue);
-    });
+  //     expect(result.success, isTrue);
+  //   });
 
-    test('Negative amount should throw an exception', () async {
-      final commercioMint = StatefulCommercioMint(
-        commercioAccount: correctCommercioAccount,
-      );
+  //   test('Negative amount should throw an exception', () async {
+  //     final commercioMint = StatefulCommercioMint(
+  //       commercioAccount: correctCommercioAccount,
+  //     );
 
-      expect(() => commercioMint.openCdp(amount: -10), throwsArgumentError);
-    });
+  //     expect(() => commercioMint.openCdp(amount: -10), throwsArgumentError);
+  //   });
 
-    test('No wallet in commercioAccount should throw an exception', () async {
-      final commercioMint = StatefulCommercioMint(
-        commercioAccount: commercioAccountWithoutWallet,
-      );
+  //   test('No wallet in commercioAccount should throw an exception', () async {
+  //     final commercioMint = StatefulCommercioMint(
+  //       commercioAccount: commercioAccountWithoutWallet,
+  //     );
 
-      expect(
-        () => commercioMint.openCdp(amount: 10),
-        throwsA(isA<WalletNotFoundException>()),
-      );
-    });
-  });
+  //     expect(
+  //       () => commercioMint.openCdp(amount: 10),
+  //       throwsA(isA<WalletNotFoundException>()),
+  //     );
+  //   });
+  // });
 
-  group('Derive close cdp', () {
+  group('Derive burn Ccc', () {
     test('Correct', () {
       final commercioMint = StatefulCommercioMint(
         commercioAccount: correctCommercioAccount,
       );
 
-      final closeCdp = commercioMint.deriveCloseCdp(
-        blockHeight: correctBlockHeigth,
+      final closeCdp = commercioMint.deriveBurnCcc(
+        amount: correctAmount,
+        id: correctMintId,
+        walletAddress: correctWallet.bech32Address,
       );
 
       expect(closeCdp.signerDid, correctCommercioAccount.walletAddress);
-      expect(closeCdp.timeStamp, correctTimestamp);
+      expect(closeCdp.id, correctMintId);
+      expect(closeCdp.amount, correctAmount);
     });
 
     test('No wallet should throw an exception', () {
@@ -165,28 +170,17 @@ void main() async {
       );
 
       expect(
-        () => commercioMint.deriveCloseCdp(
-          blockHeight: correctBlockHeigth,
+        () => commercioMint.deriveBurnCcc(
+          amount: correctAmount,
+          id: correctMintId,
+          walletAddress: correctWallet.bech32Address,
         ),
         throwsA(isA<WalletNotFoundException>()),
       );
     });
-
-    test('Negative amount should throw an exception', () async {
-      final commercioMint = StatefulCommercioMint(
-        commercioAccount: correctCommercioAccount,
-      );
-
-      expect(
-        () => commercioMint.deriveCloseCdp(
-          blockHeight: -10,
-        ),
-        throwsArgumentError,
-      );
-    });
   });
 
-  group('Close Cdps', () {
+  group('Burn Ccc', () {
     test('Correct', () async {
       // TxSender.client = MockClient(
       //   (_) => Future.value(Response(correctTransactionRaw, 200)),
@@ -198,9 +192,9 @@ void main() async {
       //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       // );
 
-      when(statelessCommercioMintMock.closeCdps(
+      when(statelessCommercioMintMock.burnCccsList(
         wallet: correctWallet,
-        closeCdps: [correctCloseCdp],
+        burnCccs: [correctBurnCcc],
       )).thenAnswer(
         (_) => Future.value(TransactionResult(
           hash: correctTxHash,
@@ -213,8 +207,8 @@ void main() async {
         statelessHandler: statelessCommercioMintMock,
       );
 
-      final result = await commercioMint.closeCdps(
-        closeCdps: [correctCloseCdp],
+      final result = await commercioMint.burnCccsList(
+        burnCccs: [correctBurnCcc],
       );
 
       expect(result.success, isTrue);
@@ -226,8 +220,8 @@ void main() async {
       );
 
       expect(
-        () => commercioMint.closeCdps(
-          closeCdps: [correctCloseCdp],
+        () => commercioMint.burnCccsList(
+          burnCccs: [correctBurnCcc],
         ),
         throwsA(isA<WalletNotFoundException>()),
       );

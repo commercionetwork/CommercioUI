@@ -5,14 +5,15 @@ part 'faucet_invite_response.g.dart';
 
 @freezed
 abstract class FaucetInviteResponse with _$FaucetInviteResponse {
-  @JsonSerializable(nullable: true)
+  FaucetInviteResponse._();
+
+  @JsonSerializable(includeIfNull: false)
   factory FaucetInviteResponse({
-    @JsonKey(name: 'tx_hash') String txHash,
-    String error,
+    @JsonKey(name: 'tx_hash') String? txHash,
+    String? error,
   }) = _FaucetInviteResponse;
 
-  @late
-  bool get success => txHash != null;
+  late final success = txHash != null;
 
   factory FaucetInviteResponse.fromJson(Map<String, dynamic> json) =>
       _$FaucetInviteResponseFromJson(json);

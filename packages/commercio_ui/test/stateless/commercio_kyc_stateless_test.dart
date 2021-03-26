@@ -12,14 +12,10 @@ import 'package:test/test.dart';
 class HttpHelperMock extends Mock implements HttpHelper {}
 
 void main() {
-  if (Directory.current.path.endsWith('/test')) {
-    Directory.current = Directory.current.parent;
-  }
-
   const commercioKyc = StatelessCommercioKyc();
   final correctNetworkInfo = NetworkInfo(
-    bech32Hrp: 'bech32Hrp',
-    lcdUrl: 'http://lcd-url',
+    bech32Hrp: 'did:com:',
+    lcdUrl: Uri.parse('http://lcd.url'),
   );
   const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
@@ -49,6 +45,7 @@ void main() {
   //   membershipType: correctMembershipType.value,
   //   buyerDid: correctWalletAddress,
   // );
+  const correctTsp = 'tsp';
 
   group('Request faucet invite', () {
     test('Correct', () async {
@@ -105,11 +102,13 @@ void main() {
     test('Correct', () {
       final buyMembership = commercioKyc.deriveBuyMembership(
         membershipType: correctMembershipType,
+        tsp: correctTsp,
         wallet: correctWallet,
       );
 
       expect(buyMembership.buyerDid, correctWalletAddress);
       expect(buyMembership.membershipType, correctMembershipType.value);
+      expect(buyMembership.tsp, correctTsp);
     });
   });
 

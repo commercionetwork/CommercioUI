@@ -1,7 +1,7 @@
 ## [0.2.0] - 2020-10-28
 
 * **[BREAKING]** Remove `mnemonic` attribute and `hasMnemonic` getter from `StatefulCommercioAccount`
-* **[BREAKING]** Make `mnemonic` argument in `storeMnemonic()` as `@required`
+* **[BREAKING]** Make `mnemonic` argument in `storeMnemonic()` as `required`
 * **[BREAKING]** `restoreWallet()` now returns a `WalletWithMnemonic` entity
 * **[BREAKING]** In `StatelessCommercioAccount` and `StatefulCommercioAccount` the method `sendTokens()` now accepts the parameter `recipientAddresses` instead of `recipientAddress` to support multiple recipients.
 * Adds `getDidDocument()` in `StatelessCommercioId` and `StatefulCommercioId`

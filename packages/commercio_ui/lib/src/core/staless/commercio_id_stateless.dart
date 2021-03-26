@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../data/secret_storage.dart';
 import '../../entities/entities.dart';
@@ -22,9 +21,9 @@ class StatelessCommercioId {
 
   /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
   /// [secureStorageKey].
-  Future<CommercioIdKeys> restoreKeys({
-    @required ISecretStorage secretStorage,
-    @required String secureStorageKey,
+  Future<CommercioIdKeys?> restoreKeys({
+    required ISecretStorage secretStorage,
+    required String secureStorageKey,
   }) async {
     final rawKeys = await secretStorage.read(key: secureStorageKey);
 
@@ -39,9 +38,9 @@ class StatelessCommercioId {
 
   /// Save [idKeys] inside the [secureStorage] identified by [secureStorageKey].
   Future<void> storeKeys({
-    @required ISecretStorage secretStorage,
-    @required String secureStorageKey,
-    @required CommercioIdKeys idKeys,
+    required ISecretStorage secretStorage,
+    required String secureStorageKey,
+    required CommercioIdKeys idKeys,
   }) {
     return secretStorage.write(
       key: secureStorageKey,
@@ -52,8 +51,8 @@ class StatelessCommercioId {
   /// Delete the [CommercioIdKeys] inside the [secureStorage] identified by
   /// [secureStorageKey].
   Future<void> deleteKeys({
-    @required ISecretStorage secretStorage,
-    @required String secureStorageKey,
+    required ISecretStorage secretStorage,
+    required String secureStorageKey,
   }) {
     return secretStorage.delete(key: secureStorageKey);
   }
@@ -61,13 +60,13 @@ class StatelessCommercioId {
   /// Derive a [DidDocument] from the given [wallet], [idKeys] and optional
   /// [service].
   Future<DidDocument> deriveDidDocument({
-    @required Wallet wallet,
-    @required CommercioIdKeys idKeys,
-    List<DidDocumentService> service,
+    required Wallet wallet,
+    required CommercioIdKeys idKeys,
+    List<DidDocumentService>? service,
   }) async {
     return DidDocumentHelper.fromWallet(
-      wallet,
-      [
+      wallet: wallet,
+      pubKeys: [
         idKeys.rsaVerificationPair.publicKey,
         idKeys.rsaSignatureKeyPair.publicKey,
       ],
@@ -78,8 +77,8 @@ class StatelessCommercioId {
   /// Returns the `DidDocument` associated with the given [did], raising an
   /// exception if `DidDocument` was not found.
   Future<DidDocument> getDidDocument({
-    @required String walletAddress,
-    @required HttpHelper httpHelper,
+    required String walletAddress,
+    required HttpHelper httpHelper,
   }) async {
     final response = await httpHelper.getRequest(
       endpoint: HttpEndpoint.didDocument,
@@ -99,10 +98,10 @@ class StatelessCommercioId {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> setDidDocuments({
-    @required List<DidDocument> didDocuments,
-    @required Wallet wallet,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<DidDocument> didDocuments,
+    required Wallet wallet,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) async {
     return IdHelper.setDidDocumentsList(
       didDocuments,
@@ -120,17 +119,19 @@ class StatelessCommercioId {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> rechargeTumbler({
-    @required WalletWithAddress walletWithAddress,
-    @required List<StdCoin> amount,
-    StdFee fee,
-    BroadcastingMode mode,
-    HttpHelper httpHelper,
+    required WalletWithAddress walletWithAddress,
+    required List<StdCoin> amount,
+    StdFee? fee,
+    BroadcastingMode? mode,
+    HttpHelper? httpHelper,
+    StatelessCommercioAccount? commercioAccount,
   }) async {
     httpHelper ??= HttpHelper();
+    commercioAccount ??= StatelessCommercioAccount();
 
     final tumblerAddress = await httpHelper.getTumblerAddress();
 
-    return StatelessCommercioAccount().sendTokens(
+    return commercioAccount.sendTokens(
       senderWallet: walletWithAddress,
       recipientAddresses: [tumblerAddress],
       amount: amount,
@@ -144,16 +145,16 @@ class StatelessCommercioId {
   ///
   /// In general [pairwiseAddress] is obtained generating it from the [wallet].
   Future<RequestDidPowerUp> deriveDidPowerUpRequest({
-    @required Wallet wallet,
-    @required String pairwiseAddress,
-    @required List<StdCoin> amount,
-    @required RSAPrivateKey rsaSignaturePrivateKey,
+    required Wallet wallet,
+    required String pairwiseAddress,
+    required List<StdCoin> amount,
+    required CommercioRSAPrivateKey rsaSignaturePrivateKey,
   }) {
     return RequestDidPowerUpHelper.fromWallet(
-      wallet,
-      pairwiseAddress,
-      amount,
-      rsaSignaturePrivateKey,
+      wallet: wallet,
+      pairwiseDid: pairwiseAddress,
+      amount: amount,
+      privateKey: rsaSignaturePrivateKey,
     );
   }
 
@@ -169,10 +170,10 @@ class StatelessCommercioId {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> requestDidPowerUps({
-    @required Wallet senderWallet,
-    @required List<RequestDidPowerUp> powerUpRequests,
-    StdFee fee,
-    BroadcastingMode mode,
+    required Wallet senderWallet,
+    required List<RequestDidPowerUp> powerUpRequests,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) async {
     return IdHelper.requestDidPowerUpsList(
       powerUpRequests,
@@ -193,10 +194,10 @@ Future<CommercioIdKeys> computeNewKeyPair(
   GenerateKeysData data,
 ) async {
   final rsaVerificationPair = await KeysHelper.generateRsaKeyPair(
-    type: 'RsaVerificationKey2018',
+    keyType: CommercioRSAKeyType.verification,
   );
   final rsaSignatureKeyPair = await KeysHelper.generateRsaKeyPair(
-    type: 'RsaSignatureKey2018',
+    keyType: CommercioRSAKeyType.signature,
   );
 
   return CommercioIdKeys(

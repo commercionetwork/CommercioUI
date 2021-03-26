@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sacco/wallet.dart';
 
 /// Represents a [Wallet] with its [address] already derived.
@@ -9,7 +8,7 @@ class WalletWithAddress extends Equatable {
   final Wallet wallet;
   final String address;
 
-  const WalletWithAddress({@required this.wallet, @required this.address});
+  const WalletWithAddress({required this.wallet, required this.address});
 
   @override
   List<Object> get props => [wallet, address];

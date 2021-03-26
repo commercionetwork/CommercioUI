@@ -1,5 +1,4 @@
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../data/secret_storage.dart';
 import '../../entities/entities.dart';
@@ -14,21 +13,19 @@ class StatefulCommercioId {
   final String secureStorageKey;
   final StatelessCommercioId statelessHandler;
   final HttpHelper httpHelper;
-  CommercioIdKeys commercioIdKeys;
-  DidDocument didDocument;
+  CommercioIdKeys? commercioIdKeys;
+  DidDocument? didDocument;
 
   /// Creates a new [StatefulCommercioId] with a [commercioAccount] and
   /// optional [storageKey], [storage] and [idKeys].
   StatefulCommercioId({
-    @required this.commercioAccount,
-    @required this.storage,
+    required this.commercioAccount,
+    required this.storage,
     this.statelessHandler = const StatelessCommercioId(),
-    String storageKey,
-    CommercioIdKeys idKeys,
-    HttpHelper httpHelper,
-  })  : assert(commercioAccount != null),
-        assert(storage != null),
-        secureStorageKey = storageKey ?? 'commercio-id-rsa-keys',
+    String? storageKey,
+    CommercioIdKeys? idKeys,
+    HttpHelper? httpHelper,
+  })  : secureStorageKey = storageKey ?? 'commercio-id-rsa-keys',
         commercioIdKeys = idKeys,
         httpHelper = httpHelper ?? HttpHelper();
 
@@ -50,9 +47,9 @@ class StatefulCommercioId {
 
     commercioIdKeys = await statelessHandler.generateKeys();
 
-    await storeKeys(idKeys: commercioIdKeys);
+    await storeKeys(idKeys: commercioIdKeys!);
 
-    return commercioIdKeys;
+    return commercioIdKeys!;
   }
 
   /// Get the [CommercioIdKeys] stored inside [secureStorage] and identified by
@@ -69,11 +66,11 @@ class StatefulCommercioId {
       throw const NoKeysFoundException();
     }
 
-    return commercioIdKeys;
+    return commercioIdKeys!;
   }
 
   /// Save [idKeys] inside the the secure storage.
-  Future<void> storeKeys({@required CommercioIdKeys idKeys}) {
+  Future<void> storeKeys({required CommercioIdKeys idKeys}) {
     return statelessHandler.storeKeys(
       secretStorage: storage,
       secureStorageKey: secureStorageKey,
@@ -95,7 +92,7 @@ class StatefulCommercioId {
   /// If no [commercioIdKeys] are in memory a [NoKeysFoundException] is thrown.
   /// If no [Wallet] exists then a [WalletNotFoundException] is thrown.
   Future<DidDocument> deriveDidDocument({
-    List<DidDocumentService> service,
+    List<DidDocumentService>? service,
   }) async {
     if (!hasKeys) {
       throw const NoKeysFoundException();
@@ -106,18 +103,18 @@ class StatefulCommercioId {
     }
 
     didDocument = await statelessHandler.deriveDidDocument(
-      wallet: commercioAccount.wallet,
-      idKeys: commercioIdKeys,
+      wallet: commercioAccount.wallet!,
+      idKeys: commercioIdKeys!,
       service: service,
     );
 
-    return didDocument;
+    return didDocument!;
   }
 
   /// Returns the `DidDocument` associated with the given [did], raising an
   /// exception if `DidDocument` was not found.
   Future<DidDocument> getDidDocument({
-    @required String walletAddress,
+    required String walletAddress,
   }) async {
     return statelessHandler.getDidDocument(
       walletAddress: walletAddress,
@@ -138,13 +135,13 @@ class StatefulCommercioId {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> setDidDocuments({
-    List<DidDocument> didDocuments,
-    StdFee fee,
-    BroadcastingMode mode,
+    List<DidDocument>? didDocuments,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) async {
     if (didDocuments == null || didDocuments.isEmpty) {
       if (hasDidDocument) {
-        didDocuments = [didDocument];
+        didDocuments = [didDocument!];
       } else {
         throw const DidDocumentNotFoundException();
       }
@@ -156,7 +153,7 @@ class StatefulCommercioId {
 
     return statelessHandler.setDidDocuments(
       didDocuments: didDocuments,
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       fee: fee,
       mode: mode,
     );
@@ -169,16 +166,16 @@ class StatefulCommercioId {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> rechargeTumbler({
-    @required List<StdCoin> amount,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<StdCoin> amount,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return statelessHandler.rechargeTumbler(
-      walletWithAddress: commercioAccount.walletWithAddress,
+      walletWithAddress: commercioAccount.walletWithAddress!,
       amount: amount,
       httpHelper: commercioAccount.httpHelper,
       fee: fee,
@@ -194,8 +191,8 @@ class StatefulCommercioId {
   ///
   /// In general [pairwiseAddress] is obtained generating it from the [wallet].
   Future<RequestDidPowerUp> deriveDidPowerUpRequest({
-    @required String pairwiseAddress,
-    @required List<StdCoin> amount,
+    required String pairwiseAddress,
+    required List<StdCoin> amount,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
@@ -206,10 +203,10 @@ class StatefulCommercioId {
     }
 
     return statelessHandler.deriveDidPowerUpRequest(
-      wallet: commercioAccount.wallet,
+      wallet: commercioAccount.wallet!,
       pairwiseAddress: pairwiseAddress,
       amount: amount,
-      rsaSignaturePrivateKey: commercioIdKeys.rsaSignatureKeyPair.privateKey,
+      rsaSignaturePrivateKey: commercioIdKeys!.rsaSignatureKeyPair.privateKey,
     );
   }
 
@@ -227,16 +224,16 @@ class StatefulCommercioId {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> requestDidPowerUps({
-    @required List<RequestDidPowerUp> powerUpRequests,
-    StdFee fee,
-    BroadcastingMode mode,
+    required List<RequestDidPowerUp> powerUpRequests,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return statelessHandler.requestDidPowerUps(
-      senderWallet: commercioAccount.wallet,
+      senderWallet: commercioAccount.wallet!,
       powerUpRequests: powerUpRequests,
       fee: fee,
       mode: mode,

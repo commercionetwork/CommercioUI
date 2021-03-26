@@ -1,13 +1,11 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 /// Represents a generic HTTP response.
 class AccountRequestResponse {
   final String message;
   final bool isSuccess;
 
   const AccountRequestResponse({
-    @required this.message,
-    @required this.isSuccess,
+    required this.message,
+    required this.isSuccess,
   });
 
   @override

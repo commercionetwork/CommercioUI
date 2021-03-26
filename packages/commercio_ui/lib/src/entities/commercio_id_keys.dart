@@ -1,15 +1,16 @@
-import 'package:basic_utils/basic_utils.dart';
-import 'package:commerciosdk/entities/keys/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:commerciosdk/export.dart';
+import 'package:pointycastle/pointycastle.dart';
 
 /// Represents the RSA verification and signature key pairs.
 class CommercioIdKeys {
-  final KeyPair<RSAPublicKey, RSAPrivateKey> rsaVerificationPair;
-  final KeyPair<RSAPublicKey, RSAPrivateKey> rsaSignatureKeyPair;
+  final CommercioKeyPair<CommercioRSAPublicKey, CommercioRSAPrivateKey>
+      rsaVerificationPair;
+  final CommercioKeyPair<CommercioRSAPublicKey, CommercioRSAPrivateKey>
+      rsaSignatureKeyPair;
 
   const CommercioIdKeys({
-    @required this.rsaVerificationPair,
-    @required this.rsaSignatureKeyPair,
+    required this.rsaVerificationPair,
+    required this.rsaSignatureKeyPair,
   });
 
   CommercioIdKeys.fromJson(Map<String, dynamic> json)
@@ -26,34 +27,43 @@ class CommercioIdKeys {
       };
 }
 
-extension KeyPairJsonExtension on KeyPair<RSAPublicKey, RSAPrivateKey> {
-  static KeyPair<RSAPublicKey, RSAPrivateKey> fromJson(
+extension KeyPairJsonExtension
+    on CommercioKeyPair<CommercioRSAPublicKey, CommercioRSAPrivateKey> {
+  static CommercioKeyPair<CommercioRSAPublicKey, CommercioRSAPrivateKey>
+      fromJson(
     Map<String, dynamic> json,
   ) {
-    final pubKey = CryptoUtils.rsaPublicKeyFromPem(
+    final pubKey = RSAKeyParser.parseFromPem(
       json['RSAPublicKey'] as String,
-    );
-    final type = json['type'] as String;
-    final rsaPublicKey = RSAPublicKey(pubKey, keyType: type);
+    ) as RSAPublicKey;
+    final keyType = _rsaKeyTypeToEnum(json['type'] as String);
+    final rsaPublicKey = CommercioRSAPublicKey(pubKey, keyType: keyType);
 
-    final secretKey = CryptoUtils.rsaPrivateKeyFromPem(
+    final secretKey = RSAKeyParser.parseFromPem(
       json['RSAPrivateKey'] as String,
-    );
-    final rsaPrivateKey = RSAPrivateKey(secretKey);
+    ) as RSAPrivateKey;
+    final rsaPrivateKey = CommercioRSAPrivateKey(secretKey);
 
-    return KeyPair(rsaPublicKey, rsaPrivateKey);
+    return CommercioKeyPair(rsaPublicKey, rsaPrivateKey);
   }
 
   static Map<String, dynamic> toJson(
-    KeyPair<RSAPublicKey, RSAPrivateKey> keyPair,
+    CommercioKeyPair<CommercioRSAPublicKey, CommercioRSAPrivateKey> keyPair,
   ) =>
       {
-        'RSAPublicKey': CryptoUtils.encodeRSAPublicKeyToPem(
-          keyPair.publicKey.pubKey,
-        ).trim(),
-        'RSAPrivateKey': CryptoUtils.encodeRSAPrivateKeyToPem(
-          keyPair.privateKey.secretKey,
-        ).trim(),
+        'RSAPublicKey': keyPair.publicKey.getPKCS1Encoded().trim(),
+        'RSAPrivateKey': keyPair.privateKey.encodePrivateKeyToPemPKCS1().trim(),
         'type': keyPair.publicKey.getType().trim()
       };
+}
+
+CommercioRSAKeyType _rsaKeyTypeToEnum(String rawKeyType) {
+  if (rawKeyType == CommercioRSAKeyType.signature.value) {
+    return CommercioRSAKeyType.signature;
+  } else if (rawKeyType == CommercioRSAKeyType.verification.value) {
+    return CommercioRSAKeyType.verification;
+  } else {
+    throw Exception(
+        'Invalid $rawKeyType. Valid values are: ${CommercioRSAKeyType.signature.value} and ${CommercioRSAKeyType.verification.value}');
+  }
 }

@@ -1,6 +1,6 @@
 import 'package:commerciosdk/export.dart';
 import 'package:commerciosdk/mint/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:commercio_ui/commercio_ui.dart';
 
 /// The [StatelessCommercioMint] module is the one that allows you to create
 /// Collateralized Debt Positions (CDPs) using your Commercio.network tokens
@@ -9,39 +9,76 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 class StatelessCommercioMint {
   const StatelessCommercioMint();
 
-  /// Open a new CDP for the [wallet] with the [amount] of ucommercio to
-  /// get in returns the half of the [amount] in uccc.
-  /// An optional [fee] and [mode] can specified.
-  ///
-  /// Returns the [TransactionResult].
-  Future<TransactionResult> openCdp({
-    @required Wallet wallet,
-    @required int amount,
-    StdFee fee,
-    BroadcastingMode mode,
+  /// Creates a [MintCcc] from the given wallet [signerAddress], deposit amount
+  /// [amount] and mint [id].
+  MintCcc deriveMintCcc({
+    required List<StdCoin> amount,
+    required String id,
+    required String signerAddress,
   }) {
-    return MintHelper.openCdp(amount, wallet, fee: fee, mode: mode);
+    return MintCcc(depositAmount: amount, id: id, signerDid: signerAddress);
   }
 
-  /// Returns a [CloseCdp] object that indicates the closing of a DCP at
-  /// [blockHeight] assciated with the address inside [wallet].
-  CloseCdp deriveCloseCdp({
-    @required int blockHeight,
-    @required Wallet wallet,
-  }) {
-    return CloseCdpHelper.fromWallet(wallet, blockHeight);
-  }
-
-  /// Closes the open CDPs from the list [closeCdps] with the associated
-  /// [wallet] with optional [fee] and [mode].
+  /// Mints the CCCs having the given [mintCccs] list as being
+  /// associated with the address present inside the specified [wallet].
+  /// Optionally [fee] and broadcasting [mode] parameters can be specified.
   ///
   /// Returns the [TransactionResult].
-  Future<TransactionResult> closeCdps({
-    @required List<CloseCdp> closeCdps,
-    @required Wallet wallet,
-    StdFee fee,
-    BroadcastingMode mode,
+  Future<TransactionResult> mintCccsList({
+    required List<MintCcc> mintCccs,
+    required Wallet wallet,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) {
-    return MintHelper.closeCdpsList(closeCdps, wallet, fee: fee, mode: mode);
+    return MintHelper.mintCccsList(mintCccs, wallet, fee: fee, mode: mode);
+  }
+
+  /// Returns a [BurnCcc] object from [walletAddress], [id] and [walletAddress].
+  BurnCcc deriveBurnCcc({
+    required StdCoin amount,
+    required String id,
+    required String walletAddress,
+  }) {
+    return BurnCcc(
+      signerDid: walletAddress,
+      amount: amount,
+      id: id,
+    );
+  }
+
+  /// Burns the CCCs having the given [burnCccs] list as being
+  /// associated with the address present inside the specified [wallet].
+  /// Optionally [fee] and broadcasting [mode] parameters can be specified.
+  ///
+  /// Returns the [TransactionResult].
+  Future<TransactionResult> burnCccsList({
+    required List<BurnCcc> burnCccs,
+    required Wallet wallet,
+    StdFee? fee,
+    BroadcastingMode? mode,
+  }) {
+    return MintHelper.burnCccsList(burnCccs, wallet, fee: fee, mode: mode);
+  }
+
+  /// Returns the list of all the [ExchangeTradePosition] that the specified
+  /// [walletAddress] has minted.
+  Future<List<ExchangeTradePosition>> getExchangeTradePositions({
+    required String walletAddress,
+    HttpHelper? httpHelper,
+  }) async {
+    httpHelper ??= HttpHelper();
+
+    final response = await httpHelper.getRequest(
+      endpoint: HttpEndpoint.exchangedTradePositions,
+      walletAddress: walletAddress,
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Not found');
+    }
+
+    return (response.body as List)
+        .map((json) => ExchangeTradePosition.fromJson(json))
+        .toList();
   }
 }

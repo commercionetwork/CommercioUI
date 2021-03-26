@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:bip39/bip39.dart' as bip39;
 import 'package:commerciosdk/export.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
 import 'package:sacco/sacco.dart';
 
@@ -24,18 +22,18 @@ class StatelessCommercioAccount {
   /// Save [mnemonic] inside the [secureStorage] identified by the key
   /// [secureStorageKey].
   Future<void> storeMnemonic({
-    @required ISecretStorage secretStorage,
-    @required String secureStorageKey,
-    @required String mnemonic,
+    required ISecretStorage secretStorage,
+    required String secureStorageKey,
+    required String mnemonic,
   }) {
     return secretStorage.write(key: secureStorageKey, value: mnemonic);
   }
 
   /// Get the mnemonic from the [secureStorage] identified by the key
   /// [secureStorageKey].
-  Future<String> fetchMnemonic({
-    @required ISecretStorage secretStorage,
-    @required String secureStorageKey,
+  Future<String?> fetchMnemonic({
+    required ISecretStorage secretStorage,
+    required String secureStorageKey,
   }) {
     return secretStorage.read(key: secureStorageKey);
   }
@@ -43,8 +41,8 @@ class StatelessCommercioAccount {
   /// Deletes the mnemonic inside the [secureStorage] identified by the key
   /// [secureStorageKey].
   Future<void> deleteMnemonic({
-    @required ISecretStorage secretStorage,
-    @required String secureStorageKey,
+    required ISecretStorage secretStorage,
+    required String secureStorageKey,
   }) {
     return secretStorage.delete(key: secureStorageKey);
   }
@@ -53,9 +51,9 @@ class StatelessCommercioAccount {
   /// key [secureStorageKey]. The words and the [networkInfo] are used to
   /// derive the [Wallet].
   Future<Wallet> restoreWallet({
-    @required ISecretStorage secretStorage,
-    @required String secureStorageKey,
-    @required NetworkInfo networkInfo,
+    required ISecretStorage secretStorage,
+    required String secureStorageKey,
+    required NetworkInfo networkInfo,
   }) async {
     final mnemonic = await fetchMnemonic(
       secretStorage: secretStorage,
@@ -78,9 +76,9 @@ class StatelessCommercioAccount {
   /// An optional [lastDerivationPathSegment] can be specified to derive a
   /// different [Wallet].
   Future<Wallet> generateNewWallet({
-    @required NetworkInfo networkInfo,
-    String mnemonic,
-    String lastDerivationPathSegment,
+    required NetworkInfo networkInfo,
+    String? mnemonic,
+    String? lastDerivationPathSegment,
   }) async {
     mnemonic ??= await generateMnemonic();
 
@@ -95,9 +93,9 @@ class StatelessCommercioAccount {
   /// An optional [lastDerivationPathSegment] can be specified to derive a
   /// different [Wallet].
   Future<Wallet> deriveWallet({
-    @required NetworkInfo networkInfo,
-    @required String mnemonic,
-    String lastDerivationPathSegment,
+    required NetworkInfo networkInfo,
+    required String mnemonic,
+    String? lastDerivationPathSegment,
   }) {
     return compute(
       computeWallet,
@@ -115,9 +113,9 @@ class StatelessCommercioAccount {
   ///
   /// Some valid [lastDerivationPathSegment] values are: '1', '2' and so on.
   Future<Wallet> generatePairwiseWallet({
-    @required NetworkInfo networkInfo,
-    @required String mnemonic,
-    @required String lastDerivationPathSegment,
+    required NetworkInfo networkInfo,
+    required String mnemonic,
+    required String lastDerivationPathSegment,
   }) async {
     return generateNewWallet(
       networkInfo: networkInfo,
@@ -132,9 +130,9 @@ class StatelessCommercioAccount {
   /// A [AccountRequestResponse] is returned with the success or failure of
   /// the request.
   Future<AccountRequestResponse> requestFreeTokens({
-    @required String walletAddress,
+    required String walletAddress,
     String amount = '100000000',
-    HttpHelper httpHelper,
+    HttpHelper? httpHelper,
   }) async {
     if (int.tryParse(amount) == null) {
       return const AccountRequestError('Amount is not a valid integer');
@@ -163,8 +161,8 @@ class StatelessCommercioAccount {
   ///
   /// Returns a list of [StdCoin] or an [AccountRequestError] is thrown.
   Future<List<StdCoin>> checkAccountBalance({
-    @required String walletAddress,
-    HttpHelper httpHelper,
+    required String walletAddress,
+    HttpHelper? httpHelper,
   }) async {
     httpHelper ??= HttpHelper();
 
@@ -198,11 +196,11 @@ class StatelessCommercioAccount {
   ///
   /// Returns the [TransactionResult].
   Future<TransactionResult> sendTokens({
-    @required WalletWithAddress senderWallet,
-    @required List<String> recipientAddresses,
-    @required List<StdCoin> amount,
-    StdFee fee,
-    BroadcastingMode mode,
+    required WalletWithAddress senderWallet,
+    required List<String> recipientAddresses,
+    required List<StdCoin> amount,
+    StdFee? fee,
+    BroadcastingMode? mode,
   }) async {
     final msgs = recipientAddresses
         .map((addr) => MsgSend(
@@ -226,7 +224,7 @@ class BalanceFullResult {
   final String height;
   final List<StdCoin> stdCoins;
 
-  const BalanceFullResult({@required this.height, @required this.stdCoins});
+  const BalanceFullResult({required this.height, required this.stdCoins});
 
   BalanceFullResult.fromJson(Map<String, dynamic> json)
       : height = json['height'] as String,
@@ -239,11 +237,11 @@ class BalanceFullResult {
 class ComputeWalletData {
   final String mnemonic;
   final NetworkInfo networkInfo;
-  final String lastDerivationPathSegment;
+  final String? lastDerivationPathSegment;
 
   const ComputeWalletData({
-    @required this.mnemonic,
-    @required this.networkInfo,
+    required this.mnemonic,
+    required this.networkInfo,
     this.lastDerivationPathSegment,
   });
 }
@@ -257,7 +255,7 @@ class ComputeMnemonicData {
 
 /// Generate new mnemonic from the [data].
 String computeMnemonic(ComputeMnemonicData data) {
-  return bip39.generateMnemonic(strength: data.strength);
+  return Bip39.generateMnemonic(strength: data.strength);
 }
 
 /// Derive a walllet from the [data].
@@ -272,6 +270,6 @@ Wallet computeWallet(ComputeWalletData data) {
   return Wallet.derive(
     data.mnemonic.split(' '),
     data.networkInfo,
-    lastDerivationPathSegment: data.lastDerivationPathSegment,
+    lastDerivationPathSegment: data.lastDerivationPathSegment ?? '0',
   );
 }

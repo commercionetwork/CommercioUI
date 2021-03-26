@@ -21,7 +21,7 @@ void main() {
   const commercioId = StatelessCommercioId();
   final secretStorageMock = SecretStorageMock();
   final correctNetworkInfo =
-      NetworkInfo(bech32Hrp: 'bech32Hrp', lcdUrl: 'http://lcd-url');
+      NetworkInfo(bech32Hrp: 'did:com:', lcdUrl: Uri.parse('http://lcd.url'));
   const secureStorageKey = 'secure-storage-key';
   const correctMnemonic =
       'sentence leg enroll jump price ramp lens decrease gadget clap photo news lunar entry vital cousin easy review catalog fatal law route siege soft';
@@ -73,14 +73,14 @@ void main() {
 
       final signatureKeys = keys.rsaSignatureKeyPair;
 
-      expect(signatureKeys.privateKey, isA<RSAPrivateKey>());
-      expect(signatureKeys.publicKey, isA<RSAPublicKey>());
+      expect(signatureKeys.privateKey, isA<CommercioRSAPrivateKey>());
+      expect(signatureKeys.publicKey, isA<CommercioRSAPublicKey>());
       expect(signatureKeys.publicKey.getType(), 'RsaSignatureKey2018');
 
       final verificationKeys = keys.rsaVerificationPair;
 
-      expect(verificationKeys.privateKey, isA<RSAPrivateKey>());
-      expect(verificationKeys.publicKey, isA<RSAPublicKey>());
+      expect(verificationKeys.privateKey, isA<CommercioRSAPrivateKey>());
+      expect(verificationKeys.publicKey, isA<CommercioRSAPublicKey>());
       expect(verificationKeys.publicKey.getType(), 'RsaVerificationKey2018');
     });
   });
@@ -98,16 +98,16 @@ void main() {
 
       expect(keys, isNotNull);
 
-      final signatureKeys = keys.rsaSignatureKeyPair;
+      final signatureKeys = keys!.rsaSignatureKeyPair;
 
-      expect(signatureKeys.privateKey, isA<RSAPrivateKey>());
-      expect(signatureKeys.publicKey, isA<RSAPublicKey>());
+      expect(signatureKeys.privateKey, isA<CommercioRSAPrivateKey>());
+      expect(signatureKeys.publicKey, isA<CommercioRSAPublicKey>());
       expect(signatureKeys.publicKey.getType(), 'RsaSignatureKey2018');
 
       final verificationKeys = keys.rsaVerificationPair;
 
-      expect(verificationKeys.privateKey, isA<RSAPrivateKey>());
-      expect(verificationKeys.publicKey, isA<RSAPublicKey>());
+      expect(verificationKeys.privateKey, isA<CommercioRSAPrivateKey>());
+      expect(verificationKeys.publicKey, isA<CommercioRSAPublicKey>());
       expect(verificationKeys.publicKey.getType(), 'RsaVerificationKey2018');
     });
   });
@@ -554,14 +554,14 @@ void main() {
 
       final signatureKeys = keyPair.rsaSignatureKeyPair;
 
-      expect(signatureKeys.privateKey, isA<RSAPrivateKey>());
-      expect(signatureKeys.publicKey, isA<RSAPublicKey>());
+      expect(signatureKeys.privateKey, isA<CommercioRSAPrivateKey>());
+      expect(signatureKeys.publicKey, isA<CommercioRSAPublicKey>());
       expect(signatureKeys.publicKey.getType(), 'RsaSignatureKey2018');
 
       final verificationKeys = keyPair.rsaVerificationPair;
 
-      expect(verificationKeys.privateKey, isA<RSAPrivateKey>());
-      expect(verificationKeys.publicKey, isA<RSAPublicKey>());
+      expect(verificationKeys.privateKey, isA<CommercioRSAPrivateKey>());
+      expect(verificationKeys.publicKey, isA<CommercioRSAPublicKey>());
       expect(verificationKeys.publicKey.getType(), 'RsaVerificationKey2018');
     });
   });
