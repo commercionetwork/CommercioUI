@@ -1,27 +1,27 @@
 {
     "@context": "https://www.w3.org/ns/did/v1",
-    "id": "bech32hrp1d0lmv8c77rx0ns6xzr99znv0zqsvr2fry3ehxu",
+    "id": "did:com:1d0lmv8c77rx0ns6xzr99znv0zqsvr2frhjuel4",
     "publicKey": [
         {
-            "id": "bech32hrp1d0lmv8c77rx0ns6xzr99znv0zqsvr2fry3ehxu#keys-1",
+            "id": "did:com:1d0lmv8c77rx0ns6xzr99znv0zqsvr2frhjuel4#keys-1",
             "type": "RsaVerificationKey2018",
-            "controller": "bech32hrp1d0lmv8c77rx0ns6xzr99znv0zqsvr2fry3ehxu",
+            "controller": "did:com:1d0lmv8c77rx0ns6xzr99znv0zqsvr2frhjuel4",
             "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh6QjR0o+CttYoGHLX6u/htWowsLLA+FMx5XRB47DxEF236l1/s3344DOgb18JyzPjOykH1IH9I4kFwlnjHD/IQ0FRG6n+X4/mapUGr9SfCByij7N9mAdCQn1lfx56hlTLNYIQvNLQ6KSAKIO79dRdfhm0H3zn830nqLnZNsFy2qXH6ULOha9YTQQfUxArLw/X9svkrNVWN0ipHgDitUCy602ZoxDzJaho86YjfTiEfD8ZxGOgywJjDTQGB8JJ//NM39cwC7LDbOi3w90B1DwC3DH0MXxcKvVgwm5D9UaWLK4292qfSVrVjgkgYebt3KE1Cas9V3CjWsv2al04a4CwQIDAQAB\n-----END PUBLIC KEY-----"
         },
         {
-            "id": "bech32hrp1d0lmv8c77rx0ns6xzr99znv0zqsvr2fry3ehxu#keys-2",
+            "id": "did:com:1d0lmv8c77rx0ns6xzr99znv0zqsvr2frhjuel4#keys-2",
             "type": "RsaSignatureKey2018",
-            "controller": "bech32hrp1d0lmv8c77rx0ns6xzr99znv0zqsvr2fry3ehxu",
+            "controller": "did:com:1d0lmv8c77rx0ns6xzr99znv0zqsvr2frhjuel4",
             "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgofPD3noN2NJ72w5rh2LEQp0oLq0W7p0krV4Wts/v6cL9H7cjkQrvTRuv9qGhut2tv6viKqeJxGctLAeGqj+BhmgVruqlvvActtd04uHQw3KBDp1ZHthssklwUA1WqKx+5YJayeguErw22tKoFtarFuRYFhygn+T+9yA8zpjvh6FM2/qi+Qm05J1xpxFiwWfogBe7mCCTx/NcwzfAUBPHh6qP1q+dor9pMo1mR8g9x7R0ZqMO/nKXC382OcLBDaGuOGfJQkNvkQDqLe3JnYoeb+2D9n6ZeY1XJNZv9GcAMjspLoIn3QtyFJvugL9cNQ2s0ooJuDlvIZD/LAEYuSL2wIDAQAB\n-----END PUBLIC KEY-----"
         }
     ],
     "proof": {
         "type": "EcdsaSecp256k1VerificationKey2019",
-        "created": "2020-06-26T13:50:58.879995Z",
+        "created": "2021-07-21T12:03:15.113294Z",
         "proofPurpose": "authentication",
-        "controller": "bech32hrp1d0lmv8c77rx0ns6xzr99znv0zqsvr2fry3ehxu",
-        "verificationMethod": "bech32hrppub1addwnpepq0y4rc3zknnhhdjx8w64qv7c9t688pdt0gl0rscy4v4jpnv6ugnykhm7d5n",
-        "signatureValue": "n144+A93EuuTG+p4Z1iNXTw6YOw6lBUKiorLkmVuCVgTjOlcAq3jydteyblZZ+A9uocFB/yMEEhfQIn+8XABNg=="
+        "controller": "did:com:1d0lmv8c77rx0ns6xzr99znv0zqsvr2frhjuel4",
+        "verificationMethod": "did:com:pub1addwnpepq0y4rc3zknnhhdjx8w64qv7c9t688pdt0gl0rscy4v4jpnv6ugnykuret4g",
+        "signatureValue": "upBZ/FnuIOowHqYSBzuDjzjtbU9eV8M1l0epRa8ogHRNdyv5XF7FQaRtVddejiRvfCcjHbQHSOOlGvTwKjYtWw=="
     },
     "service": [
         {

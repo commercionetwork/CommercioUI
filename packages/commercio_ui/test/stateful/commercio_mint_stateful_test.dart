@@ -4,7 +4,7 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 // import 'package:http/http.dart';
 // import 'package:http/testing.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 // import 'package:sacco/utils/export.dart';
 
@@ -192,11 +192,11 @@ void main() async {
       //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       // );
 
-      when(statelessCommercioMintMock.burnCccsList(
-        wallet: correctWallet,
-        burnCccs: [correctBurnCcc],
-      )).thenAnswer(
-        (_) => Future.value(TransactionResult(
+      when(() => statelessCommercioMintMock.burnCccsList(
+            wallet: correctWallet,
+            burnCccs: [correctBurnCcc],
+          )).thenAnswer(
+        (_) => Future.value(const TransactionResult(
           hash: correctTxHash,
           success: true,
         )),

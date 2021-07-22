@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:http/http.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 class SecretStorageMock extends Mock implements ISecretStorage {}
@@ -31,11 +31,11 @@ void main() {
   );
   final correctWalletAddress = correctWallet.bech32Address;
   final httpHelperMock = HttpHelperMock();
-  final correctAccountBalanceRaw =
+  const correctAccountBalanceRaw =
       '{"height":"69945","result":[{"denom": "ucommercio","amount": "100000000"}]}';
-  final wrongAddressAccountBalanceRaw =
+  const wrongAddressAccountBalanceRaw =
       '{"error":"decoding bech32 failed: invalid bech32 string length 3"}';
-  final correctAccountBalance = [
+  const correctAccountBalance = [
     StdCoin(denom: 'ucommercio', amount: '100000000'),
   ];
   // const correctTxHash =
@@ -62,9 +62,10 @@ void main() {
 
   group('Store mnemonic', () {
     test('Correct', () {
-      when(secretStorageMock.write(
-              key: secureStorageKey, value: correctMnemonic))
-          .thenAnswer((_) => Future.value());
+      when(() => secretStorageMock.write(
+            key: secureStorageKey,
+            value: correctMnemonic,
+          )).thenAnswer((_) => Future.value());
 
       expectLater(
           () => commercioAccount.storeMnemonic(
@@ -78,7 +79,7 @@ void main() {
 
   group('Fetch mnemonic', () {
     test('Correct', () async {
-      when(secretStorageMock.read(key: secureStorageKey))
+      when(() => secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final fetchedMnemonic = await commercioAccount.fetchMnemonic(
@@ -90,7 +91,7 @@ void main() {
     });
 
     test('No mnemonic stored', () async {
-      when(secretStorageMock.read(key: secureStorageKey))
+      when(() => secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(null));
 
       final fetchedMnemonic = await commercioAccount.fetchMnemonic(
@@ -104,7 +105,7 @@ void main() {
 
   group('Delete mnemonic', () {
     test('Correct', () async {
-      when(secretStorageMock.delete(key: secureStorageKey))
+      when(() => secretStorageMock.delete(key: secureStorageKey))
           .thenAnswer((_) => Future.value());
 
       expect(
@@ -118,7 +119,7 @@ void main() {
 
   group('Restore wallet', () {
     test('Correct', () async {
-      when(secretStorageMock.read(key: secureStorageKey))
+      when(() => secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(correctMnemonic));
 
       final fetchedWallet = await commercioAccount.restoreWallet(
@@ -131,7 +132,7 @@ void main() {
     });
 
     test('No mnemonic already stored', () async {
-      when(secretStorageMock.read(key: secureStorageKey))
+      when(() => secretStorageMock.read(key: secureStorageKey))
           .thenAnswer((_) => Future.value(null));
 
       expect(
@@ -268,10 +269,10 @@ void main() {
 
   group('Request free tokens', () {
     test('Correct', () async {
-      when(httpHelperMock.faucetRequest(path: HttpPath.give, data: {
-        'addr': correctWalletAddress,
-        'amount': '100000000',
-      })).thenAnswer((_) => Future.value(Response('', 200)));
+      when(() => httpHelperMock.faucetRequest(path: HttpPath.give, data: {
+            'addr': correctWalletAddress,
+            'amount': '100000000',
+          })).thenAnswer((_) => Future.value(Response('', 200)));
 
       final response = await commercioAccount.requestFreeTokens(
         walletAddress: correctWalletAddress,
@@ -282,10 +283,10 @@ void main() {
     });
 
     test('Correct request with bad message', () async {
-      when(httpHelperMock.faucetRequest(path: HttpPath.give, data: {
-        'addr': correctWalletAddress,
-        'amount': '99999999999999',
-      })).thenAnswer((_) => Future.value(Response('Too much amount', 200)));
+      when(() => httpHelperMock.faucetRequest(path: HttpPath.give, data: {
+            'addr': correctWalletAddress,
+            'amount': '99999999999999',
+          })).thenAnswer((_) => Future.value(Response('Too much amount', 200)));
 
       final response = await commercioAccount.requestFreeTokens(
         walletAddress: correctWalletAddress,
@@ -307,10 +308,10 @@ void main() {
     });
 
     test('Exception in HttpHelper', () async {
-      when(httpHelperMock.faucetRequest(path: HttpPath.give, data: {
-        'addr': correctWalletAddress,
-        'amount': '100000000',
-      })).thenThrow(Exception());
+      when(() => httpHelperMock.faucetRequest(path: HttpPath.give, data: {
+            'addr': correctWalletAddress,
+            'amount': '100000000',
+          })).thenThrow(Exception());
 
       expect(
         () => commercioAccount.requestFreeTokens(
@@ -333,13 +334,12 @@ void main() {
 
   group('Check account balance', () {
     test('Correct', () async {
-      when(
-        httpHelperMock.getRequest(
-          endpoint: HttpEndpoint.balance,
-          walletAddress: correctWalletAddress,
-        ),
-      ).thenAnswer(
-          (_) => Future.value(Response(correctAccountBalanceRaw, 200)));
+      when(() => httpHelperMock.getRequest(
+            endpoint: HttpEndpoint.balance,
+            walletAddress: correctWalletAddress,
+          )).thenAnswer(
+        (_) => Future.value(Response(correctAccountBalanceRaw, 200)),
+      );
 
       final accountBalance = await commercioAccount.checkAccountBalance(
         walletAddress: correctWalletAddress,
@@ -352,7 +352,7 @@ void main() {
 
     test('Http 404 response', () async {
       when(
-        httpHelperMock.getRequest(
+        () => httpHelperMock.getRequest(
           endpoint: HttpEndpoint.balance,
           walletAddress: correctWalletAddress,
         ),
@@ -369,7 +369,7 @@ void main() {
 
     test('Http error', () async {
       when(
-        httpHelperMock.getRequest(
+        () => httpHelperMock.getRequest(
           endpoint: HttpEndpoint.balance,
           walletAddress: correctWalletAddress,
         ),
@@ -386,19 +386,20 @@ void main() {
 
     test('Invalid address', () async {
       when(
-        httpHelperMock.getRequest(
+        () => httpHelperMock.getRequest(
           endpoint: HttpEndpoint.balance,
           walletAddress: correctWalletAddress,
         ),
       ).thenAnswer(
-          (_) => Future.value(Response(wrongAddressAccountBalanceRaw, 500)));
+        (_) => Future.value(Response(wrongAddressAccountBalanceRaw, 500)),
+      );
 
       expect(
         () => commercioAccount.checkAccountBalance(
           walletAddress: 'abc',
           httpHelper: httpHelperMock,
         ),
-        throwsNoSuchMethodError,
+        throwsA(isA<AccountRequestError>()),
       );
     });
 
@@ -407,7 +408,7 @@ void main() {
         () => commercioAccount.checkAccountBalance(
           walletAddress: 'abc',
         ),
-        throwsA(isA<AccountRequestError>()),
+        throwsException,
       );
     });
   });

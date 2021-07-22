@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:http/http.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 class SecretStorageMethodsMock extends Mock implements ISecretStorage {
@@ -80,7 +80,7 @@ void main() async {
     ],
     gas: '10000',
   );
-  final correctRecipientAddress =
+  const correctRecipientAddress =
       'did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u44';
   final recipients = [correctRecipientAddress];
   const correctDocId = '4ec5eadc-e4da-43aa-b60f-000b5c24c262';
@@ -163,12 +163,12 @@ void main() async {
       // TxSender.client = MockClient(
       //   (_) => Future.value(Response(correctTransactionRaw, 200)),
       // );
-      when(statelessCommercioDocsMock.shareDocuments(
-        wallet: correctWallet,
-        commercioDocs: [correctCommercioDoc],
-      )).thenAnswer(
+      when(() => statelessCommercioDocsMock.shareDocuments(
+            wallet: correctWallet,
+            commercioDocs: [correctCommercioDoc],
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 
@@ -188,13 +188,13 @@ void main() async {
       // TxSender.client = MockClient(
       //   (_) => Future.value(Response(correctTransactionRaw, 200)),
       // );
-      when(statelessCommercioDocsMock.shareDocuments(
-        wallet: correctWallet,
-        commercioDocs: [correctCommercioDoc],
-        fee: correctStdFee,
-      )).thenAnswer(
+      when(() => statelessCommercioDocsMock.shareDocuments(
+            wallet: correctWallet,
+            commercioDocs: [correctCommercioDoc],
+            fee: correctStdFee,
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 
@@ -260,12 +260,12 @@ void main() async {
       // TxSender.client = MockClient(
       //   (_) => Future.value(Response(correctTransactionRaw, 200)),
       // );
-      when(statelessCommercioDocsMock.sendReceipts(
-        wallet: correctWallet,
-        commercioDocReceipts: [correctDocReceipt],
-      )).thenAnswer(
+      when(() => statelessCommercioDocsMock.sendReceipts(
+            wallet: correctWallet,
+            commercioDocReceipts: [correctDocReceipt],
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 
@@ -285,13 +285,13 @@ void main() async {
       // TxSender.client = MockClient(
       //   (_) => Future.value(Response(correctTransactionRaw, 200)),
       // );
-      when(statelessCommercioDocsMock.sendReceipts(
-        wallet: correctWallet,
-        commercioDocReceipts: [correctDocReceipt],
-        fee: correctStdFee,
-      )).thenAnswer(
+      when(() => statelessCommercioDocsMock.sendReceipts(
+            wallet: correctWallet,
+            commercioDocReceipts: [correctDocReceipt],
+            fee: correctStdFee,
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 
@@ -319,10 +319,10 @@ void main() async {
           (jsonDecode(correctSentDocumentsRaw)['result'] as List)[0],
         )
       ];
-      when(httpHelperMock.getRequest(
-        endpoint: HttpEndpoint.sentDocs,
-        walletAddress: correctWalletAddress,
-      )).thenAnswer(
+      when(() => httpHelperMock.getRequest(
+            endpoint: HttpEndpoint.sentDocs,
+            walletAddress: correctWalletAddress,
+          )).thenAnswer(
         (_) => Future.value(Response(correctSentDocumentsRaw, 200)),
       );
 
@@ -348,10 +348,10 @@ void main() async {
         CommercioDoc.fromJson(
             (jsonDecode(correctReceivedDocumentsRaw)['result'] as List)[0])
       ];
-      when(httpHelperMock.getRequest(
-        endpoint: HttpEndpoint.receivedDocs,
-        walletAddress: correctWalletAddress,
-      )).thenAnswer(
+      when(() => httpHelperMock.getRequest(
+            endpoint: HttpEndpoint.receivedDocs,
+            walletAddress: correctWalletAddress,
+          )).thenAnswer(
         (_) => Future.value(Response(correctReceivedDocumentsRaw, 200)),
       );
 
@@ -377,10 +377,10 @@ void main() async {
         CommercioDocReceipt.fromJson(
             (jsonDecode(correctSentReceiptsRaw)['result'] as List)[0])
       ];
-      when(httpHelperMock.getRequest(
-        endpoint: HttpEndpoint.sentReceipts,
-        walletAddress: correctWalletAddress,
-      )).thenAnswer(
+      when(() => httpHelperMock.getRequest(
+            endpoint: HttpEndpoint.sentReceipts,
+            walletAddress: correctWalletAddress,
+          )).thenAnswer(
         (_) => Future.value(Response(correctSentReceiptsRaw, 200)),
       );
 
@@ -405,10 +405,10 @@ void main() async {
         CommercioDocReceipt.fromJson(
             (jsonDecode(correctReceivedReceiptsRaw)['result'] as List)[0])
       ];
-      when(httpHelperMock.getRequest(
-        endpoint: HttpEndpoint.receivedReceipts,
-        walletAddress: correctWalletAddress,
-      )).thenAnswer(
+      when(() => httpHelperMock.getRequest(
+            endpoint: HttpEndpoint.receivedReceipts,
+            walletAddress: correctWalletAddress,
+          )).thenAnswer(
         (_) => Future.value(Response(correctReceivedReceiptsRaw, 200)),
       );
 

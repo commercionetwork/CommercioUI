@@ -127,7 +127,7 @@ class StatelessCommercioId {
     StatelessCommercioAccount? commercioAccount,
   }) async {
     httpHelper ??= HttpHelper();
-    commercioAccount ??= StatelessCommercioAccount();
+    commercioAccount ??= const StatelessCommercioAccount();
 
     final tumblerAddress = await httpHelper.getTumblerAddress();
 

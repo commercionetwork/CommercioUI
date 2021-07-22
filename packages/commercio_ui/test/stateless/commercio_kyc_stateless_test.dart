@@ -5,7 +5,7 @@ import 'package:commercio_ui/src/core/utils/utils.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:http/http.dart';
 // import 'package:http/testing.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 // import 'package:sacco/utils/export.dart';
 
@@ -37,10 +37,10 @@ void main() {
   //     '{"height":"70927","result":{"type":"cosmos-sdk/Account","value":{"address":"did:com:1u70n4eysyuf08wcckwrs2atcaqw5d025w39u33","coins":[{"denom":"ucommercio","amount":"99990300"}],"public_key":"did:com:pub1addwnpepq0efr3d09eja4utyghxte0n8xku33d3cnjmd3wjypfv4y9l540z66spk8xf","account_number":8,"sequence":1}}}';
   // const correctNodeInfoRaw =
   //     '{"node_info":{"protocol_version":{"p2p":"7","block":"10","app":"0"},"id":"b9a5b42aba9d5b962a4a9d478d364e9614f17b63","listen_addr":"tcp://0.0.0.0:26656","network":"devnet","version":"0.33.3","channels":"4020212223303800","moniker":"testnet-int-demo00","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"application_version":{"name":"appnetwork","server_name":"cnd","client_name":"cndcli","version":"2.1.2","commit":"8d5916146ab76bb6a4059ab83c55d861d8c97130","build_tags":"netgo,ledger","go":"go version go1.14.4 linux/amd64"}}';
-  final correctFaucetInviteResponse = '{"tx_hash":"$correctTxHash"}';
-  final wrongFaucetInviteReponseAlreadyInvited =
+  const correctFaucetInviteResponse = '{"tx_hash":"$correctTxHash"}';
+  const wrongFaucetInviteReponseAlreadyInvited =
       '{"error":"sign/broadcast message error: could not broadcast transaction to the Cosmos network: codespace sdk: unknown request: did:com:1094hqazlk36va0cqha96fg30y6cdrrxmu4j6at has already been invited: failed to execute message; message index: 0, code 6"}';
-  final correctMembershipType = MembershipType.BRONZE;
+  const correctMembershipType = MembershipType.BRONZE;
   // final correctBuyMembership = BuyMembership(
   //   membershipType: correctMembershipType.value,
   //   buyerDid: correctWalletAddress,
@@ -49,12 +49,12 @@ void main() {
 
   group('Request faucet invite', () {
     test('Correct', () async {
-      when(httpHelperMock.faucetRequest(
-        path: HttpPath.invite,
-        data: {
-          'addr': correctWalletAddress,
-        },
-      )).thenAnswer(
+      when(() => httpHelperMock.faucetRequest(
+            path: HttpPath.invite,
+            data: {
+              'addr': correctWalletAddress,
+            },
+          )).thenAnswer(
         (_) => Future.value(Response(correctFaucetInviteResponse, 200)),
       );
 
@@ -69,12 +69,12 @@ void main() {
 
     test('Already invited wallet should return a string with the error',
         () async {
-      when(httpHelperMock.faucetRequest(
-        path: HttpPath.invite,
-        data: {
-          'addr': correctWalletAddress,
-        },
-      )).thenAnswer(
+      when(() => httpHelperMock.faucetRequest(
+            path: HttpPath.invite,
+            data: {
+              'addr': correctWalletAddress,
+            },
+          )).thenAnswer(
         (_) =>
             Future.value(Response(wrongFaucetInviteReponseAlreadyInvited, 200)),
       );

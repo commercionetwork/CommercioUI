@@ -6,15 +6,14 @@ part of 'faucet_invite_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_FaucetInviteResponse _$_$_FaucetInviteResponseFromJson(
-    Map<String, dynamic> json) {
-  return _$_FaucetInviteResponse(
-    txHash: json['tx_hash'] as String?,
-    error: json['error'] as String?,
-  );
-}
+_$_FaucetInviteResponse _$$_FaucetInviteResponseFromJson(
+        Map<String, dynamic> json) =>
+    _$_FaucetInviteResponse(
+      txHash: json['tx_hash'] as String?,
+      error: json['error'] as String?,
+    );
 
-Map<String, dynamic> _$_$_FaucetInviteResponseToJson(
+Map<String, dynamic> _$$_FaucetInviteResponseToJson(
     _$_FaucetInviteResponse instance) {
   final val = <String, dynamic>{};
 

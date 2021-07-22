@@ -25,20 +25,25 @@ class StatefulCommercioMint {
   MintCcc deriveMintCcc({
     required List<StdCoin> amount,
     required String id,
-    String? signerAddress,
+    String? depositor,
   }) {
     if (!commercioAccount.hasWallet) {
       throw const WalletNotFoundException();
     }
 
     return statelessHandler.deriveMintCcc(
-      signerAddress: signerAddress ?? commercioAccount.walletAddress!,
+      depositor: depositor ?? commercioAccount.walletAddress!,
       amount: amount,
       id: id,
     );
   }
 
-  Future<TransactionResult> closeCdps({
+  /// Mints the CCCs having the given [mintCccs] list as being
+  /// associated with the address present inside the user wallet.
+  /// Optionally [fee] and broadcasting [mode] parameters can be specified.
+  ///
+  /// Returns the [TransactionResult].
+  Future<TransactionResult> mintCccsList({
     required List<MintCcc> mintCccs,
     StdFee? fee,
     BroadcastingMode? mode,
@@ -47,9 +52,9 @@ class StatefulCommercioMint {
       throw const WalletNotFoundException();
     }
 
-    return statelessHandler.mintCccsList(
-      mintCccs: mintCccs,
-      wallet: commercioAccount.wallet!,
+    return MintHelper.mintCccsList(
+      mintCccs,
+      commercioAccount.wallet!,
       fee: fee,
       mode: mode,
     );

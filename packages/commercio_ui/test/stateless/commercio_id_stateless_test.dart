@@ -5,7 +5,7 @@ import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 // import 'package:http/http.dart';
 // import 'package:http/testing.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 // import 'package:sacco/utils/export.dart';
 
@@ -87,7 +87,7 @@ void main() {
 
   group('Restore keys', () {
     test('Correct', () async {
-      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
+      when(() => secretStorageMock.read(key: secureStorageKey)).thenAnswer(
         (_) => Future.value(correctIdKeys),
       );
 
@@ -114,12 +114,12 @@ void main() {
 
   group('Store keys', () {
     test('Correct', () async {
-      when(secretStorageMock.write(
-        key: secureStorageKey,
-        value: correctIdKeys,
-      )).thenAnswer((_) => Future.value());
+      when(() => secretStorageMock.write(
+            key: secureStorageKey,
+            value: any(named: 'value'),
+          )).thenAnswer((_) => Future.value());
 
-      expect(
+      expectLater(
         () => commercioId.storeKeys(
           secretStorage: secretStorageMock,
           secureStorageKey: secureStorageKey,
@@ -132,7 +132,7 @@ void main() {
 
   group('Delete keys', () {
     test('Correct', () async {
-      when(secretStorageMock.delete(key: secureStorageKey))
+      when(() => secretStorageMock.delete(key: secureStorageKey))
           .thenAnswer((_) => Future.value());
 
       expect(
@@ -169,9 +169,9 @@ void main() {
     });
 
     test('Correct with service', () async {
-      final didDocServiceType = 'didDocServiceType';
-      final didDocServiceId = 'didDocServiceId';
-      final didDocServiceEndpoint = 'didDocServiceEndpoint';
+      const didDocServiceType = 'didDocServiceType';
+      const didDocServiceId = 'didDocServiceId';
+      const didDocServiceEndpoint = 'didDocServiceEndpoint';
 
       final didDoc = await commercioId.deriveDidDocument(
         wallet: correctWallet,
@@ -544,7 +544,7 @@ void main() {
 
   group('Compute new key pair', () {
     test('Correct', () async {
-      final generateKeysData = GenerateKeysData();
+      const generateKeysData = GenerateKeysData();
 
       expect(generateKeysData, isNotNull);
 

@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
 import 'package:http/http.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 class SecretStorageMock extends Mock implements ISecretStorage {}
@@ -177,7 +177,7 @@ void main() async {
 
   group('Restore keys', () {
     test('Correct', () async {
-      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
+      when(() => secretStorageMock.read(key: secureStorageKey)).thenAnswer(
         (_) => Future.value(correctIdKeys),
       );
 
@@ -205,7 +205,7 @@ void main() async {
     });
 
     test('No keys stored should throw an exception', () async {
-      when(secretStorageMock.read(key: secureStorageKey)).thenAnswer(
+      when(() => secretStorageMock.read(key: secureStorageKey)).thenAnswer(
         (_) => Future.value(null),
       );
 
@@ -224,10 +224,10 @@ void main() async {
 
   group('Store keys', () {
     test('Correct', () async {
-      when(secretStorageMock.write(
-        key: secureStorageKey,
-        value: correctIdKeys,
-      )).thenAnswer((_) => Future.value());
+      when(() => secretStorageMock.write(
+            key: secureStorageKey,
+            value: correctIdKeys,
+          )).thenAnswer((_) => Future.value());
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
@@ -246,9 +246,9 @@ void main() async {
 
   group('Delete keys', () {
     test('Correct', () async {
-      when(secretStorageMock.delete(
-        key: secureStorageKey,
-      )).thenAnswer((_) => Future.value());
+      when(() => secretStorageMock.delete(
+            key: secureStorageKey,
+          )).thenAnswer((_) => Future.value());
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
@@ -289,9 +289,9 @@ void main() async {
     });
 
     test('Correct + service', () async {
-      final didDocServiceType = 'didDocServiceType';
-      final didDocServiceId = 'didDocServiceId';
-      final didDocServiceEndpoint = 'didDocServiceEndpoint';
+      const didDocServiceType = 'didDocServiceType';
+      const didDocServiceId = 'didDocServiceId';
+      const didDocServiceEndpoint = 'didDocServiceEndpoint';
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
@@ -359,15 +359,15 @@ void main() async {
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
-        statelessHandler: StatelessCommercioId(),
+        statelessHandler: const StatelessCommercioId(),
         httpHelper: httpHelperMock,
       );
 
-      when(httpHelperMock.getRequest(
-        endpoint: HttpEndpoint.didDocument,
-        walletAddress: correctWalletAddress,
-        lcdUrl: anyNamed('lcdUrl'),
-      )).thenAnswer((_) async => Response(correctGetDidDocRaw, 200));
+      when(() => httpHelperMock.getRequest(
+            endpoint: HttpEndpoint.didDocument,
+            walletAddress: correctWalletAddress,
+            lcdUrl: any()(named: 'lcdUrl'),
+          )).thenAnswer((_) async => Response(correctGetDidDocRaw, 200));
 
       final didDocument = await commercioId.getDidDocument(
         walletAddress: correctWalletAddress,
@@ -382,15 +382,15 @@ void main() async {
         storage: secretStorageMock,
         storageKey: secureStorageKey,
         idKeys: keysObj,
-        statelessHandler: StatelessCommercioId(),
+        statelessHandler: const StatelessCommercioId(),
         httpHelper: httpHelperMock,
       );
 
-      when(httpHelperMock.getRequest(
-        endpoint: HttpEndpoint.didDocument,
-        walletAddress: correctWalletAddress,
-        lcdUrl: anyNamed('lcdUrl'),
-      )).thenAnswer((_) async => Response('', 404));
+      when(() => httpHelperMock.getRequest(
+            endpoint: HttpEndpoint.didDocument,
+            walletAddress: correctWalletAddress,
+            lcdUrl: any(named: 'lcdUrl'),
+          )).thenAnswer((_) async => Response('', 404));
 
       expect(
         commercioId.getDidDocument(
@@ -422,12 +422,12 @@ void main() async {
 
       final didDocument = await commercioId.deriveDidDocument();
 
-      when(statelessCommercioIdMock.setDidDocuments(
-        didDocuments: [didDocument],
-        wallet: correctWallet,
-      )).thenAnswer(
+      when(() => statelessCommercioIdMock.setDidDocuments(
+            didDocuments: [didDocument],
+            wallet: correctWallet,
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 
@@ -449,12 +449,12 @@ void main() async {
       //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       // );
 
-      when(statelessCommercioIdMock.setDidDocuments(
-        didDocuments: [correctDidDoc],
-        wallet: correctWallet,
-      )).thenAnswer(
+      when(() => statelessCommercioIdMock.setDidDocuments(
+            didDocuments: [correctDidDoc],
+            wallet: correctWallet,
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 
@@ -484,10 +484,10 @@ void main() async {
       //   (_) => Future.value(Response(correctNodeInfoRaw, 200)),
       // );
 
-      when(statelessCommercioIdMock.deriveDidDocument(
-        wallet: correctWallet,
-        idKeys: keysObj,
-      )).thenAnswer((realInvocation) => Future.value(correctDidDoc));
+      when(() => statelessCommercioIdMock.deriveDidDocument(
+            wallet: correctWallet,
+            idKeys: keysObj,
+          )).thenAnswer((realInvocation) => Future.value(correctDidDoc));
 
       final commercioId = StatefulCommercioId(
         commercioAccount: correctCommercioAccount,
@@ -498,12 +498,12 @@ void main() async {
       );
       await commercioId.deriveDidDocument();
 
-      when(statelessCommercioIdMock.setDidDocuments(
-        didDocuments: [correctDidDoc],
-        wallet: correctWallet,
-      )).thenAnswer(
+      when(() => statelessCommercioIdMock.setDidDocuments(
+            didDocuments: [correctDidDoc],
+            wallet: correctWallet,
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 
@@ -535,7 +535,8 @@ void main() async {
         idKeys: keysObj,
       );
 
-      commercioId.didDocument = await StatelessCommercioId().deriveDidDocument(
+      commercioId.didDocument =
+          await const StatelessCommercioId().deriveDidDocument(
         wallet: correctCommercioAccount.wallet!,
         idKeys: keysObj,
       );
@@ -564,16 +565,16 @@ void main() async {
 
       const amount = [StdCoin(denom: 'ucommercio', amount: '10')];
 
-      when(statelessCommercioIdMock.rechargeTumbler(
-        amount: amount,
-        walletWithAddress: WalletWithAddress(
-          wallet: correctWallet,
-          address: correctWalletAddress,
-        ),
-        httpHelper: httpHelperMock,
-      )).thenAnswer(
+      when(() => statelessCommercioIdMock.rechargeTumbler(
+            amount: amount,
+            walletWithAddress: WalletWithAddress(
+              wallet: correctWallet,
+              address: correctWalletAddress,
+            ),
+            httpHelper: httpHelperMock,
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 
@@ -703,12 +704,12 @@ void main() async {
       //   (_) => Future.value(correctWalletAddress),
       // );
 
-      when(statelessCommercioIdMock.requestDidPowerUps(
-        powerUpRequests: [correctDidPowerUpRequest],
-        senderWallet: correctWallet,
-      )).thenAnswer(
+      when(() => statelessCommercioIdMock.requestDidPowerUps(
+            powerUpRequests: [correctDidPowerUpRequest],
+            senderWallet: correctWallet,
+          )).thenAnswer(
         (_) => Future.value(
-          TransactionResult(hash: correctTxHash, success: true),
+          const TransactionResult(hash: correctTxHash, success: true),
         ),
       );
 

@@ -4,7 +4,7 @@ import 'package:commercio_ui/src/core/core.dart';
 import 'package:commercio_ui/src/core/utils/utils.dart';
 // import 'package:http/http.dart';
 // import 'package:http/testing.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 // import 'package:sacco/utils/export.dart';
 
 class HttpHelperMock extends Mock implements HttpHelper {}

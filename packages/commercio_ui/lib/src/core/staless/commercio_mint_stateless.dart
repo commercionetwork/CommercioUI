@@ -9,14 +9,14 @@ import 'package:commercio_ui/commercio_ui.dart';
 class StatelessCommercioMint {
   const StatelessCommercioMint();
 
-  /// Creates a [MintCcc] from the given wallet [signerAddress], deposit amount
+  /// Creates a [MintCcc] from the given wallet [depositor], deposit amount
   /// [amount] and mint [id].
   MintCcc deriveMintCcc({
     required List<StdCoin> amount,
     required String id,
-    required String signerAddress,
+    required String depositor,
   }) {
-    return MintCcc(depositAmount: amount, id: id, signerDid: signerAddress);
+    return MintCcc(depositAmount: amount, id: id, signerDid: depositor);
   }
 
   /// Mints the CCCs having the given [mintCccs] list as being

@@ -1,4 +1,4 @@
-include: package:pedantic/analysis_options_package.yaml
+include: package:flutter_lints/flutter.yaml
 
 linter:
   rules:
@@ -7,3 +7,10 @@ linter:
     # Not reliable enough (https://github.com/flutter/flutter/blob/master/analysis_options.yaml)
     close_sinks: false
     # public_member_api_docs: true
+
+exclude:
+  - "**/*.g.dart"
+  - "**/*.freezed.dart"
+
+errors:
+  invalid_annotation_target: ignore
