@@ -11,11 +11,11 @@ dependencies:
     sdk: flutter
 
   commercio_ui:
-  #  git:
-  #    url: https://github.com/commercionetwork/CommercioUI.git
-  #    path: packages/commercio_ui
-  #    ref: dev
-    path: ../commercio_ui
+    git:
+      url: https://github.com/commercionetwork/CommercioUI.git
+      path: packages/commercio_ui
+      ref: null-safety
+  #  path: ../commercio_ui
   basic_utils: ">=3.0.0 <4.0.0"
   bloc: '>=7.0.0 <8.0.0'
   equatable: '>=2.0.0 <3.0.0'
