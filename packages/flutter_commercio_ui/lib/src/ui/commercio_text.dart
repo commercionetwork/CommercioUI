@@ -1,33 +1,26 @@
-import 'dart:ui' as ui show TextHeightBehavior;
-
 import 'package:bloc/bloc.dart';
 import 'package:commercio_ui/src/core/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CommercioText<B extends Bloc<E, T>, E, T, I extends T, D extends T,
-    L extends T, ERR extends T> extends StatefulWidget {
-  final TextStyle style;
-  final TextStyle loadingStyle;
-  final StrutStyle strutStyle;
-  final TextAlign textAlign;
-  final TextDirection textDirection;
-  final Locale locale;
-  final bool softWrap;
-  final TextOverflow overflow;
-  final double textScaleFactor;
-  final int maxLines;
-  final String semanticsLabel;
-  final TextWidthBasis textWidthBasis;
-  final ui.TextHeightBehavior textHeightBehavior;
-  final String Function(BuildContext context) loading;
-  final String Function(BuildContext context, D state) text;
-  final String Function(BuildContext context, String errorMessage) error;
+@immutable
+class CommercioTextStyle with Diagnosticable {
+  final TextStyle? style;
+  final StrutStyle? strutStyle;
+  final TextAlign? textAlign;
+  final TextDirection? textDirection;
+  final Locale? locale;
+  final bool? softWrap;
+  final TextOverflow? overflow;
+  final double? textScaleFactor;
+  final int? maxLines;
+  final String? semanticsLabel;
+  final TextWidthBasis? textWidthBasis;
+  final TextHeightBehavior? textHeightBehavior;
 
-  const CommercioText({
-    Key key,
+  const CommercioTextStyle({
     this.style,
-    this.loadingStyle,
     this.strutStyle,
     this.textAlign,
     this.textDirection,
@@ -39,10 +32,27 @@ class CommercioText<B extends Bloc<E, T>, E, T, I extends T, D extends T,
     this.semanticsLabel,
     this.textWidthBasis,
     this.textHeightBehavior,
-    @required this.loading,
-    @required this.text,
+  });
+}
+
+class CommercioText<B extends Bloc<E, T>, E, T, I extends T, D extends T,
+    L extends T, ERR extends T> extends StatefulWidget {
+  final String Function(BuildContext context) loading;
+  final String Function(BuildContext context, D state) text;
+  final String Function(BuildContext context, String errorMessage)? error;
+  final CommercioTextStyle textStyle;
+  final CommercioTextStyle loadingTextStyle;
+
+  const CommercioText({
+    Key? key,
+    required this.loading,
+    required this.text,
     this.error,
-  }) : super(key: key);
+    CommercioTextStyle? loadingTextStyle,
+    CommercioTextStyle? textStyle,
+  })  : loadingTextStyle = loadingTextStyle ?? const CommercioTextStyle(),
+        textStyle = textStyle ?? const CommercioTextStyle(),
+        super(key: key);
 
   @override
   _CommercioTextState<B, E, T, I, D, L, ERR> createState() =>
@@ -65,6 +75,8 @@ class _CommercioTextState<
 
     return BlocBuilder<B, T>(
       builder: (context, state) {
+        CommercioTextStyle style = widget.textStyle;
+
         if (TypeHelper.hasType(state.runtimeType, I)) {
           text = previousText;
         }
@@ -79,31 +91,31 @@ class _CommercioTextState<
 
         if (TypeHelper.hasType(state.runtimeType, L)) {
           text = widget.loading(context);
+          style = widget.loadingTextStyle;
         }
 
         if (TypeHelper.hasType(state.runtimeType, ERR)) {
           // [state] must be dynamic to call the [error] getter on it.
           text = previousText = widget.error != null
-              ? widget.error(context, (state as dynamic).error)
+              ? widget.error!(context, (state as dynamic).error)
               : previousText;
         }
 
         return Text(
           text,
-          style: TypeHelper.hasType(state.runtimeType, L)
-              ? widget.loadingStyle
-              : widget.style,
-          strutStyle: widget.strutStyle,
-          textAlign: widget.textAlign,
-          textDirection: widget.textDirection,
-          locale: widget.locale,
-          softWrap: widget.softWrap,
-          overflow: widget.overflow,
-          textScaleFactor: widget.textScaleFactor,
-          maxLines: widget.maxLines,
-          semanticsLabel: widget.semanticsLabel,
-          textWidthBasis: widget.textWidthBasis,
-          textHeightBehavior: widget.textHeightBehavior,
+          key: widget.key,
+          locale: style.locale,
+          maxLines: style.maxLines,
+          overflow: style.overflow,
+          semanticsLabel: style.semanticsLabel,
+          softWrap: style.softWrap,
+          strutStyle: style.strutStyle,
+          style: style.style,
+          textAlign: style.textAlign,
+          textDirection: style.textDirection,
+          textHeightBehavior: style.textHeightBehavior,
+          textScaleFactor: style.textScaleFactor,
+          textWidthBasis: style.textWidthBasis,
         );
       },
     );

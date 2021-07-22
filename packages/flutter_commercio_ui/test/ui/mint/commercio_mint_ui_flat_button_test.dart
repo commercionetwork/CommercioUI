@@ -26,7 +26,7 @@ void main() {
     when(commercioMint.openCdp(amount: amount))
         .thenAnswer((_) async => correctTxResult);
 
-    final bloc = CommercioMintOpenCdpBloc(
+    final bloc = CommercioMintCCCBloc(
       commercioMint: commercioMint,
     );
 
@@ -40,7 +40,7 @@ void main() {
       ]),
     );
 
-    final commFlatButton = OpenCdpFlatButton(
+    final commFlatButton = MintCccFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
       event: () => CommercioMintOpenCdpEvent(
@@ -85,7 +85,7 @@ void main() {
       blockHeight: correctBlockHeigth,
     )).thenReturn(correctCloseCdp);
 
-    final bloc = CommercioMintDeriveCloseCdpBloc(
+    final bloc = CommercioMintDeriveBurnCccBloc(
       commercioMint: commercioMint,
     );
 
@@ -99,10 +99,10 @@ void main() {
       ]),
     );
 
-    final commFlatButton = DeriveCloseCdpFlatButton(
+    final commFlatButton = DeriveBurnCccFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioMintDeriveCloseCdpEvent(
+      event: () => CommercioMintDeriveBurnCCCEvent(
         blockHeight: correctBlockHeigth,
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(
@@ -163,7 +163,7 @@ void main() {
     final commFlatButton = CloseCdpsFlatButton(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
-      event: () => CommercioMintCloseCdpsEvent(
+      event: () => CommercioMintBurnCCCEvent(
         closeCdps: [correctCloseCdp],
       ),
       error: (context, err) => Scaffold.of(context).showSnackBar(

@@ -26,7 +26,7 @@ void main() {
     when(commercioMint.openCdp(amount: amount))
         .thenAnswer((_) async => correctTxResult);
 
-    final bloc = CommercioMintOpenCdpBloc(
+    final bloc = CommercioMintCCCBloc(
       commercioMint: commercioMint,
     );
 
@@ -82,7 +82,7 @@ void main() {
       blockHeight: correctBlockHeigth,
     )).thenReturn(correctCloseCdp);
 
-    final bloc = CommercioMintDeriveCloseCdpBloc(
+    final bloc = CommercioMintDeriveBurnCccBloc(
       commercioMint: commercioMint,
     );
 
@@ -116,7 +116,7 @@ void main() {
 
     expect(find.byWidget(commTextField), findsOneWidget);
 
-    bloc.add(CommercioMintDeriveCloseCdpEvent(
+    bloc.add(CommercioMintDeriveBurnCCCEvent(
       blockHeight: correctBlockHeigth,
     ));
     await tester.pumpAndSettle();
@@ -127,7 +127,7 @@ void main() {
       blockHeight: correctBlockHeigth,
     )).thenThrow(Exception());
 
-    bloc.add(CommercioMintDeriveCloseCdpEvent(
+    bloc.add(CommercioMintDeriveBurnCCCEvent(
       blockHeight: correctBlockHeigth,
     ));
     await tester.pumpAndSettle();
@@ -174,7 +174,7 @@ void main() {
 
     expect(find.byWidget(commText), findsOneWidget);
 
-    bloc.add(CommercioMintCloseCdpsEvent(
+    bloc.add(CommercioMintBurnCCCEvent(
       closeCdps: [correctCloseCdp],
     ));
     await tester.pumpAndSettle();
@@ -185,7 +185,7 @@ void main() {
       closeCdps: [correctCloseCdp],
     )).thenThrow(Exception());
 
-    bloc.add(CommercioMintCloseCdpsEvent(
+    bloc.add(CommercioMintBurnCCCEvent(
       closeCdps: [correctCloseCdp],
     ));
     await tester.pumpAndSettle();

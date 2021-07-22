@@ -1,16 +1,17 @@
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sacco/sacco.dart';
+import 'package:flutter/foundation.dart';
 
 part 'commercio_account_state.freezed.dart';
 
 @freezed
-abstract class CommercioAccountGenerateWalletState
+class CommercioAccountGenerateWalletState
     with _$CommercioAccountGenerateWalletState {
   const factory CommercioAccountGenerateWalletState({
-    @required String mnemonic,
-    @required Wallet wallet,
-    @required String walletAddress,
+    required String mnemonic,
+    required Wallet wallet,
+    required String walletAddress,
   }) = CommercioAccountGenerateWalletData;
 
   const factory CommercioAccountGenerateWalletState.initial() =
@@ -19,17 +20,17 @@ abstract class CommercioAccountGenerateWalletState
   const factory CommercioAccountGenerateWalletState.loading() =
       CommercioAccountGenerateWalletLoading;
 
-  const factory CommercioAccountGenerateWalletState.error([String error]) =
+  const factory CommercioAccountGenerateWalletState.error([String? error]) =
       CommercioAccountGenerateWalletError;
 }
 
 @freezed
-abstract class CommercioAccountRestoredWalletState
+class CommercioAccountRestoredWalletState
     with _$CommercioAccountRestoredWalletState {
   const factory CommercioAccountRestoredWalletState({
-    @required String mnemonic,
-    @required Wallet wallet,
-    @required String walletAddress,
+    required String mnemonic,
+    required Wallet wallet,
+    required String walletAddress,
   }) = CommercioAccountRestoredWalletStateData;
 
   const factory CommercioAccountRestoredWalletState.initial() =
@@ -38,14 +39,14 @@ abstract class CommercioAccountRestoredWalletState
   const factory CommercioAccountRestoredWalletState.loading() =
       CommercioAccountRestoredWalletStateLoading;
 
-  const factory CommercioAccountRestoredWalletState.error([String error]) =
+  const factory CommercioAccountRestoredWalletState.error([String? error]) =
       CommercioAccountRestoredWalletStateError;
 }
 
 @freezed
-abstract class CommercioAccountQrState with _$CommercioAccountQrState {
+class CommercioAccountQrState with _$CommercioAccountQrState {
   const factory CommercioAccountQrState({
-    @required String walletAddress,
+    required String walletAddress,
   }) = CommercioAccountQrStateData;
 
   const factory CommercioAccountQrState.initial() =
@@ -54,15 +55,14 @@ abstract class CommercioAccountQrState with _$CommercioAccountQrState {
   const factory CommercioAccountQrState.loading() =
       CommercioAccountQrStateLoading;
 
-  const factory CommercioAccountQrState.error([String error]) =
+  const factory CommercioAccountQrState.error([String? error]) =
       CommercioAccountQrStateError;
 }
 
 @freezed
-abstract class CommercioAccountFreeTokensState
-    with _$CommercioAccountFreeTokensState {
+class CommercioAccountFreeTokensState with _$CommercioAccountFreeTokensState {
   const factory CommercioAccountFreeTokensState({
-    @required AccountRequestResponse accountRequestResponse,
+    required AccountRequestResponse accountRequestResponse,
   }) = CommercioAccountFreeTokensStateData;
 
   const factory CommercioAccountFreeTokensState.initial() =
@@ -71,15 +71,14 @@ abstract class CommercioAccountFreeTokensState
   const factory CommercioAccountFreeTokensState.loading() =
       CommercioAccountFreeTokensStateLoading;
 
-  const factory CommercioAccountFreeTokensState.error([String error]) =
+  const factory CommercioAccountFreeTokensState.error([String? error]) =
       CommercioAccountFreeTokensStateError;
 }
 
 @freezed
-abstract class CommercioAccountBalanceState
-    with _$CommercioAccountBalanceState {
+class CommercioAccountBalanceState with _$CommercioAccountBalanceState {
   const factory CommercioAccountBalanceState({
-    @required List<StdCoin> balance,
+    required List<StdCoin> balance,
   }) = CommercioAccountBalanceStateData;
 
   const factory CommercioAccountBalanceState.initial() =
@@ -88,15 +87,14 @@ abstract class CommercioAccountBalanceState
   const factory CommercioAccountBalanceState.loading() =
       CommercioAccountBalanceStateLoading;
 
-  const factory CommercioAccountBalanceState.error([String error]) =
+  const factory CommercioAccountBalanceState.error([String? error]) =
       CommercioAccountBalanceStateError;
 }
 
 @freezed
-abstract class CommercioAccountSentTokensState
-    with _$CommercioAccountSentTokensState {
+class CommercioAccountSentTokensState with _$CommercioAccountSentTokensState {
   const factory CommercioAccountSentTokensState({
-    @required TransactionResult result,
+    required TransactionResult result,
   }) = CommercioAccountSentTokensStateData;
 
   const factory CommercioAccountSentTokensState.initial() =
@@ -105,16 +103,16 @@ abstract class CommercioAccountSentTokensState
   const factory CommercioAccountSentTokensState.loading() =
       CommercioAccountSentTokensStateLoading;
 
-  const factory CommercioAccountSentTokensState.error([String error]) =
+  const factory CommercioAccountSentTokensState.error([String? error]) =
       CommercioAccountSentTokensStateError;
 }
 
 @freezed
-abstract class CommercioAccountPaiwiseWalletState
+class CommercioAccountPaiwiseWalletState
     with _$CommercioAccountPaiwiseWalletState {
   const factory CommercioAccountPaiwiseWalletState({
-    @required Wallet wallet,
-    @required String walletAddress,
+    required Wallet wallet,
+    required String walletAddress,
   }) = CommercioAccountPaiwiseWalletStateData;
 
   const factory CommercioAccountPaiwiseWalletState.initial() =
@@ -123,6 +121,6 @@ abstract class CommercioAccountPaiwiseWalletState
   const factory CommercioAccountPaiwiseWalletState.loading() =
       CommercioAccountPaiwiseWalletStateLoading;
 
-  const factory CommercioAccountPaiwiseWalletState.error([String error]) =
+  const factory CommercioAccountPaiwiseWalletState.error([String? error]) =
       CommercioAccountPaiwiseWalletStateError;
 }

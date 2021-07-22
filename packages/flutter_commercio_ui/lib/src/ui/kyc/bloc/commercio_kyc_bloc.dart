@@ -1,6 +1,4 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commerciosdk/entities/membership/membership_type.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'commercio_kyc_event.dart';
@@ -11,7 +9,7 @@ class CommercioKycRequestFaucetInviteBloc extends Bloc<
     CommercioKycRequestedFaucetInviteState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycRequestFaucetInviteBloc({@required this.commercioKyc})
+  CommercioKycRequestFaucetInviteBloc({required this.commercioKyc})
       : super(const CommercioKycRequestedFaucetInviteStateInitial());
 
   @override
@@ -35,7 +33,7 @@ class CommercioKycDeriveBuyMembershipBloc extends Bloc<
     CommercioKycDeriveBuyMembershipState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycDeriveBuyMembershipBloc({@required this.commercioKyc})
+  CommercioKycDeriveBuyMembershipBloc({required this.commercioKyc})
       : super(const CommercioKycDeriveBuyMembershipStateInitial());
 
   @override
@@ -47,6 +45,7 @@ class CommercioKycDeriveBuyMembershipBloc extends Bloc<
 
       final buyMembership = commercioKyc.deriveBuyMembership(
         membershipType: event.membershipType,
+        tsp: event.tsp,
       );
 
       yield CommercioKycDeriveBuyMembershipStateData(
@@ -62,7 +61,7 @@ class CommercioKycBuyMembershipsBloc extends Bloc<
     CommercioKycBuyMembershipsEvent, CommercioKycBuyMembershipsState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycBuyMembershipsBloc({@required this.commercioKyc})
+  CommercioKycBuyMembershipsBloc({required this.commercioKyc})
       : super(const CommercioKycBuyMembershipsStateInitial());
 
   @override
@@ -89,7 +88,7 @@ class CommercioKycDeriveInviteMemberBloc extends Bloc<
     CommercioKycDeriveInviteMemberEvent, CommercioKycDeriveInviteMemberState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycDeriveInviteMemberBloc({@required this.commercioKyc})
+  CommercioKycDeriveInviteMemberBloc({required this.commercioKyc})
       : super(const CommercioKycDeriveInviteMemberStateInitial());
 
   @override
@@ -114,7 +113,7 @@ class CommercioKycInviteMembersBloc extends Bloc<CommercioKycInviteMembersEvent,
     CommercioKycInviteMembersState> {
   final StatefulCommercioKyc commercioKyc;
 
-  CommercioKycInviteMembersBloc({@required this.commercioKyc})
+  CommercioKycInviteMembersBloc({required this.commercioKyc})
       : super(const CommercioKycInviteMembersStateInitial());
 
   @override

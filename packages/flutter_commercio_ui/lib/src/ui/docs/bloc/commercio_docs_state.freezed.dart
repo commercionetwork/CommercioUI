@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'commercio_docs_state.dart';
 
@@ -9,72 +9,81 @@ part of 'commercio_docs_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
 class _$CommercioDocsDeriveDocumentStateTearOff {
   const _$CommercioDocsDeriveDocumentStateTearOff();
 
-// ignore: unused_element
   CommercioDocsDeriveDocumentStateData call(
-      {@required CommercioDoc commercioDoc}) {
+      {required CommercioDoc commercioDoc}) {
     return CommercioDocsDeriveDocumentStateData(
       commercioDoc: commercioDoc,
     );
   }
 
-// ignore: unused_element
   CommercioDocsDeriveDocumentStateInitial initial() {
     return const CommercioDocsDeriveDocumentStateInitial();
   }
 
-// ignore: unused_element
   CommercioDocsDeriveDocumentStateLoading loading() {
     return const CommercioDocsDeriveDocumentStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsDeriveDocumentStateError error([String error]) {
+  CommercioDocsDeriveDocumentStateError error([String? error]) {
     return CommercioDocsDeriveDocumentStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsDeriveDocumentState =
     _$CommercioDocsDeriveDocumentStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsDeriveDocumentState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    @required Result error(CommercioDocsDeriveDocumentStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveDocumentStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    Result error(CommercioDocsDeriveDocumentStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveDocumentStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveDocumentStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveDocumentStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveDocumentStateCopyWith<$Res> {
   factory $CommercioDocsDeriveDocumentStateCopyWith(
           CommercioDocsDeriveDocumentState value,
@@ -82,6 +91,7 @@ abstract class $CommercioDocsDeriveDocumentStateCopyWith<$Res> {
       _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveDocumentStateCopyWith<$Res> {
   _$CommercioDocsDeriveDocumentStateCopyWithImpl(this._value, this._then);
@@ -91,6 +101,7 @@ class _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsDeriveDocumentState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveDocumentStateDataCopyWith<$Res> {
   factory $CommercioDocsDeriveDocumentStateDataCopyWith(
           CommercioDocsDeriveDocumentStateData value,
@@ -99,6 +110,7 @@ abstract class $CommercioDocsDeriveDocumentStateDataCopyWith<$Res> {
   $Res call({CommercioDoc commercioDoc});
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveDocumentStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveDocumentStateDataCopyWith<$Res> {
@@ -113,20 +125,22 @@ class _$CommercioDocsDeriveDocumentStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object commercioDoc = freezed,
+    Object? commercioDoc = freezed,
   }) {
     return _then(CommercioDocsDeriveDocumentStateData(
       commercioDoc: commercioDoc == freezed
           ? _value.commercioDoc
-          : commercioDoc as CommercioDoc,
+          : commercioDoc // ignore: cast_nullable_to_non_nullable
+              as CommercioDoc,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsDeriveDocumentStateData
     implements CommercioDocsDeriveDocumentStateData {
-  const _$CommercioDocsDeriveDocumentStateData({@required this.commercioDoc})
-      : assert(commercioDoc != null);
+  const _$CommercioDocsDeriveDocumentStateData({required this.commercioDoc});
 
   @override
   final CommercioDoc commercioDoc;
@@ -149,6 +163,7 @@ class _$CommercioDocsDeriveDocumentStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(commercioDoc);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsDeriveDocumentStateDataCopyWith<
           CommercioDocsDeriveDocumentStateData>
@@ -157,29 +172,24 @@ class _$CommercioDocsDeriveDocumentStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(commercioDoc);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(commercioDoc);
     }
@@ -188,29 +198,27 @@ class _$CommercioDocsDeriveDocumentStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveDocumentStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    Result error(CommercioDocsDeriveDocumentStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveDocumentStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveDocumentStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveDocumentStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -221,14 +229,17 @@ class _$CommercioDocsDeriveDocumentStateData
 abstract class CommercioDocsDeriveDocumentStateData
     implements CommercioDocsDeriveDocumentState {
   const factory CommercioDocsDeriveDocumentStateData(
-          {@required CommercioDoc commercioDoc}) =
+          {required CommercioDoc commercioDoc}) =
       _$CommercioDocsDeriveDocumentStateData;
 
-  CommercioDoc get commercioDoc;
+  CommercioDoc get commercioDoc => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsDeriveDocumentStateDataCopyWith<
-      CommercioDocsDeriveDocumentStateData> get copyWith;
+          CommercioDocsDeriveDocumentStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveDocumentStateInitialCopyWith<$Res> {
   factory $CommercioDocsDeriveDocumentStateInitialCopyWith(
           CommercioDocsDeriveDocumentStateInitial value,
@@ -236,6 +247,7 @@ abstract class $CommercioDocsDeriveDocumentStateInitialCopyWith<$Res> {
       _$CommercioDocsDeriveDocumentStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveDocumentStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveDocumentStateInitialCopyWith<$Res> {
@@ -249,6 +261,8 @@ class _$CommercioDocsDeriveDocumentStateInitialCopyWithImpl<$Res>
   CommercioDocsDeriveDocumentStateInitial get _value =>
       super._value as CommercioDocsDeriveDocumentStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioDocsDeriveDocumentStateInitial
     implements CommercioDocsDeriveDocumentStateInitial {
@@ -270,29 +284,24 @@ class _$CommercioDocsDeriveDocumentStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -301,29 +310,27 @@ class _$CommercioDocsDeriveDocumentStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveDocumentStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    Result error(CommercioDocsDeriveDocumentStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveDocumentStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveDocumentStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveDocumentStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -337,6 +344,7 @@ abstract class CommercioDocsDeriveDocumentStateInitial
       _$CommercioDocsDeriveDocumentStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveDocumentStateLoadingCopyWith<$Res> {
   factory $CommercioDocsDeriveDocumentStateLoadingCopyWith(
           CommercioDocsDeriveDocumentStateLoading value,
@@ -344,6 +352,7 @@ abstract class $CommercioDocsDeriveDocumentStateLoadingCopyWith<$Res> {
       _$CommercioDocsDeriveDocumentStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveDocumentStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveDocumentStateLoadingCopyWith<$Res> {
@@ -357,6 +366,8 @@ class _$CommercioDocsDeriveDocumentStateLoadingCopyWithImpl<$Res>
   CommercioDocsDeriveDocumentStateLoading get _value =>
       super._value as CommercioDocsDeriveDocumentStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsDeriveDocumentStateLoading
     implements CommercioDocsDeriveDocumentStateLoading {
@@ -378,29 +389,24 @@ class _$CommercioDocsDeriveDocumentStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -409,29 +415,27 @@ class _$CommercioDocsDeriveDocumentStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveDocumentStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    Result error(CommercioDocsDeriveDocumentStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveDocumentStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveDocumentStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveDocumentStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -445,14 +449,16 @@ abstract class CommercioDocsDeriveDocumentStateLoading
       _$CommercioDocsDeriveDocumentStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveDocumentStateErrorCopyWith<$Res> {
   factory $CommercioDocsDeriveDocumentStateErrorCopyWith(
           CommercioDocsDeriveDocumentStateError value,
           $Res Function(CommercioDocsDeriveDocumentStateError) then) =
       _$CommercioDocsDeriveDocumentStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveDocumentStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsDeriveDocumentStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveDocumentStateErrorCopyWith<$Res> {
@@ -467,20 +473,25 @@ class _$CommercioDocsDeriveDocumentStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsDeriveDocumentStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsDeriveDocumentStateError
     implements CommercioDocsDeriveDocumentStateError {
   const _$CommercioDocsDeriveDocumentStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -499,6 +510,7 @@ class _$CommercioDocsDeriveDocumentStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsDeriveDocumentStateErrorCopyWith<
           CommercioDocsDeriveDocumentStateError>
@@ -507,29 +519,24 @@ class _$CommercioDocsDeriveDocumentStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDoc commercioDoc), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDoc commercioDoc)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -538,29 +545,27 @@ class _$CommercioDocsDeriveDocumentStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    @required Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    @required Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    @required Result error(CommercioDocsDeriveDocumentStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveDocumentStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveDocumentStateData value), {
-    Result initial(CommercioDocsDeriveDocumentStateInitial value),
-    Result loading(CommercioDocsDeriveDocumentStateLoading value),
-    Result error(CommercioDocsDeriveDocumentStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveDocumentStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveDocumentStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveDocumentStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveDocumentStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -570,80 +575,88 @@ class _$CommercioDocsDeriveDocumentStateError
 
 abstract class CommercioDocsDeriveDocumentStateError
     implements CommercioDocsDeriveDocumentState {
-  const factory CommercioDocsDeriveDocumentStateError([String error]) =
+  const factory CommercioDocsDeriveDocumentStateError([String? error]) =
       _$CommercioDocsDeriveDocumentStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsDeriveDocumentStateErrorCopyWith<
-      CommercioDocsDeriveDocumentStateError> get copyWith;
+          CommercioDocsDeriveDocumentStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioDocsSharedDocumentsStateTearOff {
   const _$CommercioDocsSharedDocumentsStateTearOff();
 
-// ignore: unused_element
   CommercioDocsSharedDocumentsStateData call(
-      {@required TransactionResult result}) {
+      {required TransactionResult result}) {
     return CommercioDocsSharedDocumentsStateData(
       result: result,
     );
   }
 
-// ignore: unused_element
   CommercioDocsSharedDocumentsStateInitial initial() {
     return const CommercioDocsSharedDocumentsStateInitial();
   }
 
-// ignore: unused_element
   CommercioDocsSharedDocumentsStateLoading loading() {
     return const CommercioDocsSharedDocumentsStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsSharedDocumentsStateError error([String error]) {
+  CommercioDocsSharedDocumentsStateError error([String? error]) {
     return CommercioDocsSharedDocumentsStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsSharedDocumentsState =
     _$CommercioDocsSharedDocumentsStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsSharedDocumentsState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentsStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSharedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSharedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSharedDocumentsStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    Result error(CommercioDocsSharedDocumentsStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSharedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSharedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSharedDocumentsStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSharedDocumentsStateCopyWith<$Res> {
   factory $CommercioDocsSharedDocumentsStateCopyWith(
           CommercioDocsSharedDocumentsState value,
@@ -651,6 +664,7 @@ abstract class $CommercioDocsSharedDocumentsStateCopyWith<$Res> {
       _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSharedDocumentsStateCopyWith<$Res> {
   _$CommercioDocsSharedDocumentsStateCopyWithImpl(this._value, this._then);
@@ -660,6 +674,7 @@ class _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsSharedDocumentsState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSharedDocumentsStateDataCopyWith<$Res> {
   factory $CommercioDocsSharedDocumentsStateDataCopyWith(
           CommercioDocsSharedDocumentsStateData value,
@@ -668,6 +683,7 @@ abstract class $CommercioDocsSharedDocumentsStateDataCopyWith<$Res> {
   $Res call({TransactionResult result});
 }
 
+/// @nodoc
 class _$CommercioDocsSharedDocumentsStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSharedDocumentsStateDataCopyWith<$Res> {
@@ -682,18 +698,22 @@ class _$CommercioDocsSharedDocumentsStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object result = freezed,
+    Object? result = freezed,
   }) {
     return _then(CommercioDocsSharedDocumentsStateData(
-      result: result == freezed ? _value.result : result as TransactionResult,
+      result: result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as TransactionResult,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsSharedDocumentsStateData
     implements CommercioDocsSharedDocumentsStateData {
-  const _$CommercioDocsSharedDocumentsStateData({@required this.result})
-      : assert(result != null);
+  const _$CommercioDocsSharedDocumentsStateData({required this.result});
 
   @override
   final TransactionResult result;
@@ -715,6 +735,7 @@ class _$CommercioDocsSharedDocumentsStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsSharedDocumentsStateDataCopyWith<
           CommercioDocsSharedDocumentsStateData>
@@ -723,29 +744,24 @@ class _$CommercioDocsSharedDocumentsStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(result);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(result);
     }
@@ -754,29 +770,27 @@ class _$CommercioDocsSharedDocumentsStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSharedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSharedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSharedDocumentsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    Result error(CommercioDocsSharedDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSharedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSharedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSharedDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -787,14 +801,17 @@ class _$CommercioDocsSharedDocumentsStateData
 abstract class CommercioDocsSharedDocumentsStateData
     implements CommercioDocsSharedDocumentsState {
   const factory CommercioDocsSharedDocumentsStateData(
-          {@required TransactionResult result}) =
+          {required TransactionResult result}) =
       _$CommercioDocsSharedDocumentsStateData;
 
-  TransactionResult get result;
+  TransactionResult get result => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsSharedDocumentsStateDataCopyWith<
-      CommercioDocsSharedDocumentsStateData> get copyWith;
+          CommercioDocsSharedDocumentsStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSharedDocumentsStateInitialCopyWith<$Res> {
   factory $CommercioDocsSharedDocumentsStateInitialCopyWith(
           CommercioDocsSharedDocumentsStateInitial value,
@@ -802,6 +819,7 @@ abstract class $CommercioDocsSharedDocumentsStateInitialCopyWith<$Res> {
       _$CommercioDocsSharedDocumentsStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSharedDocumentsStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSharedDocumentsStateInitialCopyWith<$Res> {
@@ -815,6 +833,8 @@ class _$CommercioDocsSharedDocumentsStateInitialCopyWithImpl<$Res>
   CommercioDocsSharedDocumentsStateInitial get _value =>
       super._value as CommercioDocsSharedDocumentsStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioDocsSharedDocumentsStateInitial
     implements CommercioDocsSharedDocumentsStateInitial {
@@ -836,29 +856,24 @@ class _$CommercioDocsSharedDocumentsStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -867,29 +882,27 @@ class _$CommercioDocsSharedDocumentsStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSharedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSharedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSharedDocumentsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    Result error(CommercioDocsSharedDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSharedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSharedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSharedDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -903,6 +916,7 @@ abstract class CommercioDocsSharedDocumentsStateInitial
       _$CommercioDocsSharedDocumentsStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSharedDocumentsStateLoadingCopyWith<$Res> {
   factory $CommercioDocsSharedDocumentsStateLoadingCopyWith(
           CommercioDocsSharedDocumentsStateLoading value,
@@ -910,6 +924,7 @@ abstract class $CommercioDocsSharedDocumentsStateLoadingCopyWith<$Res> {
       _$CommercioDocsSharedDocumentsStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSharedDocumentsStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSharedDocumentsStateLoadingCopyWith<$Res> {
@@ -923,6 +938,8 @@ class _$CommercioDocsSharedDocumentsStateLoadingCopyWithImpl<$Res>
   CommercioDocsSharedDocumentsStateLoading get _value =>
       super._value as CommercioDocsSharedDocumentsStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsSharedDocumentsStateLoading
     implements CommercioDocsSharedDocumentsStateLoading {
@@ -944,29 +961,24 @@ class _$CommercioDocsSharedDocumentsStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -975,29 +987,27 @@ class _$CommercioDocsSharedDocumentsStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSharedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSharedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSharedDocumentsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    Result error(CommercioDocsSharedDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSharedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSharedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSharedDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -1011,14 +1021,16 @@ abstract class CommercioDocsSharedDocumentsStateLoading
       _$CommercioDocsSharedDocumentsStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSharedDocumentsStateErrorCopyWith<$Res> {
   factory $CommercioDocsSharedDocumentsStateErrorCopyWith(
           CommercioDocsSharedDocumentsStateError value,
           $Res Function(CommercioDocsSharedDocumentsStateError) then) =
       _$CommercioDocsSharedDocumentsStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsSharedDocumentsStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsSharedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSharedDocumentsStateErrorCopyWith<$Res> {
@@ -1034,20 +1046,25 @@ class _$CommercioDocsSharedDocumentsStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsSharedDocumentsStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsSharedDocumentsStateError
     implements CommercioDocsSharedDocumentsStateError {
   const _$CommercioDocsSharedDocumentsStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -1066,6 +1083,7 @@ class _$CommercioDocsSharedDocumentsStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsSharedDocumentsStateErrorCopyWith<
           CommercioDocsSharedDocumentsStateError>
@@ -1074,29 +1092,24 @@ class _$CommercioDocsSharedDocumentsStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -1105,29 +1118,27 @@ class _$CommercioDocsSharedDocumentsStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    @required Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    @required Result error(CommercioDocsSharedDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSharedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSharedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSharedDocumentsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSharedDocumentsStateData value), {
-    Result initial(CommercioDocsSharedDocumentsStateInitial value),
-    Result loading(CommercioDocsSharedDocumentsStateLoading value),
-    Result error(CommercioDocsSharedDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSharedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSharedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSharedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSharedDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -1137,78 +1148,85 @@ class _$CommercioDocsSharedDocumentsStateError
 
 abstract class CommercioDocsSharedDocumentsStateError
     implements CommercioDocsSharedDocumentsState {
-  const factory CommercioDocsSharedDocumentsStateError([String error]) =
+  const factory CommercioDocsSharedDocumentsStateError([String? error]) =
       _$CommercioDocsSharedDocumentsStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsSharedDocumentsStateErrorCopyWith<
-      CommercioDocsSharedDocumentsStateError> get copyWith;
+          CommercioDocsSharedDocumentsStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptStateTearOff {
   const _$CommercioDocsSentReceiptStateTearOff();
 
-// ignore: unused_element
-  CommercioDocsSentReceiptStateData call({@required TransactionResult result}) {
+  CommercioDocsSentReceiptStateData call({required TransactionResult result}) {
     return CommercioDocsSentReceiptStateData(
       result: result,
     );
   }
 
-// ignore: unused_element
   CommercioDocsSentReceiptStateInitial initial() {
     return const CommercioDocsSentReceiptStateInitial();
   }
 
-// ignore: unused_element
   CommercioDocsSentReceiptStateLoading loading() {
     return const CommercioDocsSentReceiptStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsSentReceiptStateError error([String error]) {
+  CommercioDocsSentReceiptStateError error([String? error]) {
     return CommercioDocsSentReceiptStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsSentReceiptState = _$CommercioDocsSentReceiptStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsSentReceiptState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    @required Result initial(CommercioDocsSentReceiptStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptStateLoading value),
-    @required Result error(CommercioDocsSentReceiptStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    Result initial(CommercioDocsSentReceiptStateInitial value),
-    Result loading(CommercioDocsSentReceiptStateLoading value),
-    Result error(CommercioDocsSentReceiptStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptStateCopyWith<$Res> {
   factory $CommercioDocsSentReceiptStateCopyWith(
           CommercioDocsSentReceiptState value,
@@ -1216,6 +1234,7 @@ abstract class $CommercioDocsSentReceiptStateCopyWith<$Res> {
       _$CommercioDocsSentReceiptStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptStateCopyWith<$Res> {
   _$CommercioDocsSentReceiptStateCopyWithImpl(this._value, this._then);
@@ -1225,6 +1244,7 @@ class _$CommercioDocsSentReceiptStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsSentReceiptState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptStateDataCopyWith<$Res> {
   factory $CommercioDocsSentReceiptStateDataCopyWith(
           CommercioDocsSentReceiptStateData value,
@@ -1233,6 +1253,7 @@ abstract class $CommercioDocsSentReceiptStateDataCopyWith<$Res> {
   $Res call({TransactionResult result});
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsSentReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptStateDataCopyWith<$Res> {
@@ -1247,18 +1268,22 @@ class _$CommercioDocsSentReceiptStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object result = freezed,
+    Object? result = freezed,
   }) {
     return _then(CommercioDocsSentReceiptStateData(
-      result: result == freezed ? _value.result : result as TransactionResult,
+      result: result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as TransactionResult,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsSentReceiptStateData
     implements CommercioDocsSentReceiptStateData {
-  const _$CommercioDocsSentReceiptStateData({@required this.result})
-      : assert(result != null);
+  const _$CommercioDocsSentReceiptStateData({required this.result});
 
   @override
   final TransactionResult result;
@@ -1280,6 +1305,7 @@ class _$CommercioDocsSentReceiptStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsSentReceiptStateDataCopyWith<CommercioDocsSentReceiptStateData>
       get copyWith => _$CommercioDocsSentReceiptStateDataCopyWithImpl<
@@ -1287,29 +1313,24 @@ class _$CommercioDocsSentReceiptStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(result);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(result);
     }
@@ -1318,29 +1339,26 @@ class _$CommercioDocsSentReceiptStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    @required Result initial(CommercioDocsSentReceiptStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptStateLoading value),
-    @required Result error(CommercioDocsSentReceiptStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    Result initial(CommercioDocsSentReceiptStateInitial value),
-    Result loading(CommercioDocsSentReceiptStateLoading value),
-    Result error(CommercioDocsSentReceiptStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -1351,14 +1369,16 @@ class _$CommercioDocsSentReceiptStateData
 abstract class CommercioDocsSentReceiptStateData
     implements CommercioDocsSentReceiptState {
   const factory CommercioDocsSentReceiptStateData(
-          {@required TransactionResult result}) =
+          {required TransactionResult result}) =
       _$CommercioDocsSentReceiptStateData;
 
-  TransactionResult get result;
+  TransactionResult get result => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsSentReceiptStateDataCopyWith<CommercioDocsSentReceiptStateData>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptStateInitialCopyWith<$Res> {
   factory $CommercioDocsSentReceiptStateInitialCopyWith(
           CommercioDocsSentReceiptStateInitial value,
@@ -1366,6 +1386,7 @@ abstract class $CommercioDocsSentReceiptStateInitialCopyWith<$Res> {
       _$CommercioDocsSentReceiptStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsSentReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptStateInitialCopyWith<$Res> {
@@ -1378,6 +1399,8 @@ class _$CommercioDocsSentReceiptStateInitialCopyWithImpl<$Res>
   CommercioDocsSentReceiptStateInitial get _value =>
       super._value as CommercioDocsSentReceiptStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentReceiptStateInitial
     implements CommercioDocsSentReceiptStateInitial {
@@ -1399,29 +1422,24 @@ class _$CommercioDocsSentReceiptStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -1430,29 +1448,26 @@ class _$CommercioDocsSentReceiptStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    @required Result initial(CommercioDocsSentReceiptStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptStateLoading value),
-    @required Result error(CommercioDocsSentReceiptStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    Result initial(CommercioDocsSentReceiptStateInitial value),
-    Result loading(CommercioDocsSentReceiptStateLoading value),
-    Result error(CommercioDocsSentReceiptStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -1466,6 +1481,7 @@ abstract class CommercioDocsSentReceiptStateInitial
       _$CommercioDocsSentReceiptStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptStateLoadingCopyWith<$Res> {
   factory $CommercioDocsSentReceiptStateLoadingCopyWith(
           CommercioDocsSentReceiptStateLoading value,
@@ -1473,6 +1489,7 @@ abstract class $CommercioDocsSentReceiptStateLoadingCopyWith<$Res> {
       _$CommercioDocsSentReceiptStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsSentReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptStateLoadingCopyWith<$Res> {
@@ -1485,6 +1502,8 @@ class _$CommercioDocsSentReceiptStateLoadingCopyWithImpl<$Res>
   CommercioDocsSentReceiptStateLoading get _value =>
       super._value as CommercioDocsSentReceiptStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentReceiptStateLoading
     implements CommercioDocsSentReceiptStateLoading {
@@ -1506,29 +1525,24 @@ class _$CommercioDocsSentReceiptStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -1537,29 +1551,26 @@ class _$CommercioDocsSentReceiptStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    @required Result initial(CommercioDocsSentReceiptStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptStateLoading value),
-    @required Result error(CommercioDocsSentReceiptStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    Result initial(CommercioDocsSentReceiptStateInitial value),
-    Result loading(CommercioDocsSentReceiptStateLoading value),
-    Result error(CommercioDocsSentReceiptStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -1573,14 +1584,16 @@ abstract class CommercioDocsSentReceiptStateLoading
       _$CommercioDocsSentReceiptStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptStateErrorCopyWith<$Res> {
   factory $CommercioDocsSentReceiptStateErrorCopyWith(
           CommercioDocsSentReceiptStateError value,
           $Res Function(CommercioDocsSentReceiptStateError) then) =
       _$CommercioDocsSentReceiptStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsSentReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptStateErrorCopyWith<$Res> {
@@ -1595,20 +1608,25 @@ class _$CommercioDocsSentReceiptStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsSentReceiptStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentReceiptStateError
     implements CommercioDocsSentReceiptStateError {
   const _$CommercioDocsSentReceiptStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -1627,6 +1645,7 @@ class _$CommercioDocsSentReceiptStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsSentReceiptStateErrorCopyWith<
           CommercioDocsSentReceiptStateError>
@@ -1635,29 +1654,24 @@ class _$CommercioDocsSentReceiptStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -1666,29 +1680,26 @@ class _$CommercioDocsSentReceiptStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    @required Result initial(CommercioDocsSentReceiptStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptStateLoading value),
-    @required Result error(CommercioDocsSentReceiptStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptStateData value), {
-    Result initial(CommercioDocsSentReceiptStateInitial value),
-    Result loading(CommercioDocsSentReceiptStateLoading value),
-    Result error(CommercioDocsSentReceiptStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -1698,80 +1709,87 @@ class _$CommercioDocsSentReceiptStateError
 
 abstract class CommercioDocsSentReceiptStateError
     implements CommercioDocsSentReceiptState {
-  const factory CommercioDocsSentReceiptStateError([String error]) =
+  const factory CommercioDocsSentReceiptStateError([String? error]) =
       _$CommercioDocsSentReceiptStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsSentReceiptStateErrorCopyWith<
-      CommercioDocsSentReceiptStateError> get copyWith;
+          CommercioDocsSentReceiptStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioDocsSentDocumentsStateTearOff {
   const _$CommercioDocsSentDocumentsStateTearOff();
 
-// ignore: unused_element
   CommercioDocsSentDocumentsStateData call(
-      {@required List<CommercioDoc> sentDocuments}) {
+      {required List<CommercioDoc> sentDocuments}) {
     return CommercioDocsSentDocumentsStateData(
       sentDocuments: sentDocuments,
     );
   }
 
-// ignore: unused_element
   CommercioDocsSentDocumentsStateInitial initial() {
     return const CommercioDocsSentDocumentsStateInitial();
   }
 
-// ignore: unused_element
   CommercioDocsSentDocumentsStateLoading loading() {
     return const CommercioDocsSentDocumentsStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsSentDocumentsStateError error([String error]) {
+  CommercioDocsSentDocumentsStateError error([String? error]) {
     return CommercioDocsSentDocumentsStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsSentDocumentsState =
     _$CommercioDocsSentDocumentsStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsSentDocumentsState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    @required Result initial(CommercioDocsSentDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSentDocumentsStateLoading value),
-    @required Result error(CommercioDocsSentDocumentsStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSentDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentDocumentsStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    Result initial(CommercioDocsSentDocumentsStateInitial value),
-    Result loading(CommercioDocsSentDocumentsStateLoading value),
-    Result error(CommercioDocsSentDocumentsStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSentDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentDocumentsStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentDocumentsStateCopyWith<$Res> {
   factory $CommercioDocsSentDocumentsStateCopyWith(
           CommercioDocsSentDocumentsState value,
@@ -1779,6 +1797,7 @@ abstract class $CommercioDocsSentDocumentsStateCopyWith<$Res> {
       _$CommercioDocsSentDocumentsStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentDocumentsStateCopyWith<$Res> {
   _$CommercioDocsSentDocumentsStateCopyWithImpl(this._value, this._then);
@@ -1788,6 +1807,7 @@ class _$CommercioDocsSentDocumentsStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsSentDocumentsState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentDocumentsStateDataCopyWith<$Res> {
   factory $CommercioDocsSentDocumentsStateDataCopyWith(
           CommercioDocsSentDocumentsStateData value,
@@ -1796,6 +1816,7 @@ abstract class $CommercioDocsSentDocumentsStateDataCopyWith<$Res> {
   $Res call({List<CommercioDoc> sentDocuments});
 }
 
+/// @nodoc
 class _$CommercioDocsSentDocumentsStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsSentDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentDocumentsStateDataCopyWith<$Res> {
@@ -1810,20 +1831,22 @@ class _$CommercioDocsSentDocumentsStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object sentDocuments = freezed,
+    Object? sentDocuments = freezed,
   }) {
     return _then(CommercioDocsSentDocumentsStateData(
       sentDocuments: sentDocuments == freezed
           ? _value.sentDocuments
-          : sentDocuments as List<CommercioDoc>,
+          : sentDocuments // ignore: cast_nullable_to_non_nullable
+              as List<CommercioDoc>,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsSentDocumentsStateData
     implements CommercioDocsSentDocumentsStateData {
-  const _$CommercioDocsSentDocumentsStateData({@required this.sentDocuments})
-      : assert(sentDocuments != null);
+  const _$CommercioDocsSentDocumentsStateData({required this.sentDocuments});
 
   @override
   final List<CommercioDoc> sentDocuments;
@@ -1846,6 +1869,7 @@ class _$CommercioDocsSentDocumentsStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(sentDocuments);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsSentDocumentsStateDataCopyWith<
           CommercioDocsSentDocumentsStateData>
@@ -1854,29 +1878,24 @@ class _$CommercioDocsSentDocumentsStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(sentDocuments);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(sentDocuments);
     }
@@ -1885,29 +1904,26 @@ class _$CommercioDocsSentDocumentsStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    @required Result initial(CommercioDocsSentDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSentDocumentsStateLoading value),
-    @required Result error(CommercioDocsSentDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSentDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentDocumentsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    Result initial(CommercioDocsSentDocumentsStateInitial value),
-    Result loading(CommercioDocsSentDocumentsStateLoading value),
-    Result error(CommercioDocsSentDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSentDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -1918,14 +1934,17 @@ class _$CommercioDocsSentDocumentsStateData
 abstract class CommercioDocsSentDocumentsStateData
     implements CommercioDocsSentDocumentsState {
   const factory CommercioDocsSentDocumentsStateData(
-          {@required List<CommercioDoc> sentDocuments}) =
+          {required List<CommercioDoc> sentDocuments}) =
       _$CommercioDocsSentDocumentsStateData;
 
-  List<CommercioDoc> get sentDocuments;
+  List<CommercioDoc> get sentDocuments => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsSentDocumentsStateDataCopyWith<
-      CommercioDocsSentDocumentsStateData> get copyWith;
+          CommercioDocsSentDocumentsStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentDocumentsStateInitialCopyWith<$Res> {
   factory $CommercioDocsSentDocumentsStateInitialCopyWith(
           CommercioDocsSentDocumentsStateInitial value,
@@ -1933,6 +1952,7 @@ abstract class $CommercioDocsSentDocumentsStateInitialCopyWith<$Res> {
       _$CommercioDocsSentDocumentsStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentDocumentsStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsSentDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentDocumentsStateInitialCopyWith<$Res> {
@@ -1946,6 +1966,8 @@ class _$CommercioDocsSentDocumentsStateInitialCopyWithImpl<$Res>
   CommercioDocsSentDocumentsStateInitial get _value =>
       super._value as CommercioDocsSentDocumentsStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentDocumentsStateInitial
     implements CommercioDocsSentDocumentsStateInitial {
@@ -1967,29 +1989,24 @@ class _$CommercioDocsSentDocumentsStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -1998,29 +2015,26 @@ class _$CommercioDocsSentDocumentsStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    @required Result initial(CommercioDocsSentDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSentDocumentsStateLoading value),
-    @required Result error(CommercioDocsSentDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSentDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentDocumentsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    Result initial(CommercioDocsSentDocumentsStateInitial value),
-    Result loading(CommercioDocsSentDocumentsStateLoading value),
-    Result error(CommercioDocsSentDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSentDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -2034,6 +2048,7 @@ abstract class CommercioDocsSentDocumentsStateInitial
       _$CommercioDocsSentDocumentsStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentDocumentsStateLoadingCopyWith<$Res> {
   factory $CommercioDocsSentDocumentsStateLoadingCopyWith(
           CommercioDocsSentDocumentsStateLoading value,
@@ -2041,6 +2056,7 @@ abstract class $CommercioDocsSentDocumentsStateLoadingCopyWith<$Res> {
       _$CommercioDocsSentDocumentsStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentDocumentsStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsSentDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentDocumentsStateLoadingCopyWith<$Res> {
@@ -2054,6 +2070,8 @@ class _$CommercioDocsSentDocumentsStateLoadingCopyWithImpl<$Res>
   CommercioDocsSentDocumentsStateLoading get _value =>
       super._value as CommercioDocsSentDocumentsStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentDocumentsStateLoading
     implements CommercioDocsSentDocumentsStateLoading {
@@ -2075,29 +2093,24 @@ class _$CommercioDocsSentDocumentsStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -2106,29 +2119,26 @@ class _$CommercioDocsSentDocumentsStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    @required Result initial(CommercioDocsSentDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSentDocumentsStateLoading value),
-    @required Result error(CommercioDocsSentDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSentDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentDocumentsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    Result initial(CommercioDocsSentDocumentsStateInitial value),
-    Result loading(CommercioDocsSentDocumentsStateLoading value),
-    Result error(CommercioDocsSentDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSentDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -2142,14 +2152,16 @@ abstract class CommercioDocsSentDocumentsStateLoading
       _$CommercioDocsSentDocumentsStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentDocumentsStateErrorCopyWith<$Res> {
   factory $CommercioDocsSentDocumentsStateErrorCopyWith(
           CommercioDocsSentDocumentsStateError value,
           $Res Function(CommercioDocsSentDocumentsStateError) then) =
       _$CommercioDocsSentDocumentsStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsSentDocumentsStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsSentDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentDocumentsStateErrorCopyWith<$Res> {
@@ -2164,20 +2176,25 @@ class _$CommercioDocsSentDocumentsStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsSentDocumentsStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentDocumentsStateError
     implements CommercioDocsSentDocumentsStateError {
   const _$CommercioDocsSentDocumentsStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -2196,6 +2213,7 @@ class _$CommercioDocsSentDocumentsStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsSentDocumentsStateErrorCopyWith<
           CommercioDocsSentDocumentsStateError>
@@ -2204,29 +2222,24 @@ class _$CommercioDocsSentDocumentsStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> sentDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> sentDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -2235,29 +2248,26 @@ class _$CommercioDocsSentDocumentsStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    @required Result initial(CommercioDocsSentDocumentsStateInitial value),
-    @required Result loading(CommercioDocsSentDocumentsStateLoading value),
-    @required Result error(CommercioDocsSentDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsSentDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentDocumentsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentDocumentsStateData value), {
-    Result initial(CommercioDocsSentDocumentsStateInitial value),
-    Result loading(CommercioDocsSentDocumentsStateLoading value),
-    Result error(CommercioDocsSentDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsSentDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -2267,80 +2277,88 @@ class _$CommercioDocsSentDocumentsStateError
 
 abstract class CommercioDocsSentDocumentsStateError
     implements CommercioDocsSentDocumentsState {
-  const factory CommercioDocsSentDocumentsStateError([String error]) =
+  const factory CommercioDocsSentDocumentsStateError([String? error]) =
       _$CommercioDocsSentDocumentsStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsSentDocumentsStateErrorCopyWith<
-      CommercioDocsSentDocumentsStateError> get copyWith;
+          CommercioDocsSentDocumentsStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedDocumentsStateTearOff {
   const _$CommercioDocsReceivedDocumentsStateTearOff();
 
-// ignore: unused_element
   CommercioDocsReceivedDocumentsStateData call(
-      {@required List<CommercioDoc> receivedDocuments}) {
+      {required List<CommercioDoc> receivedDocuments}) {
     return CommercioDocsReceivedDocumentsStateData(
       receivedDocuments: receivedDocuments,
     );
   }
 
-// ignore: unused_element
   CommercioDocsReceivedDocumentsStateInitial initial() {
     return const CommercioDocsReceivedDocumentsStateInitial();
   }
 
-// ignore: unused_element
   CommercioDocsReceivedDocumentsStateLoading loading() {
     return const CommercioDocsReceivedDocumentsStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsReceivedDocumentsStateError error([String error]) {
+  CommercioDocsReceivedDocumentsStateError error([String? error]) {
     return CommercioDocsReceivedDocumentsStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsReceivedDocumentsState =
     _$CommercioDocsReceivedDocumentsStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsReceivedDocumentsState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    @required Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    @required Result error(CommercioDocsReceivedDocumentsStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedDocumentsStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    Result error(CommercioDocsReceivedDocumentsStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedDocumentsStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedDocumentsStateCopyWith<$Res> {
   factory $CommercioDocsReceivedDocumentsStateCopyWith(
           CommercioDocsReceivedDocumentsState value,
@@ -2348,6 +2366,7 @@ abstract class $CommercioDocsReceivedDocumentsStateCopyWith<$Res> {
       _$CommercioDocsReceivedDocumentsStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedDocumentsStateCopyWith<$Res> {
   _$CommercioDocsReceivedDocumentsStateCopyWithImpl(this._value, this._then);
@@ -2357,6 +2376,7 @@ class _$CommercioDocsReceivedDocumentsStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsReceivedDocumentsState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedDocumentsStateDataCopyWith<$Res> {
   factory $CommercioDocsReceivedDocumentsStateDataCopyWith(
           CommercioDocsReceivedDocumentsStateData value,
@@ -2365,6 +2385,7 @@ abstract class $CommercioDocsReceivedDocumentsStateDataCopyWith<$Res> {
   $Res call({List<CommercioDoc> receivedDocuments});
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedDocumentsStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsReceivedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedDocumentsStateDataCopyWith<$Res> {
@@ -2380,21 +2401,23 @@ class _$CommercioDocsReceivedDocumentsStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object receivedDocuments = freezed,
+    Object? receivedDocuments = freezed,
   }) {
     return _then(CommercioDocsReceivedDocumentsStateData(
       receivedDocuments: receivedDocuments == freezed
           ? _value.receivedDocuments
-          : receivedDocuments as List<CommercioDoc>,
+          : receivedDocuments // ignore: cast_nullable_to_non_nullable
+              as List<CommercioDoc>,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsReceivedDocumentsStateData
     implements CommercioDocsReceivedDocumentsStateData {
   const _$CommercioDocsReceivedDocumentsStateData(
-      {@required this.receivedDocuments})
-      : assert(receivedDocuments != null);
+      {required this.receivedDocuments});
 
   @override
   final List<CommercioDoc> receivedDocuments;
@@ -2418,6 +2441,7 @@ class _$CommercioDocsReceivedDocumentsStateData
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(receivedDocuments);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsReceivedDocumentsStateDataCopyWith<
           CommercioDocsReceivedDocumentsStateData>
@@ -2426,29 +2450,24 @@ class _$CommercioDocsReceivedDocumentsStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(receivedDocuments);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(receivedDocuments);
     }
@@ -2457,29 +2476,27 @@ class _$CommercioDocsReceivedDocumentsStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    @required Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    @required Result error(CommercioDocsReceivedDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedDocumentsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    Result error(CommercioDocsReceivedDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -2490,14 +2507,18 @@ class _$CommercioDocsReceivedDocumentsStateData
 abstract class CommercioDocsReceivedDocumentsStateData
     implements CommercioDocsReceivedDocumentsState {
   const factory CommercioDocsReceivedDocumentsStateData(
-          {@required List<CommercioDoc> receivedDocuments}) =
+          {required List<CommercioDoc> receivedDocuments}) =
       _$CommercioDocsReceivedDocumentsStateData;
 
-  List<CommercioDoc> get receivedDocuments;
+  List<CommercioDoc> get receivedDocuments =>
+      throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsReceivedDocumentsStateDataCopyWith<
-      CommercioDocsReceivedDocumentsStateData> get copyWith;
+          CommercioDocsReceivedDocumentsStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedDocumentsStateInitialCopyWith<$Res> {
   factory $CommercioDocsReceivedDocumentsStateInitialCopyWith(
           CommercioDocsReceivedDocumentsStateInitial value,
@@ -2505,6 +2526,7 @@ abstract class $CommercioDocsReceivedDocumentsStateInitialCopyWith<$Res> {
       _$CommercioDocsReceivedDocumentsStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedDocumentsStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsReceivedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedDocumentsStateInitialCopyWith<$Res> {
@@ -2518,6 +2540,8 @@ class _$CommercioDocsReceivedDocumentsStateInitialCopyWithImpl<$Res>
   CommercioDocsReceivedDocumentsStateInitial get _value =>
       super._value as CommercioDocsReceivedDocumentsStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioDocsReceivedDocumentsStateInitial
     implements CommercioDocsReceivedDocumentsStateInitial {
@@ -2539,29 +2563,24 @@ class _$CommercioDocsReceivedDocumentsStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -2570,29 +2589,27 @@ class _$CommercioDocsReceivedDocumentsStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    @required Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    @required Result error(CommercioDocsReceivedDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedDocumentsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    Result error(CommercioDocsReceivedDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -2606,6 +2623,7 @@ abstract class CommercioDocsReceivedDocumentsStateInitial
       _$CommercioDocsReceivedDocumentsStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedDocumentsStateLoadingCopyWith<$Res> {
   factory $CommercioDocsReceivedDocumentsStateLoadingCopyWith(
           CommercioDocsReceivedDocumentsStateLoading value,
@@ -2613,6 +2631,7 @@ abstract class $CommercioDocsReceivedDocumentsStateLoadingCopyWith<$Res> {
       _$CommercioDocsReceivedDocumentsStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedDocumentsStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsReceivedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedDocumentsStateLoadingCopyWith<$Res> {
@@ -2626,6 +2645,8 @@ class _$CommercioDocsReceivedDocumentsStateLoadingCopyWithImpl<$Res>
   CommercioDocsReceivedDocumentsStateLoading get _value =>
       super._value as CommercioDocsReceivedDocumentsStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsReceivedDocumentsStateLoading
     implements CommercioDocsReceivedDocumentsStateLoading {
@@ -2647,29 +2668,24 @@ class _$CommercioDocsReceivedDocumentsStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -2678,29 +2694,27 @@ class _$CommercioDocsReceivedDocumentsStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    @required Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    @required Result error(CommercioDocsReceivedDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedDocumentsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    Result error(CommercioDocsReceivedDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -2714,14 +2728,16 @@ abstract class CommercioDocsReceivedDocumentsStateLoading
       _$CommercioDocsReceivedDocumentsStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedDocumentsStateErrorCopyWith<$Res> {
   factory $CommercioDocsReceivedDocumentsStateErrorCopyWith(
           CommercioDocsReceivedDocumentsStateError value,
           $Res Function(CommercioDocsReceivedDocumentsStateError) then) =
       _$CommercioDocsReceivedDocumentsStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedDocumentsStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsReceivedDocumentsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedDocumentsStateErrorCopyWith<$Res> {
@@ -2737,20 +2753,25 @@ class _$CommercioDocsReceivedDocumentsStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsReceivedDocumentsStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsReceivedDocumentsStateError
     implements CommercioDocsReceivedDocumentsStateError {
   const _$CommercioDocsReceivedDocumentsStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -2769,6 +2790,7 @@ class _$CommercioDocsReceivedDocumentsStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsReceivedDocumentsStateErrorCopyWith<
           CommercioDocsReceivedDocumentsStateError>
@@ -2777,29 +2799,24 @@ class _$CommercioDocsReceivedDocumentsStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDoc> receivedDocuments), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDoc> receivedDocuments)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -2808,29 +2825,27 @@ class _$CommercioDocsReceivedDocumentsStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    @required Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    @required Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    @required Result error(CommercioDocsReceivedDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedDocumentsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedDocumentsStateData value), {
-    Result initial(CommercioDocsReceivedDocumentsStateInitial value),
-    Result loading(CommercioDocsReceivedDocumentsStateLoading value),
-    Result error(CommercioDocsReceivedDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedDocumentsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedDocumentsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedDocumentsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -2840,80 +2855,87 @@ class _$CommercioDocsReceivedDocumentsStateError
 
 abstract class CommercioDocsReceivedDocumentsStateError
     implements CommercioDocsReceivedDocumentsState {
-  const factory CommercioDocsReceivedDocumentsStateError([String error]) =
+  const factory CommercioDocsReceivedDocumentsStateError([String? error]) =
       _$CommercioDocsReceivedDocumentsStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsReceivedDocumentsStateErrorCopyWith<
-      CommercioDocsReceivedDocumentsStateError> get copyWith;
+          CommercioDocsReceivedDocumentsStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptsStateTearOff {
   const _$CommercioDocsSentReceiptsStateTearOff();
 
-// ignore: unused_element
   CommercioDocsSentReceiptsStateData call(
-      {@required List<CommercioDocReceipt> sentReceipts}) {
+      {required List<CommercioDocReceipt> sentReceipts}) {
     return CommercioDocsSentReceiptsStateData(
       sentReceipts: sentReceipts,
     );
   }
 
-// ignore: unused_element
   CommercioDocsSentReceiptsStateInitial initial() {
     return const CommercioDocsSentReceiptsStateInitial();
   }
 
-// ignore: unused_element
   CommercioDocsSentReceiptsStateLoading loading() {
     return const CommercioDocsSentReceiptsStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsSentReceiptsStateError error([String error]) {
+  CommercioDocsSentReceiptsStateError error([String? error]) {
     return CommercioDocsSentReceiptsStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsSentReceiptsState =
     _$CommercioDocsSentReceiptsStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsSentReceiptsState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    @required Result initial(CommercioDocsSentReceiptsStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptsStateLoading value),
-    @required Result error(CommercioDocsSentReceiptsStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptsStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    Result initial(CommercioDocsSentReceiptsStateInitial value),
-    Result loading(CommercioDocsSentReceiptsStateLoading value),
-    Result error(CommercioDocsSentReceiptsStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptsStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptsStateCopyWith<$Res> {
   factory $CommercioDocsSentReceiptsStateCopyWith(
           CommercioDocsSentReceiptsState value,
@@ -2921,6 +2943,7 @@ abstract class $CommercioDocsSentReceiptsStateCopyWith<$Res> {
       _$CommercioDocsSentReceiptsStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptsStateCopyWith<$Res> {
   _$CommercioDocsSentReceiptsStateCopyWithImpl(this._value, this._then);
@@ -2930,6 +2953,7 @@ class _$CommercioDocsSentReceiptsStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsSentReceiptsState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptsStateDataCopyWith<$Res> {
   factory $CommercioDocsSentReceiptsStateDataCopyWith(
           CommercioDocsSentReceiptsStateData value,
@@ -2938,6 +2962,7 @@ abstract class $CommercioDocsSentReceiptsStateDataCopyWith<$Res> {
   $Res call({List<CommercioDocReceipt> sentReceipts});
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptsStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsSentReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptsStateDataCopyWith<$Res> {
@@ -2952,20 +2977,22 @@ class _$CommercioDocsSentReceiptsStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object sentReceipts = freezed,
+    Object? sentReceipts = freezed,
   }) {
     return _then(CommercioDocsSentReceiptsStateData(
       sentReceipts: sentReceipts == freezed
           ? _value.sentReceipts
-          : sentReceipts as List<CommercioDocReceipt>,
+          : sentReceipts // ignore: cast_nullable_to_non_nullable
+              as List<CommercioDocReceipt>,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsSentReceiptsStateData
     implements CommercioDocsSentReceiptsStateData {
-  const _$CommercioDocsSentReceiptsStateData({@required this.sentReceipts})
-      : assert(sentReceipts != null);
+  const _$CommercioDocsSentReceiptsStateData({required this.sentReceipts});
 
   @override
   final List<CommercioDocReceipt> sentReceipts;
@@ -2988,6 +3015,7 @@ class _$CommercioDocsSentReceiptsStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(sentReceipts);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsSentReceiptsStateDataCopyWith<
           CommercioDocsSentReceiptsStateData>
@@ -2996,29 +3024,24 @@ class _$CommercioDocsSentReceiptsStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(sentReceipts);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(sentReceipts);
     }
@@ -3027,29 +3050,26 @@ class _$CommercioDocsSentReceiptsStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    @required Result initial(CommercioDocsSentReceiptsStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptsStateLoading value),
-    @required Result error(CommercioDocsSentReceiptsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    Result initial(CommercioDocsSentReceiptsStateInitial value),
-    Result loading(CommercioDocsSentReceiptsStateLoading value),
-    Result error(CommercioDocsSentReceiptsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -3060,14 +3080,18 @@ class _$CommercioDocsSentReceiptsStateData
 abstract class CommercioDocsSentReceiptsStateData
     implements CommercioDocsSentReceiptsState {
   const factory CommercioDocsSentReceiptsStateData(
-          {@required List<CommercioDocReceipt> sentReceipts}) =
+          {required List<CommercioDocReceipt> sentReceipts}) =
       _$CommercioDocsSentReceiptsStateData;
 
-  List<CommercioDocReceipt> get sentReceipts;
+  List<CommercioDocReceipt> get sentReceipts =>
+      throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsSentReceiptsStateDataCopyWith<
-      CommercioDocsSentReceiptsStateData> get copyWith;
+          CommercioDocsSentReceiptsStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptsStateInitialCopyWith<$Res> {
   factory $CommercioDocsSentReceiptsStateInitialCopyWith(
           CommercioDocsSentReceiptsStateInitial value,
@@ -3075,6 +3099,7 @@ abstract class $CommercioDocsSentReceiptsStateInitialCopyWith<$Res> {
       _$CommercioDocsSentReceiptsStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptsStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsSentReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptsStateInitialCopyWith<$Res> {
@@ -3087,6 +3112,8 @@ class _$CommercioDocsSentReceiptsStateInitialCopyWithImpl<$Res>
   CommercioDocsSentReceiptsStateInitial get _value =>
       super._value as CommercioDocsSentReceiptsStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentReceiptsStateInitial
     implements CommercioDocsSentReceiptsStateInitial {
@@ -3108,29 +3135,24 @@ class _$CommercioDocsSentReceiptsStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -3139,29 +3161,26 @@ class _$CommercioDocsSentReceiptsStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    @required Result initial(CommercioDocsSentReceiptsStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptsStateLoading value),
-    @required Result error(CommercioDocsSentReceiptsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    Result initial(CommercioDocsSentReceiptsStateInitial value),
-    Result loading(CommercioDocsSentReceiptsStateLoading value),
-    Result error(CommercioDocsSentReceiptsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -3175,6 +3194,7 @@ abstract class CommercioDocsSentReceiptsStateInitial
       _$CommercioDocsSentReceiptsStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptsStateLoadingCopyWith<$Res> {
   factory $CommercioDocsSentReceiptsStateLoadingCopyWith(
           CommercioDocsSentReceiptsStateLoading value,
@@ -3182,6 +3202,7 @@ abstract class $CommercioDocsSentReceiptsStateLoadingCopyWith<$Res> {
       _$CommercioDocsSentReceiptsStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptsStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsSentReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptsStateLoadingCopyWith<$Res> {
@@ -3194,6 +3215,8 @@ class _$CommercioDocsSentReceiptsStateLoadingCopyWithImpl<$Res>
   CommercioDocsSentReceiptsStateLoading get _value =>
       super._value as CommercioDocsSentReceiptsStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentReceiptsStateLoading
     implements CommercioDocsSentReceiptsStateLoading {
@@ -3215,29 +3238,24 @@ class _$CommercioDocsSentReceiptsStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -3246,29 +3264,26 @@ class _$CommercioDocsSentReceiptsStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    @required Result initial(CommercioDocsSentReceiptsStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptsStateLoading value),
-    @required Result error(CommercioDocsSentReceiptsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    Result initial(CommercioDocsSentReceiptsStateInitial value),
-    Result loading(CommercioDocsSentReceiptsStateLoading value),
-    Result error(CommercioDocsSentReceiptsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -3282,14 +3297,16 @@ abstract class CommercioDocsSentReceiptsStateLoading
       _$CommercioDocsSentReceiptsStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsSentReceiptsStateErrorCopyWith<$Res> {
   factory $CommercioDocsSentReceiptsStateErrorCopyWith(
           CommercioDocsSentReceiptsStateError value,
           $Res Function(CommercioDocsSentReceiptsStateError) then) =
       _$CommercioDocsSentReceiptsStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsSentReceiptsStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsSentReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsSentReceiptsStateErrorCopyWith<$Res> {
@@ -3304,20 +3321,25 @@ class _$CommercioDocsSentReceiptsStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsSentReceiptsStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsSentReceiptsStateError
     implements CommercioDocsSentReceiptsStateError {
   const _$CommercioDocsSentReceiptsStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -3336,6 +3358,7 @@ class _$CommercioDocsSentReceiptsStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsSentReceiptsStateErrorCopyWith<
           CommercioDocsSentReceiptsStateError>
@@ -3344,29 +3367,24 @@ class _$CommercioDocsSentReceiptsStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> sentReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> sentReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -3375,29 +3393,26 @@ class _$CommercioDocsSentReceiptsStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    @required Result initial(CommercioDocsSentReceiptsStateInitial value),
-    @required Result loading(CommercioDocsSentReceiptsStateLoading value),
-    @required Result error(CommercioDocsSentReceiptsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsSentReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsSentReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsSentReceiptsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsSentReceiptsStateData value), {
-    Result initial(CommercioDocsSentReceiptsStateInitial value),
-    Result loading(CommercioDocsSentReceiptsStateLoading value),
-    Result error(CommercioDocsSentReceiptsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsSentReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsSentReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsSentReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsSentReceiptsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -3407,80 +3422,88 @@ class _$CommercioDocsSentReceiptsStateError
 
 abstract class CommercioDocsSentReceiptsStateError
     implements CommercioDocsSentReceiptsState {
-  const factory CommercioDocsSentReceiptsStateError([String error]) =
+  const factory CommercioDocsSentReceiptsStateError([String? error]) =
       _$CommercioDocsSentReceiptsStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsSentReceiptsStateErrorCopyWith<
-      CommercioDocsSentReceiptsStateError> get copyWith;
+          CommercioDocsSentReceiptsStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedReceiptsStateTearOff {
   const _$CommercioDocsReceivedReceiptsStateTearOff();
 
-// ignore: unused_element
   CommercioDocsReceivedReceiptsStateData call(
-      {@required List<CommercioDocReceipt> receivedReceipts}) {
+      {required List<CommercioDocReceipt> receivedReceipts}) {
     return CommercioDocsReceivedReceiptsStateData(
       receivedReceipts: receivedReceipts,
     );
   }
 
-// ignore: unused_element
   CommercioDocsReceivedReceiptsStateInitial initial() {
     return const CommercioDocsReceivedReceiptsStateInitial();
   }
 
-// ignore: unused_element
   CommercioDocsReceivedReceiptsStateLoading loading() {
     return const CommercioDocsReceivedReceiptsStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsReceivedReceiptsStateError error([String error]) {
+  CommercioDocsReceivedReceiptsStateError error([String? error]) {
     return CommercioDocsReceivedReceiptsStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsReceivedReceiptsState =
     _$CommercioDocsReceivedReceiptsStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsReceivedReceiptsState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    @required Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    @required Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    @required Result error(CommercioDocsReceivedReceiptsStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedReceiptsStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    Result error(CommercioDocsReceivedReceiptsStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedReceiptsStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedReceiptsStateCopyWith<$Res> {
   factory $CommercioDocsReceivedReceiptsStateCopyWith(
           CommercioDocsReceivedReceiptsState value,
@@ -3488,6 +3511,7 @@ abstract class $CommercioDocsReceivedReceiptsStateCopyWith<$Res> {
       _$CommercioDocsReceivedReceiptsStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedReceiptsStateCopyWith<$Res> {
   _$CommercioDocsReceivedReceiptsStateCopyWithImpl(this._value, this._then);
@@ -3497,6 +3521,7 @@ class _$CommercioDocsReceivedReceiptsStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsReceivedReceiptsState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedReceiptsStateDataCopyWith<$Res> {
   factory $CommercioDocsReceivedReceiptsStateDataCopyWith(
           CommercioDocsReceivedReceiptsStateData value,
@@ -3505,6 +3530,7 @@ abstract class $CommercioDocsReceivedReceiptsStateDataCopyWith<$Res> {
   $Res call({List<CommercioDocReceipt> receivedReceipts});
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedReceiptsStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsReceivedReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedReceiptsStateDataCopyWith<$Res> {
@@ -3520,21 +3546,23 @@ class _$CommercioDocsReceivedReceiptsStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object receivedReceipts = freezed,
+    Object? receivedReceipts = freezed,
   }) {
     return _then(CommercioDocsReceivedReceiptsStateData(
       receivedReceipts: receivedReceipts == freezed
           ? _value.receivedReceipts
-          : receivedReceipts as List<CommercioDocReceipt>,
+          : receivedReceipts // ignore: cast_nullable_to_non_nullable
+              as List<CommercioDocReceipt>,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsReceivedReceiptsStateData
     implements CommercioDocsReceivedReceiptsStateData {
   const _$CommercioDocsReceivedReceiptsStateData(
-      {@required this.receivedReceipts})
-      : assert(receivedReceipts != null);
+      {required this.receivedReceipts});
 
   @override
   final List<CommercioDocReceipt> receivedReceipts;
@@ -3558,6 +3586,7 @@ class _$CommercioDocsReceivedReceiptsStateData
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(receivedReceipts);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsReceivedReceiptsStateDataCopyWith<
           CommercioDocsReceivedReceiptsStateData>
@@ -3566,29 +3595,24 @@ class _$CommercioDocsReceivedReceiptsStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(receivedReceipts);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(receivedReceipts);
     }
@@ -3597,29 +3621,27 @@ class _$CommercioDocsReceivedReceiptsStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    @required Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    @required Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    @required Result error(CommercioDocsReceivedReceiptsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedReceiptsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    Result error(CommercioDocsReceivedReceiptsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedReceiptsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -3630,14 +3652,18 @@ class _$CommercioDocsReceivedReceiptsStateData
 abstract class CommercioDocsReceivedReceiptsStateData
     implements CommercioDocsReceivedReceiptsState {
   const factory CommercioDocsReceivedReceiptsStateData(
-          {@required List<CommercioDocReceipt> receivedReceipts}) =
+          {required List<CommercioDocReceipt> receivedReceipts}) =
       _$CommercioDocsReceivedReceiptsStateData;
 
-  List<CommercioDocReceipt> get receivedReceipts;
+  List<CommercioDocReceipt> get receivedReceipts =>
+      throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsReceivedReceiptsStateDataCopyWith<
-      CommercioDocsReceivedReceiptsStateData> get copyWith;
+          CommercioDocsReceivedReceiptsStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedReceiptsStateInitialCopyWith<$Res> {
   factory $CommercioDocsReceivedReceiptsStateInitialCopyWith(
           CommercioDocsReceivedReceiptsStateInitial value,
@@ -3645,6 +3671,7 @@ abstract class $CommercioDocsReceivedReceiptsStateInitialCopyWith<$Res> {
       _$CommercioDocsReceivedReceiptsStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedReceiptsStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsReceivedReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedReceiptsStateInitialCopyWith<$Res> {
@@ -3658,6 +3685,8 @@ class _$CommercioDocsReceivedReceiptsStateInitialCopyWithImpl<$Res>
   CommercioDocsReceivedReceiptsStateInitial get _value =>
       super._value as CommercioDocsReceivedReceiptsStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioDocsReceivedReceiptsStateInitial
     implements CommercioDocsReceivedReceiptsStateInitial {
@@ -3679,29 +3708,24 @@ class _$CommercioDocsReceivedReceiptsStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -3710,29 +3734,27 @@ class _$CommercioDocsReceivedReceiptsStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    @required Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    @required Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    @required Result error(CommercioDocsReceivedReceiptsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedReceiptsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    Result error(CommercioDocsReceivedReceiptsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedReceiptsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -3746,6 +3768,7 @@ abstract class CommercioDocsReceivedReceiptsStateInitial
       _$CommercioDocsReceivedReceiptsStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedReceiptsStateLoadingCopyWith<$Res> {
   factory $CommercioDocsReceivedReceiptsStateLoadingCopyWith(
           CommercioDocsReceivedReceiptsStateLoading value,
@@ -3753,6 +3776,7 @@ abstract class $CommercioDocsReceivedReceiptsStateLoadingCopyWith<$Res> {
       _$CommercioDocsReceivedReceiptsStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedReceiptsStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsReceivedReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedReceiptsStateLoadingCopyWith<$Res> {
@@ -3766,6 +3790,8 @@ class _$CommercioDocsReceivedReceiptsStateLoadingCopyWithImpl<$Res>
   CommercioDocsReceivedReceiptsStateLoading get _value =>
       super._value as CommercioDocsReceivedReceiptsStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsReceivedReceiptsStateLoading
     implements CommercioDocsReceivedReceiptsStateLoading {
@@ -3787,29 +3813,24 @@ class _$CommercioDocsReceivedReceiptsStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -3818,29 +3839,27 @@ class _$CommercioDocsReceivedReceiptsStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    @required Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    @required Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    @required Result error(CommercioDocsReceivedReceiptsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedReceiptsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    Result error(CommercioDocsReceivedReceiptsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedReceiptsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -3854,14 +3873,16 @@ abstract class CommercioDocsReceivedReceiptsStateLoading
       _$CommercioDocsReceivedReceiptsStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsReceivedReceiptsStateErrorCopyWith<$Res> {
   factory $CommercioDocsReceivedReceiptsStateErrorCopyWith(
           CommercioDocsReceivedReceiptsStateError value,
           $Res Function(CommercioDocsReceivedReceiptsStateError) then) =
       _$CommercioDocsReceivedReceiptsStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsReceivedReceiptsStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsReceivedReceiptsStateCopyWithImpl<$Res>
     implements $CommercioDocsReceivedReceiptsStateErrorCopyWith<$Res> {
@@ -3877,20 +3898,25 @@ class _$CommercioDocsReceivedReceiptsStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsReceivedReceiptsStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsReceivedReceiptsStateError
     implements CommercioDocsReceivedReceiptsStateError {
   const _$CommercioDocsReceivedReceiptsStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -3909,6 +3935,7 @@ class _$CommercioDocsReceivedReceiptsStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsReceivedReceiptsStateErrorCopyWith<
           CommercioDocsReceivedReceiptsStateError>
@@ -3917,29 +3944,24 @@ class _$CommercioDocsReceivedReceiptsStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<CommercioDocReceipt> receivedReceipts), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<CommercioDocReceipt> receivedReceipts)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -3948,29 +3970,27 @@ class _$CommercioDocsReceivedReceiptsStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    @required Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    @required Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    @required Result error(CommercioDocsReceivedReceiptsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value) $default, {
+    required TResult Function(CommercioDocsReceivedReceiptsStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsReceivedReceiptsStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsReceivedReceiptsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsReceivedReceiptsStateData value), {
-    Result initial(CommercioDocsReceivedReceiptsStateInitial value),
-    Result loading(CommercioDocsReceivedReceiptsStateLoading value),
-    Result error(CommercioDocsReceivedReceiptsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsReceivedReceiptsStateData value)? $default, {
+    TResult Function(CommercioDocsReceivedReceiptsStateInitial value)? initial,
+    TResult Function(CommercioDocsReceivedReceiptsStateLoading value)? loading,
+    TResult Function(CommercioDocsReceivedReceiptsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -3980,88 +4000,97 @@ class _$CommercioDocsReceivedReceiptsStateError
 
 abstract class CommercioDocsReceivedReceiptsStateError
     implements CommercioDocsReceivedReceiptsState {
-  const factory CommercioDocsReceivedReceiptsStateError([String error]) =
+  const factory CommercioDocsReceivedReceiptsStateError([String? error]) =
       _$CommercioDocsReceivedReceiptsStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsReceivedReceiptsStateErrorCopyWith<
-      CommercioDocsReceivedReceiptsStateError> get copyWith;
+          CommercioDocsReceivedReceiptsStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioDocsEncDataStateTearOff {
   const _$CommercioDocsEncDataStateTearOff();
 
-// ignore: unused_element
   CommercioDocsEncDataStateData call(
-      {@required Map<EncryptedData, bool> encryptedData}) {
+      {required Map<CommercioEncryptedData, bool> encryptedData}) {
     return CommercioDocsEncDataStateData(
       encryptedData: encryptedData,
     );
   }
 
-// ignore: unused_element
   CommercioDocsEncDataStateInitial initial(
-      {@required Map<EncryptedData, bool> encryptedData}) {
+      {required Map<CommercioEncryptedData, bool> encryptedData}) {
     return CommercioDocsEncDataStateInitial(
       encryptedData: encryptedData,
     );
   }
 
-// ignore: unused_element
   CommercioDocsEncDataStateLoading loading() {
     return const CommercioDocsEncDataStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsEncDataStateError error([String error]) {
+  CommercioDocsEncDataStateError error([String? error]) {
     return CommercioDocsEncDataStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsEncDataState = _$CommercioDocsEncDataStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsEncDataState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    @required Result initial(Map<EncryptedData, bool> encryptedData),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        $default, {
+    required TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    Result initial(Map<EncryptedData, bool> encryptedData),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)?
+        $default, {
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    @required Result initial(CommercioDocsEncDataStateInitial value),
-    @required Result loading(CommercioDocsEncDataStateLoading value),
-    @required Result error(CommercioDocsEncDataStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value) $default, {
+    required TResult Function(CommercioDocsEncDataStateInitial value) initial,
+    required TResult Function(CommercioDocsEncDataStateLoading value) loading,
+    required TResult Function(CommercioDocsEncDataStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    Result initial(CommercioDocsEncDataStateInitial value),
-    Result loading(CommercioDocsEncDataStateLoading value),
-    Result error(CommercioDocsEncDataStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value)? $default, {
+    TResult Function(CommercioDocsEncDataStateInitial value)? initial,
+    TResult Function(CommercioDocsEncDataStateLoading value)? loading,
+    TResult Function(CommercioDocsEncDataStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsEncDataStateCopyWith<$Res> {
   factory $CommercioDocsEncDataStateCopyWith(CommercioDocsEncDataState value,
           $Res Function(CommercioDocsEncDataState) then) =
       _$CommercioDocsEncDataStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsEncDataStateCopyWithImpl<$Res>
     implements $CommercioDocsEncDataStateCopyWith<$Res> {
   _$CommercioDocsEncDataStateCopyWithImpl(this._value, this._then);
@@ -4071,14 +4100,16 @@ class _$CommercioDocsEncDataStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsEncDataState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsEncDataStateDataCopyWith<$Res> {
   factory $CommercioDocsEncDataStateDataCopyWith(
           CommercioDocsEncDataStateData value,
           $Res Function(CommercioDocsEncDataStateData) then) =
       _$CommercioDocsEncDataStateDataCopyWithImpl<$Res>;
-  $Res call({Map<EncryptedData, bool> encryptedData});
+  $Res call({Map<CommercioEncryptedData, bool> encryptedData});
 }
 
+/// @nodoc
 class _$CommercioDocsEncDataStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsEncDataStateCopyWithImpl<$Res>
     implements $CommercioDocsEncDataStateDataCopyWith<$Res> {
@@ -4093,22 +4124,24 @@ class _$CommercioDocsEncDataStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object encryptedData = freezed,
+    Object? encryptedData = freezed,
   }) {
     return _then(CommercioDocsEncDataStateData(
       encryptedData: encryptedData == freezed
           ? _value.encryptedData
-          : encryptedData as Map<EncryptedData, bool>,
+          : encryptedData // ignore: cast_nullable_to_non_nullable
+              as Map<CommercioEncryptedData, bool>,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsEncDataStateData implements CommercioDocsEncDataStateData {
-  const _$CommercioDocsEncDataStateData({@required this.encryptedData})
-      : assert(encryptedData != null);
+  const _$CommercioDocsEncDataStateData({required this.encryptedData});
 
   @override
-  final Map<EncryptedData, bool> encryptedData;
+  final Map<CommercioEncryptedData, bool> encryptedData;
 
   @override
   String toString() {
@@ -4128,6 +4161,7 @@ class _$CommercioDocsEncDataStateData implements CommercioDocsEncDataStateData {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(encryptedData);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsEncDataStateDataCopyWith<CommercioDocsEncDataStateData>
       get copyWith => _$CommercioDocsEncDataStateDataCopyWithImpl<
@@ -4135,29 +4169,27 @@ class _$CommercioDocsEncDataStateData implements CommercioDocsEncDataStateData {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    @required Result initial(Map<EncryptedData, bool> encryptedData),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        $default, {
+    required TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(encryptedData);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    Result initial(Map<EncryptedData, bool> encryptedData),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)?
+        $default, {
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(encryptedData);
     }
@@ -4166,29 +4198,24 @@ class _$CommercioDocsEncDataStateData implements CommercioDocsEncDataStateData {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    @required Result initial(CommercioDocsEncDataStateInitial value),
-    @required Result loading(CommercioDocsEncDataStateLoading value),
-    @required Result error(CommercioDocsEncDataStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value) $default, {
+    required TResult Function(CommercioDocsEncDataStateInitial value) initial,
+    required TResult Function(CommercioDocsEncDataStateLoading value) loading,
+    required TResult Function(CommercioDocsEncDataStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    Result initial(CommercioDocsEncDataStateInitial value),
-    Result loading(CommercioDocsEncDataStateLoading value),
-    Result error(CommercioDocsEncDataStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value)? $default, {
+    TResult Function(CommercioDocsEncDataStateInitial value)? initial,
+    TResult Function(CommercioDocsEncDataStateLoading value)? loading,
+    TResult Function(CommercioDocsEncDataStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -4199,22 +4226,26 @@ class _$CommercioDocsEncDataStateData implements CommercioDocsEncDataStateData {
 abstract class CommercioDocsEncDataStateData
     implements CommercioDocsEncDataState {
   const factory CommercioDocsEncDataStateData(
-          {@required Map<EncryptedData, bool> encryptedData}) =
+          {required Map<CommercioEncryptedData, bool> encryptedData}) =
       _$CommercioDocsEncDataStateData;
 
-  Map<EncryptedData, bool> get encryptedData;
+  Map<CommercioEncryptedData, bool> get encryptedData =>
+      throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsEncDataStateDataCopyWith<CommercioDocsEncDataStateData>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsEncDataStateInitialCopyWith<$Res> {
   factory $CommercioDocsEncDataStateInitialCopyWith(
           CommercioDocsEncDataStateInitial value,
           $Res Function(CommercioDocsEncDataStateInitial) then) =
       _$CommercioDocsEncDataStateInitialCopyWithImpl<$Res>;
-  $Res call({Map<EncryptedData, bool> encryptedData});
+  $Res call({Map<CommercioEncryptedData, bool> encryptedData});
 }
 
+/// @nodoc
 class _$CommercioDocsEncDataStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsEncDataStateCopyWithImpl<$Res>
     implements $CommercioDocsEncDataStateInitialCopyWith<$Res> {
@@ -4229,23 +4260,25 @@ class _$CommercioDocsEncDataStateInitialCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object encryptedData = freezed,
+    Object? encryptedData = freezed,
   }) {
     return _then(CommercioDocsEncDataStateInitial(
       encryptedData: encryptedData == freezed
           ? _value.encryptedData
-          : encryptedData as Map<EncryptedData, bool>,
+          : encryptedData // ignore: cast_nullable_to_non_nullable
+              as Map<CommercioEncryptedData, bool>,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsEncDataStateInitial
     implements CommercioDocsEncDataStateInitial {
-  const _$CommercioDocsEncDataStateInitial({@required this.encryptedData})
-      : assert(encryptedData != null);
+  const _$CommercioDocsEncDataStateInitial({required this.encryptedData});
 
   @override
-  final Map<EncryptedData, bool> encryptedData;
+  final Map<CommercioEncryptedData, bool> encryptedData;
 
   @override
   String toString() {
@@ -4265,6 +4298,7 @@ class _$CommercioDocsEncDataStateInitial
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(encryptedData);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsEncDataStateInitialCopyWith<CommercioDocsEncDataStateInitial>
       get copyWith => _$CommercioDocsEncDataStateInitialCopyWithImpl<
@@ -4272,29 +4306,27 @@ class _$CommercioDocsEncDataStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    @required Result initial(Map<EncryptedData, bool> encryptedData),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        $default, {
+    required TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(encryptedData);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    Result initial(Map<EncryptedData, bool> encryptedData),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)?
+        $default, {
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(encryptedData);
     }
@@ -4303,29 +4335,24 @@ class _$CommercioDocsEncDataStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    @required Result initial(CommercioDocsEncDataStateInitial value),
-    @required Result loading(CommercioDocsEncDataStateLoading value),
-    @required Result error(CommercioDocsEncDataStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value) $default, {
+    required TResult Function(CommercioDocsEncDataStateInitial value) initial,
+    required TResult Function(CommercioDocsEncDataStateLoading value) loading,
+    required TResult Function(CommercioDocsEncDataStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    Result initial(CommercioDocsEncDataStateInitial value),
-    Result loading(CommercioDocsEncDataStateLoading value),
-    Result error(CommercioDocsEncDataStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value)? $default, {
+    TResult Function(CommercioDocsEncDataStateInitial value)? initial,
+    TResult Function(CommercioDocsEncDataStateLoading value)? loading,
+    TResult Function(CommercioDocsEncDataStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -4336,14 +4363,17 @@ class _$CommercioDocsEncDataStateInitial
 abstract class CommercioDocsEncDataStateInitial
     implements CommercioDocsEncDataState {
   const factory CommercioDocsEncDataStateInitial(
-          {@required Map<EncryptedData, bool> encryptedData}) =
+          {required Map<CommercioEncryptedData, bool> encryptedData}) =
       _$CommercioDocsEncDataStateInitial;
 
-  Map<EncryptedData, bool> get encryptedData;
+  Map<CommercioEncryptedData, bool> get encryptedData =>
+      throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsEncDataStateInitialCopyWith<CommercioDocsEncDataStateInitial>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsEncDataStateLoadingCopyWith<$Res> {
   factory $CommercioDocsEncDataStateLoadingCopyWith(
           CommercioDocsEncDataStateLoading value,
@@ -4351,6 +4381,7 @@ abstract class $CommercioDocsEncDataStateLoadingCopyWith<$Res> {
       _$CommercioDocsEncDataStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsEncDataStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsEncDataStateCopyWithImpl<$Res>
     implements $CommercioDocsEncDataStateLoadingCopyWith<$Res> {
@@ -4363,6 +4394,8 @@ class _$CommercioDocsEncDataStateLoadingCopyWithImpl<$Res>
   CommercioDocsEncDataStateLoading get _value =>
       super._value as CommercioDocsEncDataStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsEncDataStateLoading
     implements CommercioDocsEncDataStateLoading {
@@ -4384,29 +4417,27 @@ class _$CommercioDocsEncDataStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    @required Result initial(Map<EncryptedData, bool> encryptedData),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        $default, {
+    required TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    Result initial(Map<EncryptedData, bool> encryptedData),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)?
+        $default, {
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -4415,29 +4446,24 @@ class _$CommercioDocsEncDataStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    @required Result initial(CommercioDocsEncDataStateInitial value),
-    @required Result loading(CommercioDocsEncDataStateLoading value),
-    @required Result error(CommercioDocsEncDataStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value) $default, {
+    required TResult Function(CommercioDocsEncDataStateInitial value) initial,
+    required TResult Function(CommercioDocsEncDataStateLoading value) loading,
+    required TResult Function(CommercioDocsEncDataStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    Result initial(CommercioDocsEncDataStateInitial value),
-    Result loading(CommercioDocsEncDataStateLoading value),
-    Result error(CommercioDocsEncDataStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value)? $default, {
+    TResult Function(CommercioDocsEncDataStateInitial value)? initial,
+    TResult Function(CommercioDocsEncDataStateLoading value)? loading,
+    TResult Function(CommercioDocsEncDataStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -4451,14 +4477,16 @@ abstract class CommercioDocsEncDataStateLoading
       _$CommercioDocsEncDataStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsEncDataStateErrorCopyWith<$Res> {
   factory $CommercioDocsEncDataStateErrorCopyWith(
           CommercioDocsEncDataStateError value,
           $Res Function(CommercioDocsEncDataStateError) then) =
       _$CommercioDocsEncDataStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsEncDataStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsEncDataStateCopyWithImpl<$Res>
     implements $CommercioDocsEncDataStateErrorCopyWith<$Res> {
@@ -4473,20 +4501,25 @@ class _$CommercioDocsEncDataStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsEncDataStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsEncDataStateError
     implements CommercioDocsEncDataStateError {
   const _$CommercioDocsEncDataStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -4505,6 +4538,7 @@ class _$CommercioDocsEncDataStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsEncDataStateErrorCopyWith<CommercioDocsEncDataStateError>
       get copyWith => _$CommercioDocsEncDataStateErrorCopyWithImpl<
@@ -4512,29 +4546,27 @@ class _$CommercioDocsEncDataStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    @required Result initial(Map<EncryptedData, bool> encryptedData),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        $default, {
+    required TResult Function(Map<CommercioEncryptedData, bool> encryptedData)
+        initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Map<EncryptedData, bool> encryptedData), {
-    Result initial(Map<EncryptedData, bool> encryptedData),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)?
+        $default, {
+    TResult Function(Map<CommercioEncryptedData, bool> encryptedData)? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -4543,29 +4575,24 @@ class _$CommercioDocsEncDataStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    @required Result initial(CommercioDocsEncDataStateInitial value),
-    @required Result loading(CommercioDocsEncDataStateLoading value),
-    @required Result error(CommercioDocsEncDataStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value) $default, {
+    required TResult Function(CommercioDocsEncDataStateInitial value) initial,
+    required TResult Function(CommercioDocsEncDataStateLoading value) loading,
+    required TResult Function(CommercioDocsEncDataStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsEncDataStateData value), {
-    Result initial(CommercioDocsEncDataStateInitial value),
-    Result loading(CommercioDocsEncDataStateLoading value),
-    Result error(CommercioDocsEncDataStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsEncDataStateData value)? $default, {
+    TResult Function(CommercioDocsEncDataStateInitial value)? initial,
+    TResult Function(CommercioDocsEncDataStateLoading value)? loading,
+    TResult Function(CommercioDocsEncDataStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -4575,80 +4602,86 @@ class _$CommercioDocsEncDataStateError
 
 abstract class CommercioDocsEncDataStateError
     implements CommercioDocsEncDataState {
-  const factory CommercioDocsEncDataStateError([String error]) =
+  const factory CommercioDocsEncDataStateError([String? error]) =
       _$CommercioDocsEncDataStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsEncDataStateErrorCopyWith<CommercioDocsEncDataStateError>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveReceiptStateTearOff {
   const _$CommercioDocsDeriveReceiptStateTearOff();
 
-// ignore: unused_element
   CommercioDocsDeriveReceiptStateData call(
-      {@required CommercioDocReceipt commercioDocReceipt}) {
+      {required CommercioDocReceipt commercioDocReceipt}) {
     return CommercioDocsDeriveReceiptStateData(
       commercioDocReceipt: commercioDocReceipt,
     );
   }
 
-// ignore: unused_element
   CommercioDocsDeriveReceiptStateInitial initial() {
     return const CommercioDocsDeriveReceiptStateInitial();
   }
 
-// ignore: unused_element
   CommercioDocsDeriveReceiptStateLoading loading() {
     return const CommercioDocsDeriveReceiptStateLoading();
   }
 
-// ignore: unused_element
-  CommercioDocsDeriveReceiptStateError error([String error]) {
+  CommercioDocsDeriveReceiptStateError error([String? error]) {
     return CommercioDocsDeriveReceiptStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioDocsDeriveReceiptState =
     _$CommercioDocsDeriveReceiptStateTearOff();
 
+/// @nodoc
 mixin _$CommercioDocsDeriveReceiptState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    @required Result error(CommercioDocsDeriveReceiptStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveReceiptStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    Result error(CommercioDocsDeriveReceiptStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveReceiptStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveReceiptStateCopyWith<$Res> {
   factory $CommercioDocsDeriveReceiptStateCopyWith(
           CommercioDocsDeriveReceiptState value,
@@ -4656,6 +4689,7 @@ abstract class $CommercioDocsDeriveReceiptStateCopyWith<$Res> {
       _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveReceiptStateCopyWith<$Res> {
   _$CommercioDocsDeriveReceiptStateCopyWithImpl(this._value, this._then);
@@ -4665,6 +4699,7 @@ class _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
   final $Res Function(CommercioDocsDeriveReceiptState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveReceiptStateDataCopyWith<$Res> {
   factory $CommercioDocsDeriveReceiptStateDataCopyWith(
           CommercioDocsDeriveReceiptStateData value,
@@ -4673,6 +4708,7 @@ abstract class $CommercioDocsDeriveReceiptStateDataCopyWith<$Res> {
   $Res call({CommercioDocReceipt commercioDocReceipt});
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveReceiptStateDataCopyWithImpl<$Res>
     extends _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveReceiptStateDataCopyWith<$Res> {
@@ -4687,21 +4723,23 @@ class _$CommercioDocsDeriveReceiptStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object commercioDocReceipt = freezed,
+    Object? commercioDocReceipt = freezed,
   }) {
     return _then(CommercioDocsDeriveReceiptStateData(
       commercioDocReceipt: commercioDocReceipt == freezed
           ? _value.commercioDocReceipt
-          : commercioDocReceipt as CommercioDocReceipt,
+          : commercioDocReceipt // ignore: cast_nullable_to_non_nullable
+              as CommercioDocReceipt,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioDocsDeriveReceiptStateData
     implements CommercioDocsDeriveReceiptStateData {
   const _$CommercioDocsDeriveReceiptStateData(
-      {@required this.commercioDocReceipt})
-      : assert(commercioDocReceipt != null);
+      {required this.commercioDocReceipt});
 
   @override
   final CommercioDocReceipt commercioDocReceipt;
@@ -4725,6 +4763,7 @@ class _$CommercioDocsDeriveReceiptStateData
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(commercioDocReceipt);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsDeriveReceiptStateDataCopyWith<
           CommercioDocsDeriveReceiptStateData>
@@ -4733,29 +4772,24 @@ class _$CommercioDocsDeriveReceiptStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(commercioDocReceipt);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(commercioDocReceipt);
     }
@@ -4764,29 +4798,26 @@ class _$CommercioDocsDeriveReceiptStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveReceiptStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    Result error(CommercioDocsDeriveReceiptStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveReceiptStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -4797,14 +4828,18 @@ class _$CommercioDocsDeriveReceiptStateData
 abstract class CommercioDocsDeriveReceiptStateData
     implements CommercioDocsDeriveReceiptState {
   const factory CommercioDocsDeriveReceiptStateData(
-          {@required CommercioDocReceipt commercioDocReceipt}) =
+          {required CommercioDocReceipt commercioDocReceipt}) =
       _$CommercioDocsDeriveReceiptStateData;
 
-  CommercioDocReceipt get commercioDocReceipt;
+  CommercioDocReceipt get commercioDocReceipt =>
+      throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsDeriveReceiptStateDataCopyWith<
-      CommercioDocsDeriveReceiptStateData> get copyWith;
+          CommercioDocsDeriveReceiptStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveReceiptStateInitialCopyWith<$Res> {
   factory $CommercioDocsDeriveReceiptStateInitialCopyWith(
           CommercioDocsDeriveReceiptStateInitial value,
@@ -4812,6 +4847,7 @@ abstract class $CommercioDocsDeriveReceiptStateInitialCopyWith<$Res> {
       _$CommercioDocsDeriveReceiptStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveReceiptStateInitialCopyWithImpl<$Res>
     extends _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveReceiptStateInitialCopyWith<$Res> {
@@ -4825,6 +4861,8 @@ class _$CommercioDocsDeriveReceiptStateInitialCopyWithImpl<$Res>
   CommercioDocsDeriveReceiptStateInitial get _value =>
       super._value as CommercioDocsDeriveReceiptStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioDocsDeriveReceiptStateInitial
     implements CommercioDocsDeriveReceiptStateInitial {
@@ -4846,29 +4884,24 @@ class _$CommercioDocsDeriveReceiptStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -4877,29 +4910,26 @@ class _$CommercioDocsDeriveReceiptStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveReceiptStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    Result error(CommercioDocsDeriveReceiptStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveReceiptStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -4913,6 +4943,7 @@ abstract class CommercioDocsDeriveReceiptStateInitial
       _$CommercioDocsDeriveReceiptStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveReceiptStateLoadingCopyWith<$Res> {
   factory $CommercioDocsDeriveReceiptStateLoadingCopyWith(
           CommercioDocsDeriveReceiptStateLoading value,
@@ -4920,6 +4951,7 @@ abstract class $CommercioDocsDeriveReceiptStateLoadingCopyWith<$Res> {
       _$CommercioDocsDeriveReceiptStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveReceiptStateLoadingCopyWithImpl<$Res>
     extends _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveReceiptStateLoadingCopyWith<$Res> {
@@ -4933,6 +4965,8 @@ class _$CommercioDocsDeriveReceiptStateLoadingCopyWithImpl<$Res>
   CommercioDocsDeriveReceiptStateLoading get _value =>
       super._value as CommercioDocsDeriveReceiptStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioDocsDeriveReceiptStateLoading
     implements CommercioDocsDeriveReceiptStateLoading {
@@ -4954,29 +4988,24 @@ class _$CommercioDocsDeriveReceiptStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -4985,29 +5014,26 @@ class _$CommercioDocsDeriveReceiptStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveReceiptStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    Result error(CommercioDocsDeriveReceiptStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveReceiptStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -5021,14 +5047,16 @@ abstract class CommercioDocsDeriveReceiptStateLoading
       _$CommercioDocsDeriveReceiptStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioDocsDeriveReceiptStateErrorCopyWith<$Res> {
   factory $CommercioDocsDeriveReceiptStateErrorCopyWith(
           CommercioDocsDeriveReceiptStateError value,
           $Res Function(CommercioDocsDeriveReceiptStateError) then) =
       _$CommercioDocsDeriveReceiptStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioDocsDeriveReceiptStateErrorCopyWithImpl<$Res>
     extends _$CommercioDocsDeriveReceiptStateCopyWithImpl<$Res>
     implements $CommercioDocsDeriveReceiptStateErrorCopyWith<$Res> {
@@ -5043,20 +5071,25 @@ class _$CommercioDocsDeriveReceiptStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioDocsDeriveReceiptStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioDocsDeriveReceiptStateError
     implements CommercioDocsDeriveReceiptStateError {
   const _$CommercioDocsDeriveReceiptStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -5075,6 +5108,7 @@ class _$CommercioDocsDeriveReceiptStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioDocsDeriveReceiptStateErrorCopyWith<
           CommercioDocsDeriveReceiptStateError>
@@ -5083,29 +5117,24 @@ class _$CommercioDocsDeriveReceiptStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioDocReceipt commercioDocReceipt), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioDocReceipt commercioDocReceipt)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -5114,29 +5143,26 @@ class _$CommercioDocsDeriveReceiptStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    @required Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    @required Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    @required Result error(CommercioDocsDeriveReceiptStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value) $default, {
+    required TResult Function(CommercioDocsDeriveReceiptStateInitial value)
+        initial,
+    required TResult Function(CommercioDocsDeriveReceiptStateLoading value)
+        loading,
+    required TResult Function(CommercioDocsDeriveReceiptStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioDocsDeriveReceiptStateData value), {
-    Result initial(CommercioDocsDeriveReceiptStateInitial value),
-    Result loading(CommercioDocsDeriveReceiptStateLoading value),
-    Result error(CommercioDocsDeriveReceiptStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioDocsDeriveReceiptStateData value)? $default, {
+    TResult Function(CommercioDocsDeriveReceiptStateInitial value)? initial,
+    TResult Function(CommercioDocsDeriveReceiptStateLoading value)? loading,
+    TResult Function(CommercioDocsDeriveReceiptStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -5146,10 +5172,12 @@ class _$CommercioDocsDeriveReceiptStateError
 
 abstract class CommercioDocsDeriveReceiptStateError
     implements CommercioDocsDeriveReceiptState {
-  const factory CommercioDocsDeriveReceiptStateError([String error]) =
+  const factory CommercioDocsDeriveReceiptStateError([String? error]) =
       _$CommercioDocsDeriveReceiptStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioDocsDeriveReceiptStateErrorCopyWith<
-      CommercioDocsDeriveReceiptStateError> get copyWith;
+          CommercioDocsDeriveReceiptStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }

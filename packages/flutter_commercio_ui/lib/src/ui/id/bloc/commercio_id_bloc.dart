@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:commercio_ui/commercio_ui.dart';
 import 'package:commerciosdk/export.dart';
-import 'package:flutter/foundation.dart';
 
 import 'commercio_id_event.dart';
 import 'commercio_id_state.dart';
@@ -12,7 +11,7 @@ class CommercioIdGenerateKeysBloc
     extends Bloc<CommercioIdGenerateKeysEvent, CommercioIdGeneratedKeysState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdGenerateKeysBloc({@required this.commercioId})
+  CommercioIdGenerateKeysBloc({required this.commercioId})
       : super(const CommercioIdGeneratedKeysStateInitial());
 
   @override
@@ -35,7 +34,7 @@ class CommercioIdRestoreKeysBloc
     extends Bloc<CommercioIdRestoreKeysEvent, CommercioIdRestoredKeysState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdRestoreKeysBloc({@required this.commercioId})
+  CommercioIdRestoreKeysBloc({required this.commercioId})
       : super(const CommercioIdRestoredKeysStateInitial());
 
   @override
@@ -58,7 +57,7 @@ class CommercioIdDeleteKeysBloc
     extends Bloc<CommercioIdDeleteKeysEvent, CommercioIdDeletedKeysState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdDeleteKeysBloc({@required this.commercioId})
+  CommercioIdDeleteKeysBloc({required this.commercioId})
       : super(const CommercioIdDeletedKeysStateInitial());
 
   @override
@@ -70,7 +69,7 @@ class CommercioIdDeleteKeysBloc
 
       await commercioId.deleteKeys();
 
-      yield CommercioIdDeletedKeysStateData();
+      yield const CommercioIdDeletedKeysStateData();
     } catch (e) {
       yield CommercioIdDeletedKeysStateError(e.toString());
     }
@@ -81,7 +80,7 @@ class CommercioIdDeriveDidDocumentBloc extends Bloc<
     CommercioIdDeriveDidDocumentEvent, CommercioIdDerivedDidDocumentState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdDeriveDidDocumentBloc({@required this.commercioId})
+  CommercioIdDeriveDidDocumentBloc({required this.commercioId})
       : super(const CommercioIdDerivedDidDocumentStateInitial());
 
   @override
@@ -104,7 +103,7 @@ class CommercioIdSetDidDocumentsBloc extends Bloc<
     CommercioIdSetDidDocumentsEvent, CommercioIdSetDidDocumentsState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdSetDidDocumentsBloc({@required this.commercioId})
+  CommercioIdSetDidDocumentsBloc({required this.commercioId})
       : super(const CommercioIdSetDidDocumentsStateInitial());
 
   @override
@@ -129,7 +128,7 @@ class CommercioIdRechargeTumblerBloc extends Bloc<
     CommercioIdRechargeTumblerEvent, CommercioIdRechargedTumblerState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdRechargeTumblerBloc({@required this.commercioId})
+  CommercioIdRechargeTumblerBloc({required this.commercioId})
       : super(const CommercioIdRechargedTumblerStateInitial());
 
   @override
@@ -159,7 +158,7 @@ class CommercioIdDeriveDidPowerUpRequestBloc extends Bloc<
     CommercioIdDeriveDidPowerUpRequestState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdDeriveDidPowerUpRequestBloc({@required this.commercioId})
+  CommercioIdDeriveDidPowerUpRequestBloc({required this.commercioId})
       : super(const CommercioIdDeriveDidPowerUpRequestStateInitial());
 
   @override
@@ -187,7 +186,7 @@ class CommercioIdRequestDidPowerUpsBloc extends Bloc<
     CommercioIdRequestDidPowerUpsEvent, CommercioIdRequestedDidPowerUpsState> {
   final StatefulCommercioId commercioId;
 
-  CommercioIdRequestDidPowerUpsBloc({@required this.commercioId})
+  CommercioIdRequestDidPowerUpsBloc({required this.commercioId})
       : super(const CommercioIdRequestedDidPowerUpsStateInitial());
 
   @override

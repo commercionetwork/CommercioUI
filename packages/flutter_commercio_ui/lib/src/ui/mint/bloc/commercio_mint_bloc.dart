@@ -1,88 +1,147 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'commercio_mint_event.dart';
 import 'commercio_mint_state.dart';
 
-class CommercioMintOpenCdpBloc
-    extends Bloc<CommercioMintOpenCdpEvent, CommercioMintOpenedCdpState> {
+class CommercioDeriveMintCCCBloc
+    extends Bloc<CommercioDeriveMintCCCEvent, CommercioMintDeriveCCCState> {
   final StatefulCommercioMint commercioMint;
 
-  CommercioMintOpenCdpBloc({
-    @required this.commercioMint,
-  }) : super(const CommercioMintOpenedCdpStateInitial());
+  CommercioDeriveMintCCCBloc({
+    required this.commercioMint,
+  }) : super(const CommercioMintDeriveCCCStateInitial());
 
   @override
-  Stream<CommercioMintOpenedCdpState> mapEventToState(
-    CommercioMintOpenCdpEvent event,
+  Stream<CommercioMintDeriveCCCState> mapEventToState(
+    CommercioDeriveMintCCCEvent event,
   ) async* {
     try {
-      yield const CommercioMintOpenedCdpStateLoading();
+      yield const CommercioMintDeriveCCCStateLoading();
 
-      final result = await commercioMint.openCdp(
+      final mintCCC = commercioMint.deriveMintCcc(
         amount: event.amount,
-        fee: event.fee,
-        mode: event.mode,
+        id: event.id,
+        depositor: event.depositor,
       );
 
-      yield CommercioMintOpenedCdpStateData(result: result);
+      yield CommercioMintDeriveCCCStateData(mintCcc: mintCCC);
     } catch (e) {
-      yield CommercioMintOpenedCdpStateError(e.toString());
+      yield CommercioMintDeriveCCCStateError(e.toString());
     }
   }
 }
 
-class CommercioMintDeriveCloseCdpBloc extends Bloc<
-    CommercioMintDeriveCloseCdpEvent, CommercioMintDeriveCloseCdpState> {
+class CommercioMintCCCBloc
+    extends Bloc<CommercioMintCCCEvent, CommercioMintMintedCCCState> {
   final StatefulCommercioMint commercioMint;
 
-  CommercioMintDeriveCloseCdpBloc({
-    @required this.commercioMint,
-  }) : super(const CommercioMintDeriveCloseCdpStateInitial());
+  CommercioMintCCCBloc({
+    required this.commercioMint,
+  }) : super(const CommercioMintMintedCCCStateInitial());
 
   @override
-  Stream<CommercioMintDeriveCloseCdpState> mapEventToState(
-    CommercioMintDeriveCloseCdpEvent event,
+  Stream<CommercioMintMintedCCCState> mapEventToState(
+    CommercioMintCCCEvent event,
   ) async* {
     try {
-      yield const CommercioMintDeriveCloseCdpStateLoading();
+      yield const CommercioMintMintedCCCStateLoading();
 
-      final closeCdp = commercioMint.deriveCloseCdp(
-        blockHeight: event.blockHeight,
-      );
-
-      yield CommercioMintDeriveCloseCdpStateData(closeCdp: closeCdp);
-    } catch (e) {
-      yield CommercioMintDeriveCloseCdpStateError(e.toString());
-    }
-  }
-}
-
-class CommercioMintCloseCdpsBloc
-    extends Bloc<CommercioMintCloseCdpsEvent, CommercioMintClosedCdpsState> {
-  final StatefulCommercioMint commercioMint;
-
-  CommercioMintCloseCdpsBloc({
-    @required this.commercioMint,
-  }) : super(const CommercioMintClosedCdpsStateInitial());
-
-  @override
-  Stream<CommercioMintClosedCdpsState> mapEventToState(
-    CommercioMintCloseCdpsEvent event,
-  ) async* {
-    try {
-      yield const CommercioMintClosedCdpsStateLoading();
-
-      final result = await commercioMint.closeCdps(
-        closeCdps: event.closeCdps,
+      final result = await commercioMint.mintCccsList(
+        mintCccs: event.derivedMintCCC,
         fee: event.fee,
         mode: event.mode,
       );
 
-      yield CommercioMintClosedCdpsStateData(result: result);
+      yield CommercioMintMintedCCCStateData(result: result);
     } catch (e) {
-      yield CommercioMintClosedCdpsStateError(e.toString());
+      yield CommercioMintMintedCCCStateError(e.toString());
+    }
+  }
+}
+
+class CommercioMintDeriveBurnCccBloc extends Bloc<
+    CommercioMintDeriveBurnCCCEvent, CommercioMintDeriveBurnCCCState> {
+  final StatefulCommercioMint commercioMint;
+
+  CommercioMintDeriveBurnCccBloc({
+    required this.commercioMint,
+  }) : super(const CommercioMintDeriveBurnCCCStateInitial());
+
+  @override
+  Stream<CommercioMintDeriveBurnCCCState> mapEventToState(
+    CommercioMintDeriveBurnCCCEvent event,
+  ) async* {
+    try {
+      yield const CommercioMintDeriveBurnCCCStateLoading();
+
+      final burnCcc = commercioMint.deriveBurnCcc(
+        amount: event.amount,
+        id: event.id,
+        walletAddress: event.walletAddress,
+      );
+
+      yield CommercioMintDeriveBurnCCCStateData(burnCcc: burnCcc);
+    } catch (e) {
+      yield CommercioMintDeriveBurnCCCStateError(e.toString());
+    }
+  }
+}
+
+class CommercioMintBurnCccBloc
+    extends Bloc<CommercioMintBurnCCCEvent, CommercioMintBurnCCCState> {
+  final StatefulCommercioMint commercioMint;
+
+  CommercioMintBurnCccBloc({
+    required this.commercioMint,
+  }) : super(const CommercioMintBurnCCCStateInitial());
+
+  @override
+  Stream<CommercioMintBurnCCCState> mapEventToState(
+    CommercioMintBurnCCCEvent event,
+  ) async* {
+    try {
+      yield const CommercioMintBurnCCCStateLoading();
+
+      final result = await commercioMint.burnCccsList(
+        burnCccs: event.burnCccs,
+        fee: event.fee,
+        mode: event.mode,
+      );
+
+      yield CommercioMintBurnCCCStateData(result: result);
+    } catch (e) {
+      yield CommercioMintBurnCCCStateError(e.toString());
+    }
+  }
+}
+
+class CommercioMintGetExchangeTradePositionsBloc extends Bloc<
+    CommercioMintGetExchangeTradePositionsEvent,
+    CommercioMintGetExchangeTradePositionsState> {
+  final StatefulCommercioMint commercioMint;
+
+  CommercioMintGetExchangeTradePositionsBloc({
+    required this.commercioMint,
+  }) : super(const CommercioMintGetExchangeTradePositionsStateInitial());
+
+  @override
+  Stream<CommercioMintGetExchangeTradePositionsState> mapEventToState(
+    CommercioMintGetExchangeTradePositionsEvent event,
+  ) async* {
+    try {
+      yield const CommercioMintGetExchangeTradePositionsStateLoading();
+
+      final exchangeTradePositions =
+          await commercioMint.getExchangeTradePositions(
+        walletAddress: event.walletAddress,
+      );
+
+      yield CommercioMintGetExchangeTradePositionsStateData(
+        exchangeTradePositions: exchangeTradePositions,
+      );
+    } catch (e) {
+      yield CommercioMintGetExchangeTradePositionsStateError(e.toString());
     }
   }
 }

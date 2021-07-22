@@ -5,10 +5,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'commercio_id_state.freezed.dart';
 
 @freezed
-abstract class CommercioIdGeneratedKeysState
-    with _$CommercioIdGeneratedKeysState {
+class CommercioIdGeneratedKeysState with _$CommercioIdGeneratedKeysState {
   const factory CommercioIdGeneratedKeysState({
-    @required CommercioIdKeys commercioIdKeys,
+    required CommercioIdKeys commercioIdKeys,
   }) = CommercioIdGeneratedKeysStateData;
 
   const factory CommercioIdGeneratedKeysState.initial() =
@@ -17,15 +16,14 @@ abstract class CommercioIdGeneratedKeysState
   const factory CommercioIdGeneratedKeysState.loading() =
       CommercioIdGeneratedKeysStateLoading;
 
-  const factory CommercioIdGeneratedKeysState.error([String error]) =
+  const factory CommercioIdGeneratedKeysState.error([String? error]) =
       CommercioIdGeneratedKeysStateError;
 }
 
 @freezed
-abstract class CommercioIdRestoredKeysState
-    with _$CommercioIdRestoredKeysState {
+class CommercioIdRestoredKeysState with _$CommercioIdRestoredKeysState {
   const factory CommercioIdRestoredKeysState({
-    @required CommercioIdKeys commercioIdKeys,
+    required CommercioIdKeys commercioIdKeys,
   }) = CommercioIdRestoredKeysStateData;
 
   const factory CommercioIdRestoredKeysState.initial() =
@@ -34,12 +32,12 @@ abstract class CommercioIdRestoredKeysState
   const factory CommercioIdRestoredKeysState.loading() =
       CommercioIdRestoredKeysStateLoading;
 
-  const factory CommercioIdRestoredKeysState.error([String error]) =
+  const factory CommercioIdRestoredKeysState.error([String? error]) =
       CommercioIdRestoredKeysStateError;
 }
 
 @freezed
-abstract class CommercioIdDeletedKeysState with _$CommercioIdDeletedKeysState {
+class CommercioIdDeletedKeysState with _$CommercioIdDeletedKeysState {
   const factory CommercioIdDeletedKeysState() = CommercioIdDeletedKeysStateData;
 
   const factory CommercioIdDeletedKeysState.initial() =
@@ -48,15 +46,15 @@ abstract class CommercioIdDeletedKeysState with _$CommercioIdDeletedKeysState {
   const factory CommercioIdDeletedKeysState.loading() =
       CommercioIdDeletedKeysStateLoading;
 
-  const factory CommercioIdDeletedKeysState.error([String error]) =
+  const factory CommercioIdDeletedKeysState.error([String? error]) =
       CommercioIdDeletedKeysStateError;
 }
 
 @freezed
-abstract class CommercioIdDerivedDidDocumentState
+class CommercioIdDerivedDidDocumentState
     with _$CommercioIdDerivedDidDocumentState {
   const factory CommercioIdDerivedDidDocumentState({
-    @required DidDocument didDocument,
+    required DidDocument didDocument,
   }) = CommercioIdDerivedDidDocumentStateData;
 
   const factory CommercioIdDerivedDidDocumentState.initial() =
@@ -65,15 +63,14 @@ abstract class CommercioIdDerivedDidDocumentState
   const factory CommercioIdDerivedDidDocumentState.loading() =
       CommercioIdDerivedDidDocumentStateLoading;
 
-  const factory CommercioIdDerivedDidDocumentState.error([String error]) =
+  const factory CommercioIdDerivedDidDocumentState.error([String? error]) =
       CommercioIdDerivedDidDocumentStateError;
 }
 
 @freezed
-abstract class CommercioIdSetDidDocumentsState
-    with _$CommercioIdSetDidDocumentsState {
+class CommercioIdSetDidDocumentsState with _$CommercioIdSetDidDocumentsState {
   const factory CommercioIdSetDidDocumentsState({
-    @required TransactionResult result,
+    required TransactionResult result,
   }) = CommercioIdSetDidDocumentsStateData;
 
   const factory CommercioIdSetDidDocumentsState.initial() =
@@ -82,15 +79,14 @@ abstract class CommercioIdSetDidDocumentsState
   const factory CommercioIdSetDidDocumentsState.loading() =
       CommercioIdSetDidDocumentsStateLoading;
 
-  const factory CommercioIdSetDidDocumentsState.error([String error]) =
+  const factory CommercioIdSetDidDocumentsState.error([String? error]) =
       CommercioIdSetDidDocumentsStateError;
 }
 
 @freezed
-abstract class CommercioIdRechargedTumblerState
-    with _$CommercioIdRechargedTumblerState {
+class CommercioIdRechargedTumblerState with _$CommercioIdRechargedTumblerState {
   const factory CommercioIdRechargedTumblerState({
-    @required TransactionResult result,
+    required TransactionResult result,
   }) = CommercioIdRechargedTumblerStateData;
 
   const factory CommercioIdRechargedTumblerState.initial() =
@@ -99,15 +95,15 @@ abstract class CommercioIdRechargedTumblerState
   const factory CommercioIdRechargedTumblerState.loading() =
       CommercioIdRechargedTumblerStateLoading;
 
-  const factory CommercioIdRechargedTumblerState.error([String error]) =
+  const factory CommercioIdRechargedTumblerState.error([String? error]) =
       CommercioIdRechargedTumblerStateError;
 }
 
 @freezed
-abstract class CommercioIdDeriveDidPowerUpRequestState
+class CommercioIdDeriveDidPowerUpRequestState
     with _$CommercioIdDeriveDidPowerUpRequestState {
   const factory CommercioIdDeriveDidPowerUpRequestState({
-    @required RequestDidPowerUp didPowerUpRequest,
+    required RequestDidPowerUp didPowerUpRequest,
   }) = CommercioIdDeriveDidPowerUpRequestStateData;
 
   const factory CommercioIdDeriveDidPowerUpRequestState.initial() =
@@ -116,15 +112,15 @@ abstract class CommercioIdDeriveDidPowerUpRequestState
   const factory CommercioIdDeriveDidPowerUpRequestState.loading() =
       CommercioIdDeriveDidPowerUpRequestStateLoading;
 
-  const factory CommercioIdDeriveDidPowerUpRequestState.error([String error]) =
+  const factory CommercioIdDeriveDidPowerUpRequestState.error([String? error]) =
       CommercioIdDeriveDidPowerUpRequestStateError;
 }
 
 @freezed
-abstract class CommercioIdRequestedDidPowerUpsState
+class CommercioIdRequestedDidPowerUpsState
     with _$CommercioIdRequestedDidPowerUpsState {
   const factory CommercioIdRequestedDidPowerUpsState({
-    @required TransactionResult result,
+    required TransactionResult result,
   }) = CommercioIdRequestedDidPowerUpsStateData;
 
   const factory CommercioIdRequestedDidPowerUpsState.initial() =
@@ -133,6 +129,6 @@ abstract class CommercioIdRequestedDidPowerUpsState
   const factory CommercioIdRequestedDidPowerUpsState.loading() =
       CommercioIdRequestedDidPowerUpsStateLoading;
 
-  const factory CommercioIdRequestedDidPowerUpsState.error([String error]) =
+  const factory CommercioIdRequestedDidPowerUpsState.error([String? error]) =
       CommercioIdRequestedDidPowerUpsStateError;
 }

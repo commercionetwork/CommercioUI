@@ -2,55 +2,27 @@ import 'package:commercio_ui/src/core/utils/type_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
+class CommercioTextButton<B extends Bloc<E, S>, E, S, L extends S,
     ERR extends S> extends StatelessWidget {
-  final ValueChanged<bool> onHighlightChanged;
-  final ButtonTextTheme textTheme;
-  final Color textColor;
-  final Color disabledTextColor;
-  final Color color;
-  final Color disabledColor;
-  final Color focusColor;
-  final Color hoverColor;
-  final Color highlightColor;
-  final Color splashColor;
-  final Brightness colorBrightness;
-  final EdgeInsetsGeometry padding;
-  final VisualDensity visualDensity;
-  final ShapeBorder shape;
-  final Clip clipBehavior;
-  final FocusNode focusNode;
-  final bool autofocus;
-  final MaterialTapTargetSize materialTapTargetSize;
-  final Widget Function(BuildContext context) loading;
+  final Clip? clipBehavior;
+  final FocusNode? focusNode;
+  final bool? autofocus;
+  final ButtonStyle? buttonStyle;
+  final Widget Function(BuildContext context)? loading;
   final Widget Function(BuildContext context) child;
-  final E Function() event;
-  final void Function(BuildContext context, String errorMessage) error;
+  final E Function()? event;
+  final void Function(BuildContext context, String errorMessage)? error;
 
-  const CommercioFlatButton({
-    Key key,
-    this.onHighlightChanged,
-    this.textTheme,
-    this.textColor,
-    this.disabledTextColor,
-    this.color,
-    this.disabledColor,
-    this.focusColor,
-    this.hoverColor,
-    this.highlightColor,
-    this.splashColor,
-    this.colorBrightness,
-    this.padding,
-    this.visualDensity,
-    this.shape,
+  const CommercioTextButton({
+    Key? key,
+    required this.child,
+    this.event,
+    this.buttonStyle,
     this.clipBehavior,
-    this.focusNode,
     this.autofocus,
-    this.materialTapTargetSize,
-    @required this.child,
-    @required this.event,
     this.error,
     this.loading,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -59,7 +31,7 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
       listener: (context, state) {
         if (TypeHelper.hasType(state.runtimeType, ERR)) {
           if (error == null) {
-            Scaffold.of(context).showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 // [state] must be dynamic to call the [error] getter on it.
                 content: Text((state as dynamic).error as String),
@@ -67,13 +39,13 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
               ),
             );
           } else {
-            error(context, (state as dynamic).error as String);
+            error!(context, (state as dynamic).error as String);
           }
         }
       },
       builder: (context, state) {
         var onPressed = (event != null)
-            ? () => BlocProvider.of<B>(context).add(event())
+            ? () => BlocProvider.of<B>(context).add(event!())
             : null;
         var childWidget = child(context);
 
@@ -81,30 +53,18 @@ class CommercioFlatButton<B extends Bloc<E, S>, E, S, L extends S,
           onPressed = null;
 
           if (loading != null) {
-            childWidget = loading(context);
+            childWidget = loading!(context);
           }
         }
 
-        return FlatButton(
+        return TextButton(
           onPressed: onPressed,
           onLongPress: null,
-          onHighlightChanged: onHighlightChanged,
-          textTheme: textTheme,
-          disabledTextColor: disabledTextColor,
-          color: color,
-          disabledColor: disabledColor,
-          focusColor: focusColor,
-          hoverColor: hoverColor,
-          highlightColor: highlightColor,
-          splashColor: splashColor,
-          colorBrightness: colorBrightness,
-          padding: padding,
-          visualDensity: visualDensity,
-          shape: shape,
+          key: key,
+          style: buttonStyle,
           clipBehavior: clipBehavior ?? Clip.none,
           focusNode: focusNode,
           autofocus: autofocus ?? false,
-          materialTapTargetSize: materialTapTargetSize,
           child: childWidget,
         );
       },

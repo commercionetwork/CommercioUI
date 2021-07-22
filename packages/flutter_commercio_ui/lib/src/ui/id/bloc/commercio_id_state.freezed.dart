@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'commercio_id_state.dart';
 
@@ -9,71 +9,79 @@ part of 'commercio_id_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
 class _$CommercioIdGeneratedKeysStateTearOff {
   const _$CommercioIdGeneratedKeysStateTearOff();
 
-// ignore: unused_element
   CommercioIdGeneratedKeysStateData call(
-      {@required CommercioIdKeys commercioIdKeys}) {
+      {required CommercioIdKeys commercioIdKeys}) {
     return CommercioIdGeneratedKeysStateData(
       commercioIdKeys: commercioIdKeys,
     );
   }
 
-// ignore: unused_element
   CommercioIdGeneratedKeysStateInitial initial() {
     return const CommercioIdGeneratedKeysStateInitial();
   }
 
-// ignore: unused_element
   CommercioIdGeneratedKeysStateLoading loading() {
     return const CommercioIdGeneratedKeysStateLoading();
   }
 
-// ignore: unused_element
-  CommercioIdGeneratedKeysStateError error([String error]) {
+  CommercioIdGeneratedKeysStateError error([String? error]) {
     return CommercioIdGeneratedKeysStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioIdGeneratedKeysState = _$CommercioIdGeneratedKeysStateTearOff();
 
+/// @nodoc
 mixin _$CommercioIdGeneratedKeysState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    @required Result initial(CommercioIdGeneratedKeysStateInitial value),
-    @required Result loading(CommercioIdGeneratedKeysStateLoading value),
-    @required Result error(CommercioIdGeneratedKeysStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value) $default, {
+    required TResult Function(CommercioIdGeneratedKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdGeneratedKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdGeneratedKeysStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    Result initial(CommercioIdGeneratedKeysStateInitial value),
-    Result loading(CommercioIdGeneratedKeysStateLoading value),
-    Result error(CommercioIdGeneratedKeysStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value)? $default, {
+    TResult Function(CommercioIdGeneratedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdGeneratedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdGeneratedKeysStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdGeneratedKeysStateCopyWith<$Res> {
   factory $CommercioIdGeneratedKeysStateCopyWith(
           CommercioIdGeneratedKeysState value,
@@ -81,6 +89,7 @@ abstract class $CommercioIdGeneratedKeysStateCopyWith<$Res> {
       _$CommercioIdGeneratedKeysStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdGeneratedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdGeneratedKeysStateCopyWith<$Res> {
   _$CommercioIdGeneratedKeysStateCopyWithImpl(this._value, this._then);
@@ -90,6 +99,7 @@ class _$CommercioIdGeneratedKeysStateCopyWithImpl<$Res>
   final $Res Function(CommercioIdGeneratedKeysState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioIdGeneratedKeysStateDataCopyWith<$Res> {
   factory $CommercioIdGeneratedKeysStateDataCopyWith(
           CommercioIdGeneratedKeysStateData value,
@@ -98,6 +108,7 @@ abstract class $CommercioIdGeneratedKeysStateDataCopyWith<$Res> {
   $Res call({CommercioIdKeys commercioIdKeys});
 }
 
+/// @nodoc
 class _$CommercioIdGeneratedKeysStateDataCopyWithImpl<$Res>
     extends _$CommercioIdGeneratedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdGeneratedKeysStateDataCopyWith<$Res> {
@@ -112,20 +123,22 @@ class _$CommercioIdGeneratedKeysStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object commercioIdKeys = freezed,
+    Object? commercioIdKeys = freezed,
   }) {
     return _then(CommercioIdGeneratedKeysStateData(
       commercioIdKeys: commercioIdKeys == freezed
           ? _value.commercioIdKeys
-          : commercioIdKeys as CommercioIdKeys,
+          : commercioIdKeys // ignore: cast_nullable_to_non_nullable
+              as CommercioIdKeys,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioIdGeneratedKeysStateData
     implements CommercioIdGeneratedKeysStateData {
-  const _$CommercioIdGeneratedKeysStateData({@required this.commercioIdKeys})
-      : assert(commercioIdKeys != null);
+  const _$CommercioIdGeneratedKeysStateData({required this.commercioIdKeys});
 
   @override
   final CommercioIdKeys commercioIdKeys;
@@ -149,6 +162,7 @@ class _$CommercioIdGeneratedKeysStateData
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(commercioIdKeys);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdGeneratedKeysStateDataCopyWith<CommercioIdGeneratedKeysStateData>
       get copyWith => _$CommercioIdGeneratedKeysStateDataCopyWithImpl<
@@ -156,29 +170,24 @@ class _$CommercioIdGeneratedKeysStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(commercioIdKeys);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(commercioIdKeys);
     }
@@ -187,29 +196,26 @@ class _$CommercioIdGeneratedKeysStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    @required Result initial(CommercioIdGeneratedKeysStateInitial value),
-    @required Result loading(CommercioIdGeneratedKeysStateLoading value),
-    @required Result error(CommercioIdGeneratedKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value) $default, {
+    required TResult Function(CommercioIdGeneratedKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdGeneratedKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdGeneratedKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    Result initial(CommercioIdGeneratedKeysStateInitial value),
-    Result loading(CommercioIdGeneratedKeysStateLoading value),
-    Result error(CommercioIdGeneratedKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value)? $default, {
+    TResult Function(CommercioIdGeneratedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdGeneratedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdGeneratedKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -220,14 +226,16 @@ class _$CommercioIdGeneratedKeysStateData
 abstract class CommercioIdGeneratedKeysStateData
     implements CommercioIdGeneratedKeysState {
   const factory CommercioIdGeneratedKeysStateData(
-          {@required CommercioIdKeys commercioIdKeys}) =
+          {required CommercioIdKeys commercioIdKeys}) =
       _$CommercioIdGeneratedKeysStateData;
 
-  CommercioIdKeys get commercioIdKeys;
+  CommercioIdKeys get commercioIdKeys => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdGeneratedKeysStateDataCopyWith<CommercioIdGeneratedKeysStateData>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdGeneratedKeysStateInitialCopyWith<$Res> {
   factory $CommercioIdGeneratedKeysStateInitialCopyWith(
           CommercioIdGeneratedKeysStateInitial value,
@@ -235,6 +243,7 @@ abstract class $CommercioIdGeneratedKeysStateInitialCopyWith<$Res> {
       _$CommercioIdGeneratedKeysStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdGeneratedKeysStateInitialCopyWithImpl<$Res>
     extends _$CommercioIdGeneratedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdGeneratedKeysStateInitialCopyWith<$Res> {
@@ -247,6 +256,8 @@ class _$CommercioIdGeneratedKeysStateInitialCopyWithImpl<$Res>
   CommercioIdGeneratedKeysStateInitial get _value =>
       super._value as CommercioIdGeneratedKeysStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioIdGeneratedKeysStateInitial
     implements CommercioIdGeneratedKeysStateInitial {
@@ -268,29 +279,24 @@ class _$CommercioIdGeneratedKeysStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -299,29 +305,26 @@ class _$CommercioIdGeneratedKeysStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    @required Result initial(CommercioIdGeneratedKeysStateInitial value),
-    @required Result loading(CommercioIdGeneratedKeysStateLoading value),
-    @required Result error(CommercioIdGeneratedKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value) $default, {
+    required TResult Function(CommercioIdGeneratedKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdGeneratedKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdGeneratedKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    Result initial(CommercioIdGeneratedKeysStateInitial value),
-    Result loading(CommercioIdGeneratedKeysStateLoading value),
-    Result error(CommercioIdGeneratedKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value)? $default, {
+    TResult Function(CommercioIdGeneratedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdGeneratedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdGeneratedKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -335,6 +338,7 @@ abstract class CommercioIdGeneratedKeysStateInitial
       _$CommercioIdGeneratedKeysStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioIdGeneratedKeysStateLoadingCopyWith<$Res> {
   factory $CommercioIdGeneratedKeysStateLoadingCopyWith(
           CommercioIdGeneratedKeysStateLoading value,
@@ -342,6 +346,7 @@ abstract class $CommercioIdGeneratedKeysStateLoadingCopyWith<$Res> {
       _$CommercioIdGeneratedKeysStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdGeneratedKeysStateLoadingCopyWithImpl<$Res>
     extends _$CommercioIdGeneratedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdGeneratedKeysStateLoadingCopyWith<$Res> {
@@ -354,6 +359,8 @@ class _$CommercioIdGeneratedKeysStateLoadingCopyWithImpl<$Res>
   CommercioIdGeneratedKeysStateLoading get _value =>
       super._value as CommercioIdGeneratedKeysStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioIdGeneratedKeysStateLoading
     implements CommercioIdGeneratedKeysStateLoading {
@@ -375,29 +382,24 @@ class _$CommercioIdGeneratedKeysStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -406,29 +408,26 @@ class _$CommercioIdGeneratedKeysStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    @required Result initial(CommercioIdGeneratedKeysStateInitial value),
-    @required Result loading(CommercioIdGeneratedKeysStateLoading value),
-    @required Result error(CommercioIdGeneratedKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value) $default, {
+    required TResult Function(CommercioIdGeneratedKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdGeneratedKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdGeneratedKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    Result initial(CommercioIdGeneratedKeysStateInitial value),
-    Result loading(CommercioIdGeneratedKeysStateLoading value),
-    Result error(CommercioIdGeneratedKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value)? $default, {
+    TResult Function(CommercioIdGeneratedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdGeneratedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdGeneratedKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -442,14 +441,16 @@ abstract class CommercioIdGeneratedKeysStateLoading
       _$CommercioIdGeneratedKeysStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioIdGeneratedKeysStateErrorCopyWith<$Res> {
   factory $CommercioIdGeneratedKeysStateErrorCopyWith(
           CommercioIdGeneratedKeysStateError value,
           $Res Function(CommercioIdGeneratedKeysStateError) then) =
       _$CommercioIdGeneratedKeysStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioIdGeneratedKeysStateErrorCopyWithImpl<$Res>
     extends _$CommercioIdGeneratedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdGeneratedKeysStateErrorCopyWith<$Res> {
@@ -464,20 +465,25 @@ class _$CommercioIdGeneratedKeysStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioIdGeneratedKeysStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioIdGeneratedKeysStateError
     implements CommercioIdGeneratedKeysStateError {
   const _$CommercioIdGeneratedKeysStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -496,6 +502,7 @@ class _$CommercioIdGeneratedKeysStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdGeneratedKeysStateErrorCopyWith<
           CommercioIdGeneratedKeysStateError>
@@ -504,29 +511,24 @@ class _$CommercioIdGeneratedKeysStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -535,29 +537,26 @@ class _$CommercioIdGeneratedKeysStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    @required Result initial(CommercioIdGeneratedKeysStateInitial value),
-    @required Result loading(CommercioIdGeneratedKeysStateLoading value),
-    @required Result error(CommercioIdGeneratedKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value) $default, {
+    required TResult Function(CommercioIdGeneratedKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdGeneratedKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdGeneratedKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdGeneratedKeysStateData value), {
-    Result initial(CommercioIdGeneratedKeysStateInitial value),
-    Result loading(CommercioIdGeneratedKeysStateLoading value),
-    Result error(CommercioIdGeneratedKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdGeneratedKeysStateData value)? $default, {
+    TResult Function(CommercioIdGeneratedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdGeneratedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdGeneratedKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -567,79 +566,86 @@ class _$CommercioIdGeneratedKeysStateError
 
 abstract class CommercioIdGeneratedKeysStateError
     implements CommercioIdGeneratedKeysState {
-  const factory CommercioIdGeneratedKeysStateError([String error]) =
+  const factory CommercioIdGeneratedKeysStateError([String? error]) =
       _$CommercioIdGeneratedKeysStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdGeneratedKeysStateErrorCopyWith<
-      CommercioIdGeneratedKeysStateError> get copyWith;
+          CommercioIdGeneratedKeysStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioIdRestoredKeysStateTearOff {
   const _$CommercioIdRestoredKeysStateTearOff();
 
-// ignore: unused_element
   CommercioIdRestoredKeysStateData call(
-      {@required CommercioIdKeys commercioIdKeys}) {
+      {required CommercioIdKeys commercioIdKeys}) {
     return CommercioIdRestoredKeysStateData(
       commercioIdKeys: commercioIdKeys,
     );
   }
 
-// ignore: unused_element
   CommercioIdRestoredKeysStateInitial initial() {
     return const CommercioIdRestoredKeysStateInitial();
   }
 
-// ignore: unused_element
   CommercioIdRestoredKeysStateLoading loading() {
     return const CommercioIdRestoredKeysStateLoading();
   }
 
-// ignore: unused_element
-  CommercioIdRestoredKeysStateError error([String error]) {
+  CommercioIdRestoredKeysStateError error([String? error]) {
     return CommercioIdRestoredKeysStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioIdRestoredKeysState = _$CommercioIdRestoredKeysStateTearOff();
 
+/// @nodoc
 mixin _$CommercioIdRestoredKeysState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    @required Result initial(CommercioIdRestoredKeysStateInitial value),
-    @required Result loading(CommercioIdRestoredKeysStateLoading value),
-    @required Result error(CommercioIdRestoredKeysStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value) $default, {
+    required TResult Function(CommercioIdRestoredKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRestoredKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRestoredKeysStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    Result initial(CommercioIdRestoredKeysStateInitial value),
-    Result loading(CommercioIdRestoredKeysStateLoading value),
-    Result error(CommercioIdRestoredKeysStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value)? $default, {
+    TResult Function(CommercioIdRestoredKeysStateInitial value)? initial,
+    TResult Function(CommercioIdRestoredKeysStateLoading value)? loading,
+    TResult Function(CommercioIdRestoredKeysStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdRestoredKeysStateCopyWith<$Res> {
   factory $CommercioIdRestoredKeysStateCopyWith(
           CommercioIdRestoredKeysState value,
@@ -647,6 +653,7 @@ abstract class $CommercioIdRestoredKeysStateCopyWith<$Res> {
       _$CommercioIdRestoredKeysStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRestoredKeysStateCopyWithImpl<$Res>
     implements $CommercioIdRestoredKeysStateCopyWith<$Res> {
   _$CommercioIdRestoredKeysStateCopyWithImpl(this._value, this._then);
@@ -656,6 +663,7 @@ class _$CommercioIdRestoredKeysStateCopyWithImpl<$Res>
   final $Res Function(CommercioIdRestoredKeysState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioIdRestoredKeysStateDataCopyWith<$Res> {
   factory $CommercioIdRestoredKeysStateDataCopyWith(
           CommercioIdRestoredKeysStateData value,
@@ -664,6 +672,7 @@ abstract class $CommercioIdRestoredKeysStateDataCopyWith<$Res> {
   $Res call({CommercioIdKeys commercioIdKeys});
 }
 
+/// @nodoc
 class _$CommercioIdRestoredKeysStateDataCopyWithImpl<$Res>
     extends _$CommercioIdRestoredKeysStateCopyWithImpl<$Res>
     implements $CommercioIdRestoredKeysStateDataCopyWith<$Res> {
@@ -678,20 +687,22 @@ class _$CommercioIdRestoredKeysStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object commercioIdKeys = freezed,
+    Object? commercioIdKeys = freezed,
   }) {
     return _then(CommercioIdRestoredKeysStateData(
       commercioIdKeys: commercioIdKeys == freezed
           ? _value.commercioIdKeys
-          : commercioIdKeys as CommercioIdKeys,
+          : commercioIdKeys // ignore: cast_nullable_to_non_nullable
+              as CommercioIdKeys,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioIdRestoredKeysStateData
     implements CommercioIdRestoredKeysStateData {
-  const _$CommercioIdRestoredKeysStateData({@required this.commercioIdKeys})
-      : assert(commercioIdKeys != null);
+  const _$CommercioIdRestoredKeysStateData({required this.commercioIdKeys});
 
   @override
   final CommercioIdKeys commercioIdKeys;
@@ -715,6 +726,7 @@ class _$CommercioIdRestoredKeysStateData
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(commercioIdKeys);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdRestoredKeysStateDataCopyWith<CommercioIdRestoredKeysStateData>
       get copyWith => _$CommercioIdRestoredKeysStateDataCopyWithImpl<
@@ -722,29 +734,24 @@ class _$CommercioIdRestoredKeysStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(commercioIdKeys);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(commercioIdKeys);
     }
@@ -753,29 +760,26 @@ class _$CommercioIdRestoredKeysStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    @required Result initial(CommercioIdRestoredKeysStateInitial value),
-    @required Result loading(CommercioIdRestoredKeysStateLoading value),
-    @required Result error(CommercioIdRestoredKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value) $default, {
+    required TResult Function(CommercioIdRestoredKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRestoredKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRestoredKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    Result initial(CommercioIdRestoredKeysStateInitial value),
-    Result loading(CommercioIdRestoredKeysStateLoading value),
-    Result error(CommercioIdRestoredKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value)? $default, {
+    TResult Function(CommercioIdRestoredKeysStateInitial value)? initial,
+    TResult Function(CommercioIdRestoredKeysStateLoading value)? loading,
+    TResult Function(CommercioIdRestoredKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -786,14 +790,16 @@ class _$CommercioIdRestoredKeysStateData
 abstract class CommercioIdRestoredKeysStateData
     implements CommercioIdRestoredKeysState {
   const factory CommercioIdRestoredKeysStateData(
-          {@required CommercioIdKeys commercioIdKeys}) =
+          {required CommercioIdKeys commercioIdKeys}) =
       _$CommercioIdRestoredKeysStateData;
 
-  CommercioIdKeys get commercioIdKeys;
+  CommercioIdKeys get commercioIdKeys => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdRestoredKeysStateDataCopyWith<CommercioIdRestoredKeysStateData>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdRestoredKeysStateInitialCopyWith<$Res> {
   factory $CommercioIdRestoredKeysStateInitialCopyWith(
           CommercioIdRestoredKeysStateInitial value,
@@ -801,6 +807,7 @@ abstract class $CommercioIdRestoredKeysStateInitialCopyWith<$Res> {
       _$CommercioIdRestoredKeysStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRestoredKeysStateInitialCopyWithImpl<$Res>
     extends _$CommercioIdRestoredKeysStateCopyWithImpl<$Res>
     implements $CommercioIdRestoredKeysStateInitialCopyWith<$Res> {
@@ -813,6 +820,8 @@ class _$CommercioIdRestoredKeysStateInitialCopyWithImpl<$Res>
   CommercioIdRestoredKeysStateInitial get _value =>
       super._value as CommercioIdRestoredKeysStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioIdRestoredKeysStateInitial
     implements CommercioIdRestoredKeysStateInitial {
@@ -834,29 +843,24 @@ class _$CommercioIdRestoredKeysStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -865,29 +869,26 @@ class _$CommercioIdRestoredKeysStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    @required Result initial(CommercioIdRestoredKeysStateInitial value),
-    @required Result loading(CommercioIdRestoredKeysStateLoading value),
-    @required Result error(CommercioIdRestoredKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value) $default, {
+    required TResult Function(CommercioIdRestoredKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRestoredKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRestoredKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    Result initial(CommercioIdRestoredKeysStateInitial value),
-    Result loading(CommercioIdRestoredKeysStateLoading value),
-    Result error(CommercioIdRestoredKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value)? $default, {
+    TResult Function(CommercioIdRestoredKeysStateInitial value)? initial,
+    TResult Function(CommercioIdRestoredKeysStateLoading value)? loading,
+    TResult Function(CommercioIdRestoredKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -901,6 +902,7 @@ abstract class CommercioIdRestoredKeysStateInitial
       _$CommercioIdRestoredKeysStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioIdRestoredKeysStateLoadingCopyWith<$Res> {
   factory $CommercioIdRestoredKeysStateLoadingCopyWith(
           CommercioIdRestoredKeysStateLoading value,
@@ -908,6 +910,7 @@ abstract class $CommercioIdRestoredKeysStateLoadingCopyWith<$Res> {
       _$CommercioIdRestoredKeysStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRestoredKeysStateLoadingCopyWithImpl<$Res>
     extends _$CommercioIdRestoredKeysStateCopyWithImpl<$Res>
     implements $CommercioIdRestoredKeysStateLoadingCopyWith<$Res> {
@@ -920,6 +923,8 @@ class _$CommercioIdRestoredKeysStateLoadingCopyWithImpl<$Res>
   CommercioIdRestoredKeysStateLoading get _value =>
       super._value as CommercioIdRestoredKeysStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioIdRestoredKeysStateLoading
     implements CommercioIdRestoredKeysStateLoading {
@@ -941,29 +946,24 @@ class _$CommercioIdRestoredKeysStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -972,29 +972,26 @@ class _$CommercioIdRestoredKeysStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    @required Result initial(CommercioIdRestoredKeysStateInitial value),
-    @required Result loading(CommercioIdRestoredKeysStateLoading value),
-    @required Result error(CommercioIdRestoredKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value) $default, {
+    required TResult Function(CommercioIdRestoredKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRestoredKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRestoredKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    Result initial(CommercioIdRestoredKeysStateInitial value),
-    Result loading(CommercioIdRestoredKeysStateLoading value),
-    Result error(CommercioIdRestoredKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value)? $default, {
+    TResult Function(CommercioIdRestoredKeysStateInitial value)? initial,
+    TResult Function(CommercioIdRestoredKeysStateLoading value)? loading,
+    TResult Function(CommercioIdRestoredKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -1008,14 +1005,16 @@ abstract class CommercioIdRestoredKeysStateLoading
       _$CommercioIdRestoredKeysStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioIdRestoredKeysStateErrorCopyWith<$Res> {
   factory $CommercioIdRestoredKeysStateErrorCopyWith(
           CommercioIdRestoredKeysStateError value,
           $Res Function(CommercioIdRestoredKeysStateError) then) =
       _$CommercioIdRestoredKeysStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioIdRestoredKeysStateErrorCopyWithImpl<$Res>
     extends _$CommercioIdRestoredKeysStateCopyWithImpl<$Res>
     implements $CommercioIdRestoredKeysStateErrorCopyWith<$Res> {
@@ -1030,20 +1029,25 @@ class _$CommercioIdRestoredKeysStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioIdRestoredKeysStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioIdRestoredKeysStateError
     implements CommercioIdRestoredKeysStateError {
   const _$CommercioIdRestoredKeysStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -1062,6 +1066,7 @@ class _$CommercioIdRestoredKeysStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdRestoredKeysStateErrorCopyWith<CommercioIdRestoredKeysStateError>
       get copyWith => _$CommercioIdRestoredKeysStateErrorCopyWithImpl<
@@ -1069,29 +1074,24 @@ class _$CommercioIdRestoredKeysStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(CommercioIdKeys commercioIdKeys), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CommercioIdKeys commercioIdKeys)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -1100,29 +1100,26 @@ class _$CommercioIdRestoredKeysStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    @required Result initial(CommercioIdRestoredKeysStateInitial value),
-    @required Result loading(CommercioIdRestoredKeysStateLoading value),
-    @required Result error(CommercioIdRestoredKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value) $default, {
+    required TResult Function(CommercioIdRestoredKeysStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRestoredKeysStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRestoredKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRestoredKeysStateData value), {
-    Result initial(CommercioIdRestoredKeysStateInitial value),
-    Result loading(CommercioIdRestoredKeysStateLoading value),
-    Result error(CommercioIdRestoredKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRestoredKeysStateData value)? $default, {
+    TResult Function(CommercioIdRestoredKeysStateInitial value)? initial,
+    TResult Function(CommercioIdRestoredKeysStateLoading value)? loading,
+    TResult Function(CommercioIdRestoredKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -1132,76 +1129,80 @@ class _$CommercioIdRestoredKeysStateError
 
 abstract class CommercioIdRestoredKeysStateError
     implements CommercioIdRestoredKeysState {
-  const factory CommercioIdRestoredKeysStateError([String error]) =
+  const factory CommercioIdRestoredKeysStateError([String? error]) =
       _$CommercioIdRestoredKeysStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdRestoredKeysStateErrorCopyWith<CommercioIdRestoredKeysStateError>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioIdDeletedKeysStateTearOff {
   const _$CommercioIdDeletedKeysStateTearOff();
 
-// ignore: unused_element
   CommercioIdDeletedKeysStateData call() {
     return const CommercioIdDeletedKeysStateData();
   }
 
-// ignore: unused_element
   CommercioIdDeletedKeysStateInitial initial() {
     return const CommercioIdDeletedKeysStateInitial();
   }
 
-// ignore: unused_element
   CommercioIdDeletedKeysStateLoading loading() {
     return const CommercioIdDeletedKeysStateLoading();
   }
 
-// ignore: unused_element
-  CommercioIdDeletedKeysStateError error([String error]) {
+  CommercioIdDeletedKeysStateError error([String? error]) {
     return CommercioIdDeletedKeysStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioIdDeletedKeysState = _$CommercioIdDeletedKeysStateTearOff();
 
+/// @nodoc
 mixin _$CommercioIdDeletedKeysState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    @required Result initial(CommercioIdDeletedKeysStateInitial value),
-    @required Result loading(CommercioIdDeletedKeysStateLoading value),
-    @required Result error(CommercioIdDeletedKeysStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value) $default, {
+    required TResult Function(CommercioIdDeletedKeysStateInitial value) initial,
+    required TResult Function(CommercioIdDeletedKeysStateLoading value) loading,
+    required TResult Function(CommercioIdDeletedKeysStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    Result initial(CommercioIdDeletedKeysStateInitial value),
-    Result loading(CommercioIdDeletedKeysStateLoading value),
-    Result error(CommercioIdDeletedKeysStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value)? $default, {
+    TResult Function(CommercioIdDeletedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdDeletedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdDeletedKeysStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeletedKeysStateCopyWith<$Res> {
   factory $CommercioIdDeletedKeysStateCopyWith(
           CommercioIdDeletedKeysState value,
@@ -1209,6 +1210,7 @@ abstract class $CommercioIdDeletedKeysStateCopyWith<$Res> {
       _$CommercioIdDeletedKeysStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDeletedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdDeletedKeysStateCopyWith<$Res> {
   _$CommercioIdDeletedKeysStateCopyWithImpl(this._value, this._then);
@@ -1218,6 +1220,7 @@ class _$CommercioIdDeletedKeysStateCopyWithImpl<$Res>
   final $Res Function(CommercioIdDeletedKeysState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeletedKeysStateDataCopyWith<$Res> {
   factory $CommercioIdDeletedKeysStateDataCopyWith(
           CommercioIdDeletedKeysStateData value,
@@ -1225,6 +1228,7 @@ abstract class $CommercioIdDeletedKeysStateDataCopyWith<$Res> {
       _$CommercioIdDeletedKeysStateDataCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDeletedKeysStateDataCopyWithImpl<$Res>
     extends _$CommercioIdDeletedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdDeletedKeysStateDataCopyWith<$Res> {
@@ -1237,6 +1241,8 @@ class _$CommercioIdDeletedKeysStateDataCopyWithImpl<$Res>
   CommercioIdDeletedKeysStateData get _value =>
       super._value as CommercioIdDeletedKeysStateData;
 }
+
+/// @nodoc
 
 class _$CommercioIdDeletedKeysStateData
     implements CommercioIdDeletedKeysStateData {
@@ -1257,29 +1263,24 @@ class _$CommercioIdDeletedKeysStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default();
     }
@@ -1288,29 +1289,24 @@ class _$CommercioIdDeletedKeysStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    @required Result initial(CommercioIdDeletedKeysStateInitial value),
-    @required Result loading(CommercioIdDeletedKeysStateLoading value),
-    @required Result error(CommercioIdDeletedKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value) $default, {
+    required TResult Function(CommercioIdDeletedKeysStateInitial value) initial,
+    required TResult Function(CommercioIdDeletedKeysStateLoading value) loading,
+    required TResult Function(CommercioIdDeletedKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    Result initial(CommercioIdDeletedKeysStateInitial value),
-    Result loading(CommercioIdDeletedKeysStateLoading value),
-    Result error(CommercioIdDeletedKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value)? $default, {
+    TResult Function(CommercioIdDeletedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdDeletedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdDeletedKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -1324,6 +1320,7 @@ abstract class CommercioIdDeletedKeysStateData
       _$CommercioIdDeletedKeysStateData;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeletedKeysStateInitialCopyWith<$Res> {
   factory $CommercioIdDeletedKeysStateInitialCopyWith(
           CommercioIdDeletedKeysStateInitial value,
@@ -1331,6 +1328,7 @@ abstract class $CommercioIdDeletedKeysStateInitialCopyWith<$Res> {
       _$CommercioIdDeletedKeysStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDeletedKeysStateInitialCopyWithImpl<$Res>
     extends _$CommercioIdDeletedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdDeletedKeysStateInitialCopyWith<$Res> {
@@ -1343,6 +1341,8 @@ class _$CommercioIdDeletedKeysStateInitialCopyWithImpl<$Res>
   CommercioIdDeletedKeysStateInitial get _value =>
       super._value as CommercioIdDeletedKeysStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioIdDeletedKeysStateInitial
     implements CommercioIdDeletedKeysStateInitial {
@@ -1364,29 +1364,24 @@ class _$CommercioIdDeletedKeysStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -1395,29 +1390,24 @@ class _$CommercioIdDeletedKeysStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    @required Result initial(CommercioIdDeletedKeysStateInitial value),
-    @required Result loading(CommercioIdDeletedKeysStateLoading value),
-    @required Result error(CommercioIdDeletedKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value) $default, {
+    required TResult Function(CommercioIdDeletedKeysStateInitial value) initial,
+    required TResult Function(CommercioIdDeletedKeysStateLoading value) loading,
+    required TResult Function(CommercioIdDeletedKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    Result initial(CommercioIdDeletedKeysStateInitial value),
-    Result loading(CommercioIdDeletedKeysStateLoading value),
-    Result error(CommercioIdDeletedKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value)? $default, {
+    TResult Function(CommercioIdDeletedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdDeletedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdDeletedKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -1431,6 +1421,7 @@ abstract class CommercioIdDeletedKeysStateInitial
       _$CommercioIdDeletedKeysStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeletedKeysStateLoadingCopyWith<$Res> {
   factory $CommercioIdDeletedKeysStateLoadingCopyWith(
           CommercioIdDeletedKeysStateLoading value,
@@ -1438,6 +1429,7 @@ abstract class $CommercioIdDeletedKeysStateLoadingCopyWith<$Res> {
       _$CommercioIdDeletedKeysStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDeletedKeysStateLoadingCopyWithImpl<$Res>
     extends _$CommercioIdDeletedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdDeletedKeysStateLoadingCopyWith<$Res> {
@@ -1450,6 +1442,8 @@ class _$CommercioIdDeletedKeysStateLoadingCopyWithImpl<$Res>
   CommercioIdDeletedKeysStateLoading get _value =>
       super._value as CommercioIdDeletedKeysStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioIdDeletedKeysStateLoading
     implements CommercioIdDeletedKeysStateLoading {
@@ -1471,29 +1465,24 @@ class _$CommercioIdDeletedKeysStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -1502,29 +1491,24 @@ class _$CommercioIdDeletedKeysStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    @required Result initial(CommercioIdDeletedKeysStateInitial value),
-    @required Result loading(CommercioIdDeletedKeysStateLoading value),
-    @required Result error(CommercioIdDeletedKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value) $default, {
+    required TResult Function(CommercioIdDeletedKeysStateInitial value) initial,
+    required TResult Function(CommercioIdDeletedKeysStateLoading value) loading,
+    required TResult Function(CommercioIdDeletedKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    Result initial(CommercioIdDeletedKeysStateInitial value),
-    Result loading(CommercioIdDeletedKeysStateLoading value),
-    Result error(CommercioIdDeletedKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value)? $default, {
+    TResult Function(CommercioIdDeletedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdDeletedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdDeletedKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -1538,14 +1522,16 @@ abstract class CommercioIdDeletedKeysStateLoading
       _$CommercioIdDeletedKeysStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeletedKeysStateErrorCopyWith<$Res> {
   factory $CommercioIdDeletedKeysStateErrorCopyWith(
           CommercioIdDeletedKeysStateError value,
           $Res Function(CommercioIdDeletedKeysStateError) then) =
       _$CommercioIdDeletedKeysStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioIdDeletedKeysStateErrorCopyWithImpl<$Res>
     extends _$CommercioIdDeletedKeysStateCopyWithImpl<$Res>
     implements $CommercioIdDeletedKeysStateErrorCopyWith<$Res> {
@@ -1560,20 +1546,25 @@ class _$CommercioIdDeletedKeysStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioIdDeletedKeysStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioIdDeletedKeysStateError
     implements CommercioIdDeletedKeysStateError {
   const _$CommercioIdDeletedKeysStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -1592,6 +1583,7 @@ class _$CommercioIdDeletedKeysStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdDeletedKeysStateErrorCopyWith<CommercioIdDeletedKeysStateError>
       get copyWith => _$CommercioIdDeletedKeysStateErrorCopyWithImpl<
@@ -1599,29 +1591,24 @@ class _$CommercioIdDeletedKeysStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -1630,29 +1617,24 @@ class _$CommercioIdDeletedKeysStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    @required Result initial(CommercioIdDeletedKeysStateInitial value),
-    @required Result loading(CommercioIdDeletedKeysStateLoading value),
-    @required Result error(CommercioIdDeletedKeysStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value) $default, {
+    required TResult Function(CommercioIdDeletedKeysStateInitial value) initial,
+    required TResult Function(CommercioIdDeletedKeysStateLoading value) loading,
+    required TResult Function(CommercioIdDeletedKeysStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeletedKeysStateData value), {
-    Result initial(CommercioIdDeletedKeysStateInitial value),
-    Result loading(CommercioIdDeletedKeysStateLoading value),
-    Result error(CommercioIdDeletedKeysStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeletedKeysStateData value)? $default, {
+    TResult Function(CommercioIdDeletedKeysStateInitial value)? initial,
+    TResult Function(CommercioIdDeletedKeysStateLoading value)? loading,
+    TResult Function(CommercioIdDeletedKeysStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -1662,80 +1644,87 @@ class _$CommercioIdDeletedKeysStateError
 
 abstract class CommercioIdDeletedKeysStateError
     implements CommercioIdDeletedKeysState {
-  const factory CommercioIdDeletedKeysStateError([String error]) =
+  const factory CommercioIdDeletedKeysStateError([String? error]) =
       _$CommercioIdDeletedKeysStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdDeletedKeysStateErrorCopyWith<CommercioIdDeletedKeysStateError>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioIdDerivedDidDocumentStateTearOff {
   const _$CommercioIdDerivedDidDocumentStateTearOff();
 
-// ignore: unused_element
   CommercioIdDerivedDidDocumentStateData call(
-      {@required DidDocument didDocument}) {
+      {required DidDocument didDocument}) {
     return CommercioIdDerivedDidDocumentStateData(
       didDocument: didDocument,
     );
   }
 
-// ignore: unused_element
   CommercioIdDerivedDidDocumentStateInitial initial() {
     return const CommercioIdDerivedDidDocumentStateInitial();
   }
 
-// ignore: unused_element
   CommercioIdDerivedDidDocumentStateLoading loading() {
     return const CommercioIdDerivedDidDocumentStateLoading();
   }
 
-// ignore: unused_element
-  CommercioIdDerivedDidDocumentStateError error([String error]) {
+  CommercioIdDerivedDidDocumentStateError error([String? error]) {
     return CommercioIdDerivedDidDocumentStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioIdDerivedDidDocumentState =
     _$CommercioIdDerivedDidDocumentStateTearOff();
 
+/// @nodoc
 mixin _$CommercioIdDerivedDidDocumentState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(DidDocument didDocument) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(DidDocument didDocument)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    @required Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    @required Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    @required Result error(CommercioIdDerivedDidDocumentStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value) $default, {
+    required TResult Function(CommercioIdDerivedDidDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioIdDerivedDidDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioIdDerivedDidDocumentStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    Result error(CommercioIdDerivedDidDocumentStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value)? $default, {
+    TResult Function(CommercioIdDerivedDidDocumentStateInitial value)? initial,
+    TResult Function(CommercioIdDerivedDidDocumentStateLoading value)? loading,
+    TResult Function(CommercioIdDerivedDidDocumentStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdDerivedDidDocumentStateCopyWith<$Res> {
   factory $CommercioIdDerivedDidDocumentStateCopyWith(
           CommercioIdDerivedDidDocumentState value,
@@ -1743,6 +1732,7 @@ abstract class $CommercioIdDerivedDidDocumentStateCopyWith<$Res> {
       _$CommercioIdDerivedDidDocumentStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDerivedDidDocumentStateCopyWithImpl<$Res>
     implements $CommercioIdDerivedDidDocumentStateCopyWith<$Res> {
   _$CommercioIdDerivedDidDocumentStateCopyWithImpl(this._value, this._then);
@@ -1752,6 +1742,7 @@ class _$CommercioIdDerivedDidDocumentStateCopyWithImpl<$Res>
   final $Res Function(CommercioIdDerivedDidDocumentState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioIdDerivedDidDocumentStateDataCopyWith<$Res> {
   factory $CommercioIdDerivedDidDocumentStateDataCopyWith(
           CommercioIdDerivedDidDocumentStateData value,
@@ -1760,6 +1751,7 @@ abstract class $CommercioIdDerivedDidDocumentStateDataCopyWith<$Res> {
   $Res call({DidDocument didDocument});
 }
 
+/// @nodoc
 class _$CommercioIdDerivedDidDocumentStateDataCopyWithImpl<$Res>
     extends _$CommercioIdDerivedDidDocumentStateCopyWithImpl<$Res>
     implements $CommercioIdDerivedDidDocumentStateDataCopyWith<$Res> {
@@ -1775,20 +1767,22 @@ class _$CommercioIdDerivedDidDocumentStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object didDocument = freezed,
+    Object? didDocument = freezed,
   }) {
     return _then(CommercioIdDerivedDidDocumentStateData(
       didDocument: didDocument == freezed
           ? _value.didDocument
-          : didDocument as DidDocument,
+          : didDocument // ignore: cast_nullable_to_non_nullable
+              as DidDocument,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioIdDerivedDidDocumentStateData
     implements CommercioIdDerivedDidDocumentStateData {
-  const _$CommercioIdDerivedDidDocumentStateData({@required this.didDocument})
-      : assert(didDocument != null);
+  const _$CommercioIdDerivedDidDocumentStateData({required this.didDocument});
 
   @override
   final DidDocument didDocument;
@@ -1811,6 +1805,7 @@ class _$CommercioIdDerivedDidDocumentStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(didDocument);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdDerivedDidDocumentStateDataCopyWith<
           CommercioIdDerivedDidDocumentStateData>
@@ -1819,29 +1814,24 @@ class _$CommercioIdDerivedDidDocumentStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(DidDocument didDocument) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(didDocument);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(DidDocument didDocument)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(didDocument);
     }
@@ -1850,29 +1840,27 @@ class _$CommercioIdDerivedDidDocumentStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    @required Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    @required Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    @required Result error(CommercioIdDerivedDidDocumentStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value) $default, {
+    required TResult Function(CommercioIdDerivedDidDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioIdDerivedDidDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioIdDerivedDidDocumentStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    Result error(CommercioIdDerivedDidDocumentStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value)? $default, {
+    TResult Function(CommercioIdDerivedDidDocumentStateInitial value)? initial,
+    TResult Function(CommercioIdDerivedDidDocumentStateLoading value)? loading,
+    TResult Function(CommercioIdDerivedDidDocumentStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -1883,14 +1871,17 @@ class _$CommercioIdDerivedDidDocumentStateData
 abstract class CommercioIdDerivedDidDocumentStateData
     implements CommercioIdDerivedDidDocumentState {
   const factory CommercioIdDerivedDidDocumentStateData(
-          {@required DidDocument didDocument}) =
+          {required DidDocument didDocument}) =
       _$CommercioIdDerivedDidDocumentStateData;
 
-  DidDocument get didDocument;
+  DidDocument get didDocument => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdDerivedDidDocumentStateDataCopyWith<
-      CommercioIdDerivedDidDocumentStateData> get copyWith;
+          CommercioIdDerivedDidDocumentStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdDerivedDidDocumentStateInitialCopyWith<$Res> {
   factory $CommercioIdDerivedDidDocumentStateInitialCopyWith(
           CommercioIdDerivedDidDocumentStateInitial value,
@@ -1898,6 +1889,7 @@ abstract class $CommercioIdDerivedDidDocumentStateInitialCopyWith<$Res> {
       _$CommercioIdDerivedDidDocumentStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDerivedDidDocumentStateInitialCopyWithImpl<$Res>
     extends _$CommercioIdDerivedDidDocumentStateCopyWithImpl<$Res>
     implements $CommercioIdDerivedDidDocumentStateInitialCopyWith<$Res> {
@@ -1911,6 +1903,8 @@ class _$CommercioIdDerivedDidDocumentStateInitialCopyWithImpl<$Res>
   CommercioIdDerivedDidDocumentStateInitial get _value =>
       super._value as CommercioIdDerivedDidDocumentStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioIdDerivedDidDocumentStateInitial
     implements CommercioIdDerivedDidDocumentStateInitial {
@@ -1932,29 +1926,24 @@ class _$CommercioIdDerivedDidDocumentStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(DidDocument didDocument) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(DidDocument didDocument)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -1963,29 +1952,27 @@ class _$CommercioIdDerivedDidDocumentStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    @required Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    @required Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    @required Result error(CommercioIdDerivedDidDocumentStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value) $default, {
+    required TResult Function(CommercioIdDerivedDidDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioIdDerivedDidDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioIdDerivedDidDocumentStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    Result error(CommercioIdDerivedDidDocumentStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value)? $default, {
+    TResult Function(CommercioIdDerivedDidDocumentStateInitial value)? initial,
+    TResult Function(CommercioIdDerivedDidDocumentStateLoading value)? loading,
+    TResult Function(CommercioIdDerivedDidDocumentStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -1999,6 +1986,7 @@ abstract class CommercioIdDerivedDidDocumentStateInitial
       _$CommercioIdDerivedDidDocumentStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioIdDerivedDidDocumentStateLoadingCopyWith<$Res> {
   factory $CommercioIdDerivedDidDocumentStateLoadingCopyWith(
           CommercioIdDerivedDidDocumentStateLoading value,
@@ -2006,6 +1994,7 @@ abstract class $CommercioIdDerivedDidDocumentStateLoadingCopyWith<$Res> {
       _$CommercioIdDerivedDidDocumentStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDerivedDidDocumentStateLoadingCopyWithImpl<$Res>
     extends _$CommercioIdDerivedDidDocumentStateCopyWithImpl<$Res>
     implements $CommercioIdDerivedDidDocumentStateLoadingCopyWith<$Res> {
@@ -2019,6 +2008,8 @@ class _$CommercioIdDerivedDidDocumentStateLoadingCopyWithImpl<$Res>
   CommercioIdDerivedDidDocumentStateLoading get _value =>
       super._value as CommercioIdDerivedDidDocumentStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioIdDerivedDidDocumentStateLoading
     implements CommercioIdDerivedDidDocumentStateLoading {
@@ -2040,29 +2031,24 @@ class _$CommercioIdDerivedDidDocumentStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(DidDocument didDocument) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(DidDocument didDocument)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -2071,29 +2057,27 @@ class _$CommercioIdDerivedDidDocumentStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    @required Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    @required Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    @required Result error(CommercioIdDerivedDidDocumentStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value) $default, {
+    required TResult Function(CommercioIdDerivedDidDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioIdDerivedDidDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioIdDerivedDidDocumentStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    Result error(CommercioIdDerivedDidDocumentStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value)? $default, {
+    TResult Function(CommercioIdDerivedDidDocumentStateInitial value)? initial,
+    TResult Function(CommercioIdDerivedDidDocumentStateLoading value)? loading,
+    TResult Function(CommercioIdDerivedDidDocumentStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -2107,14 +2091,16 @@ abstract class CommercioIdDerivedDidDocumentStateLoading
       _$CommercioIdDerivedDidDocumentStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioIdDerivedDidDocumentStateErrorCopyWith<$Res> {
   factory $CommercioIdDerivedDidDocumentStateErrorCopyWith(
           CommercioIdDerivedDidDocumentStateError value,
           $Res Function(CommercioIdDerivedDidDocumentStateError) then) =
       _$CommercioIdDerivedDidDocumentStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioIdDerivedDidDocumentStateErrorCopyWithImpl<$Res>
     extends _$CommercioIdDerivedDidDocumentStateCopyWithImpl<$Res>
     implements $CommercioIdDerivedDidDocumentStateErrorCopyWith<$Res> {
@@ -2130,20 +2116,25 @@ class _$CommercioIdDerivedDidDocumentStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioIdDerivedDidDocumentStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioIdDerivedDidDocumentStateError
     implements CommercioIdDerivedDidDocumentStateError {
   const _$CommercioIdDerivedDidDocumentStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -2162,6 +2153,7 @@ class _$CommercioIdDerivedDidDocumentStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdDerivedDidDocumentStateErrorCopyWith<
           CommercioIdDerivedDidDocumentStateError>
@@ -2170,29 +2162,24 @@ class _$CommercioIdDerivedDidDocumentStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(DidDocument didDocument) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(DidDocument didDocument), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(DidDocument didDocument)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -2201,29 +2188,27 @@ class _$CommercioIdDerivedDidDocumentStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    @required Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    @required Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    @required Result error(CommercioIdDerivedDidDocumentStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value) $default, {
+    required TResult Function(CommercioIdDerivedDidDocumentStateInitial value)
+        initial,
+    required TResult Function(CommercioIdDerivedDidDocumentStateLoading value)
+        loading,
+    required TResult Function(CommercioIdDerivedDidDocumentStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDerivedDidDocumentStateData value), {
-    Result initial(CommercioIdDerivedDidDocumentStateInitial value),
-    Result loading(CommercioIdDerivedDidDocumentStateLoading value),
-    Result error(CommercioIdDerivedDidDocumentStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDerivedDidDocumentStateData value)? $default, {
+    TResult Function(CommercioIdDerivedDidDocumentStateInitial value)? initial,
+    TResult Function(CommercioIdDerivedDidDocumentStateLoading value)? loading,
+    TResult Function(CommercioIdDerivedDidDocumentStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -2233,80 +2218,87 @@ class _$CommercioIdDerivedDidDocumentStateError
 
 abstract class CommercioIdDerivedDidDocumentStateError
     implements CommercioIdDerivedDidDocumentState {
-  const factory CommercioIdDerivedDidDocumentStateError([String error]) =
+  const factory CommercioIdDerivedDidDocumentStateError([String? error]) =
       _$CommercioIdDerivedDidDocumentStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdDerivedDidDocumentStateErrorCopyWith<
-      CommercioIdDerivedDidDocumentStateError> get copyWith;
+          CommercioIdDerivedDidDocumentStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioIdSetDidDocumentsStateTearOff {
   const _$CommercioIdSetDidDocumentsStateTearOff();
 
-// ignore: unused_element
   CommercioIdSetDidDocumentsStateData call(
-      {@required TransactionResult result}) {
+      {required TransactionResult result}) {
     return CommercioIdSetDidDocumentsStateData(
       result: result,
     );
   }
 
-// ignore: unused_element
   CommercioIdSetDidDocumentsStateInitial initial() {
     return const CommercioIdSetDidDocumentsStateInitial();
   }
 
-// ignore: unused_element
   CommercioIdSetDidDocumentsStateLoading loading() {
     return const CommercioIdSetDidDocumentsStateLoading();
   }
 
-// ignore: unused_element
-  CommercioIdSetDidDocumentsStateError error([String error]) {
+  CommercioIdSetDidDocumentsStateError error([String? error]) {
     return CommercioIdSetDidDocumentsStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioIdSetDidDocumentsState =
     _$CommercioIdSetDidDocumentsStateTearOff();
 
+/// @nodoc
 mixin _$CommercioIdSetDidDocumentsState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentsStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value) $default, {
+    required TResult Function(CommercioIdSetDidDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdSetDidDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdSetDidDocumentsStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    Result error(CommercioIdSetDidDocumentsStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value)? $default, {
+    TResult Function(CommercioIdSetDidDocumentsStateInitial value)? initial,
+    TResult Function(CommercioIdSetDidDocumentsStateLoading value)? loading,
+    TResult Function(CommercioIdSetDidDocumentsStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdSetDidDocumentsStateCopyWith<$Res> {
   factory $CommercioIdSetDidDocumentsStateCopyWith(
           CommercioIdSetDidDocumentsState value,
@@ -2314,6 +2306,7 @@ abstract class $CommercioIdSetDidDocumentsStateCopyWith<$Res> {
       _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
     implements $CommercioIdSetDidDocumentsStateCopyWith<$Res> {
   _$CommercioIdSetDidDocumentsStateCopyWithImpl(this._value, this._then);
@@ -2323,6 +2316,7 @@ class _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
   final $Res Function(CommercioIdSetDidDocumentsState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioIdSetDidDocumentsStateDataCopyWith<$Res> {
   factory $CommercioIdSetDidDocumentsStateDataCopyWith(
           CommercioIdSetDidDocumentsStateData value,
@@ -2331,6 +2325,7 @@ abstract class $CommercioIdSetDidDocumentsStateDataCopyWith<$Res> {
   $Res call({TransactionResult result});
 }
 
+/// @nodoc
 class _$CommercioIdSetDidDocumentsStateDataCopyWithImpl<$Res>
     extends _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
     implements $CommercioIdSetDidDocumentsStateDataCopyWith<$Res> {
@@ -2345,18 +2340,22 @@ class _$CommercioIdSetDidDocumentsStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object result = freezed,
+    Object? result = freezed,
   }) {
     return _then(CommercioIdSetDidDocumentsStateData(
-      result: result == freezed ? _value.result : result as TransactionResult,
+      result: result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as TransactionResult,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioIdSetDidDocumentsStateData
     implements CommercioIdSetDidDocumentsStateData {
-  const _$CommercioIdSetDidDocumentsStateData({@required this.result})
-      : assert(result != null);
+  const _$CommercioIdSetDidDocumentsStateData({required this.result});
 
   @override
   final TransactionResult result;
@@ -2378,6 +2377,7 @@ class _$CommercioIdSetDidDocumentsStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdSetDidDocumentsStateDataCopyWith<
           CommercioIdSetDidDocumentsStateData>
@@ -2386,29 +2386,24 @@ class _$CommercioIdSetDidDocumentsStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(result);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(result);
     }
@@ -2417,29 +2412,26 @@ class _$CommercioIdSetDidDocumentsStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value) $default, {
+    required TResult Function(CommercioIdSetDidDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdSetDidDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdSetDidDocumentsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    Result error(CommercioIdSetDidDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value)? $default, {
+    TResult Function(CommercioIdSetDidDocumentsStateInitial value)? initial,
+    TResult Function(CommercioIdSetDidDocumentsStateLoading value)? loading,
+    TResult Function(CommercioIdSetDidDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -2450,14 +2442,17 @@ class _$CommercioIdSetDidDocumentsStateData
 abstract class CommercioIdSetDidDocumentsStateData
     implements CommercioIdSetDidDocumentsState {
   const factory CommercioIdSetDidDocumentsStateData(
-          {@required TransactionResult result}) =
+          {required TransactionResult result}) =
       _$CommercioIdSetDidDocumentsStateData;
 
-  TransactionResult get result;
+  TransactionResult get result => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdSetDidDocumentsStateDataCopyWith<
-      CommercioIdSetDidDocumentsStateData> get copyWith;
+          CommercioIdSetDidDocumentsStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdSetDidDocumentsStateInitialCopyWith<$Res> {
   factory $CommercioIdSetDidDocumentsStateInitialCopyWith(
           CommercioIdSetDidDocumentsStateInitial value,
@@ -2465,6 +2460,7 @@ abstract class $CommercioIdSetDidDocumentsStateInitialCopyWith<$Res> {
       _$CommercioIdSetDidDocumentsStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdSetDidDocumentsStateInitialCopyWithImpl<$Res>
     extends _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
     implements $CommercioIdSetDidDocumentsStateInitialCopyWith<$Res> {
@@ -2478,6 +2474,8 @@ class _$CommercioIdSetDidDocumentsStateInitialCopyWithImpl<$Res>
   CommercioIdSetDidDocumentsStateInitial get _value =>
       super._value as CommercioIdSetDidDocumentsStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioIdSetDidDocumentsStateInitial
     implements CommercioIdSetDidDocumentsStateInitial {
@@ -2499,29 +2497,24 @@ class _$CommercioIdSetDidDocumentsStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -2530,29 +2523,26 @@ class _$CommercioIdSetDidDocumentsStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value) $default, {
+    required TResult Function(CommercioIdSetDidDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdSetDidDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdSetDidDocumentsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    Result error(CommercioIdSetDidDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value)? $default, {
+    TResult Function(CommercioIdSetDidDocumentsStateInitial value)? initial,
+    TResult Function(CommercioIdSetDidDocumentsStateLoading value)? loading,
+    TResult Function(CommercioIdSetDidDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -2566,6 +2556,7 @@ abstract class CommercioIdSetDidDocumentsStateInitial
       _$CommercioIdSetDidDocumentsStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioIdSetDidDocumentsStateLoadingCopyWith<$Res> {
   factory $CommercioIdSetDidDocumentsStateLoadingCopyWith(
           CommercioIdSetDidDocumentsStateLoading value,
@@ -2573,6 +2564,7 @@ abstract class $CommercioIdSetDidDocumentsStateLoadingCopyWith<$Res> {
       _$CommercioIdSetDidDocumentsStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdSetDidDocumentsStateLoadingCopyWithImpl<$Res>
     extends _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
     implements $CommercioIdSetDidDocumentsStateLoadingCopyWith<$Res> {
@@ -2586,6 +2578,8 @@ class _$CommercioIdSetDidDocumentsStateLoadingCopyWithImpl<$Res>
   CommercioIdSetDidDocumentsStateLoading get _value =>
       super._value as CommercioIdSetDidDocumentsStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioIdSetDidDocumentsStateLoading
     implements CommercioIdSetDidDocumentsStateLoading {
@@ -2607,29 +2601,24 @@ class _$CommercioIdSetDidDocumentsStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -2638,29 +2627,26 @@ class _$CommercioIdSetDidDocumentsStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value) $default, {
+    required TResult Function(CommercioIdSetDidDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdSetDidDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdSetDidDocumentsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    Result error(CommercioIdSetDidDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value)? $default, {
+    TResult Function(CommercioIdSetDidDocumentsStateInitial value)? initial,
+    TResult Function(CommercioIdSetDidDocumentsStateLoading value)? loading,
+    TResult Function(CommercioIdSetDidDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -2674,14 +2660,16 @@ abstract class CommercioIdSetDidDocumentsStateLoading
       _$CommercioIdSetDidDocumentsStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioIdSetDidDocumentsStateErrorCopyWith<$Res> {
   factory $CommercioIdSetDidDocumentsStateErrorCopyWith(
           CommercioIdSetDidDocumentsStateError value,
           $Res Function(CommercioIdSetDidDocumentsStateError) then) =
       _$CommercioIdSetDidDocumentsStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioIdSetDidDocumentsStateErrorCopyWithImpl<$Res>
     extends _$CommercioIdSetDidDocumentsStateCopyWithImpl<$Res>
     implements $CommercioIdSetDidDocumentsStateErrorCopyWith<$Res> {
@@ -2696,20 +2684,25 @@ class _$CommercioIdSetDidDocumentsStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioIdSetDidDocumentsStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioIdSetDidDocumentsStateError
     implements CommercioIdSetDidDocumentsStateError {
   const _$CommercioIdSetDidDocumentsStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -2728,6 +2721,7 @@ class _$CommercioIdSetDidDocumentsStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdSetDidDocumentsStateErrorCopyWith<
           CommercioIdSetDidDocumentsStateError>
@@ -2736,29 +2730,24 @@ class _$CommercioIdSetDidDocumentsStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -2767,29 +2756,26 @@ class _$CommercioIdSetDidDocumentsStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    @required Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    @required Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    @required Result error(CommercioIdSetDidDocumentsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value) $default, {
+    required TResult Function(CommercioIdSetDidDocumentsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdSetDidDocumentsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdSetDidDocumentsStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdSetDidDocumentsStateData value), {
-    Result initial(CommercioIdSetDidDocumentsStateInitial value),
-    Result loading(CommercioIdSetDidDocumentsStateLoading value),
-    Result error(CommercioIdSetDidDocumentsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdSetDidDocumentsStateData value)? $default, {
+    TResult Function(CommercioIdSetDidDocumentsStateInitial value)? initial,
+    TResult Function(CommercioIdSetDidDocumentsStateLoading value)? loading,
+    TResult Function(CommercioIdSetDidDocumentsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -2799,80 +2785,88 @@ class _$CommercioIdSetDidDocumentsStateError
 
 abstract class CommercioIdSetDidDocumentsStateError
     implements CommercioIdSetDidDocumentsState {
-  const factory CommercioIdSetDidDocumentsStateError([String error]) =
+  const factory CommercioIdSetDidDocumentsStateError([String? error]) =
       _$CommercioIdSetDidDocumentsStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdSetDidDocumentsStateErrorCopyWith<
-      CommercioIdSetDidDocumentsStateError> get copyWith;
+          CommercioIdSetDidDocumentsStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioIdRechargedTumblerStateTearOff {
   const _$CommercioIdRechargedTumblerStateTearOff();
 
-// ignore: unused_element
   CommercioIdRechargedTumblerStateData call(
-      {@required TransactionResult result}) {
+      {required TransactionResult result}) {
     return CommercioIdRechargedTumblerStateData(
       result: result,
     );
   }
 
-// ignore: unused_element
   CommercioIdRechargedTumblerStateInitial initial() {
     return const CommercioIdRechargedTumblerStateInitial();
   }
 
-// ignore: unused_element
   CommercioIdRechargedTumblerStateLoading loading() {
     return const CommercioIdRechargedTumblerStateLoading();
   }
 
-// ignore: unused_element
-  CommercioIdRechargedTumblerStateError error([String error]) {
+  CommercioIdRechargedTumblerStateError error([String? error]) {
     return CommercioIdRechargedTumblerStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioIdRechargedTumblerState =
     _$CommercioIdRechargedTumblerStateTearOff();
 
+/// @nodoc
 mixin _$CommercioIdRechargedTumblerState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    @required Result initial(CommercioIdRechargedTumblerStateInitial value),
-    @required Result loading(CommercioIdRechargedTumblerStateLoading value),
-    @required Result error(CommercioIdRechargedTumblerStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value) $default, {
+    required TResult Function(CommercioIdRechargedTumblerStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRechargedTumblerStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRechargedTumblerStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    Result initial(CommercioIdRechargedTumblerStateInitial value),
-    Result loading(CommercioIdRechargedTumblerStateLoading value),
-    Result error(CommercioIdRechargedTumblerStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value)? $default, {
+    TResult Function(CommercioIdRechargedTumblerStateInitial value)? initial,
+    TResult Function(CommercioIdRechargedTumblerStateLoading value)? loading,
+    TResult Function(CommercioIdRechargedTumblerStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdRechargedTumblerStateCopyWith<$Res> {
   factory $CommercioIdRechargedTumblerStateCopyWith(
           CommercioIdRechargedTumblerState value,
@@ -2880,6 +2874,7 @@ abstract class $CommercioIdRechargedTumblerStateCopyWith<$Res> {
       _$CommercioIdRechargedTumblerStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRechargedTumblerStateCopyWithImpl<$Res>
     implements $CommercioIdRechargedTumblerStateCopyWith<$Res> {
   _$CommercioIdRechargedTumblerStateCopyWithImpl(this._value, this._then);
@@ -2889,6 +2884,7 @@ class _$CommercioIdRechargedTumblerStateCopyWithImpl<$Res>
   final $Res Function(CommercioIdRechargedTumblerState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioIdRechargedTumblerStateDataCopyWith<$Res> {
   factory $CommercioIdRechargedTumblerStateDataCopyWith(
           CommercioIdRechargedTumblerStateData value,
@@ -2897,6 +2893,7 @@ abstract class $CommercioIdRechargedTumblerStateDataCopyWith<$Res> {
   $Res call({TransactionResult result});
 }
 
+/// @nodoc
 class _$CommercioIdRechargedTumblerStateDataCopyWithImpl<$Res>
     extends _$CommercioIdRechargedTumblerStateCopyWithImpl<$Res>
     implements $CommercioIdRechargedTumblerStateDataCopyWith<$Res> {
@@ -2911,18 +2908,22 @@ class _$CommercioIdRechargedTumblerStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object result = freezed,
+    Object? result = freezed,
   }) {
     return _then(CommercioIdRechargedTumblerStateData(
-      result: result == freezed ? _value.result : result as TransactionResult,
+      result: result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as TransactionResult,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioIdRechargedTumblerStateData
     implements CommercioIdRechargedTumblerStateData {
-  const _$CommercioIdRechargedTumblerStateData({@required this.result})
-      : assert(result != null);
+  const _$CommercioIdRechargedTumblerStateData({required this.result});
 
   @override
   final TransactionResult result;
@@ -2944,6 +2945,7 @@ class _$CommercioIdRechargedTumblerStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdRechargedTumblerStateDataCopyWith<
           CommercioIdRechargedTumblerStateData>
@@ -2952,29 +2954,24 @@ class _$CommercioIdRechargedTumblerStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(result);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(result);
     }
@@ -2983,29 +2980,27 @@ class _$CommercioIdRechargedTumblerStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    @required Result initial(CommercioIdRechargedTumblerStateInitial value),
-    @required Result loading(CommercioIdRechargedTumblerStateLoading value),
-    @required Result error(CommercioIdRechargedTumblerStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value) $default, {
+    required TResult Function(CommercioIdRechargedTumblerStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRechargedTumblerStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRechargedTumblerStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    Result initial(CommercioIdRechargedTumblerStateInitial value),
-    Result loading(CommercioIdRechargedTumblerStateLoading value),
-    Result error(CommercioIdRechargedTumblerStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value)? $default, {
+    TResult Function(CommercioIdRechargedTumblerStateInitial value)? initial,
+    TResult Function(CommercioIdRechargedTumblerStateLoading value)? loading,
+    TResult Function(CommercioIdRechargedTumblerStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -3016,14 +3011,17 @@ class _$CommercioIdRechargedTumblerStateData
 abstract class CommercioIdRechargedTumblerStateData
     implements CommercioIdRechargedTumblerState {
   const factory CommercioIdRechargedTumblerStateData(
-          {@required TransactionResult result}) =
+          {required TransactionResult result}) =
       _$CommercioIdRechargedTumblerStateData;
 
-  TransactionResult get result;
+  TransactionResult get result => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdRechargedTumblerStateDataCopyWith<
-      CommercioIdRechargedTumblerStateData> get copyWith;
+          CommercioIdRechargedTumblerStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdRechargedTumblerStateInitialCopyWith<$Res> {
   factory $CommercioIdRechargedTumblerStateInitialCopyWith(
           CommercioIdRechargedTumblerStateInitial value,
@@ -3031,6 +3029,7 @@ abstract class $CommercioIdRechargedTumblerStateInitialCopyWith<$Res> {
       _$CommercioIdRechargedTumblerStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRechargedTumblerStateInitialCopyWithImpl<$Res>
     extends _$CommercioIdRechargedTumblerStateCopyWithImpl<$Res>
     implements $CommercioIdRechargedTumblerStateInitialCopyWith<$Res> {
@@ -3044,6 +3043,8 @@ class _$CommercioIdRechargedTumblerStateInitialCopyWithImpl<$Res>
   CommercioIdRechargedTumblerStateInitial get _value =>
       super._value as CommercioIdRechargedTumblerStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioIdRechargedTumblerStateInitial
     implements CommercioIdRechargedTumblerStateInitial {
@@ -3065,29 +3066,24 @@ class _$CommercioIdRechargedTumblerStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -3096,29 +3092,27 @@ class _$CommercioIdRechargedTumblerStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    @required Result initial(CommercioIdRechargedTumblerStateInitial value),
-    @required Result loading(CommercioIdRechargedTumblerStateLoading value),
-    @required Result error(CommercioIdRechargedTumblerStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value) $default, {
+    required TResult Function(CommercioIdRechargedTumblerStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRechargedTumblerStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRechargedTumblerStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    Result initial(CommercioIdRechargedTumblerStateInitial value),
-    Result loading(CommercioIdRechargedTumblerStateLoading value),
-    Result error(CommercioIdRechargedTumblerStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value)? $default, {
+    TResult Function(CommercioIdRechargedTumblerStateInitial value)? initial,
+    TResult Function(CommercioIdRechargedTumblerStateLoading value)? loading,
+    TResult Function(CommercioIdRechargedTumblerStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -3132,6 +3126,7 @@ abstract class CommercioIdRechargedTumblerStateInitial
       _$CommercioIdRechargedTumblerStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioIdRechargedTumblerStateLoadingCopyWith<$Res> {
   factory $CommercioIdRechargedTumblerStateLoadingCopyWith(
           CommercioIdRechargedTumblerStateLoading value,
@@ -3139,6 +3134,7 @@ abstract class $CommercioIdRechargedTumblerStateLoadingCopyWith<$Res> {
       _$CommercioIdRechargedTumblerStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRechargedTumblerStateLoadingCopyWithImpl<$Res>
     extends _$CommercioIdRechargedTumblerStateCopyWithImpl<$Res>
     implements $CommercioIdRechargedTumblerStateLoadingCopyWith<$Res> {
@@ -3152,6 +3148,8 @@ class _$CommercioIdRechargedTumblerStateLoadingCopyWithImpl<$Res>
   CommercioIdRechargedTumblerStateLoading get _value =>
       super._value as CommercioIdRechargedTumblerStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioIdRechargedTumblerStateLoading
     implements CommercioIdRechargedTumblerStateLoading {
@@ -3173,29 +3171,24 @@ class _$CommercioIdRechargedTumblerStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -3204,29 +3197,27 @@ class _$CommercioIdRechargedTumblerStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    @required Result initial(CommercioIdRechargedTumblerStateInitial value),
-    @required Result loading(CommercioIdRechargedTumblerStateLoading value),
-    @required Result error(CommercioIdRechargedTumblerStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value) $default, {
+    required TResult Function(CommercioIdRechargedTumblerStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRechargedTumblerStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRechargedTumblerStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    Result initial(CommercioIdRechargedTumblerStateInitial value),
-    Result loading(CommercioIdRechargedTumblerStateLoading value),
-    Result error(CommercioIdRechargedTumblerStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value)? $default, {
+    TResult Function(CommercioIdRechargedTumblerStateInitial value)? initial,
+    TResult Function(CommercioIdRechargedTumblerStateLoading value)? loading,
+    TResult Function(CommercioIdRechargedTumblerStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -3240,14 +3231,16 @@ abstract class CommercioIdRechargedTumblerStateLoading
       _$CommercioIdRechargedTumblerStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioIdRechargedTumblerStateErrorCopyWith<$Res> {
   factory $CommercioIdRechargedTumblerStateErrorCopyWith(
           CommercioIdRechargedTumblerStateError value,
           $Res Function(CommercioIdRechargedTumblerStateError) then) =
       _$CommercioIdRechargedTumblerStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioIdRechargedTumblerStateErrorCopyWithImpl<$Res>
     extends _$CommercioIdRechargedTumblerStateCopyWithImpl<$Res>
     implements $CommercioIdRechargedTumblerStateErrorCopyWith<$Res> {
@@ -3262,20 +3255,25 @@ class _$CommercioIdRechargedTumblerStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioIdRechargedTumblerStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioIdRechargedTumblerStateError
     implements CommercioIdRechargedTumblerStateError {
   const _$CommercioIdRechargedTumblerStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -3294,6 +3292,7 @@ class _$CommercioIdRechargedTumblerStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdRechargedTumblerStateErrorCopyWith<
           CommercioIdRechargedTumblerStateError>
@@ -3302,29 +3301,24 @@ class _$CommercioIdRechargedTumblerStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -3333,29 +3327,27 @@ class _$CommercioIdRechargedTumblerStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    @required Result initial(CommercioIdRechargedTumblerStateInitial value),
-    @required Result loading(CommercioIdRechargedTumblerStateLoading value),
-    @required Result error(CommercioIdRechargedTumblerStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value) $default, {
+    required TResult Function(CommercioIdRechargedTumblerStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRechargedTumblerStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRechargedTumblerStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRechargedTumblerStateData value), {
-    Result initial(CommercioIdRechargedTumblerStateInitial value),
-    Result loading(CommercioIdRechargedTumblerStateLoading value),
-    Result error(CommercioIdRechargedTumblerStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRechargedTumblerStateData value)? $default, {
+    TResult Function(CommercioIdRechargedTumblerStateInitial value)? initial,
+    TResult Function(CommercioIdRechargedTumblerStateLoading value)? loading,
+    TResult Function(CommercioIdRechargedTumblerStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -3365,82 +3357,95 @@ class _$CommercioIdRechargedTumblerStateError
 
 abstract class CommercioIdRechargedTumblerStateError
     implements CommercioIdRechargedTumblerState {
-  const factory CommercioIdRechargedTumblerStateError([String error]) =
+  const factory CommercioIdRechargedTumblerStateError([String? error]) =
       _$CommercioIdRechargedTumblerStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdRechargedTumblerStateErrorCopyWith<
-      CommercioIdRechargedTumblerStateError> get copyWith;
+          CommercioIdRechargedTumblerStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioIdDeriveDidPowerUpRequestStateTearOff {
   const _$CommercioIdDeriveDidPowerUpRequestStateTearOff();
 
-// ignore: unused_element
   CommercioIdDeriveDidPowerUpRequestStateData call(
-      {@required RequestDidPowerUp didPowerUpRequest}) {
+      {required RequestDidPowerUp didPowerUpRequest}) {
     return CommercioIdDeriveDidPowerUpRequestStateData(
       didPowerUpRequest: didPowerUpRequest,
     );
   }
 
-// ignore: unused_element
   CommercioIdDeriveDidPowerUpRequestStateInitial initial() {
     return const CommercioIdDeriveDidPowerUpRequestStateInitial();
   }
 
-// ignore: unused_element
   CommercioIdDeriveDidPowerUpRequestStateLoading loading() {
     return const CommercioIdDeriveDidPowerUpRequestStateLoading();
   }
 
-// ignore: unused_element
-  CommercioIdDeriveDidPowerUpRequestStateError error([String error]) {
+  CommercioIdDeriveDidPowerUpRequestStateError error([String? error]) {
     return CommercioIdDeriveDidPowerUpRequestStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioIdDeriveDidPowerUpRequestState =
     _$CommercioIdDeriveDidPowerUpRequestStateTearOff();
 
+/// @nodoc
 mixin _$CommercioIdDeriveDidPowerUpRequestState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    @required
-        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    @required
-        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)
+        $default, {
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateInitial value)
+        initial,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateLoading value)
+        loading,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)?
+        $default, {
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateInitial value)?
+        initial,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateLoading value)?
+        loading,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeriveDidPowerUpRequestStateCopyWith<$Res> {
   factory $CommercioIdDeriveDidPowerUpRequestStateCopyWith(
           CommercioIdDeriveDidPowerUpRequestState value,
@@ -3448,6 +3453,7 @@ abstract class $CommercioIdDeriveDidPowerUpRequestStateCopyWith<$Res> {
       _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
     implements $CommercioIdDeriveDidPowerUpRequestStateCopyWith<$Res> {
   _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl(
@@ -3458,6 +3464,7 @@ class _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
   final $Res Function(CommercioIdDeriveDidPowerUpRequestState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<$Res> {
   factory $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith(
           CommercioIdDeriveDidPowerUpRequestStateData value,
@@ -3466,6 +3473,7 @@ abstract class $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<$Res> {
   $Res call({RequestDidPowerUp didPowerUpRequest});
 }
 
+/// @nodoc
 class _$CommercioIdDeriveDidPowerUpRequestStateDataCopyWithImpl<$Res>
     extends _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
     implements $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<$Res> {
@@ -3481,21 +3489,23 @@ class _$CommercioIdDeriveDidPowerUpRequestStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object didPowerUpRequest = freezed,
+    Object? didPowerUpRequest = freezed,
   }) {
     return _then(CommercioIdDeriveDidPowerUpRequestStateData(
       didPowerUpRequest: didPowerUpRequest == freezed
           ? _value.didPowerUpRequest
-          : didPowerUpRequest as RequestDidPowerUp,
+          : didPowerUpRequest // ignore: cast_nullable_to_non_nullable
+              as RequestDidPowerUp,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioIdDeriveDidPowerUpRequestStateData
     implements CommercioIdDeriveDidPowerUpRequestStateData {
   const _$CommercioIdDeriveDidPowerUpRequestStateData(
-      {@required this.didPowerUpRequest})
-      : assert(didPowerUpRequest != null);
+      {required this.didPowerUpRequest});
 
   @override
   final RequestDidPowerUp didPowerUpRequest;
@@ -3519,6 +3529,7 @@ class _$CommercioIdDeriveDidPowerUpRequestStateData
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(didPowerUpRequest);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<
           CommercioIdDeriveDidPowerUpRequestStateData>
@@ -3527,29 +3538,24 @@ class _$CommercioIdDeriveDidPowerUpRequestStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(didPowerUpRequest);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(didPowerUpRequest);
     }
@@ -3558,31 +3564,34 @@ class _$CommercioIdDeriveDidPowerUpRequestStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    @required
-        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    @required
-        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)
+        $default, {
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateInitial value)
+        initial,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateLoading value)
+        loading,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)?
+        $default, {
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateInitial value)?
+        initial,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateLoading value)?
+        loading,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -3593,14 +3602,17 @@ class _$CommercioIdDeriveDidPowerUpRequestStateData
 abstract class CommercioIdDeriveDidPowerUpRequestStateData
     implements CommercioIdDeriveDidPowerUpRequestState {
   const factory CommercioIdDeriveDidPowerUpRequestStateData(
-          {@required RequestDidPowerUp didPowerUpRequest}) =
+          {required RequestDidPowerUp didPowerUpRequest}) =
       _$CommercioIdDeriveDidPowerUpRequestStateData;
 
-  RequestDidPowerUp get didPowerUpRequest;
+  RequestDidPowerUp get didPowerUpRequest => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdDeriveDidPowerUpRequestStateDataCopyWith<
-      CommercioIdDeriveDidPowerUpRequestStateData> get copyWith;
+          CommercioIdDeriveDidPowerUpRequestStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeriveDidPowerUpRequestStateInitialCopyWith<$Res> {
   factory $CommercioIdDeriveDidPowerUpRequestStateInitialCopyWith(
           CommercioIdDeriveDidPowerUpRequestStateInitial value,
@@ -3608,6 +3620,7 @@ abstract class $CommercioIdDeriveDidPowerUpRequestStateInitialCopyWith<$Res> {
       _$CommercioIdDeriveDidPowerUpRequestStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDeriveDidPowerUpRequestStateInitialCopyWithImpl<$Res>
     extends _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
     implements $CommercioIdDeriveDidPowerUpRequestStateInitialCopyWith<$Res> {
@@ -3621,6 +3634,8 @@ class _$CommercioIdDeriveDidPowerUpRequestStateInitialCopyWithImpl<$Res>
   CommercioIdDeriveDidPowerUpRequestStateInitial get _value =>
       super._value as CommercioIdDeriveDidPowerUpRequestStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioIdDeriveDidPowerUpRequestStateInitial
     implements CommercioIdDeriveDidPowerUpRequestStateInitial {
@@ -3642,29 +3657,24 @@ class _$CommercioIdDeriveDidPowerUpRequestStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -3673,31 +3683,34 @@ class _$CommercioIdDeriveDidPowerUpRequestStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    @required
-        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    @required
-        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)
+        $default, {
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateInitial value)
+        initial,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateLoading value)
+        loading,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)?
+        $default, {
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateInitial value)?
+        initial,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateLoading value)?
+        loading,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -3711,6 +3724,7 @@ abstract class CommercioIdDeriveDidPowerUpRequestStateInitial
       _$CommercioIdDeriveDidPowerUpRequestStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWith<$Res> {
   factory $CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWith(
           CommercioIdDeriveDidPowerUpRequestStateLoading value,
@@ -3718,6 +3732,7 @@ abstract class $CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWith<$Res> {
       _$CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWithImpl<$Res>
     extends _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
     implements $CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWith<$Res> {
@@ -3731,6 +3746,8 @@ class _$CommercioIdDeriveDidPowerUpRequestStateLoadingCopyWithImpl<$Res>
   CommercioIdDeriveDidPowerUpRequestStateLoading get _value =>
       super._value as CommercioIdDeriveDidPowerUpRequestStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioIdDeriveDidPowerUpRequestStateLoading
     implements CommercioIdDeriveDidPowerUpRequestStateLoading {
@@ -3752,29 +3769,24 @@ class _$CommercioIdDeriveDidPowerUpRequestStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -3783,31 +3795,34 @@ class _$CommercioIdDeriveDidPowerUpRequestStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    @required
-        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    @required
-        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)
+        $default, {
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateInitial value)
+        initial,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateLoading value)
+        loading,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)?
+        $default, {
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateInitial value)?
+        initial,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateLoading value)?
+        loading,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -3821,14 +3836,16 @@ abstract class CommercioIdDeriveDidPowerUpRequestStateLoading
       _$CommercioIdDeriveDidPowerUpRequestStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith<$Res> {
   factory $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith(
           CommercioIdDeriveDidPowerUpRequestStateError value,
           $Res Function(CommercioIdDeriveDidPowerUpRequestStateError) then) =
       _$CommercioIdDeriveDidPowerUpRequestStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioIdDeriveDidPowerUpRequestStateErrorCopyWithImpl<$Res>
     extends _$CommercioIdDeriveDidPowerUpRequestStateCopyWithImpl<$Res>
     implements $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith<$Res> {
@@ -3844,20 +3861,25 @@ class _$CommercioIdDeriveDidPowerUpRequestStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioIdDeriveDidPowerUpRequestStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioIdDeriveDidPowerUpRequestStateError
     implements CommercioIdDeriveDidPowerUpRequestStateError {
   const _$CommercioIdDeriveDidPowerUpRequestStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -3876,6 +3898,7 @@ class _$CommercioIdDeriveDidPowerUpRequestStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith<
           CommercioIdDeriveDidPowerUpRequestStateError>
@@ -3885,29 +3908,24 @@ class _$CommercioIdDeriveDidPowerUpRequestStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(RequestDidPowerUp didPowerUpRequest), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(RequestDidPowerUp didPowerUpRequest)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -3916,31 +3934,34 @@ class _$CommercioIdDeriveDidPowerUpRequestStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    @required
-        Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    @required
-        Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    @required Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)
+        $default, {
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateInitial value)
+        initial,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateLoading value)
+        loading,
+    required TResult Function(
+            CommercioIdDeriveDidPowerUpRequestStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdDeriveDidPowerUpRequestStateData value), {
-    Result initial(CommercioIdDeriveDidPowerUpRequestStateInitial value),
-    Result loading(CommercioIdDeriveDidPowerUpRequestStateLoading value),
-    Result error(CommercioIdDeriveDidPowerUpRequestStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateData value)?
+        $default, {
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateInitial value)?
+        initial,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateLoading value)?
+        loading,
+    TResult Function(CommercioIdDeriveDidPowerUpRequestStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -3950,80 +3971,91 @@ class _$CommercioIdDeriveDidPowerUpRequestStateError
 
 abstract class CommercioIdDeriveDidPowerUpRequestStateError
     implements CommercioIdDeriveDidPowerUpRequestState {
-  const factory CommercioIdDeriveDidPowerUpRequestStateError([String error]) =
+  const factory CommercioIdDeriveDidPowerUpRequestStateError([String? error]) =
       _$CommercioIdDeriveDidPowerUpRequestStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdDeriveDidPowerUpRequestStateErrorCopyWith<
-      CommercioIdDeriveDidPowerUpRequestStateError> get copyWith;
+          CommercioIdDeriveDidPowerUpRequestStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioIdRequestedDidPowerUpsStateTearOff {
   const _$CommercioIdRequestedDidPowerUpsStateTearOff();
 
-// ignore: unused_element
   CommercioIdRequestedDidPowerUpsStateData call(
-      {@required TransactionResult result}) {
+      {required TransactionResult result}) {
     return CommercioIdRequestedDidPowerUpsStateData(
       result: result,
     );
   }
 
-// ignore: unused_element
   CommercioIdRequestedDidPowerUpsStateInitial initial() {
     return const CommercioIdRequestedDidPowerUpsStateInitial();
   }
 
-// ignore: unused_element
   CommercioIdRequestedDidPowerUpsStateLoading loading() {
     return const CommercioIdRequestedDidPowerUpsStateLoading();
   }
 
-// ignore: unused_element
-  CommercioIdRequestedDidPowerUpsStateError error([String error]) {
+  CommercioIdRequestedDidPowerUpsStateError error([String? error]) {
     return CommercioIdRequestedDidPowerUpsStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioIdRequestedDidPowerUpsState =
     _$CommercioIdRequestedDidPowerUpsStateTearOff();
 
+/// @nodoc
 mixin _$CommercioIdRequestedDidPowerUpsState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    @required Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    @required Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    @required Result error(CommercioIdRequestedDidPowerUpsStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value) $default, {
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    Result error(CommercioIdRequestedDidPowerUpsStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value)?
+        $default, {
+    TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)?
+        initial,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)?
+        loading,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdRequestedDidPowerUpsStateCopyWith<$Res> {
   factory $CommercioIdRequestedDidPowerUpsStateCopyWith(
           CommercioIdRequestedDidPowerUpsState value,
@@ -4031,6 +4063,7 @@ abstract class $CommercioIdRequestedDidPowerUpsStateCopyWith<$Res> {
       _$CommercioIdRequestedDidPowerUpsStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRequestedDidPowerUpsStateCopyWithImpl<$Res>
     implements $CommercioIdRequestedDidPowerUpsStateCopyWith<$Res> {
   _$CommercioIdRequestedDidPowerUpsStateCopyWithImpl(this._value, this._then);
@@ -4040,6 +4073,7 @@ class _$CommercioIdRequestedDidPowerUpsStateCopyWithImpl<$Res>
   final $Res Function(CommercioIdRequestedDidPowerUpsState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioIdRequestedDidPowerUpsStateDataCopyWith<$Res> {
   factory $CommercioIdRequestedDidPowerUpsStateDataCopyWith(
           CommercioIdRequestedDidPowerUpsStateData value,
@@ -4048,6 +4082,7 @@ abstract class $CommercioIdRequestedDidPowerUpsStateDataCopyWith<$Res> {
   $Res call({TransactionResult result});
 }
 
+/// @nodoc
 class _$CommercioIdRequestedDidPowerUpsStateDataCopyWithImpl<$Res>
     extends _$CommercioIdRequestedDidPowerUpsStateCopyWithImpl<$Res>
     implements $CommercioIdRequestedDidPowerUpsStateDataCopyWith<$Res> {
@@ -4063,18 +4098,22 @@ class _$CommercioIdRequestedDidPowerUpsStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object result = freezed,
+    Object? result = freezed,
   }) {
     return _then(CommercioIdRequestedDidPowerUpsStateData(
-      result: result == freezed ? _value.result : result as TransactionResult,
+      result: result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as TransactionResult,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioIdRequestedDidPowerUpsStateData
     implements CommercioIdRequestedDidPowerUpsStateData {
-  const _$CommercioIdRequestedDidPowerUpsStateData({@required this.result})
-      : assert(result != null);
+  const _$CommercioIdRequestedDidPowerUpsStateData({required this.result});
 
   @override
   final TransactionResult result;
@@ -4096,6 +4135,7 @@ class _$CommercioIdRequestedDidPowerUpsStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdRequestedDidPowerUpsStateDataCopyWith<
           CommercioIdRequestedDidPowerUpsStateData>
@@ -4104,29 +4144,24 @@ class _$CommercioIdRequestedDidPowerUpsStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(result);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(result);
     }
@@ -4135,29 +4170,30 @@ class _$CommercioIdRequestedDidPowerUpsStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    @required Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    @required Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    @required Result error(CommercioIdRequestedDidPowerUpsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value) $default, {
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    Result error(CommercioIdRequestedDidPowerUpsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value)?
+        $default, {
+    TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)?
+        initial,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)?
+        loading,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -4168,14 +4204,17 @@ class _$CommercioIdRequestedDidPowerUpsStateData
 abstract class CommercioIdRequestedDidPowerUpsStateData
     implements CommercioIdRequestedDidPowerUpsState {
   const factory CommercioIdRequestedDidPowerUpsStateData(
-          {@required TransactionResult result}) =
+          {required TransactionResult result}) =
       _$CommercioIdRequestedDidPowerUpsStateData;
 
-  TransactionResult get result;
+  TransactionResult get result => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdRequestedDidPowerUpsStateDataCopyWith<
-      CommercioIdRequestedDidPowerUpsStateData> get copyWith;
+          CommercioIdRequestedDidPowerUpsStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioIdRequestedDidPowerUpsStateInitialCopyWith<$Res> {
   factory $CommercioIdRequestedDidPowerUpsStateInitialCopyWith(
           CommercioIdRequestedDidPowerUpsStateInitial value,
@@ -4183,6 +4222,7 @@ abstract class $CommercioIdRequestedDidPowerUpsStateInitialCopyWith<$Res> {
       _$CommercioIdRequestedDidPowerUpsStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRequestedDidPowerUpsStateInitialCopyWithImpl<$Res>
     extends _$CommercioIdRequestedDidPowerUpsStateCopyWithImpl<$Res>
     implements $CommercioIdRequestedDidPowerUpsStateInitialCopyWith<$Res> {
@@ -4196,6 +4236,8 @@ class _$CommercioIdRequestedDidPowerUpsStateInitialCopyWithImpl<$Res>
   CommercioIdRequestedDidPowerUpsStateInitial get _value =>
       super._value as CommercioIdRequestedDidPowerUpsStateInitial;
 }
+
+/// @nodoc
 
 class _$CommercioIdRequestedDidPowerUpsStateInitial
     implements CommercioIdRequestedDidPowerUpsStateInitial {
@@ -4217,29 +4259,24 @@ class _$CommercioIdRequestedDidPowerUpsStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -4248,29 +4285,30 @@ class _$CommercioIdRequestedDidPowerUpsStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    @required Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    @required Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    @required Result error(CommercioIdRequestedDidPowerUpsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value) $default, {
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    Result error(CommercioIdRequestedDidPowerUpsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value)?
+        $default, {
+    TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)?
+        initial,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)?
+        loading,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -4284,6 +4322,7 @@ abstract class CommercioIdRequestedDidPowerUpsStateInitial
       _$CommercioIdRequestedDidPowerUpsStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioIdRequestedDidPowerUpsStateLoadingCopyWith<$Res> {
   factory $CommercioIdRequestedDidPowerUpsStateLoadingCopyWith(
           CommercioIdRequestedDidPowerUpsStateLoading value,
@@ -4291,6 +4330,7 @@ abstract class $CommercioIdRequestedDidPowerUpsStateLoadingCopyWith<$Res> {
       _$CommercioIdRequestedDidPowerUpsStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioIdRequestedDidPowerUpsStateLoadingCopyWithImpl<$Res>
     extends _$CommercioIdRequestedDidPowerUpsStateCopyWithImpl<$Res>
     implements $CommercioIdRequestedDidPowerUpsStateLoadingCopyWith<$Res> {
@@ -4304,6 +4344,8 @@ class _$CommercioIdRequestedDidPowerUpsStateLoadingCopyWithImpl<$Res>
   CommercioIdRequestedDidPowerUpsStateLoading get _value =>
       super._value as CommercioIdRequestedDidPowerUpsStateLoading;
 }
+
+/// @nodoc
 
 class _$CommercioIdRequestedDidPowerUpsStateLoading
     implements CommercioIdRequestedDidPowerUpsStateLoading {
@@ -4325,29 +4367,24 @@ class _$CommercioIdRequestedDidPowerUpsStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -4356,29 +4393,30 @@ class _$CommercioIdRequestedDidPowerUpsStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    @required Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    @required Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    @required Result error(CommercioIdRequestedDidPowerUpsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value) $default, {
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    Result error(CommercioIdRequestedDidPowerUpsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value)?
+        $default, {
+    TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)?
+        initial,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)?
+        loading,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -4392,14 +4430,16 @@ abstract class CommercioIdRequestedDidPowerUpsStateLoading
       _$CommercioIdRequestedDidPowerUpsStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioIdRequestedDidPowerUpsStateErrorCopyWith<$Res> {
   factory $CommercioIdRequestedDidPowerUpsStateErrorCopyWith(
           CommercioIdRequestedDidPowerUpsStateError value,
           $Res Function(CommercioIdRequestedDidPowerUpsStateError) then) =
       _$CommercioIdRequestedDidPowerUpsStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioIdRequestedDidPowerUpsStateErrorCopyWithImpl<$Res>
     extends _$CommercioIdRequestedDidPowerUpsStateCopyWithImpl<$Res>
     implements $CommercioIdRequestedDidPowerUpsStateErrorCopyWith<$Res> {
@@ -4415,20 +4455,25 @@ class _$CommercioIdRequestedDidPowerUpsStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioIdRequestedDidPowerUpsStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
+
+/// @nodoc
 
 class _$CommercioIdRequestedDidPowerUpsStateError
     implements CommercioIdRequestedDidPowerUpsStateError {
   const _$CommercioIdRequestedDidPowerUpsStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
   String toString() {
@@ -4447,6 +4492,7 @@ class _$CommercioIdRequestedDidPowerUpsStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioIdRequestedDidPowerUpsStateErrorCopyWith<
           CommercioIdRequestedDidPowerUpsStateError>
@@ -4455,29 +4501,24 @@ class _$CommercioIdRequestedDidPowerUpsStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -4486,29 +4527,30 @@ class _$CommercioIdRequestedDidPowerUpsStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    @required Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    @required Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    @required Result error(CommercioIdRequestedDidPowerUpsStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value) $default, {
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)
+        initial,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)
+        loading,
+    required TResult Function(CommercioIdRequestedDidPowerUpsStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioIdRequestedDidPowerUpsStateData value), {
-    Result initial(CommercioIdRequestedDidPowerUpsStateInitial value),
-    Result loading(CommercioIdRequestedDidPowerUpsStateLoading value),
-    Result error(CommercioIdRequestedDidPowerUpsStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioIdRequestedDidPowerUpsStateData value)?
+        $default, {
+    TResult Function(CommercioIdRequestedDidPowerUpsStateInitial value)?
+        initial,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateLoading value)?
+        loading,
+    TResult Function(CommercioIdRequestedDidPowerUpsStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -4518,10 +4560,12 @@ class _$CommercioIdRequestedDidPowerUpsStateError
 
 abstract class CommercioIdRequestedDidPowerUpsStateError
     implements CommercioIdRequestedDidPowerUpsState {
-  const factory CommercioIdRequestedDidPowerUpsStateError([String error]) =
+  const factory CommercioIdRequestedDidPowerUpsStateError([String? error]) =
       _$CommercioIdRequestedDidPowerUpsStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioIdRequestedDidPowerUpsStateErrorCopyWith<
-      CommercioIdRequestedDidPowerUpsStateError> get copyWith;
+          CommercioIdRequestedDidPowerUpsStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }

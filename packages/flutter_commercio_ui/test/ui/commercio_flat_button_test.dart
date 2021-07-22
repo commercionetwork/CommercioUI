@@ -58,7 +58,7 @@ void main() {
 
     expect(blocMock, emitsInOrder([isA<LoadingStateMock>()]));
 
-    final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
+    final commFlatButton = CommercioTextButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
@@ -92,7 +92,7 @@ void main() {
 
     expect(blocMock, emitsInOrder([isA<DataStateMock>()]));
 
-    final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
+    final commFlatButton = CommercioTextButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
@@ -126,7 +126,7 @@ void main() {
 
     expect(blocMock, emitsInOrder([isA<ErrorStateMock>()]));
 
-    final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
+    final commFlatButton = CommercioTextButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),
@@ -161,7 +161,7 @@ void main() {
 
     expect(blocMock, emitsInOrder([isA<ErrorStateMock>()]));
 
-    final commFlatButton = CommercioFlatButton<BlocMock, EventMock, StateMock,
+    final commFlatButton = CommercioTextButton<BlocMock, EventMock, StateMock,
         LoadingStateMock, ErrorStateMock>(
       loading: (_) => const Text(loadingText),
       child: (_) => const Text(childText),

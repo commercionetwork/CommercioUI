@@ -5,16 +5,17 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 /// Mobile implementation of [ISecretStorage] that uses the secure storage
 /// avaiable in Android and iOS.
 class SecretStorage implements ISecretStorage {
-  SecretStorage({Object handler})
-      : _handler = handler ?? FlutterSecureStorage();
+  SecretStorage({Object? handler})
+      : _handler =
+            handler as FlutterSecureStorage? ?? const FlutterSecureStorage();
 
   final FlutterSecureStorage _handler;
 
   @override
-  bool get started => _handler != null;
+  bool get started => true;
 
   @override
-  Future<void> delete({String key}) {
+  Future<void> delete({required String key}) {
     if (!started) {
       throw Exception('Not already started');
     }
@@ -23,7 +24,7 @@ class SecretStorage implements ISecretStorage {
   }
 
   @override
-  Future<String> read({@required String key}) {
+  Future<String?> read({required String key}) {
     if (!started) {
       throw Exception('Not already started');
     }
@@ -32,7 +33,7 @@ class SecretStorage implements ISecretStorage {
   }
 
   @override
-  Future<void> write({@required String key, @required String value}) {
+  Future<void> write({required String key, required String value}) {
     if (!started) {
       throw Exception('Not already started');
     }

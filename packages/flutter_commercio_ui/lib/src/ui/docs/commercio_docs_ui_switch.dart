@@ -8,36 +8,21 @@ import 'package:flutter_commercio_ui/flutter_commercio_ui.dart';
 /// to opt-in or opt-out the [EncryptedData] field before do an encrypted
 /// share document action.
 class ShareDocumentEncryptedDataSwitchListTiles extends StatelessWidget {
-  final Color activeColor;
-  final Color activeTrackColor;
-  final Color inactiveThumbColor;
-  final Color inactiveTrackColor;
-  final ImageProvider activeThumbImage;
-  final ImageProvider inactiveThumbImage;
-  final Widget Function(MapEntry<EncryptedData, bool> entry) title;
-  final Widget subtitle;
-  final Widget secondary;
-  final bool isThreeLine;
-  final bool dense;
-  final EdgeInsetsGeometry contentPadding;
+  final Widget Function(MapEntry<CommercioEncryptedData, bool> entry)? title;
+  final Widget? subtitle;
   final bool selected;
+  final bool autofocus;
+  final CommercioSwitchListTileStyle style;
 
   const ShareDocumentEncryptedDataSwitchListTiles({
-    Key key,
-    this.activeColor,
-    this.activeTrackColor,
-    this.inactiveThumbColor,
-    this.inactiveTrackColor,
-    this.activeThumbImage,
-    this.inactiveThumbImage,
     this.title,
     this.subtitle,
-    this.isThreeLine = false,
-    this.dense,
-    this.contentPadding,
-    this.secondary,
     this.selected = false,
-  }) : super(key: key);
+    this.autofocus = false,
+    CommercioSwitchListTileStyle? style,
+    Key? key,
+  })  : style = style ?? const CommercioSwitchListTileStyle(),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,33 +30,25 @@ class ShareDocumentEncryptedDataSwitchListTiles extends StatelessWidget {
         builder: (_, state) {
       if (state is CommercioDocsEncDataStateData ||
           state is CommercioDocsEncDataStateInitial) {
-        Iterable<MapEntry<EncryptedData, bool>> entries;
+        late final Iterable<MapEntry<CommercioEncryptedData, bool>> entries;
 
         if (state is CommercioDocsEncDataStateData) {
           entries = state.encryptedData.entries;
-        }
-
-        if (state is CommercioDocsEncDataStateInitial) {
+        } else if (state is CommercioDocsEncDataStateInitial) {
           entries = state.encryptedData.entries;
+        } else {
+          entries = [];
         }
 
         return Column(
             children: entries
                 .map(
-                  (MapEntry<EncryptedData, bool> entry) => SwitchListTile(
-                    activeColor: activeColor,
-                    activeTrackColor: activeTrackColor,
-                    inactiveThumbColor: inactiveThumbColor,
-                    activeThumbImage: activeThumbImage,
-                    inactiveThumbImage: inactiveThumbImage,
+                  (MapEntry<CommercioEncryptedData, bool> entry) =>
+                      SwitchListTile(
                     title: title != null
-                        ? title(entry)
+                        ? title!(entry)
                         : Text(entry.key.toString().split('.')[1]),
                     subtitle: subtitle,
-                    isThreeLine: isThreeLine,
-                    dense: dense,
-                    contentPadding: contentPadding,
-                    secondary: secondary,
                     selected: selected,
                     value: entry.value,
                     onChanged: (newValue) =>
@@ -80,12 +57,27 @@ class ShareDocumentEncryptedDataSwitchListTiles extends StatelessWidget {
                       encryptedDataKey: entry.key,
                       newValue: newValue,
                     )),
+                    activeColor: style.activeColor,
+                    activeThumbImage: style.activeThumbImage,
+                    activeTrackColor: style.activeTrackColor,
+                    autofocus: autofocus,
+                    contentPadding: style.contentPadding,
+                    controlAffinity: style.controlAffinity,
+                    dense: style.dense,
+                    inactiveThumbColor: style.inactiveThumbColor,
+                    inactiveThumbImage: style.inactiveThumbImage,
+                    inactiveTrackColor: style.inactiveTrackColor,
+                    isThreeLine: style.isThreeLine,
+                    secondary: style.secondary,
+                    selectedTileColor: style.selectedTileColor,
+                    shape: style.shape,
+                    tileColor: style.tileColor,
                   ),
                 )
                 .toList());
       }
 
-      return null;
+      return Column();
     });
   }
 }

@@ -1,6 +1,4 @@
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:commerciosdk/docs/export.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'commercio_docs_event.dart';
@@ -12,8 +10,8 @@ class CommercioDocsDeriveDocumentBloc extends Bloc<
   final StatefulCommercioId commercioId;
 
   CommercioDocsDeriveDocumentBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
+    required this.commercioDocs,
+    required this.commercioId,
   }) : super(const CommercioDocsDeriveDocumentStateInitial());
 
   @override
@@ -47,8 +45,8 @@ class CommercioDocsShareDocumentsBloc extends Bloc<
   final StatefulCommercioId commercioId;
 
   CommercioDocsShareDocumentsBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
+    required this.commercioDocs,
+    required this.commercioId,
   }) : super(const CommercioDocsSharedDocumentsStateInitial());
 
   @override
@@ -77,8 +75,8 @@ class CommercioDocsDeriveReceiptBloc extends Bloc<
   final StatefulCommercioId commercioId;
 
   CommercioDocsDeriveReceiptBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
+    required this.commercioDocs,
+    required this.commercioId,
   }) : super(const CommercioDocsDeriveReceiptStateInitial());
 
   @override
@@ -108,8 +106,8 @@ class CommercioDocsSendReceiptsBloc extends Bloc<CommercioDocsSendReceiptsEvent,
   final StatefulCommercioId commercioId;
 
   CommercioDocsSendReceiptsBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
+    required this.commercioDocs,
+    required this.commercioId,
   }) : super(const CommercioDocsSentReceiptStateInitial());
 
   @override
@@ -138,8 +136,8 @@ class CommercioDocsSentDocumentsBloc extends Bloc<
   final StatefulCommercioId commercioId;
 
   CommercioDocsSentDocumentsBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
+    required this.commercioDocs,
+    required this.commercioId,
   }) : super(const CommercioDocsSentDocumentsStateInitial());
 
   @override
@@ -166,8 +164,8 @@ class CommercioDocsReceivedDocumentsBloc extends Bloc<
   final StatefulCommercioId commercioId;
 
   CommercioDocsReceivedDocumentsBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
+    required this.commercioDocs,
+    required this.commercioId,
   }) : super(const CommercioDocsReceivedDocumentsStateInitial());
 
   @override
@@ -196,8 +194,8 @@ class CommercioDocsSentReceiptsBloc extends Bloc<CommercioDocsSentReceiptsEvent,
   final StatefulCommercioId commercioId;
 
   CommercioDocsSentReceiptsBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
+    required this.commercioDocs,
+    required this.commercioId,
   }) : super(const CommercioDocsSentReceiptsStateInitial());
 
   @override
@@ -224,8 +222,8 @@ class CommercioDocsReceivedReceiptsBloc extends Bloc<
   final StatefulCommercioId commercioId;
 
   CommercioDocsReceivedReceiptsBloc({
-    @required this.commercioDocs,
-    @required this.commercioId,
+    required this.commercioDocs,
+    required this.commercioId,
   }) : super(const CommercioDocsReceivedReceiptsStateInitial());
 
   @override
@@ -248,32 +246,39 @@ class CommercioDocsReceivedReceiptsBloc extends Bloc<
   }
 }
 
-/// Handle changes in a list of [EncryptedData] fields. Every field has a
-/// [bool] value that indicates if the [EncryptedData] should be encrypted
+/// Handle changes in a list of [CommercioEncryptedData] fields. Every field has
+/// a [bool] value that indicates if the [EncryptedData] should be encrypted
 /// in a [CommercioDocsShareEncryptedDocumentEvent].
 class CommercioDocsEncDataBloc
     extends Bloc<CommercioDocsEncDataEvent, CommercioDocsEncDataState> {
-  final Map<EncryptedData, bool> encryptedData = {
-    EncryptedData.CONTENT_URI: false,
-    EncryptedData.METADATA_CONTENT_URI: false,
-    EncryptedData.METADATA_SCHEMA_URI: false,
+  final Map<CommercioEncryptedData, bool> encryptedData = {
+    CommercioEncryptedData.CONTENT_URI: false,
+    CommercioEncryptedData.METADATA_CONTENT_URI: false,
+    CommercioEncryptedData.METADATA_SCHEMA_URI: false,
   };
 
   CommercioDocsEncDataBloc()
-      : super(CommercioDocsEncDataStateInitial(encryptedData: {
-          EncryptedData.CONTENT_URI: false,
-          EncryptedData.METADATA_CONTENT_URI: false,
-          EncryptedData.METADATA_SCHEMA_URI: false,
+      : super(const CommercioDocsEncDataStateInitial(encryptedData: {
+          CommercioEncryptedData.CONTENT_URI: false,
+          CommercioEncryptedData.METADATA_CONTENT_URI: false,
+          CommercioEncryptedData.METADATA_SCHEMA_URI: false,
         }));
 
-  /// Returns a list with the [EncryptedData] that have a [true] value,
+  /// Returns a list with the [CommercioEncryptedData] that have a [true] value,
   /// that is, chosen be the user to be encrypted.
-  /// Commonly used as parameter for
-  /// [CommercioDocsShareEncryptedDocumentEvent].
-  List<EncryptedData> get encryptedDataList => encryptedData.entries
+  /// Commonly used as parameter for [CommercioDocsDeriveDocumentEvent].
+  List<CommercioEncryptedData> get encryptedDataList => encryptedData.entries
       .where((element) => element.value)
       .map((e) => e.key)
       .toList();
+
+  /// Returns a set with the [CommercioEncryptedData] that have a [true] value,
+  /// that is, chosen be the user to be encrypted.
+  /// Commonly used as parameter for [CommercioDocsDeriveDocumentEvent].
+  Set<CommercioEncryptedData> get encryptedDataSet => encryptedData.entries
+      .where((element) => element.value)
+      .map((e) => e.key)
+      .toSet();
 
   @override
   Stream<CommercioDocsEncDataState> mapEventToState(
@@ -283,7 +288,8 @@ class CommercioDocsEncDataBloc
       yield const CommercioDocsEncDataStateLoading();
 
       encryptedData[event.encryptedDataKey] = event.newValue;
-      final newEncryptedData = Map<EncryptedData, bool>.from(encryptedData);
+      final newEncryptedData =
+          Map<CommercioEncryptedData, bool>.from(encryptedData);
 
       yield CommercioDocsEncDataStateData(encryptedData: newEncryptedData);
     }

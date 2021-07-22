@@ -26,7 +26,7 @@ void main() {
   });
 
   test('CommercioMintDeriveCloseCdpEvent', () {
-    final event = CommercioMintDeriveCloseCdpEvent(
+    final event = CommercioMintDeriveBurnCCCEvent(
       blockHeight: correctBlockHeigth,
     );
 
@@ -36,7 +36,7 @@ void main() {
   test('CommercioMintCloseCdpsEvent', () {
     const fee = StdFee(amount: [], gas: 'gas');
 
-    final event = CommercioMintCloseCdpsEvent(
+    final event = CommercioMintBurnCCCEvent(
       closeCdps: [correctCloseCdp],
       fee: fee,
       mode: mode,

@@ -8,3 +8,4 @@ export 'docs/commercio_docs_ui.dart';
 export 'id/export.dart';
 export 'kyc/export.dart';
 export 'mint/export.dart';
+export 'widgets/widgets.dart';

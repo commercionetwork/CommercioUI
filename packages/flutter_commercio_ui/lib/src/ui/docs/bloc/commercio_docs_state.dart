@@ -5,10 +5,9 @@ import 'package:sacco/sacco.dart';
 part 'commercio_docs_state.freezed.dart';
 
 @freezed
-abstract class CommercioDocsDeriveDocumentState
-    with _$CommercioDocsDeriveDocumentState {
+class CommercioDocsDeriveDocumentState with _$CommercioDocsDeriveDocumentState {
   const factory CommercioDocsDeriveDocumentState({
-    @required CommercioDoc commercioDoc,
+    required CommercioDoc commercioDoc,
   }) = CommercioDocsDeriveDocumentStateData;
 
   const factory CommercioDocsDeriveDocumentState.initial() =
@@ -17,15 +16,15 @@ abstract class CommercioDocsDeriveDocumentState
   const factory CommercioDocsDeriveDocumentState.loading() =
       CommercioDocsDeriveDocumentStateLoading;
 
-  const factory CommercioDocsDeriveDocumentState.error([String error]) =
+  const factory CommercioDocsDeriveDocumentState.error([String? error]) =
       CommercioDocsDeriveDocumentStateError;
 }
 
 @freezed
-abstract class CommercioDocsSharedDocumentsState
+class CommercioDocsSharedDocumentsState
     with _$CommercioDocsSharedDocumentsState {
   const factory CommercioDocsSharedDocumentsState({
-    @required TransactionResult result,
+    required TransactionResult result,
   }) = CommercioDocsSharedDocumentsStateData;
 
   const factory CommercioDocsSharedDocumentsState.initial() =
@@ -34,15 +33,14 @@ abstract class CommercioDocsSharedDocumentsState
   const factory CommercioDocsSharedDocumentsState.loading() =
       CommercioDocsSharedDocumentsStateLoading;
 
-  const factory CommercioDocsSharedDocumentsState.error([String error]) =
+  const factory CommercioDocsSharedDocumentsState.error([String? error]) =
       CommercioDocsSharedDocumentsStateError;
 }
 
 @freezed
-abstract class CommercioDocsSentReceiptState
-    with _$CommercioDocsSentReceiptState {
+class CommercioDocsSentReceiptState with _$CommercioDocsSentReceiptState {
   const factory CommercioDocsSentReceiptState({
-    @required TransactionResult result,
+    required TransactionResult result,
   }) = CommercioDocsSentReceiptStateData;
 
   const factory CommercioDocsSentReceiptState.initial() =
@@ -51,15 +49,14 @@ abstract class CommercioDocsSentReceiptState
   const factory CommercioDocsSentReceiptState.loading() =
       CommercioDocsSentReceiptStateLoading;
 
-  const factory CommercioDocsSentReceiptState.error([String error]) =
+  const factory CommercioDocsSentReceiptState.error([String? error]) =
       CommercioDocsSentReceiptStateError;
 }
 
 @freezed
-abstract class CommercioDocsSentDocumentsState
-    with _$CommercioDocsSentDocumentsState {
+class CommercioDocsSentDocumentsState with _$CommercioDocsSentDocumentsState {
   const factory CommercioDocsSentDocumentsState({
-    @required List<CommercioDoc> sentDocuments,
+    required List<CommercioDoc> sentDocuments,
   }) = CommercioDocsSentDocumentsStateData;
 
   const factory CommercioDocsSentDocumentsState.initial() =
@@ -68,15 +65,15 @@ abstract class CommercioDocsSentDocumentsState
   const factory CommercioDocsSentDocumentsState.loading() =
       CommercioDocsSentDocumentsStateLoading;
 
-  const factory CommercioDocsSentDocumentsState.error([String error]) =
+  const factory CommercioDocsSentDocumentsState.error([String? error]) =
       CommercioDocsSentDocumentsStateError;
 }
 
 @freezed
-abstract class CommercioDocsReceivedDocumentsState
+class CommercioDocsReceivedDocumentsState
     with _$CommercioDocsReceivedDocumentsState {
   const factory CommercioDocsReceivedDocumentsState({
-    @required List<CommercioDoc> receivedDocuments,
+    required List<CommercioDoc> receivedDocuments,
   }) = CommercioDocsReceivedDocumentsStateData;
 
   const factory CommercioDocsReceivedDocumentsState.initial() =
@@ -85,15 +82,14 @@ abstract class CommercioDocsReceivedDocumentsState
   const factory CommercioDocsReceivedDocumentsState.loading() =
       CommercioDocsReceivedDocumentsStateLoading;
 
-  const factory CommercioDocsReceivedDocumentsState.error([String error]) =
+  const factory CommercioDocsReceivedDocumentsState.error([String? error]) =
       CommercioDocsReceivedDocumentsStateError;
 }
 
 @freezed
-abstract class CommercioDocsSentReceiptsState
-    with _$CommercioDocsSentReceiptsState {
+class CommercioDocsSentReceiptsState with _$CommercioDocsSentReceiptsState {
   const factory CommercioDocsSentReceiptsState({
-    @required List<CommercioDocReceipt> sentReceipts,
+    required List<CommercioDocReceipt> sentReceipts,
   }) = CommercioDocsSentReceiptsStateData;
 
   const factory CommercioDocsSentReceiptsState.initial() =
@@ -102,15 +98,15 @@ abstract class CommercioDocsSentReceiptsState
   const factory CommercioDocsSentReceiptsState.loading() =
       CommercioDocsSentReceiptsStateLoading;
 
-  const factory CommercioDocsSentReceiptsState.error([String error]) =
+  const factory CommercioDocsSentReceiptsState.error([String? error]) =
       CommercioDocsSentReceiptsStateError;
 }
 
 @freezed
-abstract class CommercioDocsReceivedReceiptsState
+class CommercioDocsReceivedReceiptsState
     with _$CommercioDocsReceivedReceiptsState {
   const factory CommercioDocsReceivedReceiptsState({
-    @required List<CommercioDocReceipt> receivedReceipts,
+    required List<CommercioDocReceipt> receivedReceipts,
   }) = CommercioDocsReceivedReceiptsStateData;
 
   const factory CommercioDocsReceivedReceiptsState.initial() =
@@ -119,32 +115,31 @@ abstract class CommercioDocsReceivedReceiptsState
   const factory CommercioDocsReceivedReceiptsState.loading() =
       CommercioDocsReceivedReceiptsStateLoading;
 
-  const factory CommercioDocsReceivedReceiptsState.error([String error]) =
+  const factory CommercioDocsReceivedReceiptsState.error([String? error]) =
       CommercioDocsReceivedReceiptsStateError;
 }
 
 @freezed
-abstract class CommercioDocsEncDataState with _$CommercioDocsEncDataState {
+class CommercioDocsEncDataState with _$CommercioDocsEncDataState {
   const factory CommercioDocsEncDataState({
-    @required Map<EncryptedData, bool> encryptedData,
+    required Map<CommercioEncryptedData, bool> encryptedData,
   }) = CommercioDocsEncDataStateData;
 
   const factory CommercioDocsEncDataState.initial({
-    @required Map<EncryptedData, bool> encryptedData,
+    required Map<CommercioEncryptedData, bool> encryptedData,
   }) = CommercioDocsEncDataStateInitial;
 
   const factory CommercioDocsEncDataState.loading() =
       CommercioDocsEncDataStateLoading;
 
-  const factory CommercioDocsEncDataState.error([String error]) =
+  const factory CommercioDocsEncDataState.error([String? error]) =
       CommercioDocsEncDataStateError;
 }
 
 @freezed
-abstract class CommercioDocsDeriveReceiptState
-    with _$CommercioDocsDeriveReceiptState {
+class CommercioDocsDeriveReceiptState with _$CommercioDocsDeriveReceiptState {
   const factory CommercioDocsDeriveReceiptState({
-    @required CommercioDocReceipt commercioDocReceipt,
+    required CommercioDocReceipt commercioDocReceipt,
   }) = CommercioDocsDeriveReceiptStateData;
 
   const factory CommercioDocsDeriveReceiptState.initial() =
@@ -153,6 +148,6 @@ abstract class CommercioDocsDeriveReceiptState
   const factory CommercioDocsDeriveReceiptState.loading() =
       CommercioDocsDeriveReceiptStateLoading;
 
-  const factory CommercioDocsDeriveReceiptState.error([String error]) =
+  const factory CommercioDocsDeriveReceiptState.error([String? error]) =
       CommercioDocsDeriveReceiptStateError;
 }

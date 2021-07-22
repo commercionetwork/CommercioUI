@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:commercio_ui/commercio_ui.dart';
-import 'package:flutter/foundation.dart';
 
 import 'commercio_account_event.dart';
 import 'commercio_account_state.dart';
@@ -11,7 +10,7 @@ class CommercioAccountGenerateWalletBloc extends Bloc<
     CommercioAccountGenerateWalletEvent, CommercioAccountGenerateWalletState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountGenerateWalletBloc({@required this.commercioAccount})
+  CommercioAccountGenerateWalletBloc({required this.commercioAccount})
       : super(const CommercioAccountGenerateWalletInitial());
 
   @override
@@ -29,7 +28,7 @@ class CommercioAccountGenerateWalletBloc extends Bloc<
       yield CommercioAccountGenerateWalletData(
         mnemonic: walletWithMnemonic.mnemonic,
         wallet: walletWithMnemonic.wallet,
-        walletAddress: commercioAccount.walletAddress,
+        walletAddress: walletWithMnemonic.wallet.bech32Address,
       );
     } catch (e) {
       yield CommercioAccountGenerateWalletError(e.toString());
@@ -41,7 +40,7 @@ class CommercioAccountRestoreWalletBloc extends Bloc<
     CommercioAccountRestoreWalletEvent, CommercioAccountRestoredWalletState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountRestoreWalletBloc({@required this.commercioAccount})
+  CommercioAccountRestoreWalletBloc({required this.commercioAccount})
       : super(const CommercioAccountRestoredWalletStateInitial());
 
   @override
@@ -63,7 +62,7 @@ class CommercioAccountRestoreWalletBloc extends Bloc<
       yield CommercioAccountRestoredWalletStateData(
         mnemonic: walletWithMnemonic.mnemonic,
         wallet: walletWithMnemonic.wallet,
-        walletAddress: commercioAccount.walletAddress,
+        walletAddress: walletWithMnemonic.wallet.bech32Address,
       );
     } catch (e) {
       yield CommercioAccountRestoredWalletStateError(e.toString());
@@ -75,7 +74,7 @@ class CommercioAccountGenerateQrBloc
     extends Bloc<CommercioAccountGenerateQrEvent, CommercioAccountQrState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountGenerateQrBloc({@required this.commercioAccount})
+  CommercioAccountGenerateQrBloc({required this.commercioAccount})
       : super(const CommercioAccountQrStateInitial());
 
   @override
@@ -90,7 +89,7 @@ class CommercioAccountGenerateQrBloc
       }
 
       yield CommercioAccountQrStateData(
-        walletAddress: commercioAccount.walletAddress,
+        walletAddress: commercioAccount.walletAddress!,
       );
     } catch (e) {
       yield CommercioAccountQrStateError(e.toString());
@@ -102,7 +101,7 @@ class CommercioAccountCheckBalanceBloc extends Bloc<
     CommercioAccountCheckBalanceEvent, CommercioAccountBalanceState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountCheckBalanceBloc({@required this.commercioAccount})
+  CommercioAccountCheckBalanceBloc({required this.commercioAccount})
       : super(const CommercioAccountBalanceStateInitial());
 
   @override
@@ -125,7 +124,7 @@ class CommercioAccountSendTokensBloc extends Bloc<
     CommercioAccountSendTokensEvent, CommercioAccountSentTokensState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountSendTokensBloc({@required this.commercioAccount})
+  CommercioAccountSendTokensBloc({required this.commercioAccount})
       : super(const CommercioAccountSentTokensStateInitial());
 
   @override
@@ -153,7 +152,7 @@ class CommercioAccountRequestFreeTokensBloc extends Bloc<
     CommercioAccountRequestFreeTokensEvent, CommercioAccountFreeTokensState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountRequestFreeTokensBloc({@required this.commercioAccount})
+  CommercioAccountRequestFreeTokensBloc({required this.commercioAccount})
       : super(const CommercioAccountFreeTokensStateInitial());
 
   @override
@@ -180,7 +179,7 @@ class CommercioAccountGeneratePairwiseWalletBloc extends Bloc<
     CommercioAccountPaiwiseWalletState> {
   final StatefulCommercioAccount commercioAccount;
 
-  CommercioAccountGeneratePairwiseWalletBloc({@required this.commercioAccount})
+  CommercioAccountGeneratePairwiseWalletBloc({required this.commercioAccount})
       : super(const CommercioAccountPaiwiseWalletStateInitial());
 
   @override

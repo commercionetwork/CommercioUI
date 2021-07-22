@@ -6,10 +6,10 @@ import 'package:sacco/sacco.dart';
 part 'commercio_kyc_state.freezed.dart';
 
 @freezed
-abstract class CommercioKycRequestedFaucetInviteState
+class CommercioKycRequestedFaucetInviteState
     with _$CommercioKycRequestedFaucetInviteState {
   const factory CommercioKycRequestedFaucetInviteState({
-    @required FaucetInviteResponse response,
+    required FaucetInviteResponse response,
   }) = CommercioKycRequestedFaucetInviteStateData;
 
   const factory CommercioKycRequestedFaucetInviteState.initial() =
@@ -18,15 +18,15 @@ abstract class CommercioKycRequestedFaucetInviteState
   const factory CommercioKycRequestedFaucetInviteState.loading() =
       CommercioKycRequestedFaucetInviteStateLoading;
 
-  const factory CommercioKycRequestedFaucetInviteState.error([String error]) =
+  const factory CommercioKycRequestedFaucetInviteState.error([String? error]) =
       CommercioKycRequestedFaucetInviteStateError;
 }
 
 @freezed
-abstract class CommercioKycDeriveBuyMembershipState
+class CommercioKycDeriveBuyMembershipState
     with _$CommercioKycDeriveBuyMembershipState {
   const factory CommercioKycDeriveBuyMembershipState({
-    @required BuyMembership buyMembership,
+    required BuyMembership buyMembership,
   }) = CommercioKycDeriveBuyMembershipStateData;
 
   const factory CommercioKycDeriveBuyMembershipState.initial() =
@@ -35,15 +35,14 @@ abstract class CommercioKycDeriveBuyMembershipState
   const factory CommercioKycDeriveBuyMembershipState.loading() =
       CommercioKycDeriveBuyMembershipStateLoading;
 
-  const factory CommercioKycDeriveBuyMembershipState.error([String error]) =
+  const factory CommercioKycDeriveBuyMembershipState.error([String? error]) =
       CommercioKycDeriveBuyMembershipStateError;
 }
 
 @freezed
-abstract class CommercioKycBuyMembershipsState
-    with _$CommercioKycBuyMembershipsState {
+class CommercioKycBuyMembershipsState with _$CommercioKycBuyMembershipsState {
   const factory CommercioKycBuyMembershipsState({
-    @required TransactionResult result,
+    required TransactionResult result,
   }) = CommercioKycBuyMembershipsStateData;
 
   const factory CommercioKycBuyMembershipsState.initial() =
@@ -52,15 +51,15 @@ abstract class CommercioKycBuyMembershipsState
   const factory CommercioKycBuyMembershipsState.loading() =
       CommercioKycBuyMembershipsStateLoading;
 
-  const factory CommercioKycBuyMembershipsState.error([String error]) =
+  const factory CommercioKycBuyMembershipsState.error([String? error]) =
       CommercioKycBuyMembershipsStateError;
 }
 
 @freezed
-abstract class CommercioKycDeriveInviteMemberState
+class CommercioKycDeriveInviteMemberState
     with _$CommercioKycDeriveInviteMemberState {
   const factory CommercioKycDeriveInviteMemberState({
-    @required InviteUser inviteUser,
+    required InviteUser inviteUser,
   }) = CommercioKycDeriveInviteMemberStateData;
 
   const factory CommercioKycDeriveInviteMemberState.initial() =
@@ -69,15 +68,14 @@ abstract class CommercioKycDeriveInviteMemberState
   const factory CommercioKycDeriveInviteMemberState.loading() =
       CommercioKycDeriveInviteMemberStateLoading;
 
-  const factory CommercioKycDeriveInviteMemberState.error([String error]) =
+  const factory CommercioKycDeriveInviteMemberState.error([String? error]) =
       CommercioKycDeriveInviteMemberStateError;
 }
 
 @freezed
-abstract class CommercioKycInviteMembersState
-    with _$CommercioKycInviteMembersState {
+class CommercioKycInviteMembersState with _$CommercioKycInviteMembersState {
   const factory CommercioKycInviteMembersState({
-    @required TransactionResult result,
+    required TransactionResult result,
   }) = CommercioKycInviteMembersStateData;
 
   const factory CommercioKycInviteMembersState.initial() =
@@ -86,18 +84,18 @@ abstract class CommercioKycInviteMembersState
   const factory CommercioKycInviteMembersState.loading() =
       CommercioKycInviteMembersStateLoading;
 
-  const factory CommercioKycInviteMembersState.error([String error]) =
+  const factory CommercioKycInviteMembersState.error([String? error]) =
       CommercioKycInviteMembersStateError;
 }
 
 @freezed
-abstract class CommercioKycChangeMembershipState
+class CommercioKycChangeMembershipState
     with _$CommercioKycChangeMembershipState {
   const factory CommercioKycChangeMembershipState({
-    @required MembershipType membershipType,
+    required MembershipType membershipType,
   }) = CommercioKycChangedMembershipState;
 
   const factory CommercioKycChangeMembershipState.initial({
-    @required MembershipType membershipType,
+    required MembershipType membershipType,
   }) = CommercioKycChangeMembershipStateInitial;
 }

@@ -1,55 +1,87 @@
 import 'package:commerciosdk/export.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sacco/sacco.dart';
+import 'package:flutter/foundation.dart';
 
 part 'commercio_mint_state.freezed.dart';
 
 @freezed
-abstract class CommercioMintOpenedCdpState with _$CommercioMintOpenedCdpState {
-  const factory CommercioMintOpenedCdpState({
-    @required TransactionResult result,
-  }) = CommercioMintOpenedCdpStateData;
+class CommercioMintDeriveCCCState with _$CommercioMintDeriveCCCState {
+  const factory CommercioMintDeriveCCCState({
+    required MintCcc mintCcc,
+  }) = CommercioMintDeriveCCCStateData;
 
-  const factory CommercioMintOpenedCdpState.initial() =
-      CommercioMintOpenedCdpStateInitial;
+  const factory CommercioMintDeriveCCCState.initial() =
+      CommercioMintDeriveCCCStateInitial;
 
-  const factory CommercioMintOpenedCdpState.loading() =
-      CommercioMintOpenedCdpStateLoading;
+  const factory CommercioMintDeriveCCCState.loading() =
+      CommercioMintDeriveCCCStateLoading;
 
-  const factory CommercioMintOpenedCdpState.error([String error]) =
-      CommercioMintOpenedCdpStateError;
+  const factory CommercioMintDeriveCCCState.error([String? error]) =
+      CommercioMintDeriveCCCStateError;
 }
 
 @freezed
-abstract class CommercioMintDeriveCloseCdpState
-    with _$CommercioMintDeriveCloseCdpState {
-  const factory CommercioMintDeriveCloseCdpState({
-    @required CloseCdp closeCdp,
-  }) = CommercioMintDeriveCloseCdpStateData;
+class CommercioMintMintedCCCState with _$CommercioMintMintedCCCState {
+  const factory CommercioMintMintedCCCState({
+    required TransactionResult result,
+  }) = CommercioMintMintedCCCStateData;
 
-  const factory CommercioMintDeriveCloseCdpState.initial() =
-      CommercioMintDeriveCloseCdpStateInitial;
+  const factory CommercioMintMintedCCCState.initial() =
+      CommercioMintMintedCCCStateInitial;
 
-  const factory CommercioMintDeriveCloseCdpState.loading() =
-      CommercioMintDeriveCloseCdpStateLoading;
+  const factory CommercioMintMintedCCCState.loading() =
+      CommercioMintMintedCCCStateLoading;
 
-  const factory CommercioMintDeriveCloseCdpState.error([String error]) =
-      CommercioMintDeriveCloseCdpStateError;
+  const factory CommercioMintMintedCCCState.error([String? error]) =
+      CommercioMintMintedCCCStateError;
 }
 
 @freezed
-abstract class CommercioMintClosedCdpsState
-    with _$CommercioMintClosedCdpsState {
-  const factory CommercioMintClosedCdpsState({
-    @required TransactionResult result,
-  }) = CommercioMintClosedCdpsStateData;
+class CommercioMintDeriveBurnCCCState with _$CommercioMintDeriveBurnCCCState {
+  const factory CommercioMintDeriveBurnCCCState({
+    required BurnCcc burnCcc,
+  }) = CommercioMintDeriveBurnCCCStateData;
 
-  const factory CommercioMintClosedCdpsState.initial() =
-      CommercioMintClosedCdpsStateInitial;
+  const factory CommercioMintDeriveBurnCCCState.initial() =
+      CommercioMintDeriveBurnCCCStateInitial;
 
-  const factory CommercioMintClosedCdpsState.loading() =
-      CommercioMintClosedCdpsStateLoading;
+  const factory CommercioMintDeriveBurnCCCState.loading() =
+      CommercioMintDeriveBurnCCCStateLoading;
 
-  const factory CommercioMintClosedCdpsState.error([String error]) =
-      CommercioMintClosedCdpsStateError;
+  const factory CommercioMintDeriveBurnCCCState.error([String? error]) =
+      CommercioMintDeriveBurnCCCStateError;
+}
+
+@freezed
+class CommercioMintBurnCCCState with _$CommercioMintBurnCCCState {
+  const factory CommercioMintBurnCCCState({
+    required TransactionResult result,
+  }) = CommercioMintBurnCCCStateData;
+
+  const factory CommercioMintBurnCCCState.initial() =
+      CommercioMintBurnCCCStateInitial;
+
+  const factory CommercioMintBurnCCCState.loading() =
+      CommercioMintBurnCCCStateLoading;
+
+  const factory CommercioMintBurnCCCState.error([String? error]) =
+      CommercioMintBurnCCCStateError;
+}
+
+@freezed
+class CommercioMintGetExchangeTradePositionsState
+    with _$CommercioMintGetExchangeTradePositionsState {
+  const factory CommercioMintGetExchangeTradePositionsState({
+    required List<ExchangeTradePosition> exchangeTradePositions,
+  }) = CommercioMintGetExchangeTradePositionsStateData;
+
+  const factory CommercioMintGetExchangeTradePositionsState.initial() =
+      CommercioMintGetExchangeTradePositionsStateInitial;
+
+  const factory CommercioMintGetExchangeTradePositionsState.loading() =
+      CommercioMintGetExchangeTradePositionsStateLoading;
+
+  const factory CommercioMintGetExchangeTradePositionsState.error(
+      [String? error]) = CommercioMintGetExchangeTradePositionsStateError;
 }

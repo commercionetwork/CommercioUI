@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'commercio_account_state.dart';
 
@@ -9,14 +9,17 @@ part of 'commercio_account_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
 class _$CommercioAccountGenerateWalletStateTearOff {
   const _$CommercioAccountGenerateWalletStateTearOff();
 
-// ignore: unused_element
   CommercioAccountGenerateWalletData call(
-      {@required String mnemonic,
-      @required Wallet wallet,
-      @required String walletAddress}) {
+      {required String mnemonic,
+      required Wallet wallet,
+      required String walletAddress}) {
     return CommercioAccountGenerateWalletData(
       mnemonic: mnemonic,
       wallet: wallet,
@@ -24,61 +27,68 @@ class _$CommercioAccountGenerateWalletStateTearOff {
     );
   }
 
-// ignore: unused_element
   CommercioAccountGenerateWalletInitial initial() {
     return const CommercioAccountGenerateWalletInitial();
   }
 
-// ignore: unused_element
   CommercioAccountGenerateWalletLoading loading() {
     return const CommercioAccountGenerateWalletLoading();
   }
 
-// ignore: unused_element
-  CommercioAccountGenerateWalletError error([String error]) {
+  CommercioAccountGenerateWalletError error([String? error]) {
     return CommercioAccountGenerateWalletError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioAccountGenerateWalletState =
     _$CommercioAccountGenerateWalletStateTearOff();
 
+/// @nodoc
 mixin _$CommercioAccountGenerateWalletState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    @required Result initial(CommercioAccountGenerateWalletInitial value),
-    @required Result loading(CommercioAccountGenerateWalletLoading value),
-    @required Result error(CommercioAccountGenerateWalletError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value) $default, {
+    required TResult Function(CommercioAccountGenerateWalletInitial value)
+        initial,
+    required TResult Function(CommercioAccountGenerateWalletLoading value)
+        loading,
+    required TResult Function(CommercioAccountGenerateWalletError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    Result initial(CommercioAccountGenerateWalletInitial value),
-    Result loading(CommercioAccountGenerateWalletLoading value),
-    Result error(CommercioAccountGenerateWalletError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value)? $default, {
+    TResult Function(CommercioAccountGenerateWalletInitial value)? initial,
+    TResult Function(CommercioAccountGenerateWalletLoading value)? loading,
+    TResult Function(CommercioAccountGenerateWalletError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountGenerateWalletStateCopyWith<$Res> {
   factory $CommercioAccountGenerateWalletStateCopyWith(
           CommercioAccountGenerateWalletState value,
@@ -86,6 +96,7 @@ abstract class $CommercioAccountGenerateWalletStateCopyWith<$Res> {
       _$CommercioAccountGenerateWalletStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountGenerateWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountGenerateWalletStateCopyWith<$Res> {
   _$CommercioAccountGenerateWalletStateCopyWithImpl(this._value, this._then);
@@ -95,6 +106,7 @@ class _$CommercioAccountGenerateWalletStateCopyWithImpl<$Res>
   final $Res Function(CommercioAccountGenerateWalletState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioAccountGenerateWalletDataCopyWith<$Res> {
   factory $CommercioAccountGenerateWalletDataCopyWith(
           CommercioAccountGenerateWalletData value,
@@ -103,6 +115,7 @@ abstract class $CommercioAccountGenerateWalletDataCopyWith<$Res> {
   $Res call({String mnemonic, Wallet wallet, String walletAddress});
 }
 
+/// @nodoc
 class _$CommercioAccountGenerateWalletDataCopyWithImpl<$Res>
     extends _$CommercioAccountGenerateWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountGenerateWalletDataCopyWith<$Res> {
@@ -117,29 +130,36 @@ class _$CommercioAccountGenerateWalletDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object mnemonic = freezed,
-    Object wallet = freezed,
-    Object walletAddress = freezed,
+    Object? mnemonic = freezed,
+    Object? wallet = freezed,
+    Object? walletAddress = freezed,
   }) {
     return _then(CommercioAccountGenerateWalletData(
-      mnemonic: mnemonic == freezed ? _value.mnemonic : mnemonic as String,
-      wallet: wallet == freezed ? _value.wallet : wallet as Wallet,
+      mnemonic: mnemonic == freezed
+          ? _value.mnemonic
+          : mnemonic // ignore: cast_nullable_to_non_nullable
+              as String,
+      wallet: wallet == freezed
+          ? _value.wallet
+          : wallet // ignore: cast_nullable_to_non_nullable
+              as Wallet,
       walletAddress: walletAddress == freezed
           ? _value.walletAddress
-          : walletAddress as String,
+          : walletAddress // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountGenerateWalletData
+    with DiagnosticableTreeMixin
     implements CommercioAccountGenerateWalletData {
   const _$CommercioAccountGenerateWalletData(
-      {@required this.mnemonic,
-      @required this.wallet,
-      @required this.walletAddress})
-      : assert(mnemonic != null),
-        assert(wallet != null),
-        assert(walletAddress != null);
+      {required this.mnemonic,
+      required this.wallet,
+      required this.walletAddress});
 
   @override
   final String mnemonic;
@@ -149,8 +169,18 @@ class _$CommercioAccountGenerateWalletData
   final String walletAddress;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountGenerateWalletState(mnemonic: $mnemonic, wallet: $wallet, walletAddress: $walletAddress)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountGenerateWalletState'))
+      ..add(DiagnosticsProperty('mnemonic', mnemonic))
+      ..add(DiagnosticsProperty('wallet', wallet))
+      ..add(DiagnosticsProperty('walletAddress', walletAddress));
   }
 
   @override
@@ -174,6 +204,7 @@ class _$CommercioAccountGenerateWalletData
       const DeepCollectionEquality().hash(wallet) ^
       const DeepCollectionEquality().hash(walletAddress);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountGenerateWalletDataCopyWith<
           CommercioAccountGenerateWalletData>
@@ -182,29 +213,26 @@ class _$CommercioAccountGenerateWalletData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(mnemonic, wallet, walletAddress);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(mnemonic, wallet, walletAddress);
     }
@@ -213,29 +241,26 @@ class _$CommercioAccountGenerateWalletData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    @required Result initial(CommercioAccountGenerateWalletInitial value),
-    @required Result loading(CommercioAccountGenerateWalletLoading value),
-    @required Result error(CommercioAccountGenerateWalletError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value) $default, {
+    required TResult Function(CommercioAccountGenerateWalletInitial value)
+        initial,
+    required TResult Function(CommercioAccountGenerateWalletLoading value)
+        loading,
+    required TResult Function(CommercioAccountGenerateWalletError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    Result initial(CommercioAccountGenerateWalletInitial value),
-    Result loading(CommercioAccountGenerateWalletLoading value),
-    Result error(CommercioAccountGenerateWalletError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value)? $default, {
+    TResult Function(CommercioAccountGenerateWalletInitial value)? initial,
+    TResult Function(CommercioAccountGenerateWalletLoading value)? loading,
+    TResult Function(CommercioAccountGenerateWalletError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -246,17 +271,20 @@ class _$CommercioAccountGenerateWalletData
 abstract class CommercioAccountGenerateWalletData
     implements CommercioAccountGenerateWalletState {
   const factory CommercioAccountGenerateWalletData(
-      {@required String mnemonic,
-      @required Wallet wallet,
-      @required String walletAddress}) = _$CommercioAccountGenerateWalletData;
+      {required String mnemonic,
+      required Wallet wallet,
+      required String walletAddress}) = _$CommercioAccountGenerateWalletData;
 
-  String get mnemonic;
-  Wallet get wallet;
-  String get walletAddress;
+  String get mnemonic => throw _privateConstructorUsedError;
+  Wallet get wallet => throw _privateConstructorUsedError;
+  String get walletAddress => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountGenerateWalletDataCopyWith<
-      CommercioAccountGenerateWalletData> get copyWith;
+          CommercioAccountGenerateWalletData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountGenerateWalletInitialCopyWith<$Res> {
   factory $CommercioAccountGenerateWalletInitialCopyWith(
           CommercioAccountGenerateWalletInitial value,
@@ -264,6 +292,7 @@ abstract class $CommercioAccountGenerateWalletInitialCopyWith<$Res> {
       _$CommercioAccountGenerateWalletInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountGenerateWalletInitialCopyWithImpl<$Res>
     extends _$CommercioAccountGenerateWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountGenerateWalletInitialCopyWith<$Res> {
@@ -277,13 +306,24 @@ class _$CommercioAccountGenerateWalletInitialCopyWithImpl<$Res>
       super._value as CommercioAccountGenerateWalletInitial;
 }
 
+/// @nodoc
+
 class _$CommercioAccountGenerateWalletInitial
+    with DiagnosticableTreeMixin
     implements CommercioAccountGenerateWalletInitial {
   const _$CommercioAccountGenerateWalletInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountGenerateWalletState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountGenerateWalletState.initial'));
   }
 
   @override
@@ -297,29 +337,26 @@ class _$CommercioAccountGenerateWalletInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -328,29 +365,26 @@ class _$CommercioAccountGenerateWalletInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    @required Result initial(CommercioAccountGenerateWalletInitial value),
-    @required Result loading(CommercioAccountGenerateWalletLoading value),
-    @required Result error(CommercioAccountGenerateWalletError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value) $default, {
+    required TResult Function(CommercioAccountGenerateWalletInitial value)
+        initial,
+    required TResult Function(CommercioAccountGenerateWalletLoading value)
+        loading,
+    required TResult Function(CommercioAccountGenerateWalletError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    Result initial(CommercioAccountGenerateWalletInitial value),
-    Result loading(CommercioAccountGenerateWalletLoading value),
-    Result error(CommercioAccountGenerateWalletError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value)? $default, {
+    TResult Function(CommercioAccountGenerateWalletInitial value)? initial,
+    TResult Function(CommercioAccountGenerateWalletLoading value)? loading,
+    TResult Function(CommercioAccountGenerateWalletError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -364,6 +398,7 @@ abstract class CommercioAccountGenerateWalletInitial
       _$CommercioAccountGenerateWalletInitial;
 }
 
+/// @nodoc
 abstract class $CommercioAccountGenerateWalletLoadingCopyWith<$Res> {
   factory $CommercioAccountGenerateWalletLoadingCopyWith(
           CommercioAccountGenerateWalletLoading value,
@@ -371,6 +406,7 @@ abstract class $CommercioAccountGenerateWalletLoadingCopyWith<$Res> {
       _$CommercioAccountGenerateWalletLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountGenerateWalletLoadingCopyWithImpl<$Res>
     extends _$CommercioAccountGenerateWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountGenerateWalletLoadingCopyWith<$Res> {
@@ -384,13 +420,24 @@ class _$CommercioAccountGenerateWalletLoadingCopyWithImpl<$Res>
       super._value as CommercioAccountGenerateWalletLoading;
 }
 
+/// @nodoc
+
 class _$CommercioAccountGenerateWalletLoading
+    with DiagnosticableTreeMixin
     implements CommercioAccountGenerateWalletLoading {
   const _$CommercioAccountGenerateWalletLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountGenerateWalletState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountGenerateWalletState.loading'));
   }
 
   @override
@@ -404,29 +451,26 @@ class _$CommercioAccountGenerateWalletLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -435,29 +479,26 @@ class _$CommercioAccountGenerateWalletLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    @required Result initial(CommercioAccountGenerateWalletInitial value),
-    @required Result loading(CommercioAccountGenerateWalletLoading value),
-    @required Result error(CommercioAccountGenerateWalletError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value) $default, {
+    required TResult Function(CommercioAccountGenerateWalletInitial value)
+        initial,
+    required TResult Function(CommercioAccountGenerateWalletLoading value)
+        loading,
+    required TResult Function(CommercioAccountGenerateWalletError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    Result initial(CommercioAccountGenerateWalletInitial value),
-    Result loading(CommercioAccountGenerateWalletLoading value),
-    Result error(CommercioAccountGenerateWalletError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value)? $default, {
+    TResult Function(CommercioAccountGenerateWalletInitial value)? initial,
+    TResult Function(CommercioAccountGenerateWalletLoading value)? loading,
+    TResult Function(CommercioAccountGenerateWalletError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -471,14 +512,16 @@ abstract class CommercioAccountGenerateWalletLoading
       _$CommercioAccountGenerateWalletLoading;
 }
 
+/// @nodoc
 abstract class $CommercioAccountGenerateWalletErrorCopyWith<$Res> {
   factory $CommercioAccountGenerateWalletErrorCopyWith(
           CommercioAccountGenerateWalletError value,
           $Res Function(CommercioAccountGenerateWalletError) then) =
       _$CommercioAccountGenerateWalletErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioAccountGenerateWalletErrorCopyWithImpl<$Res>
     extends _$CommercioAccountGenerateWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountGenerateWalletErrorCopyWith<$Res> {
@@ -493,24 +536,39 @@ class _$CommercioAccountGenerateWalletErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioAccountGenerateWalletError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountGenerateWalletError
+    with DiagnosticableTreeMixin
     implements CommercioAccountGenerateWalletError {
   const _$CommercioAccountGenerateWalletError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountGenerateWalletState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountGenerateWalletState.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -525,6 +583,7 @@ class _$CommercioAccountGenerateWalletError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountGenerateWalletErrorCopyWith<
           CommercioAccountGenerateWalletError>
@@ -533,29 +592,26 @@ class _$CommercioAccountGenerateWalletError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -564,29 +620,26 @@ class _$CommercioAccountGenerateWalletError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    @required Result initial(CommercioAccountGenerateWalletInitial value),
-    @required Result loading(CommercioAccountGenerateWalletLoading value),
-    @required Result error(CommercioAccountGenerateWalletError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value) $default, {
+    required TResult Function(CommercioAccountGenerateWalletInitial value)
+        initial,
+    required TResult Function(CommercioAccountGenerateWalletLoading value)
+        loading,
+    required TResult Function(CommercioAccountGenerateWalletError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountGenerateWalletData value), {
-    Result initial(CommercioAccountGenerateWalletInitial value),
-    Result loading(CommercioAccountGenerateWalletLoading value),
-    Result error(CommercioAccountGenerateWalletError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountGenerateWalletData value)? $default, {
+    TResult Function(CommercioAccountGenerateWalletInitial value)? initial,
+    TResult Function(CommercioAccountGenerateWalletLoading value)? loading,
+    TResult Function(CommercioAccountGenerateWalletError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -596,22 +649,24 @@ class _$CommercioAccountGenerateWalletError
 
 abstract class CommercioAccountGenerateWalletError
     implements CommercioAccountGenerateWalletState {
-  const factory CommercioAccountGenerateWalletError([String error]) =
+  const factory CommercioAccountGenerateWalletError([String? error]) =
       _$CommercioAccountGenerateWalletError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountGenerateWalletErrorCopyWith<
-      CommercioAccountGenerateWalletError> get copyWith;
+          CommercioAccountGenerateWalletError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioAccountRestoredWalletStateTearOff {
   const _$CommercioAccountRestoredWalletStateTearOff();
 
-// ignore: unused_element
   CommercioAccountRestoredWalletStateData call(
-      {@required String mnemonic,
-      @required Wallet wallet,
-      @required String walletAddress}) {
+      {required String mnemonic,
+      required Wallet wallet,
+      required String walletAddress}) {
     return CommercioAccountRestoredWalletStateData(
       mnemonic: mnemonic,
       wallet: wallet,
@@ -619,61 +674,69 @@ class _$CommercioAccountRestoredWalletStateTearOff {
     );
   }
 
-// ignore: unused_element
   CommercioAccountRestoredWalletStateInitial initial() {
     return const CommercioAccountRestoredWalletStateInitial();
   }
 
-// ignore: unused_element
   CommercioAccountRestoredWalletStateLoading loading() {
     return const CommercioAccountRestoredWalletStateLoading();
   }
 
-// ignore: unused_element
-  CommercioAccountRestoredWalletStateError error([String error]) {
+  CommercioAccountRestoredWalletStateError error([String? error]) {
     return CommercioAccountRestoredWalletStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioAccountRestoredWalletState =
     _$CommercioAccountRestoredWalletStateTearOff();
 
+/// @nodoc
 mixin _$CommercioAccountRestoredWalletState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    @required Result initial(CommercioAccountRestoredWalletStateInitial value),
-    @required Result loading(CommercioAccountRestoredWalletStateLoading value),
-    @required Result error(CommercioAccountRestoredWalletStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value) $default, {
+    required TResult Function(CommercioAccountRestoredWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountRestoredWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountRestoredWalletStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    Result initial(CommercioAccountRestoredWalletStateInitial value),
-    Result loading(CommercioAccountRestoredWalletStateLoading value),
-    Result error(CommercioAccountRestoredWalletStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value)? $default, {
+    TResult Function(CommercioAccountRestoredWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountRestoredWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountRestoredWalletStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountRestoredWalletStateCopyWith<$Res> {
   factory $CommercioAccountRestoredWalletStateCopyWith(
           CommercioAccountRestoredWalletState value,
@@ -681,6 +744,7 @@ abstract class $CommercioAccountRestoredWalletStateCopyWith<$Res> {
       _$CommercioAccountRestoredWalletStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountRestoredWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountRestoredWalletStateCopyWith<$Res> {
   _$CommercioAccountRestoredWalletStateCopyWithImpl(this._value, this._then);
@@ -690,6 +754,7 @@ class _$CommercioAccountRestoredWalletStateCopyWithImpl<$Res>
   final $Res Function(CommercioAccountRestoredWalletState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioAccountRestoredWalletStateDataCopyWith<$Res> {
   factory $CommercioAccountRestoredWalletStateDataCopyWith(
           CommercioAccountRestoredWalletStateData value,
@@ -698,6 +763,7 @@ abstract class $CommercioAccountRestoredWalletStateDataCopyWith<$Res> {
   $Res call({String mnemonic, Wallet wallet, String walletAddress});
 }
 
+/// @nodoc
 class _$CommercioAccountRestoredWalletStateDataCopyWithImpl<$Res>
     extends _$CommercioAccountRestoredWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountRestoredWalletStateDataCopyWith<$Res> {
@@ -713,29 +779,36 @@ class _$CommercioAccountRestoredWalletStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object mnemonic = freezed,
-    Object wallet = freezed,
-    Object walletAddress = freezed,
+    Object? mnemonic = freezed,
+    Object? wallet = freezed,
+    Object? walletAddress = freezed,
   }) {
     return _then(CommercioAccountRestoredWalletStateData(
-      mnemonic: mnemonic == freezed ? _value.mnemonic : mnemonic as String,
-      wallet: wallet == freezed ? _value.wallet : wallet as Wallet,
+      mnemonic: mnemonic == freezed
+          ? _value.mnemonic
+          : mnemonic // ignore: cast_nullable_to_non_nullable
+              as String,
+      wallet: wallet == freezed
+          ? _value.wallet
+          : wallet // ignore: cast_nullable_to_non_nullable
+              as Wallet,
       walletAddress: walletAddress == freezed
           ? _value.walletAddress
-          : walletAddress as String,
+          : walletAddress // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountRestoredWalletStateData
+    with DiagnosticableTreeMixin
     implements CommercioAccountRestoredWalletStateData {
   const _$CommercioAccountRestoredWalletStateData(
-      {@required this.mnemonic,
-      @required this.wallet,
-      @required this.walletAddress})
-      : assert(mnemonic != null),
-        assert(wallet != null),
-        assert(walletAddress != null);
+      {required this.mnemonic,
+      required this.wallet,
+      required this.walletAddress});
 
   @override
   final String mnemonic;
@@ -745,8 +818,18 @@ class _$CommercioAccountRestoredWalletStateData
   final String walletAddress;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountRestoredWalletState(mnemonic: $mnemonic, wallet: $wallet, walletAddress: $walletAddress)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountRestoredWalletState'))
+      ..add(DiagnosticsProperty('mnemonic', mnemonic))
+      ..add(DiagnosticsProperty('wallet', wallet))
+      ..add(DiagnosticsProperty('walletAddress', walletAddress));
   }
 
   @override
@@ -770,6 +853,7 @@ class _$CommercioAccountRestoredWalletStateData
       const DeepCollectionEquality().hash(wallet) ^
       const DeepCollectionEquality().hash(walletAddress);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountRestoredWalletStateDataCopyWith<
           CommercioAccountRestoredWalletStateData>
@@ -778,29 +862,26 @@ class _$CommercioAccountRestoredWalletStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(mnemonic, wallet, walletAddress);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(mnemonic, wallet, walletAddress);
     }
@@ -809,29 +890,27 @@ class _$CommercioAccountRestoredWalletStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    @required Result initial(CommercioAccountRestoredWalletStateInitial value),
-    @required Result loading(CommercioAccountRestoredWalletStateLoading value),
-    @required Result error(CommercioAccountRestoredWalletStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value) $default, {
+    required TResult Function(CommercioAccountRestoredWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountRestoredWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountRestoredWalletStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    Result initial(CommercioAccountRestoredWalletStateInitial value),
-    Result loading(CommercioAccountRestoredWalletStateLoading value),
-    Result error(CommercioAccountRestoredWalletStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value)? $default, {
+    TResult Function(CommercioAccountRestoredWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountRestoredWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountRestoredWalletStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -842,18 +921,21 @@ class _$CommercioAccountRestoredWalletStateData
 abstract class CommercioAccountRestoredWalletStateData
     implements CommercioAccountRestoredWalletState {
   const factory CommercioAccountRestoredWalletStateData(
-          {@required String mnemonic,
-          @required Wallet wallet,
-          @required String walletAddress}) =
+          {required String mnemonic,
+          required Wallet wallet,
+          required String walletAddress}) =
       _$CommercioAccountRestoredWalletStateData;
 
-  String get mnemonic;
-  Wallet get wallet;
-  String get walletAddress;
+  String get mnemonic => throw _privateConstructorUsedError;
+  Wallet get wallet => throw _privateConstructorUsedError;
+  String get walletAddress => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountRestoredWalletStateDataCopyWith<
-      CommercioAccountRestoredWalletStateData> get copyWith;
+          CommercioAccountRestoredWalletStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountRestoredWalletStateInitialCopyWith<$Res> {
   factory $CommercioAccountRestoredWalletStateInitialCopyWith(
           CommercioAccountRestoredWalletStateInitial value,
@@ -861,6 +943,7 @@ abstract class $CommercioAccountRestoredWalletStateInitialCopyWith<$Res> {
       _$CommercioAccountRestoredWalletStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountRestoredWalletStateInitialCopyWithImpl<$Res>
     extends _$CommercioAccountRestoredWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountRestoredWalletStateInitialCopyWith<$Res> {
@@ -875,13 +958,24 @@ class _$CommercioAccountRestoredWalletStateInitialCopyWithImpl<$Res>
       super._value as CommercioAccountRestoredWalletStateInitial;
 }
 
+/// @nodoc
+
 class _$CommercioAccountRestoredWalletStateInitial
+    with DiagnosticableTreeMixin
     implements CommercioAccountRestoredWalletStateInitial {
   const _$CommercioAccountRestoredWalletStateInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountRestoredWalletState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountRestoredWalletState.initial'));
   }
 
   @override
@@ -895,29 +989,26 @@ class _$CommercioAccountRestoredWalletStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -926,29 +1017,27 @@ class _$CommercioAccountRestoredWalletStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    @required Result initial(CommercioAccountRestoredWalletStateInitial value),
-    @required Result loading(CommercioAccountRestoredWalletStateLoading value),
-    @required Result error(CommercioAccountRestoredWalletStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value) $default, {
+    required TResult Function(CommercioAccountRestoredWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountRestoredWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountRestoredWalletStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    Result initial(CommercioAccountRestoredWalletStateInitial value),
-    Result loading(CommercioAccountRestoredWalletStateLoading value),
-    Result error(CommercioAccountRestoredWalletStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value)? $default, {
+    TResult Function(CommercioAccountRestoredWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountRestoredWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountRestoredWalletStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -962,6 +1051,7 @@ abstract class CommercioAccountRestoredWalletStateInitial
       _$CommercioAccountRestoredWalletStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioAccountRestoredWalletStateLoadingCopyWith<$Res> {
   factory $CommercioAccountRestoredWalletStateLoadingCopyWith(
           CommercioAccountRestoredWalletStateLoading value,
@@ -969,6 +1059,7 @@ abstract class $CommercioAccountRestoredWalletStateLoadingCopyWith<$Res> {
       _$CommercioAccountRestoredWalletStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountRestoredWalletStateLoadingCopyWithImpl<$Res>
     extends _$CommercioAccountRestoredWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountRestoredWalletStateLoadingCopyWith<$Res> {
@@ -983,13 +1074,24 @@ class _$CommercioAccountRestoredWalletStateLoadingCopyWithImpl<$Res>
       super._value as CommercioAccountRestoredWalletStateLoading;
 }
 
+/// @nodoc
+
 class _$CommercioAccountRestoredWalletStateLoading
+    with DiagnosticableTreeMixin
     implements CommercioAccountRestoredWalletStateLoading {
   const _$CommercioAccountRestoredWalletStateLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountRestoredWalletState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountRestoredWalletState.loading'));
   }
 
   @override
@@ -1003,29 +1105,26 @@ class _$CommercioAccountRestoredWalletStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -1034,29 +1133,27 @@ class _$CommercioAccountRestoredWalletStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    @required Result initial(CommercioAccountRestoredWalletStateInitial value),
-    @required Result loading(CommercioAccountRestoredWalletStateLoading value),
-    @required Result error(CommercioAccountRestoredWalletStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value) $default, {
+    required TResult Function(CommercioAccountRestoredWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountRestoredWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountRestoredWalletStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    Result initial(CommercioAccountRestoredWalletStateInitial value),
-    Result loading(CommercioAccountRestoredWalletStateLoading value),
-    Result error(CommercioAccountRestoredWalletStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value)? $default, {
+    TResult Function(CommercioAccountRestoredWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountRestoredWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountRestoredWalletStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -1070,14 +1167,16 @@ abstract class CommercioAccountRestoredWalletStateLoading
       _$CommercioAccountRestoredWalletStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioAccountRestoredWalletStateErrorCopyWith<$Res> {
   factory $CommercioAccountRestoredWalletStateErrorCopyWith(
           CommercioAccountRestoredWalletStateError value,
           $Res Function(CommercioAccountRestoredWalletStateError) then) =
       _$CommercioAccountRestoredWalletStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioAccountRestoredWalletStateErrorCopyWithImpl<$Res>
     extends _$CommercioAccountRestoredWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountRestoredWalletStateErrorCopyWith<$Res> {
@@ -1093,24 +1192,39 @@ class _$CommercioAccountRestoredWalletStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioAccountRestoredWalletStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountRestoredWalletStateError
+    with DiagnosticableTreeMixin
     implements CommercioAccountRestoredWalletStateError {
   const _$CommercioAccountRestoredWalletStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountRestoredWalletState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountRestoredWalletState.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -1125,6 +1239,7 @@ class _$CommercioAccountRestoredWalletStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountRestoredWalletStateErrorCopyWith<
           CommercioAccountRestoredWalletStateError>
@@ -1133,29 +1248,26 @@ class _$CommercioAccountRestoredWalletStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)
+        $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String mnemonic, Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String mnemonic, Wallet wallet, String walletAddress)?
+        $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -1164,29 +1276,27 @@ class _$CommercioAccountRestoredWalletStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    @required Result initial(CommercioAccountRestoredWalletStateInitial value),
-    @required Result loading(CommercioAccountRestoredWalletStateLoading value),
-    @required Result error(CommercioAccountRestoredWalletStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value) $default, {
+    required TResult Function(CommercioAccountRestoredWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountRestoredWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountRestoredWalletStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountRestoredWalletStateData value), {
-    Result initial(CommercioAccountRestoredWalletStateInitial value),
-    Result loading(CommercioAccountRestoredWalletStateLoading value),
-    Result error(CommercioAccountRestoredWalletStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountRestoredWalletStateData value)? $default, {
+    TResult Function(CommercioAccountRestoredWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountRestoredWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountRestoredWalletStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -1196,84 +1306,90 @@ class _$CommercioAccountRestoredWalletStateError
 
 abstract class CommercioAccountRestoredWalletStateError
     implements CommercioAccountRestoredWalletState {
-  const factory CommercioAccountRestoredWalletStateError([String error]) =
+  const factory CommercioAccountRestoredWalletStateError([String? error]) =
       _$CommercioAccountRestoredWalletStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountRestoredWalletStateErrorCopyWith<
-      CommercioAccountRestoredWalletStateError> get copyWith;
+          CommercioAccountRestoredWalletStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioAccountQrStateTearOff {
   const _$CommercioAccountQrStateTearOff();
 
-// ignore: unused_element
-  CommercioAccountQrStateData call({@required String walletAddress}) {
+  CommercioAccountQrStateData call({required String walletAddress}) {
     return CommercioAccountQrStateData(
       walletAddress: walletAddress,
     );
   }
 
-// ignore: unused_element
   CommercioAccountQrStateInitial initial() {
     return const CommercioAccountQrStateInitial();
   }
 
-// ignore: unused_element
   CommercioAccountQrStateLoading loading() {
     return const CommercioAccountQrStateLoading();
   }
 
-// ignore: unused_element
-  CommercioAccountQrStateError error([String error]) {
+  CommercioAccountQrStateError error([String? error]) {
     return CommercioAccountQrStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioAccountQrState = _$CommercioAccountQrStateTearOff();
 
+/// @nodoc
 mixin _$CommercioAccountQrState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    @required Result initial(CommercioAccountQrStateInitial value),
-    @required Result loading(CommercioAccountQrStateLoading value),
-    @required Result error(CommercioAccountQrStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value) $default, {
+    required TResult Function(CommercioAccountQrStateInitial value) initial,
+    required TResult Function(CommercioAccountQrStateLoading value) loading,
+    required TResult Function(CommercioAccountQrStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    Result initial(CommercioAccountQrStateInitial value),
-    Result loading(CommercioAccountQrStateLoading value),
-    Result error(CommercioAccountQrStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value)? $default, {
+    TResult Function(CommercioAccountQrStateInitial value)? initial,
+    TResult Function(CommercioAccountQrStateLoading value)? loading,
+    TResult Function(CommercioAccountQrStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountQrStateCopyWith<$Res> {
   factory $CommercioAccountQrStateCopyWith(CommercioAccountQrState value,
           $Res Function(CommercioAccountQrState) then) =
       _$CommercioAccountQrStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountQrStateCopyWithImpl<$Res>
     implements $CommercioAccountQrStateCopyWith<$Res> {
   _$CommercioAccountQrStateCopyWithImpl(this._value, this._then);
@@ -1283,6 +1399,7 @@ class _$CommercioAccountQrStateCopyWithImpl<$Res>
   final $Res Function(CommercioAccountQrState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioAccountQrStateDataCopyWith<$Res> {
   factory $CommercioAccountQrStateDataCopyWith(
           CommercioAccountQrStateData value,
@@ -1291,6 +1408,7 @@ abstract class $CommercioAccountQrStateDataCopyWith<$Res> {
   $Res call({String walletAddress});
 }
 
+/// @nodoc
 class _$CommercioAccountQrStateDataCopyWithImpl<$Res>
     extends _$CommercioAccountQrStateCopyWithImpl<$Res>
     implements $CommercioAccountQrStateDataCopyWith<$Res> {
@@ -1304,26 +1422,38 @@ class _$CommercioAccountQrStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object walletAddress = freezed,
+    Object? walletAddress = freezed,
   }) {
     return _then(CommercioAccountQrStateData(
       walletAddress: walletAddress == freezed
           ? _value.walletAddress
-          : walletAddress as String,
+          : walletAddress // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
-class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
-  const _$CommercioAccountQrStateData({@required this.walletAddress})
-      : assert(walletAddress != null);
+/// @nodoc
+
+class _$CommercioAccountQrStateData
+    with DiagnosticableTreeMixin
+    implements CommercioAccountQrStateData {
+  const _$CommercioAccountQrStateData({required this.walletAddress});
 
   @override
   final String walletAddress;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountQrState(walletAddress: $walletAddress)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountQrState'))
+      ..add(DiagnosticsProperty('walletAddress', walletAddress));
   }
 
   @override
@@ -1339,6 +1469,7 @@ class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(walletAddress);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountQrStateDataCopyWith<CommercioAccountQrStateData>
       get copyWith => _$CommercioAccountQrStateDataCopyWithImpl<
@@ -1346,29 +1477,24 @@ class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(walletAddress);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(walletAddress);
     }
@@ -1377,29 +1503,24 @@ class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    @required Result initial(CommercioAccountQrStateInitial value),
-    @required Result loading(CommercioAccountQrStateLoading value),
-    @required Result error(CommercioAccountQrStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value) $default, {
+    required TResult Function(CommercioAccountQrStateInitial value) initial,
+    required TResult Function(CommercioAccountQrStateLoading value) loading,
+    required TResult Function(CommercioAccountQrStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    Result initial(CommercioAccountQrStateInitial value),
-    Result loading(CommercioAccountQrStateLoading value),
-    Result error(CommercioAccountQrStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value)? $default, {
+    TResult Function(CommercioAccountQrStateInitial value)? initial,
+    TResult Function(CommercioAccountQrStateLoading value)? loading,
+    TResult Function(CommercioAccountQrStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -1408,14 +1529,16 @@ class _$CommercioAccountQrStateData implements CommercioAccountQrStateData {
 }
 
 abstract class CommercioAccountQrStateData implements CommercioAccountQrState {
-  const factory CommercioAccountQrStateData({@required String walletAddress}) =
+  const factory CommercioAccountQrStateData({required String walletAddress}) =
       _$CommercioAccountQrStateData;
 
-  String get walletAddress;
+  String get walletAddress => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountQrStateDataCopyWith<CommercioAccountQrStateData>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountQrStateInitialCopyWith<$Res> {
   factory $CommercioAccountQrStateInitialCopyWith(
           CommercioAccountQrStateInitial value,
@@ -1423,6 +1546,7 @@ abstract class $CommercioAccountQrStateInitialCopyWith<$Res> {
       _$CommercioAccountQrStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountQrStateInitialCopyWithImpl<$Res>
     extends _$CommercioAccountQrStateCopyWithImpl<$Res>
     implements $CommercioAccountQrStateInitialCopyWith<$Res> {
@@ -1436,13 +1560,23 @@ class _$CommercioAccountQrStateInitialCopyWithImpl<$Res>
       super._value as CommercioAccountQrStateInitial;
 }
 
+/// @nodoc
+
 class _$CommercioAccountQrStateInitial
+    with DiagnosticableTreeMixin
     implements CommercioAccountQrStateInitial {
   const _$CommercioAccountQrStateInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountQrState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountQrState.initial'));
   }
 
   @override
@@ -1455,29 +1589,24 @@ class _$CommercioAccountQrStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -1486,29 +1615,24 @@ class _$CommercioAccountQrStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    @required Result initial(CommercioAccountQrStateInitial value),
-    @required Result loading(CommercioAccountQrStateLoading value),
-    @required Result error(CommercioAccountQrStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value) $default, {
+    required TResult Function(CommercioAccountQrStateInitial value) initial,
+    required TResult Function(CommercioAccountQrStateLoading value) loading,
+    required TResult Function(CommercioAccountQrStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    Result initial(CommercioAccountQrStateInitial value),
-    Result loading(CommercioAccountQrStateLoading value),
-    Result error(CommercioAccountQrStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value)? $default, {
+    TResult Function(CommercioAccountQrStateInitial value)? initial,
+    TResult Function(CommercioAccountQrStateLoading value)? loading,
+    TResult Function(CommercioAccountQrStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -1522,6 +1646,7 @@ abstract class CommercioAccountQrStateInitial
       _$CommercioAccountQrStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioAccountQrStateLoadingCopyWith<$Res> {
   factory $CommercioAccountQrStateLoadingCopyWith(
           CommercioAccountQrStateLoading value,
@@ -1529,6 +1654,7 @@ abstract class $CommercioAccountQrStateLoadingCopyWith<$Res> {
       _$CommercioAccountQrStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountQrStateLoadingCopyWithImpl<$Res>
     extends _$CommercioAccountQrStateCopyWithImpl<$Res>
     implements $CommercioAccountQrStateLoadingCopyWith<$Res> {
@@ -1542,13 +1668,23 @@ class _$CommercioAccountQrStateLoadingCopyWithImpl<$Res>
       super._value as CommercioAccountQrStateLoading;
 }
 
+/// @nodoc
+
 class _$CommercioAccountQrStateLoading
+    with DiagnosticableTreeMixin
     implements CommercioAccountQrStateLoading {
   const _$CommercioAccountQrStateLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountQrState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountQrState.loading'));
   }
 
   @override
@@ -1561,29 +1697,24 @@ class _$CommercioAccountQrStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -1592,29 +1723,24 @@ class _$CommercioAccountQrStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    @required Result initial(CommercioAccountQrStateInitial value),
-    @required Result loading(CommercioAccountQrStateLoading value),
-    @required Result error(CommercioAccountQrStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value) $default, {
+    required TResult Function(CommercioAccountQrStateInitial value) initial,
+    required TResult Function(CommercioAccountQrStateLoading value) loading,
+    required TResult Function(CommercioAccountQrStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    Result initial(CommercioAccountQrStateInitial value),
-    Result loading(CommercioAccountQrStateLoading value),
-    Result error(CommercioAccountQrStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value)? $default, {
+    TResult Function(CommercioAccountQrStateInitial value)? initial,
+    TResult Function(CommercioAccountQrStateLoading value)? loading,
+    TResult Function(CommercioAccountQrStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -1628,14 +1754,16 @@ abstract class CommercioAccountQrStateLoading
       _$CommercioAccountQrStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioAccountQrStateErrorCopyWith<$Res> {
   factory $CommercioAccountQrStateErrorCopyWith(
           CommercioAccountQrStateError value,
           $Res Function(CommercioAccountQrStateError) then) =
       _$CommercioAccountQrStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioAccountQrStateErrorCopyWithImpl<$Res>
     extends _$CommercioAccountQrStateCopyWithImpl<$Res>
     implements $CommercioAccountQrStateErrorCopyWith<$Res> {
@@ -1650,23 +1778,38 @@ class _$CommercioAccountQrStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioAccountQrStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
-class _$CommercioAccountQrStateError implements CommercioAccountQrStateError {
+/// @nodoc
+
+class _$CommercioAccountQrStateError
+    with DiagnosticableTreeMixin
+    implements CommercioAccountQrStateError {
   const _$CommercioAccountQrStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountQrState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountQrState.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -1681,6 +1824,7 @@ class _$CommercioAccountQrStateError implements CommercioAccountQrStateError {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountQrStateErrorCopyWith<CommercioAccountQrStateError>
       get copyWith => _$CommercioAccountQrStateErrorCopyWithImpl<
@@ -1688,29 +1832,24 @@ class _$CommercioAccountQrStateError implements CommercioAccountQrStateError {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -1719,29 +1858,24 @@ class _$CommercioAccountQrStateError implements CommercioAccountQrStateError {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    @required Result initial(CommercioAccountQrStateInitial value),
-    @required Result loading(CommercioAccountQrStateLoading value),
-    @required Result error(CommercioAccountQrStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value) $default, {
+    required TResult Function(CommercioAccountQrStateInitial value) initial,
+    required TResult Function(CommercioAccountQrStateLoading value) loading,
+    required TResult Function(CommercioAccountQrStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountQrStateData value), {
-    Result initial(CommercioAccountQrStateInitial value),
-    Result loading(CommercioAccountQrStateLoading value),
-    Result error(CommercioAccountQrStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountQrStateData value)? $default, {
+    TResult Function(CommercioAccountQrStateInitial value)? initial,
+    TResult Function(CommercioAccountQrStateLoading value)? loading,
+    TResult Function(CommercioAccountQrStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -1750,80 +1884,86 @@ class _$CommercioAccountQrStateError implements CommercioAccountQrStateError {
 }
 
 abstract class CommercioAccountQrStateError implements CommercioAccountQrState {
-  const factory CommercioAccountQrStateError([String error]) =
+  const factory CommercioAccountQrStateError([String? error]) =
       _$CommercioAccountQrStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountQrStateErrorCopyWith<CommercioAccountQrStateError>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioAccountFreeTokensStateTearOff {
   const _$CommercioAccountFreeTokensStateTearOff();
 
-// ignore: unused_element
   CommercioAccountFreeTokensStateData call(
-      {@required AccountRequestResponse accountRequestResponse}) {
+      {required AccountRequestResponse accountRequestResponse}) {
     return CommercioAccountFreeTokensStateData(
       accountRequestResponse: accountRequestResponse,
     );
   }
 
-// ignore: unused_element
   CommercioAccountFreeTokensStateInitial initial() {
     return const CommercioAccountFreeTokensStateInitial();
   }
 
-// ignore: unused_element
   CommercioAccountFreeTokensStateLoading loading() {
     return const CommercioAccountFreeTokensStateLoading();
   }
 
-// ignore: unused_element
-  CommercioAccountFreeTokensStateError error([String error]) {
+  CommercioAccountFreeTokensStateError error([String? error]) {
     return CommercioAccountFreeTokensStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioAccountFreeTokensState =
     _$CommercioAccountFreeTokensStateTearOff();
 
+/// @nodoc
 mixin _$CommercioAccountFreeTokensState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    @required Result initial(CommercioAccountFreeTokensStateInitial value),
-    @required Result loading(CommercioAccountFreeTokensStateLoading value),
-    @required Result error(CommercioAccountFreeTokensStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value) $default, {
+    required TResult Function(CommercioAccountFreeTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountFreeTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountFreeTokensStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    Result initial(CommercioAccountFreeTokensStateInitial value),
-    Result loading(CommercioAccountFreeTokensStateLoading value),
-    Result error(CommercioAccountFreeTokensStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value)? $default, {
+    TResult Function(CommercioAccountFreeTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountFreeTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountFreeTokensStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountFreeTokensStateCopyWith<$Res> {
   factory $CommercioAccountFreeTokensStateCopyWith(
           CommercioAccountFreeTokensState value,
@@ -1831,6 +1971,7 @@ abstract class $CommercioAccountFreeTokensStateCopyWith<$Res> {
       _$CommercioAccountFreeTokensStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountFreeTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountFreeTokensStateCopyWith<$Res> {
   _$CommercioAccountFreeTokensStateCopyWithImpl(this._value, this._then);
@@ -1840,6 +1981,7 @@ class _$CommercioAccountFreeTokensStateCopyWithImpl<$Res>
   final $Res Function(CommercioAccountFreeTokensState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioAccountFreeTokensStateDataCopyWith<$Res> {
   factory $CommercioAccountFreeTokensStateDataCopyWith(
           CommercioAccountFreeTokensStateData value,
@@ -1848,6 +1990,7 @@ abstract class $CommercioAccountFreeTokensStateDataCopyWith<$Res> {
   $Res call({AccountRequestResponse accountRequestResponse});
 }
 
+/// @nodoc
 class _$CommercioAccountFreeTokensStateDataCopyWithImpl<$Res>
     extends _$CommercioAccountFreeTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountFreeTokensStateDataCopyWith<$Res> {
@@ -1862,28 +2005,40 @@ class _$CommercioAccountFreeTokensStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object accountRequestResponse = freezed,
+    Object? accountRequestResponse = freezed,
   }) {
     return _then(CommercioAccountFreeTokensStateData(
       accountRequestResponse: accountRequestResponse == freezed
           ? _value.accountRequestResponse
-          : accountRequestResponse as AccountRequestResponse,
+          : accountRequestResponse // ignore: cast_nullable_to_non_nullable
+              as AccountRequestResponse,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountFreeTokensStateData
+    with DiagnosticableTreeMixin
     implements CommercioAccountFreeTokensStateData {
   const _$CommercioAccountFreeTokensStateData(
-      {@required this.accountRequestResponse})
-      : assert(accountRequestResponse != null);
+      {required this.accountRequestResponse});
 
   @override
   final AccountRequestResponse accountRequestResponse;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountFreeTokensState(accountRequestResponse: $accountRequestResponse)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountFreeTokensState'))
+      ..add(DiagnosticsProperty(
+          'accountRequestResponse', accountRequestResponse));
   }
 
   @override
@@ -1900,6 +2055,7 @@ class _$CommercioAccountFreeTokensStateData
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(accountRequestResponse);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountFreeTokensStateDataCopyWith<
           CommercioAccountFreeTokensStateData>
@@ -1908,29 +2064,24 @@ class _$CommercioAccountFreeTokensStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(accountRequestResponse);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(accountRequestResponse);
     }
@@ -1939,29 +2090,26 @@ class _$CommercioAccountFreeTokensStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    @required Result initial(CommercioAccountFreeTokensStateInitial value),
-    @required Result loading(CommercioAccountFreeTokensStateLoading value),
-    @required Result error(CommercioAccountFreeTokensStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value) $default, {
+    required TResult Function(CommercioAccountFreeTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountFreeTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountFreeTokensStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    Result initial(CommercioAccountFreeTokensStateInitial value),
-    Result loading(CommercioAccountFreeTokensStateLoading value),
-    Result error(CommercioAccountFreeTokensStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value)? $default, {
+    TResult Function(CommercioAccountFreeTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountFreeTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountFreeTokensStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -1972,14 +2120,18 @@ class _$CommercioAccountFreeTokensStateData
 abstract class CommercioAccountFreeTokensStateData
     implements CommercioAccountFreeTokensState {
   const factory CommercioAccountFreeTokensStateData(
-          {@required AccountRequestResponse accountRequestResponse}) =
+          {required AccountRequestResponse accountRequestResponse}) =
       _$CommercioAccountFreeTokensStateData;
 
-  AccountRequestResponse get accountRequestResponse;
+  AccountRequestResponse get accountRequestResponse =>
+      throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountFreeTokensStateDataCopyWith<
-      CommercioAccountFreeTokensStateData> get copyWith;
+          CommercioAccountFreeTokensStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountFreeTokensStateInitialCopyWith<$Res> {
   factory $CommercioAccountFreeTokensStateInitialCopyWith(
           CommercioAccountFreeTokensStateInitial value,
@@ -1987,6 +2139,7 @@ abstract class $CommercioAccountFreeTokensStateInitialCopyWith<$Res> {
       _$CommercioAccountFreeTokensStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountFreeTokensStateInitialCopyWithImpl<$Res>
     extends _$CommercioAccountFreeTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountFreeTokensStateInitialCopyWith<$Res> {
@@ -2001,13 +2154,24 @@ class _$CommercioAccountFreeTokensStateInitialCopyWithImpl<$Res>
       super._value as CommercioAccountFreeTokensStateInitial;
 }
 
+/// @nodoc
+
 class _$CommercioAccountFreeTokensStateInitial
+    with DiagnosticableTreeMixin
     implements CommercioAccountFreeTokensStateInitial {
   const _$CommercioAccountFreeTokensStateInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountFreeTokensState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountFreeTokensState.initial'));
   }
 
   @override
@@ -2021,29 +2185,24 @@ class _$CommercioAccountFreeTokensStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -2052,29 +2211,26 @@ class _$CommercioAccountFreeTokensStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    @required Result initial(CommercioAccountFreeTokensStateInitial value),
-    @required Result loading(CommercioAccountFreeTokensStateLoading value),
-    @required Result error(CommercioAccountFreeTokensStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value) $default, {
+    required TResult Function(CommercioAccountFreeTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountFreeTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountFreeTokensStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    Result initial(CommercioAccountFreeTokensStateInitial value),
-    Result loading(CommercioAccountFreeTokensStateLoading value),
-    Result error(CommercioAccountFreeTokensStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value)? $default, {
+    TResult Function(CommercioAccountFreeTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountFreeTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountFreeTokensStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -2088,6 +2244,7 @@ abstract class CommercioAccountFreeTokensStateInitial
       _$CommercioAccountFreeTokensStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioAccountFreeTokensStateLoadingCopyWith<$Res> {
   factory $CommercioAccountFreeTokensStateLoadingCopyWith(
           CommercioAccountFreeTokensStateLoading value,
@@ -2095,6 +2252,7 @@ abstract class $CommercioAccountFreeTokensStateLoadingCopyWith<$Res> {
       _$CommercioAccountFreeTokensStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountFreeTokensStateLoadingCopyWithImpl<$Res>
     extends _$CommercioAccountFreeTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountFreeTokensStateLoadingCopyWith<$Res> {
@@ -2109,13 +2267,24 @@ class _$CommercioAccountFreeTokensStateLoadingCopyWithImpl<$Res>
       super._value as CommercioAccountFreeTokensStateLoading;
 }
 
+/// @nodoc
+
 class _$CommercioAccountFreeTokensStateLoading
+    with DiagnosticableTreeMixin
     implements CommercioAccountFreeTokensStateLoading {
   const _$CommercioAccountFreeTokensStateLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountFreeTokensState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountFreeTokensState.loading'));
   }
 
   @override
@@ -2129,29 +2298,24 @@ class _$CommercioAccountFreeTokensStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -2160,29 +2324,26 @@ class _$CommercioAccountFreeTokensStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    @required Result initial(CommercioAccountFreeTokensStateInitial value),
-    @required Result loading(CommercioAccountFreeTokensStateLoading value),
-    @required Result error(CommercioAccountFreeTokensStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value) $default, {
+    required TResult Function(CommercioAccountFreeTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountFreeTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountFreeTokensStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    Result initial(CommercioAccountFreeTokensStateInitial value),
-    Result loading(CommercioAccountFreeTokensStateLoading value),
-    Result error(CommercioAccountFreeTokensStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value)? $default, {
+    TResult Function(CommercioAccountFreeTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountFreeTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountFreeTokensStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -2196,14 +2357,16 @@ abstract class CommercioAccountFreeTokensStateLoading
       _$CommercioAccountFreeTokensStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioAccountFreeTokensStateErrorCopyWith<$Res> {
   factory $CommercioAccountFreeTokensStateErrorCopyWith(
           CommercioAccountFreeTokensStateError value,
           $Res Function(CommercioAccountFreeTokensStateError) then) =
       _$CommercioAccountFreeTokensStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioAccountFreeTokensStateErrorCopyWithImpl<$Res>
     extends _$CommercioAccountFreeTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountFreeTokensStateErrorCopyWith<$Res> {
@@ -2218,24 +2381,39 @@ class _$CommercioAccountFreeTokensStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioAccountFreeTokensStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountFreeTokensStateError
+    with DiagnosticableTreeMixin
     implements CommercioAccountFreeTokensStateError {
   const _$CommercioAccountFreeTokensStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountFreeTokensState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'CommercioAccountFreeTokensState.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -2250,6 +2428,7 @@ class _$CommercioAccountFreeTokensStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountFreeTokensStateErrorCopyWith<
           CommercioAccountFreeTokensStateError>
@@ -2258,29 +2437,24 @@ class _$CommercioAccountFreeTokensStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(AccountRequestResponse accountRequestResponse), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(AccountRequestResponse accountRequestResponse)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -2289,29 +2463,26 @@ class _$CommercioAccountFreeTokensStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    @required Result initial(CommercioAccountFreeTokensStateInitial value),
-    @required Result loading(CommercioAccountFreeTokensStateLoading value),
-    @required Result error(CommercioAccountFreeTokensStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value) $default, {
+    required TResult Function(CommercioAccountFreeTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountFreeTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountFreeTokensStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountFreeTokensStateData value), {
-    Result initial(CommercioAccountFreeTokensStateInitial value),
-    Result loading(CommercioAccountFreeTokensStateLoading value),
-    Result error(CommercioAccountFreeTokensStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountFreeTokensStateData value)? $default, {
+    TResult Function(CommercioAccountFreeTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountFreeTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountFreeTokensStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -2321,78 +2492,85 @@ class _$CommercioAccountFreeTokensStateError
 
 abstract class CommercioAccountFreeTokensStateError
     implements CommercioAccountFreeTokensState {
-  const factory CommercioAccountFreeTokensStateError([String error]) =
+  const factory CommercioAccountFreeTokensStateError([String? error]) =
       _$CommercioAccountFreeTokensStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountFreeTokensStateErrorCopyWith<
-      CommercioAccountFreeTokensStateError> get copyWith;
+          CommercioAccountFreeTokensStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioAccountBalanceStateTearOff {
   const _$CommercioAccountBalanceStateTearOff();
 
-// ignore: unused_element
-  CommercioAccountBalanceStateData call({@required List<StdCoin> balance}) {
+  CommercioAccountBalanceStateData call({required List<StdCoin> balance}) {
     return CommercioAccountBalanceStateData(
       balance: balance,
     );
   }
 
-// ignore: unused_element
   CommercioAccountBalanceStateInitial initial() {
     return const CommercioAccountBalanceStateInitial();
   }
 
-// ignore: unused_element
   CommercioAccountBalanceStateLoading loading() {
     return const CommercioAccountBalanceStateLoading();
   }
 
-// ignore: unused_element
-  CommercioAccountBalanceStateError error([String error]) {
+  CommercioAccountBalanceStateError error([String? error]) {
     return CommercioAccountBalanceStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioAccountBalanceState = _$CommercioAccountBalanceStateTearOff();
 
+/// @nodoc
 mixin _$CommercioAccountBalanceState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    @required Result initial(CommercioAccountBalanceStateInitial value),
-    @required Result loading(CommercioAccountBalanceStateLoading value),
-    @required Result error(CommercioAccountBalanceStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value) $default, {
+    required TResult Function(CommercioAccountBalanceStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountBalanceStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountBalanceStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    Result initial(CommercioAccountBalanceStateInitial value),
-    Result loading(CommercioAccountBalanceStateLoading value),
-    Result error(CommercioAccountBalanceStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value)? $default, {
+    TResult Function(CommercioAccountBalanceStateInitial value)? initial,
+    TResult Function(CommercioAccountBalanceStateLoading value)? loading,
+    TResult Function(CommercioAccountBalanceStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountBalanceStateCopyWith<$Res> {
   factory $CommercioAccountBalanceStateCopyWith(
           CommercioAccountBalanceState value,
@@ -2400,6 +2578,7 @@ abstract class $CommercioAccountBalanceStateCopyWith<$Res> {
       _$CommercioAccountBalanceStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountBalanceStateCopyWithImpl<$Res>
     implements $CommercioAccountBalanceStateCopyWith<$Res> {
   _$CommercioAccountBalanceStateCopyWithImpl(this._value, this._then);
@@ -2409,6 +2588,7 @@ class _$CommercioAccountBalanceStateCopyWithImpl<$Res>
   final $Res Function(CommercioAccountBalanceState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioAccountBalanceStateDataCopyWith<$Res> {
   factory $CommercioAccountBalanceStateDataCopyWith(
           CommercioAccountBalanceStateData value,
@@ -2417,6 +2597,7 @@ abstract class $CommercioAccountBalanceStateDataCopyWith<$Res> {
   $Res call({List<StdCoin> balance});
 }
 
+/// @nodoc
 class _$CommercioAccountBalanceStateDataCopyWithImpl<$Res>
     extends _$CommercioAccountBalanceStateCopyWithImpl<$Res>
     implements $CommercioAccountBalanceStateDataCopyWith<$Res> {
@@ -2431,25 +2612,38 @@ class _$CommercioAccountBalanceStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object balance = freezed,
+    Object? balance = freezed,
   }) {
     return _then(CommercioAccountBalanceStateData(
-      balance: balance == freezed ? _value.balance : balance as List<StdCoin>,
+      balance: balance == freezed
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as List<StdCoin>,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountBalanceStateData
+    with DiagnosticableTreeMixin
     implements CommercioAccountBalanceStateData {
-  const _$CommercioAccountBalanceStateData({@required this.balance})
-      : assert(balance != null);
+  const _$CommercioAccountBalanceStateData({required this.balance});
 
   @override
   final List<StdCoin> balance;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountBalanceState(balance: $balance)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountBalanceState'))
+      ..add(DiagnosticsProperty('balance', balance));
   }
 
   @override
@@ -2464,6 +2658,7 @@ class _$CommercioAccountBalanceStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(balance);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountBalanceStateDataCopyWith<CommercioAccountBalanceStateData>
       get copyWith => _$CommercioAccountBalanceStateDataCopyWithImpl<
@@ -2471,29 +2666,24 @@ class _$CommercioAccountBalanceStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(balance);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(balance);
     }
@@ -2502,29 +2692,26 @@ class _$CommercioAccountBalanceStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    @required Result initial(CommercioAccountBalanceStateInitial value),
-    @required Result loading(CommercioAccountBalanceStateLoading value),
-    @required Result error(CommercioAccountBalanceStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value) $default, {
+    required TResult Function(CommercioAccountBalanceStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountBalanceStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountBalanceStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    Result initial(CommercioAccountBalanceStateInitial value),
-    Result loading(CommercioAccountBalanceStateLoading value),
-    Result error(CommercioAccountBalanceStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value)? $default, {
+    TResult Function(CommercioAccountBalanceStateInitial value)? initial,
+    TResult Function(CommercioAccountBalanceStateLoading value)? loading,
+    TResult Function(CommercioAccountBalanceStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -2535,13 +2722,15 @@ class _$CommercioAccountBalanceStateData
 abstract class CommercioAccountBalanceStateData
     implements CommercioAccountBalanceState {
   const factory CommercioAccountBalanceStateData(
-      {@required List<StdCoin> balance}) = _$CommercioAccountBalanceStateData;
+      {required List<StdCoin> balance}) = _$CommercioAccountBalanceStateData;
 
-  List<StdCoin> get balance;
+  List<StdCoin> get balance => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountBalanceStateDataCopyWith<CommercioAccountBalanceStateData>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountBalanceStateInitialCopyWith<$Res> {
   factory $CommercioAccountBalanceStateInitialCopyWith(
           CommercioAccountBalanceStateInitial value,
@@ -2549,6 +2738,7 @@ abstract class $CommercioAccountBalanceStateInitialCopyWith<$Res> {
       _$CommercioAccountBalanceStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountBalanceStateInitialCopyWithImpl<$Res>
     extends _$CommercioAccountBalanceStateCopyWithImpl<$Res>
     implements $CommercioAccountBalanceStateInitialCopyWith<$Res> {
@@ -2562,13 +2752,24 @@ class _$CommercioAccountBalanceStateInitialCopyWithImpl<$Res>
       super._value as CommercioAccountBalanceStateInitial;
 }
 
+/// @nodoc
+
 class _$CommercioAccountBalanceStateInitial
+    with DiagnosticableTreeMixin
     implements CommercioAccountBalanceStateInitial {
   const _$CommercioAccountBalanceStateInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountBalanceState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'CommercioAccountBalanceState.initial'));
   }
 
   @override
@@ -2582,29 +2783,24 @@ class _$CommercioAccountBalanceStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -2613,29 +2809,26 @@ class _$CommercioAccountBalanceStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    @required Result initial(CommercioAccountBalanceStateInitial value),
-    @required Result loading(CommercioAccountBalanceStateLoading value),
-    @required Result error(CommercioAccountBalanceStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value) $default, {
+    required TResult Function(CommercioAccountBalanceStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountBalanceStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountBalanceStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    Result initial(CommercioAccountBalanceStateInitial value),
-    Result loading(CommercioAccountBalanceStateLoading value),
-    Result error(CommercioAccountBalanceStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value)? $default, {
+    TResult Function(CommercioAccountBalanceStateInitial value)? initial,
+    TResult Function(CommercioAccountBalanceStateLoading value)? loading,
+    TResult Function(CommercioAccountBalanceStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -2649,6 +2842,7 @@ abstract class CommercioAccountBalanceStateInitial
       _$CommercioAccountBalanceStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioAccountBalanceStateLoadingCopyWith<$Res> {
   factory $CommercioAccountBalanceStateLoadingCopyWith(
           CommercioAccountBalanceStateLoading value,
@@ -2656,6 +2850,7 @@ abstract class $CommercioAccountBalanceStateLoadingCopyWith<$Res> {
       _$CommercioAccountBalanceStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountBalanceStateLoadingCopyWithImpl<$Res>
     extends _$CommercioAccountBalanceStateCopyWithImpl<$Res>
     implements $CommercioAccountBalanceStateLoadingCopyWith<$Res> {
@@ -2669,13 +2864,24 @@ class _$CommercioAccountBalanceStateLoadingCopyWithImpl<$Res>
       super._value as CommercioAccountBalanceStateLoading;
 }
 
+/// @nodoc
+
 class _$CommercioAccountBalanceStateLoading
+    with DiagnosticableTreeMixin
     implements CommercioAccountBalanceStateLoading {
   const _$CommercioAccountBalanceStateLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountBalanceState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'CommercioAccountBalanceState.loading'));
   }
 
   @override
@@ -2689,29 +2895,24 @@ class _$CommercioAccountBalanceStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -2720,29 +2921,26 @@ class _$CommercioAccountBalanceStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    @required Result initial(CommercioAccountBalanceStateInitial value),
-    @required Result loading(CommercioAccountBalanceStateLoading value),
-    @required Result error(CommercioAccountBalanceStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value) $default, {
+    required TResult Function(CommercioAccountBalanceStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountBalanceStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountBalanceStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    Result initial(CommercioAccountBalanceStateInitial value),
-    Result loading(CommercioAccountBalanceStateLoading value),
-    Result error(CommercioAccountBalanceStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value)? $default, {
+    TResult Function(CommercioAccountBalanceStateInitial value)? initial,
+    TResult Function(CommercioAccountBalanceStateLoading value)? loading,
+    TResult Function(CommercioAccountBalanceStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -2756,14 +2954,16 @@ abstract class CommercioAccountBalanceStateLoading
       _$CommercioAccountBalanceStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioAccountBalanceStateErrorCopyWith<$Res> {
   factory $CommercioAccountBalanceStateErrorCopyWith(
           CommercioAccountBalanceStateError value,
           $Res Function(CommercioAccountBalanceStateError) then) =
       _$CommercioAccountBalanceStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioAccountBalanceStateErrorCopyWithImpl<$Res>
     extends _$CommercioAccountBalanceStateCopyWithImpl<$Res>
     implements $CommercioAccountBalanceStateErrorCopyWith<$Res> {
@@ -2778,24 +2978,38 @@ class _$CommercioAccountBalanceStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioAccountBalanceStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountBalanceStateError
+    with DiagnosticableTreeMixin
     implements CommercioAccountBalanceStateError {
   const _$CommercioAccountBalanceStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountBalanceState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountBalanceState.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -2810,6 +3024,7 @@ class _$CommercioAccountBalanceStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountBalanceStateErrorCopyWith<CommercioAccountBalanceStateError>
       get copyWith => _$CommercioAccountBalanceStateErrorCopyWithImpl<
@@ -2817,29 +3032,24 @@ class _$CommercioAccountBalanceStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(List<StdCoin> balance), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(List<StdCoin> balance)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -2848,29 +3058,26 @@ class _$CommercioAccountBalanceStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    @required Result initial(CommercioAccountBalanceStateInitial value),
-    @required Result loading(CommercioAccountBalanceStateLoading value),
-    @required Result error(CommercioAccountBalanceStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value) $default, {
+    required TResult Function(CommercioAccountBalanceStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountBalanceStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountBalanceStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountBalanceStateData value), {
-    Result initial(CommercioAccountBalanceStateInitial value),
-    Result loading(CommercioAccountBalanceStateLoading value),
-    Result error(CommercioAccountBalanceStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountBalanceStateData value)? $default, {
+    TResult Function(CommercioAccountBalanceStateInitial value)? initial,
+    TResult Function(CommercioAccountBalanceStateLoading value)? loading,
+    TResult Function(CommercioAccountBalanceStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -2880,80 +3087,86 @@ class _$CommercioAccountBalanceStateError
 
 abstract class CommercioAccountBalanceStateError
     implements CommercioAccountBalanceState {
-  const factory CommercioAccountBalanceStateError([String error]) =
+  const factory CommercioAccountBalanceStateError([String? error]) =
       _$CommercioAccountBalanceStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountBalanceStateErrorCopyWith<CommercioAccountBalanceStateError>
-      get copyWith;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioAccountSentTokensStateTearOff {
   const _$CommercioAccountSentTokensStateTearOff();
 
-// ignore: unused_element
   CommercioAccountSentTokensStateData call(
-      {@required TransactionResult result}) {
+      {required TransactionResult result}) {
     return CommercioAccountSentTokensStateData(
       result: result,
     );
   }
 
-// ignore: unused_element
   CommercioAccountSentTokensStateInitial initial() {
     return const CommercioAccountSentTokensStateInitial();
   }
 
-// ignore: unused_element
   CommercioAccountSentTokensStateLoading loading() {
     return const CommercioAccountSentTokensStateLoading();
   }
 
-// ignore: unused_element
-  CommercioAccountSentTokensStateError error([String error]) {
+  CommercioAccountSentTokensStateError error([String? error]) {
     return CommercioAccountSentTokensStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioAccountSentTokensState =
     _$CommercioAccountSentTokensStateTearOff();
 
+/// @nodoc
 mixin _$CommercioAccountSentTokensState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    @required Result initial(CommercioAccountSentTokensStateInitial value),
-    @required Result loading(CommercioAccountSentTokensStateLoading value),
-    @required Result error(CommercioAccountSentTokensStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value) $default, {
+    required TResult Function(CommercioAccountSentTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountSentTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountSentTokensStateError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    Result initial(CommercioAccountSentTokensStateInitial value),
-    Result loading(CommercioAccountSentTokensStateLoading value),
-    Result error(CommercioAccountSentTokensStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value)? $default, {
+    TResult Function(CommercioAccountSentTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountSentTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountSentTokensStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountSentTokensStateCopyWith<$Res> {
   factory $CommercioAccountSentTokensStateCopyWith(
           CommercioAccountSentTokensState value,
@@ -2961,6 +3174,7 @@ abstract class $CommercioAccountSentTokensStateCopyWith<$Res> {
       _$CommercioAccountSentTokensStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountSentTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountSentTokensStateCopyWith<$Res> {
   _$CommercioAccountSentTokensStateCopyWithImpl(this._value, this._then);
@@ -2970,6 +3184,7 @@ class _$CommercioAccountSentTokensStateCopyWithImpl<$Res>
   final $Res Function(CommercioAccountSentTokensState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioAccountSentTokensStateDataCopyWith<$Res> {
   factory $CommercioAccountSentTokensStateDataCopyWith(
           CommercioAccountSentTokensStateData value,
@@ -2978,6 +3193,7 @@ abstract class $CommercioAccountSentTokensStateDataCopyWith<$Res> {
   $Res call({TransactionResult result});
 }
 
+/// @nodoc
 class _$CommercioAccountSentTokensStateDataCopyWithImpl<$Res>
     extends _$CommercioAccountSentTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountSentTokensStateDataCopyWith<$Res> {
@@ -2992,25 +3208,38 @@ class _$CommercioAccountSentTokensStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object result = freezed,
+    Object? result = freezed,
   }) {
     return _then(CommercioAccountSentTokensStateData(
-      result: result == freezed ? _value.result : result as TransactionResult,
+      result: result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as TransactionResult,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountSentTokensStateData
+    with DiagnosticableTreeMixin
     implements CommercioAccountSentTokensStateData {
-  const _$CommercioAccountSentTokensStateData({@required this.result})
-      : assert(result != null);
+  const _$CommercioAccountSentTokensStateData({required this.result});
 
   @override
   final TransactionResult result;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountSentTokensState(result: $result)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountSentTokensState'))
+      ..add(DiagnosticsProperty('result', result));
   }
 
   @override
@@ -3025,6 +3254,7 @@ class _$CommercioAccountSentTokensStateData
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(result);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountSentTokensStateDataCopyWith<
           CommercioAccountSentTokensStateData>
@@ -3033,29 +3263,24 @@ class _$CommercioAccountSentTokensStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(result);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(result);
     }
@@ -3064,29 +3289,26 @@ class _$CommercioAccountSentTokensStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    @required Result initial(CommercioAccountSentTokensStateInitial value),
-    @required Result loading(CommercioAccountSentTokensStateLoading value),
-    @required Result error(CommercioAccountSentTokensStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value) $default, {
+    required TResult Function(CommercioAccountSentTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountSentTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountSentTokensStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    Result initial(CommercioAccountSentTokensStateInitial value),
-    Result loading(CommercioAccountSentTokensStateLoading value),
-    Result error(CommercioAccountSentTokensStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value)? $default, {
+    TResult Function(CommercioAccountSentTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountSentTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountSentTokensStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -3097,14 +3319,17 @@ class _$CommercioAccountSentTokensStateData
 abstract class CommercioAccountSentTokensStateData
     implements CommercioAccountSentTokensState {
   const factory CommercioAccountSentTokensStateData(
-          {@required TransactionResult result}) =
+          {required TransactionResult result}) =
       _$CommercioAccountSentTokensStateData;
 
-  TransactionResult get result;
+  TransactionResult get result => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountSentTokensStateDataCopyWith<
-      CommercioAccountSentTokensStateData> get copyWith;
+          CommercioAccountSentTokensStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountSentTokensStateInitialCopyWith<$Res> {
   factory $CommercioAccountSentTokensStateInitialCopyWith(
           CommercioAccountSentTokensStateInitial value,
@@ -3112,6 +3337,7 @@ abstract class $CommercioAccountSentTokensStateInitialCopyWith<$Res> {
       _$CommercioAccountSentTokensStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountSentTokensStateInitialCopyWithImpl<$Res>
     extends _$CommercioAccountSentTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountSentTokensStateInitialCopyWith<$Res> {
@@ -3126,13 +3352,24 @@ class _$CommercioAccountSentTokensStateInitialCopyWithImpl<$Res>
       super._value as CommercioAccountSentTokensStateInitial;
 }
 
+/// @nodoc
+
 class _$CommercioAccountSentTokensStateInitial
+    with DiagnosticableTreeMixin
     implements CommercioAccountSentTokensStateInitial {
   const _$CommercioAccountSentTokensStateInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountSentTokensState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountSentTokensState.initial'));
   }
 
   @override
@@ -3146,29 +3383,24 @@ class _$CommercioAccountSentTokensStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -3177,29 +3409,26 @@ class _$CommercioAccountSentTokensStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    @required Result initial(CommercioAccountSentTokensStateInitial value),
-    @required Result loading(CommercioAccountSentTokensStateLoading value),
-    @required Result error(CommercioAccountSentTokensStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value) $default, {
+    required TResult Function(CommercioAccountSentTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountSentTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountSentTokensStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    Result initial(CommercioAccountSentTokensStateInitial value),
-    Result loading(CommercioAccountSentTokensStateLoading value),
-    Result error(CommercioAccountSentTokensStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value)? $default, {
+    TResult Function(CommercioAccountSentTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountSentTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountSentTokensStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -3213,6 +3442,7 @@ abstract class CommercioAccountSentTokensStateInitial
       _$CommercioAccountSentTokensStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioAccountSentTokensStateLoadingCopyWith<$Res> {
   factory $CommercioAccountSentTokensStateLoadingCopyWith(
           CommercioAccountSentTokensStateLoading value,
@@ -3220,6 +3450,7 @@ abstract class $CommercioAccountSentTokensStateLoadingCopyWith<$Res> {
       _$CommercioAccountSentTokensStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountSentTokensStateLoadingCopyWithImpl<$Res>
     extends _$CommercioAccountSentTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountSentTokensStateLoadingCopyWith<$Res> {
@@ -3234,13 +3465,24 @@ class _$CommercioAccountSentTokensStateLoadingCopyWithImpl<$Res>
       super._value as CommercioAccountSentTokensStateLoading;
 }
 
+/// @nodoc
+
 class _$CommercioAccountSentTokensStateLoading
+    with DiagnosticableTreeMixin
     implements CommercioAccountSentTokensStateLoading {
   const _$CommercioAccountSentTokensStateLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountSentTokensState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountSentTokensState.loading'));
   }
 
   @override
@@ -3254,29 +3496,24 @@ class _$CommercioAccountSentTokensStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -3285,29 +3522,26 @@ class _$CommercioAccountSentTokensStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    @required Result initial(CommercioAccountSentTokensStateInitial value),
-    @required Result loading(CommercioAccountSentTokensStateLoading value),
-    @required Result error(CommercioAccountSentTokensStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value) $default, {
+    required TResult Function(CommercioAccountSentTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountSentTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountSentTokensStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    Result initial(CommercioAccountSentTokensStateInitial value),
-    Result loading(CommercioAccountSentTokensStateLoading value),
-    Result error(CommercioAccountSentTokensStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value)? $default, {
+    TResult Function(CommercioAccountSentTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountSentTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountSentTokensStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -3321,14 +3555,16 @@ abstract class CommercioAccountSentTokensStateLoading
       _$CommercioAccountSentTokensStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioAccountSentTokensStateErrorCopyWith<$Res> {
   factory $CommercioAccountSentTokensStateErrorCopyWith(
           CommercioAccountSentTokensStateError value,
           $Res Function(CommercioAccountSentTokensStateError) then) =
       _$CommercioAccountSentTokensStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioAccountSentTokensStateErrorCopyWithImpl<$Res>
     extends _$CommercioAccountSentTokensStateCopyWithImpl<$Res>
     implements $CommercioAccountSentTokensStateErrorCopyWith<$Res> {
@@ -3343,24 +3579,39 @@ class _$CommercioAccountSentTokensStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioAccountSentTokensStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountSentTokensStateError
+    with DiagnosticableTreeMixin
     implements CommercioAccountSentTokensStateError {
   const _$CommercioAccountSentTokensStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountSentTokensState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'CommercioAccountSentTokensState.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -3375,6 +3626,7 @@ class _$CommercioAccountSentTokensStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountSentTokensStateErrorCopyWith<
           CommercioAccountSentTokensStateError>
@@ -3383,29 +3635,24 @@ class _$CommercioAccountSentTokensStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(TransactionResult result), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(TransactionResult result) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(TransactionResult result), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TransactionResult result)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -3414,29 +3661,26 @@ class _$CommercioAccountSentTokensStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    @required Result initial(CommercioAccountSentTokensStateInitial value),
-    @required Result loading(CommercioAccountSentTokensStateLoading value),
-    @required Result error(CommercioAccountSentTokensStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value) $default, {
+    required TResult Function(CommercioAccountSentTokensStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountSentTokensStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountSentTokensStateError value) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountSentTokensStateData value), {
-    Result initial(CommercioAccountSentTokensStateInitial value),
-    Result loading(CommercioAccountSentTokensStateLoading value),
-    Result error(CommercioAccountSentTokensStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountSentTokensStateData value)? $default, {
+    TResult Function(CommercioAccountSentTokensStateInitial value)? initial,
+    TResult Function(CommercioAccountSentTokensStateLoading value)? loading,
+    TResult Function(CommercioAccountSentTokensStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -3446,81 +3690,89 @@ class _$CommercioAccountSentTokensStateError
 
 abstract class CommercioAccountSentTokensStateError
     implements CommercioAccountSentTokensState {
-  const factory CommercioAccountSentTokensStateError([String error]) =
+  const factory CommercioAccountSentTokensStateError([String? error]) =
       _$CommercioAccountSentTokensStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountSentTokensStateErrorCopyWith<
-      CommercioAccountSentTokensStateError> get copyWith;
+          CommercioAccountSentTokensStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 class _$CommercioAccountPaiwiseWalletStateTearOff {
   const _$CommercioAccountPaiwiseWalletStateTearOff();
 
-// ignore: unused_element
   CommercioAccountPaiwiseWalletStateData call(
-      {@required Wallet wallet, @required String walletAddress}) {
+      {required Wallet wallet, required String walletAddress}) {
     return CommercioAccountPaiwiseWalletStateData(
       wallet: wallet,
       walletAddress: walletAddress,
     );
   }
 
-// ignore: unused_element
   CommercioAccountPaiwiseWalletStateInitial initial() {
     return const CommercioAccountPaiwiseWalletStateInitial();
   }
 
-// ignore: unused_element
   CommercioAccountPaiwiseWalletStateLoading loading() {
     return const CommercioAccountPaiwiseWalletStateLoading();
   }
 
-// ignore: unused_element
-  CommercioAccountPaiwiseWalletStateError error([String error]) {
+  CommercioAccountPaiwiseWalletStateError error([String? error]) {
     return CommercioAccountPaiwiseWalletStateError(
       error,
     );
   }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $CommercioAccountPaiwiseWalletState =
     _$CommercioAccountPaiwiseWalletStateTearOff();
 
+/// @nodoc
 mixin _$CommercioAccountPaiwiseWalletState {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
-  });
+  TResult when<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    @required Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    @required Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    @required Result error(CommercioAccountPaiwiseWalletStateError value),
-  });
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value) $default, {
+    required TResult Function(CommercioAccountPaiwiseWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountPaiwiseWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountPaiwiseWalletStateError value)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    Result error(CommercioAccountPaiwiseWalletStateError value),
-    @required Result orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value)? $default, {
+    TResult Function(CommercioAccountPaiwiseWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountPaiwiseWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountPaiwiseWalletStateError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountPaiwiseWalletStateCopyWith<$Res> {
   factory $CommercioAccountPaiwiseWalletStateCopyWith(
           CommercioAccountPaiwiseWalletState value,
@@ -3528,6 +3780,7 @@ abstract class $CommercioAccountPaiwiseWalletStateCopyWith<$Res> {
       _$CommercioAccountPaiwiseWalletStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountPaiwiseWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountPaiwiseWalletStateCopyWith<$Res> {
   _$CommercioAccountPaiwiseWalletStateCopyWithImpl(this._value, this._then);
@@ -3537,6 +3790,7 @@ class _$CommercioAccountPaiwiseWalletStateCopyWithImpl<$Res>
   final $Res Function(CommercioAccountPaiwiseWalletState) _then;
 }
 
+/// @nodoc
 abstract class $CommercioAccountPaiwiseWalletStateDataCopyWith<$Res> {
   factory $CommercioAccountPaiwiseWalletStateDataCopyWith(
           CommercioAccountPaiwiseWalletStateData value,
@@ -3545,6 +3799,7 @@ abstract class $CommercioAccountPaiwiseWalletStateDataCopyWith<$Res> {
   $Res call({Wallet wallet, String walletAddress});
 }
 
+/// @nodoc
 class _$CommercioAccountPaiwiseWalletStateDataCopyWithImpl<$Res>
     extends _$CommercioAccountPaiwiseWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountPaiwiseWalletStateDataCopyWith<$Res> {
@@ -3560,24 +3815,29 @@ class _$CommercioAccountPaiwiseWalletStateDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object wallet = freezed,
-    Object walletAddress = freezed,
+    Object? wallet = freezed,
+    Object? walletAddress = freezed,
   }) {
     return _then(CommercioAccountPaiwiseWalletStateData(
-      wallet: wallet == freezed ? _value.wallet : wallet as Wallet,
+      wallet: wallet == freezed
+          ? _value.wallet
+          : wallet // ignore: cast_nullable_to_non_nullable
+              as Wallet,
       walletAddress: walletAddress == freezed
           ? _value.walletAddress
-          : walletAddress as String,
+          : walletAddress // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountPaiwiseWalletStateData
+    with DiagnosticableTreeMixin
     implements CommercioAccountPaiwiseWalletStateData {
   const _$CommercioAccountPaiwiseWalletStateData(
-      {@required this.wallet, @required this.walletAddress})
-      : assert(wallet != null),
-        assert(walletAddress != null);
+      {required this.wallet, required this.walletAddress});
 
   @override
   final Wallet wallet;
@@ -3585,8 +3845,17 @@ class _$CommercioAccountPaiwiseWalletStateData
   final String walletAddress;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountPaiwiseWalletState(wallet: $wallet, walletAddress: $walletAddress)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CommercioAccountPaiwiseWalletState'))
+      ..add(DiagnosticsProperty('wallet', wallet))
+      ..add(DiagnosticsProperty('walletAddress', walletAddress));
   }
 
   @override
@@ -3606,6 +3875,7 @@ class _$CommercioAccountPaiwiseWalletStateData
       const DeepCollectionEquality().hash(wallet) ^
       const DeepCollectionEquality().hash(walletAddress);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountPaiwiseWalletStateDataCopyWith<
           CommercioAccountPaiwiseWalletStateData>
@@ -3614,29 +3884,24 @@ class _$CommercioAccountPaiwiseWalletStateData
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(wallet, walletAddress);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(wallet, walletAddress);
     }
@@ -3645,29 +3910,27 @@ class _$CommercioAccountPaiwiseWalletStateData
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    @required Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    @required Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    @required Result error(CommercioAccountPaiwiseWalletStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value) $default, {
+    required TResult Function(CommercioAccountPaiwiseWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountPaiwiseWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountPaiwiseWalletStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    Result error(CommercioAccountPaiwiseWalletStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value)? $default, {
+    TResult Function(CommercioAccountPaiwiseWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountPaiwiseWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountPaiwiseWalletStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if ($default != null) {
       return $default(this);
     }
@@ -3678,15 +3941,18 @@ class _$CommercioAccountPaiwiseWalletStateData
 abstract class CommercioAccountPaiwiseWalletStateData
     implements CommercioAccountPaiwiseWalletState {
   const factory CommercioAccountPaiwiseWalletStateData(
-          {@required Wallet wallet, @required String walletAddress}) =
+          {required Wallet wallet, required String walletAddress}) =
       _$CommercioAccountPaiwiseWalletStateData;
 
-  Wallet get wallet;
-  String get walletAddress;
+  Wallet get wallet => throw _privateConstructorUsedError;
+  String get walletAddress => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountPaiwiseWalletStateDataCopyWith<
-      CommercioAccountPaiwiseWalletStateData> get copyWith;
+          CommercioAccountPaiwiseWalletStateData>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $CommercioAccountPaiwiseWalletStateInitialCopyWith<$Res> {
   factory $CommercioAccountPaiwiseWalletStateInitialCopyWith(
           CommercioAccountPaiwiseWalletStateInitial value,
@@ -3694,6 +3960,7 @@ abstract class $CommercioAccountPaiwiseWalletStateInitialCopyWith<$Res> {
       _$CommercioAccountPaiwiseWalletStateInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountPaiwiseWalletStateInitialCopyWithImpl<$Res>
     extends _$CommercioAccountPaiwiseWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountPaiwiseWalletStateInitialCopyWith<$Res> {
@@ -3708,13 +3975,24 @@ class _$CommercioAccountPaiwiseWalletStateInitialCopyWithImpl<$Res>
       super._value as CommercioAccountPaiwiseWalletStateInitial;
 }
 
+/// @nodoc
+
 class _$CommercioAccountPaiwiseWalletStateInitial
+    with DiagnosticableTreeMixin
     implements CommercioAccountPaiwiseWalletStateInitial {
   const _$CommercioAccountPaiwiseWalletStateInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountPaiwiseWalletState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountPaiwiseWalletState.initial'));
   }
 
   @override
@@ -3728,29 +4006,24 @@ class _$CommercioAccountPaiwiseWalletStateInitial
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -3759,29 +4032,27 @@ class _$CommercioAccountPaiwiseWalletStateInitial
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    @required Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    @required Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    @required Result error(CommercioAccountPaiwiseWalletStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value) $default, {
+    required TResult Function(CommercioAccountPaiwiseWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountPaiwiseWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountPaiwiseWalletStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    Result error(CommercioAccountPaiwiseWalletStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value)? $default, {
+    TResult Function(CommercioAccountPaiwiseWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountPaiwiseWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountPaiwiseWalletStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -3795,6 +4066,7 @@ abstract class CommercioAccountPaiwiseWalletStateInitial
       _$CommercioAccountPaiwiseWalletStateInitial;
 }
 
+/// @nodoc
 abstract class $CommercioAccountPaiwiseWalletStateLoadingCopyWith<$Res> {
   factory $CommercioAccountPaiwiseWalletStateLoadingCopyWith(
           CommercioAccountPaiwiseWalletStateLoading value,
@@ -3802,6 +4074,7 @@ abstract class $CommercioAccountPaiwiseWalletStateLoadingCopyWith<$Res> {
       _$CommercioAccountPaiwiseWalletStateLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CommercioAccountPaiwiseWalletStateLoadingCopyWithImpl<$Res>
     extends _$CommercioAccountPaiwiseWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountPaiwiseWalletStateLoadingCopyWith<$Res> {
@@ -3816,13 +4089,24 @@ class _$CommercioAccountPaiwiseWalletStateLoadingCopyWithImpl<$Res>
       super._value as CommercioAccountPaiwiseWalletStateLoading;
 }
 
+/// @nodoc
+
 class _$CommercioAccountPaiwiseWalletStateLoading
+    with DiagnosticableTreeMixin
     implements CommercioAccountPaiwiseWalletStateLoading {
   const _$CommercioAccountPaiwiseWalletStateLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountPaiwiseWalletState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountPaiwiseWalletState.loading'));
   }
 
   @override
@@ -3836,29 +4120,24 @@ class _$CommercioAccountPaiwiseWalletStateLoading
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -3867,29 +4146,27 @@ class _$CommercioAccountPaiwiseWalletStateLoading
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    @required Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    @required Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    @required Result error(CommercioAccountPaiwiseWalletStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value) $default, {
+    required TResult Function(CommercioAccountPaiwiseWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountPaiwiseWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountPaiwiseWalletStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    Result error(CommercioAccountPaiwiseWalletStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value)? $default, {
+    TResult Function(CommercioAccountPaiwiseWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountPaiwiseWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountPaiwiseWalletStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -3903,14 +4180,16 @@ abstract class CommercioAccountPaiwiseWalletStateLoading
       _$CommercioAccountPaiwiseWalletStateLoading;
 }
 
+/// @nodoc
 abstract class $CommercioAccountPaiwiseWalletStateErrorCopyWith<$Res> {
   factory $CommercioAccountPaiwiseWalletStateErrorCopyWith(
           CommercioAccountPaiwiseWalletStateError value,
           $Res Function(CommercioAccountPaiwiseWalletStateError) then) =
       _$CommercioAccountPaiwiseWalletStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String? error});
 }
 
+/// @nodoc
 class _$CommercioAccountPaiwiseWalletStateErrorCopyWithImpl<$Res>
     extends _$CommercioAccountPaiwiseWalletStateCopyWithImpl<$Res>
     implements $CommercioAccountPaiwiseWalletStateErrorCopyWith<$Res> {
@@ -3926,24 +4205,39 @@ class _$CommercioAccountPaiwiseWalletStateErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object error = freezed,
+    Object? error = freezed,
   }) {
     return _then(CommercioAccountPaiwiseWalletStateError(
-      error == freezed ? _value.error : error as String,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
+/// @nodoc
+
 class _$CommercioAccountPaiwiseWalletStateError
+    with DiagnosticableTreeMixin
     implements CommercioAccountPaiwiseWalletStateError {
   const _$CommercioAccountPaiwiseWalletStateError([this.error]);
 
   @override
-  final String error;
+  final String? error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CommercioAccountPaiwiseWalletState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CommercioAccountPaiwiseWalletState.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -3958,6 +4252,7 @@ class _$CommercioAccountPaiwiseWalletStateError
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
+  @JsonKey(ignore: true)
   @override
   $CommercioAccountPaiwiseWalletStateErrorCopyWith<
           CommercioAccountPaiwiseWalletStateError>
@@ -3966,29 +4261,24 @@ class _$CommercioAccountPaiwiseWalletStateError
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    @required Result initial(),
-    @required Result loading(),
-    @required Result error(String error),
+  TResult when<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress) $default, {
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String? error) error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this.error);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(Wallet wallet, String walletAddress), {
-    Result initial(),
-    Result loading(),
-    Result error(String error),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Wallet wallet, String walletAddress)? $default, {
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String? error)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this.error);
     }
@@ -3997,29 +4287,27 @@ class _$CommercioAccountPaiwiseWalletStateError
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    @required Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    @required Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    @required Result error(CommercioAccountPaiwiseWalletStateError value),
+  TResult map<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value) $default, {
+    required TResult Function(CommercioAccountPaiwiseWalletStateInitial value)
+        initial,
+    required TResult Function(CommercioAccountPaiwiseWalletStateLoading value)
+        loading,
+    required TResult Function(CommercioAccountPaiwiseWalletStateError value)
+        error,
   }) {
-    assert($default != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(CommercioAccountPaiwiseWalletStateData value), {
-    Result initial(CommercioAccountPaiwiseWalletStateInitial value),
-    Result loading(CommercioAccountPaiwiseWalletStateLoading value),
-    Result error(CommercioAccountPaiwiseWalletStateError value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(CommercioAccountPaiwiseWalletStateData value)? $default, {
+    TResult Function(CommercioAccountPaiwiseWalletStateInitial value)? initial,
+    TResult Function(CommercioAccountPaiwiseWalletStateLoading value)? loading,
+    TResult Function(CommercioAccountPaiwiseWalletStateError value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -4029,10 +4317,12 @@ class _$CommercioAccountPaiwiseWalletStateError
 
 abstract class CommercioAccountPaiwiseWalletStateError
     implements CommercioAccountPaiwiseWalletState {
-  const factory CommercioAccountPaiwiseWalletStateError([String error]) =
+  const factory CommercioAccountPaiwiseWalletStateError([String? error]) =
       _$CommercioAccountPaiwiseWalletStateError;
 
-  String get error;
+  String? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $CommercioAccountPaiwiseWalletStateErrorCopyWith<
-      CommercioAccountPaiwiseWalletStateError> get copyWith;
+          CommercioAccountPaiwiseWalletStateError>
+      get copyWith => throw _privateConstructorUsedError;
 }

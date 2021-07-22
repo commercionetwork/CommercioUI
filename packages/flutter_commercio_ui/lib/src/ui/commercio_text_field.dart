@@ -1,155 +1,104 @@
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 
 import 'package:commercio_ui/src/core/utils/type_helper.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
-    L extends T, ERR extends T> extends StatefulWidget {
-  static const _defaultDecoration = InputDecoration();
-  static const _defaultTextCapitalization = TextCapitalization.none;
-  static const _defaultTextAlign = TextAlign.start;
-  static const _defaultReadOnly = true;
-  static const _defaultAutofocus = false;
-  static const _defaultObscureText = false;
-  static const _defaultAutocorrect = false;
-  static const _defaultEnableSuggestions = false;
-  static const int _defaultMaxLines = null;
-  static const _defaultExpands = false;
-  static const _defaultMaxLengthEnforced = true;
-  static const _defaultCursorWidth = 2.0;
-  static const _defaultSelectionHeightStyle = ui.BoxHeightStyle.tight;
-  static const _defaultSelectionWidthStyle = ui.BoxWidthStyle.tight;
-  static const _defaultScrollPadding = EdgeInsets.all(20.0);
-  static const _defaultDragStartBehavior = DragStartBehavior.start;
-  static const _defaultEnableInteractiveSelection = true;
-
-  final TextEditingController controller;
-  final FocusNode focusNode;
-  final InputDecoration decoration;
-  final TextInputType keyboardType;
-  final TextInputAction textInputAction;
+@immutable
+class CommercioTextFieldStyle with Diagnosticable {
+  final InputDecoration? decoration;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   final TextCapitalization textCapitalization;
-  final TextStyle style;
-  final StrutStyle strutStyle;
+  final TextStyle? style;
+  final StrutStyle? strutStyle;
   final TextAlign textAlign;
-  final TextAlignVertical textAlignVertical;
-  final TextDirection textDirection;
+  final TextAlignVertical? textAlignVertical;
+  final TextDirection? textDirection;
   final bool readOnly;
   final ToolbarOptions toolbarOptions;
-  final bool showCursor;
-  final bool autofocus;
+  final bool? showCursor;
+  final String obscuringCharacter;
   final bool obscureText;
   final bool autocorrect;
   final SmartDashesType smartDashesType;
   final SmartQuotesType smartQuotesType;
   final bool enableSuggestions;
-  final int maxLines;
-  final int minLines;
+  final int? maxLines;
+  final int? minLines;
   final bool expands;
-  final int maxLength;
-  final bool maxLengthEnforced;
-  final ValueChanged<String> onChanged;
-  final VoidCallback onEditingComplete;
-  final ValueChanged<String> onSubmitted;
-  final List<TextInputFormatter> inputFormatters;
-  final bool enabled;
+  final int? maxLength;
+  final MaxLengthEnforcement? maxLengthEnforcement;
+  final List<TextInputFormatter>? inputFormatters;
   final double cursorWidth;
-  final Radius cursorRadius;
-  final Color cursorColor;
+  final double? cursorHeight;
+  final Radius? cursorRadius;
+  final Color? cursorColor;
   final ui.BoxHeightStyle selectionHeightStyle;
   final ui.BoxWidthStyle selectionWidthStyle;
-  final Brightness keyboardAppearance;
+  final Brightness? keyboardAppearance;
   final EdgeInsets scrollPadding;
-  final bool enableInteractiveSelection;
   final DragStartBehavior dragStartBehavior;
-  final GestureTapCallback onTap;
-  final InputCounterWidgetBuilder buildCounter;
-  final ScrollPhysics scrollPhysics;
-  final ScrollController scrollController;
-  final String Function(BuildContext context) loading;
-  final String Function(BuildContext context, D state) text;
-  final String Function(BuildContext context, String errorMessage) error;
-  final TextStyle loadingStyle;
+  final bool enableInteractiveSelection;
+  final TextSelectionControls? selectionControls;
+  final MouseCursor? mouseCursor;
+  final InputCounterWidgetBuilder? buildCounter;
+  final ScrollController? scrollController;
+  final ScrollPhysics? scrollPhysics;
+  final Iterable<String>? autofillHints;
 
-  CommercioTextField({
-    Key key,
-    TextEditingController controller,
-    this.focusNode,
-    InputDecoration decoration,
-    TextInputType keyboardType,
+  const CommercioTextFieldStyle({
+    this.decoration = const InputDecoration(),
+    TextInputType? keyboardType,
     this.textInputAction,
-    TextCapitalization textCapitalization,
+    this.textCapitalization = TextCapitalization.none,
     this.style,
     this.strutStyle,
-    TextAlign textAlign,
+    this.textAlign = TextAlign.start,
     this.textAlignVertical,
     this.textDirection,
-    bool readOnly,
-    ToolbarOptions toolbarOptions,
+    this.readOnly = false,
+    ToolbarOptions? toolbarOptions,
     this.showCursor,
-    bool autofocus,
-    bool obscureText,
-    bool autocorrect,
-    SmartDashesType smartDashesType,
-    SmartQuotesType smartQuotesType,
-    bool enableSuggestions,
-    int maxLines,
+    this.obscuringCharacter = '•',
+    this.obscureText = false,
+    this.autocorrect = true,
+    SmartDashesType? smartDashesType,
+    SmartQuotesType? smartQuotesType,
+    this.enableSuggestions = true,
+    this.maxLines = 1,
     this.minLines,
-    bool expands,
+    this.expands = false,
     this.maxLength,
-    bool maxLengthEnforced,
-    this.onChanged,
-    this.onEditingComplete,
-    this.onSubmitted,
+    this.maxLengthEnforcement,
     this.inputFormatters,
-    this.enabled,
-    double cursorWidth,
+    this.cursorWidth = 2.0,
+    this.cursorHeight,
     this.cursorRadius,
     this.cursorColor,
-    ui.BoxHeightStyle selectionHeightStyle,
-    ui.BoxWidthStyle selectionWidthStyle,
+    this.selectionHeightStyle = ui.BoxHeightStyle.tight,
+    this.selectionWidthStyle = ui.BoxWidthStyle.tight,
     this.keyboardAppearance,
-    EdgeInsets scrollPadding,
-    DragStartBehavior dragStartBehavior,
-    bool enableInteractiveSelection,
-    this.onTap,
+    this.scrollPadding = const EdgeInsets.all(20.0),
+    this.dragStartBehavior = DragStartBehavior.start,
+    this.enableInteractiveSelection = true,
+    this.selectionControls,
+    this.mouseCursor,
     this.buildCounter,
     this.scrollController,
     this.scrollPhysics,
-    @required this.text,
-    this.loading,
-    this.error,
-    this.loadingStyle,
-  })  : decoration = decoration ?? _defaultDecoration,
-        textCapitalization = textCapitalization ?? _defaultTextCapitalization,
-        textAlign = textAlign ?? _defaultTextAlign,
-        readOnly = readOnly ?? _defaultReadOnly,
-        autofocus = autofocus ?? _defaultAutofocus,
-        obscureText = obscureText ?? _defaultObscureText,
-        autocorrect = autocorrect ?? _defaultAutocorrect,
-        maxLines = maxLines ?? _defaultMaxLines,
-        expands = expands ?? _defaultExpands,
-        maxLengthEnforced = maxLengthEnforced ?? _defaultMaxLengthEnforced,
-        enableSuggestions = enableSuggestions ?? _defaultEnableSuggestions,
-        cursorWidth = cursorWidth ?? _defaultCursorWidth,
-        selectionHeightStyle =
-            selectionHeightStyle ?? _defaultSelectionHeightStyle,
-        selectionWidthStyle =
-            selectionWidthStyle ?? _defaultSelectionWidthStyle,
-        scrollPadding = scrollPadding ?? _defaultScrollPadding,
-        dragStartBehavior = dragStartBehavior ?? _defaultDragStartBehavior,
-        enableInteractiveSelection =
-            enableInteractiveSelection ?? _defaultEnableInteractiveSelection,
-        controller = controller ?? TextEditingController(text: ''),
+    this.autofillHints,
+  })  : smartDashesType = smartDashesType ??
+            (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
+        smartQuotesType = smartQuotesType ??
+            (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
         keyboardType = keyboardType ??
-            ((maxLines ?? _defaultMaxLines) == 1
-                ? TextInputType.text
-                : TextInputType.multiline),
+            (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
         toolbarOptions = toolbarOptions ??
-            ((obscureText ?? _defaultObscureText)
+            (obscureText
                 ? const ToolbarOptions(
                     selectAll: true,
                     paste: true,
@@ -159,15 +108,48 @@ class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
                     cut: true,
                     selectAll: true,
                     paste: true,
-                  )),
-        smartDashesType = smartDashesType ??
-            ((obscureText ?? _defaultObscureText)
-                ? SmartDashesType.disabled
-                : SmartDashesType.enabled),
-        smartQuotesType = smartQuotesType ??
-            ((obscureText ?? _defaultObscureText)
-                ? SmartQuotesType.disabled
-                : SmartQuotesType.enabled),
+                  ));
+}
+
+class CommercioTextField<B extends Bloc<E, T>, E, T, I extends T, D extends T,
+    L extends T, ERR extends T> extends StatefulWidget {
+  final TextEditingController controller;
+  final FocusNode? focusNode;
+  final bool autofocus;
+  final ValueChanged<String>? onChanged;
+  final VoidCallback? onEditingComplete;
+  final ValueChanged<String>? onSubmitted;
+  final AppPrivateCommandCallback? onAppPrivateCommand;
+  final bool? enabled;
+  final VoidCallback? onTap;
+  final String Function(BuildContext context)? loading;
+  final String Function(BuildContext context, D state) text;
+  final String Function(BuildContext context, String errorMessage)? error;
+  final CommercioTextFieldStyle textFieldStyle;
+  final CommercioTextFieldStyle textFieldLoadingStyle;
+  final String? restorationId;
+
+  CommercioTextField({
+    Key? key,
+    required this.text,
+    TextEditingController? controller,
+    this.autofocus = false,
+    this.enabled,
+    this.error,
+    this.focusNode,
+    this.loading,
+    this.onAppPrivateCommand,
+    this.onChanged,
+    this.onEditingComplete,
+    this.onSubmitted,
+    this.onTap,
+    CommercioTextFieldStyle? textFieldLoadingStyle,
+    CommercioTextFieldStyle? textFieldStyle,
+    this.restorationId,
+  })  : controller = controller ?? TextEditingController(),
+        textFieldLoadingStyle =
+            textFieldLoadingStyle ?? const CommercioTextFieldStyle(),
+        textFieldStyle = textFieldStyle ?? const CommercioTextFieldStyle(),
         super(key: key);
 
   @override
@@ -189,6 +171,8 @@ class _CommercioTextFieldState<
   Widget build(BuildContext context) {
     return BlocBuilder<B, T>(
       builder: (context, state) {
+        CommercioTextFieldStyle style = widget.textFieldStyle;
+
         if (TypeHelper.hasType(state.runtimeType, I)) {
           widget.controller.text = '';
         }
@@ -199,63 +183,73 @@ class _CommercioTextFieldState<
         }
 
         if (TypeHelper.hasType(state.runtimeType, L)) {
-          widget.controller.text =
-              widget.loading != null ? widget.loading(context) : '';
+          if (widget.loading != null) {
+            widget.controller.text = widget.loading!(context);
+            style = widget.textFieldLoadingStyle;
+          } else {
+            widget.controller.text = '';
+          }
         }
 
         if (TypeHelper.hasType(state.runtimeType, ERR)) {
           // [state] must be dynamic to call the [error] getter on it.
           widget.controller.text = widget.error != null
-              ? widget.error(context, (state as dynamic).error)
+              ? widget.error!(context, (state as dynamic).error)
               : previousText;
         }
 
         return TextField(
-          controller: widget.controller,
-          focusNode: widget.focusNode,
-          decoration: widget.decoration,
-          keyboardType: widget.keyboardType,
-          textInputAction: widget.textInputAction,
-          textCapitalization: widget.textCapitalization,
-          style: TypeHelper.hasType(state.runtimeType, L)
-              ? widget.loadingStyle
-              : widget.style,
-          strutStyle: widget.strutStyle,
-          textAlign: widget.textAlign,
-          textAlignVertical: widget.textAlignVertical,
-          textDirection: widget.textDirection,
-          readOnly: widget.readOnly,
-          toolbarOptions: widget.toolbarOptions,
-          showCursor: widget.showCursor,
+          autocorrect: style.autocorrect,
+          autofillHints: style.autofillHints,
           autofocus: widget.autofocus,
-          obscureText: widget.obscureText,
-          autocorrect: widget.autocorrect,
-          smartDashesType: widget.smartDashesType,
-          smartQuotesType: widget.smartQuotesType,
-          enableSuggestions: widget.enableSuggestions,
-          maxLines: widget.maxLines,
-          minLines: widget.minLines,
-          expands: widget.expands,
-          maxLength: widget.maxLength,
-          maxLengthEnforced: widget.maxLengthEnforced,
+          buildCounter: style.buildCounter,
+          controller: widget.controller,
+          cursorColor: style.cursorColor,
+          cursorHeight: style.cursorHeight,
+          cursorRadius: style.cursorRadius,
+          cursorWidth: style.cursorWidth,
+          decoration: style.decoration,
+          dragStartBehavior: style.dragStartBehavior,
+          enableInteractiveSelection: style.enableInteractiveSelection,
+          enableSuggestions: style.enableSuggestions,
+          enabled: widget.enabled,
+          expands: style.expands,
+          focusNode: widget.focusNode,
+          inputFormatters: style.inputFormatters,
+          key: widget.key,
+          keyboardAppearance: style.keyboardAppearance,
+          keyboardType: style.keyboardType,
+          maxLength: style.maxLength,
+          maxLengthEnforcement: style.maxLengthEnforcement,
+          maxLines: style.maxLines,
+          minLines: style.minLines,
+          mouseCursor: style.mouseCursor,
+          obscureText: style.obscureText,
+          obscuringCharacter: style.obscuringCharacter,
+          onAppPrivateCommand: widget.onAppPrivateCommand,
           onChanged: widget.onChanged,
           onEditingComplete: widget.onEditingComplete,
           onSubmitted: widget.onSubmitted,
-          inputFormatters: widget.inputFormatters,
-          enabled: widget.enabled,
-          cursorWidth: widget.cursorWidth,
-          cursorRadius: widget.cursorRadius,
-          cursorColor: widget.cursorColor,
-          selectionHeightStyle: widget.selectionHeightStyle,
-          selectionWidthStyle: widget.selectionWidthStyle,
-          keyboardAppearance: widget.keyboardAppearance,
-          scrollPadding: widget.scrollPadding,
-          enableInteractiveSelection: widget.enableInteractiveSelection,
-          dragStartBehavior: widget.dragStartBehavior,
           onTap: widget.onTap,
-          buildCounter: widget.buildCounter,
-          scrollPhysics: widget.scrollPhysics,
-          scrollController: widget.scrollController,
+          readOnly: style.readOnly,
+          restorationId: widget.restorationId,
+          scrollController: style.scrollController,
+          scrollPadding: style.scrollPadding,
+          scrollPhysics: style.scrollPhysics,
+          selectionControls: style.selectionControls,
+          selectionHeightStyle: style.selectionHeightStyle,
+          selectionWidthStyle: style.selectionWidthStyle,
+          showCursor: style.showCursor,
+          smartDashesType: style.smartDashesType,
+          smartQuotesType: style.smartQuotesType,
+          strutStyle: style.strutStyle,
+          style: style.style,
+          textAlign: style.textAlign,
+          textAlignVertical: style.textAlignVertical,
+          textCapitalization: style.textCapitalization,
+          textDirection: style.textDirection,
+          textInputAction: style.textInputAction,
+          toolbarOptions: style.toolbarOptions,
         );
       },
     );
